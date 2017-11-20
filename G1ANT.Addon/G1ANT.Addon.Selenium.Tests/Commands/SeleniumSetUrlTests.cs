@@ -1,0 +1,104 @@
+﻿using G1ANT.Engine;
+using NUnit.Framework;
+using System;
+
+namespace G1ANT.Language.Selenium.Tests
+{
+    [TestFixture]
+
+    public class SeleniumSetUrlTests
+    {
+        private Scripter scripter;
+
+        [SetUp]
+        public void TestInitialize()
+        {
+            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+        }
+
+        [Test, Timeout(SeleniumTests.TestTimeout)]
+        public void BrowsersSetUrlFailTest()
+        {
+            scripter = new Scripter();
+            scripter.Text = $@"
+                    selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text}
+                    selenium.seturl url {SpecialChars.Text}tibia aggs/1223;1'\\1'23./2{SpecialChars.Text}                    
+                ";
+            Exception exception = Assert.Throws<ApplicationException>(delegate
+            {
+                scripter.Run();
+            });
+            Assert.IsInstanceOf<UriFormatException>(exception.GetBaseException());
+        }
+
+        [Test, Timeout(SeleniumTests.TestTimeout)]
+        public void BrowsersSetUrlSuccessTest()
+        {
+            scripter = new Scripter();
+            scripter.Text = $@"
+                    selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text}
+                    selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result1
+                    selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result2
+                    selenium.close
+                ";
+            scripter.Run();
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result1")?.ToLower()?.Contains("spraw") ?? false);
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
+
+            scripter = new Scripter();
+            scripter.Text = $@"
+                    selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text}
+                    selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result1
+                    selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result2
+                    selenium.close
+                ";
+            scripter.Run();
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result1")?.ToLower()?.Contains("spraw") ?? false);
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
+
+            scripter = new Scripter();
+            scripter.Text = $@"
+                    selenium.open type {SpecialChars.Text}edge{SpecialChars.Text}
+                    selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result1
+                    selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result2
+                    selenium.close
+                ";
+            scripter.Run();
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result1")?.ToLower()?.Contains("spraw") ?? false);
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
+
+            scripter = new Scripter();
+            scripter.Text = $@"
+                    selenium.open type {SpecialChars.Text}ie{SpecialChars.Text}
+                    selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result1
+                    selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
+                    selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
+                    selenium.gettitle result result2
+                    selenium.close
+                ";
+            scripter.Run();
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result1")?.ToLower()?.Contains("spraw") ?? false);
+            Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
+        }
+
+        [TearDown]
+        public void CleanUp()
+        {
+            SeleniumTests.KillAllBrowserProcesses();
+        }
+    }
+}
