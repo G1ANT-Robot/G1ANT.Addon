@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="G1ANT.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -65,33 +73,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Engine\G1ANT.Engine.csproj">
-      <Project>{9b5f5109-36d1-4652-bbcb-96b89f6895c4}</Project>
-      <Name>G1ANT.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Interop\G1ANT.Interop.csproj">
-      <Project>{2ccdb7df-2e8b-441a-81a9-1c421bdb207e}</Project>
-      <Name>G1ANT.Interop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core.Tests\G1ANT.Language.Core.Tests.csproj">
-      <Project>{bd1786f1-6c40-426f-b8d3-d17af4cea554}</Project>
-      <Name>G1ANT.Language.Core.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core\G1ANT.Language.Core.csproj">
-      <Project>{e0e6fb4a-8660-4352-a6b4-f1c9e073a0f9}</Project>
-      <Name>G1ANT.Language.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.csproj">
       <Project>{3b1dc446-00ef-4dc1-ad42-41d76c3de2a8}</Project>
       <Name>G1ANT.Addon.Ocr</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language\G1ANT.Language.csproj">
-      <Project>{a64c3699-084e-4123-b9d4-1b6ebfd98cc6}</Project>
-      <Name>G1ANT.Language</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Sdk\G1ANT.Sdk.csproj">
-      <Project>{48399866-77b0-45dc-9f31-2d9d50904210}</Project>
-      <Name>G1ANT.Sdk</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

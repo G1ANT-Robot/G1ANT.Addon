@@ -1,7 +1,6 @@
 ﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Tests;
 using G1ANT.Language.Ocr.Tests.Properties;
-using G1ANT.Language.Semantic;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -11,7 +10,6 @@ using System.Reflection;
 namespace G1ANT.Language.Ocr.Tests.Commands
 {
     [TestFixture]
-    [TestsClass(typeof(OcrFindPointTests))]
     public class OcrFindPointTests
     {
         private static Scripter scripter;

@@ -1,10 +1,6 @@
 ﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Commands;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.Api;
-using G1ANT.Language.Ocr.Tests.Commands;
 using G1ANT.Language.Ocr.Tests.Properties;
-using G1ANT.Language.Semantic;
+using G1ANT.Language;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +10,6 @@ using System.Reflection;
 namespace G1ANT.Language.Ocr.Tests.Commands
 {
     [TestFixture]
-    [TestsClass(typeof(Ocr.Commands.OcrFromScreen))]
     public class OcrFromScreenTests
     {
         private static Scripter scripter;
@@ -25,7 +20,7 @@ namespace G1ANT.Language.Ocr.Tests.Commands
         public void Initialize()
         {
             System.Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            Window window = new Window();
+            //Window window = new Window(); //TODO  was G1ANT.Language.Core.Commands.Window i think do wyjebania
         }
 
         [SetUp]
