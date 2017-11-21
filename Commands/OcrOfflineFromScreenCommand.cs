@@ -32,7 +32,7 @@ namespace G1ANT.Language.Ocr.Tesseract
         }
         public void Execute(Arguments arguments)
         {
-            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : Helpers.ToAbsoluteCoordinates(arguments.Area.Value);
+            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
             Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, 4.0);
             int timeout = arguments.Timeout;

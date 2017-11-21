@@ -38,7 +38,7 @@ namespace G1ANT.Language.Ocr.Tesseract
         double imgRescaleRatio = 4.0;
         public void Execute(Arguments arguments)
         {
-            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : Helpers.ToAbsoluteCoordinates(arguments.Area.Value);
+            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
             Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             int timeout = arguments.Timeout;
             string language = arguments.Language.Value;
