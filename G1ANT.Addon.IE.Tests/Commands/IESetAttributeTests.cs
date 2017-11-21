@@ -18,13 +18,15 @@ namespace G1ANT.Addon.IExplorer.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
-
+        [SetUp]
+        public void TestInitialize()
+        {
+            scripter = new Scripter();
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
+        }
         [Test, Timeout(IETests.TestTimeout)]
         public void IESetAttributeSuccessTest()
-
         {
-
-            scripter = new Scripter();
             scripter.Text = $@"
                             ie.open timeout 20000
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text} timeout 20000
@@ -40,7 +42,6 @@ namespace G1ANT.Addon.IExplorer.Tests
         [Test, Timeout(IETests.TestTimeout)]
         public void IESetAttributeWrongElementFailTest()
         {
-            scripter = new Scripter();
             scripter.Text = $@"
                             ie.open
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text}

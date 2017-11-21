@@ -19,11 +19,15 @@ namespace G1ANT.Addon.IExplorer.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
-
+        [SetUp]
+        public void TestInitialize()
+        {
+            scripter = new Scripter();
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
+        }
         [Test, Timeout(IETests.TestTimeout)]
         public void WaitForValueSuccessTest()
         {
-            scripter = new Scripter();
             scripter.Text = $@"
                             ie.open url {SpecialChars.Text}https://secure.tibia.com/community/?subtopic=characters{SpecialChars.Text}
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""name""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
@@ -35,7 +39,6 @@ namespace G1ANT.Addon.IExplorer.Tests
         [Test, Timeout(IETests.TestTimeout)]
         public void WaitForValueBadScriptTest()
         {
-            scripter = new Scripter();
             scripter.Text = $@"
                             ie.open url {SpecialChars.Text}google.pl{SpecialChars.Text} timeout 20000
                             ie.setattribute name {SpecialChars.Text}value{SpecialChars.Text} value {SpecialChars.Text}abc{SpecialChars.Text} search {SpecialChars.Text}input[name='q']{SpecialChars.Text} by {SpecialChars.Text}query{SpecialChars.Text}

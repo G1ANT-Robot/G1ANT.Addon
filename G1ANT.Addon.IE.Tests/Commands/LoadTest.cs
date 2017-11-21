@@ -1,14 +1,14 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace G1ANT.Language.IE.Tests.Commands
+namespace G1ANT.Addon.IExplorer.Tests
 {
 
     [TestFixture]
     public class LoadTest
     {
         [Test]
-        public void LoadAddon()
+        public void LoadIExplorerAddon()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
             Assert.IsNotNull(addon);

@@ -28,6 +28,7 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void TestInitialize()
         {
             scripter = new Scripter();
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
             ProcessStartInfo psi = new ProcessStartInfo()
             {
                 FileName = internetExplorerPath,
