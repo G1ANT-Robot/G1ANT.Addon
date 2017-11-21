@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace G1ANT.Addon.Net
 {
     [Command(Name = "as400.open", Tooltip= "This command allows to open terminal to work with IBM AS/400 platform.", NeedsDelay = true, IsUnderConstruction = true)]
-    public class AS400open : Command
+    public class AS400openCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Net
         public string pathToPutty = System.IO.Path.Combine(Environment.CurrentDirectory,
              @"..\..\..\G1ANT.Robot\Resources\putty.exe");
         Process putty;
-        public AS400open(AbstractScripter scripter) : base(scripter)
+        public AS400openCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)

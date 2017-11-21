@@ -39,6 +39,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [SetUp]
         public void TestInit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             csvPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestData), "csv");
             scripter.Variables.SetVariableValue("csvPath", new TextStructure(csvPath));
             scripter.RunLine($"excel.open {SpecialChars.Variable}csvPath");

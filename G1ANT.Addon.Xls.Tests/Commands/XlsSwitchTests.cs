@@ -30,6 +30,7 @@ namespace G1ANT.Addon.Xls.Tests
         [SetUp]
         public void testinit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");

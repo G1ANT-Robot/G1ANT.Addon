@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Commands\CountRowsTests.cs" />
     <Compile Include="Commands\Initializer.cs" />
+    <Compile Include="Commands\LoadXlsTests.cs" />
     <Compile Include="Commands\SetValueTests.cs" />
     <Compile Include="Commands\XlsCloseTests.cs" />
     <Compile Include="Commands\XlsGetValueTests.cs" />

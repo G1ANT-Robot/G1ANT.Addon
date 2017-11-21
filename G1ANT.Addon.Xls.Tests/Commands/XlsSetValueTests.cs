@@ -19,6 +19,7 @@ namespace G1ANT.Addon.Xls.Tests
         [SetUp]
         public void testinit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
         }
         [Test]

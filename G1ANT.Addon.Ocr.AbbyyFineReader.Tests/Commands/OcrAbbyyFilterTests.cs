@@ -2,22 +2,17 @@
 using System.IO;
 
 using G1ANT.Engine;
-using G1ANT.Interop;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
-using G1ANT.Language.Semantic;
-using GStruct = G1ANT.Language.Structures;
+using GStruct = G1ANT.Language;
 
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Reflection;
 using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
+using G1ANT.Language;
 
-namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrAbbyyFilter))]
     public class OcrAbbyyFilterTests
     {
         [OneTimeSetUp]
@@ -25,7 +20,11 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         {
             System.Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
+        }
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void FilterTest()
         {
@@ -39,7 +38,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
 
             foreach (GStruct.Structure value in res)
             {
-                string text = ((GStruct.String)value).Value.Trim();
+                string text = ((GStruct.TextStructure)value).Value.Trim();
                 if (boldedTexts.Contains(text))
                 {
                     boldedTexts.Remove(text);

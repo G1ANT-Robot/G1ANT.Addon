@@ -38,6 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="G1ANT.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -74,39 +82,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="LoadAbbyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\dokument4.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Engine\G1ANT.Engine.csproj">
-      <Project>{9b5f5109-36d1-4652-bbcb-96b89f6895c4}</Project>
-      <Name>G1ANT.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Interop\G1ANT.Interop.csproj">
-      <Project>{2CCDB7DF-2E8B-441A-81A9-1C421BDB207E}</Project>
-      <Name>G1ANT.Interop</Name>
-    </ProjectReference>
     <ProjectReference Include="..\G1ANT.Addon.AbbyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.csproj">
       <Project>{ff05a155-c4ab-4b5f-a4ed-0fb0d2b94ef9}</Project>
       <Name>G1ANT.Addon.Ocr.AbbyyFineReader</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core.Tests\G1ANT.Language.Core.Tests.csproj">
-      <Project>{bd1786f1-6c40-426f-b8d3-d17af4cea554}</Project>
-      <Name>G1ANT.Language.Core.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core\G1ANT.Language.Core.csproj">
-      <Project>{e0e6fb4a-8660-4352-a6b4-f1c9e073a0f9}</Project>
-      <Name>G1ANT.Language.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language\G1ANT.Language.csproj">
-      <Project>{a64c3699-084e-4123-b9d4-1b6ebfd98cc6}</Project>
-      <Name>G1ANT.Language</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Robot.FormTester\G1ANT.Robot.FormTester.csproj">
-      <Project>{19e25cf8-e1ea-4706-ad6f-e740f12847df}</Project>
-      <Name>G1ANT.Robot.FormTester</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

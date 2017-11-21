@@ -36,7 +36,8 @@ namespace G1ANT.Addon.MSOffice.Tests
 
         [SetUp]
         public void TestInit()
-        {     
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             userProcessCount = Process.GetProcessesByName("excel").Length;
             scripter.RunLine("excel.open");
         }

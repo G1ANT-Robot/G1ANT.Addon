@@ -29,6 +29,7 @@ namespace G1ANT.Addon.Xls.Tests
         [SetUp]
         public void testinit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
             scripter.RunLine($"xls.open {SpecialChars.Text}{file2}{SpecialChars.Text} accessmode read");
         }

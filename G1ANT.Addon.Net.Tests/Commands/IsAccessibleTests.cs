@@ -18,7 +18,11 @@ namespace G1ANT.Addon.Net.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
+        }
         [Test]
         public void IsAccessibleTest()
         {

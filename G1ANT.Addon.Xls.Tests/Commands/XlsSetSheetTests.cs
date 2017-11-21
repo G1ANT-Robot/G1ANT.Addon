@@ -59,6 +59,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void TestInit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result id");
         }
 

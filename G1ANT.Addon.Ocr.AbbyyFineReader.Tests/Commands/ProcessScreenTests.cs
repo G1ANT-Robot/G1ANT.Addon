@@ -1,19 +1,15 @@
 ﻿using System;
 
 using G1ANT.Engine;
-using G1ANT.Interop;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
 using G1ANT.Language.Semantic;
 
 using NUnit.Framework;
 using System.Threading;
+using G1ANT.Language;
 
-namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrAbbyyProcessScreen))]
     public class ProcessScreenTests
     {
         private static Scripter scripter;
@@ -30,6 +26,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         [SetUp]
         public void Init()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             scripter = new Scripter();
             testerApp = AbbyTests.StartFormTester($"Title {appTitle}");
         }

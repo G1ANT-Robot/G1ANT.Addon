@@ -22,7 +22,11 @@ namespace G1ANT.Addon.Xls.Tests
             scripter = new Scripter();
             scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
         }
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+        }
         [Test]
         [Timeout(20000)]
         public void XlsGetValueIntTest()

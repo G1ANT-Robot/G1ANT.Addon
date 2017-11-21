@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 
 using G1ANT.Engine;
-using G1ANT.Interop;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
-using G1ANT.Language.Semantic;
-using GStruct = G1ANT.Language.Structures;
+using GStruct = G1ANT.Language;
 
 using NUnit.Framework;
 using System.Reflection;
 using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
 using System.Threading;
+using G1ANT.Language;
 
-namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrAbbyyFind))]
     public class FindTests
     {
         [OneTimeSetUp]
@@ -26,7 +21,11 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
+        }
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void FindTest()
         {
@@ -62,7 +61,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
                 scripter.RunLine($"ocrabbyy.find {SpecialChars.Text}{appTitle}{SpecialChars.Text} result {nameof(windowTitleRect)}");
                 windowTitleRect = scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(windowTitleRect));
                 Assert.AreNotEqual(0, windowTitleRect.Count);
-                System.Drawing.Rectangle titleRect = ((GStruct.Rectangle)windowTitleRect[0]).Value;
+                System.Drawing.Rectangle titleRect = ((GStruct.RectangleStructure)windowTitleRect[0]).Value;
 
                 Assert.IsTrue(titleRect.Top > 0 & titleRect.Top < titleBarHeight, "Top edge position of found rectangle is incorrect");
                 Assert.IsTrue(titleRect.Bottom > 0 & titleRect.Bottom <= titleBarHeight, "Bottom edge position of found rectangle is incorrect");

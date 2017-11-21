@@ -38,6 +38,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [SetUp]
         public void TestInit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter.Variables.SetVariableValue("TestSheet", new TextStructure(sheetName));
             scripter.Variables.SetVariableValue("otherSheet", new TextStructure(otherSheet));
             scripter.RunLine("excel.open");

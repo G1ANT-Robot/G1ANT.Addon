@@ -1,20 +1,16 @@
 ﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
-using G1ANT.Language.Semantic;
-using GStructures = G1ANT.Language.Structures;
+using GStructures = G1ANT.Language;
 
 using NUnit.Framework;
 using System.Collections.Generic;
 using System;
 using System.Reflection;
 using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
+using G1ANT.Language;
 
-namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrAbbyyGetDocument))]
     public class OcrAbbyyGetDocumentTest
     {
         private static Scripter scripter;
@@ -29,9 +25,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         [SetUp]
         public void Init()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document1), "tif");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("file", new GStructures.String(path));
+            scripter.Variables.SetVariableValue("file", new GStructures.TextStructure(path));
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]

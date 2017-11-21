@@ -73,6 +73,7 @@
     <Compile Include="Commands\ExcelInsertRowTests.cs" />
     <Compile Include="Commands\ExcelSetValTests.cs" />
     <Compile Include="Commands\ExcelSwitchTests.cs" />
+    <Compile Include="Commands\LoadMSOfficeTest.cs" />
     <Compile Include="Commands\OutlookCloseTests.cs" />
     <Compile Include="Commands\OutlookFindMailsTests.cs" />
     <Compile Include="Commands\OutlookNewMessageTests.cs" />

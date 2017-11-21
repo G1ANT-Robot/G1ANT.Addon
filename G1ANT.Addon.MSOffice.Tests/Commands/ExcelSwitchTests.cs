@@ -43,6 +43,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [SetUp]
         public void TestInit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
             scripter.Variables.SetVariableValue("xlsPath", new TextStructure(xlsPath));
             scripter.Variables.SetVariableValue("val", new IntegerStructure(someVal));

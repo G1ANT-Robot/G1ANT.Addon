@@ -42,6 +42,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [SetUp]
         public void TestInit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter.RunLine($"word.open result id");
             scripter.RunLine($"word.open result id2");
         }

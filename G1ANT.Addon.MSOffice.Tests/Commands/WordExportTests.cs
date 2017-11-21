@@ -36,7 +36,11 @@ namespace G1ANT.Addon.MSOffice.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
         }
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
+        }
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void WordExportTest()

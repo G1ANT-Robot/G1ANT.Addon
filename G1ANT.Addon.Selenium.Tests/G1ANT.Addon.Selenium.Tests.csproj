@@ -69,6 +69,7 @@
     <Compile Include="Commands\SeleniumGetAttributeTests.cs" />
     <Compile Include="Commands\SeleniumOpenTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

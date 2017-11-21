@@ -36,6 +36,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [SetUp]
         public void SetUp()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
         }
         [Test]

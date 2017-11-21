@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 
 using G1ANT.Engine;
-using G1ANT.Interop;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
 using G1ANT.Language.Semantic;
-using GStruct = G1ANT.Language.Structures;
+using GStruct = G1ANT.Language;
 
 using NUnit.Framework;
 using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
 using System.Reflection;
+using G1ANT.Language;
 
-namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrAbbyyGetTextInParagraphs))]
     public class GetTextInParagraphsTests
     {
         string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document2), "jpg");
@@ -28,7 +24,11 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         {
             System.Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
+        }
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void GetParagraphsTest()
         {
@@ -39,8 +39,8 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
             Assert.IsNotNull(paragraphs);
             Assert.AreNotEqual(0, paragraphs.Count);
             Assert.AreEqual(8, paragraphs.Count);
-            Assert.IsTrue(((GStruct.String)paragraphs[0]).Value.StartsWith("In 1929 Gustav Tauschek obtained a patent on OCR in Germany, followed"));
-            Assert.IsTrue(((GStruct.String)paragraphs[5]).Value.StartsWith("In about 1965, Reader's Digest and RCA collaborated to build an OCR Document"));
+            Assert.IsTrue(((GStruct.TextStructure)paragraphs[0]).Value.StartsWith("In 1929 Gustav Tauschek obtained a patent on OCR in Germany, followed"));
+            Assert.IsTrue(((GStruct.TextStructure)paragraphs[5]).Value.StartsWith("In about 1965, Reader's Digest and RCA collaborated to build an OCR Document"));
         }
     }
 }

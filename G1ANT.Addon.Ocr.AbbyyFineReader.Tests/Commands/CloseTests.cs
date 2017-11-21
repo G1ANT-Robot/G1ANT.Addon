@@ -1,9 +1,5 @@
 ﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
-using G1ANT.Language.Semantic;
-using GStructures = G1ANT.Language.Structures;
+using GStructures = G1ANT.Language;
 
 using System.Diagnostics;
 using System.IO;
@@ -11,11 +7,11 @@ using System;
 using NUnit.Framework;
 using System.Reflection;
 using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
+using G1ANT.Language;
 
-namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrAbbyyClose))]
     public class CloseTests
     {
         private static string path;
@@ -30,13 +26,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         [SetUp]
         public void SetUp()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document1), "tif");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("file", new GStructures.String(path));
+            scripter.Variables.SetVariableValue("file", new GStructures.TextStructure(path));
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]
-        [TestsClass(typeof(OcrAbbyyProcessFile))]
         public void CloseTest()
         {
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file");
@@ -56,7 +52,6 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]
-        [TestsClass(typeof(OcrAbbyyProcessFile))]
         public void CloseDocumentTest()
         {
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file language English");
