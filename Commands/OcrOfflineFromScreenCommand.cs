@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using Tesseract;
 
-namespace G1ANT.Language.Ocr.Tesseract
+namespace G1ANT.Addon.Ocr.Tesseract
 {
     [Command(Name = "ocroffline.fromscreen", Tooltip = "This command allows to capture part of the screen and recognize text from it. \nThis command may often be less accurate than 'ocr' command. \nPlease be aware that command will unpack some necessary data to folder My Documents/G1ANT.Robot.", IsUnderConstruction = true)]
     public class OcrOfflineFromScreenCommand : Command

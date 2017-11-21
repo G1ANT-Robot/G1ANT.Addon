@@ -7,8 +7,8 @@
     <ProjectGuid>{700E09BD-F443-4181-A42A-E9D098F652AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Ocr.Tesseract</RootNamespace>
-    <AssemblyName>G1ANT.Language.Ocr.Tesseract</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Ocr.Tesseract</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Ocr.Tesseract</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>

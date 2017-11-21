@@ -7,7 +7,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Tesseract;
 
-namespace G1ANT.Language.Ocr.Tesseract
+namespace G1ANT.Addon.Ocr.Tesseract
 {
     [Command(Name = "ocroffline.find", Tooltip = "This command allows to find the text on the active screen and return it's position as a 'rectangle' format. If the text will not be found, the result will be Rectangle(-1,-1,-2,-2). Please be aware that using this command result in unpacking the necessary data to directory My Documents/G1ANT.Robot.", IsUnderConstruction = true)]
     public class OcrOfflineFindCommand : Command

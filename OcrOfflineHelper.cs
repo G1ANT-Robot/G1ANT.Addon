@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace G1ANT.Language.Ocr.Tesseract
+namespace G1ANT.Addon.Ocr.Tesseract
 {
     public class OcrOfflineHelper
     {
