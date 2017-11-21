@@ -7,8 +7,8 @@
     <ProjectGuid>{3B1DC446-00EF-4DC1-AD42-41D76C3DE2A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Ocr</RootNamespace>
-    <AssemblyName>G1ANT.Language.Ocr</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Ocr</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Ocr</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>
