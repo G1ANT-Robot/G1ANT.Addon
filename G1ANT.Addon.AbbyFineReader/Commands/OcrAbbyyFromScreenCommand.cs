@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
         {
             manager = AbbyyManager.Instance;
 
-            System.Drawing.Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : Helpers.ToAbsoluteCoordinates(arguments.Area.Value); //TODO CASE
+            System.Drawing.Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates; //TODO CASE
             System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
 
             IEngine engine = manager.Engine;

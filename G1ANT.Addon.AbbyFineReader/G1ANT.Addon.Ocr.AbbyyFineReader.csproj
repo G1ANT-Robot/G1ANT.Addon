@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbbyFineReaderAddon.cs" />
     <Compile Include="Commands\OcrAbbyyExportToXmlCommand.cs" />
     <Compile Include="Commands\OcrAbbyyCloseCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetCellInfoCommand.cs" />

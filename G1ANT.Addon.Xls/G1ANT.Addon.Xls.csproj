@@ -71,6 +71,7 @@
     <Compile Include="Commands\XlsSwitchCommand.cs" />
     <Compile Include="Commands\XlsCloseCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XlsAddon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

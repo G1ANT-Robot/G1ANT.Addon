@@ -82,6 +82,7 @@
     <Compile Include="Commands\OcrFromScreenCommand.cs" />
     <Compile Include="Commands\OcrFindCommand.cs" />
     <Compile Include="Commands\OcrFindPointCommand.cs" />
+    <Compile Include="OcrAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

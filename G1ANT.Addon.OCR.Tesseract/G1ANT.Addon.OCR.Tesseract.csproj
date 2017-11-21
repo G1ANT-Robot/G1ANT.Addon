@@ -57,6 +57,7 @@
     <Compile Include="Commands\OcrOflineFindCommand.cs" />
     <Compile Include="OcrOfflineHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TesseractAddon.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\x64dlls\liblept172.dll" />
