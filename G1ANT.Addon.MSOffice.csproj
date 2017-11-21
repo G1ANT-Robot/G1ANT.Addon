@@ -109,6 +109,7 @@
     <Compile Include="Commands\WordInsertTextCommand.cs" />
     <Compile Include="Commands\WordSaveCommand.cs" />
     <Compile Include="Commands\WordSwitchCommand.cs" />
+    <Compile Include="MSOfficeAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
