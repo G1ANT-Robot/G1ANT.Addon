@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using G1ANT.Language.Structures;
+using G1ANT.Language;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader
+namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     public static class ListConverter
     {
-        public static List<string> ExtractDictionary(List<Structure> value)
+        public static List<string> ExtractDictionary(List<Object> value)
         {
             List<string> list = null;
             if (value != null)
@@ -17,7 +17,7 @@ namespace G1ANT.Language.Ocr.AbbyyFineReader
                 list = new List<string>(value.Capacity);
                 foreach (Structure item in value)
                 {
-                    list.Add(((Language.Structures.String)item).Value);
+                    list.Add(((TextStructure)item).Value);
                 }
             }
             return list;

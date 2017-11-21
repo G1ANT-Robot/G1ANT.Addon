@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader
+namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     public class StreamNet2AbbyyAdapter : Stream, IDisposable, FREngine.IReadStream, FREngine.IWriteStream
     {

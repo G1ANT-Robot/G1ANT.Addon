@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FREngine;
-using G1ANT.Language.Ocr.AbbyyFineReader.Structures;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
-using G1ANT.Engine;
+using G1ANT.Language;
+using System.Diagnostics;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader
+namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     public class AbbyyManager : IDisposable
     {
@@ -283,7 +283,8 @@ namespace G1ANT.Language.Ocr.AbbyyFineReader
 
         private void setDictionary(string language, BaseLanguage baseLanguage, List<string> dictionary, int languageWeight, int dictionaryWeight)
         {
-            string path = Path.Combine(SettingsContainer.Instance.Directories[Infrastructure.Source.UserDocsDir].FullName, "CustomDictionary.amd");
+            Debug.Assert(false); //TODO CASE CREATED 5062
+            string path = Path.Combine(SettingsContainer.Instance.Directories[Infrastructure.Source.UserDocsDir].FullName, "CustomDictionary.amd"); //TODO CASE CREATED
             //create dictionary file
             makeDictionary(
                 path,

@@ -82,6 +82,7 @@
     <Compile Include="Commands\SeleniumSetUrlCommand.cs" />
     <Compile Include="Commands\SeleniumSwitchCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeleniumAddon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

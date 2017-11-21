@@ -79,9 +79,9 @@
     <Compile Include="Api\InvoiceReader\ImageReader.cs" />
     <Compile Include="Api\InvoiceReader\InvoiceManger.cs" />
     <Compile Include="Api\InvoiceReader\PDFReader.cs" />
-    <Compile Include="Commands\OcrFromScreen.cs" />
-    <Compile Include="Commands\OcrFind.cs" />
-    <Compile Include="Commands\OcrFindPoint.cs" />
+    <Compile Include="Commands\OcrFromScreenCommand.cs" />
+    <Compile Include="Commands\OcrFindCommand.cs" />
+    <Compile Include="Commands\OcrFindPointCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

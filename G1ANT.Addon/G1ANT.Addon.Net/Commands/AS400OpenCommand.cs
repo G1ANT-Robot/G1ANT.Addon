@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Net
         }
         public void Execute(Arguments arguments)
         {
-            string errorJump = arguments.ErrorJump != null && arguments.ErrorJump != null ? arguments.ErrorJump : string.Empty;
+            string errorJump = arguments.ErrorJump != null && arguments.ErrorJump != null ? arguments.ErrorJump.ToString() : string.Empty;
             string host = arguments.Host.Value;
             //telnet = System.Diagnostics.Process.Start(pathToTelnet, host);
             putty = System.Diagnostics.Process.Start(pathToPutty, "-load AS400");

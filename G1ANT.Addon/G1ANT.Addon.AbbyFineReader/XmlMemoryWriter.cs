@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader
+namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     public class XmlMemoryWriter : FREngine.IFileWriter
     {

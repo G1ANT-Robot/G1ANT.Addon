@@ -51,7 +51,7 @@ namespace G1ANT.Addon.Selenium
             }            
         }
 
-        private object[] GetParameters(List<Structure> arguments)
+        private object[] GetParameters(List<Object> arguments)
         {
             List<object> parameters = new List<object>();
             if (arguments != null && arguments.Any())
