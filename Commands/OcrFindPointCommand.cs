@@ -32,7 +32,7 @@ namespace G1ANT.Language.Ocr
         }
         public void Execute(Arguments arguments)
         {
-            System.Drawing.Rectangle rectangle = arguments.Relative.Value ? Helpers.ToAbsoluteCoordinates(arguments.Area.Value) : arguments.Area.Value;
+            System.Drawing.Rectangle rectangle = arguments.Relative.Value ? arguments.Area.Value.ToAbsoluteCoordinates() : arguments.Area.Value;
             System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             int timeout = arguments.Timeout;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
