@@ -1,7 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.open", Tooltip = "This command allows to open .xlsx files, and set the first sheet in the document as active.")]
     public class XlsOpenCommand : Command

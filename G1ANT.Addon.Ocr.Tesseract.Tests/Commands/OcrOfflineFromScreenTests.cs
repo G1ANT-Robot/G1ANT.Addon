@@ -1,7 +1,6 @@
-﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Ocr.Tesseract.Tests.Properties;
-using G1ANT.Language.Semantic;
+﻿using G1ANT.Addon.Ocr.Tesseract.Tests.Properties;
+using G1ANT.Engine;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -9,10 +8,9 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 
-namespace G1ANT.Language.Ocr.Tesseract.Tests.Commands
+namespace G1ANT.Addon.Ocr.Tesseract.Tests
 {
     [TestFixture]
-    [TestsClass(typeof(OcrOfflineFromScreenTests))]
     public class OcrOfflineFromScreenTests
     {
         private static Scripter scripter;

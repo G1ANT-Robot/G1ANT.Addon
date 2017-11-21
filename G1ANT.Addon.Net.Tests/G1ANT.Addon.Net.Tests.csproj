@@ -7,8 +7,8 @@
     <ProjectGuid>{0C40C844-5B27-4C04-917D-E6999C6D756B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Net.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.Net.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Net.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Net.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

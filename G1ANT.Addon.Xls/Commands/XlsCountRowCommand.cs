@@ -1,6 +1,6 @@
 ﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.countrows",Tooltip = "This command allows to count rows in open .xlsx file.")]
     public class XlsCountRowsCommand : Command

@@ -7,8 +7,8 @@
     <ProjectGuid>{C8DB051F-B029-4758-A9B8-209F1A45223D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Net</RootNamespace>
-    <AssemblyName>G1ANT.Language.Net</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Net</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Net</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>

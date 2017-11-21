@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     public static class UriFixer
     {

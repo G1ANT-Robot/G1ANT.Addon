@@ -7,8 +7,8 @@
     <ProjectGuid>{BAFB3E9D-4BDD-4D7D-9237-435F7F32882A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.MSOffice.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.MSOffice.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.MSOffice.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.MSOffice.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

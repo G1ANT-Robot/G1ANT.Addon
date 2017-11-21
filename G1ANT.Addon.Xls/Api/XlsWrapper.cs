@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     public class XlsWrapper
     {

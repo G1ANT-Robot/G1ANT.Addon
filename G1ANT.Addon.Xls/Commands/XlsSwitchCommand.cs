@@ -1,7 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.switch", Tooltip = "This command allows to switch between open .xlsx files.")]
     public class XlsSwitchCommand : Command

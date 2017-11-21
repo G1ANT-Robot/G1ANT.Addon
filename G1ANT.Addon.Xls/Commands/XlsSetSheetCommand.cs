@@ -1,7 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.setsheet", Tooltip = "This command allows to set active sheet to work with.")]
     public class XlsSetSheetCommand : Command

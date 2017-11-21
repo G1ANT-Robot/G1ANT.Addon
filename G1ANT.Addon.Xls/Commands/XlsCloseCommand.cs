@@ -1,6 +1,7 @@
-﻿using System;
+﻿using G1ANT.Language;
+using System;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.close",Tooltip = "This command allows to save changes and close .xlsx file.")]
     public class XlsCloseCommand :Command

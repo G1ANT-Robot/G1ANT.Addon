@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     public static class XlsManager
     {

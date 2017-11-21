@@ -6,8 +6,8 @@
     <ProjectGuid>{3318187F-3198-4D74-B39E-7D86FAF06D97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Ocr.Tesseract.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.Ocr.Tesseract.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Ocr.Tesseract.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Ocr.Tesseract.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -38,6 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="G1ANT.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -68,25 +76,9 @@
     <EmbeddedResource Include="Resources\testimageDance.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Engine\G1ANT.Engine.csproj">
-      <Project>{9B5F5109-36D1-4652-BBCB-96B89F6895C4}</Project>
-      <Name>G1ANT.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core.Tests\G1ANT.Language.Core.Tests.csproj">
-      <Project>{BD1786F1-6C40-426F-B8D3-D17AF4CEA554}</Project>
-      <Name>G1ANT.Language.Core.Tests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.OCR.Tesseract.csproj">
       <Project>{700e09bd-f443-4181-a42a-e9d098f652ad}</Project>
       <Name>G1ANT.Addon.OCR.Tesseract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Addon.Ocr.Tests\G1ANT.Addon.Ocr.Tests.csproj">
-      <Project>{DC8C80D5-3786-46C0-8D10-7E4997182C12}</Project>
-      <Name>G1ANT.Addon.Ocr.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language\G1ANT.Language.csproj">
-      <Project>{A64C3699-084E-4123-B9D4-1B6EBFD98CC6}</Project>
-      <Name>G1ANT.Language</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

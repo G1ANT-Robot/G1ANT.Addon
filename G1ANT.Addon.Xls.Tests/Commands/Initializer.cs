@@ -5,7 +5,7 @@ using G1ANT.Engine;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace G1ANT.Language.Xls.Tests
+namespace G1ANT.Addon.Xls.Tests
 {
     [TestClass]
     public class Initializer

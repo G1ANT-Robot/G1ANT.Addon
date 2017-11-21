@@ -7,8 +7,8 @@
     <ProjectGuid>{DC8C80D5-3786-46C0-8D10-7E4997182C12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Ocr.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.Ocr.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Ocr.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Ocr.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -8,9 +8,9 @@ using GStructures = G1ANT.Language.Structures;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Reflection;
-using G1ANT.Language.Ocr.AbbyyFineReader.Tests.Properties;
+using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
 {
     [TestFixture]
     [TestsClass(typeof(OcrAbbyyProcessFile))]

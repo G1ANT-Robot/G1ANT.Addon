@@ -7,8 +7,8 @@
     <ProjectGuid>{CEA69D5A-91C9-43D9-8928-F41D69E85BAF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.IE</RootNamespace>
-    <AssemblyName>G1ANT.Language.IE</AssemblyName>
+    <RootNamespace>G1ANT.Addon.IExplorer</RootNamespace>
+    <AssemblyName>G1ANT.Addon.IExplorer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>

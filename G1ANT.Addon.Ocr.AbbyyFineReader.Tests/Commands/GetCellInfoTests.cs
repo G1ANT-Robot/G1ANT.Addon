@@ -2,12 +2,12 @@
 using G1ANT.Engine;
 using G1ANT.Language.Core.Tests;
 using G1ANT.Language.Ocr.AbbyyFineReader.Commands;
-using G1ANT.Language.Ocr.AbbyyFineReader.Tests.Properties;
+using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
 using G1ANT.Language.Semantic;
 using NUnit.Framework;
 using System.Reflection;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
 {
     [TestFixture]
     [TestsClass(typeof(OcrAbbyyGetCellInfo))]

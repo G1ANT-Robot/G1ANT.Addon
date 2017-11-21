@@ -7,8 +7,8 @@
     <ProjectGuid>{067E5148-0829-44D5-92CE-8AAC1CEB7E45}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Selenium.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.Selenium.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Selenium.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Selenium.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

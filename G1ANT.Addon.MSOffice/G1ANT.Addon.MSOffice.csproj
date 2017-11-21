@@ -7,8 +7,8 @@
     <ProjectGuid>{E2E36395-6AE4-42EB-8FD7-9A7C9B7C37B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.MSOffice</RootNamespace>
-    <AssemblyName>G1ANT.Language.MSOffice</AssemblyName>
+    <RootNamespace>G1ANT.Addon.MSOffice</RootNamespace>
+    <AssemblyName>G1ANT.Addon.MSOffice</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>

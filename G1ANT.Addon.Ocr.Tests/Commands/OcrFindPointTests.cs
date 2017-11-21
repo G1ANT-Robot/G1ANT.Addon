@@ -1,5 +1,5 @@
-﻿using G1ANT.Engine;
-using G1ANT.Language.Ocr.Tests.Properties;
+﻿using G1ANT.Addon.Ocr.Tests.Properties;
+using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 
-namespace G1ANT.Language.Ocr.Tests.Commands
+namespace G1ANT.Addon.Ocr.Tests
 {
     [TestFixture]
     public class OcrFindPointTests

@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Drawing;
 using NUnit.Framework;
 using System.Reflection;
-using G1ANT.Language.Ocr.Tests.Properties;
 using System;
+using G1ANT.Addon.Ocr.Tests.Properties;
 
-namespace G1ANT.Language.Ocr.Tests.Commands
+namespace G1ANT.Addon.Ocr.Tests
 {
     [TestFixture]
     public class OcrFindTests

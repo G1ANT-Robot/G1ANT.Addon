@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace G1ANT.Language.Ocr.Tests
+namespace G1ANT.Addon.Ocr.Tests
 {
     public class GoogleOcrTests
     {

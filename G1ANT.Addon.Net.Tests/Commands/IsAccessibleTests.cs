@@ -5,7 +5,7 @@ using G1ANT.Language;
 using NUnit.Framework;
 using System.Threading;
 
-namespace G1ANT.Language.Net.Tests
+namespace G1ANT.Addon.Net.Tests
 {
     [TestFixture]
     public class IsAccessibleTests

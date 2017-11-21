@@ -4,7 +4,7 @@ using G1ANT.Engine;
 using NUnit.Framework;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Net.Tests
+namespace G1ANT.Addon.Net.Tests
 {
 
     [TestFixture]

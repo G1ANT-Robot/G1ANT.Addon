@@ -3,7 +3,7 @@ using G1ANT.Addon.Selenium;
 using System.Diagnostics;
 using System.Linq;
 
-namespace G1ANT.Language.Selenium.Tests
+namespace G1ANT.Addon.Selenium.Tests
 {
     public static class SeleniumTests
     {

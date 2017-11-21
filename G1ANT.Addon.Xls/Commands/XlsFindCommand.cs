@@ -1,7 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.find",Tooltip = "This command allows to find address of a cell where specified value is stored.")]
     public class XlsFindCommand : Command

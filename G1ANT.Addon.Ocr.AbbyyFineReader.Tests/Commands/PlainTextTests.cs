@@ -11,10 +11,10 @@ using G1ANT.Language.Semantic;
 using GStruct = G1ANT.Language.Structures;
 
 using NUnit.Framework;
-using G1ANT.Language.Ocr.AbbyyFineReader.Tests.Properties;
+using G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Properties;
 using System.Reflection;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
 {
     [TestFixture]
     [TestsClass(typeof(OcrAbbyyPlainText))]

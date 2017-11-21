@@ -2,11 +2,11 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("G1ANT.Language.Selenium.Tests")]
+[assembly: AssemblyTitle("G1ANT.Addon.Selenium.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("G1ANT.Language.Selenium.Tests")]
+[assembly: AssemblyProduct("G1ANT.Addon.Selenium.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

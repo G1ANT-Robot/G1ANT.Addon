@@ -1,5 +1,4 @@
-﻿using G1ANT.Interop;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader.Tests
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 {
     public class AbbyTests
     {
@@ -30,7 +29,7 @@ namespace G1ANT.Language.Ocr.AbbyyFineReader.Tests
             Thread.Sleep(5000);
             while (IsIconic(process.MainWindowHandle))
             {
-                RobotWin32.ShowWindow(process.MainWindowHandle, RobotWin32.ShowWindowEnum.Show);
+                Language.RobotWin32.ShowWindow(process.MainWindowHandle, RobotWin32.ShowWindowEnum.Show);
             }
             process.WaitForInputIdle();
             return process;

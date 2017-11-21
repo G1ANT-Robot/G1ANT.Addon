@@ -1,7 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.setvalue",Tooltip = "This command allows to set value in specified cell in .xlsx file")]
     public class XlsSetValueCommand : Command

@@ -1,13 +1,14 @@
-﻿using G1ANT.Engine;
-using G1ANT.Language.Ocr.Tests.Properties;
+﻿using G1ANT.Addon.Ocr.Tests.Properties;
+using G1ANT.Engine;
 using G1ANT.Language;
+using G1ANT.Language.Ocr;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 
-namespace G1ANT.Language.Ocr.Tests.Commands
+namespace G1ANT.Addon.Ocr.Tests
 {
     [TestFixture]
     public class OcrFromScreenTests
@@ -46,7 +47,7 @@ namespace G1ANT.Language.Ocr.Tests.Commands
         [Test, Timeout(GoogleOcrTests.TestTimeout)]
         public void OcrTestGoogleApiTest()
         {
-            var bitmapWithTestText = Language.Ocr.Tests.Properties.Resources.testimage;
+            var bitmapWithTestText = Addon.Ocr.Tests.Properties.Resources.testimage;
             var expectedRectangle = new Rectangle(167, 142, 191, 51);
             var languages = new List<string>() { "en" };
             var timeout = 10000;

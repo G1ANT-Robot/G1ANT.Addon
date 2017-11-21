@@ -10,7 +10,7 @@ using G1ANT.Language.Semantic;
 using NUnit.Framework;
 using System.Threading;
 
-namespace G1ANT.Language.Ocr.AbbyyFineReader.Tests.Commands
+namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests.Commands
 {
     [TestFixture]
     [TestsClass(typeof(OcrAbbyyProcessScreen))]

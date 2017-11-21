@@ -1,10 +1,11 @@
 ﻿using G1ANT.Engine;
+using G1ANT.Language;
 using G1ANT.Language.Semantic;
 using NUnit.Framework;
 using System;
 using System.IO;
 
-namespace G1ANT.Language.Selenium.Tests
+namespace G1ANT.Addon.Selenium.Tests
 {
     [TestFixture]
 

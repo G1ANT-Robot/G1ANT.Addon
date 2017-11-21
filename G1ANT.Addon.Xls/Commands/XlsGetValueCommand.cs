@@ -1,7 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Xls
+namespace G1ANT.Addon.Xls
 {
     [Command(Name = "xls.getvalue",Tooltip = "This command allows to get value of specified cell in .xlsx file")]
     public class GetCellValueCommand : Command

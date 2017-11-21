@@ -70,7 +70,7 @@ namespace G1ANT.Addon.IExplorer
         {
             get
             {
-                return global::G1ANT.Language.IE.Properties.Resources.FindViaDocumentQuerySelector;
+                return global::G1ANT.Addon.IExplorer.Properties.Resources.FindViaDocumentQuerySelector;
             }
         }
 

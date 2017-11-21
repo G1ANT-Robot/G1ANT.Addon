@@ -7,8 +7,8 @@
     <ProjectGuid>{FF7591D8-EAE0-4F74-90B0-ECBBD972CB41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.IE.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.IE.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.IExplorer.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.IExplorer.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -75,6 +75,7 @@
     <Compile Include="Commands\IECloseTests.cs" />
     <Compile Include="Commands\IEClickTests.cs" />
     <Compile Include="Commands\IEWaitForValueTests.cs" />
+    <Compile Include="Commands\LoadTest.cs" />
     <Compile Include="IETests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

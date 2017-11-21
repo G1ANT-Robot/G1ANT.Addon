@@ -1,10 +1,11 @@
-﻿using G1ANT.Engine;
+﻿using G1ANT.Addon.Xls.Tests.Properties;
+using G1ANT.Engine;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
-using G1ANT.Language.Xls.Tests.Properties;
 using System.Reflection;
 
-namespace G1ANT.Language.Xls.Tests
+namespace G1ANT.Addon.Xls.Tests
 {
     [TestFixture]
     public class XlsGetValueTests

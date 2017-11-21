@@ -3,10 +3,11 @@ using System.IO;
 
 using G1ANT.Engine;
 using NUnit.Framework;
-using G1ANT.Language.Xls.Tests.Properties;
 using System.Reflection;
+using G1ANT.Language;
+using G1ANT.Addon.Xls.Tests.Properties;
 
-namespace G1ANT.Language.Xls.Tests
+namespace G1ANT.Addon.Xls.Tests
 {
     [TestFixture]
     public class XlsCloseTests
