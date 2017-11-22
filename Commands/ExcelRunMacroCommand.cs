@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice
             public ListStructure Args { get; set; }
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
         public ExcelRunMacroCommand(AbstractScripter scripter) : base(scripter)

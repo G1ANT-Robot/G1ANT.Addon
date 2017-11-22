@@ -16,7 +16,7 @@ namespace G1ANT.Addon.MSOffice
             public IntegerStructure Row { get; set; }
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public ExcelGetRowCommand(AbstractScripter scripter) : base(scripter)
         {

@@ -17,7 +17,7 @@ namespace G1ANT.Addon.MSOffice
             public BooleanStructure ShowMail { get; set; } = new BooleanStructure(false);
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument]
             public BooleanStructure If { get; set; } = new BooleanStructure(true);
