@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Net
             public TextStructure Ip { get; set; } = new TextStructure("8.8.8.8");
 
             [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Defines timeout for connecting")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument]
             public TextStructure Result { get; set; } = new TextStructure("result");
@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Net
         public void Execute(Arguments arguments)
         {
             System.Net.NetworkInformation.Ping pingSender = new System.Net.NetworkInformation.Ping();
-            PingReply reply = pingSender.Send(arguments.Ip.Value, arguments.Timeout);
+            PingReply reply = pingSender.Send(arguments.Ip.Value, arguments.Timeout.Value.Milliseconds);
 
             if (reply.Status == IPStatus.Success)
             {

@@ -20,7 +20,7 @@ namespace G1ANT.Language.Ocr
             public TextStructure Result { get; set; } = new TextStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "Comma separated language hints for better text recognition")]
             public TextStructure Languages { get; set; } = new TextStructure("en");
@@ -34,7 +34,7 @@ namespace G1ANT.Language.Ocr
             System.Drawing.Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
 
             System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            int timeout = arguments.Timeout;
+            int timeout = arguments.Timeout.Value.Milliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             GoogleCloudApi googleApi = new GoogleCloudApi();
             string output = googleApi.RecognizeText(partOfScreen, languages, timeout);

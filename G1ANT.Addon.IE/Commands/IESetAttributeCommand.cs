@@ -39,7 +39,7 @@ namespace G1ANT.Addon.IExplorer
                              arguments.Value?.Value,
                              arguments.Search.Value,
                              arguments.By.Value,
-                             arguments.Timeout,
+                             arguments.Timeout.Value.Milliseconds,
                              arguments.NoWait.Value);
             }
             catch (Exception ex)

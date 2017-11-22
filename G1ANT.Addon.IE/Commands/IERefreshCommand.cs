@@ -12,7 +12,7 @@ namespace G1ANT.Addon.IExplorer
             public BooleanStructure If { get; set; } = new BooleanStructure(true);
 
             [Argument(DefaultVariable = "timeoutie")]
-            public override int Timeout { get; set; } = IeSettings.IeTimeout;
+            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
         }
         public IERefreshCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -22,7 +22,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 IEWrapper ieWrapper = IEManager.CurrentIE;
-                ieWrapper.Refresh(arguments.Timeout);
+                ieWrapper.Refresh(arguments.Timeout.Value.Milliseconds);
             }
             catch (Exception ex)
             {

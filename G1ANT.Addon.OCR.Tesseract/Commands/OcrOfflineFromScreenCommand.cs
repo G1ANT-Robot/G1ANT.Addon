@@ -21,7 +21,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             public TextStructure Result { get; set; } = new TextStructure("result");
 
             [Argument(DefaultVariable = "timeoutocr")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
@@ -35,7 +35,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
             Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, 4.0);
-            int timeout = arguments.Timeout;
+            int timeout = arguments.Timeout.Value.Milliseconds;
             string language = arguments.Language.Value;
             var imagePath = OcrOfflineHelper.SaveImageToTemporaryFolder(imgToParse);
             OcrOfflineHelper.UnpackNeededAssemblies();

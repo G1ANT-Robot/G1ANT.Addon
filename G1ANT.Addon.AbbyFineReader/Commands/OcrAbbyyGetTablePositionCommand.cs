@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public TextStructure Result { get; set; } = new TextStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
         }
         public OcrAbbyyGetTablePositionCommand(AbstractScripter scripter) : base(scripter)
         {

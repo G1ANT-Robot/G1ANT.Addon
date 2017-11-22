@@ -12,7 +12,7 @@ namespace G1ANT.Addon.IExplorer
             public TextStructure Url { get; set; } = new TextStructure(string.Empty);
 
             [Argument(DefaultVariable = "timeoutie")]
-            public override int Timeout { get; set; } = IeSettings.IeTimeout;
+            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument(Tooltip = "If set to 'true', command will not wait until document reache completed state")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
@@ -69,7 +69,7 @@ namespace G1ANT.Addon.IExplorer
             {
                 if (!string.IsNullOrEmpty(arguments.Url?.Value))
                 {
-                    wrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, arguments?.Timeout ?? 0);
+                    wrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, arguments?.Timeout?.Value.Milliseconds ?? 0);
                 }
             }
             catch (Exception ex)
