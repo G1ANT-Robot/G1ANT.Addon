@@ -10,7 +10,7 @@ namespace G1ANT.Addon.IExplorer
         public class Arguments : CommandArguments
         {
             [Argument(Tooltip = "Specifies maximum number of milliseconds to wait for window to get loaded", DefaultVariable = "timeoutie")]
-            public override int Timeout { get; set; } = IeSettings.IeTimeout;
+            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
         }
         public IEWaitForCompleteCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 IEWrapper ieWrapper = IEManager.CurrentIE;
-                ieWrapper.WaitForLoad(arguments.Timeout / 1000);
+                ieWrapper.WaitForLoad(arguments.Timeout.Value.Milliseconds / 1000);
             }
             catch (Exception ex)
             {

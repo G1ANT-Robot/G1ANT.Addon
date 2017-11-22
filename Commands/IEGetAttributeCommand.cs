@@ -21,7 +21,7 @@ namespace G1ANT.Addon.IExplorer
             public TextStructure By { get; set; } = new TextStructure(ElementSearchBy.Id.ToString().ToLower());
 
             [Argument(DefaultVariable = "timeoutie")]
-            public override int Timeout { get; set; } = IeSettings.IeTimeout;
+            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument(Tooltip = "Name of variable where title of Internet Explorer tab will be stored")]
             public TextStructure Result { get; set; } = new TextStructure("result");
@@ -40,7 +40,7 @@ namespace G1ANT.Addon.IExplorer
                 string value = ie.GetAttribute(arguments.Name.Value,
                                                arguments.Search.Value,
                                                arguments.By.Value,
-                                               arguments.Timeout,
+                                               arguments.Timeout.Value.Milliseconds,
                                                arguments.NoWait.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(value));
             }

@@ -27,7 +27,7 @@ namespace G1ANT.Addon.IExplorer
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
             [Argument(DefaultVariable = "timeoutie")]
-            public override int Timeout { get; set; } = IeSettings.IeTimeout;
+            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument]
             public BooleanStructure If { get; set; } = new BooleanStructure(true);
@@ -55,7 +55,7 @@ namespace G1ANT.Addon.IExplorer
                              argumentsList,
                              arguments.Search.Value,
                              arguments.By.Value,
-                             arguments.Timeout,
+                             arguments.Timeout.Value.Milliseconds,
                              arguments.NoWait.Value);
             }
             catch (Exception ex)

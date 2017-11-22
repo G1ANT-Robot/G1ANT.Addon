@@ -15,7 +15,7 @@ namespace G1ANT.Addon.IExplorer
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
             [Argument(DefaultVariable = "timeoutie")]
-            public override int Timeout { get; set; } = IeSettings.IeTimeout;
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
         }
         public IESetUrlCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -25,7 +25,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 var ieWrapper = IEManager.CurrentIE;
-                ieWrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, arguments.Timeout);
+                ieWrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, arguments.Timeout.Value.Milliseconds);
             }
             catch (Exception ex)
             {
