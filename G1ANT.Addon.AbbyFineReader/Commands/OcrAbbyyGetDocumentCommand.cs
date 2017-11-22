@@ -16,7 +16,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  
         }

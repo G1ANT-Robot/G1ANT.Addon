@@ -283,30 +283,31 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
 
         private void setDictionary(string language, BaseLanguage baseLanguage, List<string> dictionary, int languageWeight, int dictionaryWeight)
         {
+            throw new NotImplementedException();
             Debug.Assert(false); //TODO CASE CREATED 5062
-            string path = Path.Combine(SettingsContainer.Instance.Directories[Infrastructure.Source.UserDocsDir].FullName, "CustomDictionary.amd"); //TODO CASE CREATED
+           // string path = Path.Combine(SettingsContainer.Instance.Directories[Infrastructure.Source.UserDocsDir].FullName, "CustomDictionary.amd"); //TODO CASE CREATED
             //create dictionary file
-            makeDictionary(
-                path,
-                baseLanguage,
-                dictionary);
+            //makeDictionary(
+            //    path,
+            //    baseLanguage,
+            //    dictionary);
             // Get collection of dictionary descriptions and remove all items
-            DictionaryDescriptions dictionaryDescriptions = baseLanguage.DictionaryDescriptions;
-            if (language == null)
-            {
-                dictionaryDescriptions.DeleteAll();
-            }
-            // lower weight of defoult dictionary (defoult weight = 100)
-            foreach (DictionaryDescription d in dictionaryDescriptions)
-            {
-                d.Weight = languageWeight;
-            }
+            //DictionaryDescriptions dictionaryDescriptions = baseLanguage.DictionaryDescriptions;
+            //if (language == null)
+            //{
+            //    dictionaryDescriptions.DeleteAll();
+            //}
+            //// lower weight of defoult dictionary (defoult weight = 100)
+            //foreach (DictionaryDescription d in dictionaryDescriptions)
+            //{
+            //    d.Weight = languageWeight;
+            //}
 
-            // Create user dictionary description and add it to the collection
-            IDictionaryDescription dictionaryDescription = dictionaryDescriptions.AddNew(DictionaryTypeEnum.DT_UserDictionary);
-            UserDictionaryDescription userDictionaryDescription = dictionaryDescription.GetAsUserDictionaryDescription();
-            userDictionaryDescription.Weight = dictionaryWeight;
-            userDictionaryDescription.FileName = path;
+            //// Create user dictionary description and add it to the collection
+            //IDictionaryDescription dictionaryDescription = dictionaryDescriptions.AddNew(DictionaryTypeEnum.DT_UserDictionary);
+            //UserDictionaryDescription userDictionaryDescription = dictionaryDescription.GetAsUserDictionaryDescription();
+            //userDictionaryDescription.Weight = dictionaryWeight;
+            //userDictionaryDescription.FileName = path;
         }
 
         private void makeDictionary(string path, BaseLanguage baseLanguage, List<string> words)

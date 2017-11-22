@@ -14,7 +14,7 @@ namespace G1ANT.Addon.Xls
             [Argument(Required = false)]
             public TextStructure AccessMode { get; set; } = new TextStructure(string.Empty);
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public XlsOpenCommand(AbstractScripter scripter) : base(scripter)
         {

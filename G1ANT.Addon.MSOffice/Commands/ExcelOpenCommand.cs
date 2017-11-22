@@ -22,7 +22,7 @@ namespace G1ANT.Addon.MSOffice
             public TextStructure Sheet { get; set; }
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public ExcelOpenCommand(AbstractScripter scripter) : base(scripter)
         {

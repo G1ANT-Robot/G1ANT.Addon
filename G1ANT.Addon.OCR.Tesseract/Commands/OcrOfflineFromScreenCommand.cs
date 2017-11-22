@@ -18,7 +18,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(DefaultVariable = "timeoutocr")]
             public  override TimeSpanStructure Timeout { get; set; }

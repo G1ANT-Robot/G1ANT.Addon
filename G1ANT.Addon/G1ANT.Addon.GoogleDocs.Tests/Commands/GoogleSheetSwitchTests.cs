@@ -1,0 +1,58 @@
+﻿using G1ANT.Engine;
+using G1ANT.Language.Core.Tests;
+using G1ANT.Language.Semantic;
+using NUnit.Framework;
+using System;
+using System.Threading;
+
+
+namespace G1ANT.Language.GoogleDocs.Tests
+{
+    [TestFixture]
+    [Apartment(ApartmentState.STA)]
+    public class GoogleSheetSwitchTests
+    {
+        static Scripter scripter;
+        static string FileID1 = "147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc"; //google sheets example file
+        static string FileID2 = "1d4InQksHBQyAqmogBc2xsP2eU7uBGD3iBtcmng3--Hk"; //google sheets example file
+
+        [OneTimeSetUp]
+        public static void ClassInit()
+        {
+            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+        }
+
+        [SetUp]
+        [Timeout(50000)]
+        public void Init()
+        {
+            scripter = new Scripter();
+            scripter.Variables.SetVariableValue("fileId1", new Language.Structures.String(FileID1));
+            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid1 result excelID1");
+            scripter.Variables.SetVariableValue("fileId2", new Language.Structures.String(FileID2));
+            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid2 result excelID2");
+            var result = scripter.Variables.GetVariable("result");
+        }
+
+        [Test]
+        [Timeout(50000)]
+        public void GoogleSheetSwitchSpreadsheets()
+        {
+            scripter.RunLine($"googlesheet.switch {SpecialChars.Variable}excelID1");
+            scripter.RunLine("googlesheet.gettitle result excelTitle1");
+            var result1 = scripter.Variables.GetVariable("excelTitle1");
+            scripter.RunLine($"googlesheet.switch {SpecialChars.Variable}excelID2");
+            scripter.RunLine("googlesheet.gettitle result excelTitle2");
+            var result2 = scripter.Variables.GetVariable("excelTitle2");
+            Assert.AreEqual("Example Spreadsheet", result1.Value.GetValue().ToString());
+            Assert.AreEqual("Example Spreadsheet Edited", result2.Value.GetValue().ToString());
+        }
+
+        [TearDown]
+        public void TestCleanUp()
+        {
+            scripter.RunLine($"googlesheet.close {SpecialChars.Variable}excelID1");
+            scripter.RunLine($"googlesheet.close {SpecialChars.Variable}excelID2");
+        }
+    }
+}

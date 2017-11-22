@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public TextStructure Language { get; set; } = new TextStructure("English");
 
             [Argument(DefaultVariable = "result", Tooltip = "name of variable where recognized text will be stored")]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  
         }

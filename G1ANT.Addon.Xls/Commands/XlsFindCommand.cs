@@ -12,7 +12,7 @@ namespace G1ANT.Addon.Xls
             public TextStructure Value { get; set; } = new TextStructure("value");
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public XlsFindCommand(AbstractScripter scripter) : base(scripter)
         {

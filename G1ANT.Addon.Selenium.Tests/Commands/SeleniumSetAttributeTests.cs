@@ -15,6 +15,7 @@ namespace G1ANT.Addon.Selenium.Tests
         [SetUp]
         public void TestInitialize()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Selenium.dll");
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
 

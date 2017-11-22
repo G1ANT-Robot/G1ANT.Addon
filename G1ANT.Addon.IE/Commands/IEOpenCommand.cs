@@ -18,7 +18,7 @@ namespace G1ANT.Addon.IExplorer
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
             [Argument(Tooltip = "Name of variable where opened Internet Explorer instance's id is going to be placed")]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "If 'true', opened Internet Explorer instance will detach automatically after script ends")]
             public BooleanStructure AutoDetachOnClose { get; set; } = new BooleanStructure(true);

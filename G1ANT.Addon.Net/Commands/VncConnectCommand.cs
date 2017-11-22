@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Net
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10);
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
         }
         public VncConnectCommand(AbstractScripter scripter) : base(scripter)

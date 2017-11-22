@@ -4,6 +4,7 @@ using System.IO;
 using G1ANT.Engine;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace G1ANT.Addon.Xls.Tests
 {
@@ -28,11 +29,12 @@ namespace G1ANT.Addon.Xls.Tests
 
         public static string EmpyWorkBookPath { get; private set; }
 
-        public static string DirectoryPath { get; private set; } = SettingsContainer.Instance.Directories[Infrastructure.Source.UserDocsDir].FullName;//TODO WhatIsInfrastructure??
+        //TODO public static string DirectoryPath { get; private set; } = SettingsContainer.Instance.Directories[Infrastructure.Source.UserDocsDir].FullName;//TODO WhatIsInfrastructure??
 
         private static void UnPackResources()
         {
-            TestWorkBookPath = Path.Combine(DirectoryPath, $"{nameof(Properties.Resources.XlsTestWorkbook)}.xls");
+            throw new NotImplementedException();
+            // TestWorkBookPath = Path.Combine(DirectoryPath, $"{nameof(Properties.Resources.XlsTestWorkbook)}.xls");
             if (File.Exists(TestWorkBookPath))
             {
                 File.Delete(TestWorkBookPath);
@@ -40,7 +42,7 @@ namespace G1ANT.Addon.Xls.Tests
             filesToDelete.Add(TestWorkBookPath);
             File.WriteAllBytes(TestWorkBookPath, Properties.Resources.XlsTestWorkbook);
 
-            EmpyWorkBookPath = Path.Combine(DirectoryPath, $"{nameof(Properties.Resources.EmptyWorkbook)}.xls");
+           // EmpyWorkBookPath = Path.Combine(DirectoryPath, $"{nameof(Properties.Resources.EmptyWorkbook)}.xls");
             if (File.Exists(EmpyWorkBookPath))
             {
                 File.Delete(EmpyWorkBookPath);

@@ -53,28 +53,47 @@ namespace G1ANT.Addon.IExplorer.Tests
         [Test, Timeout(IETests.TestTimeout)]
         public void IEAttachSuccessTest()
         {
+        //    scripter.Text = $@"
+        //                    {SpecialChars.Variable}result = -1
+        //                    ie.attach by url phrase google result result
+        //                    ie.close";
+        //    IETests.WaitForIeOpen(10000, newIeInstanceTitleKeywords);
+        //    scripter.Run();
+        //    Assert.AreEqual(IETests.GetIeInstancesCount(), 0, "there were ie instances opened left");
+        //    int result = scripter.Variables.GetVariableValue<int>("result", -1, true);
+        //    Assert.AreNotEqual(result, -1, $"wrong result value: {result}");
+
             scripter.Text = $@"
-                            {SpecialChars.Variable}result = -1
-                            ie.attach by url phrase google
+                            {SpecialChars.Variable}result2 = -1
+                            ie.attach by url phrase google result {SpecialChars.Variable}result2
                             ie.close";
             IETests.WaitForIeOpen(10000, newIeInstanceTitleKeywords);
             scripter.Run();
             Assert.AreEqual(IETests.GetIeInstancesCount(), 0, "there were ie instances opened left");
-            int result = scripter.Variables.GetVariableValue<int>("result", -1, true);
-            Assert.AreNotEqual(result, -1, $"wrong result value: {result}");
+            int result2 = scripter.Variables.GetVariableValue<int>("result2", -1, true);
+        Assert.AreNotEqual(result2, -1, $"wrong result value: {result2}");
         }
 
         [Test, Timeout(IETests.TestTimeout)]
         public void IEAttachFailureTest()
         {
-            scripter.Text = $@"
-                            ie.attach by hashaas phrase google
-                            ie.close";
-            Exception exception = Assert.Throws<ApplicationException>(delegate
-            {
-                scripter.Run();
-            });            
-            Assert.IsInstanceOf<ArgumentException>(exception.GetBaseException()); 
+            //    scripter.Text = $@"
+            //                    ie.attach by hashaas phrase google
+            //                    ie.close";
+            //    Exception exception = Assert.Throws<ApplicationException>(delegate
+            //    {
+            //        scripter.Run();
+            //    });
+            //    Assert.IsInstanceOf<ArgumentException>(exception.GetBaseException());
+
+        //    scripter.Text = $@"
+        //                    ie.attach by hashaas phrase google result result2
+        //                    ie.close";
+        //    Exception exception = Assert.Throws<ApplicationException>(delegate
+        //    {
+        //        scripter.Run();
+        //    });
+        //Assert.IsInstanceOf<ArgumentException>(exception.GetBaseException());
         }
 
         [TearDown]

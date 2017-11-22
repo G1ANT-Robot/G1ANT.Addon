@@ -19,7 +19,7 @@ namespace G1ANT.Language.Ocr
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr")]
             public  override TimeSpanStructure Timeout { get; set; }

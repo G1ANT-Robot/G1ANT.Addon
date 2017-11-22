@@ -41,7 +41,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public TextStructure Offset { get; set; } = null;
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OcrAbbyyReadCellCommand(AbstractScripter scripter) : base(scripter)
         {

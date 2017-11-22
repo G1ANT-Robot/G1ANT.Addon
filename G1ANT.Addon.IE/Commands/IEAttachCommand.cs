@@ -15,7 +15,7 @@ namespace G1ANT.Addon.IExplorer
             public TextStructure By { get; set; } = new TextStructure("title");
 
             [Argument(Tooltip = "Name of variable where attached Internet Explorer instance's id is going to be placed")]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
         public IEAttachCommand(AbstractScripter scripter) : base(scripter)

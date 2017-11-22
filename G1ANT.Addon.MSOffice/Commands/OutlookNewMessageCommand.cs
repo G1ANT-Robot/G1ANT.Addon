@@ -24,7 +24,7 @@ namespace G1ANT.Addon.MSOffice
             public ListStructure Attachments { get; set; } = new ListStructure(new List<Structure>() { null });
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
         public OutlookNewMessageCommand(AbstractScripter scripter) : base(scripter)

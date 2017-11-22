@@ -24,7 +24,7 @@ namespace G1ANT.Addon.IExplorer
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument(Tooltip = "Name of variable where title of Internet Explorer tab will be stored")]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "If true, robot will not wait until set attribute action is complete")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);

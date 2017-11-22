@@ -12,7 +12,7 @@ namespace G1ANT.Addon.Xls
             public IntegerStructure Id { get; set; } = new IntegerStructure(0);
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public XlsSwitchCommand(AbstractScripter scripter) : base(scripter)
         {

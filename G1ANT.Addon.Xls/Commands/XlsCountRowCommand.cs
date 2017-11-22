@@ -8,7 +8,7 @@ namespace G1ANT.Addon.Xls
         public class Arguments : CommandArguments
         {
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public XlsCountRowsCommand(AbstractScripter scripter) : base(scripter)
         {

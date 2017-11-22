@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = null;

@@ -25,7 +25,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public IntegerStructure TableIndex { get; set; } = null;
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr")]
             public  override TimeSpanStructure Timeout { get; set; }

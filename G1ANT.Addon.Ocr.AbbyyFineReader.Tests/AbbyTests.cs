@@ -19,20 +19,21 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 
         public static Process StartFormTester(string arguments)
         {
-            string location = typeof(Robot.FormTester.G1ANTRobotFormTester).Assembly.Location;
-            var process = Process.Start(location, arguments);
-            while (process.MainWindowHandle == IntPtr.Zero)
-            {
-                System.Threading.Thread.Sleep(20);
-            }
-            process.WaitForInputIdle();
-            Thread.Sleep(5000);
-            while (IsIconic(process.MainWindowHandle))
-            {
-                Language.RobotWin32.ShowWindow(process.MainWindowHandle, RobotWin32.ShowWindowEnum.Show);
-            }
-            process.WaitForInputIdle();
-            return process;
+            throw new NotImplementedException();
+            // string location = typeof(Robot.FormTester.G1ANTRobotFormTester).Assembly.Location;
+            //   var process = Process.Start(location, arguments);
+            //while (process.MainWindowHandle == IntPtr.Zero)
+            //{
+            //    System.Threading.Thread.Sleep(20);
+            //}
+            //process.WaitForInputIdle();
+            //Thread.Sleep(5000);
+            //while (IsIconic(process.MainWindowHandle))
+            //{
+            // //   Language.RobotWin32.ShowWindow(process.MainWindowHandle, RobotWin32.ShowWindowEnum.Show);
+            //}
+            //process.WaitForInputIdle();
+            //return process;
         }
     }
 }
