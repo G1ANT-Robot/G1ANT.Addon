@@ -12,7 +12,7 @@ namespace G1ANT.Addon.IExplorer
             public TextStructure Script { get; set; }
 
             [Argument(Tooltip = "Name of variable where result of javascript execution will be stored")]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument]
             public BooleanStructure If { get; set; } = new BooleanStructure(true);

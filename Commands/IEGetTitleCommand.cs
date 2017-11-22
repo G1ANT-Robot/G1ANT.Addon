@@ -9,7 +9,7 @@ namespace G1ANT.Addon.IExplorer
         public class Arguments : CommandArguments
         {
             [Argument(Tooltip = "Name of variable where title of Internet Explorer tab will be stored")]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument]
             public BooleanStructure If { get; set; } = new BooleanStructure(true);
