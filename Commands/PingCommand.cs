@@ -16,7 +16,7 @@ namespace G1ANT.Addon.Net
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public PingCommand(AbstractScripter scripter) : base(scripter)
         {

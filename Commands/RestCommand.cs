@@ -26,7 +26,7 @@ namespace G1ANT.Addon.Net
             public ListStructure Parameters { get; set; }
 
             [Argument]
-            public TextStructure Result { get; set; } = new TextStructure("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "Name of variable which will return http status responsed by the API")]
             public TextStructure Status { get; set; } = new TextStructure("status");
