@@ -22,7 +22,7 @@ namespace G1ANT.Language.Ocr
             public TextStructure Result { get; set; } = new TextStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "Comma separated list of languages from which you want to recognize text on the screen")]
             public TextStructure Languages { get; set; } = new TextStructure("en");
@@ -34,7 +34,7 @@ namespace G1ANT.Language.Ocr
         {
             System.Drawing.Rectangle rectangle = arguments.Relative.Value ? arguments.Area.Value.ToAbsoluteCoordinates() : arguments.Area.Value;
             System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            int timeout = arguments.Timeout;
+            int timeout = arguments.Timeout.Value.Milliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             string search = arguments.Search.Value;
             GoogleCloudApi googleApi = new GoogleCloudApi();
