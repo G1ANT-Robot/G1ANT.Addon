@@ -1,12 +1,11 @@
-﻿using G1ANT.Interop;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 
-namespace G1ANT.Language.Images.Api
+namespace G1ANT.Language.Images
 {
     class Imaging
     {

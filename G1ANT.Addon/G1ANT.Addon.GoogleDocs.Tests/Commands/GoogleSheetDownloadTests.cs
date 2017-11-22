@@ -1,6 +1,6 @@
-﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Commands;
-using G1ANT.Language.Semantic;
+﻿
+using G1ANT.Engine;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
 using System.Threading;
@@ -25,7 +25,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new Language.Structures.String(FileID));
+            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid isshared false");
         }
 
@@ -37,7 +37,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
             scripter.RunLine($"googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}xls{SpecialChars.Text} ");
             scripter.RunLine("delay 3");
             var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual("Download complete.", result.Value.GetValue().ToString());
+            Assert.AreEqual("Download complete.", result.GetValue().ToString());
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
             scripter.RunLine($"googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}pdf{SpecialChars.Text}");
             scripter.RunLine("delay 3");
             var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual("Download complete.", result.Value.GetValue().ToString());
+            Assert.AreEqual("Download complete.", result.GetValue().ToString());
         }
 
         [TearDown]

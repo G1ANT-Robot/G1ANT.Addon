@@ -1,5 +1,4 @@
-﻿using G1ANT.Interop;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,7 +20,7 @@ namespace G1ANT.Language.Images.Tests
 
         public static Process StartFormTester(string arguments)
         {
-            string location = typeof(Robot.FormTester.G1ANTRobotFormTester).Assembly.Location;
+            string location = null;//TODO typeof(Robot.FormTester.G1ANTRobotFormTester).Assembly.Location;
             var process = Process.Start(location, arguments);
             while (process.MainWindowHandle == IntPtr.Zero)
             {

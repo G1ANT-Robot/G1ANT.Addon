@@ -1,8 +1,8 @@
-﻿using G1ANT.Language.Core.Commands;
+﻿using G1ANT.Language;
 using NUnit.Framework;
 using System.Threading;
 
-namespace G1ANT.Language.GoogleDocs.Tests.Commands
+namespace G1ANT.Language.GoogleDocs.Tests
 {
     [TestFixture]
     [Apartment(ApartmentState.STA)]

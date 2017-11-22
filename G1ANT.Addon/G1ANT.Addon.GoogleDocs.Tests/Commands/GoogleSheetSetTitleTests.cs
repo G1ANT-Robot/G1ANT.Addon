@@ -1,5 +1,5 @@
 ﻿using G1ANT.Engine;
-using G1ANT.Language.Semantic;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
 using System.Threading;
@@ -24,10 +24,10 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new Language.Structures.String(FileID));
+            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
             scripter.RunLine("googlesheet.gettitle");
-            titleBeforeChange = scripter.Variables.GetVariable("result").Value.GetValue().ToString();
+            titleBeforeChange = scripter.Variables.GetVariable("result").GetValue().ToString();
         }
 
         [Test]
@@ -35,20 +35,20 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void GoogleSheetSetTitle()
         {
             var valueToBePlaced = "G1ANT";
-            scripter.Variables.SetVariableValue("valueToBePlaced", new Language.Structures.String(valueToBePlaced));
+            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(valueToBePlaced));
             scripter.RunLine($"googlesheet.settitle {SpecialChars.Variable}valueToBePlaced");
             scripter.RunLine("googlesheet.gettitle");
             var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual(valueToBePlaced, result.Value.GetValue().ToString());
+            Assert.AreEqual(valueToBePlaced, result.GetValue().ToString());
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.Variables.SetVariableValue("valueToBePlaced", new Language.Structures.String(titleBeforeChange));
+            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(titleBeforeChange));
             scripter.RunLine($"googlesheet.settitle {SpecialChars.Variable}valueToBePlaced");
             scripter.RunLine("googlesheet.gettitle");
-            var returnedToPreviousState = scripter.Variables.GetVariable("result").Value.GetValue().ToString();
+            var returnedToPreviousState = scripter.Variables.GetVariable("result").GetValue().ToString();
             Assert.AreEqual(titleBeforeChange, returnedToPreviousState);
             scripter.RunLine("googlesheet.close");
         }

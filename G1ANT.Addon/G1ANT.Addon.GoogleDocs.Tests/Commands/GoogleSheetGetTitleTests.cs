@@ -24,7 +24,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new Language.Structures.String(FileID));
+            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
         }
 
@@ -35,7 +35,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
             var expectedTitle = "Example Spreadsheet";
             scripter.RunLine("googlesheet.gettitle");
             var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual(expectedTitle, result.Value.GetValue().ToString());
+            Assert.AreEqual(expectedTitle, result.GetValue().ToString());
         }
 
         [TearDown]

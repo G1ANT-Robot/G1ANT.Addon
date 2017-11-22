@@ -25,7 +25,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new Language.Structures.String(FileID));
+            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
         }
 
@@ -35,10 +35,10 @@ namespace G1ANT.Language.GoogleDocs.Tests
         {
             rangeToBeChecked = "A2";
             string expectedValue = "Alexandra";
-            scripter.Variables.SetVariableValue("rangeToBeChecked", new Language.Structures.String(rangeToBeChecked));
+            scripter.Variables.SetVariableValue("rangeToBeChecked", new TextStructure(rangeToBeChecked));
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked");
             var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual(expectedValue, result.Value.GetValue().ToString()); 
+            Assert.AreEqual(expectedValue, result.GetValue().ToString()); 
         }
 
         [TearDown]

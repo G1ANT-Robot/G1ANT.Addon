@@ -1,52 +1,42 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
-using G1ANT.Language.Images.Api;
-using G1ANT.Language.Structures;
+﻿using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
-namespace G1ANT.Language.Images.Commands
+namespace G1ANT.Language.Images
 {
     [Command(Name = "image.findrectangles")]
-    public class ImageFindRectangles : CommandBase<ImageFindRectangles.Arguments>
+    public class ImageFindRectangles : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.String Path { get; set; }
+            public TextStructure Path { get; set; }
 
             [Argument]
-            public Structures.String Result { get; set; } = new Structures.String("result");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument]
-            public Structures.Bool Invert { get; set; } = new Structures.Bool(true);
+            public BooleanStructure Invert { get; set; } = new BooleanStructure(true);
 
             [Argument]
-            public Structures.Integer MinWidth { get; set; }
+            public IntegerStructure MinWidth { get; set; }
 
             [Argument]
-            public Structures.Integer MaxWidth { get; set; }
+            public IntegerStructure MaxWidth { get; set; }
 
             [Argument]
-            public Structures.Integer MinHeight { get; set; }
+            public IntegerStructure MinHeight { get; set; }
 
             [Argument]
-            public Structures.Integer MaxHeight { get; set; }
+            public IntegerStructure MaxHeight { get; set; }
 
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+             
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public ImageFindRectangles(AbstractScripter scripter) : base(scripter)
+        { }
+        public void Execute(Arguments arguments)
         {
             try
             {
@@ -65,9 +55,9 @@ namespace G1ANT.Language.Images.Commands
                 List<Structure> results = new List<Structure>();
                 foreach (var foundRectangle in foundRectangles)
                 {
-                    results.Add(new Structures.Rectangle(foundRectangle));
+                    results.Add(new RectangleStructure(foundRectangle));
                 }
-                SetVariableValue(arguments.Result.Value, new Structures.List(results));
+                Scripter.Variables.SetVariableValue(arguments.Result.Value, new ListStructure(results));
             }
             catch (Exception ex)
             {               

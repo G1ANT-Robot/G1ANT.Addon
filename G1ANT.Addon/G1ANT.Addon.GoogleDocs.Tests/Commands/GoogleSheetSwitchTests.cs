@@ -1,10 +1,8 @@
 ﻿using G1ANT.Engine;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Semantic;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
 using System.Threading;
-
 
 namespace G1ANT.Language.GoogleDocs.Tests
 {
@@ -27,9 +25,9 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId1", new Language.Structures.String(FileID1));
+            scripter.Variables.SetVariableValue("fileId1", new TextStructure(FileID1));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid1 result excelID1");
-            scripter.Variables.SetVariableValue("fileId2", new Language.Structures.String(FileID2));
+            scripter.Variables.SetVariableValue("fileId2", new TextStructure(FileID2));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid2 result excelID2");
             var result = scripter.Variables.GetVariable("result");
         }
@@ -44,8 +42,8 @@ namespace G1ANT.Language.GoogleDocs.Tests
             scripter.RunLine($"googlesheet.switch {SpecialChars.Variable}excelID2");
             scripter.RunLine("googlesheet.gettitle result excelTitle2");
             var result2 = scripter.Variables.GetVariable("excelTitle2");
-            Assert.AreEqual("Example Spreadsheet", result1.Value.GetValue().ToString());
-            Assert.AreEqual("Example Spreadsheet Edited", result2.Value.GetValue().ToString());
+            Assert.AreEqual("Example Spreadsheet", result1.GetValue().ToString());
+            Assert.AreEqual("Example Spreadsheet Edited", result2.GetValue().ToString());
         }
 
         [TearDown]

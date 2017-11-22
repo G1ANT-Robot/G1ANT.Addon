@@ -1,35 +1,26 @@
 ﻿using System;
 using System.Drawing;
 
-using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
-using G1ANT.Language.Images.Api;
+using G1ANT.Language;
 
-namespace G1ANT.Language.Images.Commands
+namespace G1ANT.Language.Images
 {
-    [Command(Name = "image.sharpen", ToolTip = "This command sharpens image")]
-    public class ImageSharpen : CommandBase<ImageSharpen.Arguments>
+    [Command(Name = "image.sharpen", Tooltip = "This command sharpens image")]
+    public class ImageSharpen : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true, Tooltip = "Path of picture to get sharpened.")]
-            public Structures.String Path { get; set; }
+            public TextStructure Path { get; set; }
 
             [Argument(Tooltip = "Saving path. If not specified, input path will be used.")]
-            public Structures.String OutputPath { get; set; }
+            public TextStructure OutputPath { get; set; }
 
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+             
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public ImageSharpen(AbstractScripter scripter) : base(scripter)
+        { }
+        public void Execute(Arguments arguments)
         {
             string savingPath = arguments.OutputPath?.Value ?? arguments.Path.Value;
             string savingPathArgumentName = arguments.OutputPath != null ? nameof(arguments.OutputPath) : nameof(arguments.Path);

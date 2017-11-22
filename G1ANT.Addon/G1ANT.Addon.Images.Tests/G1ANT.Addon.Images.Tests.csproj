@@ -7,8 +7,8 @@
     <ProjectGuid>{F5EC3625-B099-47FD-A4DD-34F78E72831C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Language.Images.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Language.Images.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Images.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Images.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -38,6 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="G1ANT.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\G1ANT.Bin\debug\G1ANT.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -69,37 +77,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Engine\G1ANT.Engine.csproj">
-      <Project>{9b5f5109-36d1-4652-bbcb-96b89f6895c4}</Project>
-      <Name>G1ANT.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Interop\G1ANT.Interop.csproj">
-      <Project>{2ccdb7df-2e8b-441a-81a9-1c421bdb207e}</Project>
-      <Name>G1ANT.Interop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core.Tests\G1ANT.Language.Core.Tests.csproj">
-      <Project>{BD1786F1-6C40-426F-B8D3-D17AF4CEA554}</Project>
-      <Name>G1ANT.Language.Core.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Core\G1ANT.Language.Core.csproj">
-      <Project>{e0e6fb4a-8660-4352-a6b4-f1c9e073a0f9}</Project>
-      <Name>G1ANT.Language.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language.Images\G1ANT.Language.Images.csproj">
+    <ProjectReference Include="..\G1ANT.Addon.Images\G1ANT.Addon.Images.csproj">
       <Project>{41d8db37-18a0-46eb-a7c4-847c4e54f403}</Project>
-      <Name>G1ANT.Language.Images</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language\G1ANT.Language.csproj">
-      <Project>{a64c3699-084e-4123-b9d4-1b6ebfd98cc6}</Project>
-      <Name>G1ANT.Language</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Robot.FormTester\G1ANT.Robot.FormTester.csproj">
-      <Project>{19e25cf8-e1ea-4706-ad6f-e740f12847df}</Project>
-      <Name>G1ANT.Robot.FormTester</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Sdk\G1ANT.Sdk.csproj">
-      <Project>{48399866-77b0-45dc-9f31-2d9d50904210}</Project>
-      <Name>G1ANT.Sdk</Name>
+      <Name>G1ANT.Addon.Images</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

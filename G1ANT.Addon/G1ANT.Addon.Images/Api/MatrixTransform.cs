@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace G1ANT.Language.Images.Api
+namespace G1ANT.Language.Images
 {
     class MatrixTransform
     {

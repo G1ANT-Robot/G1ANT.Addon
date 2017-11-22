@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
 
 using G1ANT.Engine;
-using G1ANT.Language.Semantic;
 using NUnit.Framework;
-using G1ANT.Language.Core.Tests;
-using G1ANT.Language.Images.Commands;
 using System.Reflection;
-using G1ANT.Language.Images.Tests.Properties;
+using G1ANT.Language;
 using System;
+using G1ANT.Addon.Images.Tests.Properties;
 
 namespace G1ANT.Language.Images.Tests.Commands
 {
     [TestFixture]
-    [TestsClass(typeof(ImageFindRectangles))]
     public class ImageFindRectangleTests
     {
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
+        }
         [OneTimeSetUp]
         public void Initialize()
         {
@@ -30,7 +32,7 @@ namespace G1ANT.Language.Images.Tests.Commands
             int expectedRectanglesCount = 8;
             string imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structures.Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
         }
 
         [Test, Timeout(ImagesTests.TestsTimeout)]
@@ -41,13 +43,13 @@ namespace G1ANT.Language.Images.Tests.Commands
             string imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
 
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text} maxwidth {widthTreshold}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structures.Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
 
             imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
 
             expectedRectanglesCount = 6;
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text} minwidth {widthTreshold}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structures.Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
         }
 
         [Test, Timeout(ImagesTests.TestsTimeout)]
@@ -59,7 +61,7 @@ namespace G1ANT.Language.Images.Tests.Commands
             string imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
 
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text} maxheight {maxHeight} minheight {minHeight}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structures.Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
         }
     }
 }

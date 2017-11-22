@@ -1,4 +1,4 @@
-﻿
+﻿using G1ANT.Language;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
@@ -13,9 +13,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Google.Apis.Download;
 using Google.Apis.Drive.v3;
-using G1ANT.Sdk;
 
-namespace G1ANT.Language.GoogleDocs
+namespace G1ANT.Addon.GoogleDocs
 {
     public class SheetsWrapper
     {
@@ -40,7 +39,7 @@ namespace G1ANT.Language.GoogleDocs
         private void CreateCredential(bool isShared = true)
         {
             string json = "{'installed':{'client_id':'823414569447-orhf4brgs1r9puic2jg73n98ei2qp7ph.apps.googleusercontent.com','project_id':'docsapi-168607','auth_uri':'https://accounts.google.com/o/oauth2/auth','token_uri':'https://accounts.google.com/o/oauth2/token','auth_provider_x509_cert_url':'https://www.googleapis.com/oauth2/v1/certs','client_secret':'7y8Z8zfHELMrNLEPGh8Dh6PZ','redirect_uris':['urn:ietf:wg:oauth:2.0:oob','http://localhost']}}";
-            using (var stream = Converters.ConvertStringToStream(json))
+            using (var stream = json.ConvertStringToStream())
             {
                 string credPath = System.Environment.GetFolderPath(
                         System.Environment.SpecialFolder.Personal);
@@ -62,9 +61,9 @@ namespace G1ANT.Language.GoogleDocs
                       CancellationToken.None,
                       new FileDataStore(credPath, true)).Result;
                 }
-                catch (AggregateException e )
+                catch (AggregateException e)
                 {
-                    
+
                 }
 
             }

@@ -5,12 +5,11 @@ using System.Drawing;
 using System.Threading;
 
 using G1ANT.Engine;
-using G1ANT.Language.Semantic;
-using G1ANT.Interop;
+using G1ANT.Language;
 
 using NUnit.Framework;
 using System.Reflection;
-using G1ANT.Language.Images.Tests.Properties;
+using G1ANT.Addon.Images.Tests.Properties;
 
 namespace G1ANT.Language.Images.Tests.Commands
 {
@@ -21,7 +20,11 @@ namespace G1ANT.Language.Images.Tests.Commands
         private const string TextChar = SpecialChars.Text;
         private System.Diagnostics.Process testerApp;
         private const int OneSecond = 1000;
-
+        [SetUp]
+        public void Init()
+        {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
+        }
         [OneTimeSetUp]
         public void Initialize()
         {
@@ -106,7 +109,7 @@ namespace G1ANT.Language.Images.Tests.Commands
             testerApp = ImagesTests.StartFormTester("Title TestApp");
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue(nameof(colorCode), new Structures.String(colorCode));
+            scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
                             keyboard {TextChar}{SpecialChars.Variable}{nameof(colorCode)}{TextChar} 

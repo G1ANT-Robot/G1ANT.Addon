@@ -25,7 +25,7 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new Language.Structures.String(FileID));
+            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
         }
 
@@ -34,25 +34,25 @@ namespace G1ANT.Language.GoogleDocs.Tests
         public void GoogleSheetSetValue()
         {
             rangeToBePlaced = "A2";
-            scripter.Variables.SetVariableValue("rangeToBePlaced", new Language.Structures.String(rangeToBePlaced));
+            scripter.Variables.SetVariableValue("rangeToBePlaced", new TextStructure(rangeToBePlaced));
             var valueToBePlaced = "G1ANT";
-            scripter.Variables.SetVariableValue("valueToBePlaced", new Language.Structures.String(valueToBePlaced));
+            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(valueToBePlaced));
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBePlaced");
 
-            resultBeforeChange = scripter.Variables.GetVariable("result").Value.GetValue().ToString();
+            resultBeforeChange = scripter.Variables.GetVariable("result").GetValue().ToString();
             scripter.RunLine($"googlesheet.setvalue range {SpecialChars.Variable}rangeToBePlaced value {SpecialChars.Variable}valueToBePlaced numeric false");
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBePlaced");
             var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual(valueToBePlaced, result.Value.GetValue().ToString());
+            Assert.AreEqual(valueToBePlaced, result.GetValue().ToString());
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.Variables.SetVariableValue("valueToBePlaced", new Language.Structures.String(resultBeforeChange));
+            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(resultBeforeChange));
             scripter.RunLine($"googlesheet.setvalue range {SpecialChars.Variable}rangeToBePlaced value {SpecialChars.Variable}valueToBePlaced numeric false");
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBePlaced");
-            var returnedToPreviousState = scripter.Variables.GetVariable("result").Value.GetValue().ToString();
+            var returnedToPreviousState = scripter.Variables.GetVariable("result").GetValue().ToString();
             Assert.AreEqual(resultBeforeChange, returnedToPreviousState);
             scripter.RunLine("googlesheet.close");
         }
