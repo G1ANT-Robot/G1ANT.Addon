@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Net
             public TextStructure Password { get; set; }
 
             [Argument(DefaultVariable = "timeoutremotedesktop")]
-            public override int Timeout { get; set; } = (10);
+            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10);
 
             [Argument]
             public TextStructure Result { get; set; } = new TextStructure("result");

@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Net
             public TextStructure Url { get; set; }
 
             [Argument(DefaultVariable = "timeoutrest", Tooltip = "Defines time duration for command to wait, default for rest is 5000ms")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "Headers attached to rest request")]
             public ListStructure Headers { get; set; }
@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Net
         {
             RestClient client = new RestClient(arguments.Url.Value)
             {
-                Timeout = Convert.ToInt32(arguments.Timeout)
+                Timeout = Convert.ToInt32(arguments.Timeout.Value.Milliseconds)
             };
 
             string method = arguments.Method.Value;

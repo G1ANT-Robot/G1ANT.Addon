@@ -16,7 +16,7 @@ namespace G1ANT.Addon.Net
             public TextStructure Hostname { get; set; }
 
             [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Defines timeout for connecting")]
-            public override int Timeout { get; set; }
+            public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument]
             public TextStructure Result { get; set; } = new TextStructure("result");
@@ -27,7 +27,7 @@ namespace G1ANT.Addon.Net
         }
         public void Execute(Arguments arguments)
         {
-            var timeout = arguments.Timeout;
+            var timeout = arguments.Timeout.Value.Milliseconds;
             System.Net.NetworkInformation.Ping pingSender = new System.Net.NetworkInformation.Ping();
             PingReply reply = null;
             try
