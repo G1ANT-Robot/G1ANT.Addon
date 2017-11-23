@@ -9,6 +9,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     [Addon(Name = "AbbyyFineReader",
         Tooltip = "AbbyyFineReader Commands")]
+    [CommandGroup(Name = "ocrabbyy", Tooltip = "Abbyy Optical Character Recognition, uses Abbyy.")]
     public class AbbyyFineReaderAddon : Language.Addon
     {
     }
