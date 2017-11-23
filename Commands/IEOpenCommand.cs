@@ -61,7 +61,7 @@ namespace G1ANT.Addon.IExplorer
             {
                 if (!string.IsNullOrEmpty(arguments.Url?.Value))
                 {
-                    wrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, arguments?.Timeout?.Value.Milliseconds ?? 0);
+                    wrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, (int)arguments?.Timeout?.Value.TotalMilliseconds);
                 }
             }
             catch (Exception ex)
