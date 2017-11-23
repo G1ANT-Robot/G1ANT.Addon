@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 IEWrapper ieWrapper = IEManager.CurrentIE;
-                ieWrapper.WaitForLoad(arguments.Timeout.Value.Milliseconds / 1000);
+                ieWrapper.WaitForLoad((int)arguments.Timeout.Value.TotalMilliseconds / 1000);
             }
             catch (Exception ex)
             {

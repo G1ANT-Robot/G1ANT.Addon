@@ -22,7 +22,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 IEWrapper ieWrapper = IEManager.CurrentIE;
-                ieWrapper.Refresh(arguments.Timeout.Value.Milliseconds);
+                ieWrapper.Refresh((int)arguments.Timeout.Value.TotalMilliseconds);
             }
             catch (Exception ex)
             {

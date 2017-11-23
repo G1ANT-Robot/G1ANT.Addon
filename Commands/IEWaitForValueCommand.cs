@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
         }
         public void Execute(Arguments arguments)
         {
-            int timeout = arguments.Timeout.Value.Milliseconds;
+            int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             int start = Environment.TickCount;
             string result = string.Empty;
             IEWrapper ieWrapper = IEManager.CurrentIE;

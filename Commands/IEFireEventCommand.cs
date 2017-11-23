@@ -55,7 +55,7 @@ namespace G1ANT.Addon.IExplorer
                              argumentsList,
                              arguments.Search.Value,
                              arguments.By.Value,
-                             arguments.Timeout.Value.Milliseconds,
+                             (int)arguments.Timeout.Value.TotalMilliseconds,
                              arguments.NoWait.Value);
             }
             catch (Exception ex)

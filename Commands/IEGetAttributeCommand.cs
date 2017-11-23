@@ -40,7 +40,7 @@ namespace G1ANT.Addon.IExplorer
                 string value = ie.GetAttribute(arguments.Name.Value,
                                                arguments.Search.Value,
                                                arguments.By.Value,
-                                               arguments.Timeout.Value.Milliseconds,
+                                               (int)arguments.Timeout.Value.TotalMilliseconds,
                                                arguments.NoWait.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(value));
             }

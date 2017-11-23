@@ -25,7 +25,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 var ieWrapper = IEManager.CurrentIE;
-                ieWrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, arguments.Timeout.Value.Milliseconds);
+                ieWrapper.GoToUrl(arguments.Url.Value, arguments.NoWait.Value, (int)arguments.Timeout.Value.TotalMilliseconds);
             }
             catch (Exception ex)
             {
