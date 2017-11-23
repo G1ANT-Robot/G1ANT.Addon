@@ -17,13 +17,15 @@ namespace G1ANT.Addon.IExplorer.Tests
         [OneTimeSetUp]
         public void Initialize()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
         [SetUp]
         public void TestInitialize()
         {
+            
             scripter = new Scripter();
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
+            
         }
         [Test, Timeout(IETests.TestTimeout)]
         public void IESwitchSuccessTest()
@@ -74,9 +76,9 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void IECloseFailIeNotOpenedTest()
         {
                 scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
-                            ie.open result result3
+                            ie.open result {SpecialChars.Variable}result1
+                            ie.open result {SpecialChars.Variable}result2
+                            ie.open result {SpecialChars.Variable}result3
                             ie.switch {SpecialChars.Variable}result1
                             ie.close
                             ie.switch {SpecialChars.Variable}result2
