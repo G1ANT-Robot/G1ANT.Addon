@@ -34,7 +34,7 @@ namespace G1ANT.Language.Ocr
         {
             System.Drawing.Rectangle rectangle = arguments.Relative.Value ? arguments.Area.Value.ToAbsoluteCoordinates() : arguments.Area.Value;
             System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            int timeout = arguments.Timeout.Value.Milliseconds;
+            int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             string search = arguments.Search.Value;
             GoogleCloudApi googleApi = new GoogleCloudApi();
