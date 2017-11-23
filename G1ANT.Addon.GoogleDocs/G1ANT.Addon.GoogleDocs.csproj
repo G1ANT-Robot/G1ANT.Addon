@@ -90,6 +90,7 @@
     <Compile Include="Commands\GoogleSheetGetTitleCommand.cs" />
     <Compile Include="Commands\GoogleSheetOpenCommand.cs" />
     <Compile Include="Api\SheetsManager.cs" />
+    <Compile Include="GoogleAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\SheetsWrapper.cs" />
   </ItemGroup>

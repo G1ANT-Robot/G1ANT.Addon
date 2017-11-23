@@ -4,12 +4,12 @@ using NUnit.Framework;
 namespace G1ANT.Addon.Selenium.Tests
 {
     [TestFixture]
-    public class UnitTest1
+    public class SeleniumLoadTests
     {
         [Test]
-        public void LoadMSOfficeAddon()
+        public void LoadSelleniumAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Selenium.dll");
+            Language.Addon addon = Language.Addon.Load("G1ANT.Addon.Selenium.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

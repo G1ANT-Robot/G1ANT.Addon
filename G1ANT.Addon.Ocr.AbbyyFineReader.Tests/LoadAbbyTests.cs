@@ -12,7 +12,6 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Structures.Count > 0);
             Assert.IsTrue(addon.Commands.Count > 0);
-            Assert.IsTrue(addon.Triggers.Count > 0);
         }
     }
 }
