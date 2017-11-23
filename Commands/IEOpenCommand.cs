@@ -23,14 +23,6 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Tooltip = "If 'true', opened Internet Explorer instance will detach automatically after script ends")]
             public BooleanStructure AutoDetachOnClose { get; set; } = new BooleanStructure(true);
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
         public IEOpenCommand(AbstractScripter scripter) : base(scripter)
         {

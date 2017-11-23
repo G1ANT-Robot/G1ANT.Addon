@@ -14,14 +14,6 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Tooltip = "Name of variable where result of javascript execution will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
         public IERunScriptCommand(AbstractScripter scripter) : base(scripter)
         {
