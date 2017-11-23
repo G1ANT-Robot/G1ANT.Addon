@@ -9,7 +9,6 @@ namespace G1ANT.Addon.IExplorer
 {
     [Addon(Name = "IExplorer",
         Tooltip = "IExplorer Commands")]
-    [CommandGroup(Name = "ie", Tooltip = "Internet Explorer commands")]
     public class IExplorerAddon : Language.Addon
     {
     }
