@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.activatesheet", Tooltip = "Activates the specified sheet.")]
+    [Command(Name = "excel.activatesheet", Tooltip = "Activates the specified sheet in currently active excel instance.")]
     public class ExcelActivateSheetCommand : Command
     {
         public class Arguments : CommandArguments
