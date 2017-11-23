@@ -9,6 +9,13 @@ namespace G1ANT.Addon.Net
 {
     [Addon(Name = "Net",
         Tooltip = "Net Commands")]
+    [CommandGroup(Name = "as400", Tooltip = "Command connected with creating, editing and generally working on excel")]
+    [CommandGroup(Name = "is", Tooltip = "Command connected with creating, editing and generally working on excel")]
+    [CommandGroup(Name = "mail", Tooltip = "Command connected with creating, editing and generally working on excel")]
+    [CommandGroup(Name = "ping", Tooltip = "Command connected with creating, editing and generally working on excel")]
+    [CommandGroup(Name = "rest", Tooltip = "Command connected with creating, editing and generally working on excel")]
+    [CommandGroup(Name = "vnc", Tooltip = "Command connected with creating, editing and generally working on excel")]
+
     public class NetAddon : Language.Addon
     {
     }
