@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Selenium.Tests
         [Test]
         public void LoadMSOfficeAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Selenium.dll");
+            Language.Addon addon = Language.Addon.Load("G1ANT.Addon.Selenium.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }
