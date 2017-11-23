@@ -68,6 +68,7 @@
     <Compile Include="Commands\ImageFind.cs" />
     <Compile Include="Commands\ImageFindRectangles.cs" />
     <Compile Include="Commands\WaitForImage.cs" />
+    <Compile Include="ImagesAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

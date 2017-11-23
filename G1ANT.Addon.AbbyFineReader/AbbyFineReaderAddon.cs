@@ -9,6 +9,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     [Addon(Name = "AbbyyFineReader",
         Tooltip = "AbbyyFineReader Commands")]
+    [CommandGroup(Name = "ocrabbyy", Tooltip = "Command connected with creating, editing and generally working on ocrabbyy")]
     public class AbbyyFineReaderAddon : Language.Addon
     {
     }
