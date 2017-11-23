@@ -10,14 +10,6 @@ namespace G1ANT.Addon.MSOffice
 	{
         public class Arguments : CommandArguments
         {
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
         public WordCloseCommand(AbstractScripter scripter) : base(scripter)
         {

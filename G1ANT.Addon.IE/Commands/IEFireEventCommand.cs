@@ -29,14 +29,6 @@ namespace G1ANT.Addon.IExplorer
             [Argument(DefaultVariable = "timeoutie")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
         public IEFireEventCommand(AbstractScripter scripter) : base(scripter)
         {

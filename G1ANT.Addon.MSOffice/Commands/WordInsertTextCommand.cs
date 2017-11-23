@@ -16,14 +16,6 @@ namespace G1ANT.Addon.MSOffice
             public TextStructure Text { get; set; } = new TextStructure(string.Empty);
             [Argument]
             public BooleanStructure ReplaceAllText { get; set; } = new BooleanStructure(false);
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
 
         }
         public WordInsertTextCommand(AbstractScripter scripter) : base(scripter)

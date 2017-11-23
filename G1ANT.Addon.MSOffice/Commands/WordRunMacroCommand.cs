@@ -16,14 +16,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Arguments for specified macro")]
             public TextStructure Args { get; set; } 
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
 
         }
 

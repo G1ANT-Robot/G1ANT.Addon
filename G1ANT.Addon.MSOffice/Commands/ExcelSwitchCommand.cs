@@ -15,14 +15,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Id number of excel instance that will be activated")]
             public IntegerStructure Id { get; set; }
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
 
         public ExcelSwitchCommand(AbstractScripter scripter) : base(scripter)

@@ -8,14 +8,6 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
         public IEDetachCommand(AbstractScripter scripter) : base(scripter)
         {

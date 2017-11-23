@@ -13,14 +13,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
 
         }
         public OutlookSendCommand(AbstractScripter scripter) : base(scripter)
