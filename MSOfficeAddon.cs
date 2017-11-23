@@ -9,6 +9,9 @@ namespace G1ANT.Addon.MSOffice
 {
     [Addon(Name = "MSOffice",
         Tooltip = "MSOffice Commands")]
+    [CommandGroup(Name = "excel", Tooltip = "Excel commands ")]
+    [CommandGroup(Name = "word", Tooltip = "Word commands")]
+    [CommandGroup(Name = "outlook", Tooltip = "Outlook commands")]
     public class MSOfficeAddon : Language.Addon
     {
     }
