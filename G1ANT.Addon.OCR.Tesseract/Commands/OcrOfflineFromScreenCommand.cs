@@ -35,7 +35,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
             Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, 4.0);
-            int timeout = arguments.Timeout.Value.Milliseconds;
+            int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             string language = arguments.Language.Value;
             var imagePath = OcrOfflineHelper.SaveImageToTemporaryFolder(imgToParse);
             OcrOfflineHelper.UnpackNeededAssemblies();

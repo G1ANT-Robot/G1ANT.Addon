@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Net
         {
             RestClient client = new RestClient(arguments.Url.Value)
             {
-                Timeout = Convert.ToInt32(arguments.Timeout.Value.Milliseconds)
+                Timeout = Convert.ToInt32((int)arguments.Timeout.Value.TotalMilliseconds)
             };
 
             string method = arguments.Method.Value;

@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Net
         public void Execute(Arguments arguments)
         {
             System.Net.NetworkInformation.Ping pingSender = new System.Net.NetworkInformation.Ping();
-            PingReply reply = pingSender.Send(arguments.Ip.Value, arguments.Timeout.Value.Milliseconds);
+            PingReply reply = pingSender.Send(arguments.Ip.Value, (int)arguments.Timeout.Value.TotalMilliseconds);
 
             if (reply.Status == IPStatus.Success)
             {

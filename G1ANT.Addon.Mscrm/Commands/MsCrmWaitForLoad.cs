@@ -28,7 +28,7 @@ namespace G1ANT.Language.Mscrm
         public void Execute(Arguments arguments)
         {
             var currentCrm = MsCrmManager.CurrentCRM;
-            currentCrm.WaitForLoad(arguments.Search.Value, arguments.By.Value, arguments.Iframe.Value, arguments.Timeout.Value.Milliseconds);            
+            currentCrm.WaitForLoad(arguments.Search.Value, arguments.By.Value, arguments.Iframe.Value, (int)arguments.Timeout.Value.TotalMilliseconds);            
         }
     }
 }

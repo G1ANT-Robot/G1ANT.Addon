@@ -54,7 +54,7 @@ namespace G1ANT.Addon.Net
             client.Port = arguments.Port.Value;
             client.Host = arguments.Host.Value;
             client.Credentials = new System.Net.NetworkCredential(arguments.Login.Value, arguments.Password.Value);
-            client.Timeout = arguments.Timeout.Value.Milliseconds;
+            client.Timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
 
             string from = arguments.From.Value;
             string to = arguments.To.Value;

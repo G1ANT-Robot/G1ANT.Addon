@@ -27,7 +27,7 @@ namespace G1ANT.Addon.Net
         }
         public void Execute(Arguments arguments)
         {
-            var timeout = arguments.Timeout.Value.Milliseconds;
+            var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             System.Net.NetworkInformation.Ping pingSender = new System.Net.NetworkInformation.Ping();
             PingReply reply = null;
             try

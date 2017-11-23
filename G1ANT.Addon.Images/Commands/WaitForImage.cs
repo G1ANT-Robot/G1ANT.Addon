@@ -51,7 +51,7 @@ namespace G1ANT.Language.Images
 
             using (Bitmap bitmap1 = Imaging.OpenImageFile(arguments.Image.Value, nameof(arguments.Image)))
             {
-                int timeout = arguments.Timeout.Value.Milliseconds;
+                int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
                 long start = Environment.TickCount;
                 Rectangle foundRectangle = Rectangle.Empty;
                //TODO while (Math.Abs(Environment.TickCount - start) < timeout && ShouldStopScript() == false && foundRectangle == Rectangle.Empty)

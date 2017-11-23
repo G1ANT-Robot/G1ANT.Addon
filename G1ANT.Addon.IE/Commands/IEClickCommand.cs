@@ -26,7 +26,7 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 IEWrapper ie = IEManager.CurrentIE;
-                ie.ClickElement(arguments.Search.Value, arguments.By.Value,  arguments.Timeout.Value.Milliseconds, arguments.NoWait.Value);
+                ie.ClickElement(arguments.Search.Value, arguments.By.Value,  (int)arguments.Timeout.Value.TotalMilliseconds, arguments.NoWait.Value);
             }
             catch (Exception ex)
             {
