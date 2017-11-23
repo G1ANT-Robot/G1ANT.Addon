@@ -14,14 +14,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true)]
             public TextStructure Path { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
 
         public ExcelExportCommand(AbstractScripter scripter) : base(scripter)

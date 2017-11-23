@@ -20,14 +20,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "cell's column number or name")]
             public Structure Col { get; set; }
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
         }
         public ExcelSetValueCommand(AbstractScripter scripter) : base(scripter)
         {

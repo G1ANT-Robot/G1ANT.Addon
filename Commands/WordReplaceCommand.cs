@@ -22,14 +22,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "If true tries to replace even if word is found as substring")]
             public BooleanStructure WholeWords { get; set; } = new BooleanStructure(false);
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
 
         }
         public WordReplaceCommand(AbstractScripter scripter) : base(scripter)

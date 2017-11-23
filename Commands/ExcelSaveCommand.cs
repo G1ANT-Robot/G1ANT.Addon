@@ -14,14 +14,6 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Saving file path. If not specified, G1ANT robot will try to save the file under the path it was loaded from. \nIf current excel application was not opened with specified path, exception will be thrown.")]
             public TextStructure Path { get; set; }
 
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-            [Argument]
-            public TextStructure ErrorJump { get; set; }
-
-            [Argument]
-            public TextStructure ErrorMessage { get; set; }
 
         }
         public ExcelSaveCommand(AbstractScripter scripter) : base(scripter)
