@@ -52,7 +52,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
                 arguments.Language = new TextStructure("English");
             }
 
-            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();//TODO CASE
+            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
             Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
 
             AbbyyManager manager = AbbyyManager.Instance;
