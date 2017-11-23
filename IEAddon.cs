@@ -9,7 +9,7 @@ namespace G1ANT.Addon.IExplorer
 {
     [Addon(Name = "IExplorer",
         Tooltip = "IExplorer Commands")]
-    [CommandGroup(Name = "IE", Tooltip = "Command connected with creating, editing and generally working on IExporer")]
+    [CommandGroup(Name = "ie", Tooltip = "Command connected with creating, editing and generally working on IExporer")]
     public class IExplorerAddon : Language.Addon
     {
     }
