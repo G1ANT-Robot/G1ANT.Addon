@@ -27,7 +27,7 @@ namespace G1ANT.Language.Watson
         public void Execute(Arguments arguments)
         {
             WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi();
-            string result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, arguments.Timeout.Value.Milliseconds, 1, arguments.Threshold.Value);
+            string result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, (int)arguments.Timeout.Value.TotalMilliseconds, 1, arguments.Threshold.Value);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(result));
         }
     }

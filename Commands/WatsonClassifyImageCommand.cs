@@ -31,7 +31,7 @@ namespace G1ANT.Language.Watson
             {
                 System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(arguments.Rectangle.Value);
                 WatsonClassifyImageApi watsonApi = new WatsonClassifyImageApi();
-                string output = watsonApi.ClassifyImage(partOfScreen, arguments.Timeout.Value.Milliseconds, arguments.Threshold.Value);
+                string output = watsonApi.ClassifyImage(partOfScreen, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(output));
             }
             catch (Exception ex)
