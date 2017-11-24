@@ -1,4 +1,5 @@
-﻿using System;
+﻿using G1ANT.Language;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace G1ANT.Language.Images.Tests
+namespace G1ANT.Addon.Images.Tests
 {
     public class ImagesTests
     {

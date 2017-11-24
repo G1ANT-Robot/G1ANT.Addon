@@ -13,7 +13,7 @@ using G1ANT.Addon.Images.Tests.Properties;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace G1ANT.Language.Images.Tests
+namespace G1ANT.Addon.Images.Tests
 {
     [TestFixture]
     public class WaitForImageTests

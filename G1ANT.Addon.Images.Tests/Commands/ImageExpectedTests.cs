@@ -6,8 +6,9 @@ using NUnit.Framework;
 using System.Reflection;
 using G1ANT.Engine;
 using G1ANT.Addon.Images.Tests.Properties;
+using G1ANT.Language;
 
-namespace G1ANT.Language.Images.Tests
+namespace G1ANT.Addon.Images.Tests
 {
     [TestFixture]
     public class ImageExpectedTests
