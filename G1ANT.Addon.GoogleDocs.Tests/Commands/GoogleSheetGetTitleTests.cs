@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System;
 using System.Threading;
 
-namespace G1ANT.Language.GoogleDocs.Tests
+namespace G1ANT.Addon.GoogleDocs.Tests
 {
     [TestFixture]
     [Apartment(ApartmentState.STA)]
