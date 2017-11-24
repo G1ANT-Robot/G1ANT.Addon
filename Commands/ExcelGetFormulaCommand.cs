@@ -14,9 +14,12 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Cell's row number or row's name")]
             public IntegerStructure Row { get; set; }
 
-            [Argument(Required = true, Tooltip = "Cell's column number or column's name")]
-            public Structure Col { get; set; } 
-            
+            [Argument(Tooltip = "Cell's column index")]
+            public IntegerStructure ColIndex { get; set; }
+
+            [Argument(Tooltip = "Cell's column name")]
+            public TextStructure ColName { get; set; }
+
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
@@ -28,13 +31,13 @@ namespace G1ANT.Addon.MSOffice
         {
             object col = null;
             try
-            {                
-                if (arguments.Col is IntegerStructure)
-                    col = (arguments.Col as IntegerStructure).Value;
-                else if (arguments.Col is TextStructure)
-                    col = (arguments.Col as TextStructure).Value;
+            {
+                if (arguments.ColIndex != null)
+                    col = arguments.ColIndex.Value;
+                else if (arguments.ColName != null)
+                    col = arguments.ColName.Value;
                 else
-                    throw new ArgumentException("Col argument is not valid. It has to to be either String or Integer value.");
+                    throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
                 string formula = ExcelManager.CurrentExcel.GetFormula(arguments.Row.Value, col);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(formula));
             }

@@ -11,8 +11,11 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Column's address")]
-            public Structure Column { get; set; }
+            [Argument(Tooltip = "Cell's column index")]
+            public IntegerStructure ColIndex { get; set; }
+
+            [Argument(Tooltip = "Cell's column name")]
+            public TextStructure ColName { get; set; }
 
             [Argument(Tooltip = "Determines, whether to insert column 'before' or 'after' specified column. By default: 'after'")]
             public TextStructure Where { get; set; } = new TextStructure("after");
@@ -24,19 +27,13 @@ namespace G1ANT.Addon.MSOffice
         {
             object col = null;
             try
-            {                
-                if (arguments.Column is IntegerStructure)
-                {
-                    col = (arguments.Column as IntegerStructure).Value;
-                }
-                else if (arguments.Column is TextStructure)
-                {
-                    col = (arguments.Column as TextStructure).Value;
-                }
+            {
+                if (arguments.ColIndex != null)
+                    col = arguments.ColIndex.Value;
+                else if (arguments.ColName != null)
+                    col = arguments.ColName.Value;
                 else
-                {
-                    throw new ArgumentException("Col argument is not valid. It has to be either String or Integer.");
-                }
+                    throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
                 ExcelManager.CurrentExcel.InsertColumn(col, arguments.Where.Value);
             }
             catch (Exception ex)
