@@ -10,7 +10,7 @@ namespace G1ANT.Addon.GoogleDocs
 {
     [Addon(Name = "GoogleDocs",
         Tooltip = "GoogleDocs Commands")]
-    [CommandGroup(Icon = Properties.Resources.GoogleIcon , Name = "googlesheet", Tooltip = "Command connected with creating, editing and generally working on GoogleDocs")]
+    [CommandGroup( Name = "googlesheet", Tooltip = "Command connected with creating, editing and generally working on GoogleDocs")]
     public class GoogleAddon : Language.Addon
     {
     }
