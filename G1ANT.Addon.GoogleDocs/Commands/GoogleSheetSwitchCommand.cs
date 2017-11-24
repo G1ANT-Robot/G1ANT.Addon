@@ -4,7 +4,7 @@ using G1ANT.Language;
 namespace G1ANT.Addon.GoogleDocs
 {
     [Command(Name = "googlesheet.switch", Tooltip= "This command allows to get value from opened Google Sheets instance.")]
-    public class GoogleSheetSwitch : Command
+    public class GoogleSheetSwitchCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -15,7 +15,7 @@ namespace G1ANT.Addon.GoogleDocs
 
             
         }
-        public GoogleSheetSwitch(AbstractScripter scripter) : base(scripter)
+        public GoogleSheetSwitchCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

@@ -70,6 +70,7 @@
     <Compile Include="Commands\GoogleSheetFindTests.cs" />
     <Compile Include="Commands\GoogleSheetSwitchTests.cs" />
     <Compile Include="Commands\GoogleSheetOpenTests.cs" />
+    <Compile Include="LoadGoogleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
