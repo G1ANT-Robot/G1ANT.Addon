@@ -7,7 +7,7 @@ using System.Reflection;
 using G1ANT.Engine;
 using G1ANT.Addon.Images.Tests.Properties;
 
-namespace G1ANT.Language.Images.Tests.Commands
+namespace G1ANT.Language.Images.Tests
 {
     [TestFixture]
     public class ImageExpectedTests

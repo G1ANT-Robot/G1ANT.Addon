@@ -7,7 +7,7 @@ using G1ANT.Language;
 using System;
 using G1ANT.Addon.Images.Tests.Properties;
 
-namespace G1ANT.Language.Images.Tests.Commands
+namespace G1ANT.Language.Images.Tests
 {
     [TestFixture]
     public class ImageFindRectangleTests
