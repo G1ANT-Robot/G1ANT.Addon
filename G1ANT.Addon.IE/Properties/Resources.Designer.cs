@@ -83,5 +83,15 @@ namespace G1ANT.Addon.IExplorer.Properties {
                 return ResourceManager.GetString("FindViaDocumentQuerySelector", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ieicon {
+            get {
+                object obj = ResourceManager.GetObject("ieicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

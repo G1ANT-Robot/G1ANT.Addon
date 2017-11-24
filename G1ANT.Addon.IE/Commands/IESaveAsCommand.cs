@@ -11,15 +11,6 @@ namespace G1ANT.Addon.IExplorer
 		{
             [Argument(Required = true, Tooltip = "Specifies file's full save path")]
             public TextStructure Path { get; set; }
-
-			[Argument]
-			public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
-			[Argument]
-			public TextStructure ErrorJump { get; set; }
-
-			[Argument]
-			public TextStructure ErrorMessage { get; set; }
 		}
         public IESaveasCommand(AbstractScripter scripter) : base(scripter)
         {

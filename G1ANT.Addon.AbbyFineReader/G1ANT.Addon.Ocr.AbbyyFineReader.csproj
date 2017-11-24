@@ -81,6 +81,11 @@
     <Compile Include="Commands\OcrAbbyyProcessScreenCommand.cs" />
     <Compile Include="Commands\OcrAbbyyReadCellCommand.cs" />
     <Compile Include="Commands\OcrAbbyyReadTablesCommand.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Structures\AbbyCellStructure.cs" />
     <Compile Include="Structures\AbbyDocumentStructure.cs" />
     <Compile Include="Structures\AbbyPageStructure.cs" />
@@ -103,9 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExternalDlls\Interop.FREngine.dll" />
+    <None Include="Resources\image23.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

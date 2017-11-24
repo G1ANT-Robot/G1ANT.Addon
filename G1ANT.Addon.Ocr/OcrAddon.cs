@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Ocr
 {
     [Addon(Name = "Ocr",
         Tooltip = "Ocr Commands")]
-    [CommandGroup(Name = "ocr", Tooltip = "Ocr commands, uses Google Cloud Vision API.")]
+    [CommandGroup(Name = "ocr", Icon = Properties.Resources.ocricon, Tooltip = "Ocr commands, uses Google Cloud Vision API.")]
     public class OcrAddon : Language.Addon
     {
     }

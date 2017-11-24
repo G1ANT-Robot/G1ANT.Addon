@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Images
 {
     [Addon(Name = "Images",
         Tooltip = "images Commands")]
-    [CommandGroup(Name = "image", Tooltip = "Command connected with creating, editing and generally working on images")]
+    [CommandGroup(Name = "image", Icon = Properties.Resources.imageicon, Tooltip = "Command connected with creating, editing and generally working on images")]
     [CommandGroup(Name = "waitfor", Tooltip = "Command connected with creating, editing and generally working on images")]
     public class ImagesAddon : Language.Addon
     {

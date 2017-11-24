@@ -139,6 +139,9 @@
   <ItemGroup>
     <None Include="Resources\AreCommandBarsInitialized.js" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

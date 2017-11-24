@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Mscrm
 {
     [Addon(Name = "mscrm",
         Tooltip = "MsCrm Commands")]
-    [CommandGroup(Name = "mscrm", Tooltip = "Command connected with creating, editing and generally working on mscrm")]
+    [CommandGroup(Name = "mscrm", Icon = Properties.Resources.crmicon, Tooltip = "Command connected with creating, editing and generally working on mscrm")]
     public class MsCrmAddon : Language.Addon
     {
     }
