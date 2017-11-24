@@ -11,7 +11,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true)]
+            [Argument(Required = true, Tooltip = "Path where new file will be stored.")]
             public TextStructure Path { get; set; } = new TextStructure(string.Empty);
 
         }
