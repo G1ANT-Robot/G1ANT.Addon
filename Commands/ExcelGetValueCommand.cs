@@ -14,8 +14,11 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Cell’s row number or row’s name")]
             public IntegerStructure Row { get; set; }
 
-            [Argument(Required = true, Tooltip = "cell’s column number or column’s name")]
-            public Structure Col { get; set; } 
+            [Argument(Tooltip = "Cell's column index")]
+            public IntegerStructure ColIndex { get; set; }
+
+            [Argument(Tooltip = "Cell's column name")]
+            public TextStructure ColName { get; set; }
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
@@ -26,23 +29,23 @@ namespace G1ANT.Addon.MSOffice
         }
         public void Execute(Arguments arguments)
         {
-            object column = null;
+            object col = null;
             try
             {
-                int row = arguments.Row.Value;               
-                if (arguments.Col is IntegerStructure)
-                    column = (arguments.Col as IntegerStructure).Value;
-                else if (arguments.Col is TextStructure)
-                    column = (arguments.Col as TextStructure).Value;
+                int row = arguments.Row.Value;
+                if (arguments.ColIndex != null)
+                    col = arguments.ColIndex.Value;
+                else if (arguments.ColName != null)
+                    col = arguments.ColName.Value;
                 else
-                    throw new ArgumentException("Col argument is not valid. It has to be either String or Integer");
+                    throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
 
-                string val = ExcelManager.CurrentExcel.GetCellValue(row, column);
+                string val = ExcelManager.CurrentExcel.GetCellValue(row, col);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(val));
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"Error occured while getting value from specified cell. Row: {arguments.Row.Value}. Column: '{column?.ToString()}'. Message: '{ex.Message}'", ex);
+                throw new ApplicationException($"Error occured while getting value from specified cell. Row: {arguments.Row.Value}. Column: '{col?.ToString()}'. Message: '{ex.Message}'", ex);
             }
         }
     }
