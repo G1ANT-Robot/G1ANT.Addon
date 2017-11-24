@@ -7,7 +7,7 @@ using System.IO;
 namespace G1ANT.Language.Images
 {
     [Command(Name = "image.findrectangles")]
-    public class ImageFindRectangles : Command
+    public class ImageFindRectanglesCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -34,7 +34,7 @@ namespace G1ANT.Language.Images
 
              
         }
-        public ImageFindRectangles(AbstractScripter scripter) : base(scripter)
+        public ImageFindRectanglesCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

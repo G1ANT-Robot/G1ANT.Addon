@@ -8,7 +8,7 @@ namespace G1ANT.Language.Images
 {
 
     [Command(Name = "waitfor.image", Tooltip = "This command allows to wait for specified image in current screen view.", IsUnderConstruction = true)]
-    public class WaitForImage : Command
+    public class WaitForImageCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -40,7 +40,7 @@ namespace G1ANT.Language.Images
             public VariableStructure Result { get; set; } = new VariableStructure("result");
             
         }
-        public WaitForImage(AbstractScripter scripter) : base(scripter)
+        public WaitForImageCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

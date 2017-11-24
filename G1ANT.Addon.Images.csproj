@@ -63,11 +63,11 @@
     <Compile Include="Api\AForgeWrapper.cs" />
     <Compile Include="Api\Imaging.cs" />
     <Compile Include="Api\MatrixTransform.cs" />
-    <Compile Include="Commands\ImageExpected.cs" />
-    <Compile Include="Commands\ImageSharpen.cs" />
-    <Compile Include="Commands\ImageFind.cs" />
-    <Compile Include="Commands\ImageFindRectangles.cs" />
-    <Compile Include="Commands\WaitForImage.cs" />
+    <Compile Include="Commands\ImageExpectedCommand.cs" />
+    <Compile Include="Commands\ImageSharpenCommand.cs" />
+    <Compile Include="Commands\ImageFindCommand.cs" />
+    <Compile Include="Commands\ImageFindRectanglesCommand.cs" />
+    <Compile Include="Commands\WaitForImageCommand.cs" />
     <Compile Include="ImagesAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
