@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
 {
     [Addon(Name = "Tesseract",
         Tooltip = "Tesseract Commands")]
-    [CommandGroup(Name = "ocroffline", Icon = Properties.Resources.ocricon, Tooltip = "Tesseract based optical character recognition, does not need internet connection.")]
+    [CommandGroup(Name = "ocroffline",  Tooltip = "Tesseract based optical character recognition, does not need internet connection.")]
     public class TesseractAddon : Language.Addon
     {
     }

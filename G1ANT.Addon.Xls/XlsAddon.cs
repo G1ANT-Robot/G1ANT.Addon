@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Xls
 {
     [Addon(Name = "Xls",
         Tooltip = "Xls Commands")]
-    [CommandGroup(Name = "xls", Icon = Properties.Resources.excelicon, Tooltip = "Command connected with creating, editing and generally working on xls")]
+    [CommandGroup(Name = "xls", Tooltip = "Command connected with creating, editing and generally working on xls")]
 
     public class XlsAddon : Language.Addon
     {
