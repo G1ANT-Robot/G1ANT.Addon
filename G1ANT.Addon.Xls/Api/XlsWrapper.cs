@@ -226,12 +226,6 @@ namespace G1ANT.Addon.Xls
             sheet = GetSheetByName(name);
         }
 
-        public bool AddSheet(string name)
-        {
-            //TODO
-            return false;
-        }
-
         public bool Open(string filePath, string accessMode = "ReadWrite")
         {
             if (string.IsNullOrEmpty(accessMode))
