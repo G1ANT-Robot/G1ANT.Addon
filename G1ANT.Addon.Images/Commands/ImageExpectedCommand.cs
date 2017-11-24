@@ -2,12 +2,12 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using G1ANT.Language;
+using G1ANT.Language.Images;
 
 namespace G1ANT.Language.Images
 {
-    [Command(Name = "image.find", Tooltip = "This command allows to find provided image in another image (or part of the screen/entire screen)")]
-    public class ImageFind : Command
+    [Command(Name = "image.expected", Tooltip = "This command allows to confirm if image1 is exactly the same as image2")]
+    public class ImageExpectedCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -26,21 +26,12 @@ namespace G1ANT.Language.Images
             [Argument(Tooltip = "Tolerance threshold. By default 0, which means that the image has to match in 100%.")]
             public FloatStructure Threshold { get; set; } = new FloatStructure(0);
 
-            [Argument(Tooltip = "If specified, result point will be pointing at the middle of the found area.")]
-            public BooleanStructure CenterResult { get; set; } = new BooleanStructure(true);
-
-            [Argument(Tooltip = "Value that will be added to the result's X coordinate.")]
-            public IntegerStructure OffsetX { get; set; } = new IntegerStructure(0);
-
-            [Argument(Tooltip = "Value that will be added to the result's Y coordinate.")]
-            public IntegerStructure OffsetY { get; set; } = new IntegerStructure(0);
-
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
              
         }
-        public ImageFind(AbstractScripter scripter) : base(scripter)
+        public ImageExpectedCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {
@@ -56,22 +47,12 @@ namespace G1ANT.Language.Images
                                     bitmap1.PixelFormat) :
                                 Imaging.OpenImageFile(arguments.Image2.Value, nameof(arguments.Image2)))
             {
-                Rectangle foundRectangle = Imaging.IsImageInImage(bitmap1, bitmap2, (double)arguments.Threshold.Value);
 
 
-                if (foundRectangle == Rectangle.Empty)
-                {
-                    throw new ArgumentException("Image was not found in specified search area.");
-                }
-                else
-                {
-                    Point foundPoint = (!arguments.CenterResult.Value) ?
-                        new Point(foundRectangle.X, foundRectangle.Y) :
-                        new Point(foundRectangle.X + foundRectangle.Width / 2, foundRectangle.Y + foundRectangle.Height / 2);
-                    foundPoint = new Point(foundPoint.X + arguments.OffsetX.Value, foundPoint.Y + arguments.OffsetY.Value);
-                    Scripter.Variables.SetVariableValue(arguments.Result.Value, new PointStructure(foundPoint));
-                }
+                bool found = Rectangle.Empty != Imaging.IsImageInImage(bitmap1, bitmap2, (double)arguments.Threshold.Value);
+                Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(found));
             }
+
         }
     }
 }

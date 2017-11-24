@@ -1,6 +1,6 @@
 ﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Watson
+namespace G1ANT.Addon.Watson
 {
     [Command(Name = "watson.speechtotext", Tooltip = "This command allows to transcript speech from audio file.", NeedsDelay = true, IsUnderConstruction = true)]
     public class WatsonSpeechToTextCommand : Command

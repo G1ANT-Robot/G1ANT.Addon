@@ -1,7 +1,7 @@
 ﻿using G1ANT.Language;
 using System;
 
-namespace G1ANT.Language.Watson
+namespace G1ANT.Addon.Watson
 {
     [Command(Name = "watson.classifyimage", Tooltip = "This command allows to capture part of the screen and classify the image that was captured. ")]
     public class WatsonClassifyImageCommand : Command

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using G1ANT.Addon.Watson.Tests.Properties;
 
-namespace G1ANT.Language.Watson.Tests
+namespace G1ANT.Addon.Watson.Tests
 {
     [TestFixture]
     public class WatsonClassifyImageTests

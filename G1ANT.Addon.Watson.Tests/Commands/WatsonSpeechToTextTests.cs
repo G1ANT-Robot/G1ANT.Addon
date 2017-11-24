@@ -1,11 +1,13 @@
 ﻿using G1ANT.Addon.Watson.Tests.Properties;
 using G1ANT.Engine;
+using G1ANT.Language;
+using G1ANT.Addon.Watson;
 using NUnit.Framework;
 using System;
 using System.IO;
 using System.Reflection;
 
-namespace G1ANT.Language.Watson.Tests.Commands
+namespace G1ANT.Addon.Watson.Tests
 {
     [TestFixture]
     public class WatsonSpeechToTextTests
