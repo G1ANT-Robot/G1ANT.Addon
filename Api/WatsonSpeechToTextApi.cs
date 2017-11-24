@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Net;
 
-namespace G1ANT.Language.Watson
+namespace G1ANT.Addon.Watson
 {
     public class WatsonSpeechToTextApi
 	{

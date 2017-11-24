@@ -6,8 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-
-namespace G1ANT.Language.Watson
+using G1ANT.Language;
+namespace G1ANT.Addon.Watson
 {
     public class WatsonClassifyImageApi
     {
