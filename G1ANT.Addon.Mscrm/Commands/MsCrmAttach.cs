@@ -49,7 +49,7 @@ namespace G1ANT.Language.Mscrm
             throw new NotImplementedException();
             //TODO REPAIR
             //AddLog("Window '" + wrapper.Title + "' has been found");
-           // SetLastWindow(iHandle);
+            Scripter.LastWindow = (iHandle);
             RobotWin32.BringWindowToFront(iHandle);          
         }
     }
