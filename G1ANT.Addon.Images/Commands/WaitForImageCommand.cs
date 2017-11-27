@@ -54,7 +54,7 @@ namespace G1ANT.Language.Images
                 int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
                 long start = Environment.TickCount;
                 Rectangle foundRectangle = Rectangle.Empty;
-               //TODO while (Math.Abs(Environment.TickCount - start) < timeout && ShouldStopScript() == false && foundRectangle == Rectangle.Empty)
+                while (Math.Abs(Environment.TickCount - start) < timeout && Scripter.Stopped == false && foundRectangle == Rectangle.Empty)
                     while (Math.Abs(Environment.TickCount - start) < timeout && foundRectangle == Rectangle.Empty)
                     {
                     using (
