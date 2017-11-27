@@ -19,7 +19,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "If true then case sensitive")]
             public BooleanStructure MatchCase { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "If true tries to replace even if word is found as substring")]
+            [Argument(Tooltip = "If set to false, replaces given search even in substrings")]
             public BooleanStructure WholeWords { get; set; } = new BooleanStructure(false);
 
 
