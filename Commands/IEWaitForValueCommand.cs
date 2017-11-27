@@ -25,9 +25,9 @@ namespace G1ANT.Addon.IExplorer
             string result = string.Empty;
             IEWrapper ieWrapper = IEManager.CurrentIE;
 
-            while (Math.Abs(Environment.TickCount - start) < timeout && 
-                 //  G1ANT.Language.Command.ShouldStopScript() == false &&
-                    result.ToLower() != arguments.ExpectedValue?.Value?.ToLower()) //TODO SchouldStopScript not existing in Command.cs
+            while (Math.Abs(Environment.TickCount - start) < timeout &&
+                   Scripter.Stopped == false &&
+                    result.ToLower() != arguments.ExpectedValue?.Value?.ToLower()) 
             {
                 try
                 {
