@@ -8,7 +8,7 @@ namespace G1ANT.Addon.MSOffice.Tests
 {
     [TestFixture]
     [Apartment(ApartmentState.STA)]
-    public class ExcelInsertColumnTests
+    public class ExcelInsertcolindexumnTests
     {
 
         static Scripter scripter;
@@ -41,16 +41,16 @@ namespace G1ANT.Addon.MSOffice.Tests
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
-        public void ExcelInsertColumnTest()
+        public void ExcelInsertcolindexumnTest()
         {
-            scripter.RunLine("excel.setvalue aaa row 1 col 1");
-            scripter.RunLine("excel.setvalue bbb row 1 col 2");
-            scripter.RunLine("excel.insertcolumn column 1 where after");
-            scripter.RunLine("excel.getvalue row 1 col 3");
+            scripter.RunLine("excel.setvalue aaa row 1 colindex 1");
+            scripter.RunLine("excel.setvalue bbb row 1 colindex 2");
+            scripter.RunLine("excel.insertcolindexumn colindexumn 1 where after");
+            scripter.RunLine("excel.getvalue row 1 colindex 3");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
 
-            scripter.RunLine("excel.removecolumn column 2");
-            scripter.RunLine("excel.insertcolumn column b where before");
+            scripter.RunLine("excel.removecolindexumn colindexumn 2");
+            scripter.RunLine("excel.insertcolindexumn colindexumn b where before");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
         }
 
@@ -59,7 +59,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ExcelInsertRowFailTest()
         {
 
-            scripter.Text = "excel.insertcolumn column 1 where haha";
+            scripter.Text = "excel.insertcolindexumn colindexumn 1 where haha";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -72,7 +72,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ExcelInsertRowFail2Test()
         {
 
-            scripter.Text = "excel.insertcolumn column 0 where after";
+            scripter.Text = "excel.insertcolindexumn colindexumn 0 where after";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

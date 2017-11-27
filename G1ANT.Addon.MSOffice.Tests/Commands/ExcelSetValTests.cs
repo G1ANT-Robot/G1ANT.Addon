@@ -54,18 +54,18 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelSetValTest()
         {
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}strVal row 1 col 1");
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}intVal row 1 col 2");
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}fVal row 1 col 3");
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}formula row 1 col 4");
+            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}strVal row 1 colindex 1");
+            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}intVal row 1 colindex 2");
+            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}fVal row 1 colindex 3");
+            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}formula row 1 colindex 4");
 
-            scripter.RunLine("excel.getvalue row 1 col 1");
+            scripter.RunLine("excel.getvalue row 1 colindex 1");
             Assert.AreEqual(stringVal, scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.getvalue row 1 col 2");
+            scripter.RunLine("excel.getvalue row 1 colindex 2");
             Assert.AreEqual(intVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-            scripter.RunLine("excel.getvalue row 1 col 3");
+            scripter.RunLine("excel.getvalue row 1 colindex 3");
             Assert.AreEqual(fVal, float.Parse(scripter.Variables.GetVariableValue<string>("result").Replace(",", ".")));
-            scripter.RunLine($"excel.getvalue row 1 col 4 result {SpecialChars.Variable}product");
+            scripter.RunLine($"excel.getvalue row 1 colindex 4 result {SpecialChars.Variable}product");
             Assert.AreEqual(intVal * fVal, float.Parse(scripter.Variables.GetVariableValue<string>("product").Replace(",", ".")), 0.0001);
         }
 

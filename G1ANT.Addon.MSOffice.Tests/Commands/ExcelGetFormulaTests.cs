@@ -55,7 +55,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelgetFormulaTest()
         {
-            scripter.RunLine("excel.getformula row 1 col 3");
+            scripter.RunLine("excel.getformula row 1 colindex 3");
             Assert.AreEqual(formula, scripter.Variables.GetVariableValue<string>("result"));
         }
 
@@ -63,7 +63,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelgetFormula2Test()
         {
-            scripter.RunLine("excel.getformula row 10 col 10");
+            scripter.RunLine("excel.getformula row 10 colindex 10");
             Assert.AreEqual(string.Empty, scripter.Variables.GetVariableValue<string>("result"));
         }
 
@@ -71,7 +71,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelgetFormula3Test()
         {
-            scripter.Text = "excel.getformula row -1 col 10";
+            scripter.Text = "excel.getformula row -1 colindex 10";
             Exception exception = Assert.Throws<ApplicationException>(delegate
                 {
                     scripter.Run();
@@ -83,7 +83,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelgetFormula5Test()
         {
-            scripter.Text = $"excel.getformula row -1 col żd2";
+            scripter.Text = $"excel.getformula row -1 colindex żd2";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

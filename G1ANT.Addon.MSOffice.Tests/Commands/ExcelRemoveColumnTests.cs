@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
 {
     [TestFixture]
     [Apartment(ApartmentState.STA)]
-    public class ExcelRemoveColumnTests
+    public class ExcelRemovecolindexumnTests
     {
         static Scripter scripter;
 
@@ -45,24 +45,24 @@ namespace G1ANT.Addon.MSOffice.Tests
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
-        public void ExcelRemoveColumnTest()
+        public void ExcelRemovecolindexumnTest()
         {
-            scripter.RunLine("excel.setvalue aaa row 1 col 1");
-            scripter.RunLine("excel.setvalue bbb row 1 col 2");
-            scripter.RunLine("excel.insertcolumn column 1 where after");
-            scripter.RunLine("excel.removecolumn column 2");
-            scripter.RunLine("excel.getvalue row 1 col 2");
+            scripter.RunLine("excel.setvalue aaa row 1 colindex 1");
+            scripter.RunLine("excel.setvalue bbb row 1 colindex 2");
+            scripter.RunLine("excel.insertcolindexumn colindexumn 1 where after");
+            scripter.RunLine("excel.removecolindexumn colindexumn 2");
+            scripter.RunLine("excel.getvalue row 1 colindex 2");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.insertcolumn column 2 where before");
-            scripter.RunLine("excel.removecolumn column b");
-            scripter.RunLine("excel.getvalue row 1 col 2");
+            scripter.RunLine("excel.insertcolindexumn colindexumn 2 where before");
+            scripter.RunLine("excel.removecolindexumn colindexumn b");
+            scripter.RunLine("excel.getvalue row 1 colindex 2");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
         }
 
         [Test]
-        public void ExcelRemoveColumnFailTest()
+        public void ExcelRemovecolindexumnFailTest()
         {
-                scripter.Text = "excel.removecolumn column hadhaad2radfa";
+                scripter.Text = "excel.removecolindexumn colindexumn hadhaad2radfa";
                 Exception exception = Assert.Throws<ApplicationException>(delegate
                 {
                     scripter.Run();

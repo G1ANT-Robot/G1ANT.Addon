@@ -50,18 +50,18 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             scripter.RunLine($"excel.addsheet {SpecialChars.Variable}TestSheet");
             scripter.RunLine($"excel.activatesheet {SpecialChars.Variable}TestSheet");
-            scripter.RunLine("excel.setvalue 1 col 1 row 1");
-            scripter.RunLine($"excel.getvalue row 1 col 1 result {SpecialChars.Variable}valTest");
+            scripter.RunLine("excel.setvalue 1 colindex 1 row 1");
+            scripter.RunLine($"excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}valTest");
             Assert.AreEqual(1, int.Parse(scripter.Variables.GetVariableValue<string>("valTest")));
 
             scripter.RunLine($"excel.addsheet {SpecialChars.Variable}otherSheet");
             scripter.RunLine($"excel.activatesheet {SpecialChars.Variable}otherSheet");
-            scripter.RunLine("excel.setvalue 5 col 1 row 1");
-            scripter.RunLine($"excel.getvalue row 1 col 1 result {SpecialChars.Variable}valOther");
+            scripter.RunLine("excel.setvalue 5 colindex 1 row 1");
+            scripter.RunLine($"excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}valOther");
             Assert.AreEqual(5, int.Parse(scripter.Variables.GetVariableValue<string>("valOther")));
 
             scripter.RunLine($"excel.activatesheet {SpecialChars.Variable}TestSheet");
-            scripter.RunLine($"excel.getvalue row 1 col 1 result {SpecialChars.Variable}val");
+            scripter.RunLine($"excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}val");
             Assert.AreEqual(1, int.Parse(scripter.Variables.GetVariableValue<string>("val")));
         }
 

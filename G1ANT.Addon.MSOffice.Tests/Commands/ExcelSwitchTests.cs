@@ -56,17 +56,17 @@ namespace G1ANT.Addon.MSOffice.Tests
 		public void ExcelSwitchTest()
 		{
 			scripter.RunLine($"excel.switch {SpecialChars.Variable}id");
-			scripter.RunLine($"excel.setvalue {SpecialChars.Variable}val row 1 col 1");
+			scripter.RunLine($"excel.setvalue {SpecialChars.Variable}val row 1 colindex 1");
 			scripter.RunLine($"excel.switch {SpecialChars.Variable}id2");
-			scripter.RunLine("excel.getvalue row 1 col 1");
+			scripter.RunLine("excel.getvalue row 1 colindex 1");
 			Assert.AreNotEqual(someVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
 			scripter.RunLine("excel.activatesheet Macro");
-			scripter.RunLine($"excel.getvalue row 6 col 2 result {SpecialChars.Variable}val2");
+			scripter.RunLine($"excel.getvalue row 6 colindex 2 result {SpecialChars.Variable}val2");
 			scripter.RunLine($"excel.switch {SpecialChars.Variable}id");
-			scripter.RunLine("excel.getvalue row 1 col 1");
+			scripter.RunLine("excel.getvalue row 1 colindex 1");
 			Assert.AreEqual(someVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
 			scripter.RunLine($"excel.switch {SpecialChars.Variable}id2");
-			scripter.RunLine("excel.getvalue row 6 col 2");
+			scripter.RunLine("excel.getvalue row 6 colindex 2");
             Assert.AreEqual(int.Parse(scripter.Variables.GetVariableValue<string>("val2")), int.Parse(scripter.Variables.GetVariableValue<string>("result")));
 		}
 

@@ -60,19 +60,19 @@ namespace G1ANT.Addon.MSOffice.Tests
                 scripter.RunLine("excel.open");
                 scripter.RunLine("excel.addsheet test1");
                 scripter.RunLine("excel.activatesheet test1");
-                scripter.RunLine("excel.setvalue 3 row 1 col 1");
+                scripter.RunLine("excel.setvalue 3 row 1 colindex 1");
                 scripter.RunLine("excel.addsheet test2");
                 scripter.RunLine("excel.activatesheet test2");
-                scripter.RunLine("excel.setvalue 5 row 2 col 1");
+                scripter.RunLine("excel.setvalue 5 row 2 colindex 1");
                 scripter.RunLine($"excel.save {SpecialChars.Variable}savePath");
                 scripter.RunLine("excel.close");
 
                 scripter.RunLine($"excel.open {SpecialChars.Variable}savePath");
                 scripter.RunLine("excel.activatesheet test1");
-                scripter.RunLine("excel.getvalue row 1 col 1");
+                scripter.RunLine("excel.getvalue row 1 colindex 1");
                 Assert.AreEqual(3, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
                 scripter.RunLine("excel.activatesheet test2");
-                scripter.RunLine("excel.getvalue row 2 col 1");
+                scripter.RunLine("excel.getvalue row 2 colindex 1");
                 Assert.AreEqual(5, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
                 scripter.RunLine("excel.close");
             }

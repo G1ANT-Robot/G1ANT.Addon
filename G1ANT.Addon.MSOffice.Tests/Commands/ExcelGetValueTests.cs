@@ -49,11 +49,11 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetValueTest()
         {
-            scripter.RunLine("excel.getvalue row 1 col 1");
+            scripter.RunLine("excel.getvalue row 1 colindex 1");
             Assert.AreEqual(3, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-            scripter.RunLine("excel.getvalue row 1 col 2");
+            scripter.RunLine("excel.getvalue row 1 colindex 2");
             Assert.AreEqual(4, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-            scripter.RunLine("excel.getvalue row 1 col 3");
+            scripter.RunLine("excel.getvalue row 1 colindex 3");
             Assert.AreEqual(7, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
         }
 
@@ -61,7 +61,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetValueFailTest()
         {
-            scripter.Text = "excel.getvalue row 0 col 1";
+            scripter.Text = "excel.getvalue row 0 colindex 1";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -73,7 +73,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetValueFail2Test()
         {
-            scripter.Text = "excel.getvalue row 1 col 0";
+            scripter.Text = "excel.getvalue row 1 colindex 0";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

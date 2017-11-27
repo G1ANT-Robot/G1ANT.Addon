@@ -44,11 +44,11 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelInsertRowTest()
         {
-            scripter.RunLine("excel.setvalue aaa row 1 col 1");
-            scripter.RunLine("excel.setvalue bbb row 2 col 1");
+            scripter.RunLine("excel.setvalue aaa row 1 colindex 1");
+            scripter.RunLine("excel.setvalue bbb row 2 colindex 1");
             scripter.RunLine("excel.insertrow row 1 where below");
             scripter.RunLine("excel.removerow row 2");
-            scripter.RunLine("excel.getvalue row 2 col 1");
+            scripter.RunLine("excel.getvalue row 2 colindex 1");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
         }
 

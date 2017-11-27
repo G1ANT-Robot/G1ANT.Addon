@@ -54,7 +54,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ExcelDuplicateRowTest()
         {
             scripter.RunLine("excel.duplicaterow source 1 destination 2");
-            scripter.RunLine("excel.getvalue row 2 col 1");
+            scripter.RunLine("excel.getvalue row 2 colindex 1");
             Assert.AreEqual(3, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
         }
 
@@ -64,7 +64,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
 
             scripter.RunLine("excel.duplicaterow source 1 destination 2");
-            scripter.Text = "excel.getvalue row 0 col 1";
+            scripter.Text = "excel.getvalue row 0 colindex 1";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -79,7 +79,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
 
             scripter.RunLine("excel.duplicaterow source 1 destination 2");
-            scripter.Text = "excel.getvalue row -1 col -1";
+            scripter.Text = "excel.getvalue row -1 colindex -1";
             Exception exception = Assert.Throws<ApplicationException>(delegate
                 {
                     scripter.Run();

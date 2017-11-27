@@ -53,22 +53,22 @@ namespace G1ANT.Addon.MSOffice.Tests
             string thirtyTwo = 32.ToString();
 
 			scripter.RunLine($"excel.importtext path {SpecialChars.Variable}csvPath delimiter ,");
-			scripter.RunLine("excel.getvalue row 2 col 1");
+			scripter.RunLine("excel.getvalue row 2 colindex 1");
 			Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result"));
-			scripter.RunLine("excel.getvalue row 3 col 2");
+			scripter.RunLine("excel.getvalue row 3 colindex 2");
 			Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result"));
 
             scripter.RunLine($"excel.importtext path {SpecialChars.Variable}csvPath destination D1 delimiter ,");
-            scripter.RunLine("excel.getvalue row 2 col 4");
+            scripter.RunLine("excel.getvalue row 2 colindex 4");
             Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.getvalue row 3 col 5");
+            scripter.RunLine("excel.getvalue row 3 colindex 5");
             Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result"));
             
             // passing point by command parameter has to be fixed, i'm aware of the fact that it's not working for now, fogbugz case created
             scripter.RunLine($"excel.importtext path {SpecialChars.Variable}csvPath destination (point)4,1 delimiter ,");
-            scripter.RunLine("excel.getvalue row 5 col 1");
+            scripter.RunLine("excel.getvalue row 5 colindex 1");
             Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.getvalue row 6 col 2");
+            scripter.RunLine("excel.getvalue row 6 colindex 2");
             Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result"));
         }
 

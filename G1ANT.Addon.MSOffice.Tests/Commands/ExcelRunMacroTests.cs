@@ -38,8 +38,8 @@ namespace G1ANT.Addon.MSOffice.Tests
         static string sheetName = "Macro";
         static string macroName = "Calculate";
         static int calculationRow = 6;
-        static int calculationValueToBeCountedColumn = 2;
-        static int calculationValueExpectedColumn = 1;
+        static int calculationValueToBeCountedcolindexumn = 2;
+        static int calculationValueExpectedcolindexumn = 1;
 
         [OneTimeSetUp]
         public static void ClassInit()
@@ -63,15 +63,15 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelRunMacroCalculationTest()
         {
-            scripter.RunLine($"excel.setvalue {SpecialChars.Text}{SpecialChars.Text} row {calculationRow} col {calculationValueToBeCountedColumn}");
+            scripter.RunLine($"excel.setvalue {SpecialChars.Text}{SpecialChars.Text} row {calculationRow} colindex {calculationValueToBeCountedcolindexumn}");
             scripter.RunLine($"excel.runmacro {SpecialChars.Variable}macroName");
-            scripter.RunLine($"excel.getvalue row {calculationRow} col {calculationValueExpectedColumn}");
+            scripter.RunLine($"excel.getvalue row {calculationRow} colindex {calculationValueExpectedcolindexumn}");
             int expectedValue = 0;
             Assert.AreEqual(expectedValue, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
 
-            scripter.RunLine($"excel.setvalue {SpecialChars.Text}4{SpecialChars.Text} row {calculationRow} col {calculationValueToBeCountedColumn}");
+            scripter.RunLine($"excel.setvalue {SpecialChars.Text}4{SpecialChars.Text} row {calculationRow} colindex {calculationValueToBeCountedcolindexumn}");
             scripter.RunLine($"excel.runmacro {SpecialChars.Variable}macroName");
-            scripter.RunLine($"excel.getvalue row {calculationRow} col {calculationValueExpectedColumn}");
+            scripter.RunLine($"excel.getvalue row {calculationRow} colindex {calculationValueExpectedcolindexumn}");
             expectedValue = 40;
             Assert.AreEqual(expectedValue, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
         }
