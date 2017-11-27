@@ -51,10 +51,10 @@ namespace G1ANT.Addon.IExplorer.Tests
             try
             {
                 scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
-                            ie.open result result3
-                            ie.open result result4
+                            ie.open result {SpecialChars.Variable}result1
+                            ie.open result {SpecialChars.Variable}result2
+                            ie.open result {SpecialChars.Variable}result3
+                            ie.open result {SpecialChars.Variable}result4
                             ie.switch {SpecialChars.Variable}result1
                             ie.close
                             ie.switch {SpecialChars.Variable}result2
@@ -75,9 +75,9 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void IECloseFailureTest()
         {
             scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
-                            ie.open result result3                            
+                            ie.open result {SpecialChars.Variable}result1
+                            ie.open result {SpecialChars.Variable}result2
+                            ie.open result {SpecialChars.Variable}result3                            
                             ie.switch {SpecialChars.Variable}result1
                             ie.close
                             ie.switch {SpecialChars.Variable}result2
@@ -96,9 +96,9 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void IECloseFailIeNotOpenedTest()
         {
             scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
-                            ie.open result result3
+                            ie.open result {SpecialChars.Variable}result1
+                            ie.open result {SpecialChars.Variable}result2
+                            ie.open result {SpecialChars.Variable}result3
                             ie.switch {SpecialChars.Variable}result1
                             ie.close
                             ie.switch {SpecialChars.Variable}result2

@@ -77,7 +77,7 @@ namespace G1ANT.Addon.Xls.Tests
 
             for (int i = 0; i < filesCount; i++)
             {
-                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result id");
+                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result {SpecialChars.Variable}id");
                 xlsIds[i] = scripter.Variables.GetVariableValue<int>("id");
             }
 
@@ -88,7 +88,7 @@ namespace G1ANT.Addon.Xls.Tests
             {
                 int id = randomGenerator.Next(filesCount);
 
-                scripter.RunLine($"xls.switch {xlsIds[id]} result hasSwitched");
+                scripter.RunLine($"xls.switch {xlsIds[id]} result {SpecialChars.Variable}hasSwitched");
                 Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("hasSwitched"));
             }
 
@@ -112,7 +112,7 @@ namespace G1ANT.Addon.Xls.Tests
                 {
                     Assert.Inconclusive($"File '{filePaths[i]}' is different than original before editting");
                 }
-                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result id");
+                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result {SpecialChars.Variable}id");
                 xlsIds[i] = scripter.Variables.GetVariableValue<int>("id");
             }
 

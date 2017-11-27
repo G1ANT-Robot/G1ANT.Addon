@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsSetSheetDefault()
         {
-            scripter.RunLine($"xls.setsheet result res");
+            scripter.RunLine($"xls.setsheet result {SpecialChars.Variable}res");
             Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("res"));
         }
 
@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsSetSheetCustom()
         {
-            scripter.RunLine($"xls.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result res");
+            scripter.RunLine($"xls.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result {SpecialChars.Variable}res");
             Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("res"));
         }
 
@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void SetNotExistingSheet()
         {
-            scripter.Text = "xls.setsheet a!@#$poq098239 result res";
+            scripter.Text = "xls.setsheet a!@#$poq098239 result {SpecialChars.Variable}res";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -60,7 +60,7 @@ namespace G1ANT.Addon.Xls.Tests
         public void TestInit()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
-            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result id");
+            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
         }
 
         [TearDown]

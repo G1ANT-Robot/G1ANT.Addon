@@ -35,7 +35,7 @@ namespace G1ANT.Addon.IExplorer.Tests
             scripter.Text = $@"
                             ie.open {pageAddress}
                             ie.click search {SpecialChars.Text}a.gb_P[href='https://mail.google.com/mail/?tab=wm']{SpecialChars.Text} by query timeout 30000
-                            ie.gettitle result {titleVariable}";
+                            ie.gettitle result {SpecialChars.Variable}{titleVariable}";
             scripter.Run();
             string title = scripter.Variables.GetVariableValue<string>(titleVariable, string.Empty, true)?.ToLower();
             Assert.IsTrue(title.Contains(titleShouldContain));
@@ -47,7 +47,7 @@ namespace G1ANT.Addon.IExplorer.Tests
             scripter.Text = $@"
                             ie.open {pageAddress} timeout 20000
                             ie.click search {SpecialChars.Text}asd ga gas{SpecialChars.Text} by query nowait true
-                            ie.gettitle result title";
+                            ie.gettitle result {SpecialChars.Variable}title";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {

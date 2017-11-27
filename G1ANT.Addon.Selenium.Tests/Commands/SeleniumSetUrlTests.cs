@@ -41,10 +41,10 @@ namespace G1ANT.Addon.Selenium.Tests
                     selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result1
+                    selenium.gettitle result {SpecialChars.Variable}result1
                     selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result2
+                    selenium.gettitle result {SpecialChars.Variable}result2
                     selenium.close
                 ";
             scripter.Run();
@@ -56,10 +56,10 @@ namespace G1ANT.Addon.Selenium.Tests
                     selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result1
+                    selenium.gettitle result {SpecialChars.Variable}result1
                     selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result2
+                    selenium.gettitle result {SpecialChars.Variable}result2
                     selenium.close
                 ";
             scripter.Run();
@@ -71,10 +71,10 @@ namespace G1ANT.Addon.Selenium.Tests
                     selenium.open type {SpecialChars.Text}edge{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result1
+                    selenium.gettitle result {SpecialChars.Variable}result1
                     selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result2
+                    selenium.gettitle result {SpecialChars.Variable}result2
                     selenium.close
                 ";
             scripter.Run();
@@ -86,10 +86,10 @@ namespace G1ANT.Addon.Selenium.Tests
                     selenium.open type {SpecialChars.Text}ie{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#column1').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result1
+                    selenium.gettitle result {SpecialChars.Variable}result1
                     selenium.seturl url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('img[src=""/bundles/webhqminrolbiplayout/images/bip-logo.png""]').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
-                    selenium.gettitle result result2
+                    selenium.gettitle result {SpecialChars.Variable}result2
                     selenium.close
                 ";
             scripter.Run();

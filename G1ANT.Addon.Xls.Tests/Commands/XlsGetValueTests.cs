@@ -31,8 +31,8 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsGetValueIntTest()
         {
-            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result id");
-            scripter.RunLine($"xls.getvalue {SpecialChars.Text}A1{SpecialChars.Text} result testint");
+            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
+            scripter.RunLine($"xls.getvalue {SpecialChars.Text}A1{SpecialChars.Text} result {SpecialChars.Variable}testint");
             Assert.AreEqual("1234", scripter.Variables.GetVariableValue<string>("testint"));
         }
 
@@ -40,8 +40,8 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsGetValueStringTest()
         {
-            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result id");
-            scripter.RunLine($"xls.getvalue {SpecialChars.Text}B1{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
+            scripter.RunLine($"xls.getvalue {SpecialChars.Text}B1{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("abcd", scripter.Variables.GetVariableValue<string>("teststring"));
         }
 
@@ -49,8 +49,8 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void GetFloatValue()
         {
-            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result id");
-            scripter.RunLine($"xls.getvalue {SpecialChars.Text}G2{SpecialChars.Text} result testfloat");
+            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
+            scripter.RunLine($"xls.getvalue {SpecialChars.Text}G2{SpecialChars.Text} result {SpecialChars.Variable}testfloat");
             Assert.AreEqual(12.345f, float.Parse(scripter.Variables.GetVariableValue<string>("testfloat")));
         }
         [TearDown]

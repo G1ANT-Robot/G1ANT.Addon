@@ -26,7 +26,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsSetValueInd()
         {
-            scripter.RunLine($"xls.setvalue value {SpecialChars.Text}123{SpecialChars.Text} position {SpecialChars.Text}F3{SpecialChars.Text} result res");
+            scripter.RunLine($"xls.setvalue value {SpecialChars.Text}123{SpecialChars.Text} position {SpecialChars.Text}F3{SpecialChars.Text} result {SpecialChars.Variable}res");
             Assert.AreNotEqual(false, scripter.Variables.GetVariableValue<bool>("res"));
         }
 
@@ -35,7 +35,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsSetValueString()
         {
-            scripter.RunLine($"xls.setvalue value {SpecialChars.Text}test{SpecialChars.Text} position {SpecialChars.Text}F4{SpecialChars.Text} result res");
+            scripter.RunLine($"xls.setvalue value {SpecialChars.Text}test{SpecialChars.Text} position {SpecialChars.Text}F4{SpecialChars.Text} result {SpecialChars.Variable}res");
             Assert.AreNotEqual(false, scripter.Variables.GetVariableValue<bool>("res"));
         }
 
@@ -47,7 +47,7 @@ namespace G1ANT.Addon.Xls.Tests
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             scripter = new Scripter();
             scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
-            scripter.RunLine("xls.open ♥xlsPath result id");
+            scripter.RunLine($"xls.open ♥xlsPath result {SpecialChars.Variable}id");
         }
 
         [OneTimeTearDown]

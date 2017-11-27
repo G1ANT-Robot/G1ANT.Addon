@@ -1,5 +1,6 @@
 ﻿
 using G1ANT.Engine;
+using G1ANT.Language;
 using NUnit.Framework;
 using System;
 using System.Threading;
@@ -31,7 +32,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open
                             ie.seturl google.pl nowait true
                             ie.waitforcomplete timeout 20000
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             var title = scripter.Variables.GetVariableValue<string>("title").ToLower();
@@ -45,7 +46,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open
                             ie.seturl tibia.com nowait true
                             ie.waitforcomplete timeout 20000
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             var title = scripter.Variables.GetVariableValue<string>("title").ToLower();
@@ -59,7 +60,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open
                             ie.seturl yahoo.com nowait true
                             ie.waitforcomplete timeout 20000
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             var title = scripter.Variables.GetVariableValue<string>("title").ToLower();

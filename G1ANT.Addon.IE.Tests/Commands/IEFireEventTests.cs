@@ -33,7 +33,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text}
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""q""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
                             ie.fireevent eventname {SpecialChars.Text}onclick{SpecialChars.Text} search {SpecialChars.Text}a.gb_P[href='https://mail.google.com/mail/?tab=wm']{SpecialChars.Text} by query timeout 15000
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ie.close";
             scripter.Run();
             string title = scripter.Variables.GetVariableValue<string>("title", string.Empty, true)?.ToLower();
@@ -48,7 +48,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text} timeout 20000
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""q""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
                             ie.fireevent eventname {SpecialChars.Text}onclick{SpecialChars.Text} search {SpecialChars.Text}abc cba dec{SpecialChars.Text} by jquery timeout 15000
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ie.close";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -65,7 +65,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text}
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""q""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
                             ie.fireevent eventname {SpecialChars.Text}onclick{SpecialChars.Text} search {SpecialChars.Text}asd ga gas{SpecialChars.Text} by abc nowait true
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ie.close";
                 Exception exception = Assert.Throws<ApplicationException>(delegate
                 {

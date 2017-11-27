@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Xls.Tests
         {            
             int rowCount;
             scripter.RunLine($"xls.open {SpecialChars.Text}{file}{SpecialChars.Text}");
-            scripter.RunLine($"xls.countrows result {nameof(rowCount)}");
+            scripter.RunLine($"xls.countrows result {SpecialChars.Variable}{nameof(rowCount)}");
             rowCount = scripter.Variables.GetVariableValue<int>(nameof(rowCount), -1, true);
             Assert.AreEqual(4, rowCount);
         }
@@ -47,7 +47,7 @@ namespace G1ANT.Addon.Xls.Tests
         {
             int rowCount;
             scripter.RunLine($"xls.open {SpecialChars.Text}{file2}{SpecialChars.Text}");
-            scripter.RunLine($"xls.countrows result {nameof(rowCount)}");
+            scripter.RunLine($"xls.countrows result {SpecialChars.Variable}{nameof(rowCount)}");
             rowCount = scripter.Variables.GetVariableValue<int>(nameof(rowCount), -1, true);
             NUnit.Framework.Assert.AreEqual(0, rowCount);
         }

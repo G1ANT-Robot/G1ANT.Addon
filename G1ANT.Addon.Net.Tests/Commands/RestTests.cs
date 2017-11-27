@@ -67,10 +67,10 @@ namespace G1ANT.Addon.Net.Tests
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers parameters {SpecialChars.Variable}params timeout {TestTimeout}");
             string resultJson = scripter.Variables.GetVariableValue<string>("result");
 
-            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Encoding-Language'] result json1");
+            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Encoding-Language'] result {SpecialChars.Variable}json1");
             Assert.AreEqual("foo", scripter.Variables.GetVariableValue<string>("json1"));
 
-            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Version'] result json2");
+            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Version'] result {SpecialChars.Variable}json2");
             Assert.AreEqual("3.0", scripter.Variables.GetVariableValue<string>("json2"));
 
             url = "https://httpbin.org/get";

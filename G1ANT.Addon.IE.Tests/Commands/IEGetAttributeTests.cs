@@ -32,7 +32,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open timeout 20000
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text} timeout 20000
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""q""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
-                            ie.getattribute name {SpecialChars.Text}title{SpecialChars.Text} search {SpecialChars.Text}lst-ib{SpecialChars.Text} by id result title
+                            ie.getattribute name {SpecialChars.Text}title{SpecialChars.Text} search {SpecialChars.Text}lst-ib{SpecialChars.Text} by id result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             string title = scripter.Variables.GetVariableValue<string>("title", string.Empty, true)?.ToLower();
@@ -46,7 +46,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open timeout 20000
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text} timeout 20000
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""q""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
-                            ie.getattribute name {SpecialChars.Text}aabbcc{SpecialChars.Text} search {SpecialChars.Text}lst-ib{SpecialChars.Text} by id result title
+                            ie.getattribute name {SpecialChars.Text}aabbcc{SpecialChars.Text} search {SpecialChars.Text}lst-ib{SpecialChars.Text} by id result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             string title = scripter.Variables.GetVariableValue<string>("title", string.Empty, true)?.ToLower();

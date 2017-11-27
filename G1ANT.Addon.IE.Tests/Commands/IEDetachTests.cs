@@ -28,8 +28,8 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void IEDetachSuccessTest()
         {
             scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
+                            ie.open result {SpecialChars.Variable}result1
+                            ie.open result {SpecialChars.Variable}result2
                             ie.switch {SpecialChars.Variable}result1
                             ie.detach
                             ie.switch {SpecialChars.Variable}result2
@@ -43,8 +43,8 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void IEDetachFailureTest()
         {
             scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
+                            ie.open result {SpecialChars.Variable}result1
+                            ie.open result {SpecialChars.Variable}result2
                             ie.switch {SpecialChars.Variable}result1
                             ie.detach
                             ie.close

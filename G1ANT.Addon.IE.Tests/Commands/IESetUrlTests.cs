@@ -33,7 +33,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open
                             ie.seturl google.pl
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('input[name=""q""]').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             var title = scripter.Variables.GetVariableValue<string>("title").ToLower();

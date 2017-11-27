@@ -65,7 +65,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             Assert.AreEqual(intVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
             scripter.RunLine("excel.getvalue row 1 col 3");
             Assert.AreEqual(fVal, float.Parse(scripter.Variables.GetVariableValue<string>("result").Replace(",", ".")));
-            scripter.RunLine("excel.getvalue row 1 col 4 result product");
+            scripter.RunLine($"excel.getvalue row 1 col 4 result {SpecialChars.Variable}product");
             Assert.AreEqual(intVal * fVal, float.Parse(scripter.Variables.GetVariableValue<string>("product").Replace(",", ".")), 0.0001);
         }
 

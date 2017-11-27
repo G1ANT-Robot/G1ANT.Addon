@@ -31,7 +31,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text}
                             ie.waitforvalue script {SpecialChars.Text}document.querySelectorAll('#lst-ib').length > 0{SpecialChars.Text} timeout 15000 expectedvalue true
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ";
             scripter.Run();
             string title = scripter.Variables.GetVariableValue<string>("title", string.Empty, true)?.ToLower();
@@ -45,7 +45,7 @@ namespace G1ANT.Addon.IExplorer.Tests
                             ie.open
                             ie.seturl {SpecialChars.Text}google.pl{SpecialChars.Text}
                             ie.close
-                            ie.gettitle result title
+                            ie.gettitle result {SpecialChars.Variable}title
                             ";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {

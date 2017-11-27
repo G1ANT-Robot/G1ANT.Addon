@@ -35,7 +35,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
 
             Scripter scripter = new Scripter();
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
-            scripter.RunLine($"ocrabbyy.find {SpecialChars.Text}{numberRegex}{SpecialChars.Text} result {nameof(allNumbers)}");
+            scripter.RunLine($"ocrabbyy.find {SpecialChars.Text}{numberRegex}{SpecialChars.Text} result {SpecialChars.Variable}{nameof(allNumbers)}");
             allNumbers = scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(allNumbers));
             Assert.AreNotEqual(0, allNumbers.Count);
         }

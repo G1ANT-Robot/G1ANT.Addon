@@ -34,7 +34,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         {
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
             List<GStruct.Structure> paragraphs;
-            scripter.RunLine($"ocrabbyy.gettextparagraphs result {nameof(paragraphs)}");
+            scripter.RunLine($"ocrabbyy.gettextparagraphs result {SpecialChars.Variable}{nameof(paragraphs)}");
             paragraphs = scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(paragraphs));
             Assert.IsNotNull(paragraphs);
             Assert.AreNotEqual(0, paragraphs.Count);

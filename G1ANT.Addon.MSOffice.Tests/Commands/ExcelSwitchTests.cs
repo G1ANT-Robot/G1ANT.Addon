@@ -47,8 +47,8 @@ namespace G1ANT.Addon.MSOffice.Tests
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
             scripter.Variables.SetVariableValue("xlsPath", new TextStructure(xlsPath));
             scripter.Variables.SetVariableValue("val", new IntegerStructure(someVal));
-            scripter.RunLine($"excel.open {SpecialChars.Text}{SpecialChars.Text} result id");
-            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath sheet Add result id2");
+            scripter.RunLine($"excel.open {SpecialChars.Text}{SpecialChars.Text} result {SpecialChars.Variable}id");
+            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath sheet Add result {SpecialChars.Variable}id2");
         }
 
         [Test]

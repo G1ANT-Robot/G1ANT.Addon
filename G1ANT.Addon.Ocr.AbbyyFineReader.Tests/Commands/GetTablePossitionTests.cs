@@ -34,10 +34,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
 
             string egyptPosition;
-            scripter.RunLine($"ocrabbyy.gettableposition Egypt tableindex 0 result {nameof(egyptPosition)}");
+            scripter.RunLine($"ocrabbyy.gettableposition Egypt tableindex 0 result {SpecialChars.Variable}{nameof(egyptPosition)}");
             egyptPosition = ((GStruct.TextStructure)scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(egyptPosition))[0]).Value;
             string NigeriaPosition;
-            scripter.RunLine($"ocrabbyy.gettableposition Nigeria tableindex 0 result {nameof(NigeriaPosition)}");
+            scripter.RunLine($"ocrabbyy.gettableposition Nigeria tableindex 0 result {SpecialChars.Variable}{nameof(NigeriaPosition)}");
             NigeriaPosition = ((GStruct.TextStructure)scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(NigeriaPosition))[0]).Value;
             Assert.AreEqual("8,3", egyptPosition);
             Assert.AreEqual("9,3", NigeriaPosition);

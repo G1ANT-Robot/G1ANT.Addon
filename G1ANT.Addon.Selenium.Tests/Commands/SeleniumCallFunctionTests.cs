@@ -26,7 +26,7 @@ namespace G1ANT.Addon.Selenium.Tests
                 selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}val{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}jquery{SpecialChars.Text}
-                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result wynik
+                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result {SpecialChars.Variable}wynik
 
                 list.create text {SpecialChars.Text}id{SpecialChars.Text} result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}getAttribute{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}javascript{SpecialChars.Text}
@@ -39,7 +39,7 @@ namespace G1ANT.Addon.Selenium.Tests
                 selenium.open type {SpecialChars.Text}edge{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}val{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}jquery{SpecialChars.Text}
-                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result wynik
+                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result {SpecialChars.Variable}wynik
 
                 list.create text {SpecialChars.Text}id{SpecialChars.Text} result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}getAttribute{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}javascript{SpecialChars.Text}
@@ -52,7 +52,7 @@ namespace G1ANT.Addon.Selenium.Tests
                 selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}val{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}jquery{SpecialChars.Text}
-                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result wynik
+                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result {SpecialChars.Variable}wynik
 
                 list.create text {SpecialChars.Text}id{SpecialChars.Text} result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}getAttribute{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}javascript{SpecialChars.Text}
@@ -65,7 +65,7 @@ namespace G1ANT.Addon.Selenium.Tests
                 selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}val{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}jquery{SpecialChars.Text}
-                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result wynik
+                selenium.runscript script {SpecialChars.Text}return $('#q').val();{SpecialChars.Text} result {SpecialChars.Variable}wynik
 
                 list.create text {SpecialChars.Text}id{SpecialChars.Text} result lista
                 selenium.callfunction search {SpecialChars.Text}q{SpecialChars.Text} by {SpecialChars.Text}id{SpecialChars.Text} functionname {SpecialChars.Text}getAttribute{SpecialChars.Text} parameters ♥lista type {SpecialChars.Text}javascript{SpecialChars.Text}
