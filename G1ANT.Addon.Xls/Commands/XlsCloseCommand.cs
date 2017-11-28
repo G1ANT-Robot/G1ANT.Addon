@@ -8,7 +8,7 @@ namespace G1ANT.Addon.Xls
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "ID of file to close. If not set, will close file opened as first")]
             public IntegerStructure Id { get; set; }
         }
         public XlsCloseCommand(AbstractScripter scripter) : base(scripter)
