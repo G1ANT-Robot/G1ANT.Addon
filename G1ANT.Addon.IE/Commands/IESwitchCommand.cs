@@ -8,7 +8,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Id number of Internet Explorer instance")]
+            [Argument(Required = true, Tooltip = "Id number stored in a variable of Internet Explorer instance to switch to")]
             public IntegerStructure Id { get; set; }
         }
         public IESwitchCommand(AbstractScripter scripter) : base(scripter)

@@ -12,7 +12,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Id number of excel instance that will be activated")]
+            [Argument(Required = true, Tooltip = "Id number or variable name of excel instance that will be activated")]
             public IntegerStructure Id { get; set; }
 
         }
