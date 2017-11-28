@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Selenium
             base.Initialize();
             UnpackDrivers();
         }
-
+        //test zuza
         private void UnpackDrivers()
         {
             var unpackfolder = Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location);
