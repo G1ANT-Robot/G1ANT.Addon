@@ -19,7 +19,6 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             None = 0,
             LineByLine = 1
         }
-
         public const string TextAccuracyProfile = "TextExtraction_Accuracy";
         public const string DocumentConversionAccuracyProfile = "DocumentConversion_Accuracy";
         private const string licens = "SWXT-1101-0006-2735-3250-7560";
