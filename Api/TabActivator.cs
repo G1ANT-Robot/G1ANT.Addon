@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using Accessibility;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     public class TabActivator
     {

@@ -2,17 +2,17 @@
 using G1ANT.Language;
 
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.detach",Tooltip = "This command disconnect from instance of CRM attached by 'mscrm.attach'.")]
-    class MsCrmDetach : Command
+    class MsCrmDetachCommand : Command
     {
         public class Arguments : CommandArguments
         {
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result"); 
         }
-       public MsCrmDetach(AbstractScripter scripter) : base(scripter)
+       public MsCrmDetachCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

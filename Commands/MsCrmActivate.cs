@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.activate", Tooltip = "This command brings Microsoft Dynamics CRM Internet Explorer instance to the foreground.")]
-    public class MsCrmActivate : Command
+    public class MsCrmActivateCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -14,7 +14,7 @@ namespace G1ANT.Language.Mscrm
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-        public MsCrmActivate(AbstractScripter scripter) : base(scripter)
+        public MsCrmActivateCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

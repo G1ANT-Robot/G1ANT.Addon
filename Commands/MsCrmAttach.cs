@@ -2,10 +2,10 @@
 using G1ANT.Language;
 using System;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.attach",Tooltip = "This command connects to open instance of CRM in Internet Explorer.")]
-    public class MsCrmAttach : Command
+    public class MsCrmAttachCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -23,7 +23,7 @@ namespace G1ANT.Language.Mscrm
 
              
         }
-        public MsCrmAttach(AbstractScripter scripter) : base(scripter)
+        public MsCrmAttachCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

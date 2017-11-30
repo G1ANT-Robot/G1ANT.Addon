@@ -1,4 +1,4 @@
-﻿namespace G1ANT.Language.Mscrm
+﻿namespace G1ANT.Addon.Mscrm
 {
     partial class MsCrmSetValueForm
     {

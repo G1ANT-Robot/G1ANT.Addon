@@ -1,4 +1,5 @@
 ﻿using G1ANT.Addon.Mscrm.Properties;
+using G1ANT.Language;
 using mshtml;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ using WatiN.Core.Native;
 using WatiN.Core.Native.InternetExplorer;
 
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     public class MsCrmWrapper
     {

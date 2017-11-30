@@ -6,10 +6,10 @@ using WatiN.Core;
 using WatiN.Core.Constraints;
 using System.Threading.Tasks;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.getvalue",Tooltip = "This command allows getting field value based on field id.")]
-    public class MsCrmGetValue : Command
+    public class MsCrmGetValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -24,7 +24,7 @@ namespace G1ANT.Language.Mscrm
 
              
         }
-        public MsCrmGetValue(AbstractScripter scripter) : base(scripter)
+        public MsCrmGetValueCommand(AbstractScripter scripter) : base(scripter)
         { }
 
         // this method should be implemented even though its not yet required by Command abstract class

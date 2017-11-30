@@ -1,4 +1,5 @@
 ﻿
+using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Wizard(Name = "Dynamics CRM Recorder")]
     public class MscrmRecorder //: IWizard

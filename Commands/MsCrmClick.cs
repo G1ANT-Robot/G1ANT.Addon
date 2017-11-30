@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.click",Tooltip = "This command allows to send click event to element of an active CRM instance.")]
-    public class MsCrmClick : Command
+    public class MsCrmClickCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -28,7 +28,7 @@ namespace G1ANT.Language.Mscrm
 
              
         }
-        public MsCrmClick(AbstractScripter scripter) : base(scripter)
+        public MsCrmClickCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

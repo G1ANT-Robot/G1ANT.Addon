@@ -4,10 +4,10 @@ using WatiN.Core.Constraints;
 using WatiN.Core;
 using System.Threading;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.save",Tooltip = "This command saves changes in current form of CRM.")]
-    public class MsCrmSave: Command
+    public class MsCrmSaveCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -19,7 +19,7 @@ namespace G1ANT.Language.Mscrm
 
              
         }
-         public MsCrmSave(AbstractScripter scripter) : base(scripter)
+         public MsCrmSaveCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

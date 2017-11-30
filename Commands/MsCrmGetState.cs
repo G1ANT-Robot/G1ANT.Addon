@@ -2,10 +2,10 @@
 using System.Linq;
 using System;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.getstate",Tooltip = "This command allows capturing current state displayed in the status bar (left side) at bottom of the form.")]
-    public class MsCrmGetState: Command
+    public class MsCrmGetStateCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -17,7 +17,7 @@ namespace G1ANT.Language.Mscrm
 
              
         }
-        public MsCrmGetState(AbstractScripter scripter) : base(scripter)
+        public MsCrmGetStateCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

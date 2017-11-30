@@ -1,10 +1,10 @@
 ﻿using G1ANT.Language;
 using System;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.nextstage",Tooltip = "This command clicks on 'Next Stage' link in CRM.")]
-    public class MsCrmNextStage: Command
+    public class MsCrmNextStageCommand : Command
     {
         public class Arguments : CommandArguments
         {  
@@ -14,7 +14,7 @@ namespace G1ANT.Language.Mscrm
             [Argument(DefaultVariable = "timeoutcrm")]
             public override TimeSpanStructure Timeout { get; set; }
         }
-         public MsCrmNextStage(AbstractScripter scripter) : base(scripter)
+         public MsCrmNextStageCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

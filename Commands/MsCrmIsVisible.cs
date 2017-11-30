@@ -2,10 +2,10 @@
 using G1ANT.Language;
 using System.Threading;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.isvisible", Tooltip = "This command allows to search for specified text in active CRM instance.")]
-    public class MsCrmIsVisible : Command
+    public class MsCrmIsVisibleCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -26,7 +26,7 @@ namespace G1ANT.Language.Mscrm
             [Argument(DefaultVariable = "timeoutcrm")]
             public override TimeSpanStructure Timeout { get; set; }
         }
-        public MsCrmIsVisible(AbstractScripter scripter) : base(scripter)
+        public MsCrmIsVisibleCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {
