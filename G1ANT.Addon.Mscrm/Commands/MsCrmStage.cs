@@ -1,10 +1,10 @@
 ﻿using G1ANT.Language;
 using System;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.stage",Tooltip = "This command clicks on 'Next Stage' link in CRM.")]
-    public class MsCrmStage : Command
+    public class MsCrmStageCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -18,7 +18,7 @@ namespace G1ANT.Language.Mscrm
 
              
         }
-         public MsCrmStage(AbstractScripter scripter) : base(scripter)
+         public MsCrmStageCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

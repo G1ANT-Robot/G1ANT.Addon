@@ -2,10 +2,10 @@
 using G1ANT.Language;
 using System.Threading;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.setvalue", Tooltip = "This command allows to set value of a field in CRM form. This command allows to handle fields like: text, lookup, tree lookup and dropdown.")]
-    public class MsCrmSetValue : Command
+    public class MsCrmSetValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -32,7 +32,7 @@ namespace G1ANT.Language.Mscrm
             [Argument(DefaultVariable = "timeoutcrm")]
             public override TimeSpanStructure Timeout { get; set; }
         }
-         public MsCrmSetValue(AbstractScripter scripter) : base(scripter)
+         public MsCrmSetValueCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {

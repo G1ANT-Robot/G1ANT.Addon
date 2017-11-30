@@ -1,10 +1,10 @@
 ﻿using G1ANT.Language;
 using System;
 
-namespace G1ANT.Language.Mscrm
+namespace G1ANT.Addon.Mscrm
 {
     [Command(Name = "mscrm.geterror",Tooltip = "This command allows to capture error message displayed in status bar at the bottom of the form.")]
-    public class MsCrmGetError: Command
+    public class MsCrmGetErrorCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -14,7 +14,7 @@ namespace G1ANT.Language.Mscrm
             [Argument(DefaultVariable = "timeoutcrm")]
             public override TimeSpanStructure Timeout { get; set; }
         }
-        public MsCrmGetError(AbstractScripter scripter) : base(scripter)
+        public MsCrmGetErrorCommand(AbstractScripter scripter) : base(scripter)
         { }
         public void Execute(Arguments arguments)
         {
