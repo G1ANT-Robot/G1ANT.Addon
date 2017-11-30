@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson", "G1ANT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson.Tests", "G1ANT.Addon.Watson.Tests\G1ANT.Addon.Watson.Tests.csproj", "{8941ED70-D9C9-46F6-9229-1DA807645B3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm.Tests", "G1ANT.Addon.Mscrm.Tests\G1ANT.Addon.Mscrm.Tests.csproj", "{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AutomatedDebug|Any CPU = AutomatedDebug|Any CPU
@@ -300,6 +302,16 @@ Global
 		{8941ED70-D9C9-46F6-9229-1DA807645B3A}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
 		{8941ED70-D9C9-46F6-9229-1DA807645B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8941ED70-D9C9-46F6-9229-1DA807645B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.AutomatedDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.AutomatedDebug|Any CPU.Build.0 = Debug|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Debug (.Net 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Debug (.Net 4.0)|Any CPU.Build.0 = Debug|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release (.Net 4.0)|Any CPU.ActiveCfg = Release|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
