@@ -28,8 +28,8 @@ namespace G1ANT.Addon.Net
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Name of variable which will return http status responsed by the API")]
-            public TextStructure Status { get; set; } = new TextStructure("status");
+            [Argument(Tooltip = "Variable which will return http status responsed by the API")]
+            public VariableStructure Status { get; set; } = new VariableStructure("status");
         }
         public RestCommand(AbstractScripter scripter) : base(scripter)
         {
