@@ -37,6 +37,7 @@ namespace G1ANT.Addon.Ocr.Tests
             Point expectedPoint = new Point(181, 294);
             string script = $@"
             window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
+            ocr.login {Resources.JsonCredentials}
             ocr.findpoint search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)68,162,767,528
             ";
             scripter.Text = script;

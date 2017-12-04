@@ -38,7 +38,9 @@ namespace G1ANT.Addon.Ocr.Tests
         public void GoogleOcrTest()
         {
             string expectedString = "animal";
-            string script = "ocr.fromscreen area 68,162,767,528";
+            string script = $@"
+                            ocr.login {Resources.JsonCredentials}
+                            ocr.fromscreen area 68,162,767,528";
             scripter.Text = script;
             scripter.Run();
             var resultOutput = scripter.Variables.GetVariableValue<string>("result");
