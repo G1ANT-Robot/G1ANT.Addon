@@ -39,8 +39,8 @@ namespace G1ANT.Addon.Ocr.Tests
         {
             string expectedString = "animal";
             string script = $@"
-                            ocr.login {Resources.JsonCredentials}
-                            ocr.fromscreen area 68,162,767,528";
+                            ocr.login {SpecialChars.Text}{Resources.JsonCredentials}{SpecialChars.Text}
+                            ocr.fromscreen area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528";
             scripter.Text = script;
             scripter.Run();
             var resultOutput = scripter.Variables.GetVariableValue<string>("result");

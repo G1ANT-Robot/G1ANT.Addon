@@ -38,8 +38,8 @@ namespace G1ANT.Addon.Ocr.Tests
             System.Drawing.Rectangle expectedRectangle = new Rectangle(64, 102, 191, 51);
             string script = $@"
             window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
-            ocr.login {Resources.JsonCredentials}
-            ocr.find search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)110,184,564,488
+            ocr.login {SpecialChars.Text}{Resources.JsonCredentials}{SpecialChars.Text}
+            ocr.find search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)110{SpecialChars.Point}184{SpecialChars.Point}564{SpecialChars.Point}488
             ";
             scripter.Text = script;
             scripter.Run();
