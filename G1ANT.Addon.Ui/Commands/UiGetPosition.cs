@@ -1,45 +1,35 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
-using G1ANT.Language.Ui.Exceptions;
+﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Ui.Commands
+namespace G1ANT.Addon.Ui
 {
-    [Command(Name = "ui.getposition", ToolTip = "This command allows you to attach ui field.")]
-    public class UiGetPosition : CommandBase<UiGetPosition.Arguments>
+    [Command(Name = "ui.getposition", Tooltip = "This command allows you to attach ui field.")]
+    public class UiGetPositionCommand : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.String Wpath { get; set; }
+            public TextStructure Wpath { get; set; }
 
             [Argument]
-            public Structures.Bool Relative { get; set; } = new Structures.Bool(true);
+            public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
             [Argument]
-            public Structures.String Result { get; set; } = new Structures.String("result");
-
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public UiGetPositionCommand(AbstractScripter scripter) : base(scripter)
+        {
+        }
+        public void Execute(Arguments arguments)
         {
             try
             {
                 System.Drawing.Point point = System.Drawing.Point.Empty;
                 if (arguments.Relative.Value)
-                    point = Api.UiManager.GetRelativePosition(arguments.Wpath.Value);
+                    point = UiManager.GetRelativePosition(arguments.Wpath.Value);
                 else
-                    point = Api.UiManager.GetGlobalPosition(arguments.Wpath.Value);
+                    point = UiManager.GetGlobalPosition(arguments.Wpath.Value);
 
-                SetVariableValue(arguments.Result.Value, new Structures.Point(point));
+                Scripter.Variables.SetVariableValue(arguments.Result.Value, new PointStructure(point));
             }
             catch
             {

@@ -1,47 +1,37 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
+﻿using G1ANT.Language;
 using System;
 
-using G1ANT.Language.Ui.Api;
 using System.Threading;
-using G1ANT.Language.Ui.Exceptions;
 
-namespace G1ANT.Language.Ui.Commands
+
+namespace G1ANT.Addon.Ui
 {
-    [Command(Name = "ui.waitfor", ToolTip = ".")]
-    public class UiWaitFor : CommandBase<UiWaitFor.Arguments>
+    [Command(Name = "ui.waitfor", Tooltip = ".")]
+    public class UiWaitForCommand : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.String Wpath { get; set; }
+            public TextStructure Wpath { get; set; }
 
             [Argument(DefaultVariable = "timeoutui")]
-            public override Structures.Integer Timeout { get; set; } = new Structures.Integer(10000);
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10000);
 
             [Argument]
-            public Structures.String Result { get; set; } = new Structures.String("result");
-
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
+            
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public UiWaitForCommand(AbstractScripter scripter) : base(scripter)
+        {
+        }
+        public void Execute(Arguments arguments)
         {
             string wpath = arguments.Wpath.Value;
-            int timeout = arguments.Timeout.Value;
+            double timeout = arguments.Timeout.Value.TotalMilliseconds;
             long start = Environment.TickCount;
             bool found = false;
             while (Math.Abs(Environment.TickCount - start) < timeout &&
-                   ShouldStopScript() == false &&
+                   Scripter.Stopped == false &&
                    found == false)
             {
                 found = UiManager.Wait(wpath);
@@ -49,7 +39,7 @@ namespace G1ANT.Language.Ui.Commands
                 System.Windows.Forms.Application.DoEvents();
                 Thread.Sleep(60);
             }
-            SetVariableValue(arguments.Result.Value, new Structures.Bool(found));
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(found));
             if (!found)
             {
                 throw new ControlNotFoundException("Control couldn't be found:");

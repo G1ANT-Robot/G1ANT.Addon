@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace G1ANT.Language.Ui.Exceptions
+namespace G1ANT.Addon.Ui
 {
     [Serializable]
     public class ControlNotFoundException : Exception

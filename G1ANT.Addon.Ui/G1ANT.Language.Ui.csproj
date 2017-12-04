@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\G1ANT.Bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,12 +24,16 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>..\..\G1ANT.Bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
     </Reference>
@@ -60,6 +64,7 @@
     <Compile Include="Commands\UiSetValue.cs" />
     <Compile Include="Commands\UiWaitFor.cs" />
     <Compile Include="Exceptions\WindowNotFoundException.cs" />
+    <Compile Include="UiAddon.cs" />
     <Compile Include="Wizards\UiAutomationWizard.cs" />
     <Compile Include="Wizards\UiWizard.cs">
       <SubType>Form</SubType>
@@ -75,18 +80,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Engine\G1ANT.Engine.csproj">
-      <Project>{9B5F5109-36D1-4652-BBCB-96B89F6895C4}</Project>
-      <Name>G1ANT.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Interop\G1ANT.Interop.csproj">
-      <Project>{2CCDB7DF-2E8B-441A-81A9-1C421BDB207E}</Project>
-      <Name>G1ANT.Interop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\G1ANT.Language\G1ANT.Language.csproj">
-      <Project>{a64c3699-084e-4123-b9d4-1b6ebfd98cc6}</Project>
-      <Name>G1ANT.Language</Name>
-    </ProjectReference>
     <ProjectReference Include="..\G1ANT.UiFramwework\G1ANT.UiFramework.csproj">
       <Project>{66222f75-5749-447d-97d1-d2445cee7ec6}</Project>
       <Name>G1ANT.UiFramework</Name>

@@ -1,33 +1,24 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
+﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Ui.Commands
+namespace G1ANT.Addon.Ui
 {
-    [Command(Name = "ui.setvalue", ToolTip = "This command allows you to get value from ui field.")]
-    public class UiSetValue : CommandBase<UiSetValue.Arguments>
+    [Command(Name = "ui.setvalue", Tooltip = "This command allows you to get value from ui field.")]
+    public class UiSetValueCommand : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.String Wpath { get; set; }
+            public TextStructure Wpath { get; set; }
 
             [Argument(Required = true)]
-            public Structures.String Value { get; set; }
-
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+            public TextStructure Value { get; set; }
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public UiSetValueCommand(AbstractScripter scripter) : base(scripter)
         {
-            Api.UiManager.SetValue(arguments.Value.Value, arguments.Wpath.Value);
+        }
+        public void Execute(Arguments arguments)
+        {
+            UiManager.SetValue(arguments.Value.Value, arguments.Wpath.Value);
         }
     }
 }

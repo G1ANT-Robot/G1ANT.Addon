@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using G1ANT.Language;
 
-using G1ANT.Interop;
-
-namespace G1ANT.Language.Ui.Wizards
+namespace G1ANT.Addon.Ui
 {
     public partial class WindowsForm : Form
     {

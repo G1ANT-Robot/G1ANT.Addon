@@ -1,4 +1,4 @@
-﻿namespace G1ANT.Language.Ui.Wizards
+﻿namespace G1ANT.Addon.Ui
 {
     partial class UiWizard
     {

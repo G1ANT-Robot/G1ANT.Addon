@@ -1,33 +1,24 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
+﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Ui.Commands
+namespace G1ANT.Addon.Ui
 {
-    [Command(Name = "ui.switchui", ToolTip = "This command allows you to get value from ui field.")]
-    public class UiSwitchUi : CommandBase<UiSwitchUi.Arguments>
+    [Command(Name = "ui.switchui", Tooltip = "This command allows you to get value from ui field.")]
+    public class UiSwitchUiCommand : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.Integer Id { get; set; } = new Structures.Integer(1);
+            public IntegerStructure Id { get; set; } = new IntegerStructure(1);
 
             [Argument]
-            public Structures.String Result { get; set; } = new Structures.String("result");
-
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public UiSwitchUiCommand(AbstractScripter scripter) : base(scripter)
         {
-            SetVariableValue(arguments.Result.Value, new Structures.Bool(Api.UiManager.SwitchUi(arguments.Id.Value)));
+        }
+        public void Execute(Arguments arguments)
+        {
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(UiManager.SwitchUi(arguments.Id.Value)));
         }
     }
 }

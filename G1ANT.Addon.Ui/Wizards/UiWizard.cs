@@ -11,7 +11,7 @@ using System.Xml;
 
 using Point = System.Drawing.Point;
 
-namespace G1ANT.Language.Ui.Wizards
+namespace G1ANT.Addon.Ui
 {
     public partial class UiWizard : Form
     {

@@ -1,7 +1,8 @@
-﻿using G1ANT.Language.Attributes;
+﻿
+using G1ANT.Language;
 using G1ANT.Language.Wizards;
 
-namespace G1ANT.Language.Ui.Wizards
+namespace G1ANT.Addon.Ui
 {
     [Wizard(Name = "Ui Automation")]
     class UiAutomationWizard : IWizard

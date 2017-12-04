@@ -6,10 +6,8 @@ using System.Windows.Automation;
 using G1ANT.UiFramework;
 using G1ANT.UiFramework.Utils;
 using System.Drawing;
-using G1ANT.Language.Ui.Wizards;
-using G1ANT.Language.Ui.Exceptions;
 
-namespace G1ANT.Language.Ui.Api
+namespace G1ANT.Addon.Ui
 {
     public static class UiManager
     {

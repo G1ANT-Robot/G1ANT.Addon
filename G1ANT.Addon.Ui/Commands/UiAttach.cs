@@ -1,35 +1,25 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
-using G1ANT.Language.Ui.Exceptions;
+﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Ui.Commands
+namespace G1ANT.Addon.Ui
 {
-    [Command(Name = "ui.attach", ToolTip = "This command allows you to attach ui field.")]
-    public class UiAttach : CommandBase<UiAttach.Arguments>
+    [Command(Name = "ui.attach", Tooltip = "This command allows you to attach ui field.")]
+    public class UiAttachCommand : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.String Windowname { get; set; }
+            public TextStructure Windowname { get; set; }
 
             [Argument]
-            public Structures.String Result { get; set; } = new Structures.String("result");
-
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public UiAttachCommand(AbstractScripter scripter) : base(scripter)
         {
-            int id = Api.UiManager.Attach(arguments.Windowname.Value);
-            SetVariableValue(arguments.Result.Value, new Structures.Integer(id));
+        }
+        public void Execute(Arguments arguments)
+        {
+            int id = UiManager.Attach(arguments.Windowname.Value);
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new IntegerStructure(id));
             if (id == -1)
             {
                 throw new WindowNotFoundException($"Cannot attach to window:{arguments.Windowname.Value}");

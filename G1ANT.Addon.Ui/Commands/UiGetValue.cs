@@ -1,33 +1,24 @@
-﻿using G1ANT.Language.Arguments;
-using G1ANT.Language.Attributes;
-using G1ANT.Language.Commands;
+﻿using G1ANT.Language;
 
-namespace G1ANT.Language.Ui.Commands
+namespace G1ANT.Addon.Ui
 {
-    [Command(Name = "ui.getvalue", ToolTip = "This command allows you to get value from ui field.")]
-    public class UiGetValue : CommandBase<UiGetValue.Arguments>
+    [Command(Name = "ui.getvalue", Tooltip = "This command allows you to get value from ui field.")]
+    public class UiGetValueCommand : Command
     {
-        public new class Arguments : CommandArguments
+        public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public Structures.String Wpath { get; set; }
+            public TextStructure Wpath { get; set; }
 
             [Argument]
-            public Structures.String Result { get; set; } = new Structures.String("result");
-
-            [Argument]
-            public Structures.Bool If { get; set; } = new Structures.Bool(true);
-
-            [Argument]
-            public Structures.String ErrorJump { get; set; }
-
-            [Argument]
-            public Structures.String ErrorMessage { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-
-        public override void Execute(Arguments arguments, IExecutionContext executionContext)
+        public UiGetValueCommand(AbstractScripter scripter) : base(scripter)
         {
-            SetVariableValue(arguments.Result.Value, new Structures.String(Api.UiManager.GetValue(arguments.Wpath.Value)));
+        }
+        public void Execute(Arguments arguments)
+        {
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(UiManager.GetValue(arguments.Wpath.Value)));
         }
     }
 }
