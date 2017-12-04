@@ -14,7 +14,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(DefaultVariable = "timeoutie")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
-            [Argument(Tooltip = "If set to 'true', command will not wait until document reache completed state")]
+            [Argument(Tooltip = "If set to 'true', command will not wait until document reaches completed state")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
             [Argument(Tooltip = "Name of variable where opened Internet Explorer instance's id is going to be placed")]
