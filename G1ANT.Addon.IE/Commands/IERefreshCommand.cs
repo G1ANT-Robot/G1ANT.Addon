@@ -8,9 +8,6 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
-            public BooleanStructure If { get; set; } = new BooleanStructure(true);
-
             [Argument(DefaultVariable = "timeoutie")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
         }
