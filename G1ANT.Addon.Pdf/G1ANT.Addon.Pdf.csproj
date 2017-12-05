@@ -52,6 +52,7 @@
     <Compile Include="Commands\PdfCloseCommand.cs" />
     <Compile Include="Commands\PdfOpenCommand.cs" />
     <Compile Include="Commands\PdfSaveAsCommand.cs" />
+    <Compile Include="Commands\PdfSetFormFieldCommand.cs" />
     <Compile Include="PdfAddon.cs" />
     <Compile Include="PdfManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
