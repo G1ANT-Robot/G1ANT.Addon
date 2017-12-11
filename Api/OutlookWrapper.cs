@@ -20,22 +20,39 @@ namespace G1ANT.Addon.MSOffice
         }
         public int Id { get; set; }
         public bool IsMailFound { get; set; } = false;
-        private Application application = null;
+
+        private Application application;
+
+        public Application Application
+        {
+            get
+            {
+                try
+                {
+                    string version = application.Version;
+                }
+                catch (System.Exception ex)
+                {
+                    throw new InvalidOperationException($"Outlook instance could not be found. Most likely, it has been closed. Message: '{ex.Message}'.");
+                }
+                return application;
+            }
+            set { application = value; }
+        }
+
         private MailItem mailItem = null;
         private NameSpace nameSpace = null;
 
         public void Open()
         {
-            application = new Application();
-            nameSpace = application.GetNamespace("MAPI");
-            nameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox).Display();
-
-
-            
+            Application = new Application();
+            nameSpace = Application.GetNamespace("MAPI");
+            nameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox).Display();            
         }
+
         public void NewMessage(string to, string subject, string body)
         {
-            mailItem = application.CreateItem(OlItemType.olMailItem);
+            mailItem = Application.CreateItem(OlItemType.olMailItem);
             mailItem.To = to;
             mailItem.Subject = subject;
             mailItem.Body = body;
@@ -49,7 +66,7 @@ namespace G1ANT.Addon.MSOffice
         }
         public void NewMessageWithAttachements(string to, string subject, string body, List<string> paths)
         {
-            mailItem = application.CreateItem(OlItemType.olMailItem);
+            mailItem = Application.CreateItem(OlItemType.olMailItem);
             mailItem.To = to;
             mailItem.Subject = subject;
             mailItem.Body = body;
@@ -163,8 +180,8 @@ namespace G1ANT.Addon.MSOffice
         public void Close()
         {
             try
-            {               
-                application.Quit();
+            {
+                Application.Quit();
 
                     foreach (Process p in Process.GetProcessesByName("outlook"))
                     {
