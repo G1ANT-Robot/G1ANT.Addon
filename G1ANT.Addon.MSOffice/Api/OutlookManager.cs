@@ -10,9 +10,23 @@ namespace G1ANT.Addon.MSOffice
     {
 
         private static List<OutlookWrapper> launchedOutlooks = new List<OutlookWrapper>();
-        public static OutlookWrapper CurrentOutlook { get; private set; }
 
-        public static bool SwitchOutlook (int id)
+        private static OutlookWrapper currentOutlook;
+
+        public static OutlookWrapper CurrentOutlook
+        {
+            get
+            {
+                if (currentOutlook == null)
+                {
+                    throw new ApplicationException("Outlook instance must be opened first using outlook.open command");
+                }
+                return currentOutlook;
+            }
+            set { currentOutlook = value; }
+        }
+
+        public static bool SwitchOutlook(int id)
         {
             var tmpOutlook = launchedOutlooks.Where(x => x.Id == id).FirstOrDefault();
             CurrentOutlook = tmpOutlook ?? CurrentOutlook;
