@@ -61,7 +61,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
                 pageIndices = new List<int>(arguments.Pages.Value.Count);
                 foreach (Structure o in arguments.Pages.Value)
                     pageIndices.Add(((IntegerStructure)o).Value - 1);
-            }
+            } 
 
             manager.ProcessDocument(document, pageIndices, arguments.Language?.Value, arguments.LanguageWeight.Value, arguments.DictionaryWeight.Value, ListConverter.ExtractDictionary(arguments.Dictionary?.Value));
             var a = document.Tables.Count;
