@@ -31,19 +31,20 @@ namespace G1ANT.Addon.Xls.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
             scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
+            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
         }
         [Test]
         [Timeout(20000)]
         public void XlsFindIntTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}1234{SpecialChars.Text} result testint");
-            Assert.AreEqual("A1", scripter.Variables.GetVariableValue<string>("testint"));
+            scripter.RunLine($"xls.find {SpecialChars.Text}1234{SpecialChars.Text} result {SpecialChars.Variable}testint");
+            Assert.AreEqual("A1", scripter.Variables.GetVariable("testint").GetValue().Object);
         }
         [Test]
         [Timeout(20000)]
         public void XlsFindStringTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}abcd{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.find {SpecialChars.Text}abcd{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("B1", scripter.Variables.GetVariableValue<string>("teststring"));
         }
 
@@ -51,7 +52,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsFindNumberTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}150{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.find {SpecialChars.Text}150{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("D1", scripter.Variables.GetVariableValue<string>("teststring"));
         }
 
@@ -59,9 +60,9 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsFindPercentTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}160%{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.find {SpecialChars.Text}160%{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("E1", scripter.Variables.GetVariableValue<string>("teststring"));
-            scripter.RunLine($"xls.find {SpecialChars.Text}100%{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.find {SpecialChars.Text}100%{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("E2", scripter.Variables.GetVariableValue<string>("teststring"));
         }
 
@@ -69,9 +70,9 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsFindDateTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}21.07.2017{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.find {SpecialChars.Text}21.07.2017{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("C1", scripter.Variables.GetVariableValue<string>("teststring"));
-            scripter.RunLine($"xls.find {SpecialChars.Text}22.07.2017{SpecialChars.Text} result teststring");
+            scripter.RunLine($"xls.find {SpecialChars.Text}22.07.2017{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual("C2", scripter.Variables.GetVariableValue<string>("teststring"));
         }
 
@@ -79,17 +80,8 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsFailToFind()
         {
-                scripter.RunLine($"xls.find {SpecialChars.Text}01.01.1001{SpecialChars.Text} result teststring");
+                scripter.RunLine($"xls.find {SpecialChars.Text}01.01.1001{SpecialChars.Text} result {SpecialChars.Variable}teststring");
             Assert.AreEqual(-1,int.Parse(scripter.Variables.GetVariable("teststring").GetValue().ToString()));
-        }
-
-        
-
-        [SetUp]
-        [Timeout(20000)]
-        public void TestInit()
-        {
-            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result id");
         }
 
         [TearDown]

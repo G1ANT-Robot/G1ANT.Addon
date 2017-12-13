@@ -51,8 +51,8 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ExcelGetRowTest()
         {
             scripter.RunLine("excel.getrow row 1");
-            var dictionary = scripter.Variables.GetVariableValue<Dictionary<string, Structure>>("result");
-            Assert.AreEqual("1".ToString(CultureInfo.CurrentCulture), (dictionary["b"] as TextStructure).Value.ToString(CultureInfo.CurrentCulture));
+            Dictionary<string,TextStructure> dictionary = (Dictionary<string, TextStructure>)scripter.Variables.GetVariable("result").GetValue().Object;
+            Assert.AreEqual("1".ToString(CultureInfo.CurrentCulture), (dictionary["b"]));
             Assert.AreEqual("abc".ToString(CultureInfo.CurrentCulture), (dictionary["c"] as TextStructure).Value.ToString(CultureInfo.CurrentCulture));
             Assert.AreEqual(double.Parse("1.53", NumberStyles.Any, CultureInfo.CurrentCulture).ToString(), double.Parse((dictionary["d"] as TextStructure).Value, NumberStyles.Any, CultureInfo.CurrentCulture).ToString()); 
             Assert.AreEqual(DateTime.Parse("2-Feb", CultureInfo.CurrentCulture).ToString(CultureInfo.CurrentCulture), DateTime.Parse((dictionary["f"] as TextStructure).Value, CultureInfo.CurrentCulture).ToString(CultureInfo.CurrentCulture));

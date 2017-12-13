@@ -36,14 +36,14 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             var value1 = "3. Junior";
             scripter.Variables.SetVariableValue("valueToBeFound", new TextStructure(value1));
             scripter.RunLine($"googlesheet.findall value {SpecialChars.Variable}valueToBeFound");
-            var result1 = scripter.Variables.GetVariable("result");
-            Assert.AreEqual("C7&C8&C11&C14&C20&C25", result1.GetValue());
+            var result1 = scripter.Variables.GetVariable("result").GetValue().Object;
+            Assert.AreEqual("C7&C8&C11&C14&C20&C25", result1);
 
             var value2 = "Lacrosse";
             scripter.Variables.SetVariableValue("valueToBeFound", new TextStructure(value2));
             scripter.RunLine($"googlesheet.findall value {SpecialChars.Variable}valueToBeFound");
-            var result2 = scripter.Variables.GetVariable("result");
-            Assert.AreEqual("F3&F9&F20&F26&F30", result2.GetValue().ToString());
+            var result2 = scripter.Variables.GetVariable("result").GetValue().Object;
+            Assert.AreEqual("F3&F9&F20&F26&F30", result2);
         }
 
         [Test]

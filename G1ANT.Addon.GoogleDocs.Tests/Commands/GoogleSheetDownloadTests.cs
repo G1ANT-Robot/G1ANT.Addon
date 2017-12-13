@@ -33,7 +33,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [Timeout(50000)]
         public void GoogleSheetDownloadFileXLSX()
         {
-            scripter.RunLine($"{SpecialChars.Variable}savePath = {SpecialChars.Variable}temp\\SheetsTest.xlsx");
+            scripter.RunLine($"{SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.xlsx{SpecialChars.Text}");
             scripter.RunLine($"googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}xls{SpecialChars.Text} ");
             scripter.RunLine("delay 3");
             var result = scripter.Variables.GetVariable("result");
@@ -44,7 +44,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [Timeout(50000)]
         public void GoogleSheetDownloadFilePDF()
         {
-            scripter.RunLine($"{SpecialChars.Variable}savePath = {SpecialChars.Variable}temp\\SheetsTest.pdf");
+            scripter.RunLine($"{SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.pdf{SpecialChars.Text}");
             scripter.RunLine($"googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}pdf{SpecialChars.Text}");
             scripter.RunLine("delay 3");
             var result = scripter.Variables.GetVariable("result");

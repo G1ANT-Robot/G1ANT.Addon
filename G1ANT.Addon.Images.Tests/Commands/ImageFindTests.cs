@@ -77,7 +77,7 @@ namespace G1ANT.Addon.Images.Tests
 
             Scripter scripter = new Scripter();
 
-            scripter.Text = $"image.find image1 {SpecialChars.Text}{image1}{SpecialChars.Text} image2 {SpecialChars.Text}{image2}{SpecialChars.Text} threshold 0.1";
+            scripter.Text = $"image.find image1 {SpecialChars.Text}{image1}{SpecialChars.Text} image2 {SpecialChars.Text}{image2}{SpecialChars.Text} threshold 0,1";
             scripter.Run();
         }
 
@@ -106,9 +106,10 @@ namespace G1ANT.Addon.Images.Tests
 
             string image = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.littleWhite), "bmp");
             
-            testerApp = ImagesTests.StartFormTester("Title TestApp");
-
+            testerApp = SDK.Tester.RunFormTester("Title TestApp");
+            
             Scripter scripter = new Scripter();
+            scripter.RunLine("window TestApp");
             scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}

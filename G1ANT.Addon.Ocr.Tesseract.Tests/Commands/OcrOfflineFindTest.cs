@@ -45,7 +45,7 @@ namespace G1ANT.Addon.Ocr.Tesseract.Tests
 
             //            window {SpecialChars.Search}Paint{SpecialChars.Search} style maximize
             string script = $@"
-            ocroffline.find search {SpecialChars.Text}Dance{SpecialChars.Text} area (rectangle)68,162,767,528
+            ocroffline.find search {SpecialChars.Text}Dance{SpecialChars.Text} area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528
             ";
             scripter.Text = script;
             scripter.Run();

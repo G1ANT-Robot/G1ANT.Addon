@@ -32,7 +32,7 @@ namespace G1ANT.Addon.Images.Tests
             int expectedRectanglesCount = 8;
             string imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Object>>("result").Count);
         }
 
         [Test, Timeout(ImagesTests.TestsTimeout)]
@@ -43,13 +43,13 @@ namespace G1ANT.Addon.Images.Tests
             string imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
 
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text} maxwidth {widthTreshold}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Object>>("result").Count);
 
             imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
 
             expectedRectanglesCount = 6;
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text} minwidth {widthTreshold}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Object>>("result").Count);
         }
 
         [Test, Timeout(ImagesTests.TestsTimeout)]
@@ -61,7 +61,7 @@ namespace G1ANT.Addon.Images.Tests
             string imageWithRectanglesPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.Rectangles8), "png");
 
             scripter.RunLine($"image.findrectangles {SpecialChars.Text}{imageWithRectanglesPath}{SpecialChars.Text} maxheight {maxHeight} minheight {minHeight}");
-            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Structure>>("result").Count);
+            Assert.AreEqual(expectedRectanglesCount, scripter.Variables.GetVariableValue<List<Object>>("result").Count);
         }
     }
 }

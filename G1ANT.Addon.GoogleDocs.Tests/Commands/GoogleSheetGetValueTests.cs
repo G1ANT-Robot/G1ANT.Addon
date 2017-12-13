@@ -34,12 +34,12 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [Timeout(40000)]
         public void GoogleSheetGetValue()
         {
-            rangeToBeChecked = "A2";
-            string expectedValue = "Alexandra";
+            rangeToBeChecked = "A3";
+            string expectedValue = "Andrew";
             scripter.Variables.SetVariableValue("rangeToBeChecked", new TextStructure(rangeToBeChecked));
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked");
-            var result = scripter.Variables.GetVariable("result");
-            Assert.AreEqual(expectedValue, result.GetValue().ToString()); 
+          System.Collections.Generic.List<object> result = (System.Collections.Generic.List<object>)scripter.Variables.GetVariable("result").GetValue().Object;
+            Assert.AreEqual(expectedValue, result[0].ToString()); 
         }
 
         [TearDown]

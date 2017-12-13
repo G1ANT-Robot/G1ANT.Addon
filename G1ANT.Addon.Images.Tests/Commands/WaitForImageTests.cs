@@ -51,7 +51,7 @@ namespace G1ANT.Addon.Images.Tests
         [Test, Timeout(ImagesTests.TestsTimeout)]
         public void WaitForExistingImageTest()
         {
-            testerApp = ImagesTests.StartFormTester("Title TestApp");
+            testerApp = SDK.Tester.RunFormTester("Title TestApp");
 
             Color color = Color.Gainsboro;
             string colorCode = "FFDCDCDC";
@@ -59,7 +59,7 @@ namespace G1ANT.Addon.Images.Tests
             RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
 
             Scripter scripter = new Scripter();
-
+            scripter.RunLine("window TestApp");
             scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
@@ -83,7 +83,7 @@ namespace G1ANT.Addon.Images.Tests
 
             Scripter scripter = new Scripter();
 
-            testerApp = ImagesTests.StartFormTester($"CenterOfScreen FocusOnControl tbColorRGB ChangeColor {colorCode} ");
+            testerApp = SDK.Tester.RunFormTester($"CenterOfScreen FocusOnControl tbColorRGB ChangeColor {colorCode} ");
             RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
 
             scripter.Text = $"waitfor.image image {SpecialChars.Text}{path}{SpecialChars.Text} timeout 8000";

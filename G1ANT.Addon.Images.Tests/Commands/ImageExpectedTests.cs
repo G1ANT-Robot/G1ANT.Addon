@@ -63,9 +63,10 @@ namespace G1ANT.Addon.Images.Tests
         public void ExpectImageOnScreenTest()
         {
             string colorCode = "FFF0F8FF";
-            testerApp = ImagesTests.StartFormTester("Title TestApp");
+            testerApp = SDK.Tester.RunFormTester("Title TestApp");
 
             Scripter scripter = new Scripter();
+            scripter.RunLine("window TestApp");
             scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}

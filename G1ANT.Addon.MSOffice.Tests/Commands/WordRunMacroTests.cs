@@ -1,7 +1,4 @@
-﻿
-
-
-using G1ANT.Addon.MSOffice.Tests.Properties;
+﻿using G1ANT.Addon.MSOffice.Tests.Properties;
 using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
@@ -20,7 +17,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         static string wordPath;
         static string macroName = "SortText";
         static string testedValue = $"Pawel\rPatryk\rMarcin\rZuza\rChris\rMichal\rDiana\rPrzemek\rJano\r";
-        static string expectedValue = $"Chris\rDiana\rJano\rMarcin\rMichal\rPatryk\rPawel\rPrzemek\rZuza\r";
+        static string expectedValue = $"\rChris\rDiana\rJano\rMarcin\rMichal\rPatryk\rPawel\rPrzemek\rZuza\r";
         private void KillProcesses()
         {
             foreach (Process p in Process.GetProcessesByName("word"))

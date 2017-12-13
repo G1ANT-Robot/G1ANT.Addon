@@ -29,10 +29,10 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void IECloseSuccessTest()
         {
             scripter.Text = $@"
-                            ie.open result result1
-                            ie.open result result2
-                            ie.open result result3
-                            ie.open result result4
+                            ie.open result  {SpecialChars.Variable}result1
+                            ie.open result  {SpecialChars.Variable}result2
+                            ie.open result  {SpecialChars.Variable}result3
+                            ie.open result  {SpecialChars.Variable}result4
                             ie.switch {SpecialChars.Variable}result1
                             ie.close
                             ie.switch {SpecialChars.Variable}result2

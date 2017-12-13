@@ -45,12 +45,12 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             scripter.RunLine("excel.setvalue aaa row 1 colindex 1");
             scripter.RunLine("excel.setvalue bbb row 1 colindex 2");
-            scripter.RunLine("excel.insertcolindexumn colindexumn 1 where after");
+            scripter.RunLine("excel.insertcolumn colindex 1 where after");
             scripter.RunLine("excel.getvalue row 1 colindex 3");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
 
-            scripter.RunLine("excel.removecolindexumn colindexumn 2");
-            scripter.RunLine("excel.insertcolindexumn colindexumn b where before");
+            scripter.RunLine("excel.removecolumn colindex 2");
+            scripter.RunLine("excel.insertcolumn colname b where before");
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
         }
 
@@ -59,7 +59,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ExcelInsertRowFailTest()
         {
 
-            scripter.Text = "excel.insertcolindexumn colindexumn 1 where haha";
+            scripter.Text = "excel.insertcolumn colindex 1 where haha";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -72,7 +72,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ExcelInsertRowFail2Test()
         {
 
-            scripter.Text = "excel.insertcolindexumn colindexumn 0 where after";
+            scripter.Text = "excel.insertcolumn colindex 0 where after";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

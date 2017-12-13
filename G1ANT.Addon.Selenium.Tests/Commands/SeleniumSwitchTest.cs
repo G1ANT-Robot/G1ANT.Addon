@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Selenium.Tests
                         selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}www.nasa.gov{SpecialChars.Text} nowait true
                         selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text} url {SpecialChars.Text}sauletech.com{SpecialChars.Text} nowait true
                         selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}www.minrol.gov.pl{SpecialChars.Text} nowait true
-                        selenium.open type {SpecialChars.Text}edge{SpecialChars.Text} url {SpecialChars.Text}https://www.gov.pl/cyfryzacja/{SpecialChars.Text}
+                        selenium.open type {SpecialChars.Text}edge{SpecialChars.Text} url {SpecialChars.Text}https://www.gov.pl/cyfryzacja/ {SpecialChars.Text}
                         selenium.switch 0
                         selenium.switch 1
                         selenium.switch 2

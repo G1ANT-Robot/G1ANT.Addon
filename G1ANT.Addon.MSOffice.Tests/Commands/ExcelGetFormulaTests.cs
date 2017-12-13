@@ -83,7 +83,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelgetFormula5Test()
         {
-            scripter.Text = $"excel.getformula row -1 colindex żd2";
+            scripter.Text = $"excel.getformula row -1 colname żd2";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
