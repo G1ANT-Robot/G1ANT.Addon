@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
-            [Argument]
+            [Argument(Tooltip = "List of suggested words that will have higher priority than random strings.")]
             public ListStructure Dictionary { get; set; } = null;
 
             [Argument]

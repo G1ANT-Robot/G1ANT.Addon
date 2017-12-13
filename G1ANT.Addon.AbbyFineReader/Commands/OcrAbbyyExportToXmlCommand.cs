@@ -16,7 +16,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.exportxml")]
+    [Command(Name = "ocrabbyy.exportxml", Tooltip = "Exports currently active document to .xml file.")]
     public class OcrAbbyyExportToXmlCommand : Command
     {
         public class Arguments : CommandArguments
