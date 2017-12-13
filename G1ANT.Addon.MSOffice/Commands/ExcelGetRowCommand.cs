@@ -19,7 +19,7 @@ namespace G1ANT.Addon.MSOffice
         public ExcelGetRowCommand(AbstractScripter scripter) : base(scripter)
         {
         }
-        public void Execute(Arguments arguments) 
+        public void Execute(Arguments arguments)
         {
             try
             {
