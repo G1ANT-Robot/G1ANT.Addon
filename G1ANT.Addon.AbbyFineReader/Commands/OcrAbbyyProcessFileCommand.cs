@@ -42,7 +42,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
  
         }
         public OcrAbbyyProcessFileCommand(AbstractScripter scripter) : base(scripter)
-        {
+        { 
         }
         public void Execute(Arguments arguments)
         {
