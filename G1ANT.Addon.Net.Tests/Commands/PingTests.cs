@@ -42,6 +42,25 @@ namespace G1ANT.Addon.Net.Tests
         }
 
         [Test, Timeout(TestTimeout)]
+        public void PingGoogleMultipleTimesTest()
+        {
+            Scripter scripter = new Scripter();
+            scripter.Variables.SetVariableValue("ping", new TextStructure("google.com"));
+
+            try
+            {
+                var justsomerandomrepeatCount = 7;
+                scripter.RunLine($"ping ip {SpecialChars.Variable}ping repeats {justsomerandomrepeatCount}");
+                int response = scripter.Variables.GetVariableValue<int>("result");
+                Assert.IsTrue(response >= 0);
+            }
+            catch
+            {
+                Assert.Inconclusive("We can't ping google.com, it is very unlikely");
+            }
+        }
+
+        [Test, Timeout(TestTimeout)]
         public void PingLocalhostTest()
         {
             Scripter scripter = new Scripter();
