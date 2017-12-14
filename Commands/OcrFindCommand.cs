@@ -43,7 +43,7 @@ namespace G1ANT.Language.Ocr
             GoogleCloudApi googleApi = new GoogleCloudApi();
             System.Drawing.Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
             if (output == null)
-                throw new ApplicationException("Ocr was unable to find text");
+                throw new NullReferenceException("Ocr was unable to find text");
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.RectangleStructure(output));
         }
     }
