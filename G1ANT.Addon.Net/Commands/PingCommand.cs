@@ -25,6 +25,11 @@ namespace G1ANT.Addon.Net
         }
         public void Execute(Arguments arguments)
         {
+            if (arguments.Repeats.Value < 1)
+            {
+                throw new System.ArgumentOutOfRangeException("Repeats argument has value less than 1");
+
+            }
             System.Net.NetworkInformation.Ping pingSender = new System.Net.NetworkInformation.Ping();
             long sum = 0;
             for (int i = 0; i < arguments.Repeats.Value; i++)
