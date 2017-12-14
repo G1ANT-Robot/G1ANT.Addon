@@ -64,7 +64,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                                 rectResult = wordsWithRectPositions.Where(x => x.Value == search).SingleOrDefault().Key;
                             }
                             if (Equals(rectResult,new Rectangle(-1,-1,-1,-1)))
-                                throw new ApplicationException("Ocr was unable to find text");
+                                throw new NullReferenceException("Ocr was unable to find text");
                             Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(rectResult));
                         }
                     }
