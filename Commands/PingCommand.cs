@@ -11,7 +11,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "IP address or hostname of pinging server")]
             public TextStructure Ip { get; set; } = new TextStructure("8.8.8.8");
 
-            [Argument(Tooltip = "IP address or hostname of pinging server")]
+            [Argument(Tooltip = "Allows to ping multiple times. Command returns rounded value of all pings. Default = 1")]
             public IntegerStructure Repeats { get; set; } = new IntegerStructure(1);
 
             [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Defines timeout for connecting")]
