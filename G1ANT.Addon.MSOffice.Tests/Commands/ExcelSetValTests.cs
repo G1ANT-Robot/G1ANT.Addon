@@ -62,11 +62,11 @@ namespace G1ANT.Addon.MSOffice.Tests
             scripter.RunLine("excel.getvalue row 1 colindex 1");
             Assert.AreEqual(stringVal, scripter.Variables.GetVariableValue<string>("result"));
             scripter.RunLine("excel.getvalue row 1 colindex 2");
-            Assert.AreEqual(intVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
+            Assert.AreEqual(intVal, Int32.Parse(scripter.Variables.GetVariable("result").GetValue().Object as String));
             scripter.RunLine("excel.getvalue row 1 colindex 3");
-            Assert.AreEqual(fVal, float.Parse(scripter.Variables.GetVariableValue<string>("result").Replace(",", ".")));
+            Assert.AreEqual(fVal, float.Parse((scripter.Variables.GetVariable("result").GetValue().Object as String).Replace(",", ".")));
             scripter.RunLine($"excel.getvalue row 1 colindex 4 result {SpecialChars.Variable}product");
-            Assert.AreEqual(intVal * fVal, float.Parse(scripter.Variables.GetVariableValue<string>("product").Replace(",", ".")), 0.0001);
+            Assert.AreEqual(intVal * fVal, float.Parse(scripter.Variables.GetVariableValue<string>("product").Replace(",", ".")), 0.000001);
         }
 
         [TearDown]

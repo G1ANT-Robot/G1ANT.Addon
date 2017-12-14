@@ -49,11 +49,11 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetRowTest()
-        {
+        {//TODO GETROW Do not have dictionary as return value
             scripter.RunLine("excel.getrow row 1");
             Dictionary<string,TextStructure> dictionary = (Dictionary<string, TextStructure>)scripter.Variables.GetVariable("result").GetValue().Object;
-            Assert.AreEqual("1".ToString(CultureInfo.CurrentCulture), (dictionary["b"]));
-            Assert.AreEqual("abc".ToString(CultureInfo.CurrentCulture), (dictionary["c"] as TextStructure).Value.ToString(CultureInfo.CurrentCulture));
+            Assert.AreEqual("1".ToString(CultureInfo.CurrentCulture), (dictionary["b"].Object));
+            Assert.AreEqual("abc".ToString(CultureInfo.CurrentCulture), (dictionary["c"].Object));
             Assert.AreEqual(double.Parse("1.53", NumberStyles.Any, CultureInfo.CurrentCulture).ToString(), double.Parse((dictionary["d"] as TextStructure).Value, NumberStyles.Any, CultureInfo.CurrentCulture).ToString()); 
             Assert.AreEqual(DateTime.Parse("2-Feb", CultureInfo.CurrentCulture).ToString(CultureInfo.CurrentCulture), DateTime.Parse((dictionary["f"] as TextStructure).Value, CultureInfo.CurrentCulture).ToString(CultureInfo.CurrentCulture));
         }

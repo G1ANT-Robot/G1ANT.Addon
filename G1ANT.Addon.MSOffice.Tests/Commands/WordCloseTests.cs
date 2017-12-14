@@ -74,7 +74,7 @@ namespace G1ANT.Addon.MSOffice.Tests
 
 			scripter.Text = @"word.close";
 			scripter.Run();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(2000);
             allProcesses = Process.GetProcessesByName("winword");
 			Assert.AreEqual(userProcesses.Length, allProcesses.Length);
 		}
