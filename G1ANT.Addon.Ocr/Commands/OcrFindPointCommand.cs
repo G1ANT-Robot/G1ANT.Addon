@@ -1,4 +1,5 @@
 ﻿using G1ANT.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,6 +42,8 @@ namespace G1ANT.Language.Ocr
 
             System.Drawing.Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
             System.Drawing.Point pointOutput = new System.Drawing.Point(output.X + arguments.Area.Value.X, output.Y + arguments.Area.Value.Y);
+            if (output == null)
+                throw new ApplicationException("Ocr was unable to find text");
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new PointStructure(pointOutput));
         }
     }

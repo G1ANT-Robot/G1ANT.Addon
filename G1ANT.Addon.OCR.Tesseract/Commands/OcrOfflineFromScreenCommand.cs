@@ -49,6 +49,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
                         using (var page = tEngine.Process(img))
                         {
                             var text = page.GetText();
+                            if (string.IsNullOrEmpty(text))
+                                throw new ApplicationException("Ocr was unable to find any text");
                             Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(text));
                         }
                     }
