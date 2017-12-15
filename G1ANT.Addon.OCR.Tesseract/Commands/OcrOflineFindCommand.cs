@@ -76,7 +76,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             }
             catch (Exception e)
             {
-                throw new ApplicationException(e.Message + " " + e.InnerException.Message);
+                throw e;
             }
             finally
             {
