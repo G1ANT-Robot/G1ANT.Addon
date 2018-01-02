@@ -33,13 +33,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "The language which should be considered trying to recognize text.")]
             public TextStructure Language { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Importance of the chosen language")]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
-            [Argument]
+            [Argument(Tooltip = "List of suggested words that will have higher priority than random strings.")]
             public ListStructure Dictionary { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Importance of words in chosen dictionary")]
             public IntegerStructure DictionaryWeight { get; private set; } = new IntegerStructure(100);
         }
         public OcrAbbyyProcessScreenCommand(AbstractScripter scripter) : base(scripter)

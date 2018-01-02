@@ -24,19 +24,19 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument]
+            [Argument(Tooltip = "Number of tables found in processed file")]
             public TextStructure TablesCountResult { get; set; } = new TextStructure("tablescountresult");
 
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Importance of the chosen language")]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
             [Argument(Tooltip = "List of suggested words that will have higher priority than random strings.")]
             public ListStructure Dictionary { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Importance of words in chosen dictionary")]
             public IntegerStructure DictionaryWeight { get; private set; } = new IntegerStructure(100);
 
  
