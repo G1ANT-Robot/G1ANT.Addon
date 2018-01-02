@@ -8,8 +8,11 @@ namespace G1ANT.Addon.Watson
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true,Tooltip = "Specifies capture screen area.")]
+            [Argument(Required = true, Tooltip = "Specifies capture screen area.")]
             public RectangleStructure Rectangle { get; set; }
+
+            [Argument(Required = true, Tooltip = "Specifies api key needed to login to the service.")]
+            public TextStructure ApiKey { get; set; }
 
             [Argument(Tooltip = "If set to true, rectangle’s position relates to currently focused window")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
@@ -30,7 +33,7 @@ namespace G1ANT.Addon.Watson
             try
             {
                 System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(arguments.Rectangle.Value);
-                WatsonClassifyImageApi watsonApi = new WatsonClassifyImageApi();
+                WatsonClassifyImageApi watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value);
                 string output = watsonApi.ClassifyImage(partOfScreen, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(output));
             }

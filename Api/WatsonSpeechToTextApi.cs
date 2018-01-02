@@ -8,9 +8,15 @@ namespace G1ANT.Addon.Watson
 {
     public class WatsonSpeechToTextApi
 	{
-        private static string baseUrl = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize";
-        private static string username = "a9fa31a8-d53f-48b2-ad63-6e97f748ae16";
-        private static string password = "IAEdZHDd7Z6V";
+        private string baseUrl = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize";
+        private string login;
+        private string password;
+        
+        public WatsonSpeechToTextApi(string login, string password)
+        {
+            this.login = login;
+            this.password = password;
+        }
 
         public string SpeechToText(string filePath, string language = "en-US", int timeout = 30000, int maxAlternatives = 1, double alternativeThreshold = 0.5f)
 		{
@@ -26,7 +32,7 @@ namespace G1ANT.Addon.Watson
         {
             try
             {
-                NetworkCredential credential = new NetworkCredential(username, password);
+                NetworkCredential credential = new NetworkCredential(login, password);
                 CredentialCache credentials = new CredentialCache();
                 credentials.Add(new Uri(url), "Basic", credential);
                 return credentials;
