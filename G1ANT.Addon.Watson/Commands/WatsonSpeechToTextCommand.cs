@@ -10,6 +10,12 @@ namespace G1ANT.Addon.Watson
             [Argument(Required = true, Tooltip = "Specifies path to file with speech recorded.")]
             public TextStructure Path { get; set; }
 
+            [Argument(Required = true, Tooltip = "Specifies service's login.")]
+            public TextStructure Login { get; set; }
+
+            [Argument(Required = true, Tooltip = "Specifies service's password.")]
+            public TextStructure Password { get; set; }
+
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
@@ -26,7 +32,7 @@ namespace G1ANT.Addon.Watson
         { }
         public void Execute(Arguments arguments)
         {
-            WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi();
+            WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi(arguments.Login.Value, arguments.Password.Value);
             string result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, (int)arguments.Timeout.Value.TotalMilliseconds, 1, arguments.Threshold.Value);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(result));
         }

@@ -11,8 +11,14 @@ namespace G1ANT.Addon.Watson
 {
     public class WatsonClassifyImageApi
     {
-        private static string apiKey = "2c25bc7b0be22091cb1dc9373a026837703cdcf6";
-        private static string url = $"https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={apiKey}&version=2017-10-13";
+        private string apiKey;
+        private string url;
+
+        public WatsonClassifyImageApi(string apiKey)
+        {
+            this.apiKey = apiKey;
+            url = $"https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={apiKey}&version=2017-10-13";
+        }
 
         public string ClassifyImage(Bitmap image, int timeout, double threshold)
         {            
