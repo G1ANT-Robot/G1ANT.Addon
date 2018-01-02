@@ -66,7 +66,7 @@ namespace G1ANT.Addon.IExplorer
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"Failure while navigating Internet Explorer address to '{arguments.Url.Value}'. It's possible that there are problems with internet connection or that the specified page does never reache completed state. Additional message: {ex.Message}", ex);
+                throw new ApplicationException($"Failure while navigating Internet Explorer address to '{arguments.Url.Value}'. It's possible that there are problems with internet connection or that the specified page does never reach completed state. Additional message: {ex.Message}", ex);
             }
         }
     }
