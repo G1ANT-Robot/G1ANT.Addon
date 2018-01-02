@@ -11,7 +11,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Required = true,Tooltip = "Address to navigate to")]
             public TextStructure Url { get; set; }
 
-            [Argument(Tooltip = "If set to 'true', command will not wait until document reache completed state")]
+            [Argument(Tooltip = "If set to 'true', command will not wait until document reach completed state")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
             [Argument(DefaultVariable = "timeoutie")]
