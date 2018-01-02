@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.waitforcomplete", Tooltip = "This command waits until page reaches completed state ")]
+    [Command(Name = "ie.waitforcomplete", Tooltip = "This command waits until page reaches completed state")]
     public class IEWaitForCompleteCommand : Command
     {
         public class Arguments : CommandArguments
