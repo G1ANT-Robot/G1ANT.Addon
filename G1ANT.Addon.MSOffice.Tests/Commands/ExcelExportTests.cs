@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelExportTests
     {
         static FileInfo excelFile;
-        static Scripter scripter;
+        Scripter scripter;
         static string xlsPath, pdfPath, xpsPath, excelPath;
 
         private void KillProcesses()

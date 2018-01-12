@@ -12,7 +12,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelCloseTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         int userProcessCount;
 
         private void KillProcesses()

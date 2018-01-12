@@ -14,7 +14,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordSwitchTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static String someText = "lololololo";
         static String someText2 = "trolololololo";
 

@@ -18,7 +18,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelGetFormulaTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string xlsPath;
         static string formula = "=A1+B1";
 

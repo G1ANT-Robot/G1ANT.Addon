@@ -10,7 +10,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
     [Apartment(ApartmentState.STA)]
     public class GoogleSheetSwitchTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string FileID1 = "147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc"; //google sheets example file
         static string FileID2 = "1d4InQksHBQyAqmogBc2xsP2eU7uBGD3iBtcmng3--Hk"; //google sheets example file
 

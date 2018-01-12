@@ -12,7 +12,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelRemoveRowTests
     {
 
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {

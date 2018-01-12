@@ -17,7 +17,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordInsertTextTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordPath;
         static string valueTested = "Test";
         static string expected = "Test";

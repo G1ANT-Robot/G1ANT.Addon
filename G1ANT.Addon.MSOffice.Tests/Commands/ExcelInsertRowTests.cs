@@ -11,7 +11,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelInsertRowTests
     {
 
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {

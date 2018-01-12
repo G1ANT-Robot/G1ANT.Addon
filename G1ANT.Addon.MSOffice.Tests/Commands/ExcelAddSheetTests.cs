@@ -12,7 +12,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelAddSheetTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string sheetName = "TestSheet";
         static string otherSheet = "otherSheet";
 

@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Xls.Tests
     public class XlsSetValueTests
     {
         string file;
-        static Scripter scripter;
+        Scripter scripter;
 
 
         [SetUp]

@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Watson.Tests
     public class WatsonSpeechToTextTests
     {
         private static string audioPath;
-        private static Scripter scripter;
+        private Scripter scripter;
         private static string login = "1ab27db8-575a-4d3f-b6d0-49c744d2e9fb";
         private static string password = "3uKsggJu8hMc";
 

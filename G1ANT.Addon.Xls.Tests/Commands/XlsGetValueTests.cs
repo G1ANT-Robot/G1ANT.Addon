@@ -10,7 +10,7 @@ namespace G1ANT.Addon.Xls.Tests
     [TestFixture]
     public class XlsGetValueTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         string file;
 
         [OneTimeSetUp]

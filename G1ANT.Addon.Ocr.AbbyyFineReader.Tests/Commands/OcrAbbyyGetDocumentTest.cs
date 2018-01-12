@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
     [TestFixture]
     public class OcrAbbyyGetDocumentTest
     {
-        private static Scripter scripter;
+        private Scripter scripter;
         private static string path;
 
         [OneTimeSetUp]

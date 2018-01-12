@@ -15,7 +15,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
     public class CloseTests
     {
         private static string path;
-        private static Scripter scripter;
+        private Scripter scripter;
 
         [OneTimeSetUp]
         public void Initialize()

@@ -14,7 +14,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordSaveTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordToBeTested = "TestG1ant";
         private void KillProcesses()
         {

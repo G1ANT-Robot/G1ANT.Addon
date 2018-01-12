@@ -16,7 +16,7 @@ namespace G1ANT.Addon.Xls.Tests
         
         string file;
         string file2;
-        private static Scripter scripter;
+        private Scripter scripter;
 
         [OneTimeSetUp]
         [Timeout(20000)]

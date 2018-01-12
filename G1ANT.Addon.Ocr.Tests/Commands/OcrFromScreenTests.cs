@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Ocr.Tests
     [TestFixture]
     public class OcrFromScreenTests
     {
-        private static Scripter scripter;
+        private Scripter scripter;
         private Process proces;
         private string path;
 

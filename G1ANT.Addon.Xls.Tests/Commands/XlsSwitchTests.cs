@@ -15,7 +15,7 @@ namespace G1ANT.Addon.Xls.Tests
 
         string file;
         string file2;
-        static Scripter scripter;
+        Scripter scripter;
         private static int filesCount = 5;
         private static string[] filePaths = new string[filesCount];
         private static string filePrefix ;

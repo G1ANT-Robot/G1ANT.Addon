@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordRunMacroTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordPath;
         static string macroName = "SortText";
         static string testedValue = $"Pawel\rPatryk\rMarcin\rZuza\rChris\rMichal\rDiana\rPrzemek\rJano\r";

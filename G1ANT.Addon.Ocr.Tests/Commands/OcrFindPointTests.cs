@@ -12,7 +12,7 @@ namespace G1ANT.Addon.Ocr.Tests
     [TestFixture]
     public class OcrFindPointTests
     {
-        private static Scripter scripter;
+        private Scripter scripter;
         private Process proces;
         private string path;
 

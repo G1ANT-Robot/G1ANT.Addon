@@ -17,7 +17,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         static float fVal = 3.3f;
         static string stringVal = "something";
         static string formula = "=B1*C1";
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {

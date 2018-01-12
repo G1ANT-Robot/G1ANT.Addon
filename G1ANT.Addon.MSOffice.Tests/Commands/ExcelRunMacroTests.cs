@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelRunMacroTests
     {
 
-        static Scripter scripter;
+        Scripter scripter;
         static string xlsPath;
 
         private void KillProcesses()

@@ -16,7 +16,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordGetTextTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordPath;
         static string valueTested = "Test, test, test....test";
         static string expected = "Test, test, test....testTest, test, test....test";

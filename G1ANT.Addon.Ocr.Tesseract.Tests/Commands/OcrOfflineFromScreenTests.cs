@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Ocr.Tesseract.Tests
     [TestFixture]
     public class OcrOfflineFromScreenTests
     {
-        private static Scripter scripter;
+        private Scripter scripter;
         private Process proces;
         private static string filePath = string.Empty;
 

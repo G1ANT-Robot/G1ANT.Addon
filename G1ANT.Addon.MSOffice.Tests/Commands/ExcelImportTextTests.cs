@@ -15,7 +15,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelImportTextTests
 	{
 		static string csvPath;
-		static Scripter scripter;
+		Scripter scripter;
 
         private void KillProcesses()
         {

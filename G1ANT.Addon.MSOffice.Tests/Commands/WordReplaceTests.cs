@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordReplaceTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static String replaceFrom = "tro";
         static String replaceTo = "lo";
         static String restOfText = "lololololo";

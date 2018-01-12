@@ -18,7 +18,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelDuplicateRowTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string xlsPath;
 
         private void KillProcesses()

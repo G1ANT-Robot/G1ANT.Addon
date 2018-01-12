@@ -16,7 +16,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordExportTests
     {
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {

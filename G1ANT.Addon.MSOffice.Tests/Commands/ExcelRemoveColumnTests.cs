@@ -15,7 +15,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelRemovecolindexumnTests
     {
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {

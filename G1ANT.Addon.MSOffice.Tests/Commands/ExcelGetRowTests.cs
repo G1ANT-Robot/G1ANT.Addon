@@ -16,7 +16,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelGetRowTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string xlsPath;
 
         private void KillProcesses()
