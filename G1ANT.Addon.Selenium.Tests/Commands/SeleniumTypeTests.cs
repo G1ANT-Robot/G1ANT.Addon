@@ -25,6 +25,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void BrowsersGetAttributesSuccessTest()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text} url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#lst-ib').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
@@ -38,6 +39,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result")?.Contains("abc") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}edge{SpecialChars.Text} url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#lst-ib').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
@@ -51,6 +53,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result")?.Contains("abc") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text} url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#lst-ib').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000
@@ -64,6 +67,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result")?.Contains("abc") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
                     selenium.waitforvalue script {SpecialChars.Text}return document.querySelectorAll('#lst-ib').length > 0{SpecialChars.Text} expectedvalue {SpecialChars.Text}true{SpecialChars.Text} timeout 20000

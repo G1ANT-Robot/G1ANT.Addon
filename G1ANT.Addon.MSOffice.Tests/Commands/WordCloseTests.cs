@@ -38,6 +38,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]

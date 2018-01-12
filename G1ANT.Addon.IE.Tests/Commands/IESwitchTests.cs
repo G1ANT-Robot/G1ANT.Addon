@@ -25,6 +25,7 @@ namespace G1ANT.Addon.IExplorer.Tests
         {
             
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             
         }
         [Test, Timeout(IETests.TestTimeout)]

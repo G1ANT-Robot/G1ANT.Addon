@@ -27,6 +27,7 @@ namespace G1ANT.Addon.Net.Tests
         public void IsAccessibleTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             string hostname = "google.com";
            scripter.InitVariables.Add("hostname", new TextStructure(hostname));
             scripter.RunLine($"is.accessible hostname {SpecialChars.Variable}hostname");
@@ -43,6 +44,7 @@ namespace G1ANT.Addon.Net.Tests
         public void IsInaccessibleTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             string hostname = "www.myapple.com";
            scripter.InitVariables.Add("hostname", new TextStructure(hostname));
             scripter.RunLine($"is.accessible hostname {SpecialChars.Variable}hostname timeout 1000");
@@ -60,6 +62,7 @@ namespace G1ANT.Addon.Net.Tests
         public void BadHostTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             string hostName = "ala.ma.kota.0a--e-eas=fo";
            scripter.InitVariables.Add("hostname", new TextStructure(hostName));
 

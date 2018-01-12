@@ -33,12 +33,14 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
         [SetUp]
         public void TestInit()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             string email = "g1ant.robot.tester@gmail.com";
             string subject = "test" + DateTime.Now;
             string text = "example text";

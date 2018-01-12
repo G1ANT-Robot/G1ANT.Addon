@@ -22,6 +22,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void CallFunctionTests()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                 selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
@@ -35,6 +36,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.AreEqual("aa", scripter.Variables.GetVariableValue<string>("wynik"));
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                 selenium.open type {SpecialChars.Text}edge{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
@@ -48,6 +50,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.AreEqual("aa", scripter.Variables.GetVariableValue<string>("wynik"));
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                 selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista
@@ -61,6 +64,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.AreEqual("aa", scripter.Variables.GetVariableValue<string>("wynik"));
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                 selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text} url {SpecialChars.Text}msn.com{SpecialChars.Text} timeout 30000
                 list.create text {SpecialChars.Text}aa{SpecialChars.Text}  result lista

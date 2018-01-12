@@ -29,6 +29,7 @@ namespace G1ANT.Addon.Ocr.Tesseract.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.Tesseract.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             var processInfo = new ProcessStartInfo("mspaint.exe", $"\"{filePath}\"");
             processInfo.WindowStyle = ProcessWindowStyle.Maximized;
             proces = Process.Start(processInfo);

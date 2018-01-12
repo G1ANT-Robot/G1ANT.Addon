@@ -31,6 +31,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void ReadCellTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
             string egyptValue;
             scripter.RunLine($"ocrabbyy.readcell tableindex 1 position 8,3 result {SpecialChars.Variable}{nameof(egyptValue)}");

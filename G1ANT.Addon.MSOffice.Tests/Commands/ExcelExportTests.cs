@@ -40,6 +40,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             excelPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
 
             excelFile = new FileInfo(Path.Combine(Environment.CurrentDirectory, excelPath));
@@ -48,6 +49,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             xpsPath = excelFile.DirectoryName + @"\" + excelFile.Name + ".xps";
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
            scripter.InitVariables.Add("pdfPath", new TextStructure(pdfPath));
            scripter.InitVariables.Add("xpsPath", new TextStructure(xpsPath));

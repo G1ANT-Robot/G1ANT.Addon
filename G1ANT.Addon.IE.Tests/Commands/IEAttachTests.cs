@@ -28,6 +28,7 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void TestInitialize()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
             ProcessStartInfo psi = new ProcessStartInfo()
             {
@@ -38,6 +39,7 @@ namespace G1ANT.Addon.IExplorer.Tests
             process.WaitForInputIdle();
             WaitForIeGoogleProcess("google");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
 
         private void WaitForIeGoogleProcess(string titlePart)

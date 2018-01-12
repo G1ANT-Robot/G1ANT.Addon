@@ -31,6 +31,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void GetTablePositionTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
 
             string egyptPosition;

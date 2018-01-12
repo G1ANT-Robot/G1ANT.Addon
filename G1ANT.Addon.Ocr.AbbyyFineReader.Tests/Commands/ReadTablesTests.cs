@@ -31,6 +31,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void ReadTabletest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
             scripter.RunLine($"ocrabbyy.readtables");

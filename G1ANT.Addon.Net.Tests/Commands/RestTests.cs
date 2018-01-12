@@ -33,6 +33,7 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("url", new TextStructure(url));
            scripter.InitVariables.Add("method", new TextStructure("post"));
            scripter.InitVariables.Add("list", list);
@@ -59,6 +60,7 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("params", parameters);
 
            scripter.InitVariables.Add("url", new TextStructure(url));
@@ -98,6 +100,7 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http://validate.jsontest.com/";
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest {SpecialChars.Text}get{SpecialChars.Text} url {SpecialChars.Variable}url timeout 1");
 
@@ -114,6 +117,7 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http://jsonplaceholder.typicode.com/posts/1";
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("method", new Language.TextStructure("delete"));
            scripter.InitVariables.Add("url", new Language.TextStructure(url));
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url");
@@ -133,6 +137,7 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("method", new TextStructure("put"));
            scripter.InitVariables.Add("url", new TextStructure(url));
            scripter.InitVariables.Add("headers", headers);
@@ -156,6 +161,7 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("method", new TextStructure("put"));
            scripter.InitVariables.Add("url", new TextStructure(url));
            scripter.InitVariables.Add("headers", headers);
@@ -173,6 +179,7 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http://jsonplaceholder.typicode.com/posts/1";
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest method {SpecialChars.Text}puttt{SpecialChars.Text} url {SpecialChars.Variable}url");
 
@@ -190,6 +197,7 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http/jsonplaceholder.typicode.com/posts";
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest method {SpecialChars.Text}post{SpecialChars.Text} url {SpecialChars.Variable}url");
 

@@ -23,6 +23,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void SeleniumSwitchTest()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                         selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text} url {SpecialChars.Text}msz.gov.pl{SpecialChars.Text}
                         selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}www.nasa.gov{SpecialChars.Text} nowait true
@@ -42,6 +43,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void SeleniumSwitchFailTest()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                         selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text} url {SpecialChars.Text}msz.gov.pl{SpecialChars.Text}
                         selenium.open type {SpecialChars.Text}ie{SpecialChars.Text} url {SpecialChars.Text}www.nasa.gov{SpecialChars.Text} nowait true

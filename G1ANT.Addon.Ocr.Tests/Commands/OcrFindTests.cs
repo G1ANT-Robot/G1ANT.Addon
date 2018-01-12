@@ -29,6 +29,7 @@ namespace G1ANT.Addon.Ocr.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.testimage), "png");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             GoogleOcrTests.StartPaint(path);
         }
 

@@ -36,6 +36,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
+scripter.InitVariables.Clear();
            scripter.InitVariables.Add("intVal", new Language.IntegerStructure(intVal));
            scripter.InitVariables.Add("fVal", new FloatStructure(fVal));
            scripter.InitVariables.Add("strVal", new TextStructure(stringVal));
