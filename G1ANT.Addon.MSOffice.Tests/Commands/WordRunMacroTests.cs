@@ -42,8 +42,8 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             wordPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestDocumentMacro), "docm");
-            scripter.Variables.SetVariableValue("wordPath", new TextStructure(wordPath));
-            scripter.Variables.SetVariableValue("macroName", new TextStructure(macroName));
+           scripter.InitVariables.Add("wordPath", new TextStructure(wordPath));
+           scripter.InitVariables.Add("macroName", new TextStructure(macroName));
             scripter.RunLine($"word.open {SpecialChars.Variable}wordPath");
         }
 

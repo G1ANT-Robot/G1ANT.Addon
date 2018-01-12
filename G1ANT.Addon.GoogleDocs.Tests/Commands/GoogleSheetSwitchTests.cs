@@ -25,9 +25,9 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId1", new TextStructure(FileID1));
+           scripter.InitVariables.Add("fileId1", new TextStructure(FileID1));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid1 result {SpecialChars.Variable}excelID1");
-            scripter.Variables.SetVariableValue("fileId2", new TextStructure(FileID2));
+           scripter.InitVariables.Add("fileId2", new TextStructure(FileID2));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid2 result {SpecialChars.Variable}excelID2");
             var result = scripter.Variables.GetVariable("result");
         }

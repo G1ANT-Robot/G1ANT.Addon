@@ -48,9 +48,9 @@ namespace G1ANT.Addon.MSOffice.Tests
             xpsPath = excelFile.DirectoryName + @"\" + excelFile.Name + ".xps";
 
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(xlsPath));
-            scripter.Variables.SetVariableValue("pdfPath", new TextStructure(pdfPath));
-            scripter.Variables.SetVariableValue("xpsPath", new TextStructure(xpsPath));
+           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
+           scripter.InitVariables.Add("pdfPath", new TextStructure(pdfPath));
+           scripter.InitVariables.Add("xpsPath", new TextStructure(xpsPath));
 
             if (File.Exists(pdfPath))
                 File.Delete(pdfPath);

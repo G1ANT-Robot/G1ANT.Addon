@@ -45,7 +45,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(xlsPath));
+           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
             scripter.RunLine("excel.open ♥xlsPath sheet Add");
         }
 

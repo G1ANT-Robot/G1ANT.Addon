@@ -35,8 +35,8 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("text", new TextStructure(someText));
-            scripter.Variables.SetVariableValue("text2", new TextStructure(someText2));
+           scripter.InitVariables.Add("text", new TextStructure(someText));
+           scripter.InitVariables.Add("text2", new TextStructure(someText2));
         }
 
         [SetUp]

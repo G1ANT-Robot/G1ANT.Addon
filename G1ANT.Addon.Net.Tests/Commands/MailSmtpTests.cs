@@ -58,7 +58,7 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("att", attachments);
+           scripter.InitVariables.Add("att", attachments);
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} subject {textChar}{subject}{textChar} " +
                             $"attachments {SpecialChars.Variable}att";
@@ -193,7 +193,7 @@ namespace G1ANT.Addon.Net.Tests
             }
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("att", attachments);
+           scripter.InitVariables.Add("att", attachments);
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} attachments {SpecialChars.Variable}att";
 

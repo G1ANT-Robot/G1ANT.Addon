@@ -58,7 +58,7 @@ namespace G1ANT.Addon.MSOffice.Tests
                 word.gettext
                 word.close";
             
-            scripter.Variables.SetVariableValue("savePath", new TextStructure(savePath));
+           scripter.InitVariables.Add("savePath", new TextStructure(savePath));
             scripter.Run();
             Assert.AreEqual(wordToBeTested, scripter.Variables.GetVariableValue<string>("result").Trim());
 

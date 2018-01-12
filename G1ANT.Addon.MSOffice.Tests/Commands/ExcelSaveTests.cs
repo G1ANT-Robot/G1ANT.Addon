@@ -55,7 +55,7 @@ namespace G1ANT.Addon.MSOffice.Tests
                 {
                     savedFile.Delete();
                 }
-                scripter.Variables.SetVariableValue("savePath", new TextStructure(savePath));
+               scripter.InitVariables.Add("savePath", new TextStructure(savePath));
 
                 scripter.RunLine("excel.open");
                 scripter.RunLine("excel.addsheet test1");

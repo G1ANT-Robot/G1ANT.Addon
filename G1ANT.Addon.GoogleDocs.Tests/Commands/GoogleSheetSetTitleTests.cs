@@ -24,7 +24,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
+           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
             scripter.RunLine("googlesheet.gettitle");
             titleBeforeChange = scripter.Variables.GetVariable("result").GetValue().ToString();
@@ -35,7 +35,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void GoogleSheetSetTitle()
         {
             var valueToBePlaced = "G1ANT";
-            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(valueToBePlaced));
+           scripter.InitVariables.Add("valueToBePlaced", new TextStructure(valueToBePlaced));
             scripter.RunLine($"googlesheet.settitle {SpecialChars.Variable}valueToBePlaced");
             scripter.RunLine("googlesheet.gettitle");
             var result = scripter.Variables.GetVariable("result");
@@ -45,7 +45,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(titleBeforeChange));
+           scripter.InitVariables.Add("valueToBePlaced", new TextStructure(titleBeforeChange));
             scripter.RunLine($"googlesheet.settitle {SpecialChars.Variable}valueToBePlaced");
             scripter.RunLine("googlesheet.gettitle");
             var returnedToPreviousState = scripter.Variables.GetVariable("result").GetValue().ToString();

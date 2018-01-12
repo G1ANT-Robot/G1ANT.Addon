@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Net.Tests
         {
             Scripter scripter = new Scripter();
             string hostname = "google.com";
-            scripter.Variables.SetVariableValue("hostname", new TextStructure(hostname));
+           scripter.InitVariables.Add("hostname", new TextStructure(hostname));
             scripter.RunLine($"is.accessible hostname {SpecialChars.Variable}hostname");
 
             bool result = scripter.Variables.GetVariableValue<bool>("result");
@@ -44,7 +44,7 @@ namespace G1ANT.Addon.Net.Tests
         {
             Scripter scripter = new Scripter();
             string hostname = "www.myapple.com";
-            scripter.Variables.SetVariableValue("hostname", new TextStructure(hostname));
+           scripter.InitVariables.Add("hostname", new TextStructure(hostname));
             scripter.RunLine($"is.accessible hostname {SpecialChars.Variable}hostname timeout 1000");
 
             bool result = scripter.Variables.GetVariableValue<bool>("result");
@@ -61,7 +61,7 @@ namespace G1ANT.Addon.Net.Tests
         {
             Scripter scripter = new Scripter();
             string hostName = "ala.ma.kota.0a--e-eas=fo";
-            scripter.Variables.SetVariableValue("hostname", new TextStructure(hostName));
+           scripter.InitVariables.Add("hostname", new TextStructure(hostName));
 
             scripter.Text = ($"is.accessible hostname {SpecialChars.Variable}hostname");
 

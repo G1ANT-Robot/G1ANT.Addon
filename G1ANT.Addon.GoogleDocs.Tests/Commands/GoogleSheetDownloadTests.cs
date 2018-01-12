@@ -25,7 +25,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
+           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid isshared false");
         }
 

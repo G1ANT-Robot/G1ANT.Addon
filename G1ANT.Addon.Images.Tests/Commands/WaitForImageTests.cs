@@ -60,7 +60,7 @@ namespace G1ANT.Addon.Images.Tests
 
             Scripter scripter = new Scripter();
             scripter.RunLine("window TestApp");
-            scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
+           scripter.InitVariables.Add(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
                             keyboard {TextChar}{SpecialChars.Variable}{nameof(colorCode)}{TextChar} 

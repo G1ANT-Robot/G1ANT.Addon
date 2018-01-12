@@ -49,8 +49,8 @@ namespace G1ANT.Addon.MSOffice.Tests
             string xpsPath = Environment.CurrentDirectory + @"\test.xps";
 
             
-            scripter.Variables.SetVariableValue("pdfPath", new TextStructure(pdfPath));
-            scripter.Variables.SetVariableValue("xpsPath", new TextStructure(xpsPath));
+           scripter.InitVariables.Add("pdfPath", new TextStructure(pdfPath));
+           scripter.InitVariables.Add("xpsPath", new TextStructure(xpsPath));
 
             scripter.Text =
                     $@"word.open

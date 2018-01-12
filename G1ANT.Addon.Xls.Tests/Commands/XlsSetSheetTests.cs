@@ -52,7 +52,7 @@ namespace G1ANT.Addon.Xls.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
+           scripter.InitVariables.Add("xlsPath", new TextStructure(file));
         }
 
         [SetUp]

@@ -27,7 +27,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document3), "tif");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("file", new GStructures.TextStructure(path));
+           scripter.InitVariables.Add("file", new GStructures.TextStructure(path));
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]
@@ -49,7 +49,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             string endOfFirstPage = @"Nowa sekcja 3 Strona 1";
 
             List<GStructures.Structure> list = new List<GStructures.Structure>() { new GStructures.IntegerStructure(1) };
-            scripter.Variables.SetVariableValue(nameof(list), new GStructures.ListStructure(list));
+           scripter.InitVariables.Add(nameof(list), new GStructures.ListStructure(list));
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{doc4Path}{SpecialChars.Text} pages {SpecialChars.Variable}{nameof(list)}");
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(scripter.Variables.GetVariableValue<int>("result"));
             Assert.IsTrue(document.GetAllText().Trim().EndsWith(endOfFirstPage));
@@ -92,7 +92,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
                 wordsList.Add(new GStructures.TextStructure(word));
             }
 
-            scripter.Variables.SetVariableValue(nameof(wordsList), new GStructures.ListStructure(wordsList));
+           scripter.InitVariables.Add(nameof(wordsList), new GStructures.ListStructure(wordsList));
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text} language Polish languageweight 0 dictionary {SpecialChars.Variable}{nameof(wordsList)}");
             //scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{Initializer.BgzBilans6Path}{SpecialChars.Text} dictionary {SpecialChars.Variable}{nameof(wordsList)}");
             int documentId = scripter.Variables.GetVariableValue<int>("result");

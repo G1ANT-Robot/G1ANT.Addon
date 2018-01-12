@@ -36,10 +36,10 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("intVal", new Language.IntegerStructure(intVal));
-            scripter.Variables.SetVariableValue("fVal", new FloatStructure(fVal));
-            scripter.Variables.SetVariableValue("strVal", new TextStructure(stringVal));
-            scripter.Variables.SetVariableValue("formula", new TextStructure(formula));
+           scripter.InitVariables.Add("intVal", new Language.IntegerStructure(intVal));
+           scripter.InitVariables.Add("fVal", new FloatStructure(fVal));
+           scripter.InitVariables.Add("strVal", new TextStructure(stringVal));
+           scripter.InitVariables.Add("formula", new TextStructure(formula));
         }
         
 

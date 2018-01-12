@@ -53,9 +53,9 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(xlsPath));
-            scripter.Variables.SetVariableValue("sheet", new TextStructure(sheetName));
-            scripter.Variables.SetVariableValue("macroName", new TextStructure(macroName));
+           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
+           scripter.InitVariables.Add("sheet", new TextStructure(sheetName));
+           scripter.InitVariables.Add("macroName", new TextStructure(macroName));
             scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath sheet {SpecialChars.Variable}sheet");
         }
 

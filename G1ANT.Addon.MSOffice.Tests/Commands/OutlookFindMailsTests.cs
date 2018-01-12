@@ -48,9 +48,9 @@ namespace G1ANT.Addon.MSOffice.Tests
 			    delay 1
 			    outlook.send
 			    delay 20";
-            scripter.Variables.SetVariableValue("email", new TextStructure(email));
-            scripter.Variables.SetVariableValue("sbj", new TextStructure(subject));
-            scripter.Variables.SetVariableValue("txt", new TextStructure(text));
+           scripter.InitVariables.Add("email", new TextStructure(email));
+           scripter.InitVariables.Add("sbj", new TextStructure(subject));
+           scripter.InitVariables.Add("txt", new TextStructure(text));
             scripter.Run();
         }
 
