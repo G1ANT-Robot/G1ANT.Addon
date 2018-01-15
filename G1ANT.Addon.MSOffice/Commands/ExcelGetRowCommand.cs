@@ -32,7 +32,7 @@ namespace G1ANT.Addon.MSOffice
             catch (Exception ex)
             {
                 throw new ApplicationException($"Problem occured while getting row: '{arguments.Row.Value}'. Message: {ex.Message}", ex);
-            }
+            } 
         }
     }
 }
