@@ -28,16 +28,15 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
-scripter.InitVariables.Clear();
         }
 
         [SetUp]
         public void TestInit()
         {
+            scripter = new Scripter();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             userProcessCount = Process.GetProcessesByName("excel").Length;
             scripter.RunLine("excel.open");

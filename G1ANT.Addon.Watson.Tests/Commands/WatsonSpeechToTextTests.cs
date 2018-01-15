@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Watson.Tests
 
         [OneTimeSetUp]
         [Timeout(20000)]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
              audioPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.SpeechTest), "wav");

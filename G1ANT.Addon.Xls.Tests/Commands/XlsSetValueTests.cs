@@ -54,7 +54,7 @@ scripter.InitVariables.Clear();
 
         [OneTimeTearDown]
         [Timeout(20000)]
-        public static void ClassCleanUp()
+        public void ClassCleanUp()
         {
             scripter.RunLine($"xls.setvalue value {SpecialChars.Text}{SpecialChars.Text} position {SpecialChars.Text}F3{SpecialChars.Text}");
             scripter.RunLine($"xls.setvalue value {SpecialChars.Text}{SpecialChars.Text} position {SpecialChars.Text}F4{SpecialChars.Text}");

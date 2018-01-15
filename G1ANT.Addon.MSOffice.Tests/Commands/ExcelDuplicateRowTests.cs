@@ -34,16 +34,16 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
-scripter.InitVariables.Clear();
         }
 
         [SetUp]
         public void TestInit()
         {
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));

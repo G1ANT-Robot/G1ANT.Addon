@@ -32,7 +32,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             return Process.GetProcessesByName("excel").Length;
         }
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();

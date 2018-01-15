@@ -36,7 +36,7 @@ scripter.InitVariables.Clear();
         }
         [TearDown]
         [Timeout(20000)]
-        public static void ClassCleanUp()
+        public void ClassCleanUp()
         {
             try
             {

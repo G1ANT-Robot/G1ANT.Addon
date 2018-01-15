@@ -22,7 +22,6 @@ namespace G1ANT.Addon.Images.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-scripter.InitVariables.Clear();
         }
 
         private Scripter scripter;

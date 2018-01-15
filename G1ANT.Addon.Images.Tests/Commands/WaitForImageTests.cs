@@ -38,7 +38,6 @@ namespace G1ANT.Addon.Images.Tests
             string path = @"C:\lolAndLol\lol.png";
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
 
             scripter.Text = $"waitfor.image image {SpecialChars.Text}{path}{SpecialChars.Text}";
 
@@ -60,7 +59,7 @@ scripter.InitVariables.Clear();
             RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             scripter.RunLine("window TestApp");
            scripter.InitVariables.Add(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
@@ -84,7 +83,6 @@ scripter.InitVariables.Clear();
             string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.smallPink), "bmp");
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
 
             testerApp = SDK.Tester.RunFormTester($"CenterOfScreen FocusOnControl tbColorRGB ChangeColor {colorCode} ");
             RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
@@ -99,7 +97,6 @@ scripter.InitVariables.Clear();
             string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.purpleInYellow), "bmp");
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -113,7 +110,6 @@ scripter.InitVariables.Clear();
         {
             string image = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.smallBlack), "bmp");
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
             scripter.Text = $"waitfor.image image {SpecialChars.Text}{image}{SpecialChars.Text} threshold 54";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {

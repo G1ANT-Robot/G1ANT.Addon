@@ -42,7 +42,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         static int calculationValueExpectedcolindexumn = 1;
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
