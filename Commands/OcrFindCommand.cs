@@ -26,7 +26,7 @@ namespace G1ANT.Language.Ocr
             [Argument(DefaultVariable = "timeoutOcr")]
             public  override TimeSpanStructure Timeout { get; set; }
 
-            [Argument(Tooltip = "Comma separated list of languages from which you want to recognize text on the screen")]
+            [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]
             public TextStructure Languages { get; set; } = new TextStructure("en");
         }
         public OcrFindCommand(AbstractScripter scripter) : base(scripter)
