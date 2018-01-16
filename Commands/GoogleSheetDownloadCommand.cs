@@ -14,9 +14,9 @@ namespace G1ANT.Addon.GoogleDocs
     {
         public class Arguments : CommandArguments
         {
-            [Argument (Required =true)]
+            [Argument (Required =true, Tooltip = "Destination on your computer where the file will be saved")]
             public TextStructure Path { get; set; }
-            [Argument]
+            [Argument (Tooltip = "Type of file extension, could be ‘pdf’ or ‘xlsx’")]
             public TextStructure Type { get; set; }
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
