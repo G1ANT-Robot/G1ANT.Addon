@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer", "G1ANT.Addon.IE\G1ANT.Addon.IExplorer.csproj", "{CEA69D5A-91C9-43D9-8928-F41D69E85BAF}"
 EndProject
@@ -54,6 +54,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm.Tests", "G1ANT.Addon.Mscrm.Tests\G1ANT.Addon.Mscrm.Tests.csproj", "{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Pdf", "G1ANT.Addon.Pdf\G1ANT.Addon.Pdf.csproj", "{4DB9E42D-6491-45DC-92BD-F7F530968EF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{67213ED7-BB5A-468C-BAF1-86FF8B9BF688}"
+	ProjectSection(SolutionItems) = preProject
+		EmbedLibrarys.ps1 = EmbedLibrarys.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
