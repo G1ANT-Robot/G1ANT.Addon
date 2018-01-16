@@ -12,7 +12,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
     [TestFixture]
     public class ProcessScreenTests
     {
-        private static Scripter scripter;
+        private Scripter scripter;
         private static System.Diagnostics.Process testerApp;
         private static string appTitle = "TestApp";
         private const int TesterAppTimeout = 1000;
@@ -28,6 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             testerApp = AbbyTests.StartFormTester($"Title {appTitle}");
         }
         

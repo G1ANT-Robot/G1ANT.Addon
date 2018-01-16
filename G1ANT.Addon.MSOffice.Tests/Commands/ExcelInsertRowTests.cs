@@ -11,7 +11,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelInsertRowTests
     {
 
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {
@@ -26,10 +26,11 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
 
         [SetUp]

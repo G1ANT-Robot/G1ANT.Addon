@@ -12,7 +12,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelAddSheetTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string sheetName = "TestSheet";
         static string otherSheet = "otherSheet";
 
@@ -29,18 +29,19 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
         }
 
         [SetUp]
         public void TestInit()
         {
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            scripter.Variables.SetVariableValue("TestSheet", new TextStructure(sheetName));
-            scripter.Variables.SetVariableValue("otherSheet", new TextStructure(otherSheet));
+           scripter.InitVariables.Add("TestSheet", new TextStructure(sheetName));
+           scripter.InitVariables.Add("otherSheet", new TextStructure(otherSheet));
             scripter.RunLine("excel.open");
         }
 

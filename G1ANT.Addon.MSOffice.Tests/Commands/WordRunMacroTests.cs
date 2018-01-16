@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordRunMacroTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordPath;
         static string macroName = "SortText";
         static string testedValue = $"Pawel\rPatryk\rMarcin\rZuza\rChris\rMichal\rDiana\rPrzemek\rJano\r";
@@ -31,19 +31,21 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
+            
         }
 
         [SetUp]
         public void TestInit()
         {
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             wordPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestDocumentMacro), "docm");
-            scripter.Variables.SetVariableValue("wordPath", new TextStructure(wordPath));
-            scripter.Variables.SetVariableValue("macroName", new TextStructure(macroName));
+           scripter.InitVariables.Add("wordPath", new TextStructure(wordPath));
+           scripter.InitVariables.Add("macroName", new TextStructure(macroName));
             scripter.RunLine($"word.open {SpecialChars.Variable}wordPath");
         }
 

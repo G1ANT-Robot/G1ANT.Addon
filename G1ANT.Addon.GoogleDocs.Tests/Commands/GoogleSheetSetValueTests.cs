@@ -11,7 +11,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
     [Apartment(ApartmentState.STA)]
     public class GoogleSheetSetValueTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string FileID = "147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc"; //google sheets example file
         string resultBeforeChange;
         string rangeToBePlaced;
@@ -26,7 +26,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
         }
 
@@ -35,9 +36,9 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void GoogleSheetSetValue()
         {
             rangeToBePlaced = "A2";
-            scripter.Variables.SetVariableValue("rangeToBePlaced", new TextStructure(rangeToBePlaced));
+           scripter.InitVariables.Add("rangeToBePlaced", new TextStructure(rangeToBePlaced));
             var valueToBePlaced = "G1ANT";
-            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(valueToBePlaced));
+           scripter.InitVariables.Add("valueToBePlaced", new TextStructure(valueToBePlaced));
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBePlaced");
 
             resultBeforeChange = scripter.Variables.GetVariable("result").GetValue().ToString();
@@ -50,7 +51,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.Variables.SetVariableValue("valueToBePlaced", new TextStructure(resultBeforeChange));
+           scripter.InitVariables.Add("valueToBePlaced", new TextStructure(resultBeforeChange));
             scripter.RunLine($"googlesheet.setvalue range {SpecialChars.Variable}rangeToBePlaced value {SpecialChars.Variable}valueToBePlaced numeric false");
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBePlaced");
             var returnedToPreviousState = scripter.Variables.GetVariable("result").GetValue().ToString();

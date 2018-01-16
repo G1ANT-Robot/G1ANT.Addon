@@ -12,7 +12,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
     [Apartment(ApartmentState.STA)]
     public class GoogleSheetGetValueTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string FileID = "147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc"; //google sheets example file
         string rangeToBeChecked;
 
@@ -26,7 +26,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
         }
 
@@ -36,7 +37,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         {
             rangeToBeChecked = "A3";
             string expectedValue = "Andrew";
-            scripter.Variables.SetVariableValue("rangeToBeChecked", new TextStructure(rangeToBeChecked));
+           scripter.InitVariables.Add("rangeToBeChecked", new TextStructure(rangeToBeChecked));
             scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked");
           System.Collections.Generic.List<object> result = (System.Collections.Generic.List<object>)scripter.Variables.GetVariable("result").GetValue().Object;
             Assert.AreEqual(expectedValue, result[0].ToString()); 

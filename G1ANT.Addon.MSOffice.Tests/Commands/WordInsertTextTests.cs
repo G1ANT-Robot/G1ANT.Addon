@@ -17,7 +17,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordInsertTextTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordPath;
         static string valueTested = "Test";
         static string expected = "Test";
@@ -36,12 +36,13 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             wordPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestDocument), "docx");
-            scripter.Variables.SetVariableValue("wordPath", new TextStructure(wordPath));
+           scripter.InitVariables.Add("wordPath", new TextStructure(wordPath));
         }
 
         [SetUp]

@@ -14,7 +14,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class ExcelSaveTests
 	{
-        static Scripter scripter;
+        Scripter scripter;
         private void KillProcesses()
         {
             foreach (Process p in Process.GetProcessesByName("excel"))
@@ -32,10 +32,11 @@ namespace G1ANT.Addon.MSOffice.Tests
             return Process.GetProcessesByName("excel").Length;
         }
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
         [SetUp]
         public void init()
@@ -55,7 +56,7 @@ namespace G1ANT.Addon.MSOffice.Tests
                 {
                     savedFile.Delete();
                 }
-                scripter.Variables.SetVariableValue("savePath", new TextStructure(savePath));
+               scripter.InitVariables.Add("savePath", new TextStructure(savePath));
 
                 scripter.RunLine("excel.open");
                 scripter.RunLine("excel.addsheet test1");

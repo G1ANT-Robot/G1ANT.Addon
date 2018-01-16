@@ -32,6 +32,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document2), "jpg");
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
             scripter.RunLine($"ocrabbyy.filter filter bold");
             List<GStruct.Structure> res = scripter.Variables.GetVariableValue<List<GStruct.Structure>>("result");
@@ -58,6 +59,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void InvalidFilterTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             string invalidFilter = "filterThatDoNotExists";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {

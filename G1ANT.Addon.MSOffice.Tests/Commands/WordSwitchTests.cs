@@ -14,7 +14,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordSwitchTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static String someText = "lololololo";
         static String someText2 = "trolololololo";
 
@@ -31,12 +31,13 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("text", new TextStructure(someText));
-            scripter.Variables.SetVariableValue("text2", new TextStructure(someText2));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("text", new TextStructure(someText));
+           scripter.InitVariables.Add("text2", new TextStructure(someText2));
         }
 
         [SetUp]

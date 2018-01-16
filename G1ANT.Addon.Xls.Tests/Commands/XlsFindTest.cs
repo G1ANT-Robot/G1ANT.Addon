@@ -16,7 +16,7 @@ namespace G1ANT.Addon.Xls.Tests
     {
          string file;
          string file2;
-        static Scripter scripter;
+        Scripter scripter;
         [OneTimeSetUp]
         public void ClassInit()
         {
@@ -30,7 +30,8 @@ namespace G1ANT.Addon.Xls.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("xlsPath", new TextStructure(file));
             scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
         }
         [Test]

@@ -17,7 +17,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         static float fVal = 3.3f;
         static string stringVal = "something";
         static string formula = "=B1*C1";
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {
@@ -32,14 +32,15 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("intVal", new Language.IntegerStructure(intVal));
-            scripter.Variables.SetVariableValue("fVal", new FloatStructure(fVal));
-            scripter.Variables.SetVariableValue("strVal", new TextStructure(stringVal));
-            scripter.Variables.SetVariableValue("formula", new TextStructure(formula));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("intVal", new Language.IntegerStructure(intVal));
+           scripter.InitVariables.Add("fVal", new FloatStructure(fVal));
+           scripter.InitVariables.Add("strVal", new TextStructure(stringVal));
+           scripter.InitVariables.Add("formula", new TextStructure(formula));
         }
         
 

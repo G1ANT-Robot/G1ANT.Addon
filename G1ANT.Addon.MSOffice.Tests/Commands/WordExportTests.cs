@@ -16,7 +16,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordExportTests
     {
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {
@@ -31,14 +31,16 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
+           
         }
         [SetUp]
         public void Init()
         {
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
         }
         [Test]
@@ -49,8 +51,8 @@ namespace G1ANT.Addon.MSOffice.Tests
             string xpsPath = Environment.CurrentDirectory + @"\test.xps";
 
             
-            scripter.Variables.SetVariableValue("pdfPath", new TextStructure(pdfPath));
-            scripter.Variables.SetVariableValue("xpsPath", new TextStructure(xpsPath));
+           scripter.InitVariables.Add("pdfPath", new TextStructure(pdfPath));
+           scripter.InitVariables.Add("xpsPath", new TextStructure(xpsPath));
 
             scripter.Text =
                     $@"word.open

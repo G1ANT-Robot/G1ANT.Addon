@@ -10,7 +10,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
     [Apartment(ApartmentState.STA)]
     public class GoogleSheetSwitchTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string FileID1 = "147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc"; //google sheets example file
         static string FileID2 = "1d4InQksHBQyAqmogBc2xsP2eU7uBGD3iBtcmng3--Hk"; //google sheets example file
 
@@ -25,9 +25,10 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId1", new TextStructure(FileID1));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("fileId1", new TextStructure(FileID1));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid1 result {SpecialChars.Variable}excelID1");
-            scripter.Variables.SetVariableValue("fileId2", new TextStructure(FileID2));
+           scripter.InitVariables.Add("fileId2", new TextStructure(FileID2));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid2 result {SpecialChars.Variable}excelID2");
             var result = scripter.Variables.GetVariable("result");
         }

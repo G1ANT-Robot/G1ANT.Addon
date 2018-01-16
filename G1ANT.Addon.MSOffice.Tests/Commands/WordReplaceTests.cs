@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordReplaceTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static String replaceFrom = "tro";
         static String replaceTo = "lo";
         static String restOfText = "lololololo";
@@ -31,11 +31,12 @@ namespace G1ANT.Addon.MSOffice.Tests
 
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("text", new TextStructure(replaceFrom + restOfText));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("text", new TextStructure(replaceFrom + restOfText));
         }
 
         [SetUp]

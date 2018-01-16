@@ -25,6 +25,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void SeleniumWaitForValueTest()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
@@ -39,6 +40,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result")?.Contains("abc") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}ie{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
@@ -53,6 +55,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result")?.Contains("abc") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}
@@ -67,6 +70,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result")?.Contains("abc") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}edge{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}{pageAddress}{SpecialChars.Text}

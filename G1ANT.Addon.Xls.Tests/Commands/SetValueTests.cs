@@ -16,7 +16,7 @@ namespace G1ANT.Addon.Xls.Tests
         
         string file;
         string file2;
-        private static Scripter scripter;
+        private Scripter scripter;
 
         [OneTimeSetUp]
         [Timeout(20000)]
@@ -31,11 +31,12 @@ namespace G1ANT.Addon.Xls.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine($"xls.open {SpecialChars.Text}{file2}{SpecialChars.Text} accessmode read");
         }
         [TearDown]
         [Timeout(20000)]
-        public static void ClassCleanUp()
+        public void ClassCleanUp()
         {
             try
             {

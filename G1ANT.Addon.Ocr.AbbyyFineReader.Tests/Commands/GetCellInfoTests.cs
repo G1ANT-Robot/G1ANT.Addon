@@ -26,6 +26,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void GetCellInfoTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
             scripter.RunLine($"ocrabbyy.getcellinfo position 8,3");
             System.Drawing.Point cellInfo = scripter.Variables.GetVariableValue<System.Drawing.Point>("result");

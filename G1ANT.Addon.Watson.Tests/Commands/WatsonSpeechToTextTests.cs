@@ -13,18 +13,19 @@ namespace G1ANT.Addon.Watson.Tests
     public class WatsonSpeechToTextTests
     {
         private static string audioPath;
-        private static Scripter scripter;
+        private Scripter scripter;
         private static string login = "1ab27db8-575a-4d3f-b6d0-49c744d2e9fb";
         private static string password = "3uKsggJu8hMc";
 
         [OneTimeSetUp]
         [Timeout(20000)]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
              audioPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.SpeechTest), "wav");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("audioPath", new TextStructure(audioPath));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("audioPath", new TextStructure(audioPath));
         }
 
         [SetUp]

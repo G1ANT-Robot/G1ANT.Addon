@@ -22,6 +22,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void BrowsersSetUrlFailTest()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}tibia aggs/1223;1'\\1'23./2{SpecialChars.Text}                    
@@ -37,6 +38,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void BrowsersSetUrlSuccessTest()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}firefox{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
@@ -52,6 +54,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
@@ -67,6 +70,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}edge{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}
@@ -82,6 +86,7 @@ namespace G1ANT.Addon.Selenium.Tests
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result2")?.ToLower()?.Contains("rolnictwa") ?? false);
 
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}ie{SpecialChars.Text}
                     selenium.seturl url {SpecialChars.Text}msz.gov.pl/pl/{SpecialChars.Text}

@@ -24,6 +24,7 @@ namespace G1ANT.Addon.Selenium.Tests
         public void SeleniumTabAlLBrowsersTests()
         {
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"
                     selenium.open type {SpecialChars.Text}chrome{SpecialChars.Text} url {SpecialChars.Text}msz.gov.pl{SpecialChars.Text} nowait true
                     selenium.newtab url {SpecialChars.Text}minrol.gov.pl{SpecialChars.Text}

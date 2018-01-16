@@ -15,7 +15,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
     public class CloseTests
     {
         private static string path;
-        private static Scripter scripter;
+        private Scripter scripter;
 
         [OneTimeSetUp]
         public void Initialize()
@@ -29,7 +29,8 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document1), "tif");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("file", new GStructures.TextStructure(path));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("file", new GStructures.TextStructure(path));
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]

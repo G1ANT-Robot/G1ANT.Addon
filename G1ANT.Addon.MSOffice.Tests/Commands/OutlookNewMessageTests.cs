@@ -14,7 +14,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class OutlookNewMessageTests
 	{
 
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {
@@ -29,23 +29,25 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
+           
         }
         [SetUp]
         public void TestInit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
+            scripter.InitVariables.Clear();
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
+           
             string email = "g1ant.robot.tester@gmail.com";
             string subject = "test" + DateTime.Now;
             string text = "example text";
 
-            scripter.Variables.SetVariableValue("email", new TextStructure(email));
-            scripter.Variables.SetVariableValue("sbj", new TextStructure(subject));
-            scripter.Variables.SetVariableValue("txt", new TextStructure(text));
+           scripter.InitVariables.Add("email", new TextStructure(email));
+           scripter.InitVariables.Add("sbj", new TextStructure(subject));
+           scripter.InitVariables.Add("txt", new TextStructure(text));
             
         }
         [Test]

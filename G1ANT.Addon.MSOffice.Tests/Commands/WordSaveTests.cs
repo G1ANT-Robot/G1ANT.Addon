@@ -14,7 +14,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class WordSaveTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string wordToBeTested = "TestG1ant";
         private void KillProcesses()
         {
@@ -38,6 +38,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
 
         [Test]
@@ -58,7 +59,7 @@ namespace G1ANT.Addon.MSOffice.Tests
                 word.gettext
                 word.close";
             
-            scripter.Variables.SetVariableValue("savePath", new TextStructure(savePath));
+           scripter.InitVariables.Add("savePath", new TextStructure(savePath));
             scripter.Run();
             Assert.AreEqual(wordToBeTested, scripter.Variables.GetVariableValue<string>("result").Trim());
 

@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelExportTests
     {
         static FileInfo excelFile;
-        static Scripter scripter;
+        Scripter scripter;
         static string xlsPath, pdfPath, xpsPath, excelPath;
 
         private void KillProcesses()
@@ -36,10 +36,9 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
             excelPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
 
             excelFile = new FileInfo(Path.Combine(Environment.CurrentDirectory, excelPath));
@@ -48,9 +47,10 @@ namespace G1ANT.Addon.MSOffice.Tests
             xpsPath = excelFile.DirectoryName + @"\" + excelFile.Name + ".xps";
 
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(xlsPath));
-            scripter.Variables.SetVariableValue("pdfPath", new TextStructure(pdfPath));
-            scripter.Variables.SetVariableValue("xpsPath", new TextStructure(xpsPath));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
+           scripter.InitVariables.Add("pdfPath", new TextStructure(pdfPath));
+           scripter.InitVariables.Add("xpsPath", new TextStructure(xpsPath));
 
             if (File.Exists(pdfPath))
                 File.Delete(pdfPath);

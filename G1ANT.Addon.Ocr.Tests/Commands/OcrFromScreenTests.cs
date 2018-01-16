@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Ocr.Tests
     [TestFixture]
     public class OcrFromScreenTests
     {
-        private static Scripter scripter;
+        private Scripter scripter;
         private Process proces;
         private string path;
 
@@ -30,6 +30,7 @@ namespace G1ANT.Addon.Ocr.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.testimage), "png");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             GoogleOcrTests.StartPaint(path);
             scripter.RunLine($"window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize");
         }

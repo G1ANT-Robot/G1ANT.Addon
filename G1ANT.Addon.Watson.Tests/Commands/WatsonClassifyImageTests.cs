@@ -31,6 +31,7 @@ namespace G1ANT.Addon.Watson.Tests
         public void WatsonClassifyImageTimeout()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"watson.classifyimage 27{SpecialChars.Point}0{SpecialChars.Point}194{SpecialChars.Point}27 timeout 1 apikey {SpecialChars.Text}{apiKey}{SpecialChars.Text}";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
@@ -54,6 +55,7 @@ namespace G1ANT.Addon.Watson.Tests
         public void WatsonWrongPositionTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $@"watson.classifyimage 27{SpecialChars.Point}0{SpecialChars.Point}27{SpecialChars.Point}50 apikey {SpecialChars.Text}{apiKey}{SpecialChars.Text}";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {

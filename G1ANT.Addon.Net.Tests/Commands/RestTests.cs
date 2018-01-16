@@ -33,9 +33,10 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
-            scripter.Variables.SetVariableValue("method", new TextStructure("post"));
-            scripter.Variables.SetVariableValue("list", list);
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("url", new TextStructure(url));
+           scripter.InitVariables.Add("method", new TextStructure("post"));
+           scripter.InitVariables.Add("list", list);
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url parameters {SpecialChars.Variable}list timeout {TestTimeout}");
             scripter.RunLine($"json {SpecialChars.Variable}result jpath ['form']['something']");
 
@@ -59,11 +60,12 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("params", parameters);
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("params", parameters);
 
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
-            scripter.Variables.SetVariableValue("method", new TextStructure("put"));
-            scripter.Variables.SetVariableValue("headers", headers1);
+           scripter.InitVariables.Add("url", new TextStructure(url));
+           scripter.InitVariables.Add("method", new TextStructure("put"));
+           scripter.InitVariables.Add("headers", headers1);
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers parameters {SpecialChars.Variable}params timeout {TestTimeout}");
             string resultJson = scripter.Variables.GetVariableValue<string>("result");
 
@@ -80,9 +82,9 @@ namespace G1ANT.Addon.Net.Tests
                 new TextStructure("type1:xml")
             });
 
-            scripter.Variables.SetVariableValue("url", new Language.TextStructure(url));
-            scripter.Variables.SetVariableValue("method", new Language.TextStructure("get"));
-            scripter.Variables.SetVariableValue("headers", headers2);
+           scripter.InitVariables.Add("url", new Language.TextStructure(url));
+           scripter.InitVariables.Add("method", new Language.TextStructure("get"));
+           scripter.InitVariables.Add("headers", headers2);
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers parameters {SpecialChars.Variable}params ");
 
             resultJson = scripter.Variables.GetVariableValue<string>("result");
@@ -98,7 +100,8 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http://validate.jsontest.com/";
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest {SpecialChars.Text}get{SpecialChars.Text} url {SpecialChars.Variable}url timeout 1");
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
@@ -114,8 +117,9 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http://jsonplaceholder.typicode.com/posts/1";
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("method", new Language.TextStructure("delete"));
-            scripter.Variables.SetVariableValue("url", new Language.TextStructure(url));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("method", new Language.TextStructure("delete"));
+           scripter.InitVariables.Add("url", new Language.TextStructure(url));
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url");
 
             Assert.AreEqual("Completed", scripter.Variables.GetVariableValue<string>("status"));
@@ -133,9 +137,10 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("method", new TextStructure("put"));
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
-            scripter.Variables.SetVariableValue("headers", headers);
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("method", new TextStructure("put"));
+           scripter.InitVariables.Add("url", new TextStructure(url));
+           scripter.InitVariables.Add("headers", headers);
             scripter.Text = ($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers");
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
@@ -156,9 +161,10 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("method", new TextStructure("put"));
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
-            scripter.Variables.SetVariableValue("headers", headers);
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("method", new TextStructure("put"));
+           scripter.InitVariables.Add("url", new TextStructure(url));
+           scripter.InitVariables.Add("headers", headers);
 
             scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers");
 
@@ -173,7 +179,8 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http://jsonplaceholder.typicode.com/posts/1";
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest method {SpecialChars.Text}puttt{SpecialChars.Text} url {SpecialChars.Variable}url");
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
@@ -190,7 +197,8 @@ namespace G1ANT.Addon.Net.Tests
             string url = "http/jsonplaceholder.typicode.com/posts";
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("url", new TextStructure(url));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest method {SpecialChars.Text}post{SpecialChars.Text} url {SpecialChars.Variable}url");
 
             Exception exception = Assert.Throws<ApplicationException>(delegate

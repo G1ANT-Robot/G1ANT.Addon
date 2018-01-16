@@ -58,7 +58,8 @@ namespace G1ANT.Addon.Net.Tests
             });
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("att", attachments);
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("att", attachments);
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} subject {textChar}{subject}{textChar} " +
                             $"attachments {SpecialChars.Variable}att";
@@ -91,6 +92,7 @@ namespace G1ANT.Addon.Net.Tests
         public void IncorrectPasswordTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password + 2.ToString()}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} ";
 
@@ -106,6 +108,7 @@ namespace G1ANT.Addon.Net.Tests
         public void IncorrectLoginTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"mail.smtp login {textChar}{email + "cos"}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} ";
 
@@ -121,6 +124,7 @@ namespace G1ANT.Addon.Net.Tests
         public void EmptyAddresseeTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{string.Empty}{textChar} to {textChar}{email}{textChar} ";
 
@@ -136,6 +140,7 @@ namespace G1ANT.Addon.Net.Tests
         public void EmptyReceiverTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{string.Empty}{textChar} ";
 
@@ -151,6 +156,7 @@ namespace G1ANT.Addon.Net.Tests
         public void BadPortTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} port -3";
 
@@ -166,6 +172,7 @@ namespace G1ANT.Addon.Net.Tests
         public void BadHostTest()
         {
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} host =-sdf=-jdsf-jsd";
 
@@ -193,7 +200,8 @@ namespace G1ANT.Addon.Net.Tests
             }
 
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("att", attachments);
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("att", attachments);
             scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
                             $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} attachments {SpecialChars.Variable}att";
 

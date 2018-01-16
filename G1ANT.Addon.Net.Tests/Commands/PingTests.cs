@@ -27,7 +27,8 @@ namespace G1ANT.Addon.Net.Tests
         public void PingGoogleTest()
         {
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("ping", new TextStructure("google.com"));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("ping", new TextStructure("google.com"));
 
             try
             {
@@ -45,7 +46,8 @@ namespace G1ANT.Addon.Net.Tests
         public void PingGoogleMultipleTimesTest()
         {
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("ping", new TextStructure("google.com"));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("ping", new TextStructure("google.com"));
 
             try
             {
@@ -64,7 +66,8 @@ namespace G1ANT.Addon.Net.Tests
         public void PingLocalhostTest()
         {
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("ping", new TextStructure("localhost"));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("ping", new TextStructure("localhost"));
 
             scripter.RunLine($"ping ip {SpecialChars.Variable}ping ");
             int response = scripter.Variables.GetVariableValue<int>("result");
@@ -79,7 +82,8 @@ namespace G1ANT.Addon.Net.Tests
         public void TimeoutPingTest()
         {
             Scripter scripter = new Scripter();
-            scripter.Variables.SetVariableValue("ping", new TextStructure("www.myapple.com"));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("ping", new TextStructure("www.myapple.com"));
             scripter.Text = ($"ping ip {SpecialChars.Variable}ping timeout 2000");
 
             Exception exception = Assert.Throws<ApplicationException>(delegate

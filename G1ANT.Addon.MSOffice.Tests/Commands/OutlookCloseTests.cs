@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class OutlookCloseTests
 	{
-        static Scripter scripter;
+        Scripter scripter;
         private void KillProcesses()
         {
             foreach (Process p in Process.GetProcessesByName("outlook"))
@@ -38,6 +38,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
 
         [Test]

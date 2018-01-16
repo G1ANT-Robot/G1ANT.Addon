@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Xls.Tests
     public class XlsSetValueTests
     {
         string file;
-        static Scripter scripter;
+        Scripter scripter;
 
 
         [SetUp]
@@ -21,6 +21,7 @@ namespace G1ANT.Addon.Xls.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
         }
         [Test]
         [Timeout(20000)]
@@ -46,13 +47,14 @@ namespace G1ANT.Addon.Xls.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("xlsPath", new TextStructure(file));
             scripter.RunLine($"xls.open ♥xlsPath result {SpecialChars.Variable}id");
         }
 
         [OneTimeTearDown]
         [Timeout(20000)]
-        public static void ClassCleanUp()
+        public void ClassCleanUp()
         {
             scripter.RunLine($"xls.setvalue value {SpecialChars.Text}{SpecialChars.Text} position {SpecialChars.Text}F3{SpecialChars.Text}");
             scripter.RunLine($"xls.setvalue value {SpecialChars.Text}{SpecialChars.Text} position {SpecialChars.Text}F4{SpecialChars.Text}");

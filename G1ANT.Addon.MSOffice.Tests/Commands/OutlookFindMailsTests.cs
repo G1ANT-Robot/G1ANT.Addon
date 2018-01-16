@@ -13,7 +13,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     [Apartment(ApartmentState.STA)]
     public class OutlookFindMailsTests
     {
-        static Scripter scripter;
+        Scripter scripter;
 
         private void KillProcesses()
         {
@@ -38,6 +38,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             string email = "g1ant.robot.tester@gmail.com";
             string subject = "test" + DateTime.Now;
             string text = "example text";
@@ -48,9 +49,9 @@ namespace G1ANT.Addon.MSOffice.Tests
 			    delay 1
 			    outlook.send
 			    delay 20";
-            scripter.Variables.SetVariableValue("email", new TextStructure(email));
-            scripter.Variables.SetVariableValue("sbj", new TextStructure(subject));
-            scripter.Variables.SetVariableValue("txt", new TextStructure(text));
+           scripter.InitVariables.Add("email", new TextStructure(email));
+           scripter.InitVariables.Add("sbj", new TextStructure(subject));
+           scripter.InitVariables.Add("txt", new TextStructure(text));
             scripter.Run();
         }
 

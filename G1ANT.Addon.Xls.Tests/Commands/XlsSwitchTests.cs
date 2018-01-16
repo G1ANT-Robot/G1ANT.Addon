@@ -15,7 +15,7 @@ namespace G1ANT.Addon.Xls.Tests
 
         string file;
         string file2;
-        static Scripter scripter;
+        Scripter scripter;
         private static int filesCount = 5;
         private static string[] filePaths = new string[filesCount];
         private static string filePrefix ;
@@ -32,6 +32,7 @@ namespace G1ANT.Addon.Xls.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
+scripter.InitVariables.Clear();
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
             filePrefix = file;

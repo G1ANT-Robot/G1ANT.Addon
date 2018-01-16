@@ -15,7 +15,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     public class ExcelImportTextTests
 	{
 		static string csvPath;
-		static Scripter scripter;
+		Scripter scripter;
 
         private void KillProcesses()
         {
@@ -30,18 +30,20 @@ namespace G1ANT.Addon.MSOffice.Tests
         }
 
         [OneTimeSetUp]
-        public static void ClassInit()
+        public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
+           
         }
 
         [SetUp]
         public void TestInit()
         {
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             csvPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestData), "csv");
-            scripter.Variables.SetVariableValue("csvPath", new TextStructure(csvPath));
+           scripter.InitVariables.Add("csvPath", new TextStructure(csvPath));
             scripter.RunLine($"excel.open {SpecialChars.Variable}csvPath");
         }
 

@@ -13,7 +13,7 @@ namespace G1ANT.Addon.Xls.Tests
     public class XlsSetSheetTests
     {
         string file;
-        static Scripter scripter;
+        Scripter scripter;
 
         
         [Test]
@@ -52,7 +52,8 @@ namespace G1ANT.Addon.Xls.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("xlsPath", new TextStructure(file));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("xlsPath", new TextStructure(file));
         }
 
         [SetUp]

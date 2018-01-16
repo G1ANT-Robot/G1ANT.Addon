@@ -33,6 +33,7 @@ namespace G1ANT.Addon.Images.Tests
             string path = @"C:\bagno\bagno\bagno\lol.bmp";
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.expected image1 {SpecialChars.Text}{path}{SpecialChars.Text}";
 
@@ -51,6 +52,7 @@ namespace G1ANT.Addon.Images.Tests
             string image2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.greenInRed), "bmp");
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.expected image1 {SpecialChars.Text}{image1}{SpecialChars.Text} image2 {SpecialChars.Text}{image2}{SpecialChars.Text}";
             scripter.Run();
@@ -66,8 +68,9 @@ namespace G1ANT.Addon.Images.Tests
             testerApp = SDK.Tester.RunFormTester("Title TestApp");
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine("window TestApp");
-            scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
+           scripter.InitVariables.Add(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
                             keyboard {TextChar}{SpecialChars.Variable}{nameof(colorCode)}{TextChar} 
@@ -87,6 +90,7 @@ namespace G1ANT.Addon.Images.Tests
             paths.Add(image);
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.expected image1 {SpecialChars.Text}{image}{SpecialChars.Text} threshold -16";
 

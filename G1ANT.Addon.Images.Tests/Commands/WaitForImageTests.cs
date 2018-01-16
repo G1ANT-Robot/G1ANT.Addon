@@ -59,8 +59,9 @@ namespace G1ANT.Addon.Images.Tests
             RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
 
             Scripter scripter = new Scripter();
+            scripter.InitVariables.Clear();
             scripter.RunLine("window TestApp");
-            scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
+           scripter.InitVariables.Add(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
                             keyboard {TextChar}{SpecialChars.Variable}{nameof(colorCode)}{TextChar} 

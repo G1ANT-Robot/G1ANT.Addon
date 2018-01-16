@@ -11,7 +11,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
     [Apartment(ApartmentState.STA)]
     public class GoogleSheetFindTests
     {
-        static Scripter scripter;
+        Scripter scripter;
         static string FileID = "147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc"; //google sheets example file
 
 
@@ -25,7 +25,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-            scripter.Variables.SetVariableValue("fileId", new TextStructure(FileID));
+scripter.InitVariables.Clear();
+           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
             scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid isshared false");
         }
 
@@ -34,13 +35,13 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void GoogleSheetFindValueWhichExistsManyTimes()
         {
             var value1 = "3. Junior";
-            scripter.Variables.SetVariableValue("valueToBeFound", new TextStructure(value1));
+           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value1));
             scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
             var result1 = scripter.Variables.GetVariable("result");
             Assert.AreEqual("C7", result1.GetValue().ToString());
 
             var value2 = "Lacrosse";
-            scripter.Variables.SetVariableValue("valueToBeFound", new TextStructure(value2));
+           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value2));
             scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
             var result2 = scripter.Variables.GetVariable("result");
             Assert.AreEqual("F3", result2.GetValue().ToString());
@@ -51,7 +52,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void GoogleSheetFindValueWhichExistsOnce()
         {
             var value = "Anna";
-            scripter.Variables.SetVariableValue("valueToBeFound", new TextStructure(value));
+           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
             scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("A4", result.GetValue().ToString());
@@ -62,7 +63,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void GoogleSheetFindValueWhichDoesntExist()
         {
             var value = "notexists";
-            scripter.Variables.SetVariableValue("valueToBeFound", new TextStructure(value));
+           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
             scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("", result.GetValue().ToString());

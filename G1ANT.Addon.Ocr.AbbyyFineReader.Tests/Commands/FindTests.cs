@@ -34,6 +34,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             List<GStruct.Structure> allNumbers = null;
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
             scripter.RunLine($"ocrabbyy.find {SpecialChars.Text}{numberRegex}{SpecialChars.Text} result {SpecialChars.Variable}{nameof(allNumbers)}");
             allNumbers = scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(allNumbers));
@@ -45,12 +46,14 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         {
             string appTitle = "TestApp";
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             System.Diagnostics.Process testerApp = null;
             List<GStruct.Structure> windowTitleRect = null;
 
             try
             {
                 scripter = new Scripter();
+scripter.InitVariables.Clear();
                 testerApp = AbbyTests.StartFormTester($"Title {appTitle}");
                 IntPtr hTesterAppWindow = testerApp.MainWindowHandle;
                 RobotWin32.Rect windowRect = new RobotWin32.Rect();

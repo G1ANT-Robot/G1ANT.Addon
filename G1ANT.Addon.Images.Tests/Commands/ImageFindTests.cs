@@ -36,6 +36,7 @@ namespace G1ANT.Addon.Images.Tests
         {
             string path = @"C:\ble\ble\ble.png";
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.Text = $"image.find image1 {SpecialChars.Text}{path}{SpecialChars.Text}";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
@@ -56,6 +57,7 @@ namespace G1ANT.Addon.Images.Tests
             string image2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.greenInRed), "bmp");
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.find image1 {SpecialChars.Text}{image1}{SpecialChars.Text} image2 {SpecialChars.Text}{image2}{SpecialChars.Text} offsetx {offset.X} offsety {offset.Y}";
             scripter.Run();
@@ -76,6 +78,7 @@ namespace G1ANT.Addon.Images.Tests
             paths.Add(image2);
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.find image1 {SpecialChars.Text}{image1}{SpecialChars.Text} image2 {SpecialChars.Text}{image2}{SpecialChars.Text} threshold 0,1";
             scripter.Run();
@@ -90,6 +93,7 @@ namespace G1ANT.Addon.Images.Tests
             paths.Add(image2);
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.find image1 {SpecialChars.Text}{image1}{SpecialChars.Text} image2 {SpecialChars.Text}{image2}{SpecialChars.Text}";
             Exception exception = Assert.Throws<ApplicationException>(delegate
@@ -109,8 +113,9 @@ namespace G1ANT.Addon.Images.Tests
             testerApp = SDK.Tester.RunFormTester("Title TestApp");
             
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
             scripter.RunLine("window TestApp");
-            scripter.Variables.SetVariableValue(nameof(colorCode), new TextStructure(colorCode));
+           scripter.InitVariables.Add(nameof(colorCode), new TextStructure(colorCode));
             scripter.Text = $@"keyboard {TextChar}FocusOnControl tbColorRGB{TextChar}
 				            keyboard {SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
                             keyboard {TextChar}{SpecialChars.Variable}{nameof(colorCode)}{TextChar} 
@@ -130,6 +135,7 @@ namespace G1ANT.Addon.Images.Tests
             paths.Add(image);
 
             Scripter scripter = new Scripter();
+scripter.InitVariables.Clear();
 
             scripter.Text = $"image.find image1 {SpecialChars.Text}{image}{SpecialChars.Text} threshold 6";
 
