@@ -80,5 +80,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\image4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RestSharp.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
