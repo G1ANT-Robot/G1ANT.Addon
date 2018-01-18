@@ -3,7 +3,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xls
 {
-    [Command(Name = "xls.find",Tooltip = "This command allows to find address of a cell where specified value is stored.")]
+    [Command(Name = "xls.find", Tooltip = "This command allows to find address of a cell where specified value is stored.")]
     public class XlsFindCommand : Command
     {
         public class Arguments : CommandArguments
@@ -12,21 +12,26 @@ namespace G1ANT.Addon.Xls
             public TextStructure Value { get; set; } = new TextStructure("value");
 
             [Argument]
-            public VariableStructure Result { get; set; } = new VariableStructure("result");
+            public VariableStructure ResultColumn { get; set; } = new VariableStructure("resultcolumn");
+            [Argument]
+            public VariableStructure ResultRow { get; set; } = new VariableStructure("resultrow");
         }
         public XlsFindCommand(AbstractScripter scripter) : base(scripter)
         {
         }
-        public  void Execute(Arguments arguments)
+        public void Execute(Arguments arguments)
         {
-            string res = XlsManager.CurrentXls.Find(arguments.Value.Value);
-            if (res != null)
+            string position = XlsManager.CurrentXls.Find(arguments.Value.Value);
+            if (position != null)
             {
-                Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(res));
+                int[] columRowPair = XlsManager.CurrentXls.FormatInput(position);
+                Scripter.Variables.SetVariableValue(arguments.ResultColumn.Value, new Language.IntegerStructure(columRowPair[0]));
+                Scripter.Variables.SetVariableValue(arguments.ResultRow.Value, new Language.IntegerStructure(columRowPair[1]));
             }
             else
             {
-                Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure("-1"));
+                Scripter.Variables.SetVariableValue(arguments.ResultColumn.Value, new Language.IntegerStructure("-1"));
+                Scripter.Variables.SetVariableValue(arguments.ResultRow.Value, new Language.IntegerStructure("-1"));
             }
 
         }

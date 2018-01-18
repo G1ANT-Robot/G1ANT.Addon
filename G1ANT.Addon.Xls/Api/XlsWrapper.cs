@@ -65,18 +65,14 @@ namespace G1ANT.Addon.Xls
             return a;
         }
 
-        public void SetValue(string Position, string value)
+        public void SetValue(int row, string column, string value)
         {
+            var Position = FormatInput(column, row);
 
-            String column = Regex.Replace(Position, @"[\d-]", string.Empty);
-            column = column.ToUpper();
-            uint rowIndex = uint.Parse(Regex.Match(Position, @"\d+").Value);
-            //wspart
             WorksheetPart wsPart =
              (WorksheetPart)(wbPart.GetPartById(sheet.Id));
             Cell theCell = wsPart.Worksheet.Descendants<Cell>().
          Where(c => c.CellReference == Position.ToUpper()).FirstOrDefault();
-
 
             if (theCell != null)
             {
@@ -88,21 +84,21 @@ namespace G1ANT.Addon.Xls
             {
                 Worksheet worksheet = wsPart.Worksheet;
                 SheetData sheetData = worksheet.GetFirstChild<SheetData>();
-                Row row;
+                Row newrow;
 
-                row = CheckForRow(rowIndex, wsPart);
-                theCell = CheckForCell(column, row);
+                newrow = CheckForRow(Convert.ToUInt32(row), wsPart);
+                theCell = CheckForCell(ColumnNumberToLetter(column), newrow);
                 setCellValue(value, theCell);
                 spreadsheetDocument.WorkbookPart.Workbook.CalculationProperties.ForceFullCalculation = true;
                 spreadsheetDocument.WorkbookPart.Workbook.CalculationProperties.FullCalculationOnLoad = true;
             }
         }
 
-        public string GetValue(string Position)
+        public string GetValue(int row, string column)
         {
+            string Position = FormatInput(column, row);
             WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(sheet.Id));
-            Cell theCell = wsPart.Worksheet.Descendants<Cell>().
-                Where(c => c.CellReference == Position.ToUpper()).FirstOrDefault();
+            Cell theCell = wsPart.Worksheet.Descendants<Cell>().Where(c => c.CellReference == Position.ToUpper()).FirstOrDefault();
 
             if (theCell != null)
             {
@@ -120,10 +116,10 @@ namespace G1ANT.Addon.Xls
                 }
                 else if (theCell.StyleIndex == "6")
                 {
-                    
+
                     double intres = 0;
                     if (double.TryParse(theCell.InnerText.ToString(), out intres))
-                        return ((intres*100 + "%").ToString());
+                        return ((intres * 100 + "%").ToString());
 
                 }
                 else
@@ -136,6 +132,55 @@ namespace G1ANT.Addon.Xls
             {
                 return string.Empty;
             }
+        }
+
+        public string FormatInput(string column, int row)
+        {
+            var position = string.Empty;
+            position += ColumnNumberToLetter(column);
+            position += row.ToString();
+            return position;
+        }
+        public int[] FormatInput(string position)
+        {
+            int[] result = new int[2];
+            var lettersOnly = position.TakeWhile(x => !Char.IsDigit(x)).ToArray();
+            result[0] = FormatLetterToNumber(lettersOnly);
+            var lol = position.SkipWhile(x => !Char.IsDigit(x)).ToArray();
+            result[1] = Int32.Parse(new string(lol));
+            return result;
+        }
+        private string ColumnNumberToLetter(string column)
+        {
+            var position = string.Empty;
+            int columnToConvert = 0;
+            var newBase = 26;
+            if (Int32.TryParse(column, out columnToConvert))
+            {
+                var baseRange = Enumerable.Range('A', newBase).ToArray();
+                do
+                {
+                    columnToConvert--;
+                    position = (char)baseRange[columnToConvert % newBase] + position;
+                    columnToConvert = columnToConvert / newBase;
+                } while (columnToConvert > 0);
+            }
+            else
+            {
+                position += column.ToUpper();
+            }
+            return position;
+        }
+        private int FormatLetterToNumber(char[] position)
+        {
+            var oldBase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            int column = 0; //because we have 1-based starting index
+            var reversed = position.Reverse().ToArray();
+            for (int i = reversed.Length - 1; i >= 0; i--)
+            {
+                column += (oldBase.IndexOf(reversed[i]) + 1) * (int)Math.Pow(26, i);
+            }
+            return column;
         }
         private Row CheckForRow(uint index, WorksheetPart wsPart)
         {
@@ -298,7 +343,7 @@ namespace G1ANT.Addon.Xls
             else if (value.ToString().Contains("%"))
             {
                 Cell cell = wsPart.Worksheet.Descendants<Cell>().
-              Where(c => c.StyleIndex != null && c.StyleIndex == 6 || c.StyleIndex == 2 && c.CellValue.InnerText.ToString() == (double.Parse(value.ToString().TrimEnd('%'))/100).ToString()).First();
+              Where(c => c.StyleIndex != null && c.StyleIndex == 6 || c.StyleIndex == 2 && c.CellValue.InnerText.ToString() == (double.Parse(value.ToString().TrimEnd('%')) / 100).ToString()).First();
                 if (cell != null)
                 {
                     return cell.CellReference.ToString();
