@@ -22,6 +22,7 @@ namespace G1ANT.Addon.Xls
         public void Execute(Arguments arguments)
         {
             string position = XlsManager.CurrentXls.Find(arguments.Value.Value);
+
             if (position != null)
             {
                 int[] columRowPair = XlsManager.CurrentXls.FormatInput(position);
