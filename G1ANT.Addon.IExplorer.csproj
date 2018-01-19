@@ -106,6 +106,9 @@
     <None Include="Resources\FindViaDocumentQuerySelector.js" />
   </ItemGroup>
   <ItemGroup>
+  	<EmbeddedResource Include="$(OutputPath)\Microsoft.mshtml.dll">
+      <Link>Microsoft.mshtml.dll</Link>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
