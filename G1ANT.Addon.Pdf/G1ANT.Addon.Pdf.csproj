@@ -58,6 +58,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
+  
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Spire.Pdf.dll">
+      <Link>Spire.Pdf.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Spire.License.dll">
+      <Link>Spire.License.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
