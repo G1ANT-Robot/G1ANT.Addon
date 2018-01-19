@@ -97,6 +97,53 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  	<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Google.Apis.dll">
+      <Link>Google.Apis.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Google.Apis.Auth.dll">
+      <Link>Google.Apis.Auth.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Google.Apis.Auth.PlatformServices.dll">
+      <Link>Google.Apis.Auth.PlatformServices.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Google.Apis.Core.dll">
+      <Link>Google.Apis.Core.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Google.Apis.PlatformServices.dll">
+      <Link>Google.Apis.PlatformServices.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Google.Apis.Vision.v1.dll">
+      <Link>Google.Apis.Vision.v1.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\itextsharp.dll">
+      <Link>itextsharp.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
+	
+		<ItemGroup>		
+			<EmbeddedResource Include="$(OutputPath)\Newtonsoft.Json.dll">
+      <Link>Newtonsoft.Json.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
