@@ -129,21 +129,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(OutputPath)\Microsoft.Office.Interop.Word.dll">
-      <Link>Microsoft.Office.Interop.Word.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(OutputPath)\Microsoft.Office.Interop.Outlook.dll">
-      <Link>Microsoft.Office.Interop.Outlook.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(OutputPath)\Microsoft.Office.Interop.Excel.dll">
-      <Link>Microsoft.Office.Interop.Excel.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(OutputPath)\Microsoft.mshtml.dll">
       <Link>Microsoft.mshtml.dll</Link>
     </EmbeddedResource>
