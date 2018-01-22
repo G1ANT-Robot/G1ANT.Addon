@@ -86,12 +86,12 @@
     <EmbeddedResource Include="Resources\image4.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\G1ANT.Bin\debug\\RestSharp.dll">
+    <EmbeddedResource Include="..\packages\*\lib\net452\RestSharp.dll">
       <Link>RestSharp.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\G1ANT.Bin\debug\\System.ValueTuple.dll">
+    <EmbeddedResource Include="..\packages\*\lib\*net40*\System.ValueTuple.dll">
       <Link>System.ValueTuple.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
