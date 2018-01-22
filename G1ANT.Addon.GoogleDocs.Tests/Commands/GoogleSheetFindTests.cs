@@ -27,23 +27,25 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             scripter = new Scripter();
 scripter.InitVariables.Clear();
            scripter.InitVariables.Add("fileId", new TextStructure(FileID));
-            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid isshared false");
+           
         }
 
         [Test]
         [Timeout(50000)]
         public void GoogleSheetFindValueWhichExistsManyTimes()
         {
-            var value1 = "3. Junior";
-           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value1));
-            scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
-            var result1 = scripter.Variables.GetVariable("result");
-            Assert.AreEqual("C7", result1.GetValue().ToString());
-
             var value2 = "Lacrosse";
-           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value2));
-            scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
-            var result2 = scripter.Variables.GetVariable("result");
+            var value1 = "3. Junior";
+            scripter.InitVariables.Add("valueToBeFound", new TextStructure(value1));
+            scripter.InitVariables.Add("valueToBeFound2", new TextStructure(value2));
+            scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
+                                googlesheet.find value {SpecialChars.Variable}valueToBeFound result {SpecialChars.Variable}result1
+                                googlesheet.find value {SpecialChars.Variable}valueToBeFound2  result {SpecialChars.Variable}result2");
+            scripter.Run();
+            var result1 = scripter.Variables.GetVariable("result1");
+            Assert.AreEqual("C7", result1.GetValue().ToString());
+            
+            var result2 = scripter.Variables.GetVariable("result2");
             Assert.AreEqual("F3", result2.GetValue().ToString());
         }
 
@@ -52,8 +54,10 @@ scripter.InitVariables.Clear();
         public void GoogleSheetFindValueWhichExistsOnce()
         {
             var value = "Anna";
-           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
-            scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
+            scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
+            scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
+                googlesheet.find value {SpecialChars.Variable}valueToBeFound");
+            scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("A4", result.GetValue().ToString());
         }
@@ -63,8 +67,10 @@ scripter.InitVariables.Clear();
         public void GoogleSheetFindValueWhichDoesntExist()
         {
             var value = "notexists";
-           scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
-            scripter.RunLine($"googlesheet.find value {SpecialChars.Variable}valueToBeFound");
+            scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
+            scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
+                                googlesheet.find value {SpecialChars.Variable}valueToBeFound");
+            scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("", result.GetValue().ToString());
         }

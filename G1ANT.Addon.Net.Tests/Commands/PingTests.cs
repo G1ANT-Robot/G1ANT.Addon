@@ -69,7 +69,8 @@ scripter.InitVariables.Clear();
 scripter.InitVariables.Clear();
            scripter.InitVariables.Add("ping", new TextStructure("localhost"));
 
-            scripter.RunLine($"ping ip {SpecialChars.Variable}ping ");
+            scripter.Text = ($"ping ip {SpecialChars.Variable}ping ");
+            scripter.Run();
             int response = scripter.Variables.GetVariableValue<int>("result");
             if (response > 1)
             {

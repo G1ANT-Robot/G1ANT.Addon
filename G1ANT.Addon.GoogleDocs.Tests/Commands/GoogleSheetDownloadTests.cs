@@ -3,6 +3,7 @@ using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace G1ANT.Addon.GoogleDocs.Tests
@@ -16,8 +17,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
 
         [OneTimeSetUp]
         public static void ClassInit()
-        {         
-            
+        {
+
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
 
@@ -25,18 +26,19 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
-            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid isshared false");
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("fileId", new TextStructure(FileID));
         }
 
         [Test]
         [Timeout(50000)]
         public void GoogleSheetDownloadFileXLSX()
         {
-            scripter.RunLine($"{SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.xlsx{SpecialChars.Text}");
-            scripter.RunLine($"googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}xls{SpecialChars.Text} ");
-            scripter.RunLine("delay 3");
+            scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
+                                {SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.xlsx{SpecialChars.Text}
+                                googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}xls{SpecialChars.Text}
+                                delay 3");
+            scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("Download complete.", result.GetValue().ToString());
         }
@@ -45,9 +47,11 @@ scripter.InitVariables.Clear();
         [Timeout(50000)]
         public void GoogleSheetDownloadFilePDF()
         {
-            scripter.RunLine($"{SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.pdf{SpecialChars.Text}");
-            scripter.RunLine($"googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}pdf{SpecialChars.Text}");
-            scripter.RunLine("delay 3");
+            scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
+                                {SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.pdf{SpecialChars.Text}
+                                 googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}pdf{SpecialChars.Text}
+                                 delay 3");
+            scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("Download complete.", result.GetValue().ToString());
         }
