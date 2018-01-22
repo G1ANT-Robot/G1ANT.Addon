@@ -1,6 +1,8 @@
 ﻿
 using G1ANT.Language;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace G1ANT.Language.Ocr
@@ -38,6 +40,8 @@ namespace G1ANT.Language.Ocr
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             GoogleCloudApi googleApi = new GoogleCloudApi();
             string output = googleApi.RecognizeText(partOfScreen, languages, timeout);
+            if (Equals(output, new Rectangle(-1, -1, -1, -1)))
+                throw new NullReferenceException("Ocr was unable to find text");
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(output));
         }
     }

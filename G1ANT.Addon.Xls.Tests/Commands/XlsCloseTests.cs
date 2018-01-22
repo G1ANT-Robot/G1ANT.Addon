@@ -12,6 +12,8 @@ namespace G1ANT.Addon.Xls.Tests
     [TestFixture]
     public class XlsCloseTests
     {
+        //TODO 
+        // Another test to add=> after xls.open . RUN() should try run another line and throw "null ref exeception" => scripter should automatically release all file handles after finishing running script.
         string file;
         string file2;
         static int filesCount = 5;
