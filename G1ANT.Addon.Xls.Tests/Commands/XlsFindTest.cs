@@ -91,49 +91,46 @@ namespace G1ANT.Addon.Xls.Tests
 
         [Test]
         [Timeout(20000)]
-        public void XlsFindNumberTest()
-        {
-            scripter.RunLine($"xls.find {SpecialChars.Text}150{SpecialChars.Text} result {SpecialChars.Variable}teststring");
-            Assert.AreEqual("D1", scripter.Variables.GetVariableValue<string>("teststring"));
-        }
-
-        [Test]
-        [Timeout(20000)]
         public void XlsFindPercentTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}160%{SpecialChars.Text} result {SpecialChars.Variable}teststring");
-            Assert.AreEqual("E1", scripter.Variables.GetVariableValue<string>("teststring"));
-            scripter.RunLine($"xls.find {SpecialChars.Text}100%{SpecialChars.Text} result {SpecialChars.Variable}teststring");
-            Assert.AreEqual("E2", scripter.Variables.GetVariableValue<string>("teststring"));
+            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.find {SpecialChars.Text}160%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow4 resultcolumn {SpecialChars.Variable}resCol4
+            xls.find {SpecialChars.Text}100%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow5 resultcolumn {SpecialChars.Variable}resCol5
+";
+            scripter.Run();
+            Assert.AreEqual(1, scripter.Variables.GetVariable("resrow4").GetValue().Object);
+            Assert.AreEqual(5, scripter.Variables.GetVariable("resCol4").GetValue().Object);
+
+            Assert.AreEqual(2, scripter.Variables.GetVariable("resrow5").GetValue().Object);
+            Assert.AreEqual(5, scripter.Variables.GetVariable("resCol5").GetValue().Object);
         }
 
         [Test]
         [Timeout(20000)]
         public void XlsFindDateTest()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}21.07.2017{SpecialChars.Text} result {SpecialChars.Variable}teststring");
-            Assert.AreEqual("C1", scripter.Variables.GetVariableValue<string>("teststring"));
-            scripter.RunLine($"xls.find {SpecialChars.Text}22.07.2017{SpecialChars.Text} result {SpecialChars.Variable}teststring");
-            Assert.AreEqual("C2", scripter.Variables.GetVariableValue<string>("teststring"));
+            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.find {SpecialChars.Text}21.07.2017{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow1 resultcolumn {SpecialChars.Variable}resCol1
+            xls.find {SpecialChars.Text}22.07.2017{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow2 resultcolumn {SpecialChars.Variable}resCol2
+";
+            scripter.Run();
+            Assert.AreEqual(1, scripter.Variables.GetVariable("resrow1").GetValue().Object);
+            Assert.AreEqual(3, scripter.Variables.GetVariable("resCol2").GetValue().Object);
+
+            Assert.AreEqual(2, scripter.Variables.GetVariable("resrow2").GetValue().Object);
+            Assert.AreEqual(3, scripter.Variables.GetVariable("resCol2").GetValue().Object);
         }
 
         [Test]
         [Timeout(20000)]
         public void XlsFailToFind()
         {
-            scripter.RunLine($"xls.find {SpecialChars.Text}01.01.1001{SpecialChars.Text} result {SpecialChars.Variable}teststring");
-            Assert.AreEqual(-1, int.Parse(scripter.Variables.GetVariable("teststring").GetValue().ToString()));
-        }
-
-        [TearDown]
-        [Timeout(20000)]
-        public void TestCleanUp()
-        {
-            try
-            {
-                scripter.RunLine("xls.close");
-            }
-            catch { }
+            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.find {SpecialChars.Text}01.01.1001{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow1 resultcolumn {SpecialChars.Variable}resCol1
+            ";
+            scripter.Run();
+            Assert.AreEqual(-1, int.Parse(scripter.Variables.GetVariable("resrow1").GetValue().ToString()));
+            Assert.AreEqual(-1, int.Parse(scripter.Variables.GetVariable("resCol1").GetValue().ToString()));
         }
     }
 }

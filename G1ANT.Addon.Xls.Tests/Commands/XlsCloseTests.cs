@@ -29,7 +29,7 @@ namespace G1ANT.Addon.Xls.Tests
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
             filePrefix = file;
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             for (int i = 0; i < filesCount; i++)
             {
                 filePaths[i] = $"{filePrefix}{i}";
@@ -49,7 +49,7 @@ scripter.InitVariables.Clear();
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
         }
         [Test]
         [Timeout(20000)]
