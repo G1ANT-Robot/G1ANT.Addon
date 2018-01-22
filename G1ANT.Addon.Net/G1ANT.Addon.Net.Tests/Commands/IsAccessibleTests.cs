@@ -27,10 +27,11 @@ namespace G1ANT.Addon.Net.Tests
         public void IsAccessibleTest()
         {
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             string hostname = "google.com";
-           scripter.InitVariables.Add("hostname", new TextStructure(hostname));
-            scripter.RunLine($"is.accessible hostname {SpecialChars.Variable}hostname");
+            scripter.InitVariables.Add("hostname", new TextStructure(hostname));
+            scripter.Text = ($"is.accessible hostname {SpecialChars.Variable}hostname");
+            scripter.Run();
 
             bool result = scripter.Variables.GetVariableValue<bool>("result");
             if (!result)
@@ -47,7 +48,8 @@ scripter.InitVariables.Clear();
 scripter.InitVariables.Clear();
             string hostname = "www.myapple.com";
            scripter.InitVariables.Add("hostname", new TextStructure(hostname));
-            scripter.RunLine($"is.accessible hostname {SpecialChars.Variable}hostname timeout 1000");
+            scripter.Text = ($"is.accessible hostname {SpecialChars.Variable}hostname timeout 1000");
+            scripter.Run();
 
             bool result = scripter.Variables.GetVariableValue<bool>("result");
             if (result)

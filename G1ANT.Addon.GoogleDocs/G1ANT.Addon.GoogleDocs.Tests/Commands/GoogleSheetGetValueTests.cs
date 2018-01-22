@@ -26,20 +26,22 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
-            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("fileId", new TextStructure(FileID));
+            
         }
 
         [Test]
         [Timeout(40000)]
         public void GoogleSheetGetValue()
         {
-            rangeToBeChecked = "A3";
             string expectedValue = "Andrew";
-           scripter.InitVariables.Add("rangeToBeChecked", new TextStructure(rangeToBeChecked));
-            scripter.RunLine($"googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked");
-          System.Collections.Generic.List<object> result = (System.Collections.Generic.List<object>)scripter.Variables.GetVariable("result").GetValue().Object;
+            rangeToBeChecked = "A3";
+            scripter.InitVariables.Add("rangeToBeChecked", new TextStructure(rangeToBeChecked));
+            scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid
+                                googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked");
+            scripter.Run();
+            System.Collections.Generic.List<object> result = (System.Collections.Generic.List<object>)scripter.Variables.GetVariable("result").GetValue().Object;
             Assert.AreEqual(expectedValue, result[0].ToString()); 
         }
 

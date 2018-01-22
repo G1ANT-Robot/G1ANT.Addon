@@ -24,31 +24,38 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("fileId", new TextStructure(FileID));
-            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid");
-            scripter.RunLine("googlesheet.gettitle");
-            titleBeforeChange = scripter.Variables.GetVariable("result").GetValue().ToString();
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("fileId", new TextStructure(FileID));
+            
         }
 
         [Test]
         [Timeout(50000)]
         public void GoogleSheetSetTitle()
         {
+           
             var valueToBePlaced = "G1ANT";
-           scripter.InitVariables.Add("valueToBePlaced", new TextStructure(valueToBePlaced));
-            scripter.RunLine($"googlesheet.settitle {SpecialChars.Variable}valueToBePlaced");
-            scripter.RunLine("googlesheet.gettitle");
+            scripter.InitVariables.Add("valueToBePlaced", new TextStructure(valueToBePlaced));
+
+            scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid
+                                googlesheet.gettitle result {SpecialChars.Variable}before
+                                googlesheet.settitle {SpecialChars.Variable}valueToBePlaced
+                                googlesheet.gettitle
+                                googlesheet.close");
+            
+            scripter.Run();
             var result = scripter.Variables.GetVariable("result");
+            titleBeforeChange = scripter.Variables.GetVariable("before").GetValue().ToString();
             Assert.AreEqual(valueToBePlaced, result.GetValue().ToString());
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-           scripter.InitVariables.Add("valueToBePlaced", new TextStructure(titleBeforeChange));
-            scripter.RunLine($"googlesheet.settitle {SpecialChars.Variable}valueToBePlaced");
-            scripter.RunLine("googlesheet.gettitle");
+            scripter.InitVariables.Add("valueToBePlacedback", new TextStructure(titleBeforeChange));
+            scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid
+                                googlesheet.settitle {SpecialChars.Variable}valueToBePlacedback
+                                googlesheet.gettitle");
             var returnedToPreviousState = scripter.Variables.GetVariable("result").GetValue().ToString();
             Assert.AreEqual(titleBeforeChange, returnedToPreviousState);
             scripter.RunLine("googlesheet.close");

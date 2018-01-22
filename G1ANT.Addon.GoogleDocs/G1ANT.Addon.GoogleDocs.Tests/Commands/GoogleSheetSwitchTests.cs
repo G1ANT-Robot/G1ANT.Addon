@@ -25,23 +25,23 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         public void Init()
         {
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
            scripter.InitVariables.Add("fileId1", new TextStructure(FileID1));
-            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid1 result {SpecialChars.Variable}excelID1");
-           scripter.InitVariables.Add("fileId2", new TextStructure(FileID2));
-            scripter.RunLine($"googlesheet.open {SpecialChars.Variable}fileid2 result {SpecialChars.Variable}excelID2");
-            var result = scripter.Variables.GetVariable("result");
+            scripter.InitVariables.Add("fileId2", new TextStructure(FileID2));
         }
 
         [Test]
         [Timeout(50000)]
         public void GoogleSheetSwitchSpreadsheets()
         {
-            scripter.RunLine($"googlesheet.switch {SpecialChars.Variable}excelID1");
-            scripter.RunLine($"googlesheet.gettitle result {SpecialChars.Variable}excelTitle1");
+            scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid1 result {SpecialChars.Variable}excelID1
+                                googlesheet.open {SpecialChars.Variable}fileid2 result {SpecialChars.Variable}excelID2
+                                googlesheet.switch {SpecialChars.Variable}excelID1
+                                googlesheet.gettitle result {SpecialChars.Variable}excelTitle1
+                                googlesheet.switch {SpecialChars.Variable}excelID2
+                                googlesheet.gettitle result {SpecialChars.Variable}excelTitle2");
+            scripter.Run();
             var result1 = scripter.Variables.GetVariable("excelTitle1");
-            scripter.RunLine($"googlesheet.switch {SpecialChars.Variable}excelID2");
-            scripter.RunLine($"googlesheet.gettitle result {SpecialChars.Variable}excelTitle2");
             var result2 = scripter.Variables.GetVariable("excelTitle2");
             Assert.AreEqual("Example Spreadsheet", result1.GetValue().ToString());
             Assert.AreEqual("Example Spreadsheet Edited", result2.GetValue().ToString());

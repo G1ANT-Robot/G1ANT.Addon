@@ -25,22 +25,25 @@ namespace G1ANT.Addon.Net.Tests
         [Test, Timeout(TestTimeout)]
         public void SendDataTest()
         {
+            Scripter scripter = new Scripter();
             string url = "https://httpbin.org/post";
 
-            ListStructure list = new ListStructure(new List<Structure>()
+            ListStructure list = new ListStructure(new List<object>()
             {
-                new TextStructure("something:val")
-            });
+                "something:val"
+            },null,scripter);
 
-            Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
+           
+           scripter.InitVariables.Clear();
            scripter.InitVariables.Add("url", new TextStructure(url));
            scripter.InitVariables.Add("method", new TextStructure("post"));
            scripter.InitVariables.Add("list", list);
-            scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url parameters {SpecialChars.Variable}list timeout {TestTimeout}");
-            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['form']['something']");
 
-            Assert.AreEqual("val", scripter.Variables.GetVariableValue<string>("result"));
+            scripter.Text = ($@"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url parameters {SpecialChars.Variable}list timeout {TestTimeout}
+                               {SpecialChars.Variable}result2 = {SpecialChars.Variable}result{SpecialChars.IndexBegin}['form']['something']{SpecialChars.IndexEnd}");
+            scripter.Run();
+
+            Assert.AreEqual("val", scripter.Variables.GetVariableValue<string>("result2"));
             Assert.AreEqual("Completed", scripter.Variables.GetVariableValue<string>("status"));
         }
 
@@ -120,7 +123,8 @@ scripter.InitVariables.Clear();
 scripter.InitVariables.Clear();
            scripter.InitVariables.Add("method", new Language.TextStructure("delete"));
            scripter.InitVariables.Add("url", new Language.TextStructure(url));
-            scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url");
+            scripter.Text =($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url");
+            scripter.Run();
 
             Assert.AreEqual("Completed", scripter.Variables.GetVariableValue<string>("status"));
         }
@@ -166,7 +170,8 @@ scripter.InitVariables.Clear();
            scripter.InitVariables.Add("url", new TextStructure(url));
            scripter.InitVariables.Add("headers", headers);
 
-            scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers");
+            scripter.Text =($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers");
+            scripter.Run();
 
             Assert.IsTrue(scripter.Variables.GetVariableValue<string>("result").Length > 0);
             Assert.AreEqual("Completed", scripter.Variables.GetVariableValue<string>("status"));
