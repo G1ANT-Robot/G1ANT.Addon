@@ -108,52 +108,52 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-	<EmbeddedResource Include="$(OutputPath)\Google.Apis.dll">
+	<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.dll">
       <Link>Google.Apis.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-	<EmbeddedResource Include="$(OutputPath)\Google.Apis.Auth.dll">
+	<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Auth.dll">
       <Link>Google.Apis.Auth.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-	<EmbeddedResource Include="$(OutputPath)\Google.Apis.Auth.PlatformServices.dll">
+	<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Auth.PlatformServices.dll">
       <Link>Google.Apis.Auth.PlatformServices.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-	<EmbeddedResource Include="$(OutputPath)\Google.Apis.Core.dll">
+	<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Core.dll">
       <Link>Google.Apis.Core.dll</Link>
    </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Include="$(OutputPath)\Google.Apis.Drive.v1.dll">
+		<EmbeddedResource Include="..\packages\*\lib\*net45*\Google.Apis.Drive.v1.dll">
       <Link>Google.Apis.Drive.v1.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Include="$(OutputPath)\Google.Apis.Drive.v3.dll">
+		<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Drive.v3.dll">
       <Link>Google.Apis.Drive.v3.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Include="$(OutputPath)\Google.Apis.PlatformServices.dll">
+		<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.PlatformServices.dll">
       <Link>Google.Apis.PlatformServices.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-			<EmbeddedResource Include="$(OutputPath)\Google.Apis.Sheets.v4.dll">
+			<EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Sheets.v4.dll">
       <Link>Google.Apis.Sheets.v4.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-			<EmbeddedResource Include="$(OutputPath)\Newtonsoft.Json.dll">
+			<EmbeddedResource Include="..\packages\*\lib\net45\Newtonsoft.Json.dll">
       <Link>Newtonsoft.Json.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-			<EmbeddedResource Include="$(OutputPath)\Zlib.Portable.dll">
+			<EmbeddedResource Include="..\packages\*\lib\*net4*\Zlib.Portable.dll">
       <Link>Zlib.Portable.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>
