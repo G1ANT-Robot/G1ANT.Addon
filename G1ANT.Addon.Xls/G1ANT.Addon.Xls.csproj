@@ -85,7 +85,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>		
-			<EmbeddedResource Include="$(OutputPath)\DocumentFormat.OpenXml.dll">
+			<EmbeddedResource Include="..\packages\*\lib\DocumentFormat.OpenXml.dll">
       <Link>DocumentFormat.OpenXml.dll</Link>
     </EmbeddedResource>
 	</ItemGroup>

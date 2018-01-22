@@ -114,16 +114,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-  <EmbeddedResource Include="$(OutputPath)\AForge.dll">
+  <EmbeddedResource Include="..\packages\*\lib\AForge.dll">
       <Link>AForge.dll</Link>
     </EmbeddedResource>
-	<EmbeddedResource Include="$(OutputPath)\AForge.Imaging.dll">
+	<EmbeddedResource Include="..\packages\*\lib\AForge.Imaging.dll">
       <Link>AForge.Imaging.dll</Link>
     </EmbeddedResource>
-	<EmbeddedResource Include="$(OutputPath)\AForge.Math.dll">
+	<EmbeddedResource Include="..\packages\*\lib\AForge.Math.dll">
       <Link>AForge.Math.dll</Link>
     </EmbeddedResource>
-	<EmbeddedResource Include="$(OutputPath)\Interop.FREngine.dll">
+	<EmbeddedResource Include="ExternalDlls\Interop.FREngine.dll">
       <Link>Interop.FREngine.dll</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
