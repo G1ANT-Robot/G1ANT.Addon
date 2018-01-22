@@ -106,7 +106,7 @@
     <None Include="Resources\FindViaDocumentQuerySelector.js" />
   </ItemGroup>
   <ItemGroup>
-  	<EmbeddedResource Include="$(OutputPath)\Microsoft.mshtml.dll">
+  	<EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
       <Link>Microsoft.mshtml.dll</Link>
     </EmbeddedResource>
 	<EmbeddedResource Include="$(OutputPath)\WatiN.Core.dll">
