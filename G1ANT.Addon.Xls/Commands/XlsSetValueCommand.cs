@@ -11,8 +11,14 @@ namespace G1ANT.Addon.Xls
             [Argument(Required = true)]
             public TextStructure Value { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Required = true)]
-            public TextStructure Position { get; set; } = new TextStructure(string.Empty);
+            [Argument(Required = true, Tooltip = "Cell's row number")]
+            public IntegerStructure Row { get; set; }
+
+            [Argument(Tooltip = "Cell's column index")]
+            public IntegerStructure ColIndex { get; set; }
+
+            [Argument(Tooltip = "Cell's column name")]
+            public TextStructure ColName { get; set; }
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
@@ -22,16 +28,22 @@ namespace G1ANT.Addon.Xls
         }
         public void Execute(Arguments arguments)
         {
+            object col = null;
             try
             {
-                XlsManager.CurrentXls.SetValue(arguments.Position.Value, arguments.Value.Value);
+                if (arguments.ColIndex != null)
+                    col = arguments.ColIndex.Value;
+                else if (arguments.ColName != null)
+                    col = arguments.ColName.Value;
+                else
+                    throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
+                XlsManager.CurrentXls.SetValue(arguments.Row.Value, col.ToString(), arguments.Value.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(false));
-                throw new ApplicationException($"Error in set value: {e.Message}");
-                
+                throw new ApplicationException($"Problem occured while setting value. Row: '{arguments.Row.Value}', Col: '{col}', Val: '{arguments.Value.Value}'", ex);
             }
         }
     }
