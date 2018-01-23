@@ -32,9 +32,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void PlainTextTest()
         {
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
-            scripter.RunLine($"ocrabbyy.plaintext");
+            scripter.InitVariables.Clear();
+            scripter.Text = ($@"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}
+                               ocrabbyy.plaintext");
+            scripter.Run();
             string plainText = scripter.Variables.GetVariableValue<string>("result");
             Assert.IsTrue(plainText.Contains("In 1929 Gustav Tauschek obtained a patent on OCR in Germany, followed"));
             Assert.IsTrue(plainText.Contains("In about 1965, Reader's Digest and RCA collaborated to build an OCR Document"));

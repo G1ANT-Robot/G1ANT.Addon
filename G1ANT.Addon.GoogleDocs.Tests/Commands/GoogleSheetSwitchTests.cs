@@ -39,7 +39,9 @@ namespace G1ANT.Addon.GoogleDocs.Tests
                                 googlesheet.switch {SpecialChars.Variable}excelID1
                                 googlesheet.gettitle result {SpecialChars.Variable}excelTitle1
                                 googlesheet.switch {SpecialChars.Variable}excelID2
-                                googlesheet.gettitle result {SpecialChars.Variable}excelTitle2");
+                                googlesheet.gettitle result {SpecialChars.Variable}excelTitle2
+ googlesheet.close { SpecialChars.Variable} excelID1
+            googlesheet.close { SpecialChars.Variable} excelID2");
             scripter.Run();
             var result1 = scripter.Variables.GetVariable("excelTitle1");
             var result2 = scripter.Variables.GetVariable("excelTitle2");
@@ -50,8 +52,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine($"googlesheet.close {SpecialChars.Variable}excelID1");
-            scripter.RunLine($"googlesheet.close {SpecialChars.Variable}excelID2");
-        }
+           
+                }
     }
 }

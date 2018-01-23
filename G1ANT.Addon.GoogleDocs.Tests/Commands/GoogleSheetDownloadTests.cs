@@ -28,6 +28,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("fileId", new TextStructure(FileID));
+            scripter.InitVariables.Add("temp",new TextStructure(Path.GetTempPath().ToString()));
         }
 
         [Test]
@@ -37,7 +38,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
                                 {SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.xlsx{SpecialChars.Text}
                                 googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}xls{SpecialChars.Text}
-                                delay 3");
+                                delay 3
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("Download complete.", result.GetValue().ToString());
@@ -50,7 +52,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
                                 {SpecialChars.Variable}savePath = {SpecialChars.Variable}temp{SpecialChars.Text}\\SheetsTest.pdf{SpecialChars.Text}
                                  googlesheet.download path {SpecialChars.Variable}savePath type {SpecialChars.Text}pdf{SpecialChars.Text}
-                                 delay 3");
+                                 delay 3
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("Download complete.", result.GetValue().ToString());
@@ -59,7 +62,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("googlesheet.close");
+          
         }
     }
 }

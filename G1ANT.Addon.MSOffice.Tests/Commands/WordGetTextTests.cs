@@ -48,30 +48,32 @@ scripter.InitVariables.Clear();
         public void TestInit()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            scripter.RunLine($"word.open {SpecialChars.Variable}wordPath");
+
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void WordGetTextTest()
         {
-            scripter.RunLine($"word.inserttext {SpecialChars.Text}{valueTested}{SpecialChars.Text}");
-            scripter.RunLine($"word.inserttext {SpecialChars.Text}{valueTested}{SpecialChars.Text}");
-            scripter.RunLine($"word.gettext");
-            string trimmedValue = scripter.Variables.GetVariableValue<string>("result").Trim();
+            scripter.Text = ($@"word.open {SpecialChars.Variable}wordPath
+                                word.inserttext {SpecialChars.Text}{valueTested}{SpecialChars.Text}
+                                word.inserttext {SpecialChars.Text}{valueTested}{SpecialChars.Text}
+                                word.gettext result {SpecialChars.Variable}result1
+                                word.inserttext {SpecialChars.Text}{valueTested}{SpecialChars.Text}
+                                word.inserttext {SpecialChars.Text}{expectedEmptyString}{SpecialChars.Text} replacealltext true 
+                                word.gettext result {SpecialChars.Variable}result2
+                                word.close");
+            scripter.Run();
+            string trimmedValue = scripter.Variables.GetVariableValue<string>("result1").Trim();
             Assert.AreEqual(expected, trimmedValue);
-
-            scripter.RunLine($"word.inserttext {SpecialChars.Text}{valueTested}{SpecialChars.Text}");
-            scripter.RunLine($"word.inserttext {SpecialChars.Text}{expectedEmptyString}{SpecialChars.Text} replacealltext true ");
-            scripter.RunLine($"word.gettext");
-            trimmedValue = scripter.Variables.GetVariableValue<string>("result").Trim();
+            trimmedValue = scripter.Variables.GetVariableValue<string>("result2").Trim();
             Assert.AreEqual(expectedEmptyString, trimmedValue);
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("word.close");
+            
             Process[] proc = Process.GetProcessesByName("word");
             if (proc.Length != 0)
             {

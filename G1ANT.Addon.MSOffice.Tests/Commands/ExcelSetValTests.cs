@@ -15,7 +15,7 @@ namespace G1ANT.Addon.MSOffice.Tests
     {
         static int intVal = 5;
         static float fVal = 3.3f;
-        static string stringVal = "something";
+        static string stringVal = "somng";
         static string formula = "=B1*C1";
         Scripter scripter;
 
@@ -36,7 +36,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
            scripter.InitVariables.Add("intVal", new Language.IntegerStructure(intVal));
            scripter.InitVariables.Add("fVal", new FloatStructure(fVal));
            scripter.InitVariables.Add("strVal", new TextStructure(stringVal));
@@ -48,32 +48,35 @@ scripter.InitVariables.Clear();
         public void TestInit()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            scripter.RunLine($"excel.open");
+            
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelSetValTest()
         {
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}strVal row 1 colindex 1");
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}intVal row 1 colindex 2");
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}fVal row 1 colindex 3");
-            scripter.RunLine($"excel.setvalue {SpecialChars.Variable}formula row 1 colindex 4");
+            scripter.Text = ($@"excel.open
+                               excel.setvalue {SpecialChars.Variable}strVal row 1 colindex 1
+                               excel.setvalue {SpecialChars.Variable}intVal row 1 colindex 2
+                               excel.setvalue {SpecialChars.Variable}fVal row 1 colindex 3
+                               excel.setvalue {SpecialChars.Variable}formula row 1 colindex 4
+                               excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}result1
+                               excel.getvalue row 1 colindex 2 result {SpecialChars.Variable}result2
+                               excel.getvalue row 1 colindex 3 result {SpecialChars.Variable}result3
+                               excel.getvalue row 1 colindex 4 result {SpecialChars.Variable}product
+                               excel.close");
 
-            scripter.RunLine("excel.getvalue row 1 colindex 1");
-            Assert.AreEqual(stringVal, scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.getvalue row 1 colindex 2");
-            Assert.AreEqual(intVal, Int32.Parse(scripter.Variables.GetVariable("result").GetValue().Object as String));
-            scripter.RunLine("excel.getvalue row 1 colindex 3");
-            Assert.AreEqual(fVal, float.Parse((scripter.Variables.GetVariable("result").GetValue().Object as String).Replace(",", ".")));
-            scripter.RunLine($"excel.getvalue row 1 colindex 4 result {SpecialChars.Variable}product");
-            Assert.AreEqual(intVal * fVal, float.Parse(scripter.Variables.GetVariableValue<string>("product").Replace(",", ".")), 0.000001);
+            scripter.Run();
+
+            Assert.AreEqual(stringVal, scripter.Variables.GetVariableValue<string>("result1"));
+            Assert.AreEqual(intVal, Int32.Parse(scripter.Variables.GetVariable("result2").GetValue().Object as String));
+            Assert.AreEqual(fVal, float.Parse((scripter.Variables.GetVariable("result3").GetValue().Object as String).Replace(",", ".")));
+            Assert.AreEqual(intVal * fVal, float.Parse(scripter.Variables.GetVariableValue<string>("product").Replace(",", ".")), 0.00001);
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

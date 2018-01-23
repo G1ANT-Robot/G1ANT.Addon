@@ -46,16 +46,19 @@ namespace G1ANT.Addon.MSOffice.Tests
             wordPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestDocumentMacro), "docm");
            scripter.InitVariables.Add("wordPath", new TextStructure(wordPath));
            scripter.InitVariables.Add("macroName", new TextStructure(macroName));
-            scripter.RunLine($"word.open {SpecialChars.Variable}wordPath");
+
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void WordRunMacroTest()
         {
-            scripter.RunLine($"word.inserttext {SpecialChars.Text}{testedValue}{SpecialChars.Text}");
-            scripter.RunLine($"word.runmacro {SpecialChars.Variable}macroName");
-            scripter.RunLine($"word.gettext");
+            scripter.Text =($@"word.open {SpecialChars.Variable}wordPath
+                               word.inserttext {SpecialChars.Text}{testedValue}{SpecialChars.Text}
+                               word.runmacro {SpecialChars.Variable}macroName
+                               word.gettext
+                               word.close");
+            scripter.Run();
             string trimmedValue = scripter.Variables.GetVariableValue<string>("result");
             Assert.AreEqual(expectedValue, trimmedValue);
         }
@@ -63,7 +66,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("word.close");
+            
             Process[] proc = Process.GetProcessesByName("word");
             if (proc.Length != 0)
             {

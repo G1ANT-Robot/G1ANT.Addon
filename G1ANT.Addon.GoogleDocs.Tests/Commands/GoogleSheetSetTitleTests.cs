@@ -55,10 +55,10 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             scripter.InitVariables.Add("valueToBePlacedback", new TextStructure(titleBeforeChange));
             scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid
                                 googlesheet.settitle {SpecialChars.Variable}valueToBePlacedback
-                                googlesheet.gettitle");
+                                googlesheet.gettitle
+googlesheet.close");
             var returnedToPreviousState = scripter.Variables.GetVariable("result").GetValue().ToString();
             Assert.AreEqual(titleBeforeChange, returnedToPreviousState);
-            scripter.RunLine("googlesheet.close");
         }
     }
 }

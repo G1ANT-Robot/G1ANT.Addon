@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             testerApp = AbbyTests.StartFormTester($"Title {appTitle}");
         }
         
@@ -39,7 +39,8 @@ scripter.InitVariables.Clear();
             RobotWin32.Rect windowRect = new RobotWin32.Rect();
             RobotWin32.GetWindowRectangle(hTesterAppWindow, ref windowRect);
             int titleBarHeight = 24;
-            scripter.RunLine($"ocrabbyy.processscreen area {SpecialChars.Text}{windowRect.Left},{windowRect.Top},{windowRect.Right},{windowRect.Top + titleBarHeight}{SpecialChars.Text}");
+            scripter.Text = ($"ocrabbyy.processscreen area {SpecialChars.Text}{windowRect.Left},{windowRect.Top},{windowRect.Right},{windowRect.Top + titleBarHeight}{SpecialChars.Text}");
+            scripter.Run();
             int documentId = scripter.Variables.GetVariableValue<int>("result");
 
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);
@@ -56,7 +57,8 @@ scripter.InitVariables.Clear();
             RobotWin32.Rect windowRect = new RobotWin32.Rect();
             RobotWin32.GetWindowRectangle(hTesterAppWindow, ref windowRect);
             int titleBarHeight = 24;
-            scripter.RunLine($"ocrabbyy.processscreen area {SpecialChars.Text}0,0,{windowRect.Right - windowRect.Left},{titleBarHeight}{SpecialChars.Text} relative true");
+            scripter.Text = ($"ocrabbyy.processscreen area {SpecialChars.Text}0,0,{windowRect.Right - windowRect.Left},{titleBarHeight}{SpecialChars.Text} relative true");
+            scripter.Run();
             int documentId = scripter.Variables.GetVariableValue<int>("result");
 
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);
@@ -69,14 +71,17 @@ scripter.InitVariables.Clear();
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void LanguageTest()
         {
-            string appTitle2 = "шестьсот";  // in case someone worry what this mean, it's six hundred
-            scripter.RunLine($"keyboard {SpecialChars.Text}title {appTitle2}{SpecialChars.Text}{SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}");
             IntPtr hTesterAppWindow = testerApp.MainWindowHandle;
             RobotWin32.Rect windowRect = new RobotWin32.Rect();
             RobotWin32.GetWindowRectangle(hTesterAppWindow, ref windowRect);
             int titleBarHeight = 24;
 
-            scripter.RunLine($"ocrabbyy.processscreen area {SpecialChars.Text}{windowRect.Left},{windowRect.Top},{windowRect.Right},{windowRect.Top + titleBarHeight}{SpecialChars.Text} language russian");
+            string appTitle2 = "шестьсот";  // in case someone worry what this mean, it's six hundred
+
+            scripter.Text = ($@"keyboard {SpecialChars.Text}title {appTitle2}{SpecialChars.Text}{SpecialChars.KeyBegin}enter{SpecialChars.KeyEnd}
+                                ocrabbyy.processscreen area {SpecialChars.Text}{windowRect.Left},{windowRect.Top},{windowRect.Right},{windowRect.Top + titleBarHeight}{SpecialChars.Text} language russian");
+            scripter.Run();
+           
             int documentId = scripter.Variables.GetVariableValue<int>("result");
 
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);

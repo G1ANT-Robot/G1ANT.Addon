@@ -40,7 +40,8 @@ scripter.InitVariables.Clear();
             scripter.InitVariables.Add("valueToBeFound2", new TextStructure(value2));
             scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
                                 googlesheet.find value {SpecialChars.Variable}valueToBeFound result {SpecialChars.Variable}result1
-                                googlesheet.find value {SpecialChars.Variable}valueToBeFound2  result {SpecialChars.Variable}result2");
+                                googlesheet.find value {SpecialChars.Variable}valueToBeFound2  result {SpecialChars.Variable}result2
+googlesheet.close");
             scripter.Run();
             var result1 = scripter.Variables.GetVariable("result1");
             Assert.AreEqual("C7", result1.GetValue().ToString());
@@ -56,7 +57,8 @@ scripter.InitVariables.Clear();
             var value = "Anna";
             scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
             scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
-                googlesheet.find value {SpecialChars.Variable}valueToBeFound");
+                googlesheet.find value {SpecialChars.Variable}valueToBeFound
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("A4", result.GetValue().ToString());
@@ -69,7 +71,8 @@ scripter.InitVariables.Clear();
             var value = "notexists";
             scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
             scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
-                                googlesheet.find value {SpecialChars.Variable}valueToBeFound");
+                                googlesheet.find value {SpecialChars.Variable}valueToBeFound
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("", result.GetValue().ToString());
@@ -78,7 +81,6 @@ scripter.InitVariables.Clear();
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("googlesheet.close");
         }
     }
 }

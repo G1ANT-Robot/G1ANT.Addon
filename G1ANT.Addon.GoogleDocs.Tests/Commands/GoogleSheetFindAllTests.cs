@@ -40,7 +40,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             scripter.InitVariables.Add("valueToBeFound2", new TextStructure(value2));
             scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
                            googlesheet.findall value {SpecialChars.Variable}valueToBeFound result {SpecialChars.Variable}result1
-                           googlesheet.findall value {SpecialChars.Variable}valueToBeFound2 result {SpecialChars.Variable}result2");
+                           googlesheet.findall value {SpecialChars.Variable}valueToBeFound2 result {SpecialChars.Variable}result2
+googlesheet.close");
             scripter.Run();
             var result1 = scripter.Variables.GetVariable("result1").GetValue().Object;
             Assert.AreEqual("C7&C8&C11&C14&C20&C25", result1);
@@ -57,7 +58,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             var value = "Anna";
             scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
             scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
-                                googlesheet.findall value {SpecialChars.Variable}valueToBeFound");
+                                googlesheet.findall value {SpecialChars.Variable}valueToBeFound
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("A4", result.GetValue().ToString());
@@ -70,7 +72,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             var value = "notexists";
             scripter.InitVariables.Add("valueToBeFound", new TextStructure(value));
             scripter.Text =($@"googlesheet.open {SpecialChars.Variable}fileid isshared false
-                                googlesheet.findall value {SpecialChars.Variable}valueToBeFound");
+                                googlesheet.findall value {SpecialChars.Variable}valueToBeFound
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual("", result.GetValue().ToString());
@@ -79,7 +82,6 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("googlesheet.close");
         }
     }
 }

@@ -39,7 +39,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
             rangeToBeChecked = "A3";
             scripter.InitVariables.Add("rangeToBeChecked", new TextStructure(rangeToBeChecked));
             scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid
-                                googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked");
+                                googlesheet.getvalue range {SpecialChars.Variable}rangeToBeChecked
+googlesheet.close");
             scripter.Run();
             System.Collections.Generic.List<object> result = (System.Collections.Generic.List<object>)scripter.Variables.GetVariable("result").GetValue().Object;
             Assert.AreEqual(expectedValue, result[0].ToString()); 
@@ -48,7 +49,6 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("googlesheet.close");
         }
     }
 }

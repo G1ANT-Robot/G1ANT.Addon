@@ -38,7 +38,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
         }
 
         [Test]
@@ -55,16 +55,16 @@ scripter.InitVariables.Clear();
 			    outlook.newmessage {SpecialChars.Variable}email subject {SpecialChars.Variable}sbj body {SpecialChars.Variable}txt
 			    delay 1
 			    outlook.send
-			    delay 20";
-			scripter.Variables.SetVariableValue("email", new TextStructure(email));
-			scripter.Variables.SetVariableValue("sbj", new TextStructure(subject));
-			scripter.Variables.SetVariableValue("txt", new TextStructure(text));
+			    delay 20
+                outlook.findmails search {SpecialChars.Variable}sbj result {SpecialChars.Variable}result1
+                outlook.close";
+            scripter.InitVariables.Add("email", new TextStructure(email));
+			scripter.InitVariables.Add("sbj", new TextStructure(subject));
+			scripter.InitVariables.Add("txt", new TextStructure(text));
+           
             scripter.Run();
-            scripter.Text =
-                $@"outlook.findmails search {SpecialChars.Variable}sbj";
-            scripter.Run();
-            string res = scripter.Variables.GetVariableValue<string>("result");
-            scripter.RunLine("outlook.close");
+            string res = scripter.Variables.GetVariable("result1").GetValue().Object.ToString();
+            
             Assert.AreEqual(true,Boolean.Parse(res));
         }
 

@@ -44,7 +44,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             csvPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestData), "csv");
            scripter.InitVariables.Add("csvPath", new TextStructure(csvPath));
-            scripter.RunLine($"excel.open {SpecialChars.Variable}csvPath");
+            
         }
 
         [Test]
@@ -53,31 +53,29 @@ namespace G1ANT.Addon.MSOffice.Tests
 		{
             string twentyOne = 21.ToString();
             string thirtyTwo = 32.ToString();
-
-			scripter.RunLine($"excel.importtext path {SpecialChars.Variable}csvPath delimiter ,");
-			scripter.RunLine("excel.getvalue row 2 colindex 1");
-			Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result"));
-			scripter.RunLine("excel.getvalue row 3 colindex 2");
-			Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result"));
-
-            scripter.RunLine($"excel.importtext path {SpecialChars.Variable}csvPath destination D1 delimiter ,");
-            scripter.RunLine("excel.getvalue row 2 colindex 4");
-            Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.getvalue row 3 colindex 5");
-            Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result"));
-            
-            // passing point by command parameter has to be fixed, i'm aware of the fact that it's not working for now, fogbugz case created
-            scripter.RunLine($"excel.importtext path {SpecialChars.Variable}csvPath destination (point)4,1 delimiter ,");
-            scripter.RunLine("excel.getvalue row 5 colindex 1");
-            Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.getvalue row 6 colindex 2");
-            Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result"));
+           scripter.RunLine($@"excel.open {SpecialChars.Variable}csvPath
+                              excel.importtext path {SpecialChars.Variable}csvPath delimiter ,
+		                      excel.getvalue row 2 colindex 1 result {SpecialChars.Variable}result1
+			                  excel.getvalue row 3 colindex 2 result {SpecialChars.Variable}result2
+                              excel.importtext path {SpecialChars.Variable}csvPath destination D1 delimiter ,
+                              excel.getvalue row 2 colindex 4 result {SpecialChars.Variable}result3
+                              excel.getvalue row 3 colindex 5 result {SpecialChars.Variable}result4
+                              excel.importtext path {SpecialChars.Variable}csvPath destination (point)4,1 delimiter ,
+                              excel.getvalue row 5 colindex 1 result {SpecialChars.Variable}result5
+                              excel.getvalue row 6 colindex 2 result {SpecialChars.Variable}result6
+                              excel.close");
+            Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result1"));
+            Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result2"));
+            Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result3"));
+            Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result4"));
+            Assert.AreEqual(twentyOne, scripter.Variables.GetVariableValue<string>("result5"));
+            Assert.AreEqual(thirtyTwo, scripter.Variables.GetVariableValue<string>("result6"));
         }
 
 		[TearDown]
 		public void TestCleanUp()
 		{
-			scripter.RunLine("excel.close");
+			
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

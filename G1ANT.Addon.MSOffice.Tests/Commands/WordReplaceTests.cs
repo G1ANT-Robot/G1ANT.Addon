@@ -43,16 +43,18 @@ scripter.InitVariables.Clear();
         public void TestInit()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            scripter.RunLine($"word.open");
+            
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void WordReplaceTest()
         {
-            scripter.RunLine($"word.inserttext {SpecialChars.Variable}text");
-            scripter.RunLine($"word.replace from {replaceFrom} to {replaceTo}");
-            scripter.RunLine($"word.gettext");
+            scripter.Text = ($@"word.open
+                               word.inserttext {SpecialChars.Variable}text
+                               word.replace from {replaceFrom} to {replaceTo}
+                               word.gettext");
+            scripter.Run();
             Assert.AreEqual(replaceTo + restOfText, scripter.Variables.GetVariableValue<string>("result").Trim());
         }
 
