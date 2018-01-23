@@ -21,20 +21,14 @@ namespace G1ANT.Addon.Xls.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
-
-        }
-        [SetUp]
-        public void testinit()
-        {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));
-            scripter.Text = $"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id";
-            scripter.Run();
         }
+        
         [Test]
         [Timeout(40000)]
         public void XlsFindDifferentTypesTest()
@@ -90,7 +84,7 @@ namespace G1ANT.Addon.Xls.Tests
         }
 
         [Test]
-        [Timeout(20000)]
+        [Timeout(35000)]
         public void XlsFindPercentTest()
         {
             scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
@@ -106,7 +100,7 @@ namespace G1ANT.Addon.Xls.Tests
         }
 
         [Test]
-        [Timeout(20000)]
+        [Timeout(35000)]
         public void XlsFindDateTest()
         {
             scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
@@ -122,7 +116,7 @@ namespace G1ANT.Addon.Xls.Tests
         }
 
         [Test]
-        [Timeout(20000)]
+        [Timeout(35000)]
         public void XlsFailToFind()
         {
             scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
@@ -131,6 +125,19 @@ namespace G1ANT.Addon.Xls.Tests
             scripter.Run();
             Assert.AreEqual(-1, int.Parse(scripter.Variables.GetVariable("resrow1").GetValue().ToString()));
             Assert.AreEqual(-1, int.Parse(scripter.Variables.GetVariable("resCol1").GetValue().ToString()));
+        }
+        [OneTimeTearDown]
+        [Timeout(10000)]
+        public void ClassCleanUp()
+        {
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+            if (File.Exists(file2))
+            {
+                File.Delete(file2);
+            }
         }
     }
 }

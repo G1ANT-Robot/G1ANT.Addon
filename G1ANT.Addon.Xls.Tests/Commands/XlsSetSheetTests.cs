@@ -14,13 +14,27 @@ namespace G1ANT.Addon.Xls.Tests
     {
         string file;
         Scripter scripter;
+        [OneTimeSetUp]
+        [Timeout(20000)]
+        public void ClassInit()
+        {
+            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+            file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("xlsPath", new TextStructure(file));
+        }
 
-        
         [Test]
         [Timeout(20000)]
         public void XlsSetSheetDefault()
         {
-            scripter.RunLine($"xls.setsheet result {SpecialChars.Variable}res");
+            scripter.Text = $@"
+            xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.setsheet result {SpecialChars.Variable}res
+            ";
+            scripter.Run();
             Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("res"));
         }
 
@@ -28,7 +42,11 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void XlsSetSheetCustom()
         {
-            scripter.RunLine($"xls.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result {SpecialChars.Variable}res");
+            scripter.Text = $@"
+            xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result {SpecialChars.Variable}res
+            ";
+            scripter.Run();
             Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("res"));
         }
 
@@ -36,7 +54,7 @@ namespace G1ANT.Addon.Xls.Tests
         [Timeout(20000)]
         public void SetNotExistingSheet()
         {
-            scripter.Text = "xls.setsheet a!@#$poq098239 result {SpecialChars.Variable}res";
+            scripter.Text = $"xls.setsheet a!@#$poq098239 result {SpecialChars.Variable}res";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -45,34 +63,15 @@ namespace G1ANT.Addon.Xls.Tests
             Assert.IsInstanceOf<ArgumentOutOfRangeException>(exception.GetBaseException());
         }
 
-        [OneTimeSetUp]
-        [Timeout(20000)]
-        public void ClassInit()
+        [OneTimeTearDown]
+        [Timeout(10000)]
+        public void ClassCleanUp()
         {
-            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
-            scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("xlsPath", new TextStructure(file));
-        }
-
-        [SetUp]
-        [Timeout(20000)]
-        public void TestInit()
-        {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
-            scripter.RunLine($"xls.open  {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id");
-        }
-
-        [TearDown]
-        [Timeout(20000)]
-        public void TestCleanUp()
-        {
-            try
+            if (File.Exists(file))
             {
-                scripter.RunLine("xls.close");
+                File.Delete(file);
             }
-            catch { }
+            
         }
     }
 }

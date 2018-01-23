@@ -125,7 +125,7 @@ scripter.InitVariables.Clear();
             {
                 id = randomGenerator.Next(filesCount);
                 scripter.RunLine($"xls.switch id {id}");
-                scripter.RunLine($"xls.setvalue {SpecialChars.Text}{"some value"}{SpecialChars.Text} position A1");
+                scripter.RunLine($"xls.setvalue {SpecialChars.Text}{"some value"}{SpecialChars.Text} row 1 colindex 1");
                 scripter.RunLine($"xls.close");
 
                 fileBytes = File.ReadAllBytes(filePaths[i]);

@@ -3,6 +3,7 @@ using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
 using System;
+using System.IO;
 using System.Reflection;
 
 namespace G1ANT.Addon.Xls.Tests
@@ -14,22 +15,19 @@ namespace G1ANT.Addon.Xls.Tests
         string file;
 
         [OneTimeSetUp]
-        [Timeout(20000)]
+        [Timeout(10000)]
         public void ClassInit()
         {
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));
         }
-        [SetUp]
-        public void Init()
-        {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
-        }
+      
         [Test]
-        [Timeout(20000)]
+        [Timeout(10000)]
         public void XlsGetValueDifferentTypesTest()
         {
             scripter.Text = $@"
@@ -59,7 +57,7 @@ namespace G1ANT.Addon.Xls.Tests
         }
 
         [Test]
-        [Timeout(20000)]
+        [Timeout(10000)]
         public void XlsGetValuePercentTest()
         {
             scripter.Text = $@"
@@ -73,7 +71,7 @@ namespace G1ANT.Addon.Xls.Tests
         }
 
         [Test]
-        [Timeout(20000)]
+        [Timeout(10000)]
         public void XlsGetValueFloatTest()
         {
             scripter.Text = $@"
@@ -83,6 +81,14 @@ namespace G1ANT.Addon.Xls.Tests
             scripter.Run();
             Assert.AreEqual(12.345f, scripter.Variables.GetVariable("result4").GetValue().Object);
         }
-
+        [OneTimeTearDown]
+        [Timeout(10000)]
+        public void ClassCleanUp()
+        {
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+        }
     }
 }

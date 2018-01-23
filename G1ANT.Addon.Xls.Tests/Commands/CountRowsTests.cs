@@ -3,6 +3,7 @@ using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 
@@ -22,24 +23,22 @@ namespace G1ANT.Addon.Xls.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
-        }
-        [SetUp]
-        public void testinit()
-        {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
         }
-
+       
         [Test]
         [Timeout(20000)]
         public void CountRowsTest()
-        {            
+        {
             int rowCount;
-            scripter.RunLine($"xls.open {SpecialChars.Text}{file}{SpecialChars.Text}");
-            scripter.RunLine($"xls.countrows result {SpecialChars.Variable}{nameof(rowCount)}");
-            rowCount = scripter.Variables.GetVariableValue<int>(nameof(rowCount), -1, true);
-            Assert.AreEqual(4, rowCount);
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("xlsPath", new TextStructure(file));
+            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.countrows result {SpecialChars.Variable}rowCunt";
+            scripter.Run();
+            rowCount = scripter.Variables.GetVariableValue<int>("rowCunt", -1, true);
+            Assert.AreEqual(5, rowCount);
         }
 
         [Test]
@@ -47,21 +46,27 @@ scripter.InitVariables.Clear();
         public void CountRowsInEmptyWoorkbookTest()
         {
             int rowCount;
-            scripter.RunLine($"xls.open {SpecialChars.Text}{file2}{SpecialChars.Text}");
-            scripter.RunLine($"xls.countrows result {SpecialChars.Variable}{nameof(rowCount)}");
-            rowCount = scripter.Variables.GetVariableValue<int>(nameof(rowCount), -1, true);
-            NUnit.Framework.Assert.AreEqual(0, rowCount);
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("xlsPath", new TextStructure(file2));
+            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xls.countrows result {SpecialChars.Variable}rowCount";
+            scripter.Run();
+            rowCount = scripter.Variables.GetVariableValue<int>("rowCount", -1, true);
+            Assert.AreEqual(0, rowCount);
         }
 
-        [TearDown]
-        [Timeout(20000)]
-        public void TestCleanUp()
+        [OneTimeTearDown]
+        [Timeout(10000)]
+        public void ClassCleanUp()
         {
-            try
+            if (File.Exists(file))
             {
-                scripter.RunLine("xls.close");
+                File.Delete(file);
             }
-            catch { }
+            if (File.Exists(file2))
+            {
+                File.Delete(file2);
+            }
         }
     }
 }
