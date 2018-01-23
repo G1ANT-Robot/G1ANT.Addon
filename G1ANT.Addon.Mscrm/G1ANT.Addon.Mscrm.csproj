@@ -124,6 +124,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+  <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
+      <Link>Microsoft.mshtml.dll</Link>
+    </EmbeddedResource>
     <EmbeddedResource Include="Wizards\MsCrmSetValueForm.resx">
       <DependentUpon>MsCrmSetValueForm.cs</DependentUpon>
     </EmbeddedResource>

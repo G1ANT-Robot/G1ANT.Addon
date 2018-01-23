@@ -129,6 +129,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
+      <Link>Microsoft.mshtml.dll</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Resources\image7.png" />
   </ItemGroup>
   <ItemGroup>

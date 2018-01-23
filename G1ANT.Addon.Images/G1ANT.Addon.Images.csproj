@@ -81,6 +81,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+  <EmbeddedResource Include="..\packages\*\lib\AForge.Math.dll">
+      <Link>AForge.Math.dll</Link>
+    </EmbeddedResource>
+			<EmbeddedResource Include="..\packages\*\lib\AForge.Imaging.dll">
+      <Link>AForge.Imaging.dll</Link>
+    </EmbeddedResource>
+			<EmbeddedResource Include="..\packages\*\lib\AForge.dll">
+      <Link>AForge.dll</Link>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
