@@ -46,26 +46,30 @@ namespace G1ANT.Addon.MSOffice.Tests
             scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
-           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
-            scripter.RunLine("excel.open ♥xlsPath sheet Add");
+            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelDuplicateRowTest()
         {
-            scripter.RunLine("excel.duplicaterow source 1 destination 2");
-            scripter.RunLine("excel.getvalue row 2 colindex 1");
+            scripter.Text = ($@"excel.open ♥xlsPath sheet Add
+                                excel.duplicaterow source 1 destination 2
+                                excel.getvalue row 2 colindex 1
+                                excel.close");
+            scripter.Run();
             Assert.AreEqual(3, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
+            
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelDuplicateRowFailTest()
         {
+            scripter.Text = ($@"excel.open ♥xlsPath sheet Add
+                              excel.duplicaterow source 1 destination 2
+                              excel.getvalue row 0 colindex 1");
 
-            scripter.RunLine("excel.duplicaterow source 1 destination 2");
-            scripter.Text = "excel.getvalue row 0 colindex 1";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -78,9 +82,9 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelDuplicateRowFail2Test()
         {
-
-            scripter.RunLine("excel.duplicaterow source 1 destination 2");
-            scripter.Text = "excel.getvalue row -1 colindex -1";
+            scripter.Text = ($@"excel.open ♥xlsPath sheet Add
+                                excel.duplicaterow source 1 destination 2
+                                excel.getvalue row -1 colindex -1");
             Exception exception = Assert.Throws<ApplicationException>(delegate
                 {
                     scripter.Run();
@@ -91,7 +95,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
+            
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

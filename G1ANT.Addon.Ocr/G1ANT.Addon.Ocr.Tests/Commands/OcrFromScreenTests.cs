@@ -30,16 +30,15 @@ namespace G1ANT.Addon.Ocr.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.testimage), "png");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             GoogleOcrTests.StartPaint(path);
-            scripter.RunLine($"window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize");
         }
 
         [Test, Timeout(GoogleOcrTests.TestTimeout)]
         public void GoogleOcrTest()
         {
             string expectedString = "animal";
-            string script = $@"
+            string script = $@"window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
                             ocr.login {SpecialChars.Text}{Resources.JsonCredentials}{SpecialChars.Text}
                             ocr.fromscreen area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528";
             scripter.Text = script;
@@ -51,8 +50,9 @@ scripter.InitVariables.Clear();
         [Test, Timeout(GoogleOcrTests.TestTimeout)]
         public void OcrTestGoogleApiTest()
         {
+            GoogleCloudApi.JsonCredential = Resources.JsonCredentials;
             var bitmapWithTestText = Addon.Ocr.Tests.Properties.Resources.testimage;
-            var expectedRectangle = new Rectangle(167, 142, 191, 51);
+            var expectedRectangle = new Rectangle(167, 142, 192, 51);
             var languages = new List<string>() { "en" };
             var timeout = 10000;
             GoogleCloudApi googleApi = new GoogleCloudApi();

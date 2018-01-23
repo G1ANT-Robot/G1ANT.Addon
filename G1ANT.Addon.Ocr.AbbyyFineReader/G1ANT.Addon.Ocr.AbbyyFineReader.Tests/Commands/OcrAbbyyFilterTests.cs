@@ -32,9 +32,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document2), "jpg");
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
-            scripter.RunLine($"ocrabbyy.filter filter bold");
+            scripter.InitVariables.Clear();
+            scripter.Text =($@"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}
+                                ocrabbyy.filter filter bold");
+            scripter.Run();
             List<GStruct.Structure> res = scripter.Variables.GetVariableValue<List<GStruct.Structure>>("result");
 
             foreach (GStruct.Structure value in res)
@@ -59,11 +60,12 @@ scripter.InitVariables.Clear();
         public void InvalidFilterTest()
         {
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             string invalidFilter = "filterThatDoNotExists";
+            scripter.Text = ($"ocrabbyy.filter filter {invalidFilter}");
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
-                scripter.RunLine($"ocrabbyy.filter filter {invalidFilter}");
+                scripter.Run();
             });
             Assert.IsInstanceOf<ArgumentOutOfRangeException>(exception.GetBaseException());
         }

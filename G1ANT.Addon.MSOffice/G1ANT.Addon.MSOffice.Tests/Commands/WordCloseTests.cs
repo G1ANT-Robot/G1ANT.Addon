@@ -48,8 +48,7 @@ scripter.InitVariables.Clear();
 
             Process[] userProcesses = Process.GetProcessesByName("winword");
             
-			scripter.Text = @"word.open";
-			scripter.Run();
+			scripter.RunLine(@"word.open");
             int tick = 0;
             int starttick = Environment.TickCount;
             int openingDelay = 20000;
@@ -73,8 +72,7 @@ scripter.InitVariables.Clear();
 					diffProcesses.Add(proc);
 			}
 
-			scripter.Text = @"word.close";
-			scripter.Run();
+			scripter.RunLine(@"word.close");
             System.Threading.Thread.Sleep(2000);
             allProcesses = Process.GetProcessesByName("winword");
 			Assert.AreEqual(userProcesses.Length, allProcesses.Length);

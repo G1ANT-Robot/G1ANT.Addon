@@ -49,36 +49,42 @@ namespace G1ANT.Addon.MSOffice.Tests
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
            scripter.InitVariables.Add("val", new IntegerStructure(someVal));
-            scripter.RunLine($"excel.open {SpecialChars.Text}{SpecialChars.Text} result {SpecialChars.Variable}id");
-            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath sheet Add result {SpecialChars.Variable}id2");
+           
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
 		public void ExcelSwitchTest()
 		{
-			scripter.RunLine($"excel.switch {SpecialChars.Variable}id");
-			scripter.RunLine($"excel.setvalue {SpecialChars.Variable}val row 1 colindex 1");
-			scripter.RunLine($"excel.switch {SpecialChars.Variable}id2");
-			scripter.RunLine("excel.getvalue row 1 colindex 1");
-			Assert.AreNotEqual(someVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-			scripter.RunLine("excel.activatesheet Macro");
-			scripter.RunLine($"excel.getvalue row 6 colindex 2 result {SpecialChars.Variable}val2");
-			scripter.RunLine($"excel.switch {SpecialChars.Variable}id");
-			scripter.RunLine("excel.getvalue row 1 colindex 1");
-			Assert.AreEqual(someVal, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-			scripter.RunLine($"excel.switch {SpecialChars.Variable}id2");
-			scripter.RunLine("excel.getvalue row 6 colindex 2");
-            Assert.AreEqual(int.Parse(scripter.Variables.GetVariableValue<string>("val2")), int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-		}
+            scripter.Text = ($@"excel.open {SpecialChars.Text}{SpecialChars.Text} result {SpecialChars.Variable}id
+                                excel.open {SpecialChars.Variable}xlsPath sheet Add result {SpecialChars.Variable}id2
+                                excel.switch {SpecialChars.Variable}id
+			                    excel.setvalue {SpecialChars.Variable}val row 1 colindex 1
+			                    excel.switch {SpecialChars.Variable}id2
+			                    excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}result1
+			                    
+			                    excel.activatesheet Macro
+			                    excel.getvalue row 6 colindex 2 result {SpecialChars.Variable}val2
+			                    excel.switch {SpecialChars.Variable}id
+			                    excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}result2
+			                    
+			                    excel.switch {SpecialChars.Variable}id2
+			                    excel.getvalue row 6 colindex 2 result {SpecialChars.Variable}result3
+                                excel.switch {SpecialChars.Variable}id
+                                excel.close
+                                excel.switch {SpecialChars.Variable}id2
+                                excel.close");
+            scripter.Run();
+            Assert.AreNotEqual(someVal, int.Parse(scripter.Variables.GetVariable("result1").GetValue().Object.ToString()));
+            Assert.AreEqual(someVal, int.Parse(scripter.Variables.GetVariable("result2").GetValue().Object.ToString()));
+            Assert.AreEqual(int.Parse(scripter.Variables.GetVariableValue<string>("val2")), int.Parse(scripter.Variables.GetVariable("result3").GetValue().Object.ToString()));
+
+            
+        }
 
 		[TearDown]
 		public void TestCleanUp()
 		{
-			scripter.RunLine($"excel.switch {SpecialChars.Variable}id");
-			scripter.RunLine("excel.close");
-			scripter.RunLine($"excel.switch {SpecialChars.Variable}id2");
-			scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

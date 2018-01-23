@@ -57,30 +57,30 @@ scripter.InitVariables.Clear();
            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
            scripter.InitVariables.Add("sheet", new TextStructure(sheetName));
            scripter.InitVariables.Add("macroName", new TextStructure(macroName));
-            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath sheet {SpecialChars.Variable}sheet");
+            
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelRunMacroCalculationTest()
         {
-            scripter.RunLine($"excel.setvalue {SpecialChars.Text}{SpecialChars.Text} row {calculationRow} colindex {calculationValueToBeCountedcolindexumn}");
-            scripter.RunLine($"excel.runmacro {SpecialChars.Variable}macroName");
-            scripter.RunLine($"excel.getvalue row {calculationRow} colindex {calculationValueExpectedcolindexumn}");
+            scripter.Text =($@"excel.open {SpecialChars.Variable}xlsPath sheet {SpecialChars.Variable}sheet
+                               excel.setvalue {SpecialChars.Text}{SpecialChars.Text} row {calculationRow} colindex {calculationValueToBeCountedcolindexumn}
+                               excel.runmacro {SpecialChars.Variable}macroName
+                               excel.getvalue row {calculationRow} colindex {calculationValueExpectedcolindexumn} result {SpecialChars.Variable}result1
+                               excel.setvalue {SpecialChars.Text}4{SpecialChars.Text} row {calculationRow} colindex {calculationValueToBeCountedcolindexumn}
+                               excel.runmacro {SpecialChars.Variable}macroName
+                               excel.getvalue row {calculationRow} colindex {calculationValueExpectedcolindexumn} result {SpecialChars.Variable}result2");
+            scripter.Run();
             int expectedValue = 0;
-            Assert.AreEqual(expectedValue, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-
-            scripter.RunLine($"excel.setvalue {SpecialChars.Text}4{SpecialChars.Text} row {calculationRow} colindex {calculationValueToBeCountedcolindexumn}");
-            scripter.RunLine($"excel.runmacro {SpecialChars.Variable}macroName");
-            scripter.RunLine($"excel.getvalue row {calculationRow} colindex {calculationValueExpectedcolindexumn}");
+            Assert.AreEqual(expectedValue, int.Parse(scripter.Variables.GetVariableValue<string>("result1")));
             expectedValue = 40;
-            Assert.AreEqual(expectedValue, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
+            Assert.AreEqual(expectedValue, int.Parse(scripter.Variables.GetVariableValue<string>("result2")));
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

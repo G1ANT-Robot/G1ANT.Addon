@@ -36,7 +36,8 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         {
             var expectedTitle = "Example Spreadsheet";
             scripter.Text = ($@"googlesheet.open {SpecialChars.Variable}fileid
-                                googlesheet.gettitle");
+                                googlesheet.gettitle
+googlesheet.close");
             scripter.Run();
             var result = scripter.Variables.GetVariable("result");
             Assert.AreEqual(expectedTitle, result.GetValue().ToString());
@@ -45,7 +46,6 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("googlesheet.close");
         }
     }
 }

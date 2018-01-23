@@ -22,10 +22,10 @@ namespace G1ANT.Addon.Watson.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-             audioPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.SpeechTest), "wav");
+            audioPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.SpeechTest), "wav");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("audioPath", new TextStructure(audioPath));
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("audioPath", new TextStructure(audioPath));
         }
 
         [SetUp]
@@ -47,7 +47,8 @@ scripter.InitVariables.Clear();
         [Timeout(20000)]
         public void WatsonApiSpeachToTextTest2()
         {
-            scripter.RunLine($"watson.speechtotext {SpecialChars.Variable}audioPath login {SpecialChars.Text}{login}{SpecialChars.Text} password {SpecialChars.Text}{password}{SpecialChars.Text}");
+            scripter.Text = ($"watson.speechtotext {SpecialChars.Variable}audioPath login {SpecialChars.Text}{login}{SpecialChars.Text} password {SpecialChars.Text}{password}{SpecialChars.Text}");
+            scripter.Run();
             var res = scripter.Variables.GetVariableValue<string>("result").ToLower().Trim();
             Assert.IsTrue(res.ToLower().Contains("hi"));
         }

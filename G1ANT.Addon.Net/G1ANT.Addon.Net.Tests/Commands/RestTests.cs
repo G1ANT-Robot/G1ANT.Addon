@@ -51,49 +51,45 @@ namespace G1ANT.Addon.Net.Tests
         public void SendDataWithHeadersTest()
         {
             string url = "https://httpbin.org/put";
-            ListStructure parameters = new ListStructure(new List<Structure>()
+            string url2 = "https://httpbin.org/get";
+            ListStructure parameters = new ListStructure(new List<object>()
             {
-                new TextStructure("something:val")
+                "something:val"
             });
 
-            ListStructure headers1 = new ListStructure(new List<Structure>()
+            ListStructure headers1 = new ListStructure(new List<object>()
             {
-                new TextStructure("encoding-language:foo"),
-                new TextStructure("version:3.0")
+               "encoding-language:foo",
+                "version:3.0"
+            });
+            ListStructure headers2 = new ListStructure(new List<object>()
+            {
+                "type1:xml"
             });
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("params", parameters);
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("params", parameters);
+            scripter.InitVariables.Add("url", new TextStructure(url));
+            scripter.InitVariables.Add("method", new TextStructure("put"));
+            scripter.InitVariables.Add("headers", headers1);
+            scripter.InitVariables.Add("url2", new Language.TextStructure(url2));
+            scripter.InitVariables.Add("method2", new Language.TextStructure("get"));
+            scripter.InitVariables.Add("headers2", headers2);
 
-           scripter.InitVariables.Add("url", new TextStructure(url));
-           scripter.InitVariables.Add("method", new TextStructure("put"));
-           scripter.InitVariables.Add("headers", headers1);
-            scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers parameters {SpecialChars.Variable}params timeout {TestTimeout}");
-            string resultJson = scripter.Variables.GetVariableValue<string>("result");
+            scripter.Text = ($@"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers parameters {SpecialChars.Variable}params timeout {TestTimeout} result {SpecialChars.Variable}result1
+                                json {SpecialChars.Variable}result jpath ['headers']['Encoding-Language'] result {SpecialChars.Variable}json1
+                                json {SpecialChars.Variable}result jpath ['headers']['Version'] result {SpecialChars.Variable}json2
+                                rest method {SpecialChars.Variable}method2 url {SpecialChars.Variable}url2 headers {SpecialChars.Variable}headers2 parameters {SpecialChars.Variable}params result {SpecialChars.Variable}result12
+                                json {SpecialChars.Variable}result jpath ['headers']['Type1'] result {SpecialChars.Variable}ress");
+            scripter.Run();
 
-            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Encoding-Language'] result {SpecialChars.Variable}json1");
-            Assert.AreEqual("foo", scripter.Variables.GetVariableValue<string>("json1"));
+            Assert.AreEqual("xml", scripter.Variables.GetVariableValue<string>("ress"));
 
-            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Version'] result {SpecialChars.Variable}json2");
+            string resultJson = scripter.Variables.GetVariableValue<string>("result1");
+            resultJson = scripter.Variables.GetVariableValue<string>("result12");
             Assert.AreEqual("3.0", scripter.Variables.GetVariableValue<string>("json2"));
-
-            url = "https://httpbin.org/get";
-
-            ListStructure headers2 = new ListStructure(new List<Structure>()
-            {
-                new TextStructure("type1:xml")
-            });
-
-           scripter.InitVariables.Add("url", new Language.TextStructure(url));
-           scripter.InitVariables.Add("method", new Language.TextStructure("get"));
-           scripter.InitVariables.Add("headers", headers2);
-            scripter.RunLine($"rest method {SpecialChars.Variable}method url {SpecialChars.Variable}url headers {SpecialChars.Variable}headers parameters {SpecialChars.Variable}params ");
-
-            resultJson = scripter.Variables.GetVariableValue<string>("result");
-            scripter.RunLine($"json {SpecialChars.Variable}result jpath ['headers']['Type1']");
-
-            Assert.AreEqual("xml", scripter.Variables.GetVariableValue<string>("result"));
+            Assert.AreEqual("foo", scripter.Variables.GetVariableValue<string>("json1"));
         }
 
         [Test, Timeout(TestTimeout)]
@@ -103,8 +99,8 @@ scripter.InitVariables.Clear();
             string url = "http://validate.jsontest.com/";
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("url", new TextStructure(url));
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("url", new TextStructure(url));
             scripter.Text = ($"rest {SpecialChars.Text}get{SpecialChars.Text} url {SpecialChars.Variable}url timeout 1");
 
             Exception exception = Assert.Throws<ApplicationException>(delegate

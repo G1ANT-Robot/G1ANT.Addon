@@ -44,33 +44,35 @@ scripter.InitVariables.Clear();
         public void TestInit()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            scripter.RunLine($"word.open result {SpecialChars.Variable}id");
-            scripter.RunLine($"word.open result {SpecialChars.Variable}id2");
+           
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void WordSwitchTest()
         {
-            scripter.RunLine($"word.switch {SpecialChars.Variable}id");
-            scripter.RunLine($"word.inserttext {SpecialChars.Variable}text");
-            scripter.RunLine($"word.switch {SpecialChars.Variable}id2");
-            scripter.RunLine($"word.inserttext {SpecialChars.Variable}text2");
-            scripter.RunLine($"word.switch {SpecialChars.Variable}id");
-            scripter.RunLine($"word.gettext");
-            Assert.AreEqual(scripter.Variables.GetVariableValue<string>("result").Trim(), someText);
-            scripter.RunLine($"word.switch {SpecialChars.Variable}id2");
-            scripter.RunLine($"word.gettext");
-            Assert.AreEqual(scripter.Variables.GetVariableValue<string>("result").Trim(), someText2);
+            scripter.Text = ($@"word.open result {SpecialChars.Variable}id
+                                word.open result {SpecialChars.Variable}id2
+                                word.switch {SpecialChars.Variable}id
+                                word.inserttext {SpecialChars.Variable}text
+                                word.switch {SpecialChars.Variable}id2
+                                word.inserttext {SpecialChars.Variable}text2
+                                word.switch {SpecialChars.Variable}id
+                                word.gettext result {SpecialChars.Variable}result1
+                                word.switch {SpecialChars.Variable}id2
+                                word.gettext result {SpecialChars.Variable}result2
+                                word.switch {SpecialChars.Variable}id
+                                word.close
+                                word.switch {SpecialChars.Variable}id2
+                                word.close");
+            scripter.Run();
+            Assert.AreEqual(((string)scripter.Variables.GetVariable("result2").GetValue().Object).Trim(), someText2);
+            Assert.AreEqual(scripter.Variables.GetVariableValue<string>("result1").Trim(), someText);
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine($"word.switch {SpecialChars.Variable}id");
-            scripter.RunLine("word.close");
-            scripter.RunLine($"word.switch {SpecialChars.Variable}id2");
-            scripter.RunLine("word.close");
             Process[] proc = Process.GetProcessesByName("word");
             if (proc.Length != 0)
             {

@@ -34,9 +34,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             List<GStruct.Structure> allNumbers = null;
 
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
-            scripter.RunLine($"ocrabbyy.find {SpecialChars.Text}{numberRegex}{SpecialChars.Text} result {SpecialChars.Variable}{nameof(allNumbers)}");
+            scripter.InitVariables.Clear();
+            scripter.Text =($@"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}
+                               ocrabbyy.find {SpecialChars.Text}{numberRegex}{SpecialChars.Text} result {SpecialChars.Variable}{nameof(allNumbers)}");
+            scripter.Run();
             allNumbers = scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(allNumbers));
             Assert.AreNotEqual(0, allNumbers.Count);
         }
@@ -46,22 +47,23 @@ scripter.InitVariables.Clear();
         {
             string appTitle = "TestApp";
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
             System.Diagnostics.Process testerApp = null;
             List<GStruct.Structure> windowTitleRect = null;
 
             try
             {
                 scripter = new Scripter();
-scripter.InitVariables.Clear();
+                scripter.InitVariables.Clear();
                 testerApp = AbbyTests.StartFormTester($"Title {appTitle}");
                 IntPtr hTesterAppWindow = testerApp.MainWindowHandle;
                 RobotWin32.Rect windowRect = new RobotWin32.Rect();
                 RobotWin32.GetWindowRectangle(hTesterAppWindow, ref windowRect);
                 int titleBarHeight = 24;
 
-                scripter.RunLine($"ocrabbyy.processscreen area {SpecialChars.Text}{windowRect.Left},{windowRect.Top},{windowRect.Right},{windowRect.Bottom}{SpecialChars.Text}");
-                scripter.RunLine($"ocrabbyy.find {SpecialChars.Text}{appTitle}{SpecialChars.Text} result {nameof(windowTitleRect)}");
+                scripter.Text =($@"ocrabbyy.processscreen area {SpecialChars.Text}{windowRect.Left},{windowRect.Top},{windowRect.Right},{windowRect.Bottom}{SpecialChars.Text}
+                                    ocrabbyy.find {SpecialChars.Text}{appTitle}{SpecialChars.Text} result {nameof(windowTitleRect)}");
+                scripter.Run();
                 windowTitleRect = scripter.Variables.GetVariableValue<List<GStruct.Structure>>(nameof(windowTitleRect));
                 Assert.AreNotEqual(0, windowTitleRect.Count);
                 System.Drawing.Rectangle titleRect = ((GStruct.RectangleStructure)windowTitleRect[0]).Value;

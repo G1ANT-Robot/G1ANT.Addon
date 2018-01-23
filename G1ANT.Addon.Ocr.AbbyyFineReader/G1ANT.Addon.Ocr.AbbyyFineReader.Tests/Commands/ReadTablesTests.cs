@@ -31,10 +31,11 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void ReadTabletest()
         {
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
 
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
-            scripter.RunLine($"ocrabbyy.readtables");
+            scripter.Text = ($@"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}
+                                ocrabbyy.readtables");
+            scripter.Run();
             List<GStruct.Structure> cells = scripter.Variables.GetVariableValue<List<GStruct.Structure>>("result");
 
             List<string> values = new List<string>() { "Egypt", "Nigeria" };

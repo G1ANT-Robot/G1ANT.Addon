@@ -43,27 +43,29 @@ namespace G1ANT.Addon.MSOffice.Tests
             scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
-           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
-            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath sheet Add");
+            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetValueTest()
         {
-            scripter.RunLine("excel.getvalue row 1 colindex 1");
-            Assert.AreEqual(3, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-            scripter.RunLine("excel.getvalue row 1 colindex 2");
-            Assert.AreEqual(4, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
-            scripter.RunLine("excel.getvalue row 1 colindex 3");
-            Assert.AreEqual(7, int.Parse(scripter.Variables.GetVariableValue<string>("result")));
+            scripter.Text =($@"excel.open {SpecialChars.Variable}xlsPath sheet Add
+                               excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}result1
+                               excel.getvalue row 1 colindex 3 result {SpecialChars.Variable}result3
+                               excel.getvalue row 1 colindex 2 result {SpecialChars.Variable}result2");
+            scripter.Run();
+            Assert.AreEqual(3, int.Parse(scripter.Variables.GetVariable("result1").GetValue().Object.ToString()));
+            Assert.AreEqual(4, int.Parse(scripter.Variables.GetVariable("result2").GetValue().Object.ToString()));
+            Assert.AreEqual(7, int.Parse(scripter.Variables.GetVariable("result3").GetValue().Object.ToString()));
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetValueFailTest()
         {
-            scripter.Text = "excel.getvalue row 0 colindex 1";
+            scripter.Text =($@"excel.open {SpecialChars.Variable}xlsPath sheet Add
+                               excel.getvalue row 0 colindex 1");
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -75,7 +77,8 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetValueFail2Test()
         {
-            scripter.Text = "excel.getvalue row 1 colindex 0";
+            scripter.Text = ($@"excel.open {SpecialChars.Variable}xlsPath sheet Add
+                                excel.getvalue row 1 colindex 0");
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -86,7 +89,6 @@ namespace G1ANT.Addon.MSOffice.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

@@ -27,14 +27,15 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document3), "tif");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
+            scripter.InitVariables.Clear();
            scripter.InitVariables.Add("file", new GStructures.TextStructure(path));
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void ProcessFileTest()
         {
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file language English");
+            scripter.Text =($"ocrabbyy.processfile {SpecialChars.Variable}file language English");
+            scripter.Run();
             int documentId = scripter.Variables.GetVariableValue<int>("result");
 
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);
@@ -51,7 +52,8 @@ scripter.InitVariables.Clear();
 
             List<GStructures.Structure> list = new List<GStructures.Structure>() { new GStructures.IntegerStructure(1) };
            scripter.InitVariables.Add(nameof(list), new GStructures.ListStructure(list));
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{doc4Path}{SpecialChars.Text} pages {SpecialChars.Variable}{nameof(list)}");
+            scripter.Text =($"ocrabbyy.processfile {SpecialChars.Text}{doc4Path}{SpecialChars.Text} pages {SpecialChars.Variable}{nameof(list)}");
+            scripter.Run();
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(scripter.Variables.GetVariableValue<int>("result"));
             Assert.IsTrue(document.GetAllText().Trim().EndsWith(endOfFirstPage));
         }
@@ -59,7 +61,8 @@ scripter.InitVariables.Clear();
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void LanguageTest()
         {
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file language Polish");
+            scripter.Text = ($"ocrabbyy.processfile {SpecialChars.Variable}file language Polish");
+            scripter.Run();
             int documentId = scripter.Variables.GetVariableValue<int>("result");
 
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);
@@ -93,8 +96,9 @@ scripter.InitVariables.Clear();
                 wordsList.Add(new GStructures.TextStructure(word));
             }
 
-           scripter.InitVariables.Add(nameof(wordsList), new GStructures.ListStructure(wordsList));
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text} language Polish languageweight 0 dictionary {SpecialChars.Variable}{nameof(wordsList)}");
+            scripter.InitVariables.Add(nameof(wordsList), new GStructures.ListStructure(wordsList));
+            scripter.Text = ($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text} language Polish languageweight 0 dictionary {SpecialChars.Variable}{nameof(wordsList)}");
+            scripter.Run();
             //scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{Initializer.BgzBilans6Path}{SpecialChars.Text} dictionary {SpecialChars.Variable}{nameof(wordsList)}");
             int documentId = scripter.Variables.GetVariableValue<int>("result");
 

@@ -47,7 +47,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");  
            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
-            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath");
+           
         }
 
         
@@ -56,15 +56,18 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelActivateSheetTest()
         {
-            scripter.RunLine($"excel.activatesheet name {SpecialChars.Text}Macro{SpecialChars.Text}");
+            scripter.Text =($@"excel.open {SpecialChars.Variable}xlsPath
+                              excel.activatesheet name {SpecialChars.Text}Macro{SpecialChars.Text}
+                              excel.close");
+            scripter.Run();
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelActivateSheetFailTest()
         {
-
-            scripter.Text = $"excel.activatesheet name {SpecialChars.Text}aaaa{SpecialChars.Text}";
+            scripter.Text = ($@"excel.open {SpecialChars.Variable}xlsPath
+                                excel.activatesheet name {SpecialChars.Text}aaaa{SpecialChars.Text}");
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -75,7 +78,6 @@ namespace G1ANT.Addon.MSOffice.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

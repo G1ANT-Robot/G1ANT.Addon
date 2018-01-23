@@ -40,29 +40,30 @@ namespace G1ANT.Addon.MSOffice.Tests
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-           scripter.InitVariables.Add("TestSheet", new TextStructure(sheetName));
-           scripter.InitVariables.Add("otherSheet", new TextStructure(otherSheet));
-            scripter.RunLine("excel.open");
+            scripter.InitVariables.Add("TestSheet", new TextStructure(sheetName));
+            scripter.InitVariables.Add("otherSheet", new TextStructure(otherSheet));
+
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelAddSheetTest()
         {
-            scripter.RunLine($"excel.addsheet {SpecialChars.Variable}TestSheet");
-            scripter.RunLine($"excel.activatesheet {SpecialChars.Variable}TestSheet");
-            scripter.RunLine("excel.setvalue 1 colindex 1 row 1");
-            scripter.RunLine($"excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}valTest");
+            scripter.Text = ($@"excel.open
+                                excel.addsheet {SpecialChars.Variable}TestSheet
+                                excel.activatesheet {SpecialChars.Variable}TestSheet
+                                excel.setvalue 1 colindex 1 row 1
+                                excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}valTest
+                                excel.addsheet {SpecialChars.Variable}otherSheet
+                                excel.activatesheet { SpecialChars.Variable}otherSheet
+                                excel.setvalue 5 colindex 1 row 1
+                                excel.getvalue row 1 colindex 1 result { SpecialChars.Variable}valOther
+                                excel.activatesheet {SpecialChars.Variable}TestSheet
+                                excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}val");
+            scripter.Run();
+
             Assert.AreEqual(1, int.Parse(scripter.Variables.GetVariableValue<string>("valTest")));
-
-            scripter.RunLine($"excel.addsheet {SpecialChars.Variable}otherSheet");
-            scripter.RunLine($"excel.activatesheet {SpecialChars.Variable}otherSheet");
-            scripter.RunLine("excel.setvalue 5 colindex 1 row 1");
-            scripter.RunLine($"excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}valOther");
             Assert.AreEqual(5, int.Parse(scripter.Variables.GetVariableValue<string>("valOther")));
-
-            scripter.RunLine($"excel.activatesheet {SpecialChars.Variable}TestSheet");
-            scripter.RunLine($"excel.getvalue row 1 colindex 1 result {SpecialChars.Variable}val");
             Assert.AreEqual(1, int.Parse(scripter.Variables.GetVariableValue<string>("val")));
         }
 
@@ -70,9 +71,9 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelAddSheetFailTest()
         {
-
-            scripter.RunLine($"excel.addsheet {SpecialChars.Variable}TestSheet");
-            scripter.Text = $"excel.addsheet {SpecialChars.Variable}TestSheet";
+            scripter.Text = ($@"excel.open
+                              excel.addsheet {SpecialChars.Variable}TestSheet
+                              excel.addsheet {SpecialChars.Variable}TestSheet");
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

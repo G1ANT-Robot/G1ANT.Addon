@@ -26,14 +26,15 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void GetCellInfoTest()
         {
             Scripter scripter = new Scripter();
-scripter.InitVariables.Clear();
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}");
-            scripter.RunLine($"ocrabbyy.getcellinfo position 8,3");
-            System.Drawing.Point cellInfo = scripter.Variables.GetVariableValue<System.Drawing.Point>("result");
+            scripter.InitVariables.Clear();
+            scripter.Text = ($@"ocrabbyy.processfile {SpecialChars.Text}{path}{SpecialChars.Text}
+                                ocrabbyy.getcellinfo position 8,3 result {SpecialChars.Variable}result1
+                                ocrabbyy.getcellinfo position 1,6 result {SpecialChars.Variable}result2");
+            System.Drawing.Point cellInfo = scripter.Variables.GetVariableValue<System.Drawing.Point>("result1");
             Assert.AreEqual(1, cellInfo.X);
             Assert.AreEqual(1, cellInfo.Y);
-            scripter.RunLine($"ocrabbyy.getcellinfo position 1,6");
-            cellInfo = scripter.Variables.GetVariableValue<System.Drawing.Point>("result");
+           
+            cellInfo = scripter.Variables.GetVariableValue<System.Drawing.Point>("result2");
             Assert.AreEqual(1, cellInfo.X);
             Assert.AreEqual(5, cellInfo.Y);
         }

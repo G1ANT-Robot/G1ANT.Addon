@@ -45,14 +45,16 @@ namespace G1ANT.Addon.MSOffice.Tests
             scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.getRowTest), "xlsx");
-           scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
-            scripter.RunLine($"excel.open {SpecialChars.Variable}xlsPath");
+            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
+            
         }
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetRowTest()
         {//TODO GETROW Do not have dictionary as return value
-            scripter.RunLine("excel.getrow row 1");
+            scripter.Text =($@"excel.open {SpecialChars.Variable}xlsPath
+                               excel.getrow row 1
+                               excel.close");
             Dictionary<string,TextStructure> dictionary = (Dictionary<string, TextStructure>)scripter.Variables.GetVariable("result").GetValue().Object;
             Assert.AreEqual("1".ToString(CultureInfo.CurrentCulture), (dictionary["b"].Object));
             Assert.AreEqual("abc".ToString(CultureInfo.CurrentCulture), (dictionary["c"].Object));
@@ -64,8 +66,9 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelGetRowFailTest()
         {
-
-            scripter.Text = "excel.getrow row 0";
+            scripter.Text = ($@"excel.open {SpecialChars.Variable}xlsPath
+                                excel.getrow row 0
+                                excel.close");
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
@@ -76,7 +79,6 @@ namespace G1ANT.Addon.MSOffice.Tests
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

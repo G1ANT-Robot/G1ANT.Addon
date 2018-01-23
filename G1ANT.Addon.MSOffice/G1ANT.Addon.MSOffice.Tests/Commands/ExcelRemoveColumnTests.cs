@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Threading;
 using System.Diagnostics;
 using G1ANT.Engine;
+using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice.Tests
 {
@@ -33,49 +34,54 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            scripter = new Scripter();
-scripter.InitVariables.Clear();
+            
         }
 
         [SetUp]
         public void TestInit()
         {
+            scripter = new Scripter();
+            scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            scripter.RunLine("excel.open");
+           
         }
 
         [Test]
         [Timeout(MSOfficeTests.TestsTimeout)]
         public void ExcelRemovecolindexumnTest()
         {
-            scripter.RunLine("excel.setvalue aaa row 1 colindex 1");
-            scripter.RunLine("excel.setvalue bbb row 1 colindex 2");
-            scripter.RunLine("excel.insertcolumn colindex 1 where after");
-            scripter.RunLine("excel.removecolumn colindex 2");
-            scripter.RunLine("excel.getvalue row 1 colindex 2");
-            Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
-            scripter.RunLine("excel.insertcolumn colindex 2 where before");
-            scripter.RunLine("excel.removecolumn colname b");
-            scripter.RunLine("excel.getvalue row 1 colindex 2");
+            scripter.Text = ($@"excel.open
+                                excel.setvalue aaa row 1 colindex 1
+                                excel.setvalue bbb row 1 colindex 2
+                                excel.insertcolumn colindex 1 where after
+                                excel.removecolumn colindex 2
+                                excel.getvalue row 1 colindex 2 result {SpecialChars.Variable}result1
+                                excel.insertcolumn colindex 2 where before
+                                excel.removecolumn colname b
+                                excel.getvalue row 1 colindex 2
+                                excel.close");
+            scripter.Run();
+            Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result1"));
             Assert.AreEqual("bbb", scripter.Variables.GetVariableValue<string>("result"));
         }
 
         [Test]
         public void ExcelRemovecolindexumnFailTest()
         {
-                scripter.Text = "excel.removecolumn colindex hadhaad2radfa";
-                Exception exception = Assert.Throws<ApplicationException>(delegate
+            scripter.Text =($@"excel.open
+                               excel.removecolumn colindex hadhaad2radfa");
+           
+                Exception exception = Assert.Throws<AggregateException>(delegate
                 {
                     scripter.Run();
                 });
-                Assert.IsInstanceOf<ApplicationException>(exception.GetBaseException());
+                Assert.IsInstanceOf<AggregateException>(exception);
             }
 
 
         [TearDown]
         public void TestCleanUp()
         {
-            scripter.RunLine("excel.close");
             Process[] proc = Process.GetProcessesByName("excel");
             if (proc.Length != 0)
             {

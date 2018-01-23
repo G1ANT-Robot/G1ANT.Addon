@@ -29,19 +29,20 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document1), "tif");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
-           scripter.InitVariables.Add("file", new GStructures.TextStructure(path));
+            scripter.InitVariables.Clear();
+            scripter.InitVariables.Add("file", new GStructures.TextStructure(path));
         }
 
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void CloseTest()
         {
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file");
-            int documentId = scripter.Variables.GetVariableValue<int>("result");
+            scripter.RunLine($@"ocrabbyy.processfile {SpecialChars.Variable}file result {SpecialChars.Variable}result1
+                               ocrabbyy.processfile {SpecialChars.Variable}file
+                               ocrabbyy.close");
+            scripter.Run();
+            int documentId = scripter.Variables.GetVariableValue<int>("result1");
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file");
             long engineLoadedMemory = GetAllocatedMemory();
-            scripter.RunLine($"ocrabbyy.close");
             long engineUnloadedMemory = GetAllocatedMemory();
             Assert.IsTrue(engineLoadedMemory - engineUnloadedMemory > 0x10000, $"Closing engine relesed less than 1MB of memory, relesed bytes = {engineLoadedMemory - engineUnloadedMemory}");
         }
@@ -55,14 +56,16 @@ scripter.InitVariables.Clear();
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void CloseDocumentTest()
         {
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file language English");
-            int documentId = scripter.Variables.GetVariableValue<int>("result");
+            scripter.RunLine($@"ocrabbyy.processfile {SpecialChars.Variable}file language English result {SpecialChars.Variable}result1
+                                ocrabbyy.processfile {SpecialChars.Variable}file language English result {SpecialChars.Variable}result2");
+            int documentId = scripter.Variables.GetVariableValue<int>("result1");
             FineReaderDocument document = AbbyyManager.Instance.GetDocument(documentId);
-            scripter.RunLine($"ocrabbyy.processfile {SpecialChars.Variable}file language English");
-            int document2Id = scripter.Variables.GetVariableValue<int>("result");
+           
+            int document2Id = scripter.Variables.GetVariableValue<int>("result2");
             FineReaderDocument document2 = AbbyyManager.Instance.GetDocument(document2Id);
 
-            scripter.RunLine($"ocrabbyy.close {document2Id}");
+            scripter.Text =($"ocrabbyy.close {document2Id}");
+            scripter.Run();
             document.ExtractData();
             bool isDocumentClosed = false;
             try
@@ -75,7 +78,8 @@ scripter.InitVariables.Clear();
             }
             Assert.IsTrue(isDocumentClosed);
 
-            scripter.RunLine($"ocrabbyy.close {documentId}");
+            scripter.Text =($"ocrabbyy.close {documentId}");
+            scripter.Run();
             isDocumentClosed = false;
             try
             {
