@@ -42,6 +42,7 @@ namespace G1ANT.Addon.Xls.Tests
             xls.getvalue row 5 colindex 728 result {SpecialChars.Variable}result9
             xls.getvalue row 5 colindex 731 result {SpecialChars.Variable}result10
             xls.getvalue row 5 colindex 26 result {SpecialChars.Variable}result11
+            xls.getvalue row 22 colindex 38 result {SpecialChars.Variable}result12
 ";
             scripter.Run();
             Assert.AreEqual("1234", scripter.Variables.GetVariable("result1").GetValue().Object);
@@ -54,6 +55,8 @@ namespace G1ANT.Addon.Xls.Tests
             Assert.AreEqual("AAZ", scripter.Variables.GetVariable("result9").GetValue().Object);
             Assert.AreEqual("ABC", scripter.Variables.GetVariable("result10").GetValue().Object);
             Assert.AreEqual("Z", scripter.Variables.GetVariable("result11").GetValue().Object);
+
+            Assert.IsTrue(string.IsNullOrEmpty(scripter.Variables.GetVariable("result12").GetValue().Object.ToString()));
         }
 
         [Test]
