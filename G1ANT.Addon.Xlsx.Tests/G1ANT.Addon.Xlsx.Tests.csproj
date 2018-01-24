@@ -77,7 +77,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Addon.Xls\G1ANT.Addon.Xls.csproj">
+    <ProjectReference Include="..\G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx.csproj">
       <Project>{1314487e-1c64-478a-8163-ffcd4c526f65}</Project>
       <Name>G1ANT.Addon.Xls</Name>
     </ProjectReference>
