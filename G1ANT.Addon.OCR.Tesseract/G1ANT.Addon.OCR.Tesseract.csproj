@@ -74,6 +74,11 @@
     <EmbeddedResource Include="Resources\x86dlls\liblept172.dll" />
     <EmbeddedResource Include="Resources\x86dlls\libtesseract304.dll" />
   </ItemGroup>
+  <ItemGroup>		
+			<EmbeddedResource Include="..\packages\*\lib\net45\Tesseract.dll">
+      <Link>Tesseract.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\tessdata\eng.cube.bigrams" />

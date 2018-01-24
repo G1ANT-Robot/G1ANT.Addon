@@ -84,6 +84,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>		
+			<EmbeddedResource Include="..\packages\*\lib\DocumentFormat.OpenXml.dll">
+      <Link>DocumentFormat.OpenXml.dll</Link>
+    </EmbeddedResource>
+	</ItemGroup>
   <ItemGroup>
     <None Include="Resources\image7.png" />
   </ItemGroup>
