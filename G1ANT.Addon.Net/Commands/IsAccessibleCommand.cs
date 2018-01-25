@@ -65,7 +65,7 @@ namespace G1ANT.Addon.Net
             }
             catch (Exception ex)
             {
-                Scripter.AddLog("http connection :" + ex.Message);
+                Scripter.Log.Log(AbstractLogger.Level.Error,"http connection :" + ex.Message);
             }
             finally
             {
