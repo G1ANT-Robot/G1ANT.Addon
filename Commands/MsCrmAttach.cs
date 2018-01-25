@@ -49,6 +49,7 @@ namespace G1ANT.Addon.Mscrm
             throw new NotImplementedException();
             //TODO REPAIR
             //AddLog("Window '" + wrapper.Title + "' has been found");
+          //  Scripter.Log.Log(AbstractLogger.Level.Info, "Window '" + wrapper.Title + "' has been found")
             Scripter.LastWindow = (iHandle);
             RobotWin32.BringWindowToFront(iHandle);          
         }
