@@ -130,7 +130,6 @@
     <EmbeddedResource Include="Wizards\robot.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\MsCrmWizardInjection.js" />
   </ItemGroup>
   <ItemGroup>
