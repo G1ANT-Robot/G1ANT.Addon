@@ -91,9 +91,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Watin.Core\Watin.Core.csproj">
       <Project>{217e2d34-f6df-431b-ac5a-b368f481a530}</Project>
       <Name>Watin.Core</Name>
