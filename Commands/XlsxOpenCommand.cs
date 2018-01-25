@@ -3,7 +3,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.open", Tooltip = "This command allows to open .xlsx files, and set the first sheet in the document as active.")]
+    [Command(Name = "xlsx.open", Tooltip = "This command allows to open .xlsx files, and set the first sheet in the document as active.")]
     public class XlsxOpenCommand : Command
     {
         public class Arguments : CommandArguments
@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Xlsx
         public void Execute(Arguments arguments)
         {
             string returVariableName = arguments.Result.Value;
-            var xlsWraper = XlsxManager.AddXls();
+            var xlsWraper = XlsxManager.AddXlsx();
             try
             {
                 if (xlsWraper.Open(arguments.Path.Value, arguments.AccessMode.Value))

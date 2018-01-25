@@ -7,9 +7,9 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Addon(Name = "Xls",
-        Tooltip = "Xls Commands")]
-    [CommandGroup(Name = "xls", Tooltip = "Command connected with creating, editing and generally working on xls")]
+    [Addon(Name = "Xlsx",
+        Tooltip = "Xlsx Commands")]
+    [CommandGroup(Name = "xlsx", Tooltip = "Command connected with creating, editing and generally working on xlsx")]
 
     public class XlsxAddon : Language.Addon
     {

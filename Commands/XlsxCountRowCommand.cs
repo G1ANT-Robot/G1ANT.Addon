@@ -2,7 +2,7 @@
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.countrows",Tooltip = "This command allows to count rows in open .xlsx file.")]
+    [Command(Name = "xlsx.countrows",Tooltip = "This command allows to count rows in open .xlsx file.")]
     public class XlsxCountRowsCommand : Command
     {
         public class Arguments : CommandArguments
@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Xlsx
         {
             try
             {
-                int res = XlsxManager.CurrentXls.CountRows();
+                int res = XlsxManager.CurrentXlsx.CountRows();
                 
                    Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.IntegerStructure(res));
             }

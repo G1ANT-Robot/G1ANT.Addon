@@ -3,7 +3,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.setvalue",Tooltip = "This command allows to set value in specified cell in .xlsx file")]
+    [Command(Name = "xlsx.setvalue",Tooltip = "This command allows to set value in specified cell in .xlsx file")]
     public class XlsxSetValueCommand : Command
     {
         public  class Arguments : CommandArguments
@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Xlsx
                     col = arguments.ColName.Value;
                 else
                     throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
-                XlsxManager.CurrentXls.SetValue(arguments.Row.Value, col.ToString(), arguments.Value.Value);
+                XlsxManager.CurrentXlsx.SetValue(arguments.Row.Value, col.ToString(), arguments.Value.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
             }
             catch (Exception ex)

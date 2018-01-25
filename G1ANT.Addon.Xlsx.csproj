@@ -7,8 +7,8 @@
     <ProjectGuid>{1314487E-1C64-478A-8163-FFCD4C526F65}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Addon.Xls</RootNamespace>
-    <AssemblyName>G1ANT.Addon.Xls</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Xlsx</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Xlsx</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>

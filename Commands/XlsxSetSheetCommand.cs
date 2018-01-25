@@ -3,7 +3,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.setsheet", Tooltip = "This command allows to set active sheet to work with.")]
+    [Command(Name = "xlsx.setsheet", Tooltip = "This command allows to set active sheet to work with.")]
     public class XlsxSetSheetCommand : Command
     {
         public  class Arguments : CommandArguments
@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Xlsx
             {
                 try
                 {
-                    XlsxManager.CurrentXls.ActivateSheet(XlsxManager.CurrentXls.GetSheetsNames()[0]);
+                    XlsxManager.CurrentXlsx.ActivateSheet(XlsxManager.CurrentXlsx.GetSheetsNames()[0]);
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
                 }
                 catch
@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Xlsx
             {
                 try
                 {
-                    XlsxManager.CurrentXls.ActivateSheet(arguments.Name.Value);
+                    XlsxManager.CurrentXlsx.ActivateSheet(arguments.Name.Value);
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
                 }
                 catch
