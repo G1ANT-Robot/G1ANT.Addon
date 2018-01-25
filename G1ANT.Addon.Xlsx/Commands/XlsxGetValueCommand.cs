@@ -3,7 +3,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.getvalue", Tooltip = "This command allows to get value of specified cell in .xlsx file")]
+    [Command(Name = "xlsx.getvalue", Tooltip = "This command allows to get value of specified cell in .xlsx file")]
     public class XlsxGetValueCommand : Command
     {
         public class Arguments : CommandArguments
@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Xlsx
                 else
                     throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
 
-                var result = new TextStructure(XlsxManager.CurrentXls.GetValue(row, col.ToString()));
+                var result = new TextStructure(XlsxManager.CurrentXlsx.GetValue(row, col.ToString()));
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, result);
             }
             catch (Exception ex)

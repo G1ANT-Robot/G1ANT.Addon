@@ -7,8 +7,8 @@
     <ProjectGuid>{948BD6F9-FE0E-41F8-937A-B394A0EDDCA4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Addon.Xls.Tests</RootNamespace>
-    <AssemblyName>G1ANT.Addon.Xls.Tests</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Xlsx.Tests</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Xlsx.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

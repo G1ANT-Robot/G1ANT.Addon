@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Xlsx
             try
             {
                 int id = arguments.Id.Value;
-                bool result = XlsxManager.SwitchXls(id);
+                bool result = XlsxManager.SwitchXlsx(id);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(result));
             }
             catch

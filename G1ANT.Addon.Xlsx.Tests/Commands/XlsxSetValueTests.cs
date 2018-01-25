@@ -20,28 +20,28 @@ namespace G1ANT.Addon.Xlsx.Tests
         [Timeout(10000)]
         public void ClassInit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id";
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id";
             scripter.Run();
         }
 
         [Test]
         [Timeout(10000)]
-        public void XlsSetValueInd()
+        public void XlsxSetValueInd()
         {
             string checkVal1 = "123";
             string checkVal2 = "test";
             scripter.Text = $@"
-            xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.setvalue value {SpecialChars.Text}{checkVal1}{SpecialChars.Text} row 3 colindex 6 result {SpecialChars.Variable}res1
-            xls.setvalue value {SpecialChars.Text}{checkVal2}{SpecialChars.Text} row 4 colindex 6 result {SpecialChars.Variable}res2
-            xls.getvalue row 3 colindex 6 result {SpecialChars.Variable}result1
-            xls.getvalue row 4 colindex 6 result {SpecialChars.Variable}result2
+            xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.setvalue value {SpecialChars.Text}{checkVal1}{SpecialChars.Text} row 3 colindex 6 result {SpecialChars.Variable}res1
+            xlsx.setvalue value {SpecialChars.Text}{checkVal2}{SpecialChars.Text} row 4 colindex 6 result {SpecialChars.Variable}res2
+            xlsx.getvalue row 3 colindex 6 result {SpecialChars.Variable}result1
+            xlsx.getvalue row 4 colindex 6 result {SpecialChars.Variable}result2
             ";
             scripter.Run();
             Assert.AreNotEqual(false, scripter.Variables.GetVariableValue<bool>("res1"));
@@ -49,9 +49,9 @@ namespace G1ANT.Addon.Xlsx.Tests
             Assert.AreEqual(checkVal2, scripter.Variables.GetVariableValue<string>("result2"));
             Assert.AreEqual(checkVal1, scripter.Variables.GetVariable("result1").GetValue().Object);
             scripter.Text = $@"
-            xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.setvalue value {SpecialChars.Text}{SpecialChars.Text} row 3 colindex 6 result {SpecialChars.Variable}res1
-            xls.setvalue value {SpecialChars.Text}{SpecialChars.Text} row 4 colindex 6 result {SpecialChars.Variable}res2
+            xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.setvalue value {SpecialChars.Text}{SpecialChars.Text} row 3 colindex 6 result {SpecialChars.Variable}res1
+            xlsx.setvalue value {SpecialChars.Text}{SpecialChars.Text} row 4 colindex 6 result {SpecialChars.Variable}res2
             ";
             scripter.Run();
         }

@@ -21,7 +21,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
             scripter = new Scripter();
@@ -31,21 +31,21 @@ namespace G1ANT.Addon.Xlsx.Tests
         
         [Test]
         [Timeout(40000)]
-        public void XlsFindDifferentTypesTest()
+        public void XlsxFindDifferentTypesTest()
         {
 
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.find 1234 resultrow {SpecialChars.Variable}resrow resultcolumn {SpecialChars.Variable}resCol
-            xls.find {SpecialChars.Text}abcd{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow2 resultcolumn {SpecialChars.Variable}resCol2
-            xls.find 150 resultrow {SpecialChars.Variable}resrow3 resultcolumn {SpecialChars.Variable}resCol3
-            -xls.find {SpecialChars.Text}160%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow4 resultcolumn {SpecialChars.Variable}resCol4
-            -xls.find {SpecialChars.Text}100%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow5 resultcolumn {SpecialChars.Variable}resCol5
-            xls.find {SpecialChars.Text}AA{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow6 resultcolumn {SpecialChars.Variable}resCol6
-            xls.find {SpecialChars.Text}AZ{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow7 resultcolumn {SpecialChars.Variable}resCol7
-            xls.find {SpecialChars.Text}BA{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow8 resultcolumn {SpecialChars.Variable}resCol8
-            xls.find {SpecialChars.Text}AAZ{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow9 resultcolumn {SpecialChars.Variable}resCol9
-            xls.find {SpecialChars.Text}ABC{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow10 resultcolumn {SpecialChars.Variable}resCol10
-            xls.find {SpecialChars.Text}Z{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow11 resultcolumn {SpecialChars.Variable}resCol11
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.find 1234 resultrow {SpecialChars.Variable}resrow resultcolumn {SpecialChars.Variable}resCol
+            xlsx.find {SpecialChars.Text}abcd{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow2 resultcolumn {SpecialChars.Variable}resCol2
+            xlsx.find 150 resultrow {SpecialChars.Variable}resrow3 resultcolumn {SpecialChars.Variable}resCol3
+            -xlsx.find {SpecialChars.Text}160%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow4 resultcolumn {SpecialChars.Variable}resCol4
+            -xlsx.find {SpecialChars.Text}100%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow5 resultcolumn {SpecialChars.Variable}resCol5
+            xlsx.find {SpecialChars.Text}AA{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow6 resultcolumn {SpecialChars.Variable}resCol6
+            xlsx.find {SpecialChars.Text}AZ{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow7 resultcolumn {SpecialChars.Variable}resCol7
+            xlsx.find {SpecialChars.Text}BA{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow8 resultcolumn {SpecialChars.Variable}resCol8
+            xlsx.find {SpecialChars.Text}AAZ{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow9 resultcolumn {SpecialChars.Variable}resCol9
+            xlsx.find {SpecialChars.Text}ABC{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow10 resultcolumn {SpecialChars.Variable}resCol10
+            xlsx.find {SpecialChars.Text}Z{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow11 resultcolumn {SpecialChars.Variable}resCol11
 
 ";
             scripter.Run();
@@ -85,11 +85,11 @@ namespace G1ANT.Addon.Xlsx.Tests
 
         [Test]
         [Timeout(35000)]
-        public void XlsFindPercentTest()
+        public void XlsxFindPercentTest()
         {
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.find {SpecialChars.Text}160%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow4 resultcolumn {SpecialChars.Variable}resCol4
-            xls.find {SpecialChars.Text}100%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow5 resultcolumn {SpecialChars.Variable}resCol5
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.find {SpecialChars.Text}160%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow4 resultcolumn {SpecialChars.Variable}resCol4
+            xlsx.find {SpecialChars.Text}100%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow5 resultcolumn {SpecialChars.Variable}resCol5
 ";
             scripter.Run();
             Assert.AreEqual(1, scripter.Variables.GetVariable("resrow4").GetValue().Object);
@@ -101,11 +101,11 @@ namespace G1ANT.Addon.Xlsx.Tests
 
         [Test]
         [Timeout(35000)]
-        public void XlsFindDateTest()
+        public void XlsxFindDateTest()
         {
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.find {SpecialChars.Text}21.07.2017{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow1 resultcolumn {SpecialChars.Variable}resCol1
-            xls.find {SpecialChars.Text}22.07.2017{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow2 resultcolumn {SpecialChars.Variable}resCol2
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.find {SpecialChars.Text}21.07.2017{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow1 resultcolumn {SpecialChars.Variable}resCol1
+            xlsx.find {SpecialChars.Text}22.07.2017{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow2 resultcolumn {SpecialChars.Variable}resCol2
 ";
             scripter.Run();
             Assert.AreEqual(1, scripter.Variables.GetVariable("resrow1").GetValue().Object);
@@ -117,10 +117,10 @@ namespace G1ANT.Addon.Xlsx.Tests
 
         [Test]
         [Timeout(35000)]
-        public void XlsFailToFind()
+        public void XlsxFailToFind()
         {
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.find {SpecialChars.Text}01.01.1001{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow1 resultcolumn {SpecialChars.Variable}resCol1
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.find {SpecialChars.Text}01.01.1001{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow1 resultcolumn {SpecialChars.Variable}resCol1
             ";
             scripter.Run();
             Assert.AreEqual(-1, int.Parse(scripter.Variables.GetVariable("resrow1").GetValue().ToString()));

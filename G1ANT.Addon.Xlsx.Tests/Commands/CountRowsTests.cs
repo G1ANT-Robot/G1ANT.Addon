@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Xlsx.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
             file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
         }
        
@@ -34,8 +34,8 @@ namespace G1ANT.Addon.Xlsx.Tests
             int rowCount;
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.countrows result {SpecialChars.Variable}rowCunt";
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.countrows result {SpecialChars.Variable}rowCunt";
             scripter.Run();
             rowCount = scripter.Variables.GetVariableValue<int>("rowCunt", -1, true);
             Assert.AreEqual(5, rowCount);
@@ -48,8 +48,8 @@ namespace G1ANT.Addon.Xlsx.Tests
             int rowCount;
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file2));
-            scripter.Text = $@"xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.countrows result {SpecialChars.Variable}rowCount";
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.countrows result {SpecialChars.Variable}rowCount";
             scripter.Run();
             rowCount = scripter.Variables.GetVariableValue<int>("rowCount", -1, true);
             Assert.AreEqual(0, rowCount);

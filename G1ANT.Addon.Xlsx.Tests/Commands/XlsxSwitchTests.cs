@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         [SetUp]
         public void testinit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
 scripter.InitVariables.Clear();
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
@@ -62,7 +62,7 @@ scripter.InitVariables.Clear();
                 {
                     try
                     {
-                        scripter.RunLine("xls.close");
+                        scripter.RunLine("xlsx.close");
                     }
                     catch { }
                     File.Delete(path);
@@ -72,13 +72,13 @@ scripter.InitVariables.Clear();
 
         [Test]
         [Timeout(20000)]
-        public void XlsSwitchTest()
+        public void XlsxSwitchTest()
         {
             int[] xlsIds = new int[filesCount];
 
             for (int i = 0; i < filesCount; i++)
             {
-                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result {SpecialChars.Variable}id");
+                scripter.RunLine($"xlsx.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result {SpecialChars.Variable}id");
                 xlsIds[i] = scripter.Variables.GetVariableValue<int>("id");
             }
 
@@ -89,13 +89,13 @@ scripter.InitVariables.Clear();
             {
                 int id = randomGenerator.Next(filesCount);
 
-                scripter.RunLine($"xls.switch {xlsIds[id]} result {SpecialChars.Variable}hasSwitched");
+                scripter.RunLine($"xlsx.switch {xlsIds[id]} result {SpecialChars.Variable}hasSwitched");
                 Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("hasSwitched"));
             }
 
             for (int i = 0; i < filesCount; i++)
             {
-                scripter.RunLine($"xls.close {xlsIds[i]}");
+                scripter.RunLine($"xlsx.close {xlsIds[i]}");
             }
         }
 
@@ -113,7 +113,7 @@ scripter.InitVariables.Clear();
                 {
                     Assert.Inconclusive($"File '{filePaths[i]}' is different than original before editting");
                 }
-                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result {SpecialChars.Variable}id");
+                scripter.RunLine($"xlsx.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text} result {SpecialChars.Variable}id");
                 xlsIds[i] = scripter.Variables.GetVariableValue<int>("id");
             }
 
@@ -124,9 +124,9 @@ scripter.InitVariables.Clear();
             for (int i = 0; i < filesCount; i++)
             {
                 id = randomGenerator.Next(filesCount);
-                scripter.RunLine($"xls.switch id {id}");
-                scripter.RunLine($"xls.setvalue {SpecialChars.Text}{"some value"}{SpecialChars.Text} row 1 colindex 1");
-                scripter.RunLine($"xls.close");
+                scripter.RunLine($"xlsx.switch id {id}");
+                scripter.RunLine($"xlsx.setvalue {SpecialChars.Text}{"some value"}{SpecialChars.Text} row 1 colindex 1");
+                scripter.RunLine($"xlsx.close");
 
                 fileBytes = File.ReadAllBytes(filePaths[i]);
                 Assert.IsFalse(Initializer.AreEqual(Properties.Resources.XlsTestWorkbook, fileBytes));

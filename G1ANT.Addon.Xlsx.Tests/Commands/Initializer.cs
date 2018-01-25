@@ -34,7 +34,6 @@ namespace G1ANT.Addon.Xlsx.Tests
         private static void UnPackResources()
         {
             throw new NotImplementedException();
-            // TestWorkBookPath = Path.Combine(DirectoryPath, $"{nameof(Properties.Resources.XlsTestWorkbook)}.xls");
             if (File.Exists(TestWorkBookPath))
             {
                 File.Delete(TestWorkBookPath);
@@ -42,7 +41,6 @@ namespace G1ANT.Addon.Xlsx.Tests
             filesToDelete.Add(TestWorkBookPath);
             File.WriteAllBytes(TestWorkBookPath, Properties.Resources.XlsTestWorkbook);
 
-           // EmpyWorkBookPath = Path.Combine(DirectoryPath, $"{nameof(Properties.Resources.EmptyWorkbook)}.xls");
             if (File.Exists(EmpyWorkBookPath))
             {
                 File.Delete(EmpyWorkBookPath);

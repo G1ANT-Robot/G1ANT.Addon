@@ -12,7 +12,7 @@ namespace G1ANT.Addon.Xlsx.Tests
     public class XlsxCloseTests
     {
         //TODO 
-        // Another test to add=> after xls.open . RUN() should try run another line and throw "null ref exeception" => scripter should automatically release all file handles after finishing running script.
+        // Another test to add=> after xlsx.open . RUN() should try run another line and throw "null ref exeception" => scripter should automatically release all file handles after finishing running script.
         string file;
         string file2;
         static int filesCount = 5;
@@ -46,7 +46,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         [SetUp]
         public void testinit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
         }
@@ -58,7 +58,7 @@ namespace G1ANT.Addon.Xlsx.Tests
 
             for (int i = 0; i < filesCount; i++)
             {
-                scripter.RunLine($"xls.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text}");
+                scripter.RunLine($"xlsx.open {SpecialChars.Text}{filePaths[i]}{SpecialChars.Text}");
                 xlsIds[i] = scripter.Variables.GetVariableValue<int>("result");
             }
 
@@ -80,9 +80,9 @@ namespace G1ANT.Addon.Xlsx.Tests
                     openedFile = null;
                 }
             }
-            Assert.IsFalse(gotAccessToopenedfile, $"Access aquired to file '{filePaths[0]}' despaite it's openede by xls command");
+            Assert.IsFalse(gotAccessToopenedfile, $"Access aquired to file '{filePaths[0]}' despaite it's openede by xlsx command");
 
-            scripter.RunLine($"xls.close id {xlsIds[0]}");
+            scripter.RunLine($"xlsx.close id {xlsIds[0]}");
             gotAccessToopenedfile = true;
             openedFile = null;
             try
@@ -101,11 +101,11 @@ namespace G1ANT.Addon.Xlsx.Tests
                     openedFile = null;
                 }
             }
-            Assert.IsTrue(gotAccessToopenedfile, $"Access do not aquired to file '{filePaths[0]}' despaite it's closed by xls.close command");
+            Assert.IsTrue(gotAccessToopenedfile, $"Access do not aquired to file '{filePaths[0]}' despaite it's closed by xlsx.close command");
 
             for (int i = 1; i < filesCount; i++)
             {
-                scripter.RunLine($"xls.close");
+                scripter.RunLine($"xlsx.close");
             }
 
             for (int i = 1; i < filesCount; i++)
@@ -128,7 +128,7 @@ namespace G1ANT.Addon.Xlsx.Tests
                         openedFile = null;
                     }
                 }
-                Assert.IsTrue(gotAccessToopenedfile, $"Access do not aquired to file '{filePaths[i]}' despaite it's closed by xls.close command");
+                Assert.IsTrue(gotAccessToopenedfile, $"Access do not aquired to file '{filePaths[i]}' despaite it's closed by xlsx.close command");
             }
         }
 
@@ -136,7 +136,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         [Timeout(20000)]
         public void CloseWithoutOpenTest()
         {
-            scripter.Text = "xls.close";
+            scripter.Text = "xlsx.close";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xls.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));
@@ -28,11 +28,11 @@ namespace G1ANT.Addon.Xlsx.Tests
 
         [Test]
         [Timeout(20000)]
-        public void XlsSetSheetDefault()
+        public void XlsxSetSheetDefault()
         {
             scripter.Text = $@"
-            xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.setsheet result {SpecialChars.Variable}res
+            xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.setsheet result {SpecialChars.Variable}res
             ";
             scripter.Run();
             Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("res"));
@@ -40,11 +40,11 @@ namespace G1ANT.Addon.Xlsx.Tests
 
         [Test]
         [Timeout(20000)]
-        public void XlsSetSheetCustom()
+        public void XlsxSetSheetCustom()
         {
             scripter.Text = $@"
-            xls.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
-            xls.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result {SpecialChars.Variable}res
+            xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result {SpecialChars.Variable}res
             ";
             scripter.Run();
             Assert.IsTrue(scripter.Variables.GetVariableValue<bool>("res"));
@@ -54,7 +54,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         [Timeout(20000)]
         public void SetNotExistingSheet()
         {
-            scripter.Text = $"xls.setsheet a!@#$poq098239 result {SpecialChars.Variable}res";
+            scripter.Text = $"xlsx.setsheet a!@#$poq098239 result {SpecialChars.Variable}res";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();
