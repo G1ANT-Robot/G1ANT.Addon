@@ -9,13 +9,13 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
-    public class XlsWrapper
+    public class XlsxWrapper
     {
-        private XlsWrapper() { }
+        private XlsxWrapper() { }
 
-        public XlsWrapper(int id)
+        public XlsxWrapper(int id)
         {
             this.Id = id;
         }

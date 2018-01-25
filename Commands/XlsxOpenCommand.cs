@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
     [Command(Name = "xls.open", Tooltip = "This command allows to open .xlsx files, and set the first sheet in the document as active.")]
-    public class XlsOpenCommand : Command
+    public class XlsxOpenCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -16,13 +16,13 @@ namespace G1ANT.Addon.Xls
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-        public XlsOpenCommand(AbstractScripter scripter) : base(scripter)
+        public XlsxOpenCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
         {
             string returVariableName = arguments.Result.Value;
-            var xlsWraper = XlsManager.AddXls();
+            var xlsWraper = XlsxManager.AddXls();
             try
             {
                 if (xlsWraper.Open(arguments.Path.Value, arguments.AccessMode.Value))
@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Xls
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.IntegerStructure(xlsWraper.Id));
                     OnScriptEnd = () =>
                     {
-                        XlsManager.Remove(xlsWraper);
+                        XlsxManager.Remove(xlsWraper);
                     };
                 }
                 else
@@ -42,7 +42,7 @@ namespace G1ANT.Addon.Xls
             {
                 if (xlsWraper != null)
                 {
-                    XlsManager.Remove(xlsWraper);
+                    XlsxManager.Remove(xlsWraper);
                 }
                 throw ex;
             }

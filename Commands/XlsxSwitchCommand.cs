@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.switch", Tooltip = "This command allows to switch between open .xlsx files.")]
-    public class XlsSwitchCommand : Command
+    [Command(Name = "xlsx.switch", Tooltip = "This command allows to switch between open .xlsx files.")]
+    public class XlsxSwitchCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -14,7 +14,7 @@ namespace G1ANT.Addon.Xls
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-        public XlsSwitchCommand(AbstractScripter scripter) : base(scripter)
+        public XlsxSwitchCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
@@ -22,13 +22,13 @@ namespace G1ANT.Addon.Xls
             try
             {
                 int id = arguments.Id.Value;
-                bool result = XlsManager.SwitchXls(id);
+                bool result = XlsxManager.SwitchXls(id);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(result));
             }
             catch
             {
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(false));
-                throw new ApplicationException("Specified Xls not existing");
+                throw new ApplicationException("Specified Xlsx not existing");
             }
         }
     }
