@@ -1,17 +1,17 @@
 ﻿using G1ANT.Language;
 using System;
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xls.close",Tooltip = "This command allows to save changes and close .xlsx file.")]
-    public class XlsCloseCommand :Command
+    [Command(Name = "xlsx.close",Tooltip = "This command allows to save changes and close .xlsx file.")]
+    public class XlsxCloseCommand :Command
     {
         public class Arguments : CommandArguments
         {
             [Argument(Tooltip = "ID of file to close. If not set, will close file opened as first")]
             public IntegerStructure Id { get; set; }
         }
-        public XlsCloseCommand(AbstractScripter scripter) : base(scripter)
+        public XlsxCloseCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
@@ -19,13 +19,13 @@ namespace G1ANT.Addon.Xls
             int ID;
             if (arguments.Id == null)
             {
-                ID = XlsManager.getFirstId();
+                ID = XlsxManager.getFirstId();
             }
             else
             {
                 ID = arguments.Id.Value;
             }
-            XlsManager.Remove(ID);
+            XlsxManager.Remove(ID);
         }
     }
 }

@@ -58,14 +58,14 @@
   <ItemGroup>
     <Compile Include="Commands\CountRowsTests.cs" />
     <Compile Include="Commands\Initializer.cs" />
-    <Compile Include="Commands\LoadXlsTests.cs" />
-    <Compile Include="Commands\XlsCloseTests.cs" />
-    <Compile Include="Commands\XlsGetValueTests.cs" />
-    <Compile Include="Commands\XlsOpenTests.cs" />
-    <Compile Include="Commands\XlsFindTest.cs" />
-    <Compile Include="Commands\XlsSetSheetTests.cs" />
-    <Compile Include="Commands\XlsSetValueTests.cs" />
-    <Compile Include="Commands\XlsSwitchTests.cs" />
+    <Compile Include="Commands\LoadXlsxTests.cs" />
+    <Compile Include="Commands\XlsxCloseTests.cs" />
+    <Compile Include="Commands\XlsxGetValueTests.cs" />
+    <Compile Include="Commands\XlsxOpenTests.cs" />
+    <Compile Include="Commands\XlsxFindTest.cs" />
+    <Compile Include="Commands\XlsxSetSheetTests.cs" />
+    <Compile Include="Commands\XlsxSetValueTests.cs" />
+    <Compile Include="Commands\XlsxSwitchTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

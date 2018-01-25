@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
     [Command(Name = "xls.setsheet", Tooltip = "This command allows to set active sheet to work with.")]
-    public class XlsSetSheetCommand : Command
+    public class XlsxSetSheetCommand : Command
     {
         public  class Arguments : CommandArguments
         {
@@ -14,7 +14,7 @@ namespace G1ANT.Addon.Xls
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-        public XlsSetSheetCommand(AbstractScripter scripter) : base(scripter)
+        public XlsxSetSheetCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public  void Execute(Arguments arguments)
@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Xls
             {
                 try
                 {
-                    XlsManager.CurrentXls.ActivateSheet(XlsManager.CurrentXls.GetSheetsNames()[0]);
+                    XlsxManager.CurrentXls.ActivateSheet(XlsxManager.CurrentXls.GetSheetsNames()[0]);
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
                 }
                 catch
@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Xls
             {
                 try
                 {
-                    XlsManager.CurrentXls.ActivateSheet(arguments.Name.Value);
+                    XlsxManager.CurrentXls.ActivateSheet(arguments.Name.Value);
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
                 }
                 catch

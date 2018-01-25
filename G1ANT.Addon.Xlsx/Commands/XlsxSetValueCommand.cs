@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
     [Command(Name = "xls.setvalue",Tooltip = "This command allows to set value in specified cell in .xlsx file")]
-    public class XlsSetValueCommand : Command
+    public class XlsxSetValueCommand : Command
     {
         public  class Arguments : CommandArguments
         {
@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Xls
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-        public XlsSetValueCommand(AbstractScripter scripter) : base(scripter)
+        public XlsxSetValueCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Xls
                     col = arguments.ColName.Value;
                 else
                     throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
-                XlsManager.CurrentXls.SetValue(arguments.Row.Value, col.ToString(), arguments.Value.Value);
+                XlsxManager.CurrentXls.SetValue(arguments.Row.Value, col.ToString(), arguments.Value.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(true));
             }
             catch (Exception ex)

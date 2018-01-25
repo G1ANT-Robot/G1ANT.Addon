@@ -1,10 +1,10 @@
 ﻿using System;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
     [Command(Name = "xls.getvalue", Tooltip = "This command allows to get value of specified cell in .xlsx file")]
-    public class GetCellValueCommand : Command
+    public class XlsxGetValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Xls
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
-        public GetCellValueCommand(AbstractScripter scripter) : base(scripter)
+        public XlsxGetValueCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Xls
                 else
                     throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
 
-                var result = new TextStructure(XlsManager.CurrentXls.GetValue(row, col.ToString()));
+                var result = new TextStructure(XlsxManager.CurrentXls.GetValue(row, col.ToString()));
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, result);
             }
             catch (Exception ex)

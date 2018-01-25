@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace G1ANT.Addon.Xls.Properties {
+namespace G1ANT.Addon.Xlsx.Properties {
     using System;
     
     

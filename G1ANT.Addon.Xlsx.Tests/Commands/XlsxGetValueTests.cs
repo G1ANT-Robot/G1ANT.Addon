@@ -1,4 +1,4 @@
-﻿using G1ANT.Addon.Xls.Tests.Properties;
+﻿using G1ANT.Addon.Xlsx.Tests.Properties;
 using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
@@ -6,10 +6,10 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace G1ANT.Addon.Xls.Tests
+namespace G1ANT.Addon.Xlsx.Tests
 {
     [TestFixture]
-    public class XlsGetValueTests
+    public class XlsxGetValueTests
     {
         Scripter scripter;
         string file;

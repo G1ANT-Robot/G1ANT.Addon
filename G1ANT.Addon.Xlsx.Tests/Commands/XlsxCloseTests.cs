@@ -1,16 +1,15 @@
 ﻿using System;
 using System.IO;
-
 using G1ANT.Engine;
 using NUnit.Framework;
 using System.Reflection;
 using G1ANT.Language;
-using G1ANT.Addon.Xls.Tests.Properties;
+using G1ANT.Addon.Xlsx.Tests.Properties;
 
-namespace G1ANT.Addon.Xls.Tests
+namespace G1ANT.Addon.Xlsx.Tests
 {
     [TestFixture]
-    public class XlsCloseTests
+    public class XlsxCloseTests
     {
         //TODO 
         // Another test to add=> after xls.open . RUN() should try run another line and throw "null ref exeception" => scripter should automatically release all file handles after finishing running script.

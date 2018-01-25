@@ -4,13 +4,13 @@ using System.IO;
 using G1ANT.Engine;
 using NUnit.Framework;
 using System.Reflection;
-using G1ANT.Addon.Xls.Tests.Properties;
+using G1ANT.Addon.Xlsx.Tests.Properties;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Xls.Tests
+namespace G1ANT.Addon.Xlsx.Tests
 {
     [TestFixture]
-    public class XlsSwitchTests
+    public class XlsxSwitchTests
     {
 
         string file;

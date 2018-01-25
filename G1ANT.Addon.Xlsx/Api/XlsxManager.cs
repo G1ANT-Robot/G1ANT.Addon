@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace G1ANT.Addon.Xls
+namespace G1ANT.Addon.Xlsx
 {
-    public static class XlsManager
+    public static class XlsxManager
     {
-        private static List<XlsWrapper> launchedXls = new List<XlsWrapper>();
+        private static List<XlsxWrapper> launchedXls = new List<XlsxWrapper>();
 
-        public static XlsWrapper CurrentXls { get; private set; }
+        public static XlsxWrapper CurrentXls { get; private set; }
 
         public static int getFirstId()
         {
@@ -21,10 +21,10 @@ namespace G1ANT.Addon.Xls
             return launchedXls.Count() > 0 ? launchedXls.Max(x => x.Id) + 1 : 0;
         }
 
-        public static XlsWrapper AddXls()
+        public static XlsxWrapper AddXls()
         {
             int assignedId = GetNextId();
-            XlsWrapper wrapper = new XlsWrapper(assignedId);
+            XlsxWrapper wrapper = new XlsxWrapper(assignedId);
             launchedXls.Add(wrapper);
             CurrentXls = wrapper;
             return wrapper;
@@ -50,11 +50,11 @@ namespace G1ANT.Addon.Xls
 
         public static void Remove(int id)
         {
-            XlsWrapper toRemove = launchedXls.Where(x => x.Id == id).FirstOrDefault();
+            XlsxWrapper toRemove = launchedXls.Where(x => x.Id == id).FirstOrDefault();
             Remove(toRemove);
         }
 
-        public static void Remove(XlsWrapper wrapper)
+        public static void Remove(XlsxWrapper wrapper)
         {
             if (wrapper != null)
             {
