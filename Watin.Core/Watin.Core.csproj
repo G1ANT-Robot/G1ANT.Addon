@@ -703,7 +703,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\sizzle.js" />
   </ItemGroup>
   <ItemGroup>
