@@ -46,9 +46,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -81,13 +78,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-  <EmbeddedResource Include="..\packages\*\lib\AForge.Math.dll">
+    <EmbeddedResource Include="..\packages\*\lib\AForge.Math.dll">
       <Link>AForge.Math.dll</Link>
     </EmbeddedResource>
-			<EmbeddedResource Include="..\packages\*\lib\AForge.Imaging.dll">
+    <EmbeddedResource Include="..\packages\*\lib\AForge.Imaging.dll">
       <Link>AForge.Imaging.dll</Link>
     </EmbeddedResource>
-			<EmbeddedResource Include="..\packages\*\lib\AForge.dll">
+    <EmbeddedResource Include="..\packages\*\lib\AForge.dll">
       <Link>AForge.dll</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
