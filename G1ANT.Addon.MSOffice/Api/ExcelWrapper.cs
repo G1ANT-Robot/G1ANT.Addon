@@ -43,13 +43,13 @@ namespace G1ANT.Addon.MSOffice
             }
         }
 
-        public Dictionary<string, string> GetRow(int rowNumber)
+        public Dictionary<string, object> GetRow(int rowNumber)
         {
             if (rowNumber < 1)
             {
                 throw new ArgumentException("Row number must be a positive integer");
             }
-            Dictionary<string, string> ret = new Dictionary<string, string>();
+            Dictionary<string, object> ret = new Dictionary<string, object>();
             Range usedRange = sheet.UsedRange.Rows[rowNumber] as Range;
             if (usedRange != null)
             {
