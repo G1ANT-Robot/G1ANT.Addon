@@ -26,8 +26,8 @@ namespace G1ANT.Addon.MSOffice
             try
             {
                 var val = ExcelManager.CurrentExcel.GetRow(arguments.Row.Value);
-                var structureDictionary = val.ToDictionary(x => x.Key, x => (Structure)new TextStructure(x.Value));
-                Scripter.Variables.SetVariableValue(arguments.Result.Value, new ListStructure(structureDictionary)); //TODO Dictionary Structure
+                var structureDictionary = val.ToDictionary(x => x.Key.ToLower(), x => x.Value);
+                Scripter.Variables.SetVariableValue(arguments.Result.Value, new DictionaryStructure(structureDictionary,"",Scripter)); 
             }
             catch (Exception ex)
             {
