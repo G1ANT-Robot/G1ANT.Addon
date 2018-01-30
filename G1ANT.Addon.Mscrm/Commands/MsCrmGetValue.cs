@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Mscrm
 {
-    [Command(Name = "mscrm.getvalue",Tooltip = "This command allows getting field value based on field id.")]
+    [Command(Name = "mscrm.getvalue", Tooltip = "This command allows getting field value based on field id.")]
     public class MsCrmGetValueCommand : Command
     {
         public class Arguments : CommandArguments
@@ -20,9 +20,7 @@ namespace G1ANT.Addon.Mscrm
             public override TimeSpanStructure Timeout { get; set; }
 
             [Argument]
-            public VariableStructure Result { get; set; } = new VariableStructure("result"); // 
-
-             
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public MsCrmGetValueCommand(AbstractScripter scripter) : base(scripter)
         { }
@@ -37,7 +35,7 @@ namespace G1ANT.Addon.Mscrm
                 {
                     Document frame = MsCrmManager.CurrentCRM.GetCurrentIframe();
                     if (frame != null)
-                    {                      
+                    {
                         Div e = frame.Div(arguments.Search.Value);
                         if (e != null)
                         {
@@ -51,17 +49,17 @@ namespace G1ANT.Addon.Mscrm
                                 string content = span2.InnerHtml;
                                 if (span2.ClassName == "ms-crm-Lookup-Item")
                                 {
-                                    content = span2.OuterText; 
+                                    content = span2.OuterText;
                                 }
                                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(content));
                             }
                             else
                             {
-                                
+
                                 string[] content = label.OuterText.Split('\n');
                                 if (content.Length > 1)
                                 {
-                                    value = content[1]; 
+                                    value = content[1];
                                 }
                                 else
                                 {
@@ -77,7 +75,7 @@ namespace G1ANT.Addon.Mscrm
             }
             catch (Exception ex)
             {
-                //TODO AddLog(ex.Message);
+                Scripter.Log.Log(AbstractLogger.Level.Error, ex.Message);
                 throw new ApplicationException("Unable to getvalue CRM");
             }
         }

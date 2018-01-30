@@ -9,7 +9,6 @@ namespace G1ANT.Addon.Net
     [Command(Name = "is.accessible", Tooltip = "This command allows to check if host is accessible.")]
     public class IsAccessibleCommand : Command
     {
-        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         public class Arguments : CommandArguments
         {
             [Argument(Required = true, Tooltip = "Name of host that we are trying to access")]
@@ -66,7 +65,7 @@ namespace G1ANT.Addon.Net
             }
             catch (Exception ex)
             {
-                logger.Error(ex, "http connection");
+                Scripter.Log.Log(AbstractLogger.Level.Error,"http connection :" + ex.Message);
             }
             finally
             {
