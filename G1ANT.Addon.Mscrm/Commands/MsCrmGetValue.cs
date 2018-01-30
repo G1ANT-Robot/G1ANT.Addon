@@ -75,7 +75,6 @@ namespace G1ANT.Addon.Mscrm
             }
             catch (Exception ex)
             {
-                //TODO AddLog(ex.Message);
                 Scripter.Log.Log(AbstractLogger.Level.Error, ex.Message);
                 throw new ApplicationException("Unable to getvalue CRM");
             }
