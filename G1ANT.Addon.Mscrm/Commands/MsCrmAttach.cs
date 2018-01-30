@@ -4,7 +4,7 @@ using System;
 
 namespace G1ANT.Addon.Mscrm
 {
-    [Command(Name = "mscrm.attach",Tooltip = "This command connects to open instance of CRM in Internet Explorer.")]
+    [Command(Name = "mscrm.attach", Tooltip = "This command connects to open instance of CRM in Internet Explorer.")]
     public class MsCrmAttachCommand : Command
     {
         public class Arguments : CommandArguments
@@ -21,7 +21,7 @@ namespace G1ANT.Addon.Mscrm
             [Argument(DefaultVariable = "timeoutcrm")]
             public override TimeSpanStructure Timeout { get; set; }
 
-             
+
         }
         public MsCrmAttachCommand(AbstractScripter scripter) : base(scripter)
         { }
@@ -46,12 +46,14 @@ namespace G1ANT.Addon.Mscrm
             if (wrapper == null)
                 throw new ApplicationException("Could not activate Dynamics CRM instance. It has to be attached first.");
             IntPtr iHandle = wrapper.Ie.NativeBrowser.hWnd;
-            throw new NotImplementedException();
+            var ex = new NotImplementedException();
+            Scripter.Log.Log(AbstractLogger.Level.Error, ex.Message);
+
+            throw ex;
             //TODO REPAIR
             //AddLog("Window '" + wrapper.Title + "' has been found");
-          //  Scripter.Log.Log(AbstractLogger.Level.Info, "Window '" + wrapper.Title + "' has been found")
             Scripter.LastWindow = (iHandle);
-            RobotWin32.BringWindowToFront(iHandle);          
+            RobotWin32.BringWindowToFront(iHandle);
         }
     }
 }
