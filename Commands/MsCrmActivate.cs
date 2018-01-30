@@ -22,9 +22,11 @@ namespace G1ANT.Addon.Mscrm
             if (wrapper == null)
                 throw new ApplicationException("Could not activate Dynamics CRM instance. It has to be attached first.");
             IntPtr iHandle = wrapper.Ie.NativeBrowser.hWnd;
-            //TODO AddLog("Window '" + wrapper.Title + "' has been found");
-              Scripter.LastWindow = (iHandle);
-            throw new NotImplementedException();
+            //TODO Add Log("Window '" + wrapper.Title + "' has been found");
+            var ex = new NotImplementedException();
+            Scripter.Log.Log(AbstractLogger.Level.Error, ex.Message);
+            Scripter.LastWindow = (iHandle);
+            throw ex;
             RobotWin32.BringWindowToFront(iHandle);
             if (arguments.Style.Value.ToLower() == "maximize")
                 RobotWin32.ShowWindow(iHandle, RobotWin32.ShowWindowEnum.Maximize);
