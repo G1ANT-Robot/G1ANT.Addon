@@ -40,9 +40,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\PublicAssemblies\Microsoft.mshtml.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -94,9 +91,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Watin.Core\Watin.Core.csproj">
       <Project>{217e2d34-f6df-431b-ac5a-b368f481a530}</Project>
       <Name>Watin.Core</Name>
@@ -106,10 +100,10 @@
     <None Include="Resources\FindViaDocumentQuerySelector.js" />
   </ItemGroup>
   <ItemGroup>
-  	<EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
+    <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
       <Link>Microsoft.mshtml.dll</Link>
     </EmbeddedResource>
-	<EmbeddedResource Include="$(OutputPath)\WatiN.Core.dll">
+    <EmbeddedResource Include="$(OutputPath)\WatiN.Core.dll">
       <Link>WatiN.Core.dll</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

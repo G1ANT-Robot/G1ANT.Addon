@@ -40,9 +40,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\Program Files (x86)\Microsoft Visual Studio\Shared\Visual Studio Tools for Office\PIA\Common\Microsoft.mshtml.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -124,7 +121,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-  <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
+    <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
       <Link>Microsoft.mshtml.dll</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\MsCrmSetValueForm.resx">
@@ -133,7 +130,6 @@
     <EmbeddedResource Include="Wizards\robot.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\MsCrmWizardInjection.js" />
   </ItemGroup>
   <ItemGroup>
