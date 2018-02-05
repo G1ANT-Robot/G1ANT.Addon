@@ -3,57 +3,57 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer", "G1ANT.Addon.IE\G1ANT.Addon.IExplorer.csproj", "{CEA69D5A-91C9-43D9-8928-F41D69E85BAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer", "G1ANT.Addon.IExplorer\G1ANT.Addon.IE\G1ANT.Addon.IExplorer.csproj", "{CEA69D5A-91C9-43D9-8928-F41D69E85BAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.MSOffice", "G1ANT.Addon.MSOffice\G1ANT.Addon.MSOffice.csproj", "{E2E36395-6AE4-42EB-8FD7-9A7C9B7C37B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.MSOffice", "G1ANT.Addon.MSOffice\G1ANT.Addon.MSOffice\G1ANT.Addon.MSOffice.csproj", "{E2E36395-6AE4-42EB-8FD7-9A7C9B7C37B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.MSOffice.Tests", "G1ANT.Addon.MSOffice.Tests\G1ANT.Addon.MSOffice.Tests.csproj", "{BAFB3E9D-4BDD-4D7D-9237-435F7F32882A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.MSOffice.Tests", "G1ANT.Addon.MSOffice\G1ANT.Addon.MSOffice.Tests\G1ANT.Addon.MSOffice.Tests.csproj", "{BAFB3E9D-4BDD-4D7D-9237-435F7F32882A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watin.Core", "Watin.Core\Watin.Core.csproj", "{217E2D34-F6DF-431B-AC5A-B368F481A530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer.Tests", "G1ANT.Addon.IE.Tests\G1ANT.Addon.IExplorer.Tests.csproj", "{FF7591D8-EAE0-4F74-90B0-ECBBD972CB41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer.Tests", "G1ANT.Addon.IExplorer\G1ANT.Addon.IE.Tests\G1ANT.Addon.IExplorer.Tests.csproj", "{FF7591D8-EAE0-4F74-90B0-ECBBD972CB41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Selenium", "G1ANT.Addon.Selenium\G1ANT.Addon.Selenium.csproj", "{3A10D8A2-7812-41ED-AB27-2C60F3B856D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Selenium", "G1ANT.Addon.Selenium\G1ANT.Addon.Selenium\G1ANT.Addon.Selenium.csproj", "{3A10D8A2-7812-41ED-AB27-2C60F3B856D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Selenium.Tests", "G1ANT.Addon.Selenium.Tests\G1ANT.Addon.Selenium.Tests.csproj", "{067E5148-0829-44D5-92CE-8AAC1CEB7E45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Selenium.Tests", "G1ANT.Addon.Selenium\G1ANT.Addon.Selenium.Tests\G1ANT.Addon.Selenium.Tests.csproj", "{067E5148-0829-44D5-92CE-8AAC1CEB7E45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Net", "G1ANT.Addon.Net\G1ANT.Addon.Net.csproj", "{C8DB051F-B029-4758-A9B8-209F1A45223D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Net", "G1ANT.Addon.Net\G1ANT.Addon.Net\G1ANT.Addon.Net.csproj", "{C8DB051F-B029-4758-A9B8-209F1A45223D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Net.Tests", "G1ANT.Addon.Net.Tests\G1ANT.Addon.Net.Tests.csproj", "{0C40C844-5B27-4C04-917D-E6999C6D756B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Net.Tests", "G1ANT.Addon.Net\G1ANT.Addon.Net.Tests\G1ANT.Addon.Net.Tests.csproj", "{0C40C844-5B27-4C04-917D-E6999C6D756B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.csproj", "{3B1DC446-00EF-4DC1-AD42-41D76C3DE2A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.csproj", "{3B1DC446-00EF-4DC1-AD42-41D76C3DE2A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.OCR.Tesseract", "G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.OCR.Tesseract.csproj", "{700E09BD-F443-4181-A42A-E9D098F652AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.OCR.Tesseract", "G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.OCR.Tesseract.csproj", "{700E09BD-F443-4181-A42A-E9D098F652AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tests", "G1ANT.Addon.Ocr.Tests\G1ANT.Addon.Ocr.Tests.csproj", "{DC8C80D5-3786-46C0-8D10-7E4997182C12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tests", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.Tests\G1ANT.Addon.Ocr.Tests.csproj", "{DC8C80D5-3786-46C0-8D10-7E4997182C12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tesseract.Tests", "G1ANT.Addon.Ocr.Tesseract.Tests\G1ANT.Addon.Ocr.Tesseract.Tests.csproj", "{3318187F-3198-4D74-B39E-7D86FAF06D97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tesseract.Tests", "G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.Ocr.Tesseract.Tests\G1ANT.Addon.Ocr.Tesseract.Tests.csproj", "{3318187F-3198-4D74-B39E-7D86FAF06D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader", "G1ANT.Addon.AbbyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.csproj", "{FF05A155-C4AB-4B5F-A4ED-0FB0D2B94EF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader", "G1ANT.Addon.Ocr.AbbyFineReader\G1ANT.Addon.AbbyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.csproj", "{FF05A155-C4AB-4B5F-A4ED-0FB0D2B94EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader.Tests", "G1ANT.Addon.Ocr.AbbyyFineReader.Tests\G1ANT.Addon.Ocr.AbbyyFineReader.Tests.csproj", "{B748C68E-D446-4659-AB58-B995EB075BD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader.Tests", "G1ANT.Addon.Ocr.AbbyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.Tests\G1ANT.Addon.Ocr.AbbyyFineReader.Tests.csproj", "{B748C68E-D446-4659-AB58-B995EB075BD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.GoogleDocs", "G1ANT.Addon.GoogleDocs\G1ANT.Addon.GoogleDocs.csproj", "{5A6E726B-4BDE-470B-863F-114320914C9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.GoogleDocs", "G1ANT.Addon.GoogleDocs\G1ANT.Addon.GoogleDocs\G1ANT.Addon.GoogleDocs.csproj", "{5A6E726B-4BDE-470B-863F-114320914C9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.GoogleDocs.Tests", "G1ANT.Addon.GoogleDocs.Tests\G1ANT.Addon.GoogleDocs.Tests.csproj", "{F7337DE7-7BEE-4163-9398-612F6737E03E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.GoogleDocs.Tests", "G1ANT.Addon.GoogleDocs\G1ANT.Addon.GoogleDocs.Tests\G1ANT.Addon.GoogleDocs.Tests.csproj", "{F7337DE7-7BEE-4163-9398-612F6737E03E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Images", "G1ANT.Addon.Images\G1ANT.Addon.Images.csproj", "{41D8DB37-18A0-46EB-A7C4-847C4E54F403}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Images", "G1ANT.Addon.Images\G1ANT.Addon.Images\G1ANT.Addon.Images.csproj", "{41D8DB37-18A0-46EB-A7C4-847C4E54F403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Images.Tests", "G1ANT.Addon.Images.Tests\G1ANT.Addon.Images.Tests.csproj", "{F5EC3625-B099-47FD-A4DD-34F78E72831C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Images.Tests", "G1ANT.Addon.Images\G1ANT.Addon.Images.Tests\G1ANT.Addon.Images.Tests.csproj", "{F5EC3625-B099-47FD-A4DD-34F78E72831C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm", "G1ANT.Addon.Mscrm\G1ANT.Addon.Mscrm.csproj", "{86EA232A-F651-486F-AC25-1D23D20F4689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm", "G1ANT.Addon.Mscrm\G1ANT.Addon.Mscrm\G1ANT.Addon.Mscrm.csproj", "{86EA232A-F651-486F-AC25-1D23D20F4689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson", "G1ANT.Addon.Watson\G1ANT.Addon.Watson.csproj", "{D955D12E-6054-424F-AD2F-4FBBDD0F0238}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson", "G1ANT.Addon.Watson\G1ANT.Addon.Watson\G1ANT.Addon.Watson.csproj", "{D955D12E-6054-424F-AD2F-4FBBDD0F0238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson.Tests", "G1ANT.Addon.Watson.Tests\G1ANT.Addon.Watson.Tests.csproj", "{8941ED70-D9C9-46F6-9229-1DA807645B3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson.Tests", "G1ANT.Addon.Watson\G1ANT.Addon.Watson.Tests\G1ANT.Addon.Watson.Tests.csproj", "{8941ED70-D9C9-46F6-9229-1DA807645B3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm.Tests", "G1ANT.Addon.Mscrm.Tests\G1ANT.Addon.Mscrm.Tests.csproj", "{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm.Tests", "G1ANT.Addon.Mscrm\G1ANT.Addon.Mscrm.Tests\G1ANT.Addon.Mscrm.Tests.csproj", "{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Pdf", "G1ANT.Addon.Pdf\G1ANT.Addon.Pdf.csproj", "{4DB9E42D-6491-45DC-92BD-F7F530968EF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx", "G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx.csproj", "{1314487E-1C64-478A-8163-FFCD4C526F65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx", "G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx.csproj", "{1314487E-1C64-478A-8163-FFCD4C526F65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx.Tests", "G1ANT.Addon.Xlsx.Tests\G1ANT.Addon.Xlsx.Tests.csproj", "{948BD6F9-FE0E-41F8-937A-B394A0EDDCA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx.Tests", "G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx.Tests\G1ANT.Addon.Xlsx.Tests.csproj", "{948BD6F9-FE0E-41F8-937A-B394A0EDDCA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
