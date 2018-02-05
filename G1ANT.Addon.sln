@@ -29,9 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tests", "G1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tesseract.Tests", "G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.Ocr.Tesseract.Tests\G1ANT.Addon.Ocr.Tesseract.Tests.csproj", "{3318187F-3198-4D74-B39E-7D86FAF06D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader", "G1ANT.Addon.Ocr.AbbyFineReader\G1ANT.Addon.AbbyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.csproj", "{FF05A155-C4AB-4B5F-A4ED-0FB0D2B94EF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader", "G1ANT.Addon.Ocr.AbbyyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.csproj", "{FF05A155-C4AB-4B5F-A4ED-0FB0D2B94EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader.Tests", "G1ANT.Addon.Ocr.AbbyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.Tests\G1ANT.Addon.Ocr.AbbyyFineReader.Tests.csproj", "{B748C68E-D446-4659-AB58-B995EB075BD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.AbbyyFineReader.Tests", "G1ANT.Addon.Ocr.AbbyyFineReader\G1ANT.Addon.Ocr.AbbyyFineReader.Tests\G1ANT.Addon.Ocr.AbbyyFineReader.Tests.csproj", "{B748C68E-D446-4659-AB58-B995EB075BD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.GoogleDocs", "G1ANT.Addon.GoogleDocs\G1ANT.Addon.GoogleDocs\G1ANT.Addon.GoogleDocs.csproj", "{5A6E726B-4BDE-470B-863F-114320914C9B}"
 EndProject

@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\debug\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,16 +34,16 @@
     <Reference Include="Accessibility" />
     <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+      <HintPath>..\..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=106.2.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
+      <HintPath>..\..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <HintPath>..\..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -83,12 +83,12 @@
     <EmbeddedResource Include="Resources\image4.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net452\RestSharp.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net452\RestSharp.dll">
       <Link>RestSharp.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\*net40*\System.ValueTuple.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\*net40*\System.ValueTuple.dll">
       <Link>System.ValueTuple.dll</Link>
     </EmbeddedResource>
   </ItemGroup>

@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\debug\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,12 +33,12 @@
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="G1ANT.Language">
-      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+      <HintPath>..\..\..\..\G1ANT.Bin\Debug\G1ANT.Language.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\Program Files (x86)\Microsoft Visual Studio\Shared\Visual Studio Tools for Office\PIA\Common\Microsoft.mshtml.dll</HintPath>
+      <HintPath>..\..\ExternalDlls\Microsoft.mshtml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -92,7 +92,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Watin.Core\Watin.Core.csproj">
+    <ProjectReference Include="..\..\Watin.Core\Watin.Core.csproj">
       <Project>{217e2d34-f6df-431b-ac5a-b368f481a530}</Project>
       <Name>Watin.Core</Name>
     </ProjectReference>

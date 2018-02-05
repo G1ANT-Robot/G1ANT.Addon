@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\debug\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,21 +30,21 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="G1ANT.Engine">
-      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Engine.dll</HintPath>
+      <HintPath>..\..\..\..\G1ANT.Bin\Debug\G1ANT.Engine.dll</HintPath>
     </Reference>
     <Reference Include="G1ANT.Language">
-      <HintPath>..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+      <HintPath>..\..\..\..\G1ANT.Bin\Debug\G1ANT.Language.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -84,7 +84,7 @@
       <Project>{cea69d5a-91c9-43d9-8928-f41d69e85baf}</Project>
       <Name>G1ANT.Addon.IExplorer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Watin.Core\Watin.Core.csproj">
+    <ProjectReference Include="..\..\Watin.Core\Watin.Core.csproj">
       <Project>{217e2d34-f6df-431b-ac5a-b368f481a530}</Project>
       <Name>Watin.Core</Name>
     </ProjectReference>

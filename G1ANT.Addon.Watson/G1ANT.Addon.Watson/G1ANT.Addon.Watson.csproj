@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\debug\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\G1ANT.Bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\G1ANT.Bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="G1ANT.Language, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
+      <HintPath>..\..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Google.Apis.1.30.0\lib\net45\Google.Apis.dll</HintPath>
@@ -76,37 +76,37 @@
     <Compile Include="WatsonAddon.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.dll">
       <Link>Google.Apis.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Auth.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Auth.dll">
       <Link>Google.Apis.Auth.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Auth.PlatformServices.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Auth.PlatformServices.dll">
       <Link>Google.Apis.Auth.PlatformServices.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Core.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Core.dll">
       <Link>Google.Apis.Core.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.PlatformServices.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.PlatformServices.dll">
       <Link>Google.Apis.PlatformServices.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Google.Apis.Vision.v1.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Vision.v1.dll">
       <Link>Google.Apis.Vision.v1.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\packages\*\lib\net45\Newtonsoft.Json.dll">
+    <EmbeddedResource Include="..\..\packages\*\lib\net45\Newtonsoft.Json.dll">
       <Link>Newtonsoft.Json.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
