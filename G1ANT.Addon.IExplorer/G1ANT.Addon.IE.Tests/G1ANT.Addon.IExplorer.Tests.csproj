@@ -84,7 +84,7 @@
       <Project>{cea69d5a-91c9-43d9-8928-f41d69e85baf}</Project>
       <Name>G1ANT.Addon.IExplorer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Watin.Core\Watin.Core.csproj">
+    <ProjectReference Include="..\Watin.Core\Watin.Core.csproj">
       <Project>{217e2d34-f6df-431b-ac5a-b368f481a530}</Project>
       <Name>Watin.Core</Name>
     </ProjectReference>

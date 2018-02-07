@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer", "G1ANT.Addon.IExplorer\G1ANT.Addon.IE\G1ANT.Addon.IExplorer.csproj", "{CEA69D5A-91C9-43D9-8928-F41D69E85BAF}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.MSOffice", "G1A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.MSOffice.Tests", "G1ANT.Addon.MSOffice\G1ANT.Addon.MSOffice.Tests\G1ANT.Addon.MSOffice.Tests.csproj", "{BAFB3E9D-4BDD-4D7D-9237-435F7F32882A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watin.Core", "Watin.Core\Watin.Core.csproj", "{217E2D34-F6DF-431B-AC5A-B368F481A530}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watin.Core", "G1ANT.Addon.IExplorer\Watin.Core\Watin.Core.csproj", "{217E2D34-F6DF-431B-AC5A-B368F481A530}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer.Tests", "G1ANT.Addon.IExplorer\G1ANT.Addon.IE.Tests\G1ANT.Addon.IExplorer.Tests.csproj", "{FF7591D8-EAE0-4F74-90B0-ECBBD972CB41}"
 EndProject
@@ -48,8 +48,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Watson.Tests", "G1ANT.Addon.Watson\G1ANT.Addon.Watson.Tests\G1ANT.Addon.Watson.Tests.csproj", "{8941ED70-D9C9-46F6-9229-1DA807645B3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Mscrm.Tests", "G1ANT.Addon.Mscrm\G1ANT.Addon.Mscrm.Tests\G1ANT.Addon.Mscrm.Tests.csproj", "{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Pdf", "G1ANT.Addon.Pdf\G1ANT.Addon.Pdf.csproj", "{4DB9E42D-6491-45DC-92BD-F7F530968EF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx", "G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx.csproj", "{1314487E-1C64-478A-8163-FFCD4C526F65}"
 EndProject
@@ -294,16 +292,6 @@ Global
 		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
 		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F52929B-E799-42E6-861D-D9CAE0AC3E9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.AutomatedDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.AutomatedDebug|Any CPU.Build.0 = Debug|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Debug (.Net 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Debug (.Net 4.0)|Any CPU.Build.0 = Debug|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Release (.Net 4.0)|Any CPU.ActiveCfg = Release|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DB9E42D-6491-45DC-92BD-F7F530968EF2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1314487E-1C64-478A-8163-FFCD4C526F65}.AutomatedDebug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1314487E-1C64-478A-8163-FFCD4C526F65}.AutomatedDebug|Any CPU.Build.0 = Debug|Any CPU
 		{1314487E-1C64-478A-8163-FFCD4C526F65}.Debug (.Net 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
