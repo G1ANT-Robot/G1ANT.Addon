@@ -74,7 +74,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release %28.Net 4.0%29|AnyCPU' ">
-    <OutputPath>..\..\..\..\G1ANT.Bin\Release\</OutputPath>
+    <OutputPath>..\..\..\G1ANT.Bin\Release\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -97,7 +97,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AutomatedDebug|AnyCPU' ">
-    <OutputPath>..\..\..\..\G1ANT.Bin\debug\</OutputPath>
+    <OutputPath>..\..\..\G1ANT.Bin\debug\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -123,10 +123,10 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug %28.Net 4.0%29|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\..\G1ANT.Bin\debug\</OutputPath>
+    <OutputPath>..\..\..\G1ANT.Bin\debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>..\..\..\..\G1ANT.Bin\debug\WatiN.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\G1ANT.Bin\debug\WatiN.Core.XML</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <FileAlignment>4096</FileAlignment>
     <NoWarn>1591</NoWarn>
@@ -141,10 +141,10 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release %28.Net 4.0%29|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\..\G1ANT.Bin\Release\</OutputPath>
+    <OutputPath>..\..\..\G1ANT.Bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>..\..\..\..\G1ANT.Bin\Release\WatiN.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\G1ANT.Bin\Release\WatiN.Core.XML</DocumentationFile>
     <Optimize>true</Optimize>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <FileAlignment>4096</FileAlignment>
