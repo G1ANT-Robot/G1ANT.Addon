@@ -42,8 +42,8 @@ namespace G1ANT.Addon.Xlsx.Tests
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
 scripter.InitVariables.Clear();
-            file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
-            file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
+            file = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.XlsTestWorkbook), "xlsx");
+            file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.EmptyWorkbook), "xlsx");
             filePrefix = file;
 
             for (int i = 0; i < filesCount; i++)

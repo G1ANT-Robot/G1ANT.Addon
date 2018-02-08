@@ -48,7 +48,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            excelPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestWorkbook), "xlsm");
+            excelPath = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.TestWorkbook), "xlsm");
 
             excelFile = new FileInfo(Path.Combine(Environment.CurrentDirectory, excelPath));
             xlsPath = excelFile.FullName;

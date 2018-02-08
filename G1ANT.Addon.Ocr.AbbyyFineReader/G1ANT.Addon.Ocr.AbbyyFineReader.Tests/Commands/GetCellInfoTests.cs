@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
     [TestFixture]
     public class GetCellInfoTests
     {
-        string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document3), "tif");
+        string path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document3), "tif");
 
         [OneTimeSetUp]
         public void Initialize()

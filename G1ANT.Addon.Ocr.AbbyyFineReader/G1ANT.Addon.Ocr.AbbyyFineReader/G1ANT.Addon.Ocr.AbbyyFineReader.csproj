@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExternalDlls\Interop.FREngine.dll" />
+    <EmbeddedResource Include="License.txt" />
     <None Include="Resources\image23.png" />
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void FindTest()
         {
-            string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document1), "tif");
+            string path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document1), "tif");
             string numberRegex = @"(\d{1,3}(,|\.))?(\d{3}(,|\.))*(\d{1,3})";
             List<GStruct.Structure> allNumbers = null;
 

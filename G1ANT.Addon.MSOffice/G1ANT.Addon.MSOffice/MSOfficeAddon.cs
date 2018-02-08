@@ -19,6 +19,8 @@ namespace G1ANT.Addon.MSOffice
 {
     [Addon(Name = "MSOffice",
         Tooltip = "MSOffice Commands")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
     [CommandGroup(Name = "excel", Tooltip = "Command connected with creating, editing and generally working on excel")]
     [CommandGroup(Name = "word",  Tooltip = "Command connected with creating, editing and generally working on word")]
     [CommandGroup(Name = "outlook", Tooltip = "Command connected with creating, editing and generally working on outlook")]

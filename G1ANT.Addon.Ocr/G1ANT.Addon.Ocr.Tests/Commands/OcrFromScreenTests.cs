@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Ocr.Tests
         public void OcrFromScreenInitialize()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
-            path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.testimage), "png");
+            path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.testimage), "png");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             GoogleOcrTests.StartPaint(path);

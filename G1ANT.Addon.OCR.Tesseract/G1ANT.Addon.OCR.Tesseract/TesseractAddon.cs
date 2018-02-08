@@ -18,6 +18,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
 {
     [Addon(Name = "Tesseract",
         Tooltip = "Tesseract Commands")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
     [CommandGroup(Name = "ocroffline",  Tooltip = "Tesseract based optical character recognition, does not need internet connection.")]
     public class TesseractAddon : Language.Addon
     {

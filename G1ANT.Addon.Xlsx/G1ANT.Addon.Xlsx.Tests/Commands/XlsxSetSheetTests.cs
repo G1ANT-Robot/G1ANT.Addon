@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
+            file = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.XlsTestWorkbook), "xlsx");
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
             scripter.InitVariables.Clear();

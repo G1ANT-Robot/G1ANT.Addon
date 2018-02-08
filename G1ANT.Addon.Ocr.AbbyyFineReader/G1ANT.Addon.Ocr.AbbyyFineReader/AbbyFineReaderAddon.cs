@@ -18,6 +18,8 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     [Addon(Name = "AbbyyFineReader",
         Tooltip = "AbbyyFineReader Commands")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
     [CommandGroup(Name = "ocrabbyy",  Tooltip = "Abbyy Optical Character Recognition, uses Abbyy.")]
     public class AbbyyFineReaderAddon : Language.Addon
     {

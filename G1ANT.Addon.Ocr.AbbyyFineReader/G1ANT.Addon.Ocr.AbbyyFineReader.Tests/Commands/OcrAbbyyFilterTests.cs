@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void FilterTest()
         {
             List<string> boldedTexts = new List<string>() { "In 1929", "In 1949", "In 1950,", "In 1955," };
-            string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document2), "jpg");
+            string path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document2), "jpg");
 
             Scripter scripter = new Scripter();
             scripter.InitVariables.Clear();

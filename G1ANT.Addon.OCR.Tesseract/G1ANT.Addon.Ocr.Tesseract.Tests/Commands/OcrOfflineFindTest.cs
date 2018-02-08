@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Ocr.Tesseract.Tests
         public static void OcrOfflineTestsInitialize()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            filePath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.testimageDance), "png");
+            filePath = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.testimageDance), "png");
         }
 
         [SetUp]

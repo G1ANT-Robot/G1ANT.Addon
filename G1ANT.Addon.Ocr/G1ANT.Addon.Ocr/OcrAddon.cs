@@ -18,6 +18,8 @@ namespace G1ANT.Addon.Ocr
 {
     [Addon(Name = "Ocr",
         Tooltip = "Ocr Commands")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
     [CommandGroup(Name = "ocr", Tooltip = "Ocr commands, uses Google Cloud Vision API.")]
     public class OcrAddon : Language.Addon
     {

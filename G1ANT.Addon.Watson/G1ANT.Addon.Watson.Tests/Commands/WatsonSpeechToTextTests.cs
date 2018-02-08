@@ -31,7 +31,7 @@ namespace G1ANT.Addon.Watson.Tests
         public void ClassInit()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            audioPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.SpeechTest), "wav");
+            audioPath = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.SpeechTest), "wav");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("audioPath", new TextStructure(audioPath));

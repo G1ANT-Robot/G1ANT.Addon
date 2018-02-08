@@ -20,6 +20,8 @@ namespace G1ANT.Addon.GoogleDocs
     [Addon(Name = "GoogleDocs",
         Tooltip = "GoogleDocs Commands")]
     [CommandGroup( Name = "googlesheet", Tooltip = "Command connected with creating, editing and generally working on GoogleDocs")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
     public class GoogleAddon : Language.Addon
     {
     }

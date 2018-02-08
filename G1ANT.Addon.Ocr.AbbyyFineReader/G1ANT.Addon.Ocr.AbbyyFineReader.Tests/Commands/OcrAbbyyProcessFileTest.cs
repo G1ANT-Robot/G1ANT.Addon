@@ -34,7 +34,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void SetUp()
         {
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
-            path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document3), "tif");
+            path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document3), "tif");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
            scripter.InitVariables.Add("file", new GStructures.TextStructure(path));
@@ -56,7 +56,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void PagesTest()
         {
-            string doc4Path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.dokument4), "pdf");
+            string doc4Path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.dokument4), "pdf");
             string endOfFirstPage = @"Nowa sekcja 3 Strona 1";
 
             List<GStructures.Structure> list = new List<GStructures.Structure>() { new GStructures.IntegerStructure(1) };
@@ -83,7 +83,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void ProcessWithCustomDirectoryTest()
         {
-            string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document1), "tif");
+            string path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document1), "tif");
             List<string> words = new List<string>
             {
                 "inwestycje",

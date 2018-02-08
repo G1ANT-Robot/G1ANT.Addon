@@ -51,7 +51,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
-            csvPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestData), "csv");
+            csvPath = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.TestData), "csv");
            scripter.InitVariables.Add("csvPath", new TextStructure(csvPath));
             
         }

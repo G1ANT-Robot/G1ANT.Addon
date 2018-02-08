@@ -18,6 +18,8 @@ namespace G1ANT.Addon.Net
 {
     [Addon(Name = "Net",
         Tooltip = "Net Commands")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
     [CommandGroup(Name = "as400", Tooltip = "A command used to work with IBM AS/400 platform.")]
     [CommandGroup(Name = "is", Tooltip = "A command used for checking sth.")]
     [CommandGroup(Name = "mail",  Tooltip = "A command used with email")]

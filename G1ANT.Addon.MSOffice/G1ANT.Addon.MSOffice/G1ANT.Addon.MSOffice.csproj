@@ -139,5 +139,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\image8.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="License.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

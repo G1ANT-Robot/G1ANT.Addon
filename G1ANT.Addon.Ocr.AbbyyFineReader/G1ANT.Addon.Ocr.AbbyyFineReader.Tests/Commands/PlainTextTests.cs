@@ -25,7 +25,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
     [TestFixture]
     public class PlainTextTests
     {
-        string path = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.document2), "jpg");
+        string path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document2), "jpg");
 
         [OneTimeSetUp]
         public void Initialize()

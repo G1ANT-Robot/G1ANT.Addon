@@ -50,7 +50,7 @@ namespace G1ANT.Addon.MSOffice.Tests
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             scripter = new Scripter();
 scripter.InitVariables.Clear();
-            wordPath = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.TestDocument), "docx");
+            wordPath = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.TestDocument), "docx");
            scripter.InitVariables.Add("wordPath", new TextStructure(wordPath));
         }
 

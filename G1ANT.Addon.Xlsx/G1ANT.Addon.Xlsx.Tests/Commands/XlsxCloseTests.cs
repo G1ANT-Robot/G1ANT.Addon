@@ -33,8 +33,8 @@ namespace G1ANT.Addon.Xlsx.Tests
         public void Initialize()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            file = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.XlsTestWorkbook), "xlsx");
-            file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile(nameof(Resources.EmptyWorkbook), "xlsx");
+            file = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.XlsTestWorkbook), "xlsx");
+            file2 = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.EmptyWorkbook), "xlsx");
             filePrefix = file;
             scripter = new Scripter();
             scripter.InitVariables.Clear();

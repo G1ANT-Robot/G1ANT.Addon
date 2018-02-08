@@ -18,7 +18,12 @@ namespace G1ANT.Addon.IExplorer
 {
     [Addon(Name = "IExplorer",
         Tooltip = "IExplorer Commands")]
+    [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
+    [License(Type = "LGPL", ResourceName = "License.txt")]
+    [License(Type = "Apache", ResourceName = "License.Watin.Core.txt")]
+
     [CommandGroup(Name = "ie", Tooltip = "Commands working with Internet Explorer.")]
+
     public class IExplorerAddon : Language.Addon
     {
     }
