@@ -1,4 +1,13 @@
-﻿using NUnit.Framework;
+﻿/**
+*    Copyright(C) G1ANT Ltd, All rights reserved
+*    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
+*    www.g1ant.com
+*
+*    Licensed under the G1ANT license.
+*    See License.txt file in the project root for full license information.
+*
+*/
+using NUnit.Framework;
 
 namespace G1ANT.Addon.GoogleDocs.Tests
 {

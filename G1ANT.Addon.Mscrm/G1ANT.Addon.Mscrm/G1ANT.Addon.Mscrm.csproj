@@ -38,7 +38,7 @@
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\ExternalDlls\Microsoft.mshtml.dll</HintPath>
+      <HintPath>..\ExternalDlls\Microsoft.mshtml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -121,7 +121,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\ExternalDlls\Microsoft.mshtml.dll">
+    <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
       <Link>Microsoft.mshtml.dll</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\MsCrmSetValueForm.resx">

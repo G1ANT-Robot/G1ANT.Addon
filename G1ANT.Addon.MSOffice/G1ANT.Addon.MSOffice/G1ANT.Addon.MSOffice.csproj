@@ -126,7 +126,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\ExternalDlls\Microsoft.mshtml.dll">
+    <EmbeddedResource Include="..\ExternalDlls\Microsoft.mshtml.dll">
       <Link>Microsoft.mshtml.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
