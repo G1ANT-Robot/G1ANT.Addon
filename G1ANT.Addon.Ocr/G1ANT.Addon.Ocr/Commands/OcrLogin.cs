@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace G1ANT.Language.Ocr
 {
-    [Command(Name = "ocr.login",
+    [Command(Name = "ocrgoogle.login",
         Tooltip = "This command allows to login to the Google text recognition service.",
         IsUnderConstruction = true)]
     public class OcrLoginCommand : Command
