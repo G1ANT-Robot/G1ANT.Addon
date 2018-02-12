@@ -17,7 +17,7 @@ using G1ANT.Language;
 namespace G1ANT.Addon.Ocr
 {
     [Addon(Name = "Ocrgoogle",
-        Tooltip = "Ocr Commands")]
+        Tooltip = "Ocr commands which use Google OCR Online engine")]
     [Copyright(Author = "G1ANT LTD", Copyright = "G1ANT LTD", Email = "hi@g1ant.com", Website = "www.g1ant.com")]
     [License(Type = "LGPL", ResourceName = "License.txt")]
     [CommandGroup(Name = "ocrgoogle", Tooltip = "Ocr commands, uses Google Cloud Vision API.")]
