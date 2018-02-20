@@ -21,7 +21,6 @@ namespace G1ANT.Addon.Watson.Tests
     public class WatsonClassifyImageTests
     {
         private Bitmap oranges = null;
-        private string apiKey = "bc5a14163bf9b5e3b18c692a508e1cdd0cb589a8";
 
         [SetUp]
         public void Init()
@@ -41,7 +40,7 @@ namespace G1ANT.Addon.Watson.Tests
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $@"watson.classifyimage 27{SpecialChars.Point}0{SpecialChars.Point}194{SpecialChars.Point}27 timeout 1 apikey {SpecialChars.Text}{apiKey}{SpecialChars.Text}";
+            scripter.Text = $@"watson.classifyimage 27{SpecialChars.Point}0{SpecialChars.Point}194{SpecialChars.Point}27 timeout 1 apikey {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Watson:apikey{SpecialChars.IndexEnd}";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -53,7 +52,8 @@ scripter.InitVariables.Clear();
         [Test]
         public void WatsonClassifyImageTest()
         {
-            WatsonClassifyImageApi api = new WatsonClassifyImageApi(apiKey);
+            Scripter scripter = new Scripter();
+            WatsonClassifyImageApi api = new WatsonClassifyImageApi((string)scripter.Variables.GetVariable("credential").GetValue("Watson:apikey").Object);
             string output = api.ClassifyImage(oranges, 60000, 0.5f);
 
             StringAssert.Contains("orange", output);
@@ -65,7 +65,7 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $@"watson.classifyimage 27{SpecialChars.Point}0{SpecialChars.Point}27{SpecialChars.Point}50 apikey {SpecialChars.Text}{apiKey}{SpecialChars.Text}";
+            scripter.Text = $@"watson.classifyimage 27{SpecialChars.Point}0{SpecialChars.Point}27{SpecialChars.Point}50 apikey {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Watson:apikey{SpecialChars.IndexEnd}";
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
                 scripter.Run();

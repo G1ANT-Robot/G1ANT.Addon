@@ -48,7 +48,7 @@ namespace G1ANT.Addon.Ocr.Tests
         {
             string expectedString = "animal";
             string script = $@"window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
-                            ocr.login {SpecialChars.Text}{Resources.JsonCredentials}{SpecialChars.Text}
+                            ocr.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
                             ocr.fromscreen area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528";
             scripter.Text = script;
             scripter.Run();
@@ -59,7 +59,7 @@ namespace G1ANT.Addon.Ocr.Tests
         [Test, Timeout(GoogleOcrTests.TestTimeout)]
         public void OcrTestGoogleApiTest()
         {
-            GoogleCloudApi.JsonCredential = Resources.JsonCredentials;
+            GoogleCloudApi.JsonCredential = (string)scripter.Variables.GetVariable("credential").GetValue("Ocr:google").Object;
             var bitmapWithTestText = Addon.Ocr.Tests.Properties.Resources.testimage;
             var expectedRectangle = new Rectangle(167, 142, 192, 51);
             var languages = new List<string>() { "en" };

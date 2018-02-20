@@ -23,8 +23,6 @@ namespace G1ANT.Addon.Watson.Tests
     {
         private static string audioPath;
         private Scripter scripter;
-        private static string login = "1ab27db8-575a-4d3f-b6d0-49c744d2e9fb";
-        private static string password = "3uKsggJu8hMc";
 
         [OneTimeSetUp]
         [Timeout(20000)]
@@ -47,7 +45,7 @@ namespace G1ANT.Addon.Watson.Tests
         [Timeout(20000)]
         public void WatsonApiSpeechToTextTest()
         {
-            WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi(login, password);
+            WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi((string)scripter.Variables.GetVariable("credential").GetValue("Watson:login").Object, (string)scripter.Variables.GetVariable("credential").GetValue("Watson:password").Object);
             string res = watson.SpeechToText(audioPath, "en-US", 60000, 3, 0.2f);
             Assert.IsTrue(res.ToLower().Contains("hi"));
         }
@@ -56,7 +54,7 @@ namespace G1ANT.Addon.Watson.Tests
         [Timeout(20000)]
         public void WatsonApiSpeachToTextTest2()
         {
-            scripter.Text = ($"watson.speechtotext {SpecialChars.Variable}audioPath login {SpecialChars.Text}{login}{SpecialChars.Text} password {SpecialChars.Text}{password}{SpecialChars.Text}");
+            scripter.Text = ($"watson.speechtotext {SpecialChars.Variable}audioPath login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Watson:login{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Watson:password{SpecialChars.IndexEnd}");
             scripter.Run();
             var res = scripter.Variables.GetVariableValue<string>("result").ToLower().Trim();
             Assert.IsTrue(res.ToLower().Contains("hi"));

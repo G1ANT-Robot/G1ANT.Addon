@@ -28,8 +28,7 @@ namespace G1ANT.Addon.Net.Tests
     {
         public const int TestTimeout = 20000;
 
-        private const string email = "g1ant.robot.tester@gmail.com";
-        private const string password = "3SimpleSteps";
+     
         private const int OneSecond = 1000;
         private const string textChar = SpecialChars.Text;
 
@@ -41,12 +40,14 @@ namespace G1ANT.Addon.Net.Tests
         [SetUp]
         public void Init()
         {
+            
             Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
         }
         [Test, Timeout(TestTimeout)]
         public void SendEmailTest()
         {
-            int startingQuantity = GetUnreadEmails(email, password).Count;
+            Scripter scripter = new Scripter();
+            int startingQuantity = GetUnreadEmails((string)scripter.Variables.GetVariable("credential").GetValue("Net:email").Object, (string)scripter.Variables.GetVariable("credential").GetValue("Net:pass").Object).Count;
             string subject = GetEmailName();
 
             StringBuilder pathBuilder = new StringBuilder("testfile");
@@ -66,17 +67,17 @@ namespace G1ANT.Addon.Net.Tests
                 new TextStructure(pathBuilder.ToString())
             });
 
-            Scripter scripter = new Scripter();
+            
 scripter.InitVariables.Clear();
            scripter.InitVariables.Add("att", attachments);
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} subject {textChar}{subject}{textChar} " +
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} subject {textChar}{subject}{textChar} " +
                             $"attachments {SpecialChars.Variable}att";
             scripter.Run();
 
             Thread.Sleep(OneSecond * 3);
 
-            var emails = GetUnreadEmails(email, password);
+            var emails = GetUnreadEmails((string)scripter.Variables.GetVariable("credential").GetValue("Net:email").Object, (string)scripter.Variables.GetVariable("credential").GetValue("Net:pass").Object);
 
             bool found = false;
             for (int i = 0; i < emails.Count && !found; i++)
@@ -102,8 +103,8 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password + 2.ToString()}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} ";
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {textChar}{"sadasdas" + 2.ToString()}{textChar} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} ";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -118,8 +119,8 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $"mail.smtp login {textChar}{email + "cos"}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} ";
+            scripter.Text = $"mail.smtp login {textChar}{"email" + "cos"}{textChar} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} ";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -134,8 +135,8 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{string.Empty}{textChar} to {textChar}{email}{textChar} ";
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {textChar}{string.Empty}{textChar} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} ";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -150,8 +151,8 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{string.Empty}{textChar} ";
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {textChar}{string.Empty}{textChar} ";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -166,8 +167,8 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} port -3";
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} port -3";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -182,8 +183,8 @@ scripter.InitVariables.Clear();
         {
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} host =-sdf=-jdsf-jsd";
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} host =-sdf=-jdsf-jsd";
 
             Exception exception = Assert.Throws<ApplicationException>(delegate
             {
@@ -211,8 +212,8 @@ scripter.InitVariables.Clear();
             Scripter scripter = new Scripter();
 scripter.InitVariables.Clear();
            scripter.InitVariables.Add("att", attachments);
-            scripter.Text = $"mail.smtp login {textChar}{email}{textChar} password {textChar}{password}{textChar} " +
-                            $"from {textChar}{email}{textChar} to {textChar}{email}{textChar} attachments {SpecialChars.Variable}att";
+            scripter.Text = $"mail.smtp login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:pass{SpecialChars.IndexEnd} " +
+                            $"from {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} to {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Net:email{SpecialChars.IndexEnd} attachments {SpecialChars.Variable}att";
 
 
             Exception exception = Assert.Throws<ApplicationException>(delegate

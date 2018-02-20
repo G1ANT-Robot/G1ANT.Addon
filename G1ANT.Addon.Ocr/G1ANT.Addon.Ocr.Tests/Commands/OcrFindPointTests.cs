@@ -47,7 +47,7 @@ scripter.InitVariables.Clear();
             Point expectedPoint = new Point(181, 294);
             string script = $@"
             window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
-            ocr.login {SpecialChars.Text}{Resources.JsonCredentials}{SpecialChars.Text}
+            ocr.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
             ocr.findpoint search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528
             ";
             scripter.Text = script;
