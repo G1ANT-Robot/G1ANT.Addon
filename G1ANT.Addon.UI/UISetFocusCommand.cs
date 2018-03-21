@@ -11,9 +11,6 @@ namespace G1ANT.Addon.UI
         {
             [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
             public WPathStructure WPath { get; set; }
-
-            [Argument(Required = true, Tooltip = "Variable where the text of the cotrol will be returned")]
-            public TextStructure Text { get; set; }
         }
 
         public UISetFocusCommand(AbstractScripter scripter) : base(scripter)

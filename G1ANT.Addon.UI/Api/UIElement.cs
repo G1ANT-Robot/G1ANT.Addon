@@ -114,7 +114,6 @@ namespace G1ANT.Addon.UI
                 IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
                 KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+home{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Move to start of control
                 KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+shift+end{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Select everything
-                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}del{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Delete selection
                 KeyboardTyper.TypeWithSendInput(text, null, wndHandle, IntPtr.Zero, 0, false, 0);
             }
         }

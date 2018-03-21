@@ -23,6 +23,24 @@ namespace G1ANT.Addon.UI
 
         public void Execute(Arguments arguments)
         {
+            //string wpath = arguments.Wpath.Value;
+            //int timeout = arguments.Timeout.Value;
+            //long start = Environment.TickCount;
+            //bool found = false;
+            //while (Math.Abs(Environment.TickCount - start) < timeout &&
+            //       ShouldStopScript() == false &&
+            //       found == false)
+            //{
+            //    found = UiManager.Wait(wpath);
+
+            //    System.Windows.Forms.Application.DoEvents();
+            //    Thread.Sleep(60);
+            //}
+            //SetVariableValue(arguments.Result.Value, new Structures.Bool(found));
+            //if (!found)
+            //{
+            //    throw new ApplicationException("Control couldn't be found");
+            //}
         }
     }
 }

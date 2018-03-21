@@ -12,8 +12,8 @@ namespace G1ANT.Addon.UI
             [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
             public WPathStructure WPath { get; set; }
 
-            [Argument(Tooltip = "Variable where the text of the cotrol will be returned")]
-            public VariableStructure Result { get; set; } = new VariableStructure("result");
+            [Argument(Required = true, Tooltip = "Variable where the text of the cotrol will be returned")]
+            public VariableStructure Result { get; set; }
         }
 
         public UIGetTextCommand(AbstractScripter scripter) : base(scripter)
