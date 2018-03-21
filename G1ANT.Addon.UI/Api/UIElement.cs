@@ -2,6 +2,7 @@
 using CodePlex.XPathParser;
 using System.Windows.Automation;
 using System.Collections.Generic;
+using G1ANT.Language;
 
 namespace G1ANT.Addon.UI
 {
@@ -94,12 +95,33 @@ namespace G1ANT.Addon.UI
                 pattern.Invoke();
         }
 
+        public void SetFocus()
+        {
+            automationElement.SetFocus();
+        }
+
         public void SetText(string text)
         {
-            if (automationElement.Current.NativeWindowHandle != 0)
+            object valuePattern = null;
+            if (automationElement.TryGetCurrentPattern(ValuePattern.Pattern, out valuePattern))
             {
-
+                automationElement.SetFocus();
+                ((ValuePattern)valuePattern).SetValue(text);
             }
+            else
+            {
+                automationElement.SetFocus();
+                IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
+                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+home{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Move to start of control
+                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+shift+end{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Select everything
+                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}del{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Delete selection
+                KeyboardTyper.TypeWithSendInput(text, null, wndHandle, IntPtr.Zero, 0, false, 0);
+            }
+        }
+
+        public System.Windows.Rect GetRectangle()
+        {
+            return automationElement.Current.BoundingRectangle;
         }
 
         public string GetText()
