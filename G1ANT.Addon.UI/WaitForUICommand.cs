@@ -1,5 +1,6 @@
 ﻿using System;
 using G1ANT.Language;
+using System.Windows.Forms;
 
 namespace G1ANT.Addon.UI
 {
@@ -13,7 +14,7 @@ namespace G1ANT.Addon.UI
             public WPathStructure WPath { get; set; }
 
             [Argument(DefaultVariable = "timeoutui")]
-            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10000);
 
         }
 
@@ -23,24 +24,24 @@ namespace G1ANT.Addon.UI
 
         public void Execute(Arguments arguments)
         {
-            //string wpath = arguments.Wpath.Value;
-            //int timeout = arguments.Timeout.Value;
-            //long start = Environment.TickCount;
-            //bool found = false;
-            //while (Math.Abs(Environment.TickCount - start) < timeout &&
-            //       ShouldStopScript() == false &&
-            //       found == false)
-            //{
-            //    found = UiManager.Wait(wpath);
-
-            //    System.Windows.Forms.Application.DoEvents();
-            //    Thread.Sleep(60);
-            //}
-            //SetVariableValue(arguments.Result.Value, new Structures.Bool(found));
-            //if (!found)
-            //{
-            //    throw new ApplicationException("Control couldn't be found");
-            //}
+            int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
+            long start = Environment.TickCount;
+            bool found = false;
+            while (Math.Abs(Environment.TickCount - start) < timeout &&
+                   Scripter.Stopped == false &&
+                   found == false)
+            {
+                try
+                {
+                    var element = UIElement.FromWPath(arguments.WPath);
+                    if (element != null)
+                        return;
+                }
+                catch
+                { }
+                Application.DoEvents();
+            }
+            throw new TimeoutException($"Control described as \"{arguments.WPath.Value}\" has not been found.");
         }
     }
 }
