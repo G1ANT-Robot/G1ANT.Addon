@@ -108,7 +108,7 @@ namespace G1ANT.Addon.UI
                 automationElement.SetFocus();
                 ((ValuePattern)valuePattern).SetValue(text);
             }
-            else
+            else if (automationElement.Current.NativeWindowHandle != 0)
             {
                 automationElement.SetFocus();
                 IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
@@ -116,6 +116,8 @@ namespace G1ANT.Addon.UI
                 KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+shift+end{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Select everything
                 KeyboardTyper.TypeWithSendInput(text, null, wndHandle, IntPtr.Zero, 0, false, 0);
             }
+            else
+                throw new NotSupportedException("SetText is not supported");
         }
 
         public System.Windows.Rect GetRectangle()
@@ -125,7 +127,13 @@ namespace G1ANT.Addon.UI
 
         public string GetText()
         {
-            return null;
+            if (automationElement.Current.NativeWindowHandle != 0)
+            {
+                IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
+                return RobotWin32.GetWindowText(wndHandle);
+            }
+            else
+                throw new NotSupportedException("GetText is not supported");
         }
     }
 }

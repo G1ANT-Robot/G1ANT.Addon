@@ -28,7 +28,7 @@ namespace G1ANT.Addon.UI
             {
                 var rect = element.GetRectangle();
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, 
-                    new RectangleStructure(Rectangle.FromLTRB((int)rect.Left, (int)rect.Top, (int)rect.Right, (int)rect.Bottom)));
+                    new RectangleStructure(Rectangle.FromLTRB((int)rect.Left, (int)rect.Top, (int)rect.Right, (int)rect.Bottom), null, Scripter));
             }
         }
     }

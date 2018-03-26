@@ -22,6 +22,13 @@ namespace G1ANT.Addon.UI
 
         public void Execute(Arguments arguments)
         {
+            var element = UIElement.FromWPath(arguments.WPath);
+            if (element != null)
+            {
+                var text = element.GetText();
+                Scripter.Variables.SetVariableValue(arguments.Result.Value,
+                    new TextStructure(text, null, Scripter));
+            }
         }
     }
 }
