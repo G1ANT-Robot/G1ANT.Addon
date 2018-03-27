@@ -132,8 +132,7 @@ namespace G1ANT.Addon.UI
                 IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
                 return RobotWin32.GetWindowText(wndHandle);
             }
-            else
-                throw new NotSupportedException("GetText is not supported");
+            return automationElement.Current.Name;
         }
     }
 }
