@@ -3,6 +3,7 @@ using CodePlex.XPathParser;
 using System.Windows.Automation;
 using System.Collections.Generic;
 using G1ANT.Language;
+using System.Drawing;
 
 namespace G1ANT.Addon.UI
 {
@@ -102,21 +103,39 @@ namespace G1ANT.Addon.UI
                 System.Windows.Point pt = new System.Windows.Point();
                 if (automationElement.TryGetClickablePoint(out pt))
                 {
-                    MouseWin32.MouseEventFlags flags = (MouseWin32.MouseEventFlags)((int)MouseWin32.MouseEventFlags.LeftDown << 1);
-                    MouseWin32.MouseEvent((int)flags, (int)pt.X, (int)pt.Y, 1);
+                    MouseWin32.MousePoint tempPos = MouseWin32.GetCursorPosition();
+                    Point currentPos = new Point(tempPos.X, tempPos.Y);
+
+                    Point targetPos = new Point((int)pt.X, (int)pt.Y);
+
+                    List<MouseStr.MouseEventArgs> mouseArgs =
+                        MouseStr.ToMouseEventsArgs(
+                            targetPos.X,
+                            targetPos.Y,
+                            currentPos.X,
+                            currentPos.Y,
+                            "left",
+                            "press",
+                            1);
+
+                    foreach (MouseStr.MouseEventArgs arg in mouseArgs)
+                    {
+                        MouseWin32.MouseEvent(arg.dwFlags, arg.dx, arg.dy, arg.dwData);
+                        System.Threading.Thread.Sleep(10);
+                    }
                 }
             }
         }
 
         public void SetFocus()
         {
-            if (automationElement.Current.NativeWindowHandle != 0)
-            {
-                IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
-                RobotWin32.SetFocus(wndHandle);
-            }
-            else
-                automationElement.SetFocus();
+            //if (automationElement.Current.NativeWindowHandle != 0)
+            //{
+            //    IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
+            //    RobotWin32.SetFocus(wndHandle);
+            //}
+            //else
+            automationElement.SetFocus();
         }
 
         public void SetText(string text)
