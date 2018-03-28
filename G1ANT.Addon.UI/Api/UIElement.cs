@@ -110,7 +110,13 @@ namespace G1ANT.Addon.UI
 
         public void SetFocus()
         {
-            automationElement.SetFocus();
+            if (automationElement.Current.NativeWindowHandle != 0)
+            {
+                IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
+                RobotWin32.SetFocus(wndHandle);
+            }
+            else
+                automationElement.SetFocus();
         }
 
         public void SetText(string text)
