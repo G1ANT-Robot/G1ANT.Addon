@@ -6,13 +6,14 @@ using System.Linq;
 
 using CompareFunc = System.Func<
     System.Windows.Automation.AutomationElement,
+    int,
     bool>;
 using GetElementFunc = System.Func<
     System.Windows.Automation.AutomationElement,
     System.Windows.Automation.AutomationElement>;
 using FindElementFunc = System.Func<
     System.Windows.Automation.AutomationElement,
-    System.Func<System.Windows.Automation.AutomationElement, bool>,
+    System.Func<System.Windows.Automation.AutomationElement, int, bool>,
     System.Windows.Automation.AutomationElement>;
 
 namespace G1ANT.Addon.UI
@@ -22,14 +23,16 @@ namespace G1ANT.Addon.UI
         protected AutomationElement FindDescendant(AutomationElement elem, CompareFunc compare)
         {
             AutomationElement elementNode = TreeWalker.ControlViewWalker.GetFirstChild(elem);
+            int index = 0;
             while (elementNode != null)
             {
-                if (compare(elementNode))
+                if (compare(elementNode, index))
                     return elementNode;
                 var descendantElement = FindDescendant(elementNode, compare);
                 if (descendantElement != null)
                     return descendantElement;
                 elementNode = TreeWalker.ControlViewWalker.GetNextSibling(elementNode);
+                index++;
             }
             return null;
         }
@@ -37,11 +40,13 @@ namespace G1ANT.Addon.UI
         protected AutomationElement FindChild(AutomationElement elem, CompareFunc compare)
         {
             AutomationElement elementNode = TreeWalker.ControlViewWalker.GetFirstChild(elem);
+            int index = 0;
             while (elementNode != null)
             {
-                if (compare(elementNode))
+                if (compare(elementNode, index))
                     return elementNode;
                 elementNode = TreeWalker.ControlViewWalker.GetNextSibling(elementNode);
+                index++;
             }
             //return null;
             //var childrens = elem.FindAll(TreeScope.Children, PropertyCondition.TrueCondition);
@@ -56,19 +61,20 @@ namespace G1ANT.Addon.UI
         protected AutomationElement FindFollowingSibling(AutomationElement elem, CompareFunc compare)
         {
             AutomationElement elementNode = TreeWalker.ControlViewWalker.GetFirstChild(elem);
-
+            int index = 0;
             while (elementNode != null)
             {
-                if (compare(elementNode))
+                if (compare(elementNode, index))
                     return elementNode;
                 elementNode = TreeWalker.ControlViewWalker.GetNextSibling(elementNode);
+                index++;
             }
             throw new ElementNotAvailableException();
         }
 
         protected AutomationElement FindDescendantOrSelf(AutomationElement elem, CompareFunc compare)
         {
-            if (compare(elem))
+            if (compare(elem, -1))
                 return elem;
             return FindDescendant(elem, compare);
         }
@@ -96,7 +102,10 @@ namespace G1ANT.Addon.UI
 
         public object Number(string value)
         {
-            throw new NotImplementedException("Method 'Number' is not implemented.");
+            int result = -1;
+            if (int.TryParse(value, out result))
+                return result;
+            throw new NotSupportedException($"Number '{value}' is not supported.");
         }
 
         public object Operator(XPathOperator op, object left, object right)
@@ -105,7 +114,7 @@ namespace G1ANT.Addon.UI
             {
                 if (left is AutomationProperty property)
                 {
-                    CompareFunc func = (elem) =>
+                    CompareFunc func = (elem, index) =>
                     {
                         var propValue = elem.GetCurrentPropertyValue(property, true);
                         return propValue.Equals(right);
@@ -186,12 +195,21 @@ namespace G1ANT.Addon.UI
 
         public object Predicate(object node, object condition, bool reverseStep)
         {
-            if (node is FindElementFunc outer &&
-                condition is CompareFunc inner)
+            if (node is FindElementFunc outer1 &&
+                condition is CompareFunc inner1)
             {
                 GetElementFunc func = (elem) =>
                 {
-                    return outer(elem, inner);
+                    return outer1(elem, inner1);
+                };
+                return func;
+            }
+            else if (node is FindElementFunc outer2 &&
+                condition is int value)
+            {
+                GetElementFunc func = (elem) =>
+                {
+                    return outer2(elem, (childElem, childIndex) => { return childIndex == value; });
                 };
                 return func;
             }
@@ -210,7 +228,7 @@ namespace G1ANT.Addon.UI
                 if (args[0] is AutomationProperty property &&
                     args[1] is string text)
                 {
-                    CompareFunc func = (elem) =>
+                    CompareFunc func = (elem, index) =>
                     {
                         if (elem.GetCurrentPropertyValue(property, true) is string str)
                         {
