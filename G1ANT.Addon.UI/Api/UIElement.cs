@@ -90,9 +90,22 @@ namespace G1ANT.Addon.UI
 
         public void Click()
         {
-            InvokePattern pattern = automationElement.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
-            if (pattern != null)
-                pattern.Invoke();
+            object pattern;
+            if (automationElement.TryGetCurrentPattern(InvokePattern.Pattern, out pattern))
+            {
+                InvokePattern invokePattern = pattern as InvokePattern;
+                if (invokePattern != null)
+                    invokePattern.Invoke();
+            }
+            else
+            {
+                System.Windows.Point pt = new System.Windows.Point();
+                if (automationElement.TryGetClickablePoint(out pt))
+                {
+                    MouseWin32.MouseEventFlags flags = (MouseWin32.MouseEventFlags)((int)MouseWin32.MouseEventFlags.LeftDown << 1);
+                    MouseWin32.MouseEvent((int)flags, (int)pt.X, (int)pt.Y, 1);
+                }
+            }
         }
 
         public void SetFocus()
@@ -122,7 +135,18 @@ namespace G1ANT.Addon.UI
 
         public System.Windows.Rect GetRectangle()
         {
-            return automationElement.Current.BoundingRectangle;
+            object boundingRectNoDefault =
+                automationElement.GetCurrentPropertyValue(AutomationElement.BoundingRectangleProperty, true);
+            if (boundingRectNoDefault != AutomationElement.NotSupported)
+                return (System.Windows.Rect)boundingRectNoDefault;
+            else if (automationElement.Current.NativeWindowHandle != 0)
+            {
+                RobotWin32.Rect rect = new RobotWin32.Rect();
+                IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
+                if (RobotWin32.GetWindowRectangle(wndHandle, ref rect))
+                    return new System.Windows.Rect(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);
+            }
+            throw new NotSupportedException("Cannot get rectangle for that kind of UI element.");
         }
 
         public string GetText()
