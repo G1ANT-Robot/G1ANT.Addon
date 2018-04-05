@@ -176,11 +176,11 @@ namespace G1ANT.Addon.UI
 
         public string GetText()
         {
-            if (automationElement.Current.NativeWindowHandle != 0)
-            {
-                IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
-                return RobotWin32.GetWindowText(wndHandle);
-            }
+            //if (automationElement.Current.NativeWindowHandle != 0)
+            //{
+            //    IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
+            //    return RobotWin32.GetWindowText(wndHandle);
+            //}
             return automationElement.Current.Name;
         }
     }
