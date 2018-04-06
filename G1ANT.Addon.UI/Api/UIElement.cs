@@ -98,6 +98,11 @@ namespace G1ANT.Addon.UI
                 if (invokePattern != null)
                     invokePattern.Invoke();
             }
+            else if ((bool)automationElement.GetCurrentPropertyValue(AutomationElementIdentifiers.IsLegacyIAccessiblePatternAvailableProperty))
+            {
+                var legacyPattern = ((LegacyIAccessiblePattern)automationElement.GetCurrentPattern(LegacyIAccessiblePattern.Pattern));
+                legacyPattern.DoDefaultAction();
+            }
             else
             {
                 //var rect = GetRectangle();
