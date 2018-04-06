@@ -100,11 +100,13 @@ namespace G1ANT.Addon.UI
             }
             else
             {
-                var rect = GetRectangle();
-                System.Windows.Point pt = new System.Windows.Point(rect.X + rect.Size.Width/2, rect.Y + rect.Size.Height / 2);
-                //if (automationElement.TryGetClickablePoint(out pt))
+                //var rect = GetRectangle();
+                //System.Windows.Point pt = new System.Windows.Point(rect.X + rect.Size.Width/2, rect.Y + rect.Size.Height / 2);
+                System.Windows.Point pt = new System.Windows.Point();
+                if (automationElement.TryGetClickablePoint(out pt))
                 {
-                    MouseWin32.MousePoint tempPos = MouseWin32.GetCursorPosition();
+                    //MouseWin32.MousePoint tempPos = MouseWin32.GetCursorPosition();
+                    MouseWin32.MousePoint tempPos = MouseWin32.GetPhysicalCursorPosition();
                     Point currentPos = new Point(tempPos.X, tempPos.Y);
 
                     Point targetPos = new Point((int)pt.X, (int)pt.Y);
