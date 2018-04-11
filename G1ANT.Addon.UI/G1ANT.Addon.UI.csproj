@@ -54,7 +54,18 @@
     <Compile Include="Api\UIElement.cs" />
     <Compile Include="Api\XPathUIElementBuilder.cs" />
     <Compile Include="MainAddon.cs" />
+    <Compile Include="Panels\UIControlsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\UIControlsPanel.Designer.cs">
+      <DependentUpon>UIControlsPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UIGetRectangleCommand.cs" />
     <Compile Include="UISetFocusCommand.cs" />
     <Compile Include="UISetRootCommand.cs" />
@@ -79,7 +90,20 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Panels\UIControlsPanel.resx">
+      <DependentUpon>UIControlsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIAComWrapper.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\insert into.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -45,7 +45,7 @@ namespace G1ANT.Addon.UI
             public ControlType type;
         }
 
-        public WPathStructure ToWPath()
+        public WPathStructure ToWPath(UIElement root = null)
         {
             Stack<NodeDescription> stack = new Stack<NodeDescription>();
             TreeWalker walker = TreeWalker.ControlViewWalker;
@@ -61,7 +61,7 @@ namespace G1ANT.Addon.UI
                     type = node.Current.ControlType
                 });
                 elementParent = walker.GetParent(node);
-                if (elementParent == RootElement.automationElement)
+                if (elementParent == root?.automationElement)
                     break;
                 node = elementParent;
             }
