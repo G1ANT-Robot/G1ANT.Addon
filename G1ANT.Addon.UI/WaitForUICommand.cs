@@ -41,7 +41,9 @@ namespace G1ANT.Addon.UI
                 { }
                 Application.DoEvents();
             }
-            throw new TimeoutException($"Control described as \"{arguments.WPath.Value}\" has not been found.");
+            string msg = $"Control described as \"{arguments.WPath.Value}\" has not been found.";
+            Scripter.Log.Log(AbstractLogger.Level.Debug, msg);
+            throw new TimeoutException(msg);
         }
     }
 }
