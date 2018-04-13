@@ -30,9 +30,9 @@
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.insertWPathButton = new System.Windows.Forms.ToolStripButton();
-            this.controlsTree = new System.Windows.Forms.TreeView();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshButton = new System.Windows.Forms.ToolStripButton();
+            this.controlsTree = new System.Windows.Forms.TreeView();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,8 +55,24 @@
             this.insertWPathButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.insertWPathButton.Name = "insertWPathButton";
             this.insertWPathButton.Size = new System.Drawing.Size(23, 22);
-            this.insertWPathButton.Text = "toolStripButton1";
+            this.insertWPathButton.Text = "Insert WPath";
+            this.insertWPathButton.ToolTipText = "Insert WPath of selected control";
             this.insertWPathButton.Click += new System.EventHandler(this.insertWPathButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshButton.Image = global::G1ANT.Addon.UI.Resources.refresh;
+            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(23, 22);
+            this.refreshButton.Text = "Refresh controls";
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // controlsTree
             // 
@@ -71,21 +87,6 @@
             this.controlsTree.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.controlsTree_AfterCollapse);
             this.controlsTree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.controlsTree_BeforeExpand);
             this.controlsTree.DoubleClick += new System.EventHandler(this.controlsTree_DoubleClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.refreshButton.Image = global::G1ANT.Addon.UI.Resources.refresh;
-            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(23, 22);
-            this.refreshButton.Text = "toolStripButton1";
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // UIControlsPanel
             // 
