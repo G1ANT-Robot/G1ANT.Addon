@@ -117,7 +117,9 @@ namespace G1ANT.Addon.UI
                     CompareFunc func = (elem, index) =>
                     {
                         var propValue = elem.GetCurrentPropertyValue(property, true);
-                        return propValue.Equals(right);
+                        if (propValue != null)
+                            return propValue.Equals(right);
+                        return false;
                     };
                     return func;
                 }

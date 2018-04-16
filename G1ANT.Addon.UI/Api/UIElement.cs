@@ -51,6 +51,7 @@ namespace G1ANT.Addon.UI
             TreeWalker walker = TreeWalker.ControlViewWalker;
             AutomationElement elementParent;
             AutomationElement node = automationElement;
+            AutomationElement automationRoot = root != null ? root.automationElement : AutomationElement.RootElement;
             do
             {
                 stack.Push(new NodeDescription()
@@ -61,7 +62,7 @@ namespace G1ANT.Addon.UI
                     type = node.Current.ControlType
                 });
                 elementParent = walker.GetParent(node);
-                if (elementParent == root?.automationElement)
+                if (elementParent == automationRoot)
                     break;
                 node = elementParent;
             }
