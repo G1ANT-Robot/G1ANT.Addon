@@ -92,10 +92,16 @@
     <Compile Include="Commands\ExcelInsertRowCommand.cs" />
     <Compile Include="Commands\ExcelSetValueCommand.cs" />
     <Compile Include="Commands\ExcelSwitchCommand.cs" />
+    <Compile Include="Commands\OutlookAttachmentStructure.cs" />
     <Compile Include="Commands\OutlookCloseCommand.cs" />
     <Compile Include="Commands\OutlookFindMailsCommand.cs" />
+    <Compile Include="Commands\OutlookFolderStructure.cs" />
+    <Compile Include="Commands\OutlookGetFolderCommand.cs" />
+    <Compile Include="Commands\OutlookGetRootFoldersCommand.cs" />
+    <Compile Include="Commands\OutlookMailStructure.cs" />
     <Compile Include="Commands\OutlookNewMessageCommand.cs" />
     <Compile Include="Commands\OutlookOpenCommand.cs" />
+    <Compile Include="Commands\OutlookSelectItemCommand.cs" />
     <Compile Include="Commands\OutlookSendCommand.cs" />
     <Compile Include="Commands\WordCloseCommand.cs" />
     <Compile Include="Commands\WordExportCommand.cs" />

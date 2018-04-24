@@ -110,6 +110,7 @@ namespace G1ANT.Addon.MSOffice
         {
 
             List<MailDetails> mailDetailsList = new List<MailDetails>();
+            List<string> names = new List<string>();
             foreach (MAPIFolder f in nameSpace.Folders)
             {
                 MAPIFolder inboxFolder = f.Store.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
@@ -155,6 +156,64 @@ namespace G1ANT.Addon.MSOffice
             return foundMailDetailsList;
         }
 
+        public List<MAPIFolder> GetFolders(MAPIFolder parent = null)
+        {
+            List<MAPIFolder> result = new List<MAPIFolder>();
+            var folders = parent == null ? nameSpace.Folders : parent.Folders;
+            if (folders != null)
+            {
+                foreach (MAPIFolder f in folders)
+                    result.Add(f);
+            }
+            return result;
+        }
+
+        public MAPIFolder GetFolderByPath(string path, MAPIFolder parent = null)
+        {
+            string[] pathElements = path.Split('\\');
+            if (pathElements.Count() == 0)
+                return null;
+            var folders = parent == null ? nameSpace.Folders : parent.Folders;
+            if (folders != null)
+            {
+                foreach (MAPIFolder f in folders)
+                {
+                    if (pathElements[0] == f.Name)
+                    {
+                        if (pathElements.Count() == 1)
+                            return f;
+                        string rest = string.Join("\\", pathElements.Skip(1));
+                        var fountFolder = GetFolderByPath(rest, f);
+                        if (fountFolder != null)
+                            return fountFolder;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<MailItem> GetMails(MAPIFolder folder, bool onlyUnreaded)
+        {
+            if (folder == null)
+                throw new NullReferenceException();
+            List<MailItem> result = new List<MailItem>();
+            Items mails = onlyUnreaded == true ? folder.Items.Restrict("[Unread]=true") : folder.Items;
+            foreach (var item in mails)
+                if (item is MailItem mail)
+                    result.Add(mail);
+            return result;
+        }
+
+        public List<Attachment> GetAttachments(MailItem mail)
+        {
+            if (mail == null)
+                throw new NullReferenceException();
+            List<Attachment> result = new List<Attachment>();
+            foreach (var item in mail.Attachments)
+                if (item is Attachment att)
+                    result.Add(att);
+            return result;
+        }
 
         public IList<MailItem> FindMails(string search, bool showMail = false)
         {
