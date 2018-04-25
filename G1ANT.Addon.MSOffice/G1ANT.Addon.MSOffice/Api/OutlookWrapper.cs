@@ -56,7 +56,8 @@ namespace G1ANT.Addon.MSOffice
         {
             Application = new Application();
             nameSpace = Application.GetNamespace("MAPI");
-            nameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox).Display();            
+            nameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox).Display();
+            Application.ActiveExplorer().Activate();
         }
 
         public void NewMessage(string to, string subject, string body)
