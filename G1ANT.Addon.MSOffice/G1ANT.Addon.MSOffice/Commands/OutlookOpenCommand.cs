@@ -20,9 +20,10 @@ namespace G1ANT.Addon.MSOffice
         public class Arguments : CommandArguments
         {
             [Argument]
+            public BooleanStructure Display { get; set; } = new BooleanStructure(true);
+
+            [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
-
-
         }
         public OutlookOpenCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -30,7 +31,7 @@ namespace G1ANT.Addon.MSOffice
         public void Execute(Arguments arguments)
         {
             var outlookManager = OutlookManager.AddOutlook();
-            outlookManager.Open();
+            outlookManager.Open(arguments.Display.Value);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.BooleanStructure(true));
         }
     }

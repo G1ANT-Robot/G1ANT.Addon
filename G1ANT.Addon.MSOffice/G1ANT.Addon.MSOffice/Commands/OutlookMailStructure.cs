@@ -18,7 +18,9 @@ namespace G1ANT.Addon.MSOffice
     public class OutlookMailStructure : StructureTyped<MailItem>
     {
         const string IdIndex = "id";
+        const string FromIndex = "from";
         const string SubjectIndex = "subject";
+        const string BodyIndex = "body";
         const string AttachmentsIndex = "attachments";
 
         public OutlookMailStructure(string value, string format = "", AbstractScripter scripter = null) :
@@ -38,6 +40,8 @@ namespace G1ANT.Addon.MSOffice
             Indexes.Add(IdIndex);
             Indexes.Add(SubjectIndex);
             Indexes.Add(AttachmentsIndex);
+            Indexes.Add(BodyIndex);
+            Indexes.Add(FromIndex);
         }
 
         public override Structure Get(string index = "")
@@ -50,6 +54,10 @@ namespace G1ANT.Addon.MSOffice
                     return new TextStructure(Value.EntryID, null, Scripter);
                 case SubjectIndex:
                     return new TextStructure(Value.Subject, null, Scripter);
+                case BodyIndex:
+                    return new TextStructure(Value.Body, null, Scripter);
+                case FromIndex:
+                    return new TextStructure(Value.SenderEmailAddress, null, Scripter);
                 case AttachmentsIndex:
                     {
                         var outlookManager = OutlookManager.CurrentOutlook;
@@ -73,7 +81,19 @@ namespace G1ANT.Addon.MSOffice
             if (structure == null || structure.Object == null)
                 throw new ArgumentNullException(nameof(structure));
             else
-                throw new ArgumentException($"Unknown index '{index}'");
+            {
+                switch (index.ToLower())
+                {
+                    case SubjectIndex:
+                        Value.Subject = structure.ToString();
+                        break;
+                    case BodyIndex:
+                        Value.Body = structure.ToString();
+                        break;
+                    default:
+                        throw new ArgumentException($"Unknown index '{index}'");
+                }
+            }
         }
 
         public override string ToString(string format)

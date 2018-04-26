@@ -52,12 +52,16 @@ namespace G1ANT.Addon.MSOffice
         private MailItem mailItem = null;
         private NameSpace nameSpace = null;
 
-        public void Open()
+        public void Open(bool display)
         {
             Application = new Application();
             nameSpace = Application.GetNamespace("MAPI");
-            nameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox).Display();
-            Application.ActiveExplorer().Activate();
+            var defFolder = nameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
+            if (display)
+            {
+                defFolder.Display();
+                Application.ActiveExplorer().Activate();
+            }
         }
 
         public void NewMessage(string to, string subject, string body)
@@ -241,11 +245,22 @@ namespace G1ANT.Addon.MSOffice
             return foundMails;
         }
 
-        public void Send()
+        public MailItem Reply(MailItem mail)
         {
-            mailItem.Send();
-
+            if (mail != null)
+                return mail.Reply();
+            else
+                throw new NullReferenceException("Mail cannot be null.");
         }
+
+        public void Send(MailItem mail)
+        {
+            if (mail != null)
+                mail.Send();
+            else
+                mailItem.Send();
+        }
+
         public void Close()
         {
             try

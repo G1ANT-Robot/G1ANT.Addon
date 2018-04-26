@@ -99,8 +99,10 @@
     <Compile Include="Commands\OutlookGetFolderCommand.cs" />
     <Compile Include="Commands\OutlookGetRootFoldersCommand.cs" />
     <Compile Include="Commands\OutlookMailStructure.cs" />
+    <Compile Include="Commands\OutlookMoveToCommand.cs" />
     <Compile Include="Commands\OutlookNewMessageCommand.cs" />
     <Compile Include="Commands\OutlookOpenCommand.cs" />
+    <Compile Include="Commands\OutlookReplyCommand.cs" />
     <Compile Include="Commands\OutlookSelectItemCommand.cs" />
     <Compile Include="Commands\OutlookSendCommand.cs" />
     <Compile Include="Commands\WordCloseCommand.cs" />
