@@ -13,7 +13,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Structure(Name = "OutlookAttachment")]
+    [Structure(Name = "OutlookAttachment", AutoCreate = false)]
     public class OutlookAttachmentStructure : StructureTyped<Attachment>
     {
         const string FilenameIndex = "filename";

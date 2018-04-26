@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Structure(Name = "OutlookMail")]
+    [Structure(Name = "OutlookMail", AutoCreate = false)]
     public class OutlookMailStructure : StructureTyped<MailItem>
     {
         const string IdIndex = "id";

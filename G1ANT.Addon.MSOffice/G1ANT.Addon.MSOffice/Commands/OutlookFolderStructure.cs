@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Structure(Name = "OutlookFolder")]
+    [Structure(Name = "OutlookFolder", AutoCreate = false)]
     public class OutlookFolderStructure : StructureTyped<MAPIFolder>
     {
         const string NameIndex = "name";
