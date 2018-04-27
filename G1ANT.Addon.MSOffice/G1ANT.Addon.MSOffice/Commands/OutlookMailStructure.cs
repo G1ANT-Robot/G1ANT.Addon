@@ -110,6 +110,7 @@ namespace G1ANT.Addon.MSOffice
                                 if (account.SmtpAddress == structure.ToString())
                                 {
                                     Value.SendUsingAccount = account;
+                                    Value.Sender = account.CurrentUser.AddressEntry;
                                     return;
                                 }
                             }
