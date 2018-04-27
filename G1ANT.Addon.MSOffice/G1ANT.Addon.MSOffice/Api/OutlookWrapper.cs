@@ -216,7 +216,11 @@ namespace G1ANT.Addon.MSOffice
             List<Attachment> result = new List<Attachment>();
             foreach (var item in mail.Attachments)
                 if (item is Attachment att)
-                    result.Add(att);
+                {
+                    string fileName = att.FileName;
+                    if (mail.HTMLBody.Contains($"cid:{fileName}") == false)
+                        result.Add(att);
+                }
             return result;
         }
 
