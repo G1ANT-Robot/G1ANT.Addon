@@ -19,8 +19,10 @@ namespace G1ANT.Addon.MSOffice
     {
         const string IdIndex = "id";
         const string FromIndex = "from";
+        const string AccountIndex = "account";
         const string SubjectIndex = "subject";
         const string BodyIndex = "body";
+        const string HtmlBodyIndex = "htmlbody";
         const string AttachmentsIndex = "attachments";
 
         public OutlookMailStructure(string value, string format = "", AbstractScripter scripter = null) :
@@ -41,7 +43,9 @@ namespace G1ANT.Addon.MSOffice
             Indexes.Add(SubjectIndex);
             Indexes.Add(AttachmentsIndex);
             Indexes.Add(BodyIndex);
+            Indexes.Add(HtmlBodyIndex);
             Indexes.Add(FromIndex);
+            Indexes.Add(AccountIndex);
         }
 
         public override Structure Get(string index = "")
@@ -56,8 +60,12 @@ namespace G1ANT.Addon.MSOffice
                     return new TextStructure(Value.Subject, null, Scripter);
                 case BodyIndex:
                     return new TextStructure(Value.Body, null, Scripter);
+                case HtmlBodyIndex:
+                    return new TextStructure(Value.HTMLBody, null, Scripter);
                 case FromIndex:
                     return new TextStructure(Value.SenderEmailAddress, null, Scripter);
+                case AccountIndex:
+                    return new TextStructure(Value.SendUsingAccount.SmtpAddress, null, Scripter);
                 case AttachmentsIndex:
                     {
                         var outlookManager = OutlookManager.CurrentOutlook;
@@ -89,6 +97,24 @@ namespace G1ANT.Addon.MSOffice
                         break;
                     case BodyIndex:
                         Value.Body = structure.ToString();
+                        break;
+                    case HtmlBodyIndex:
+                        Value.HTMLBody = structure.ToString();
+                        break;
+                    case AccountIndex:
+                        {
+                            Accounts accounts = Value.Session.Accounts;
+                            foreach (Account account in accounts)
+                            {
+                                // When the e-mail address matches, return the account. 
+                                if (account.SmtpAddress == structure.ToString())
+                                {
+                                    Value.SendUsingAccount = account;
+                                    return;
+                                }
+                            }
+                            throw new ArgumentException($"Cannot find outlook account '{structure.ToString()}'");
+                        }
                         break;
                     default:
                         throw new ArgumentException($"Unknown index '{index}'");
