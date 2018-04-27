@@ -13,18 +13,18 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.send",Tooltip = "This command to send a prepared earlier message by 'outlook.newmessage'.")]
-    public class OutlookSendCommand : Command
+    [Command(Name = "outlook.reply", Tooltip = "This command create new mail structure which is reply to specified mail.")]
+    public class OutlookReplyCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
-            public VariableStructure Result { get; set; } = new VariableStructure("result");
-
-            [Argument]
+            [Argument(Required = true)]
             public OutlookMailStructure Mail { get; set; }
+
+            [Argument(Required = true)]
+            public VariableStructure Result { get; set; }
         }
-        public OutlookSendCommand(AbstractScripter scripter) : base(scripter)
+        public OutlookReplyCommand(AbstractScripter scripter) : base(scripter)
         {
         }
 
@@ -33,8 +33,8 @@ namespace G1ANT.Addon.MSOffice
             var outlookManager = OutlookManager.CurrentOutlook;
             if (outlookManager != null)
             {
-                outlookManager.Send(arguments.Mail?.Value);
-                Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.BooleanStructure(true));
+                var replyMail = outlookManager.Reply(arguments.Mail?.Value);
+                Scripter.Variables.SetVariableValue(arguments.Result.Value, new OutlookMailStructure(replyMail, null, Scripter));
             }
             else
                 throw new NullReferenceException("Current Outlook is not set.");
