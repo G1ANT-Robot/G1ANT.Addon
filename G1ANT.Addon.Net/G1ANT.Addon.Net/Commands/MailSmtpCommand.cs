@@ -43,11 +43,14 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Mail body, main content of the email ")]
             public TextStructure Body { get; set; } = new TextStructure(string.Empty);
 
+            [Argument(Tooltip = "If true body is expexted in HTML format")]
+            public BooleanStructure IsHtmlBody { get; set; } = new BooleanStructure(false);
+
             [Argument(Tooltip = "Array of full paths to all attached files")]
             public ListStructure Attachments { get; set; }
 
             [Argument(DefaultVariable = "timeoutmailsmtp")]
-            public  override TimeSpanStructure Timeout { get; set; }
+            public override TimeSpanStructure Timeout { get; set; }
         }
         public MailSmtpCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -72,6 +75,7 @@ namespace G1ANT.Addon.Net
 
             MailMessage mm = new MailMessage(from, to, subject, body);
             mm.BodyEncoding = UTF8Encoding.UTF8;
+            mm.IsBodyHtml = arguments.IsHtmlBody.Value;
             mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
             if (arguments.Attachments != null && arguments.Attachments.Value != null)
