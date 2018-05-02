@@ -58,6 +58,7 @@
     <Compile Include="Api\XlsxWrapper.cs" />
     <Compile Include="Commands\XlsxCountRowCommand.cs" />
     <Compile Include="Commands\XlsxFindCommand.cs" />
+    <Compile Include="Commands\XlsxGetColumnCommand.cs" />
     <Compile Include="Commands\XlsxSetValueCommand.cs" />
     <Compile Include="Commands\XlsxGetValueCommand.cs" />
     <Compile Include="Commands\XlsxOpenCommand.cs" />

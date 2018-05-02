@@ -18,6 +18,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
+using DocumentFormat.OpenXml;
+
 namespace G1ANT.Addon.Xlsx
 {
     public class XlsxWrapper
@@ -33,6 +35,8 @@ namespace G1ANT.Addon.Xlsx
         private SpreadsheetDocument spreadsheetDocument = null;
         private Sheet sheet;
         private WorkbookPart wbPart;
+
+        private List<string> sharedStrings;
 
         public Sheet GetSheetByName(string name)
         {
@@ -74,6 +78,64 @@ namespace G1ANT.Addon.Xlsx
             return a;
         }
 
+        public List<object> GetColumn(string rowSpan, string column)
+        {
+            string[] startEndtemp = rowSpan.Split(':');
+            if (startEndtemp.Length > 2)
+                throw new ArgumentException($"Range has to have format of 'start:end'", nameof(rowSpan));
+
+            string startRow = startEndtemp[0].Trim();
+            string endRow = startEndtemp[1].Trim();
+
+            int start = string.IsNullOrWhiteSpace(startRow) ? 1 : int.Parse(startRow);
+            int end = string.IsNullOrWhiteSpace(endRow) ? CountRows() : int.Parse(endRow);
+
+            IEnumerable<WorksheetPart> worksheetPart = wbPart.WorksheetParts;
+            WorksheetPart wsPart =
+             (WorksheetPart)(wbPart.GetPartById(sheet.Id));
+            Worksheet worksheet = wsPart.Worksheet;
+            SheetData data = worksheet.GetFirstChild<SheetData>();
+
+            object[] rows = new object[end - start + 1];
+
+#if DEBUG
+            int i = 0;
+#endif
+
+            foreach (OpenXmlElement element in data.ChildElements)
+            {
+                if (element is Row row)
+                {
+                    if (start <= row.RowIndex && row.RowIndex <= end)
+                    {
+                        Cell cell = (Cell)row.FirstOrDefault(e =>
+                        {
+                            if (e is Cell c)
+                            {
+                                string columnName = new string(c.CellReference.Value.TakeWhile(symbol => char.IsLetter(symbol)).ToArray());
+
+                                if (column == columnName)
+                                    return true;
+                            }
+
+                            return false;
+                        });
+
+                        if (cell != null)
+                        {
+                            rows[row.RowIndex - start] = GetStringValue(cell);
+                        }
+                    }
+                }
+#if DEBUG
+                i++;
+#endif
+
+            }
+
+            return rows.ToList();
+        }
+
         public void SetValue(int row, string column, string value)
         {
             var Position = FormatInput(column, row);
@@ -109,12 +171,16 @@ namespace G1ANT.Addon.Xlsx
             WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(sheet.Id));
             Cell theCell = wsPart.Worksheet.Descendants<Cell>().Where(c => c.CellReference == Position.ToUpper()).FirstOrDefault();
 
+            return GetStringValue(theCell);
+        }
+
+        private string GetStringValue(Cell theCell)
+        {
             if (theCell != null)
             {
                 if (theCell.DataType != null && theCell.DataType.Value == CellValues.SharedString)
                 {
-
-                    return wbPart.SharedStringTablePart.SharedStringTable.ElementAt(Int32.Parse(theCell.CellValue.InnerText)).InnerText.ToString();
+                    return sharedStrings[Int32.Parse(theCell.CellValue.InnerText)];
                 }
                 else if (theCell.StyleIndex == "3")
                 {
@@ -313,8 +379,26 @@ namespace G1ANT.Addon.Xlsx
                 remhyp();
             }
 
+            CacheSharedStrings();
+
             if (spreadsheetDocument != null) return true;
             else return false;
+        }
+
+        private void CacheSharedStrings()
+        {
+            sharedStrings = new List<string>();
+            using (OpenXmlReader reader = OpenXmlReader.Create(spreadsheetDocument.WorkbookPart.SharedStringTablePart))
+            {
+                while (reader.Read())
+                {
+                    if (reader.ElementType == typeof(SharedStringItem))
+                    {
+                        SharedStringItem stringItem = (SharedStringItem)reader.LoadCurrentElement();
+                        sharedStrings.Add(stringItem.Text?.Text ?? string.Empty);
+                    }
+                }
+            }
         }
 
         /// <summary>
