@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CountRowsTests.cs" />
+    <Compile Include="Commands\GetValuesInRangeTests.cs" />
     <Compile Include="Commands\Initializer.cs" />
     <Compile Include="Commands\LoadXlsxTests.cs" />
     <Compile Include="Commands\XlsxCloseTests.cs" />

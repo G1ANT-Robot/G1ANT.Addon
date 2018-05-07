@@ -18,10 +18,110 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
+using DocumentFormat.OpenXml;
+
 namespace G1ANT.Addon.Xlsx
 {
     public class XlsxWrapper
     {
+        /// <summary>
+        /// It's responsible for caching string values in workbook
+        /// </summary>
+        /// <remarks>All members of this class are sensitive to the context of a sheet in XlsxWrapper</remarks>
+        private class DataCache
+        {
+            private struct CellRef
+            {
+                public string sheetID;
+                public string adress;
+
+                public override int GetHashCode()
+                {
+                    return sheetID.GetHashCode() ^ adress.GetHashCode();
+                }
+            }
+
+            private readonly XlsxWrapper owner;
+
+            private readonly Dictionary<CellRef, string> adress2value = new Dictionary<CellRef, string>();
+            private readonly Dictionary<string, IList<CellRef>> value2adress = new Dictionary<string, IList<CellRef>>();
+
+            public string GetValue(string adress)
+            {
+                return adress2value[new CellRef() { sheetID = owner.sheet.Id, adress = adress }];
+            }
+
+            public IEnumerable<string> GetAdresses(string value)
+            {
+                return value2adress[value].Where(r => r.sheetID == owner.sheet.Id).Select(r => r.adress);
+            }
+
+            public bool CotainsAdress(string adress)
+            {
+                return adress2value.ContainsKey(new CellRef() { adress = adress, sheetID = owner.sheet.Id });
+            }
+
+            public bool ContainsValue(string value)
+            {
+                return value2adress.ContainsKey(value) && value2adress[value].Count > 0;
+            }
+
+            public DataCache(XlsxWrapper xlsxWrapper)
+            {
+                owner = xlsxWrapper;
+                WorkbookPart wbPart = xlsxWrapper.spreadsheetDocument.WorkbookPart;
+
+                List<string> sharedStringCache = new List<string>();
+                using (OpenXmlReader shareStringReader = OpenXmlReader.Create(wbPart.SharedStringTablePart))
+                {
+                    while (shareStringReader.Read())
+                    {
+                        if (shareStringReader.ElementType == typeof(SharedStringItem))
+                        {
+                            SharedStringItem stringItem = (SharedStringItem)shareStringReader.LoadCurrentElement();
+                            sharedStringCache.Add(stringItem.Text?.Text ?? string.Empty);
+                        }
+                    }
+                }
+
+                foreach (WorksheetPart sheetPart in wbPart.WorksheetParts)
+                {
+                    void AddEntry(CellRef reference, string value)
+                    {
+                        if (value2adress.ContainsKey(value))
+                            value2adress[value].Add(reference);
+                        else
+                            value2adress[value] = new List<CellRef>() { reference };
+                        adress2value[reference] = value;
+                    }
+
+                    string sheetID = wbPart.GetIdOfPart(sheetPart);
+
+                    using (OpenXmlReader sheetReader = OpenXmlReader.Create(sheetPart))
+                    {
+                        while (sheetReader.Read())
+                        {
+                            if (sheetReader.ElementType == typeof(Cell))
+                            {
+                                Cell cell = (Cell)sheetReader.LoadCurrentElement();
+                                CellRef cellAdress = new CellRef()
+                                {
+                                    sheetID = sheetID,
+                                    adress = cell.CellReference
+                                };
+                                if ((cell.DataType?.Value ?? CellValues.Error) == CellValues.SharedString)
+                                    AddEntry(
+                                        cellAdress,
+                                        sharedStringCache[Int32.Parse(cell.CellValue.InnerText)]);
+                                else
+                                    AddEntry(cellAdress, owner.GetStringValue(cell));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private XlsxWrapper() { }
 
         public XlsxWrapper(int id)
@@ -33,13 +133,13 @@ namespace G1ANT.Addon.Xlsx
         private SpreadsheetDocument spreadsheetDocument = null;
         private Sheet sheet;
         private WorkbookPart wbPart;
+        private DataCache dataCache;
 
         public Sheet GetSheetByName(string name)
         {
             var sheets = wbPart.Workbook.Sheets.Cast<Sheet>().ToList();
             return sheets.Find(x => x.Name == name);
         }
-
 
         public List<String> GetSheetsNames()
         {
@@ -74,6 +174,65 @@ namespace G1ANT.Addon.Xlsx
             return a;
         }
 
+        // TODO: Implemnt using cached values
+        public List<object> GetColumn(string rowSpan, string column)
+        {
+            string[] startEndtemp = rowSpan.Split(':');
+            if (startEndtemp.Length > 2)
+                throw new ArgumentException($"Range has to have format of 'start:end'", nameof(rowSpan));
+
+            string startRow = startEndtemp[0].Trim();
+            string endRow = startEndtemp[1].Trim();
+
+            int start = string.IsNullOrWhiteSpace(startRow) ? 1 : int.Parse(startRow);
+            int end = string.IsNullOrWhiteSpace(endRow) ? CountRows() : int.Parse(endRow);
+
+            IEnumerable<WorksheetPart> worksheetPart = wbPart.WorksheetParts;
+            WorksheetPart wsPart =
+             (WorksheetPart)(wbPart.GetPartById(sheet.Id));
+            Worksheet worksheet = wsPart.Worksheet;
+            SheetData data = worksheet.GetFirstChild<SheetData>();
+
+            object[] rows = new object[end - start + 1];
+
+#if DEBUG
+            int i = 0;
+#endif
+
+            foreach (OpenXmlElement element in data.ChildElements)
+            {
+                if (element is Row row)
+                {
+                    if (start <= row.RowIndex && row.RowIndex <= end)
+                    {
+                        Cell cell = (Cell)row.FirstOrDefault(e =>
+                        {
+                            if (e is Cell c)
+                            {
+                                string columnName = new string(c.CellReference.Value.TakeWhile(symbol => char.IsLetter(symbol)).ToArray());
+
+                                if (column == columnName)
+                                    return true;
+                            }
+
+                            return false;
+                        });
+
+                        if (cell != null)
+                        {
+                            rows[row.RowIndex - start] = GetStringValue(cell);
+                        }
+                    }
+                }
+#if DEBUG
+                i++;
+#endif
+
+            }
+
+            return rows.ToList();
+        }
+
         public void SetValue(int row, string column, string value)
         {
             var Position = FormatInput(column, row);
@@ -105,15 +264,27 @@ namespace G1ANT.Addon.Xlsx
 
         public string GetValue(int row, string column)
         {
-            string Position = FormatInput(column, row);
-            WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(sheet.Id));
-            Cell theCell = wsPart.Worksheet.Descendants<Cell>().Where(c => c.CellReference == Position.ToUpper()).FirstOrDefault();
+            string position = FormatInput(column, row);
+            if (dataCache.CotainsAdress(position))
+            {
+                return dataCache.GetValue(position);
+            }
+            else
+            {
 
+                WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(sheet.Id));
+                Cell theCell = wsPart.Worksheet.Descendants<Cell>().Where(c => c.CellReference == position.ToUpper()).FirstOrDefault();
+
+                return GetStringValue(theCell);
+            }
+        }
+
+        private string GetStringValue(Cell theCell)
+        {
             if (theCell != null)
             {
                 if (theCell.DataType != null && theCell.DataType.Value == CellValues.SharedString)
                 {
-
                     return wbPart.SharedStringTablePart.SharedStringTable.ElementAt(Int32.Parse(theCell.CellValue.InnerText)).InnerText.ToString();
                 }
                 else if (theCell.StyleIndex == "3")
@@ -273,11 +444,7 @@ namespace G1ANT.Addon.Xlsx
         public void ActivateSheet(string name)
         {
             Sheet foundSheet = GetSheetByName(name);
-            if (foundSheet == null)
-            {
-                throw new InvalidOperationException("Attempt to set null as active sheet");
-            }
-            sheet = GetSheetByName(name);
+            sheet = foundSheet ?? throw new InvalidOperationException("Attempt to set null as active sheet");
         }
 
         public bool Open(string filePath, string accessMode = "ReadWrite")
@@ -313,6 +480,8 @@ namespace G1ANT.Addon.Xlsx
                 remhyp();
             }
 
+            dataCache = new DataCache(this);
+
             if (spreadsheetDocument != null) return true;
             else return false;
         }
@@ -336,82 +505,9 @@ namespace G1ANT.Addon.Xlsx
 
         public string Find(string value)
         {
-            WorksheetPart wsPart =
-           (WorksheetPart)(wbPart.GetPartById(sheet.Id));
-            int v = 0;
-            if (Int32.TryParse(value, out v))
+            if (dataCache.ContainsValue(value))
             {
-                Cell cell = wsPart.Worksheet.Descendants<Cell>().
-              Where(c => c.StyleIndex == 1 && c.CellValue.InnerText.ToString() == value).First();
-                if (cell != null)
-                    return cell.CellReference.ToString();
-                else
-                    return null;
-
-            }
-            else if (value.ToString().Contains("%"))
-            {
-                Cell cell = wsPart.Worksheet.Descendants<Cell>().
-              Where(c => c.StyleIndex != null && c.StyleIndex == 6 || c.StyleIndex == 2 && c.CellValue.InnerText.ToString() == (double.Parse(value.ToString().TrimEnd('%')) / 100).ToString()).First();
-                if (cell != null)
-                {
-                    return cell.CellReference.ToString();
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (DateTime.TryParse(value, out DateTime d))
-            {
-                try
-                {
-                    Cell cell = wsPart.Worksheet.Descendants<Cell>().
-                         Where(c => c.StyleIndex != null && c.StyleIndex == 1 && c.CellValue.InnerText.ToString() == d.ToOADate().ToString()).First();
-                }
-                catch (Exception ex)
-                {
-                    var va = wbPart.SharedStringTablePart.SharedStringTable.ToList();
-                    if
-                        (va.Exists(xk => xk.InnerText == value))
-                    {
-                        int i = 0;
-                        foreach (SharedStringItem ssi in va)
-                        {
-                            if (ssi.InnerText == value)
-                            {
-                                Cell cell = wsPart.Worksheet.Descendants<Cell>().
-                  Where(c => c.CellValue != null && c.CellValue.InnerText.ToString() == i.ToString() && c.DataType?.Value == CellValues.SharedString).First();
-                                return cell.CellReference.ToString();
-                            }
-                            i++;
-                        }
-
-                    }
-                    else { return null; }
-
-                }
-            }
-            else
-            {
-                var va = wbPart.SharedStringTablePart.SharedStringTable.ToList();
-                if
-                    (va.Exists(xk => xk.InnerText == value))
-                {
-                    int i = 0;
-                    foreach (SharedStringItem ssi in va)
-                    {
-                        if (ssi.InnerText == value)
-                        {
-                            Cell cell = wsPart.Worksheet.Descendants<Cell>().
-              Where(c => c.CellValue != null && c.CellValue.InnerText.ToString() == i.ToString() && c.DataType?.Value == CellValues.SharedString).First();
-                            return cell.CellReference.ToString();
-                        }
-                        i++;
-                    }
-
-                }
-                else { return null; }
+                return dataCache.GetAdresses(value).First();
             }
             return null;
         }
