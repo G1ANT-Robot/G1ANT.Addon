@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Xlsx.Tests
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));
         }
-        
+
         [Test]
         [Timeout(40000)]
         public void XlsxFindDifferentTypesTest()
@@ -90,6 +90,53 @@ namespace G1ANT.Addon.Xlsx.Tests
 
             Assert.AreEqual(5, scripter.Variables.GetVariable("resrow11").GetValue().Object);
             Assert.AreEqual(26, scripter.Variables.GetVariable("resCol11").GetValue().Object);
+        }
+
+        [Test]
+        public void DoNotSearchInOtherSheetsTest()
+        {
+            scripter.Text = $@"xlsx.open {SpecialChars.Variable}xlsPath result {SpecialChars.Variable}id
+            xlsx.setsheet {SpecialChars.Text}Arkusz2{SpecialChars.Text} result {SpecialChars.Variable}res
+            xlsx.find 1234 resultrow {SpecialChars.Variable}resrow resultcolumn {SpecialChars.Variable}resCol
+            xlsx.find {SpecialChars.Text}abcd{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow2 resultcolumn {SpecialChars.Variable}resCol2
+            xlsx.find 150 resultrow {SpecialChars.Variable}resrow3 resultcolumn {SpecialChars.Variable}resCol3
+            -xlsx.find {SpecialChars.Text}160%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow4 resultcolumn {SpecialChars.Variable}resCol4
+            -xlsx.find {SpecialChars.Text}100%{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow5 resultcolumn {SpecialChars.Variable}resCol5
+            xlsx.find {SpecialChars.Text}AA{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow6 resultcolumn {SpecialChars.Variable}resCol6
+            xlsx.find {SpecialChars.Text}AZ{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow7 resultcolumn {SpecialChars.Variable}resCol7
+            xlsx.find {SpecialChars.Text}BA{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow8 resultcolumn {SpecialChars.Variable}resCol8
+            xlsx.find {SpecialChars.Text}AAZ{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow9 resultcolumn {SpecialChars.Variable}resCol9
+            xlsx.find {SpecialChars.Text}ABC{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow10 resultcolumn {SpecialChars.Variable}resCol10
+            xlsx.find {SpecialChars.Text}Z{SpecialChars.Text} resultrow {SpecialChars.Variable}resrow11 resultcolumn {SpecialChars.Variable}resCol11
+
+";
+            scripter.Run();
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow2").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol2").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow3").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol3").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow6").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol6").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow7").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol7").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow8").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol8").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow9").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol9").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow10").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol10").GetValue().Object);
+
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resrow11").GetValue().Object);
+            Assert.AreEqual(-1, scripter.Variables.GetVariable("resCol11").GetValue().Object);
         }
 
         [Test]
