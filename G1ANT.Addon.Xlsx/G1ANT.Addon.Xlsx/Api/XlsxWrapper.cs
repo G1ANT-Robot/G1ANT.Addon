@@ -63,7 +63,7 @@ namespace G1ANT.Addon.Xlsx
 
             public bool ContainsValue(string value)
             {
-                return value2adress.ContainsKey(value) && value2adress[value].Count > 0;
+                return value2adress.ContainsKey(value) && value2adress[value].Where(r => r.sheetID == owner.sheet.Id).Count() > 0;
             }
 
             public DataCache(XlsxWrapper xlsxWrapper)
