@@ -22,6 +22,10 @@ namespace G1ANT.Addon.Xlsx
 
             [Argument(Required = false)]
             public TextStructure AccessMode { get; set; } = new TextStructure(string.Empty);
+
+            [Argument]
+            public BooleanStructure CreateIfNotExist { get; set; } = new BooleanStructure(false);
+
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
@@ -34,6 +38,11 @@ namespace G1ANT.Addon.Xlsx
             var xlsWraper = XlsxManager.AddXlsx();
             try
             {
+                if (arguments.CreateIfNotExist.Value)
+                {
+                    if (System.IO.File.Exists(arguments.Path.Value) == false)
+                        xlsWraper.Create(arguments.Path.Value);
+                }
                 if (xlsWraper.Open(arguments.Path.Value, arguments.AccessMode.Value))
                 {
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.IntegerStructure(xlsWraper.Id));
