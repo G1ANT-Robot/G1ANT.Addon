@@ -395,11 +395,11 @@ namespace G1ANT.Addon.Xlsx
                 cell.CellValue = new CellValue(val);
                 cell.DataType = new DocumentFormat.OpenXml.EnumValue<CellValues>(CellValues.Number);
             }
-            else if (DateTime.TryParse(val, out DateTime date))
-            {
-                cell.CellValue = new CellValue(date.ToOADate().ToString());
-                cell.StyleIndex = 1;
-            }
+            //else if (DateTime.TryParse(val, out DateTime date))
+            //{
+            //    cell.CellValue = new CellValue(date.ToOADate().ToString());
+            //    cell.StyleIndex = 1;
+            //}
 
             else
             {
