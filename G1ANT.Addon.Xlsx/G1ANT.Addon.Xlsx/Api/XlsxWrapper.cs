@@ -466,6 +466,7 @@ namespace G1ANT.Addon.Xlsx
                           SheetId = 1,
                           Name = "Sheet 1"
                       }));
+                doc.WorkbookPart.Workbook.CalculationProperties = new CalculationProperties();
                 doc.Close();
             }
         }
