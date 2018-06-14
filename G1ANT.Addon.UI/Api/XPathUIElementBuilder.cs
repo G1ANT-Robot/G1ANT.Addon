@@ -135,7 +135,7 @@ namespace G1ANT.Addon.UI
             if (nodeType == System.Xml.XPath.XPathNodeType.Element)
             {
                 if (name != "ui")
-                    throw new NotSupportedException($"{name} element is not supportet.");
+                    throw new NotSupportedException($"{name} element is not supported.");
             }
             if (xpathAxis == XPathAxis.Descendant)
             {
