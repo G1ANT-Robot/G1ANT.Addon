@@ -72,16 +72,20 @@ namespace G1ANT.Addon.Xlsx
                 WorkbookPart wbPart = xlsxWrapper.spreadsheetDocument.WorkbookPart;
 
                 List<string> sharedStringCache = new List<string>();
-                using (OpenXmlReader shareStringReader = OpenXmlReader.Create(wbPart.SharedStringTablePart))
+                if (wbPart.SharedStringTablePart != null)
                 {
-                    while (shareStringReader.Read())
+                    using (OpenXmlReader shareStringReader = OpenXmlReader.Create(wbPart.SharedStringTablePart))
                     {
-                        if (shareStringReader.ElementType == typeof(SharedStringItem))
+                        while (shareStringReader.Read())
                         {
-                            SharedStringItem stringItem = (SharedStringItem)shareStringReader.LoadCurrentElement();
-                            sharedStringCache.Add(stringItem.Text?.Text ?? string.Empty);
+                            if (shareStringReader.ElementType == typeof(SharedStringItem))
+                            {
+                                SharedStringItem stringItem = (SharedStringItem)shareStringReader.LoadCurrentElement();
+                                sharedStringCache.Add(stringItem.Text?.Text ?? string.Empty);
+                            }
                         }
                     }
+
                 }
 
                 foreach (WorksheetPart sheetPart in wbPart.WorksheetParts)
@@ -391,11 +395,11 @@ namespace G1ANT.Addon.Xlsx
                 cell.CellValue = new CellValue(val);
                 cell.DataType = new DocumentFormat.OpenXml.EnumValue<CellValues>(CellValues.Number);
             }
-            else if (DateTime.TryParse(val, out DateTime date))
-            {
-                cell.CellValue = new CellValue(date.ToOADate().ToString());
-                cell.StyleIndex = 1;
-            }
+            //else if (DateTime.TryParse(val, out DateTime date))
+            //{
+            //    cell.CellValue = new CellValue(date.ToOADate().ToString());
+            //    cell.StyleIndex = 1;
+            //}
 
             else
             {
@@ -445,6 +449,26 @@ namespace G1ANT.Addon.Xlsx
         {
             Sheet foundSheet = GetSheetByName(name);
             sheet = foundSheet ?? throw new InvalidOperationException("Attempt to set null as active sheet");
+        }
+
+        public void Create(string filePath)
+        {
+            using (var doc = SpreadsheetDocument.Create(filePath, SpreadsheetDocumentType.Workbook))
+            {
+                doc.AddWorkbookPart().AddNewPart<WorksheetPart>().Worksheet = new Worksheet(new SheetData());
+
+                doc.WorkbookPart.Workbook =
+                  new Workbook(
+                    new Sheets(
+                      new Sheet
+                      {
+                          Id = doc.WorkbookPart.GetIdOfPart(doc.WorkbookPart.WorksheetParts.First()),
+                          SheetId = 1,
+                          Name = "Sheet 1"
+                      }));
+                doc.WorkbookPart.Workbook.CalculationProperties = new CalculationProperties();
+                doc.Close();
+            }
         }
 
         public bool Open(string filePath, string accessMode = "ReadWrite")
