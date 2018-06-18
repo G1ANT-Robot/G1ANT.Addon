@@ -59,6 +59,9 @@
     <Compile Include="Commands\MailSmtpCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />
     <Compile Include="Commands\RestCommand.cs" />
+    <Compile Include="Commands\TimeoutMailSmtpVariable.cs" />
+    <Compile Include="Commands\TimeoutRemoteDesktopVariable.cs" />
+    <Compile Include="Commands\TimeoutRestVariable.cs" />
     <Compile Include="Commands\VncConnectCommand.cs" />
     <Compile Include="NetAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

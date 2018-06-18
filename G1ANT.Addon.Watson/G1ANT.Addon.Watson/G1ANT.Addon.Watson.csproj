@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Api\WatsonClassifyImageApi.cs" />
     <Compile Include="Api\WatsonSpeechToTextApi.cs" />
+    <Compile Include="Commands\TimeoutWatsonVariable.cs" />
     <Compile Include="Commands\WatsonClassifyImageCommand.cs" />
     <Compile Include="Commands\WatsonSpeechToTextCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
