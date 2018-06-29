@@ -99,17 +99,17 @@ namespace G1ANT.Addon.UI
                 if (invokePattern != null)
                     invokePattern.Invoke();
             }
-            else if (automationElement.TryGetCurrentPattern(SelectionItemPattern.Pattern, out pattern))
-            {
-                SelectionItemPattern selectionPattern = pattern as SelectionItemPattern;
-                if (selectionPattern != null)
-                    selectionPattern.Select();
-            }
-            //else if ((bool)automationElement.GetCurrentPropertyValue(AutomationElementIdentifiers.IsLegacyIAccessiblePatternAvailableProperty))
+            //else if (automationElement.TryGetCurrentPattern(SelectionItemPattern.Pattern, out pattern))
             //{
-            //    var legacyPattern = ((LegacyIAccessiblePattern)automationElement.GetCurrentPattern(LegacyIAccessiblePattern.Pattern));
-            //    legacyPattern.DoDefaultAction();
+            //    SelectionItemPattern selectionPattern = pattern as SelectionItemPattern;
+            //    if (selectionPattern != null)
+            //        selectionPattern.Select();
             //}
+            else if ((bool)automationElement.GetCurrentPropertyValue(AutomationElementIdentifiers.IsLegacyIAccessiblePatternAvailableProperty))
+            {
+                var legacyPattern = ((LegacyIAccessiblePattern)automationElement.GetCurrentPattern(LegacyIAccessiblePattern.Pattern));
+                legacyPattern.DoDefaultAction();
+            }
             else
             {
                 //var rect = GetRectangle();
