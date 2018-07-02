@@ -58,7 +58,15 @@ namespace G1ANT.Addon.MSOffice
                 //    args.Add(string.Empty);
                 //}
 
-                ExcelManager.CurrentExcel.RunMacro(arguments.Name.Value, args);
+                var result = ExcelManager.CurrentExcel.RunMacro(arguments.Name.Value, args);
+                try
+                {
+                    Scripter.Variables.SetVariableValue(arguments.Result.Value, Scripter.Structures.CreateStructure(result));
+                }
+                catch
+                {
+                    Scripter.Variables.SetVariableValue(arguments.Result.Value, Scripter.Structures.CreateStructure(result.ToString()));
+                }
             }
             catch (Exception ex)
             {
