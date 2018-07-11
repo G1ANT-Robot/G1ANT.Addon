@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace G1ANT.Addon.Net.Commands
+namespace G1ANT.Addon.IExplorer
 {
     [Variable(
-        Name = "timeoutrest",
+        Name = "timeoutie",
         Tooltip = "")]
-    public class TimeoutRestVariable : Variable
+    public class TimeoutIEVariable : Variable
     {
-        private IntegerStructure value;
+        private TimeSpanStructure value;
 
-        public TimeoutRestVariable(AbstractScripter scripter = null) : base(scripter)
+        public TimeoutIEVariable(AbstractScripter scripter = null) : base(scripter)
         {
-            value = new IntegerStructure(5_000, "", scripter);
+            value = new TimeSpanStructure(new TimeSpan(0, 0, 60), "", scripter);
         }
 
         public override Structure GetValue(string index = null)

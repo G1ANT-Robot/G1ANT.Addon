@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 namespace G1ANT.Addon.Net.Commands
 {
     [Variable(
-        Name = "timeoutremotedesktop")]
-    public class TimeoutRemoteDesktopVariable : Variable
+        Name = "timeoutrest",
+        Tooltip = "")]
+    public class TimeoutRestVariable : Variable
     {
-        private IntegerStructure value;
+        private TimeSpanStructure value;
 
-        public TimeoutRemoteDesktopVariable(AbstractScripter scripter = null) : base(scripter)
+        public TimeoutRestVariable(AbstractScripter scripter = null) : base(scripter)
         {
-            value = new IntegerStructure(10_000, "", scripter);
+            value = new TimeSpanStructure(new TimeSpan(0, 0, 5), "", scripter);
         }
 
         public override Structure GetValue(string index = null)
