@@ -5,18 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace G1ANT.Addon.Net.Commands
+namespace G1ANT.Addon.Watson
 {
     [Variable(
-        Name = "timeoutmailsmtp",
+        Name = "timeoutwatson",
         Tooltip = "")]
-    public class TimeoutMailSmtpVariable : Variable
+    public class TimeoutWatsonVariable : Variable
     {
-        private IntegerStructure value;
-
-        public TimeoutMailSmtpVariable(AbstractScripter scripter = null) : base(scripter)
+        private TimeSpanStructure value;
+        public TimeoutWatsonVariable(AbstractScripter scripter = null) : base(scripter)
         {
-            value = new IntegerStructure(10_000, "", scripter);
+            value = new TimeSpanStructure(new TimeSpan(0, 0, 60), "", scripter);
         }
 
         public override Structure GetValue(string index = null)

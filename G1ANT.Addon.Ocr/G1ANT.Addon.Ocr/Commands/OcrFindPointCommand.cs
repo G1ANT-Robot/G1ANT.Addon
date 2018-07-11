@@ -32,7 +32,7 @@ namespace G1ANT.Language.Ocr
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr")]
+            [Argument(DefaultVariable = "timeoutocr")]
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]

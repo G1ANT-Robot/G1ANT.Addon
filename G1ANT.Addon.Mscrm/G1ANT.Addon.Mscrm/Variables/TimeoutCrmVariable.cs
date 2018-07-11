@@ -12,11 +12,11 @@ namespace G1ANT.Addon.Mscrm
         Tooltip = "")]
     public class TimeoutCrmVariable : Variable
     {
-        private IntegerStructure value;
+        private TimeSpanStructure value;
 
         public TimeoutCrmVariable(AbstractScripter scripter = null) : base(scripter)
         {
-            value = new IntegerStructure(10_000, "", scripter);
+            value = new TimeSpanStructure(new TimeSpan(0, 0, 10), "", scripter);
         }
 
         public override Structure GetValue(string index = null)

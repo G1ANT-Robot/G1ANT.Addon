@@ -30,7 +30,7 @@ namespace G1ANT.Language.Ocr
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr")]
+            [Argument(DefaultVariable = "timeoutocr")]
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "Comma separated language hints for better text recognition")]
