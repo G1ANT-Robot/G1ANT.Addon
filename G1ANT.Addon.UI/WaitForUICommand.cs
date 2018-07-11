@@ -1,6 +1,7 @@
 ﻿using System;
 using G1ANT.Language;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace G1ANT.Addon.UI
 {
@@ -39,6 +40,7 @@ namespace G1ANT.Addon.UI
                 }
                 catch
                 { }
+                Thread.Sleep(250);
                 Application.DoEvents();
             }
             string msg;
