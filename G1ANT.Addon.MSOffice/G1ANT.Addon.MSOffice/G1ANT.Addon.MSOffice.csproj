@@ -103,6 +103,7 @@
     <Compile Include="Commands\OutlookNewMessageCommand.cs" />
     <Compile Include="Commands\OutlookOpenCommand.cs" />
     <Compile Include="Commands\OutlookReplyCommand.cs" />
+    <Compile Include="Commands\OutlookSaveAttachmentCommand.cs" />
     <Compile Include="Commands\OutlookSelectItemCommand.cs" />
     <Compile Include="Commands\OutlookSendCommand.cs" />
     <Compile Include="Commands\WordCloseCommand.cs" />

@@ -257,6 +257,14 @@ namespace G1ANT.Addon.MSOffice
                 throw new NullReferenceException("Mail cannot be null.");
         }
 
+        public void SaveAttachment(Attachment attachment, string path)
+        {
+            if (attachment != null)
+                attachment.SaveAsFile(path);
+            else
+                throw new NullReferenceException("Attachment cannot be null.");
+        }
+
         public void Send(MailItem mail)
         {
             if (mail != null)

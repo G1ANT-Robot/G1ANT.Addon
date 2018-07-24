@@ -11,7 +11,7 @@ using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 
-namespace G1ANT.Addon.MSOffice.Commands
+namespace G1ANT.Addon.MSOffice
 {
     [Command(Name = "outlook.moveto", Tooltip = "This command move mail or folder to the new destination.")]
     public class OutlookMoveToCommand : Command
