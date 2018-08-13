@@ -260,7 +260,17 @@ namespace G1ANT.Addon.MSOffice
         public void SaveAttachment(Attachment attachment, string path)
         {
             if (attachment != null)
+            {
+                try
+                {
+                    var attr = File.GetAttributes(path);
+                    if (attr.HasFlag(FileAttributes.Directory))
+                        path = Path.Combine(path, attachment.FileName);
+                }
+                catch
+                { }
                 attachment.SaveAsFile(path);
+            }
             else
                 throw new NullReferenceException("Attachment cannot be null.");
         }
