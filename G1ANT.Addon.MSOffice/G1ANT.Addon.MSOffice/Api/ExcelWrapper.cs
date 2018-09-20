@@ -8,6 +8,7 @@
 *
 */
 using Microsoft.Office.Interop.Excel;
+using Microsoft.Vbe.Interop;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,7 +22,7 @@ namespace G1ANT.Addon.MSOffice
 {
     public class ExcelWrapper
     {
-        private Application application = null;
+        private Microsoft.Office.Interop.Excel.Application application = null;
         private _Workbook workbook = null;
         private _Worksheet sheet = null;
         private string path = null;
@@ -104,6 +105,30 @@ namespace G1ANT.Addon.MSOffice
             return result;
         }
 
+        public object RunMacroCode(string macroCode)
+        {
+            object result = null;
+            VBComponent component = null;
+            try
+            {
+                component = workbook.VBProject.VBComponents.Add(vbext_ComponentType.vbext_ct_StdModule);
+                string macroName = $"G1ANT{Guid.NewGuid().ToString("N")}";
+                component.CodeModule.AddFromString($"Sub {macroName}()\r\n{macroCode}\r\nEnd Sub\r\n");
+                result = RunMacro(macroName, new List<object>());
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (component != null)
+                    workbook.VBProject.VBComponents.Remove(component);
+            }
+
+            return result;
+        }
+
         public void ActivateSheet(string name)
         {
             sheet = GetSheetByName(name);
@@ -132,7 +157,7 @@ namespace G1ANT.Addon.MSOffice
 
         private void InitialiseNewinstance(bool visibile)
         {
-            application = new Application();
+            application = new Microsoft.Office.Interop.Excel.Application();
             application.DisplayAlerts = false;
             application.Visible = visibile;
         }
@@ -390,7 +415,7 @@ namespace G1ANT.Addon.MSOffice
             return null;
         }
 
-        private void WindowDeactivated(Workbook wb, Window wn)
+        private void WindowDeactivated(Workbook wb, Microsoft.Office.Interop.Excel.Window wn)
         {
             ExcelManager.RemoveInstance(Id);
             Close();

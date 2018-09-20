@@ -54,6 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -88,6 +91,7 @@
     <Compile Include="Commands\ExcelInsertColumnCommand.cs" />
     <Compile Include="Commands\ExcelOpenCommand.cs" />
     <Compile Include="Commands\ExcelRunMacroCommand.cs" />
+    <Compile Include="Commands\ExcelRunVBCodeCommand.cs" />
     <Compile Include="Commands\ExcelSaveCommand.cs" />
     <Compile Include="Commands\ExcelInsertRowCommand.cs" />
     <Compile Include="Commands\ExcelSetValueCommand.cs" />
