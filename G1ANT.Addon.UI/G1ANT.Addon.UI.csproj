@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CustomInterop.UIAutomationClient.il" />
+    <None Include="UIAddonConcept.md" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(TargetDir)\Interop.UIAutomationClient.dll">
