@@ -25,15 +25,18 @@ using Google.Apis.Drive.v3;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    public class SheetsWrapper
+    public class SheetsWrapper : IDisposable
     {
         private SheetsWrapper() { }
+
         public SheetsWrapper(int id)
         {
             this.Id = id;
         }
+
         public int Id { get; set; }
-        static string[] scopes = { SheetsService.Scope.Spreadsheets, SheetsService.Scope.Drive, SheetsService.Scope.DriveFile};
+
+        static string[] scopes = { SheetsService.Scope.Spreadsheets, SheetsService.Scope.Drive, SheetsService.Scope.DriveFile };
         static string ApplicationName = "G1ANT Robot";
         UserCredential credential;
         SheetsService service;
@@ -77,27 +80,29 @@ namespace G1ANT.Addon.GoogleDocs
 
             }
         }
+
         public string GetSpreadSheetId()
         {
             return spreadSheetId;
         }
+
         private void CreateService()
         {
-            
-                service = new SheetsService(new BaseClientService.Initializer()
-                {
-                    HttpClientInitializer = credential,
-                    ApplicationName = ApplicationName,
-                });
-            
+            service = new SheetsService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = ApplicationName,
+            });
         }
+
         private Spreadsheet GetSpreadsheetName()
         {
-            
-           var spreadShitTemp = service.Spreadsheets.Get(spreadSheetId);
-           return spreadShitTemp.Execute();
+
+            var spreadShitTemp = service.Spreadsheets.Get(spreadSheetId);
+            return spreadShitTemp.Execute();
 
         }
+
         private List<Sheet> GetSheetsList()
         {
             List<Sheet> sheets = new List<Sheet>();
@@ -108,13 +113,14 @@ namespace G1ANT.Addon.GoogleDocs
             }
             return sheets;
         }
+
         public void AssignSpreadSheet()
         {
-          
             spreadsheet = GetSpreadsheetName();
             sheets = GetSheetsList();
             spreadSheetName = spreadsheet.Properties.Title;
         }
+
         public void SetNewTitle(string title)
         {
             Request mainReq = new Request();
@@ -160,7 +166,7 @@ namespace G1ANT.Addon.GoogleDocs
             //
             SpreadsheetsResource.ValuesResource.BatchGetRequest BatchGetRequest = service.Spreadsheets.Values.BatchGet(spreadSheetId);
             BatchGetRequest.Ranges = rangMult;
-            BatchGetValuesResponse response= BatchGetRequest.Execute();
+            BatchGetValuesResponse response = BatchGetRequest.Execute();
             return response;
         }
         public string FindValue(string value, string sheetName = "")
@@ -168,21 +174,21 @@ namespace G1ANT.Addon.GoogleDocs
             range = sheetName + "!A1:A200";
             Request = service.Spreadsheets.Values.Get(spreadSheetId, range);
             var val = Request.Execute();
-            
-            if(val.Values != null)
+
+            if (val.Values != null)
             {
-                for(int i = 1; i <= val.Values.Count;i++)
+                for (int i = 1; i <= val.Values.Count; i++)
                 {
                     string s = val.Values[i][0].ToString();
 
-                    if(s == value)
+                    if (s == value)
                     {
-                        return "A" + (i+1).ToString();
+                        return "A" + (i + 1).ToString();
                     }
                 }
             }
-            
-            return string.Empty ;
+
+            return string.Empty;
         }
         private string GetExcelColumnName(int columnNumber)
         {
@@ -205,28 +211,28 @@ namespace G1ANT.Addon.GoogleDocs
             Request = service.Spreadsheets.Values.Get(spreadSheetId, range);
             var val = Request.Execute();
             IList<IList<Object>> values = val.Values;
-            IList<Object> rows; 
+            IList<Object> rows;
             List<string> addr = new List<string>();
-            string res=null;
+            string res = null;
             //int ind=1;
             if (values != null && values.Count > 0)
             {
                 //foreach (var row in values)
-                for (int i1=0;i1<values.Count;i1++)
+                for (int i1 = 0; i1 < values.Count; i1++)
                 {
                     rows = values[i1];
                     //foreach (var cell in row)
                     for (int i2 = 0; i2 < rows.Count; i2++)
                     {
-                        
+
                         //string s = val.Values[i][0].ToString();
                         if (rows[i2].ToString() == (in_value))
                         {
-                            res = (res==null)?(GetExcelColumnName(i2 + 1) + (i1 + 1).ToString()):(res+"&"+GetExcelColumnName(i2 + 1) + (i1 + 1).ToString());
+                            res = (res == null) ? (GetExcelColumnName(i2 + 1) + (i1 + 1).ToString()) : (res + "&" + GetExcelColumnName(i2 + 1) + (i1 + 1).ToString());
                         }
 
                     }
-                    
+
                 }
                 return (res == null) ? string.Empty : res;
 
@@ -262,19 +268,19 @@ namespace G1ANT.Addon.GoogleDocs
                     }
 
                 }
-                return (res==null)?string.Empty:res;
+                return (res == null) ? string.Empty : res;
 
             }
 
             return string.Empty;
         }
-        public void SetValue(string cell, string value,string sheetName = null, bool numeric = false )
+        public void SetValue(string cell, string value, string sheetName = null, bool numeric = false)
         {
             object v = value;
             if (numeric)
             {
                 value = value.Contains("£") ? value.Replace("£", "") : value;
-                value = value.Contains(",") ? value.Replace(",", ""): value;
+                value = value.Contains(",") ? value.Replace(",", "") : value;
                 v = double.Parse(value);
             }
 
@@ -282,13 +288,13 @@ namespace G1ANT.Addon.GoogleDocs
             range = sheetName + "!" + cell;
             var tempBody = new List<object>() { v };
             ValueRange bodyTemp = new ValueRange();
-            bodyTemp.Values= new List<IList<object>> { tempBody };
-            
+            bodyTemp.Values = new List<IList<object>> { tempBody };
+
             SpreadsheetsResource.ValuesResource.UpdateRequest update = service.Spreadsheets.Values.Update(bodyTemp, spreadSheetId, range);
             update.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
-           // update.ResponseValueRenderOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ResponseValueRenderOptionEnum.FORMATTEDVALUE;
-           // update.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.INPUTVALUEOPTIONUNSPECIFIED;
-            
+            // update.ResponseValueRenderOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ResponseValueRenderOptionEnum.FORMATTEDVALUE;
+            // update.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.INPUTVALUEOPTIONUNSPECIFIED;
+
             //UpdateValuesResponse result2 = update.Execute();
             update.Execute();
         }
@@ -298,8 +304,9 @@ namespace G1ANT.Addon.GoogleDocs
             if (type.Contains("pdf"))
             {
                 format = @"application/pdf";
-            } else
-             
+            }
+            else
+
             {
                 format = @"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
@@ -349,6 +356,43 @@ namespace G1ANT.Addon.GoogleDocs
 
             return result;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    service.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                service = null;
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~SheetsWrapper() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
 
     }
 }

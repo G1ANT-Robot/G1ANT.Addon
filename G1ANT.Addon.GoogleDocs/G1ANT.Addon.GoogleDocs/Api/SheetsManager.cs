@@ -46,6 +46,7 @@ namespace G1ANT.Addon.GoogleDocs
         public static void Remove(int id)
         {
             var toRemove = launchedSheets.Where(x => x.Id == id).FirstOrDefault();
+            toRemove.Dispose();
             launchedSheets.Remove(toRemove);
         }
         public static void Remove(SheetsWrapper wrapper)
