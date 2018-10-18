@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Net.Commands
 {
     [Variable(
         Name = "timeoutmailsmtp",
-        Tooltip = "")]
+        Tooltip = "Determines the timeout value for the mail.smtp command; the default value is 10000 ms.")]
     public class TimeoutMailSmtpVariable : Variable
     {
         private TimeSpanStructure value;

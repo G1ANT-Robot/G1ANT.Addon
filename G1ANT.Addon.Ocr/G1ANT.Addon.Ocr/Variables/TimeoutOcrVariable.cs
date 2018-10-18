@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Ocr.Commands
 {
     [Variable(
         Name = "timeoutocr",
-        Tooltip = "")]
+        Tooltip = "Determines the timeout value for the ocrtesseract. and ocrgoogle. commands; the default value is 10000 ms.")]
     public class TimeoutOcrVariable : Variable
     {
         private TimeSpanStructure value;

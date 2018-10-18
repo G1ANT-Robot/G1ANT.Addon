@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Net.Commands
 {
     [Variable(
         Name = "timeoutrest",
-        Tooltip = "")]
+        Tooltip = "Determines the timeout value for the rest command; the default value is 5000 ms.")]
     public class TimeoutRestVariable : Variable
     {
         private TimeSpanStructure value;

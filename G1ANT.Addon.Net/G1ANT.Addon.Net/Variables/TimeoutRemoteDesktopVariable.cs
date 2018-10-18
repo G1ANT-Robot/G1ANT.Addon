@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace G1ANT.Addon.Net.Commands
 {
     [Variable(
-        Name = "timeoutremotedesktop")]
+        Name = "timeoutremotedesktop", 
+        Tooltip = "Determines the timeout value for the vnc.connect command; the default value is 10000 ms.")]
     public class TimeoutRemoteDesktopVariable : Variable
     {
         private TimeSpanStructure value;

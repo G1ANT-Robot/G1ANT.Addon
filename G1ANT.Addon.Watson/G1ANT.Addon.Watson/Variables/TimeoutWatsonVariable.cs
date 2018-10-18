@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Watson
 {
     [Variable(
         Name = "timeoutwatson",
-        Tooltip = "")]
+        Tooltip = "Determines the timeout value for the watson. commands; the default value is 60000 ms.")]
     public class TimeoutWatsonVariable : Variable
     {
         private TimeSpanStructure value;

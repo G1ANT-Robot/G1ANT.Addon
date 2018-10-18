@@ -9,7 +9,7 @@ namespace G1ANT.Addon.IExplorer
 {
     [Variable(
         Name = "timeoutie",
-        Tooltip = "")]
+        Tooltip = "Determines the timeout value for the ie. commands; the default value is 6000 ms.")]
     public class TimeoutIEVariable : Variable
     {
         private TimeSpanStructure value;
