@@ -18,12 +18,13 @@ using System.Net.Mail;
 
 using MailKit;
 using MailKit.Net.Imap;
-
 using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
-{
+{    
     using System.Net;
+
+    using Language.Structures;
 
 
     [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mail specified by filename.")]
@@ -50,8 +51,15 @@ namespace G1ANT.Addon.Net
             public DateStructure ToDate { get; set; }
 
             [Argument(Required = true, Tooltip = "Look only for already read messages")]
-            public BooleanStructure OnlyReadMessages { get; set; }
-            
+            //public BooleanStructure OnlyReadMessages { get; set; }
+            public BooleanStructure OnlyUnreadMessages { get; set; }
+
+            //[Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
+            //public ListStructure MessageList { get; set; }
+
+            [Argument]
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
+
         }
 
 
@@ -83,9 +91,20 @@ namespace G1ANT.Addon.Net
         }
 
         //TODO: Use some kind of enumerator structure instead of boolean structure
-        private List<IMessageSummary> SelectRelevantMessages(List<IMessageSummary> messages, BooleanStructure alreadyRead)
+        private List<IMessageSummary> SelectRelevantMessages(List<IMessageSummary> messages, BooleanStructure onlyRead, DateTime sinceDate)
         {
-            return messages.Where(m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == alreadyRead.Value).ToList();
+            List<IMessageSummary> relevant = new List<IMessageSummary>();
+            if (onlyRead.Value)
+            {
+                relevant = messages.Where(m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) != onlyRead.Value)
+                                   .ToList();
+            }
+            else
+            {
+                relevant = messages;
+            }
+            return relevant;
+            //return relevantMessages.Where(m => m.Date.DateTime > sinceDate).ToList();
         }
 
 
@@ -93,31 +112,19 @@ namespace G1ANT.Addon.Net
         private void ReceiveMesssages(ImapClient client, Arguments arguments)
         {
             var messages = client.Inbox.Fetch(0, -1, MessageSummaryItems.Full | MessageSummaryItems.UniqueId).ToList();
-            var selectedMessages = SelectRelevantMessages(messages, arguments.OnlyReadMessages);
+            var selectedMessages = SelectRelevantMessages(messages, arguments.OnlyUnreadMessages, arguments.SinceDate.Value);
+            int i = 0;
 
+            ListStructure messageList = new ListStructure();;
+            foreach (IMessageSummary message in selectedMessages)
+            {
+                var structure = new MailStructure(message);
+                messageList.AddItem(structure);
+            }
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
 
-
-            //var unreadMessages = messages.Where(m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false)
-            //                     .ToList();
-            //if (unreadMessages.Count > 0)
-            //{
-            //    var newMails = new List<IMessageSummary>();
-            //    if (unreadMessages.Last().Date > lastCheckDate)
-            //    {
-            //        newMails = unreadMessages.Where(x => x.Date > lastCheckDate).ToList();
-            //    }
-
-            //    foreach (TaskArguments ta in MakeTasksArgs(newMails, client))
-            //    {
-            //        queueForTasks.Enqueue(ta);
-            //    }
-
-            //    lastCheckDate = unreadMessages.Last().Date;
-            //}
-            //else
-            //{
-            //    lastCheckDate = DateTime.Now;
-            //}
+            //MailStructure structure;
+            //Scripter.Variables.SetVariableValue("messages", List<stru>);
         }
     }
 }
