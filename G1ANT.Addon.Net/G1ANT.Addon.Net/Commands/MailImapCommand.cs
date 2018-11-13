@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using MailKit;
 using MailKit.Net.Imap;
 
@@ -21,6 +22,8 @@ namespace G1ANT.Addon.Net
     using System.Net;
 
     using Language.Structures;
+
+    using MimeKit;
 
 
     [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mail specified by filename.")]
@@ -75,12 +78,12 @@ namespace G1ANT.Addon.Net
             {
                 var messages = ReceiveMesssages(client, arguments);
 
+                SendMessageListToScripter(client, arguments, messages);
+
                 if (markAsRead)
                 {
                     MarkMessagesAsRead(client, messages);
                 }
-
-                SendMessageListToScripter(arguments, messages);
             }
         }
 
@@ -94,22 +97,24 @@ namespace G1ANT.Addon.Net
             client.Inbox.Subscribe();
         }
 
-        private void SendMessageListToScripter(Arguments arguments, List<IMessageSummary> messages)
+        private void SendMessageListToScripter(ImapClient client, Arguments arguments, List<IMessageSummary> messages)
         {
             var messageList = new ListStructure();
 
-            foreach (IMessageSummary message in messages)
+            foreach (var message in messages)
             {
-                var structure = new MailStructure(message);
+                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, client.Inbox);
+                var structure = new MailStructure(messageWithFolder, null, null);
                 messageList.AddItem(structure);
             }
 
             Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
         }
 
+
         private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
         {
-            var allMessages = client.Inbox.Fetch(0, -1, MessageSummaryItems.Full | MessageSummaryItems.UniqueId).ToList();
+            var allMessages = client.Inbox.Fetch(0, -1, MessageSummaryItems.All | MessageSummaryItems.Body | MessageSummaryItems.BodyStructure | MessageSummaryItems.UniqueId).ToList();
             var onlyUnread = arguments.OnlyUnreadMessages.Value;
             var since = arguments.SinceDate.Value;
             var to = arguments.ToDate.Value;
@@ -129,6 +134,7 @@ namespace G1ANT.Addon.Net
         {
             Func<IMessageSummary, bool> isUnread = m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false;
             var relevantMessages = onlyUnRead ? messages.Where(isUnread).ToList() : messages;
+
             relevantMessages = relevantMessages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();
             return relevantMessages;
         }
