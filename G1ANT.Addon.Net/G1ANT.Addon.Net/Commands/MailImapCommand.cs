@@ -11,17 +11,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text;
-using System.Net.Mail;
-
 using MailKit;
 using MailKit.Net.Imap;
+
 using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
-{    
+{
     using System.Net;
 
     using Language.Structures;
@@ -38,28 +34,26 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Smpt client port")]
             public IntegerStructure Port { get; set; } = new IntegerStructure();
 
-            [Argument(Required = true, Tooltip = "Login of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "Login of the inbox user")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "Password of the inbox user")]
             public TextStructure Password { get; set; }
 
             [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
             public DateStructure SinceDate { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "To what date should emails be retrieved")]
             public DateStructure ToDate { get; set; }
 
-            [Argument(Required = true, Tooltip = "Look only for already read messages")]
-            //public BooleanStructure OnlyReadMessages { get; set; }
+            [Argument(Required = true, Tooltip = "Look only for already unread messages")]
             public BooleanStructure OnlyUnreadMessages { get; set; }
 
-            //[Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
-            //public ListStructure MessageList { get; set; }
+            [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
+            public BooleanStructure MarkAsRead { get; set; }
 
-            [Argument]
-            public VariableStructure Result { get; set; } = new VariableStructure("result");
-
+            [Argument(Required = false, Tooltip = "Received messages")]
+            public VariableStructure Result { get; set; } = new VariableStructure("ReceivedMessages");
         }
 
 
@@ -72,59 +66,71 @@ namespace G1ANT.Addon.Net
             var client = new ImapClient();
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
-            ClientConnection(client, credentials, uri, (int)arguments.Timeout.Value.TotalMilliseconds);
+            var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
+            var markAsRead = arguments.MarkAsRead.Value;
+
+            ClientConnection(client, credentials, uri, timeout, markAsRead == false);
 
             if (client.IsConnected && client.IsAuthenticated)
             {
-                ReceiveMesssages(client, arguments);
+                var messages = ReceiveMesssages(client, arguments);
+
+                if (markAsRead)
+                {
+                    MarkMessagesAsRead(client, messages);
+                }
+
+                SendMessageListToScripter(arguments, messages);
             }
         }
 
-        private void ClientConnection(ImapClient client, NetworkCredential credentials, Uri uri, int timeout)
+        private void ClientConnection(ImapClient client, NetworkCredential credentials, Uri uri, int timeout, bool readOnly)
         {
             client.Timeout = timeout;
             client.ServerCertificateValidationCallback = (s, c, h, e) => true; //HACK try to Repair & Remove
             client.Connect(uri);
             client.Authenticate(credentials);
-            client.Inbox.Open(FolderAccess.ReadOnly);
+            client.Inbox.Open(readOnly ? FolderAccess.ReadOnly : FolderAccess.ReadWrite);
             client.Inbox.Subscribe();
         }
 
-        //TODO: Use some kind of enumerator structure instead of boolean structure
-        private List<IMessageSummary> SelectRelevantMessages(List<IMessageSummary> messages, BooleanStructure onlyRead, DateTime sinceDate)
+        private void SendMessageListToScripter(Arguments arguments, List<IMessageSummary> messages)
         {
-            List<IMessageSummary> relevant = new List<IMessageSummary>();
-            if (onlyRead.Value)
-            {
-                relevant = messages.Where(m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) != onlyRead.Value)
-                                   .ToList();
-            }
-            else
-            {
-                relevant = messages;
-            }
-            return relevant;
-            //return relevantMessages.Where(m => m.Date.DateTime > sinceDate).ToList();
-        }
+            var messageList = new ListStructure();
 
-
-        //TODO: Should be further developed after creating Mail Structure
-        private void ReceiveMesssages(ImapClient client, Arguments arguments)
-        {
-            var messages = client.Inbox.Fetch(0, -1, MessageSummaryItems.Full | MessageSummaryItems.UniqueId).ToList();
-            var selectedMessages = SelectRelevantMessages(messages, arguments.OnlyUnreadMessages, arguments.SinceDate.Value);
-            int i = 0;
-
-            ListStructure messageList = new ListStructure();;
-            foreach (IMessageSummary message in selectedMessages)
+            foreach (IMessageSummary message in messages)
             {
                 var structure = new MailStructure(message);
                 messageList.AddItem(structure);
             }
-            Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
 
-            //MailStructure structure;
-            //Scripter.Variables.SetVariableValue("messages", List<stru>);
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
+        }
+
+        private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
+        {
+            var allMessages = client.Inbox.Fetch(0, -1, MessageSummaryItems.Full | MessageSummaryItems.UniqueId).ToList();
+            var onlyUnread = arguments.OnlyUnreadMessages.Value;
+            var since = arguments.SinceDate.Value;
+            var to = arguments.ToDate.Value;
+            return SelectMessages(allMessages, onlyUnread, since, to);
+        }
+
+        private void MarkMessagesAsRead(ImapClient client, List<IMessageSummary> messages)
+        {
+            foreach (IMessageSummary message in messages)
+            {
+                client.Inbox.SetFlags(message.UniqueId, MessageFlags.Seen, true);
+            }
+        }
+
+        private List<IMessageSummary> SelectMessages(List<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate,
+                                                     DateTime toDate)
+        {
+            Func<IMessageSummary, bool> isUnread = m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false;
+            var relevantMessages = onlyUnRead ? messages.Where(isUnread).ToList() : messages;
+            relevantMessages = relevantMessages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();
+            return relevantMessages;
         }
     }
 }

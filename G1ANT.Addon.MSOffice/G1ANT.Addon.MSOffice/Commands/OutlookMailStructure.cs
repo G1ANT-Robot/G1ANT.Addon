@@ -17,13 +17,13 @@ namespace G1ANT.Addon.MSOffice
     [Structure(Name = "OutlookMail", AutoCreate = false)]
     public class OutlookMailStructure : StructureTyped<MailItem>
     {
-        const string IdIndex = "id";
-        const string FromIndex = "from";
-        const string AccountIndex = "account";
-        const string SubjectIndex = "subject";
-        const string BodyIndex = "body";
-        const string HtmlBodyIndex = "htmlbody";
-        const string AttachmentsIndex = "attachments";
+        private const string IdIndex = "id";
+        private const string FromIndex = "from";
+        private const string ToIndex = "to";
+        private const string SubjectIndex = "subject";
+        private const string BodyIndex = "body";
+        private const string HtmlBodyIndex = "htmlbody";
+        private const string AttachmentsIndex = "attachments";
 
         public OutlookMailStructure(string value, string format = "", AbstractScripter scripter = null) :
             base(value, format, scripter)
@@ -45,7 +45,7 @@ namespace G1ANT.Addon.MSOffice
             Indexes.Add(BodyIndex);
             Indexes.Add(HtmlBodyIndex);
             Indexes.Add(FromIndex);
-            Indexes.Add(AccountIndex);
+            Indexes.Add(ToIndex);
         }
 
         public override Structure Get(string index = "")
@@ -64,7 +64,7 @@ namespace G1ANT.Addon.MSOffice
                     return new TextStructure(Value.HTMLBody, null, Scripter);
                 case FromIndex:
                     return new TextStructure(Value.SenderEmailAddress, null, Scripter);
-                case AccountIndex:
+                case ToIndex:
                     return new TextStructure(Value.SendUsingAccount.SmtpAddress, null, Scripter);
                 case AttachmentsIndex:
                     {
@@ -101,7 +101,7 @@ namespace G1ANT.Addon.MSOffice
                     case HtmlBodyIndex:
                         Value.HTMLBody = structure.ToString();
                         break;
-                    case AccountIndex:
+                    case ToIndex:
                         {
                             Accounts accounts = Value.Session.Accounts;
                             foreach (Account account in accounts)
