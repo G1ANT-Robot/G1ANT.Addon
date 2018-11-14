@@ -26,15 +26,15 @@ namespace G1ANT.Addon.Net
     using MimeKit;
 
 
-    [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mail specified by filename.")]
+    [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mails from inbox.")]
     public class MailImapCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Smpt client host name")]
+            [Argument(Tooltip = "Host name")]
             public TextStructure Host { get; set; }
 
-            [Argument(Tooltip = "Smpt client port")]
+            [Argument(Tooltip = "Port")]
             public IntegerStructure Port { get; set; } = new IntegerStructure();
 
             [Argument(Required = true, Tooltip = "Login of the inbox user")]
