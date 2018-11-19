@@ -11,31 +11,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using MailKit;
 using MailKit.Net.Imap;
-
 using G1ANT.Language;
+using System.Net;
+using MimeKit;
+
 
 namespace G1ANT.Addon.Net
 {
-    using System.Net;
-
-    using Language.Structures;
-
-    using MimeKit;
-
 
     [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mails from inbox.")]
     public class MailImapCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Host name")]
+            [Argument(Required = true, Tooltip = "Host name")]
             public TextStructure Host { get; set; }
 
-            [Argument(Tooltip = "Port")]
-            public IntegerStructure Port { get; set; } = new IntegerStructure();
+            [Argument(Required = true, Tooltip = "Port", DefaultVariable = "993")]
+            public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
             [Argument(Required = true, Tooltip = "Login of the inbox user")]
             public TextStructure Login { get; set; }
@@ -46,17 +41,17 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
             public DateStructure SinceDate { get; set; }
 
-            [Argument(Required = true, Tooltip = "To what date should emails be retrieved")]
-            public DateStructure ToDate { get; set; }
+            [Argument(Required = false, Tooltip = "To what date should emails be retrieved")]
+            public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
-            [Argument(Required = true, Tooltip = "Look only for already unread messages")]
-            public BooleanStructure OnlyUnreadMessages { get; set; }
+            [Argument(Required = false, Tooltip = "Look only for already unread messages", DefaultVariable = "false")]
+            public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
-            [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
-            public BooleanStructure MarkAsRead { get; set; }
+            [Argument(Required = false, Tooltip = "Mark analyzed messages as read", DefaultVariable = "true")]
+            public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
             [Argument(Required = false, Tooltip = "Received messages")]
-            public VariableStructure Result { get; set; } = new VariableStructure("ReceivedMessages");
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
 
