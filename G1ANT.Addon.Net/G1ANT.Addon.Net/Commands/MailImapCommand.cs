@@ -15,12 +15,10 @@ using MailKit;
 using MailKit.Net.Imap;
 using G1ANT.Language;
 using System.Net;
-using MimeKit;
 
 
 namespace G1ANT.Addon.Net
 {
-
     [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mails from inbox.")]
     public class MailImapCommand : Command
     {
@@ -48,7 +46,7 @@ namespace G1ANT.Addon.Net
             public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
-            public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
+            public BooleanStructure MarkAllMessagesAsRead { get; set; } = new BooleanStructure(true);
 
             [Argument(Required = false, Tooltip = "Received messages")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
@@ -61,35 +59,42 @@ namespace G1ANT.Addon.Net
 
         public void Execute(Arguments arguments)
         {
-            var client = new ImapClient();
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
-            var markAsRead = arguments.MarkAsRead.Value;
+            var markAllMessagesAsRead = arguments.MarkAllMessagesAsRead.Value;
 
-            ClientConnection(client, credentials, uri, timeout, markAsRead == false);
-
+            var client = CreateImapClient(timeout);
+            ConnectClient(client, credentials, uri, !markAllMessagesAsRead);
             if (client.IsConnected && client.IsAuthenticated)
             {
                 var messages = ReceiveMesssages(client, arguments);
 
                 SendMessageListToScripter(client, arguments, messages);
 
-                if (markAsRead)
+                if (markAllMessagesAsRead)
                 {
                     MarkMessagesAsRead(client, messages);
                 }
             }
         }
 
-        private void ClientConnection(ImapClient client, NetworkCredential credentials, Uri uri, int timeout, bool readOnly)
+        private void ConnectClient(ImapClient client, NetworkCredential credentials, Uri uri, bool readOnly)
         {
-            client.Timeout = timeout;
-            client.ServerCertificateValidationCallback = (s, c, h, e) => true; //HACK try to Repair & Remove
             client.Connect(uri);
             client.Authenticate(credentials);
             client.Inbox.Open(readOnly ? FolderAccess.ReadOnly : FolderAccess.ReadWrite);
             client.Inbox.Subscribe();
+        }
+
+        private ImapClient CreateImapClient(int timeout)
+        {
+            var client = new ImapClient
+            {
+                Timeout = timeout,
+            };
+
+            return client;
         }
 
         private void SendMessageListToScripter(ImapClient client, Arguments arguments, List<IMessageSummary> messages)
@@ -109,10 +114,17 @@ namespace G1ANT.Addon.Net
 
         private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
         {
-            var allMessages = client.Inbox.Fetch(0, -1, MessageSummaryItems.All | MessageSummaryItems.Body | MessageSummaryItems.BodyStructure | MessageSummaryItems.UniqueId).ToList();
+            var allMessages = client
+                              .Inbox.Fetch(
+                                  0, -1,
+                                  MessageSummaryItems.All |
+                                  MessageSummaryItems.Body |
+                                  MessageSummaryItems.BodyStructure |
+                                  MessageSummaryItems.UniqueId).ToList();
             var onlyUnread = arguments.OnlyUnreadMessages.Value;
             var since = arguments.SinceDate.Value;
             var to = arguments.ToDate.Value;
+
             return SelectMessages(allMessages, onlyUnread, since, to);
         }
 
@@ -124,13 +136,14 @@ namespace G1ANT.Addon.Net
             }
         }
 
-        private List<IMessageSummary> SelectMessages(List<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate,
-                                                     DateTime toDate)
+        private List<IMessageSummary> SelectMessages(
+        List<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate, DateTime toDate)
         {
             Func<IMessageSummary, bool> isUnread = m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false;
             var relevantMessages = onlyUnRead ? messages.Where(isUnread).ToList() : messages;
 
             relevantMessages = relevantMessages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();
+
             return relevantMessages;
         }
     }
