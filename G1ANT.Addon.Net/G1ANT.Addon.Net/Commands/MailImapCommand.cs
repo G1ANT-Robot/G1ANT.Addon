@@ -29,7 +29,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Host name")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port", DefaultVariable = "993")]
+            [Argument(Required = true, Tooltip = "Port")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
             [Argument(Required = true, Tooltip = "Login of the inbox user")]
@@ -44,10 +44,10 @@ namespace G1ANT.Addon.Net
             [Argument(Required = false, Tooltip = "To what date should emails be retrieved")]
             public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
-            [Argument(Required = false, Tooltip = "Look only for already unread messages", DefaultVariable = "false")]
+            [Argument(Required = false, Tooltip = "Look only for already unread messages")]
             public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
-            [Argument(Required = false, Tooltip = "Mark analyzed messages as read", DefaultVariable = "true")]
+            [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
             public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
             [Argument(Required = false, Tooltip = "Received messages")]
