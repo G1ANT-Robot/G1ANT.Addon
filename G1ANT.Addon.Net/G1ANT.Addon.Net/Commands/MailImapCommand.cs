@@ -11,9 +11,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using MailKit;
 using MailKit.Net.Imap;
+
 using G1ANT.Language;
+
 using System.Net;
 
 
@@ -140,9 +143,9 @@ namespace G1ANT.Addon.Net
         List<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate, DateTime toDate)
         {
             Func<IMessageSummary, bool> isUnread = m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false;
-            var relevantMessages = onlyUnRead ? messages.Where(isUnread).ToList() : messages;
 
-            relevantMessages = relevantMessages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();
+            var relevantMessages = messages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();
+            relevantMessages = onlyUnRead ? relevantMessages.Where(isUnread).ToList() : relevantMessages;
 
             return relevantMessages;
         }
