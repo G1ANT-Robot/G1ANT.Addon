@@ -9,13 +9,11 @@
 */
 
 using System;
-
+using System.Linq;
 using G1ANT.Language;
-
 
 namespace G1ANT.Addon.MSOffice
 {
-    using System.Linq;
 
 
     [Command(Name = "excel.setvalue", Tooltip = "Sets value in specified cell.")]
