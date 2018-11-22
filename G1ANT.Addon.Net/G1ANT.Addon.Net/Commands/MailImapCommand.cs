@@ -69,10 +69,10 @@ namespace G1ANT.Addon.Net
 
             var client = CreateImapClient(timeout);
             ConnectClient(client, credentials, uri, !markAllMessagesAsRead);
+
             if (client.IsConnected && client.IsAuthenticated)
             {
                 var messages = ReceiveMesssages(client, arguments);
-
                 SendMessageListToScripter(client, arguments, messages);
 
                 if (markAllMessagesAsRead)
@@ -82,7 +82,7 @@ namespace G1ANT.Addon.Net
             }
         }
 
-        private void ConnectClient(ImapClient client, NetworkCredential credentials, Uri uri, bool readOnly)
+        private static void ConnectClient(ImapClient client, NetworkCredential credentials, Uri uri, bool readOnly)
         {
             client.Connect(uri);
             client.Authenticate(credentials);
@@ -117,13 +117,11 @@ namespace G1ANT.Addon.Net
 
         private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
         {
-            var allMessages = client
-                              .Inbox.Fetch(
-                                  0, -1,
-                                  MessageSummaryItems.All |
-                                  MessageSummaryItems.Body |
-                                  MessageSummaryItems.BodyStructure |
-                                  MessageSummaryItems.UniqueId).ToList();
+            var options = MessageSummaryItems.All |
+                          MessageSummaryItems.Body |
+                          MessageSummaryItems.BodyStructure |
+                          MessageSummaryItems.UniqueId;
+            var allMessages = client.Inbox.Fetch(0, -1, options).ToList();
             var onlyUnread = arguments.OnlyUnreadMessages.Value;
             var since = arguments.SinceDate.Value;
             var to = arguments.ToDate.Value;
@@ -131,22 +129,20 @@ namespace G1ANT.Addon.Net
             return SelectMessages(allMessages, onlyUnread, since, to);
         }
 
-        private void MarkMessagesAsRead(ImapClient client, List<IMessageSummary> messages)
+        private static void MarkMessagesAsRead(ImapClient client, List<IMessageSummary> messages)
         {
-            foreach (IMessageSummary message in messages)
+            foreach (var message in messages)
             {
                 client.Inbox.SetFlags(message.UniqueId, MessageFlags.Seen, true);
             }
         }
 
-        private List<IMessageSummary> SelectMessages(
-        List<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate, DateTime toDate)
+        private static List<IMessageSummary> SelectMessages(
+        IList<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate, DateTime toDate)
         {
             Func<IMessageSummary, bool> isUnread = m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false;
-
             var relevantMessages = messages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();
             relevantMessages = onlyUnRead ? relevantMessages.Where(isUnread).ToList() : relevantMessages;
-
             return relevantMessages;
         }
     }
