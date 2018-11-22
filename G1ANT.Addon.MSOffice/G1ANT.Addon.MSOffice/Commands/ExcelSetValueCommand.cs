@@ -7,14 +7,15 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using System;
-
+using System.Linq;
 using G1ANT.Language;
-
-
 
 namespace G1ANT.Addon.MSOffice
 {
+
+
     [Command(Name = "excel.setvalue", Tooltip = "Sets value in specified cell.")]
     public class ExcelSetValueCommand : Command
     {
@@ -32,27 +33,59 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Cell's column name")]
             public TextStructure ColName { get; set; }
         }
+
+
         public ExcelSetValueCommand(AbstractScripter scripter) : base(scripter)
-        {
-        }
+        { }
 
         public void Execute(Arguments arguments)
         {
             object col = null;
+
             try
-            {                
-                if (arguments.ColIndex != null)
-                    col = arguments.ColIndex.Value;
-                else if (arguments.ColName != null)
-                    col = arguments.ColName.Value;
-                else
-                    throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
-                ExcelManager.CurrentExcel.SetCellValue(arguments.Row.Value, col, arguments.Value.Value);
+            {
+                if (HasCorrectColumnArguments(arguments))
+                {
+                    if (arguments.ColName != null)
+                    {
+                        if (arguments.ColName.Value.All(x => x.IsLetter()))
+                        {
+                            col = arguments.ColName.Value;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("ColName should not contain any special characters or digits.");
+                        }
+                    }
+                    else
+                    {
+                        col = arguments.ColIndex.Value;
+                    }
+
+                    ExcelManager.CurrentExcel.SetCellValue(arguments.Row.Value, col, arguments.Value.Value);
+                }
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"Problem occured while setting value. Row: '{arguments.Row.Value}', Col: '{col}', Val: '{arguments.Value.Value}'", ex);
+                throw new ApplicationException(
+                    $"Problem occured while setting value. Row: '{arguments.Row.Value}', Col: '{col}', Val: '{arguments.Value.Value}'",
+                    ex);
             }
+        }
+
+        private static bool HasCorrectColumnArguments(Arguments arguments)
+        {
+            if (arguments.ColIndex == null && arguments.ColName == null)
+            {
+                throw new ArgumentException("One of the ColIndex or ColName arguments have to be set up.");
+            }
+
+            if (arguments.ColName != null && arguments.ColIndex != null)
+            {
+                throw new ArgumentException("Only of one the ColIndex or ColName arguments should be set up.");
+            }
+
+            return true;
         }
     }
 }
