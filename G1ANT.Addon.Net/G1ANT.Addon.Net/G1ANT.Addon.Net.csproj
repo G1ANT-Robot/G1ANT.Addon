@@ -36,12 +36,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
     </Reference>
+    <Reference Include="MailKit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MailKit.2.0.7\lib\net45\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MimeKit.2.0.6\lib\net45\MimeKit.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=106.2.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -56,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Commands\AS400OpenCommand.cs" />
     <Compile Include="Commands\IsAccessibleCommand.cs" />
+    <Compile Include="Commands\MailImapCommand.cs" />
     <Compile Include="Commands\MailSmtpCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />
     <Compile Include="Commands\RestCommand.cs" />

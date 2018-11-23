@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.smtp", Tooltip = "This command tries to delete the file specified by filename.")]
+    [Command(Name = "mail.smtp", Tooltip = "This command tries to send the file specified by filename.")]
     public class MailSmtpCommand : Command
     {
         public class Arguments : CommandArguments
