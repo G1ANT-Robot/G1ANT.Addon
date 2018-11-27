@@ -55,7 +55,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         [SetUp]
         public void testinit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
         }

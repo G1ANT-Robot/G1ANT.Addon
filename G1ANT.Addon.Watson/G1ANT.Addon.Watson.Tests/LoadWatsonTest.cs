@@ -18,7 +18,7 @@ namespace G1ANT.Addon.Watson.Tests
         [Test]
         public void LoadWatsonAddon()
         {
-            Language.Addon addon = Language.Addon.Load("G1ANT.Addon.Watson.dll");
+            Language.Addon addon = Language.AddonLoader.Load("G1ANT.Addon.Watson.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

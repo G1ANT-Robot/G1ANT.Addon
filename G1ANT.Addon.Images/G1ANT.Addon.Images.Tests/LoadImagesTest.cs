@@ -18,7 +18,7 @@ namespace G1ANT.Addon.Images.Tests
         [Test]
         public void LoadImagesAddon()
         {
-            Language.Addon addon = Language.Addon.Load("G1ANT.Addon.Images.dll");
+            Language.Addon addon = Language.AddonLoader.Load("G1ANT.Addon.Images.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

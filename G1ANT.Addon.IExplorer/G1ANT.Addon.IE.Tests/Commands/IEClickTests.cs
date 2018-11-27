@@ -33,7 +33,7 @@ namespace G1ANT.Addon.IExplorer.Tests
         public void TestInitialize()
         {
             scripter = new Scripter();
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.IExplorer.dll");
         }
 
         [Test, Timeout(IETests.TestTimeout)]

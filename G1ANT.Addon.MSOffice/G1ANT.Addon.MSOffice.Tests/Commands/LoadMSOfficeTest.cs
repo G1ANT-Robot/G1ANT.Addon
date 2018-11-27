@@ -23,7 +23,7 @@ namespace G1ANT.Addon.MSOffice.Tests
         [Test]
         public void LoadMSOfficeAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Mscrm.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Mscrm.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

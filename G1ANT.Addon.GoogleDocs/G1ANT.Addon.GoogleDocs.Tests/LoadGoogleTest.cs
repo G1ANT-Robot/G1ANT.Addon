@@ -17,7 +17,7 @@ namespace G1ANT.Addon.GoogleDocs.Tests
         [Test]
         public void LoadGoogleAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.GoogleDocs.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.GoogleDocs.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

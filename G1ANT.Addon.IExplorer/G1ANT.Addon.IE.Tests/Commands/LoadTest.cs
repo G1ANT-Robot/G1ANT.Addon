@@ -19,7 +19,7 @@ namespace G1ANT.Addon.IExplorer.Tests
         [Test]
         public void LoadIExplorerAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.IExplorer.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

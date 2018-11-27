@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Net.Tests
         [Test]
         public void LoadNetAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Net.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

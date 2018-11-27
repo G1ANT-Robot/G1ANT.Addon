@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         [Test]
         public void LoadXlsxAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Xlsx.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

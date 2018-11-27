@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Ocr.Tests
         [Test]
         public void LoadAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Ocr.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

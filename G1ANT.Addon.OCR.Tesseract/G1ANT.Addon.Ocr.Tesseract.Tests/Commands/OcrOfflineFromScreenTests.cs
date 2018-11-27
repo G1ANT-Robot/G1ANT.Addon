@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Ocr.Tesseract.Tests
         [SetUp]
         public void OcrFromScreenInitialize()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.Tesseract.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Ocr.Tesseract.dll");
             scripter = new Scripter();
 scripter.InitVariables.Clear();
             proces = Process.Start("mspaint.exe", $"\"{filePath}\"");

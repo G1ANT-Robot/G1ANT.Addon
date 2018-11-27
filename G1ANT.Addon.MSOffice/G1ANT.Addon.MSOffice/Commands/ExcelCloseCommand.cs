@@ -18,6 +18,7 @@ namespace G1ANT.Addon.MSOffice
     [Command(Name = "excel.close", Tooltip = "Closes currently active Excel instance.")]
     public class ExcelCloseCommand : Command
     {
+
         public class Arguments : CommandArguments
         {
         }
@@ -30,6 +31,8 @@ namespace G1ANT.Addon.MSOffice
         {
             try
             {
+                int x = 3;
+
                 ExcelManager.RemoveInstance();
             }
             catch (Exception ex)

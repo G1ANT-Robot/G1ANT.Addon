@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         [Test]
         public void LoadAbbyAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Structures.Count > 0);
             Assert.IsTrue(addon.Commands.Count > 0);

@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         public void Init()
         {
             scripter.InitVariables.Clear();
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
         }
         [Test, Timeout(AbbyTests.TestsTimeout)]
         public void GetParagraphsTest()
