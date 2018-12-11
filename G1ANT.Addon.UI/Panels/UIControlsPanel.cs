@@ -6,7 +6,7 @@ using System.Text;
 
 namespace G1ANT.Addon.UI.Panels
 {
-    [PanelAttribute(Title = "UI Applications", DockingSide = DockingSide.Right, InitialAppear = false, Width = 400)]
+    [PanelAttribute(Title = "Windows Tree", DockingSide = DockingSide.Right, InitialAppear = false, Width = 400)]
     public partial class UIControlsPanel : RobotPanel
     {
         public UIControlsPanel()
