@@ -3,7 +3,7 @@
 ## Syntax
 
 ```G1ANT
-mail.imap host ‴‴ port ‴‴ login ‴‴ password ‴‴ sincedate ♥⟦date⟧ todate ♥⟦date⟧ onlyunreadmessages ⟦bool⟧ markasread ⟦bool⟧ result ♥⟦list⟧
+mail.imap host ‴‴ port ‴‴ login ‴‴ password ‴‴ sincedate ⟦date⟧ todate ⟦date⟧ onlyunreadmessages ⟦bool⟧ markasread ⟦bool⟧ result ♥result
 ```
 
 ## Description
@@ -20,7 +20,7 @@ This command uses the IMAP protocol to check an email inbox and allows the user 
 | `todate`             | [date]()                                                     | no       |                                                              | Ending date for messages to be checked                       |
 | `onlyunreadmessages` | [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no       |                                                              | If set to `true`, only unread messages will be checked       |
 | `markasread`         | [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no       |                                                              | If set to `true`, all checked messages will be marked as read |
-| `result`             | [list]()                                                     | no       | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md) | The name of a list variable where the returned [mail]() variables will be stored |
+| `result`             | [variable]()                                                     | no       | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md) | The name of a list variable where the returned [mail]() variables will be stored |
 
 ### Example
 
