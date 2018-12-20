@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader.Tests
         [SetUp]
         public void SetUp()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Ocr.AbbyyFineReader.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.document3), "tif");
             scripter = new Scripter();
             scripter.InitVariables.Clear();

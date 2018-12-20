@@ -61,7 +61,7 @@ scripter.InitVariables.Clear();
         [SetUp]
         public void TestInit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.MSOffice.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.MSOffice.dll");
             xlsPath = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.TestWorkbook), "xlsm");
            scripter.InitVariables.Add("xlsPath", new TextStructure(xlsPath));
            scripter.InitVariables.Add("sheet", new TextStructure(sheetName));

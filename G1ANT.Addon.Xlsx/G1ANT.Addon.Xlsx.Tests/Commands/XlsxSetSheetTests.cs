@@ -29,7 +29,7 @@ namespace G1ANT.Addon.Xlsx.Tests
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
             file = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.XlsTestWorkbook), "xlsx");
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Xlsx.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Xlsx.dll");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
             scripter.InitVariables.Add("xlsPath", new TextStructure(file));

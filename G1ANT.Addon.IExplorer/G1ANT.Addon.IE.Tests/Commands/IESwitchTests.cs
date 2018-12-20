@@ -26,7 +26,7 @@ namespace G1ANT.Addon.IExplorer.Tests
         [OneTimeSetUp]
         public void Initialize()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.IExplorer.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.IExplorer.dll");
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
         [SetUp]

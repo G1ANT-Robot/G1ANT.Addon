@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Watson.Tests
         [SetUp]
         public void Init()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Watson.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Watson.dll");
         }
 
         [Test]

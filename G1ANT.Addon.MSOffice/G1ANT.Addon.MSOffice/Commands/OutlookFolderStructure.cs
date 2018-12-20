@@ -101,7 +101,7 @@ namespace G1ANT.Addon.MSOffice
             return Value?.ToString();
         }
 
-        protected override MAPIFolder Parse(string value, string format = null)
+        public override MAPIFolder Parse(string value, string format = null)
         {
             return null;
         }

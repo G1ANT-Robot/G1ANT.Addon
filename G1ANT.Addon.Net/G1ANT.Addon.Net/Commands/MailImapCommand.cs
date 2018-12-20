@@ -46,10 +46,10 @@ namespace G1ANT.Addon.Net
             public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
             [Argument(Required = false, Tooltip = "Look only for already unread messages")]
-            public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
+            public BooleanStructure UnreadMessages { get; set; } = new BooleanStructure(false);
 
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
-            public BooleanStructure MarkAllMessagesAsRead { get; set; } = new BooleanStructure(true);
+            public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
             [Argument(Required = false, Tooltip = "Received messages")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
@@ -65,7 +65,7 @@ namespace G1ANT.Addon.Net
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
-            var markAllMessagesAsRead = arguments.MarkAllMessagesAsRead.Value;
+            var markAllMessagesAsRead = arguments.MarkAsRead.Value;
 
             var client = CreateImapClient(timeout);
             ConnectClient(client, credentials, uri, !markAllMessagesAsRead);
@@ -117,12 +117,13 @@ namespace G1ANT.Addon.Net
 
         private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
         {
-            var options = MessageSummaryItems.All |
-                          MessageSummaryItems.Body |
-                          MessageSummaryItems.BodyStructure |
-                          MessageSummaryItems.UniqueId;
+            var options = MessageSummaryItems.All
+                | MessageSummaryItems.Body
+                | MessageSummaryItems.BodyStructure
+                | MessageSummaryItems.UniqueId;
+            
             var allMessages = client.Inbox.Fetch(0, -1, options).ToList();
-            var onlyUnread = arguments.OnlyUnreadMessages.Value;
+            var onlyUnread = arguments.UnreadMessages.Value;
             var since = arguments.SinceDate.Value;
             var to = arguments.ToDate.Value;
 
@@ -137,8 +138,8 @@ namespace G1ANT.Addon.Net
             }
         }
 
-        private static List<IMessageSummary> SelectMessages(
-        IList<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate, DateTime toDate)
+        private static List<IMessageSummary> SelectMessages(IList<IMessageSummary> messages, bool onlyUnRead, DateTime sinceDate,
+                                                            DateTime toDate)
         {
             Func<IMessageSummary, bool> isUnread = m => m.Flags != null && m.Flags.Value.HasFlag(MessageFlags.Seen) == false;
             var relevantMessages = messages.Where(m => m.Date >= sinceDate && m.Date <= toDate).ToList();

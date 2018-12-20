@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Images.Tests
         [SetUp]
         public void Init()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Net.dll");
         }
         [OneTimeSetUp]
         public void Initialize()

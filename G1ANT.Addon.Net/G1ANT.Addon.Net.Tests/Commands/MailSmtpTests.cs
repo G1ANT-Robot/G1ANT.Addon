@@ -41,7 +41,7 @@ namespace G1ANT.Addon.Net.Tests
         public void Init()
         {
             
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Net.dll");
+            Language.Addon addon = Language.AddonLoader.Load(@"G1ANT.Addon.Net.dll");
         }
         [Test, Timeout(TestTimeout)]
         public void SendEmailTest()

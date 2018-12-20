@@ -64,7 +64,7 @@ namespace G1ANT.Addon.MSOffice
             return Value?.ToString();
         }
 
-        protected override Attachment Parse(string value, string format = null)
+        public override Attachment Parse(string value, string format = null)
         {
             return null;
         }

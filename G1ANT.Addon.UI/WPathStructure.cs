@@ -44,7 +44,7 @@ namespace G1ANT.Addon.UI
             return Value;
         }
 
-        protected override string Parse(string value, string format = null)
+        public override string Parse(string value, string format = null)
         {
             if (string.IsNullOrWhiteSpace(value))
                 return value;
