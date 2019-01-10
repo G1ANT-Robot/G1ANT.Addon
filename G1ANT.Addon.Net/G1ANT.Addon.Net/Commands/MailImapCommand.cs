@@ -11,12 +11,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using MailKit;
 using MailKit.Net.Imap;
-
 using G1ANT.Language;
-
 using System.Net;
 
 
@@ -53,6 +50,9 @@ namespace G1ANT.Addon.Net
 
             [Argument(Required = false, Tooltip = "Received messages")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
+
+            [Argument(Required = false, Tooltip = "Ignore certificate errors")]
+            public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
         }
 
 
@@ -62,6 +62,10 @@ namespace G1ANT.Addon.Net
 
         public void Execute(Arguments arguments)
         {
+            if (arguments.IgnoreCertificateErrors.Value)
+            {
+                System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            }
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
@@ -73,7 +77,7 @@ namespace G1ANT.Addon.Net
             if (client.IsConnected && client.IsAuthenticated)
             {
                 var messages = ReceiveMesssages(client, arguments);
-                SendMessageListToScripter(client, arguments, messages);
+                SendMessageListToScripter(client, client.Inbox, arguments, messages);
 
                 if (markAllMessagesAsRead)
                 {
@@ -96,24 +100,28 @@ namespace G1ANT.Addon.Net
             {
                 Timeout = timeout,
             };
-
             return client;
         }
 
-        private void SendMessageListToScripter(ImapClient client, Arguments arguments, List<IMessageSummary> messages)
+        private void SendMessageListToScripter(ImapClient client, IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)
         {
             var messageList = new ListStructure();
 
             foreach (var message in messages)
             {
-                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, client.Inbox);
+                ListStructure attachments = new ListStructure();
+                foreach (var attachment in message.Attachments)
+                {
+                    AttachmentDetails details = new AttachmentDetails(attachment, folder, message);
+                    AttachmentStructure temp = new AttachmentStructure(details);
+                    attachments.AddItem(temp);
+                }
+                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, client.Inbox, attachments);
                 var structure = new MailStructure(messageWithFolder, null, null);
                 messageList.AddItem(structure);
             }
-
             Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
         }
-
 
         private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
         {
