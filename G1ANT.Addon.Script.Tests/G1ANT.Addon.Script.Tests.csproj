@@ -46,6 +46,10 @@
   <ItemGroup>
     <None Include="IExplorer\ie.attach\ie.attach.by_phase.G1ANT" />
     <None Include="IExplorer\ie.attach\ie.attach.by_phase_title.G1ANT" />
+    <None Include="IExplorer\ie.click\ie.click.by_title.G1ANT" />
+    <None Include="IExplorer\ie.close\ie.close.multiple.G1ANT" />
+    <None Include="IExplorer\ie.detach\ie.detach.multiple.G1ANT" />
+    <None Include="IExplorer\ie.fireevent\ie.fireevent.onclick.G1ANT" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

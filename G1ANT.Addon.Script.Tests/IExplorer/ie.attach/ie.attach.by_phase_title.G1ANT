@@ -10,5 +10,5 @@ ie.attach phrase ‴google‴ by ‴title‴
 ie.seturl url ‴duckduckgo.com‴
 ie.gettitle result ♥title2
 ie.close
-test condition ⊂♥title2==♥title1⊃ errormessage ‴Text not found‴
+test condition ⊂♥title2==♥title1⊃
 
