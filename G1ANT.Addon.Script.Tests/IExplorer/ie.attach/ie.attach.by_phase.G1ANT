@@ -1,0 +1,12 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+♥title1 = ‴Google‴
+ie.open url ‴google.com‴
+ie.detach
+ie.attach by url phrase google result ♥result2
+ie.gettitle result ♥title2
+ie.close
+test condition ⊂♥title2==♥title1⊃ errormessage ‴Text not found‴
+

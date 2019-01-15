@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.IExplorer", "G1ANT.Addon.IExplorer\G1ANT.Addon.IE\G1ANT.Addon.IExplorer.csproj", "{CEA69D5A-91C9-43D9-8928-F41D69E85BAF}"
 EndProject
@@ -54,6 +54,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx.Tests", "G1ANT.Addon.Xlsx\G1ANT.Addon.Xlsx.Tests\G1ANT.Addon.Xlsx.Tests.csproj", "{948BD6F9-FE0E-41F8-937A-B394A0EDDCA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.UI", "G1ANT.Addon.UI\G1ANT.Addon.UI.csproj", "{E1D343A3-707C-43D8-A5E0-334CA434D785}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Script.Tests", "G1ANT.Addon.Script.Tests\G1ANT.Addon.Script.Tests.csproj", "{73543847-3FE2-42BD-AA39-A24BA90F5CE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -314,6 +316,16 @@ Global
 		{E1D343A3-707C-43D8-A5E0-334CA434D785}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
 		{E1D343A3-707C-43D8-A5E0-334CA434D785}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1D343A3-707C-43D8-A5E0-334CA434D785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.AutomatedDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.AutomatedDebug|Any CPU.Build.0 = Debug|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug (.Net 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug (.Net 4.0)|Any CPU.Build.0 = Debug|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release (.Net 4.0)|Any CPU.ActiveCfg = Release|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
