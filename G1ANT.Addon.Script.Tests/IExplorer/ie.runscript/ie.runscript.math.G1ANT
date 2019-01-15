@@ -1,0 +1,22 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+ie.open ‴www.google.pl‴ timeout 1000
+ie.runscript script ‴2 + 5‴ result ♥returnValue1
+ie.runscript script ‴5 - 2‴ result ♥returnValue2
+ie.runscript script ‴2 * 5‴ result ♥returnValue3
+ie.runscript script ‴4 / 2‴ result ♥returnValue4
+ie.runscript script ‴4 / 2 + 2 * 3 - 3 + 4‴ result ♥returnValue5
+ie.close
+♥testValue1 = ‴7‴
+♥testValue2 = ‴3‴
+♥testValue3 = ‴10‴
+♥testValue4 = ‴2‴
+♥testValue5 = ‴9‴
+test condition ⊂♥testValue1 == ♥returnValue1⊃
+test condition ⊂♥testValue2 == ♥returnValue2⊃
+test condition ⊂♥testValue3 == ♥returnValue3⊃
+test condition ⊂♥testValue4 == ♥returnValue4⊃
+test condition ⊂♥testValue5 == ♥returnValue5⊃
+♥result= 1

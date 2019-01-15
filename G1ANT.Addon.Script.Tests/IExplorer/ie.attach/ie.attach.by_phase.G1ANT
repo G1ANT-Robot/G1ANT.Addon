@@ -9,4 +9,5 @@ ie.attach by url phrase google result ♥result2
 ie.gettitle result ♥title2
 ie.close
 test condition ⊂♥title2==♥title1⊃
+♥result= 1
 

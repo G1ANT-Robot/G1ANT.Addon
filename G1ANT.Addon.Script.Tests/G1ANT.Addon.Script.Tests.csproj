@@ -50,6 +50,11 @@
     <None Include="IExplorer\ie.close\ie.close.multiple.G1ANT" />
     <None Include="IExplorer\ie.detach\ie.detach.multiple.G1ANT" />
     <None Include="IExplorer\ie.fireevent\ie.fireevent.onclick.G1ANT" />
+    <None Include="IExplorer\ie.getattribute\ie.getattribute.by_class.G1ANT" />
+    <None Include="IExplorer\ie.gettitle\ie.gettitle.by_title.G1ANT" />
+    <None Include="IExplorer\ie.open\ie.open.by_title.G1ANT" />
+    <None Include="IExplorer\ie.refresh\ie.refresh.by_title.G1ANT" />
+    <None Include="IExplorer\ie.runscript\ie.runscript.math.G1ANT" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,4 +13,5 @@ ie.close
 ie.attach by url phrase google
 ie.close
 test condition ⊂♥result1!=♥result2⊃
+♥result= 1
 

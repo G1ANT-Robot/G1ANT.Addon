@@ -8,5 +8,6 @@ ie.gettitle result ♥returnValue
 ♥title1 = ‴Gmail – bezpłatne miejsce na dane i poczta e-mail od Google‴
 ie.close
 test condition ⊂♥returnValue==♥title1⊃
+♥result= 1
 
 

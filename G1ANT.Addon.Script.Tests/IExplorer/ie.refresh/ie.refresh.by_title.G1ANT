@@ -1,0 +1,11 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+ie.open ‴www.google.pl‴ timeout 1000
+ie.refresh timeout 1000
+ie.gettitle result ♥title1 timeout 1000
+ie.close
+♥testValue1 = ‴Google‴
+test condition ⊂♥testValue1== ♥title1⊃
+♥result= 1

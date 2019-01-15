@@ -15,4 +15,5 @@ ie.close timeout 1000
 ie.switch ♥result4
 ie.close timeout 1000
 test condition ⊂♥result1!=♥result4⊃
+♥result= 1
 
