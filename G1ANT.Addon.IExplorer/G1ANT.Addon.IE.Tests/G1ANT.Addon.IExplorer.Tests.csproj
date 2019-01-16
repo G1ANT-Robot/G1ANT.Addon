@@ -101,6 +101,11 @@
     <None Include="Commands\ie.open\ShouldGetTitle_WhenOpenMultipleGoogle.G1ANT" />
     <None Include="Commands\ie.refresh\ShouldNotChangeTitle_WhenRefresh.G1ANT" />
     <None Include="Commands\ie.runscript\ShouldNotChangeOrderOfMathOperations_WhenRunScript.G1ANT" />
+    <None Include="Commands\ie.setattribute\ShouldGetAttributeValue_WhenSetAttributeValue.G1ANT" />
+    <None Include="Commands\ie.seturl\ShouldGetTitle_WhenSetURL.G1ANT" />
+    <None Include="Commands\ie.switch\ShouldCloseAll_WhenSwitchMultiple.G1ANT" />
+    <None Include="Commands\ie.waitforcomplete\ShouldGetTitle_WhenSetURL.G1ANT" />
+    <None Include="Commands\ie.waitforvalue\ShouldGetAttribute_WhenWaitForValue.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

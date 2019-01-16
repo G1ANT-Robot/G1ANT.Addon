@@ -1,0 +1,12 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+ie.open
+ie.seturl google.pl nowait true
+ie.waitforcomplete timeout 20000
+ie.gettitle result ♥title
+♥testValue1 = ‴Google‴
+ie.close                 
+test condition ⊂♥testValue1 == ♥title⊃
+
