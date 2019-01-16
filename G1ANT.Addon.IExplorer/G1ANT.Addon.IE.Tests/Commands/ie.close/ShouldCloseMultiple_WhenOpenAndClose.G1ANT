@@ -1,0 +1,18 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+ie.open result  ♥result1
+ie.open result  ♥result2
+ie.open result  ♥result3
+ie.open result  ♥result4
+ie.switch ♥result1
+ie.close
+ie.switch ♥result2
+ie.close
+ie.switch ♥result3
+ie.close
+ie.switch ♥result4
+ie.close
+test condition ⊂♥result1!=♥result4⊃
+

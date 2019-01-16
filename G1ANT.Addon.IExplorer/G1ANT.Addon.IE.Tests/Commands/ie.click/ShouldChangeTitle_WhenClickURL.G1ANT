@@ -3,11 +3,10 @@ addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
 ie.open ‴www.google.pl‴
-ie.click a.gb_P[href='‴https://mail.google.com/mail/?tab=wm‴'] by query timeout 1000
+ie.click a.gb_P[href='‴https://mail.google.com/mail/?tab=wm‴'] by query
 ie.gettitle result ♥returnValue
 ♥title1 = ‴Gmail – bezpłatne miejsce na dane i poczta e-mail od Google‴
 ie.close
 test condition ⊂♥returnValue==♥title1⊃
-♥result= 1
 
 

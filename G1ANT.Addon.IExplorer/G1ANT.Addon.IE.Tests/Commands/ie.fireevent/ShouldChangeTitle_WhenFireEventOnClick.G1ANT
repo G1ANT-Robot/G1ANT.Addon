@@ -3,10 +3,9 @@ addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
 ie.open ‴google.pl‴
-ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.com/mail/?tab=wm']‴ by query timeout 1000
+ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.com/mail/?tab=wm']‴ by query
 ie.gettitle result ♥title
 ie.close
 ♥testValue = ‴Gmail – bezpłatne miejsce na dane i poczta e-mail od Google‴
 test condition ⊂♥title==♥testValue⊃
-♥result= 1
 

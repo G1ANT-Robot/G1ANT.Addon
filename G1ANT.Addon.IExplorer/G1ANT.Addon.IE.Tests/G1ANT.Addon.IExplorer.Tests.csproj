@@ -90,6 +90,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Commands\ie.attach\ShouldNotChangeTitle_WhenReattachedByPhase.G1ANT" />
+    <None Include="Commands\ie.attach\ShouldNotChangeTitle_WhenReattachedByPhaseAndTitle.G1ANT" />
+    <None Include="Commands\ie.click\ShouldChangeTitle_WhenClickURL.G1ANT" />
+    <None Include="Commands\ie.close\ShouldCloseMultiple_WhenOpenAndClose.G1ANT" />
+    <None Include="Commands\ie.detach\ShouldDetachMultiple_WhenSwitch.G1ANT" />
+    <None Include="Commands\ie.fireevent\ShouldChangeTitle_WhenFireEventOnClick.G1ANT" />
+    <None Include="Commands\ie.getattribute\ShouldGetButtonName_WhenGetAttributeByClass.G1ANT" />
+    <None Include="Commands\ie.gettitle\ShouldGetTitle_WhenOpenGoogle.G1ANT" />
+    <None Include="Commands\ie.open\ShouldGetTitle_WhenOpenMultipleGoogle.G1ANT" />
+    <None Include="Commands\ie.refresh\ShouldNotChangeTitle_WhenRefresh.G1ANT" />
+    <None Include="Commands\ie.runscript\ShouldNotChangeOrderOfMathOperations_WhenRunScript.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

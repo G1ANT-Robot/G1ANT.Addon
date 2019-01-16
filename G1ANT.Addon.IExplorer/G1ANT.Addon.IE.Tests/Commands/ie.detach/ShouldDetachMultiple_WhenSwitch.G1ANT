@@ -2,8 +2,8 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-ie.open url ‴google.com‴ result ♥result1 timeout 1000
-ie.open url ‴google.com‴ result ♥result2 timeout 1000
+ie.open url ‴google.com‴ result ♥result1
+ie.open url ‴google.com‴ result ♥result2
 ie.switch ♥result1
 ie.detach
 ie.switch ♥result2
@@ -13,5 +13,4 @@ ie.close
 ie.attach by url phrase google
 ie.close
 test condition ⊂♥result1!=♥result2⊃
-♥result= 1
 

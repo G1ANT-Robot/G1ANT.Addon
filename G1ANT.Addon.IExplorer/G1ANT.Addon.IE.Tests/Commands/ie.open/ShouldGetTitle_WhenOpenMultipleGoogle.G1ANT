@@ -1,0 +1,18 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+ie.open ‴www.google.pl‴ result ♥Handle1
+ie.open url ‴google.com‴ result ♥Handle2
+ie.open result ♥Handle3
+ie.switch ♥Handle1
+ie.gettitle result ♥title1
+ie.close
+ie.switch ♥Handle2
+ie.gettitle result ♥title2
+ie.close
+ie.switch ♥Handle3
+ie.close
+♥testValue1 = ‴Google‴
+test condition ⊂♥testValue1== ♥title1 && ♥testValue1== ♥title2⊃
+

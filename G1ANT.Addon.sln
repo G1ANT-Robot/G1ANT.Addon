@@ -55,8 +55,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Xlsx.Tests", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.UI", "G1ANT.Addon.UI\G1ANT.Addon.UI.csproj", "{E1D343A3-707C-43D8-A5E0-334CA434D785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Script.Tests", "G1ANT.Addon.Script.Tests\G1ANT.Addon.Script.Tests.csproj", "{73543847-3FE2-42BD-AA39-A24BA90F5CE1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AutomatedDebug|Any CPU = AutomatedDebug|Any CPU
@@ -316,16 +314,6 @@ Global
 		{E1D343A3-707C-43D8-A5E0-334CA434D785}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
 		{E1D343A3-707C-43D8-A5E0-334CA434D785}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1D343A3-707C-43D8-A5E0-334CA434D785}.Release|Any CPU.Build.0 = Release|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.AutomatedDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.AutomatedDebug|Any CPU.Build.0 = Debug|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug (.Net 4.0)|Any CPU.ActiveCfg = Debug|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug (.Net 4.0)|Any CPU.Build.0 = Debug|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release (.Net 4.0)|Any CPU.ActiveCfg = Release|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release (.Net 4.0)|Any CPU.Build.0 = Release|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73543847-3FE2-42BD-AA39-A24BA90F5CE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

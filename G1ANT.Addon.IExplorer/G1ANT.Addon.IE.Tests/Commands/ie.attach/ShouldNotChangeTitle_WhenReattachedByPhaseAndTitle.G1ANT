@@ -11,5 +11,4 @@ ie.seturl url ‴duckduckgo.com‴
 ie.gettitle result ♥title2
 ie.close
 test condition ⊂♥title2==♥title1⊃
-♥result= 1
 

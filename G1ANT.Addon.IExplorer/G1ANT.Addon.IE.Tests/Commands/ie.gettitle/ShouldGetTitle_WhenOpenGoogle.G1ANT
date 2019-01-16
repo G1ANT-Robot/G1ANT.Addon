@@ -3,9 +3,8 @@ addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
 
-ie.open ‴www.google.pl‴ timeout 1000
-ie.gettitle result ♥title timeout 1000
+ie.open ‴www.google.pl‴
+ie.gettitle result ♥title
 ♥testValue1 = ‴Google‴
 ie.close
 test condition ⊂♥testValue1== ♥title⊃
-♥result= 1
