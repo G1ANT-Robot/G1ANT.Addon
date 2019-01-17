@@ -1,0 +1,18 @@
+﻿addon googledocs version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥testValue = ‴3. Junior‴
+♥testValue2 = ‴C7‴
+♥folderPath =♥environment⟦TEMP⟧\
+♥filePath = ♥folderPath + "SheetsTest.xlsx"
+
+procedure testFailed
+    test condition no
+end procedure
+
+googlesheet.open ♥FileID errorcall testFailed
+googlesheet.find value ♥testValue result ♥result1 errorcall testFailed
+googlesheet.close errorcall testFailed
+test condition ⊂♥result1 == ♥testValue2⊃

@@ -1,0 +1,18 @@
+﻿addon googledocs version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥testValue = ‴G1ANT‴
+
+procedure testFailed
+    test condition no
+end procedure
+
+procedure testSucceeded
+    test condition yes
+end procedure
+
+googlesheet.open ♥FileID
+googlesheet.close errorcall testFailed
+call testSucceeded

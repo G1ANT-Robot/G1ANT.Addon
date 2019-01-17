@@ -81,7 +81,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Commands\googlesheet.close\ShouldCloseSheet_WhenCloseingSheet.G1ANT" />
+    <None Include="Commands\googlesheet.download\ShouldDownloadSheet_WhenOpenAndDownloadSheet.G1ANT" />
+    <None Include="Commands\googlesheet.findall\ShouldFindAllCells_WhenSearchByValue.G1ANT" />
+    <None Include="Commands\googlesheet.find\ShouldFindCell_WhenSearchByValue.G1ANT" />
+    <None Include="Commands\googlesheet.gettitle\ShouldGetTitle_WhenGetTitleFromSheet.G1ANT" />
+    <None Include="Commands\googlesheet.getvalue\ShouldGetValue_WhenSelectingByRange.G1ANT" />
+    <None Include="Commands\googlesheet.open\ShouldGetTitle_WhenOpenSheet.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
