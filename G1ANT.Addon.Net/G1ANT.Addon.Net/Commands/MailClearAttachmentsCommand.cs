@@ -8,28 +8,24 @@
 *
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MailKit;
-using MailKit.Net.Imap;
 using G1ANT.Language;
 using G1ANT.Language.Services;
-using System.Net;
-
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.clearattachments", Tooltip = "This command tries to delete all previouslz downloaded attachments.")]
+    [Command(Name = "mail.clearattachments", Tooltip = "This command deletes all previously downloaded attachments.")]
     public class MailClearAttachmentsCommand : Command
     {
-        public MailClearAttachmentsCommand(AbstractScripter scripter) : base(scripter)
-        { }
+        ILongLivingTempFileService longLivingTempFileService;
+
+        public MailClearAttachmentsCommand(AbstractScripter scripter, ILongLivingTempFileService IlongLivingTempFileService = null) : base(scripter)
+        {
+            longLivingTempFileService = IlongLivingTempFileService ?? new LongLivingTempFileService();
+        }
 
         public new void Execute(ArgumentsBase arguments)
         {
-            LongLivingTempFileService tempFileService = new LongLivingTempFileService();
-            tempFileService.DeleteAllTempFilesWithPrefix("g1ant.attachment.");
+            longLivingTempFileService.DeleteAllTempFilesWithPrefix("g1ant.attachment.");
         }
 
     }
