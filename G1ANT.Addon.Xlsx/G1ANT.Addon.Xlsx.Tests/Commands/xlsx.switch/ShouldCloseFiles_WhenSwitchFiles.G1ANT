@@ -1,0 +1,68 @@
+﻿addon xlsx version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+♥folderPath =♥environment⟦TEMP⟧\
+♥filePath1 = ♥folderPath + "TempTestDebug1.xlsx"
+♥filePath2 = ♥folderPath + "TempTestDebug2.xlsx"
+♥filePath3 = ♥folderPath + "TempTestDebug3.xlsx"
+♥filePath4 = ♥folderPath + "TempTestDebug4.xlsx"
+
+procedure DeleteTestFileIfExists
+    ⊂
+        if(System.IO.File.Exists(♥filePath))
+        {
+            System.IO.File.Delete(♥filePath);
+        }
+    ⊃
+end procedure
+
+procedure DeleteTestFiles
+    try errorcall testFailed
+    ♥filePath = ♥filePath1
+    call DeleteTestFileIfExists
+    ♥filePath = ♥filePath2
+    call DeleteTestFileIfExists
+    ♥filePath = ♥filePath3
+    call DeleteTestFileIfExists
+    ♥filePath = ♥filePath4
+    call DeleteTestFileIfExists   
+    end try      
+end procedure
+
+procedure CreationWhenOpening 
+    try errorcall testFailed
+    xlsx.open path ♥filePath1 createifnotexist true result ♥res1
+    xlsx.open path ♥filePath2 createifnotexist true result ♥res2
+    xlsx.open path ♥filePath3 createifnotexist true result ♥res3
+    xlsx.open path ♥filePath4 createifnotexist true result ♥res4
+    end try    
+end procedure
+
+procedure SwitchTestFiles 
+    try errorcall testFailed
+    call CreationWhenOpening
+    xlsx.switch ♥res1
+    xlsx.close
+    xlsx.switch ♥res2
+    xlsx.close
+    xlsx.switch ♥res3
+    xlsx.close
+    xlsx.switch ♥res4
+    xlsx.close
+    call testSucceeded
+    end try    
+end procedure
+
+procedure testFailed
+    test condition no
+end procedure
+
+procedure testSucceeded
+    test condition yes
+end procedure
+
+call DeleteTestFiles
+call SwitchTestFiles
+call DeleteTestFiles
+

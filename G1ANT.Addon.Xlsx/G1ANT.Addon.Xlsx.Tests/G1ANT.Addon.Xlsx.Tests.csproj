@@ -81,6 +81,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Commands\xlsx.close\ShouldCloseFiles_WhenOpenMultipleFiles.G1ANT" />
+    <None Include="Commands\xlsx.setsheet\ShouldSetSheet_WhenOpenNewFile.G1ANT" />
+    <None Include="Commands\xlsx.countrows\ShouldGetRowsCount_WhenSetMultipleRowsValues.G1ANT" />
+    <None Include="Commands\xlsx.find\ShouldFindCells_WhenSetValues.G1ANT" />
+    <None Include="Commands\xlsx.getvalue\ShouldGetValue_WhenGetByRowAndColumn.G1ANT" />
+    <None Include="Commands\xlsx.open\ShouldCreateFile_WhenOpenFile.G1ANT" />
+    <None Include="Commands\xlsx.setvalue\ShouldGetValue_WhenSetValue.G1ANT" />
+    <None Include="Commands\xlsx.switch\ShouldCloseFiles_WhenSwitchFiles.G1ANT" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -93,5 +101,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
