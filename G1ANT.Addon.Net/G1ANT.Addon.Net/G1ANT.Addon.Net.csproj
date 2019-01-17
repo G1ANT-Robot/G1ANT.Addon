@@ -63,7 +63,6 @@
   <ItemGroup>
     <Compile Include="Commands\AS400OpenCommand.cs" />
     <Compile Include="Commands\IsAccessibleCommand.cs" />
-    <Compile Include="Commands\MailClearAttachmentsCommand.cs" />
     <Compile Include="Commands\MailImapCommand.cs" />
     <Compile Include="Commands\MailSmtpCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />

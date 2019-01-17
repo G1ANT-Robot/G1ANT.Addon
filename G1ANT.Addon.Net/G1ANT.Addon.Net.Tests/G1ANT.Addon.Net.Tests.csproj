@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\IsAccessibleTests.cs" />
-    <Compile Include="Commands\ClearAttachmentsTests.cs" />
     <Compile Include="LoadNetTests.cs" />
     <Compile Include="Commands\MailSmtpTests.cs" />
     <Compile Include="Commands\PingTests.cs" />
