@@ -1,0 +1,19 @@
+﻿addon googledocs version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥valueToBePlaced = ‴G1ANT‴
+♥rangeToBePlaced = ‴A2‴
+
+procedure testFailed
+    test condition no
+end procedure
+
+googlesheet.open ♥FileID errorcall testFailed
+googlesheet.getvalue range ♥rangeToBePlaced result ♥result1 errorcall testFailed
+googlesheet.setvalue range ♥rangeToBePlaced value ♥valueToBePlaced numeric false errorcall testFailed
+googlesheet.getvalue range ♥rangeToBePlaced result ♥result2 errorcall testFailed
+googlesheet.close
+♥result3 = ♥result2[0]
+test condition ⊂♥valueToBePlaced == ♥result3⊃
