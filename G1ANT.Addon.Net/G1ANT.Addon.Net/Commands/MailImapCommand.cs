@@ -14,6 +14,7 @@ using System.Linq;
 using MailKit;
 using MailKit.Net.Imap;
 using G1ANT.Language;
+using G1ANT.Language.Models;
 using System.Net;
 
 
@@ -112,7 +113,6 @@ namespace G1ANT.Addon.Net
         private ListStructure CreateMessageStructuresFromMessages(ImapClient client, IMailFolder folder, List<IMessageSummary> messages)
         {
             var messageList = new ListStructure();
-
             foreach (var message in messages)
             {
                 var attachments = CreateAttachmentStructuresFromAttachments(message,folder,message.Attachments);
@@ -129,8 +129,8 @@ namespace G1ANT.Addon.Net
             ListStructure attachmentsList = new ListStructure();
             foreach (var attachment in attachments)
             {
-                AttachmentDetails details = new AttachmentDetails(attachment, folder, message);
-                AttachmentStructure temp = new AttachmentStructure(details);
+                AttachmentModel attachmentModel = new AttachmentModel(attachment, folder, message);
+                AttachmentStructure temp = new AttachmentStructure(attachmentModel);
                 attachmentsList.AddItem(temp);
             }
             return attachmentsList;
