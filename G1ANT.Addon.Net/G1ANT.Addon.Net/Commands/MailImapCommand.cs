@@ -47,9 +47,9 @@ namespace G1ANT.Addon.Net
             public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
-            public BooleanStructure MarkAllMessagesAsRead { get; set; } = new BooleanStructure(true);
+            public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
-            [Argument(Required = false, Tooltip = "Received messages")]
+            [Argument(Required = false, Tooltip = "Received emails as list of mail structures")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Required = false, Tooltip = "Ignore certificate errors")]
@@ -70,7 +70,7 @@ namespace G1ANT.Addon.Net
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
-            var markAllMessagesAsRead = arguments.MarkAllMessagesAsRead.Value;
+            var markAllMessagesAsRead = arguments.MarkAsRead.Value;
 
             var client = CreateImapClient(timeout);
             ConnectClient(client, credentials, uri, !markAllMessagesAsRead);
