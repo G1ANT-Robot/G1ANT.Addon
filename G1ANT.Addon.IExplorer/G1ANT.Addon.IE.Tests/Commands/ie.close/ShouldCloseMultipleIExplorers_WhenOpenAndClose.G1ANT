@@ -16,15 +16,6 @@ procedure OpenIE
     end try      
 end procedure
 
-procedure SwitchIE
-    try errorcall testFailed
-    ie.switch ♥IE_Handle1
-    ie.switch ♥IE_Handle2
-    ie.switch ♥IE_Handle3
-    ie.switch ♥IE_Handle4
-    end try      
-end procedure
-
 procedure SwitchAndCloseIE
     try errorcall testFailed
     ie.switch ♥IE_Handle1
@@ -39,6 +30,5 @@ procedure SwitchAndCloseIE
 end procedure
 
 call OpenIE
-call SwitchIE
 call SwitchAndCloseIE
 test condition yes

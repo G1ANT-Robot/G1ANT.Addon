@@ -4,8 +4,7 @@ addon language version 4.99.18340.1354
 
 ie.open ‴www.google.pl‴
 ie.refresh
-ie.gettitle result ♥title1
+ie.gettitle result ♥pageTitle
 ie.close
-♥testValue1 = ‴Google‴
-test condition ⊂♥testValue1== ♥title1⊃
-
+♥testValue = ‴Google‴
+test condition ⊂♥pageTitle.Contains(♥testValue)⊃

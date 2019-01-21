@@ -2,9 +2,8 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-
-ie.open ‴www.google.pl‴
+ie.open ‴https://g1ant.com/‴
 ie.gettitle result ♥title
-♥testValue1 = ‴Google‴
+♥testValue = ‴G1ANT‴
 ie.close
-test condition ⊂♥testValue1== ♥title⊃
+test condition ⊂♥title.Contains(♥testValue)⊃

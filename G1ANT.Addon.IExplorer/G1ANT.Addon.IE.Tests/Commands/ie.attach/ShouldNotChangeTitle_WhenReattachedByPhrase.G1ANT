@@ -2,11 +2,11 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-♥title1 = ‴Google‴
+♥testTitle = ‴Google‴
 ie.open url ‴google.com‴
 ie.detach
-ie.attach by url phrase google result ♥result2
-ie.gettitle result ♥title2
+ie.attach by url phrase google
+ie.gettitle result ♥pageTitle
 ie.close
-test condition ⊂♥title2==♥title1⊃
+test condition ⊂♥pageTitle==♥testTitle⊃
 

@@ -4,8 +4,7 @@ addon language version 4.99.18340.1354
 
 ie.open ‴www.google.pl‴
 ie.setattribute name ‴value‴ value ‴test‴ search ‴gLFyf gsfi‴ by class
-ie.getattribute name ‴value‴ search ‴gLFyf gsfi‴ by class result ♥title
-♥testValue1 = ‴test‴
+ie.getattribute name ‴value‴ search ‴gLFyf gsfi‴ by class result ♥attributeValue
+♥testValue = ‴test‴
 ie.close
-test condition ⊂♥testValue1== ♥title⊃
-
+test condition ⊂♥testValue== ♥attributeValue⊃

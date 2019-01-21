@@ -90,8 +90,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Commands\ie.attach\ShouldNotChangeTitle_WhenReattachedByPhase.G1ANT" />
-    <None Include="Commands\ie.attach\ShouldNotChangeTitle_WhenReattachedByPhaseAndTitle.G1ANT" />
+    <None Include="Commands\ie.attach\ShouldNotChangeTitle_WhenReattachedByPhrase.G1ANT" />
+    <None Include="Commands\ie.attach\ShouldNotChangeTitle_WhenReattachedByPhraseAndTitle.G1ANT" />
     <None Include="Commands\ie.click\ShouldChangeTitle_WhenClickURL.G1ANT" />
     <None Include="Commands\ie.close\ShouldCloseMultiple_WhenOpenAndClose.G1ANT" />
     <None Include="Commands\ie.detach\ShouldDetachMultiple_WhenSwitch.G1ANT" />

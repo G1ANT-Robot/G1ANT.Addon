@@ -2,10 +2,16 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-ie.open ‴google.pl‴
-ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.com/mail/?tab=wm']‴ by query
-ie.gettitle result ♥title
-ie.close
-♥testValue = ‴Gmail – bezpłatne miejsce na dane i poczta e-mail od Google‴
-test condition ⊂♥title==♥testValue⊃
+procedure testFailed
+    test condition no
+end procedure
+
+ie.open ‴google.pl‴ errorcall testFailed
+ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.com/mail/?tab=wm']‴ by query errorcall testFailed
+ie.gettitle result ♥returnValue errorcall testFailed
+ie.close errorcall testFailed
+♥testTitle = ‴Gmail‴
+
+test condition ⊂♥returnValue.Contains(♥testTitle)⊃
+
 

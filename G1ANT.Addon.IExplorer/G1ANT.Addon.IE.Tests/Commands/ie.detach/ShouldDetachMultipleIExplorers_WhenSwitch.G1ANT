@@ -1,0 +1,35 @@
+﻿addon iexplorer version 2.205.17304.1000
+addon core version 4.99.18340.1354
+addon language version 4.99.18340.1354
+
+procedure testFailed
+    test condition no
+    ie.attach by url phrase google
+    ie.close
+    ie.attach by url phrase google
+    ie.close
+end procedure
+
+procedure OpenIE
+    try errorcall testFailed
+    ie.open url ‴google.com‴ result ♥IE_Handle1
+    ie.open url ‴google.com‴ result ♥IE_Handle2
+    end try      
+end procedure
+
+procedure SwitchAndDetachIE
+    try errorcall testFailed
+    ie.switch ♥IE_Handle1 
+    ie.detach
+    ie.switch ♥IE_Handle2
+    ie.detach
+    ie.attach by url phrase google
+    ie.close
+    ie.attach by url phrase google
+    ie.close
+    end try      
+end procedure
+
+call OpenIE
+call SwitchAndDetachIE
+test condition yes
