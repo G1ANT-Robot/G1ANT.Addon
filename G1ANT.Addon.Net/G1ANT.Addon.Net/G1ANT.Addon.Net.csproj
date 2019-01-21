@@ -112,13 +112,19 @@
     <EmbeddedResource Include="License.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\MailKit.2.1.2\lib\net45\MailKit.dll" />
+    <EmbeddedResource Include="..\..\packages\MailKit.2.1.2\lib\net45\MailKit.dll">
+		<Link>MailKit.dll</Link>
+	</EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\MimeKit.2.1.2\lib\net45\MimeKit.dll" />
+    <EmbeddedResource Include="..\..\packages\MimeKit.2.1.2\lib\net45\MimeKit.dll">
+		<Link>MimeKit.dll</Link>
+	</EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll" />
+    <EmbeddedResource Include="..\..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll">
+		<Link>BouncyCastle.Crypto.dll</Link>
+	</EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
