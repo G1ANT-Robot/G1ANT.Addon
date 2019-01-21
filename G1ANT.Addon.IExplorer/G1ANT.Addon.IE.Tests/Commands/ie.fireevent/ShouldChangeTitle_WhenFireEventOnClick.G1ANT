@@ -11,5 +11,4 @@ ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.
 ie.gettitle result ♥returnValue errorcall testFailed
 ie.close errorcall testFailed
 ♥testTitle = ‴Gmail‴
-
 test condition ⊂♥returnValue.Contains(♥testTitle)⊃

@@ -8,4 +8,3 @@ ie.gettitle result ♥title
 ♥testValue1 = ‴Google‴
 ie.close
 test condition ⊂♥testValue1== ♥title⊃
-

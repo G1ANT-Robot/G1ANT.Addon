@@ -9,4 +9,3 @@ ie.attach by url phrase google
 ie.gettitle result ♥pageTitle
 ie.close
 test condition ⊂♥pageTitle==♥testTitle⊃
-

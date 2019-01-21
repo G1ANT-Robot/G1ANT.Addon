@@ -32,4 +32,3 @@ end procedure
 call OpenIE
 call SwitchIE
 call SwitchAndCloseIE
-test condition yes

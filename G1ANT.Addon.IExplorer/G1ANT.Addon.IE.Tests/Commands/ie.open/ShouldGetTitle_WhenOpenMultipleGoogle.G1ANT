@@ -17,4 +17,3 @@ ie.close
 ♥G1ANT_TestValue = ‴G1ANT‴
 
 test condition ⊂♥googlePageTitle.Contains(♥googleTestValue) && ♥G1ANT_PageTitle.Contains(♥G1ANT_TestValue)⊃
-

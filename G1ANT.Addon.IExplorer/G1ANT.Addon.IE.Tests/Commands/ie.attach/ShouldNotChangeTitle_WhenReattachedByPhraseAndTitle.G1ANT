@@ -11,4 +11,3 @@ ie.seturl url ‴duckduckgo.com‴
 ie.gettitle result ♥TestTitle
 ie.close
 test condition ⊂♥TestTitle.Contains(♥TestValue)⊃
-
