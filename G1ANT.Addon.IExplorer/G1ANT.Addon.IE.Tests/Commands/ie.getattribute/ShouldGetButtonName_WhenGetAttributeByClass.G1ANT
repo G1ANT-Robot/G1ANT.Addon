@@ -2,9 +2,7 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-ie.open ‴www.google.pl‴
+ie.open ‴www.google.com‴
 ie.getattribute name ‴title‴ search ‴gLFyf gsfi‴ by class result ♥title
-♥testValue1 = ‴Search‴
-♥testValue2 = ‴Szukaj‴
 ie.close
-test condition ⊂♥testValue1 == ♥title || ♥testValue2 == ♥title⊃
+test condition ⊂♥title == "Search" || ♥title == "Szukaj"⊃

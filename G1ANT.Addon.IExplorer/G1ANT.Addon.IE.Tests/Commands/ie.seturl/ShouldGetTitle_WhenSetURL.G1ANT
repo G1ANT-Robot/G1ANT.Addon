@@ -3,7 +3,7 @@ addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
 ie.open
-ie.seturl google.pl
+ie.seturl google.com
 ie.gettitle result ♥title                            
 ♥testValue1 = ‴Google‴
 ie.close

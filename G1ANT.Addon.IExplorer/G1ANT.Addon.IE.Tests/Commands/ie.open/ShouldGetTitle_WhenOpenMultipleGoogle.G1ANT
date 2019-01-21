@@ -2,19 +2,19 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-ie.open ‴www.google.pl‴ result ♥IE_Handle1
-ie.open url ‴https://g1ant.com‴ result ♥IE_Handle2
-ie.open result ♥IE_Handle3
-ie.switch ♥IE_Handle1
-ie.gettitle result ♥pageTitle1
+ie.open ‴www.google.com‴ result ♥IE_google_Handle
+ie.open url ‴https://g1ant.com‴ result ♥IE_G1ANT_Handle
+ie.open result ♥IE_empty_Handle
+ie.switch ♥IE_google_Handle
+ie.gettitle result ♥googlePageTitle
 ie.close
-ie.switch ♥IE_Handle2
-ie.gettitle result ♥pageTitle2
+ie.switch ♥IE_G1ANT_Handle
+ie.gettitle result ♥G1ANT_PageTitle
 ie.close
-ie.switch ♥IE_Handle3
+ie.switch ♥IE_empty_Handle
 ie.close
-♥testValue1 = ‴Google‴
-♥testValue2 = ‴G1ANT‴
+♥googleTestValue = ‴Google‴
+♥G1ANT_TestValue = ‴G1ANT‴
 
-test condition ⊂♥pageTitle1.Contains(♥testValue1) && ♥pageTitle2.Contains(♥testValue2)⊃
+test condition ⊂♥googlePageTitle.Contains(♥googleTestValue) && ♥G1ANT_PageTitle.Contains(♥G1ANT_TestValue)⊃
 

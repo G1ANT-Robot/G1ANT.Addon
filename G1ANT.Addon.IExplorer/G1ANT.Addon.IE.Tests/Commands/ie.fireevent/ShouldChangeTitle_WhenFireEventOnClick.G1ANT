@@ -6,12 +6,10 @@ procedure testFailed
     test condition no
 end procedure
 
-ie.open ‴google.pl‴ errorcall testFailed
+ie.open ‴google.com‴ errorcall testFailed
 ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.com/mail/?tab=wm']‴ by query errorcall testFailed
 ie.gettitle result ♥returnValue errorcall testFailed
 ie.close errorcall testFailed
 ♥testTitle = ‴Gmail‴
 
 test condition ⊂♥returnValue.Contains(♥testTitle)⊃
-
-

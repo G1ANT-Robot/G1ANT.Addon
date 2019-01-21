@@ -3,33 +3,35 @@ addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
 procedure testFailed
+    call CloseIE
     test condition no
-    ie.attach by url phrase google
-    ie.close
-    ie.attach by url phrase google
-    ie.close
 end procedure
 
 procedure OpenIE
     try errorcall testFailed
-    ie.open url ‴google.com‴ result ♥IE_Handle1
-    ie.open url ‴google.com‴ result ♥IE_Handle2
-    end try      
+        ie.open url ‴google.com‴ result ♥IE_Handle1
+        ie.open url ‴google.com‴ result ♥IE_Handle2
+    end try
 end procedure
 
 procedure SwitchAndDetachIE
     try errorcall testFailed
-    ie.switch ♥IE_Handle1 
-    ie.detach
-    ie.switch ♥IE_Handle2
-    ie.detach
-    ie.attach by url phrase google
-    ie.close
-    ie.attach by url phrase google
-    ie.close
-    end try      
+        ie.switch ♥IE_Handle1
+        ie.detach
+        ie.switch ♥IE_Handle2
+        ie.detach
+        call CloseIE
+    end try
+end procedure
+
+procedure CloseIE
+    try errorcall testFailed
+        ie.attach by url phrase google
+        ie.close
+        ie.attach by url phrase google
+        ie.close
+    end try
 end procedure
 
 call OpenIE
 call SwitchAndDetachIE
-test condition yes

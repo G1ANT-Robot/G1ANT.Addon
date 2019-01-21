@@ -2,7 +2,7 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-ie.open ‴www.google.pl‴
+ie.open ‴www.google.com‴
 ie.runscript script ‴4 / 2 + 2 * 3 - 3 + 4‴ result ♥returnValue1
 ie.close
 ♥testValue1 = ‴9‴

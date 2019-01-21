@@ -2,11 +2,9 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-ie.open ‴www.google.pl‴
-ie.click a.gb_P[href='‴https://mail.google.com/mail/?tab=wm‴'] by query
+ie.open ‴www.google.com‴
+ie.click a[href*='//mail.google'] by query
 ie.gettitle result ♥returnValue
 ♥testTitle = ‴Gmail‴
 ie.close
 test condition ⊂♥returnValue.Contains(♥testTitle)⊃
-
-

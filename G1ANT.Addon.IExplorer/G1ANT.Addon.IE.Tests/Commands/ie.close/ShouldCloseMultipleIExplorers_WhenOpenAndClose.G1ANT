@@ -4,31 +4,24 @@ addon language version 4.99.18340.1354
 
 procedure testFailed
     test condition no
-    ie.close
 end procedure
 
 procedure OpenIE
     try errorcall testFailed    
-    ie.open result  ♥IE_Handle1
-    ie.open result  ♥IE_Handle2
-    ie.open result  ♥IE_Handle3
-    ie.open result  ♥IE_Handle4
+		ie.open result  ♥IE_Handle1
+		ie.open result  ♥IE_Handle2
     end try      
 end procedure
 
 procedure SwitchAndCloseIE
     try errorcall testFailed
-    ie.switch ♥IE_Handle1
-    ie.close
-    ie.switch ♥IE_Handle2
-    ie.close
-    ie.switch ♥IE_Handle3
-    ie.close
-    ie.switch ♥IE_Handle4
-    ie.close    
+		ie.switch ♥IE_Handle1
+		ie.close
+		ie.switch ♥IE_Handle2
+		ie.close
     end try      
 end procedure
 
 call OpenIE
 call SwitchAndCloseIE
-test condition yes
+test condition ⊂0 == System.Diagnostics.Process.GetProcessesByName("iexplore").Length⊃
