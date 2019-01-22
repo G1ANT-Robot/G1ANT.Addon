@@ -14,19 +14,11 @@ procedure DeleteTestFileIfExists
     ⊃
 end procedure
 
-procedure CreationWhenOpening 
+procedure CreateFileWhenOpening
     xlsx.open path ♥filePath createifnotexist true
     xlsx.close
 end procedure
 
-procedure SetSheetInTestFile
-    xlsx.open path ♥filePath accessmode readwrite
-    xlsx.setsheet ‴Sheet 1‴ result ♥res
-    xlsx.close
-    test condition ⊂♥res != false⊃
-end procedure
-
 call DeleteTestFileIfExists
-call CreationWhenOpening
-call SetSheetInTestFile
+call CreateFileWhenOpening
 call DeleteTestFileIfExists

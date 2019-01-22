@@ -81,7 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Commands\xlsx.close\ShouldCloseFiles_WhenOpenMultipleFiles.G1ANT" />
+    <None Include="Commands\xlsx.close\ShouldCloseFile_WhenOpenFile.G1ANT" />
     <None Include="Commands\xlsx.setsheet\ShouldSetSheet_WhenOpenNewFile.G1ANT" />
     <None Include="Commands\xlsx.countrows\ShouldGetRowsCount_WhenSetMultipleRowsValues.G1ANT" />
     <None Include="Commands\xlsx.find\ShouldFindCells_WhenSetValues.G1ANT" />

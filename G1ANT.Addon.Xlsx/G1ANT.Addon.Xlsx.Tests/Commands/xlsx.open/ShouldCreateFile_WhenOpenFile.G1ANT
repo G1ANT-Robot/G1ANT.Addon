@@ -2,7 +2,7 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-♥folderPath =♥environment⟦TEMP⟧\
+♥folderPath = ♥environment⟦TEMP⟧\
 ♥filePath = ♥folderPath + "TempTestDebug.xlsx"
 
 procedure DeleteTestFileIfExists

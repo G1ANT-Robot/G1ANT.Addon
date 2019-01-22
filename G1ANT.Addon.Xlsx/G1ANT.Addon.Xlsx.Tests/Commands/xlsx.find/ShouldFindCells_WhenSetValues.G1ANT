@@ -2,13 +2,12 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-♥folderPath =♥environment⟦TEMP⟧\
+♥folderPath = ♥environment⟦TEMP⟧\
 ♥filePath = ♥folderPath + "TempTestDebug.xlsx"
 ♥testValue1 = ‴ABC‴
 ♥testValue2 = 123
 ♥testValue3 = ‴123%‴
-♥testValue4 = ‴AA‴
-♥testValue5 = 0.123
+♥testValue4 = 0.123
 
 procedure DeleteTestFileIfExists
     ⊂
@@ -19,59 +18,36 @@ procedure DeleteTestFileIfExists
     ⊃
 end procedure
 
-procedure CreationWhenOpening 
-    try errorcall testFailed
+procedure CreateWhenOpening 
     xlsx.open path ♥filePath createifnotexist true
-    xlsx.close     
-    end try    
+    xlsx.close
 end procedure
 
 procedure SetValuesInTestFile
-    try errorcall testFailed
     xlsx.open path ♥filePath accessmode readwrite   
-    xlsx.setvalue value ♥testValue1 row 1 colindex 1 result ♥res1
-    xlsx.setvalue value ♥testValue2 row 2 colindex 2 result ♥res2
-    xlsx.setvalue value ♥testValue3 row 3 colindex 3 result ♥res3
-    xlsx.setvalue value ♥testValue4 row 4 colindex 4 result ♥res4
-    xlsx.setvalue value ♥testValue5 row 5 colindex 5 result ♥res5
+    xlsx.setvalue value ♥testValue1 row 1 colindex 4 result ♥res1
+    xlsx.setvalue value ♥testValue2 row 2 colindex 3 result ♥res2
+    xlsx.setvalue value ♥testValue3 row 3 colindex 2 result ♥res3
+    xlsx.setvalue value ♥testValue4 row 4 colindex 1 result ♥res4
     xlsx.close
-    test condition ⊂♥res1 != false && ♥res2 != false && ♥res3 != false && ♥res4 != false && ♥res5 != false⊃
-    end try
+    test condition ⊂♥res1 != false && ♥res2 != false && ♥res3 != false && ♥res4 != false⊃
 end procedure
 
 procedure FindValuesinTestFile
-    try errorcall testFailed
-    xlsx.open path ♥filePath accessmode readwrite   
+    xlsx.open path ♥filePath accessmode readwrite
     xlsx.find ♥testValue1 resultrow ♥resrow1 resultcolumn ♥resCol1
-    test condition ⊂♥resrow1 == 1 && ♥resCol1 == 1⊃
-    
+    test condition ⊂♥resrow1 == 1 && ♥resCol1 == 4⊃
     xlsx.find ♥testValue2 resultrow ♥resrow2 resultcolumn ♥resCol2
-    test condition ⊂♥resrow2 == 2 && ♥resCol2 == 2⊃
-    
+    test condition ⊂♥resrow2 == 2 && ♥resCol2 == 3⊃
     xlsx.find ♥testValue3 resultrow ♥resrow3 resultcolumn ♥resCol3
-    test condition ⊂♥resrow3 == 3 && ♥resCol3 == 3⊃
-    
+    test condition ⊂♥resrow3 == 3 && ♥resCol3 == 2⊃
     xlsx.find ♥testValue4 resultrow ♥resrow4 resultcolumn ♥resCol4
-    test condition ⊂♥resrow4 == 4 && ♥resCol4 == 4⊃
-    
-    xlsx.find ♥testValue5 resultrow ♥resrow5 resultcolumn ♥resCol5
-    test condition ⊂♥resrow5 == 5 && ♥resCol5 == 5⊃
-    
+    test condition ⊂♥resrow4 == 4 && ♥resCol4 == 1⊃
     xlsx.close
-    end try
-end procedure
-
-procedure testFailed
-    test condition no
-end procedure
-
-procedure testSucceeded
-    test condition yes
 end procedure
 
 call DeleteTestFileIfExists
-call CreationWhenOpening
+call CreateWhenOpening
 call SetValuesInTestFile
 call FindValuesinTestFile
 call DeleteTestFileIfExists
-

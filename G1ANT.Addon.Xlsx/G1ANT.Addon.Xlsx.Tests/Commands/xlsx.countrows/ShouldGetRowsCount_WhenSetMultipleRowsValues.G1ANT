@@ -2,9 +2,9 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-♥folderPath =♥environment⟦TEMP⟧\
+♥folderPath = ♥environment⟦TEMP⟧\
 ♥filePath = ♥folderPath + "TempTestDebug.xlsx"
-♥testValue1 = ‴ABC‴
+♥testValue = ‴ABC‴
 
 procedure DeleteTestFileIfExists
     ⊂
@@ -15,40 +15,26 @@ procedure DeleteTestFileIfExists
     ⊃
 end procedure
 
-procedure CreationWhenOpening 
-    try errorcall testFailed
+procedure CreationWhenOpening
     xlsx.open path ♥filePath createifnotexist true
-    xlsx.close     
-    end try    
+    xlsx.close
 end procedure
 
 procedure SetValuesInTestFile
-    try errorcall testFailed
-    xlsx.open path ♥filePath accessmode readwrite   
-    xlsx.setvalue value ♥testValue1 row 1 colindex 1 result ♥res1
-    xlsx.setvalue value ♥testValue1 row 2 colindex 1 result ♥res1
-    xlsx.setvalue value ♥testValue1 row 3 colindex 1 result ♥res1
-    xlsx.setvalue value ♥testValue1 row 4 colindex 1 result ♥res1
+    xlsx.open path ♥filePath accessmode readwrite 
+    ♥Iteration = 4
+    while condition ⊂♥Iteration > 0⊃
+        xlsx.setvalue value ♥testValue row ♥Iteration colindex 1
+        ♥Iteration = ♥Iteration - 1
+    end while
     xlsx.close
-    test condition ⊂♥res1 != false⊃
-    end try
 end procedure
 
 procedure CountRowsFromTestFile
-    try errorcall testFailed
     xlsx.open path ♥filePath accessmode readwrite   
     xlsx.countrows result ♥rowCount
     xlsx.close
     test condition ⊂♥rowCount == 4⊃
-    end try
-end procedure
-
-procedure testFailed
-    test condition no
-end procedure
-
-procedure testSucceeded
-    test condition yes
 end procedure
 
 call DeleteTestFileIfExists
