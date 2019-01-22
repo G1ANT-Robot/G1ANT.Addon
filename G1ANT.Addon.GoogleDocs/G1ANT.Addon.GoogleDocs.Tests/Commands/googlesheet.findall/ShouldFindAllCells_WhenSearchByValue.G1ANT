@@ -4,15 +4,9 @@ addon language version 4.99.18340.1354
 
 ♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥testValue = ‴3. Junior‴
-♥testValue2 = ‴C7&C8&C11&C14&C20&C25‴
-♥folderPath =♥environment⟦TEMP⟧\
-♥filePath = ♥folderPath + "SheetsTest.xlsx"
+♥testCells = ‴C7&C8&C11&C14&C20&C25‴
 
-procedure testFailed
-    test condition no
-end procedure
-
-googlesheet.open ♥FileID errorcall testFailed
-googlesheet.findall value ♥testValue result ♥result1 errorcall testFailed
-googlesheet.close errorcall testFailed
-test condition ⊂♥result1 == ♥testValue2⊃
+googlesheet.open ♥FileID
+googlesheet.findall value ♥testValue result ♥cells
+googlesheet.close
+test condition ⊂♥cells == ♥testCells⊃

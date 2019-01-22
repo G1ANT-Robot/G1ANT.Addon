@@ -5,15 +5,10 @@ addon language version 4.99.18340.1354
 ♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥valueToBePlaced = ‴G1ANT‴
 ♥rangeToBePlaced = ‴A2‴
-
-procedure testFailed
-    test condition no
-end procedure
-
-googlesheet.open ♥FileID errorcall testFailed
-googlesheet.getvalue range ♥rangeToBePlaced result ♥result1 errorcall testFailed
-googlesheet.setvalue range ♥rangeToBePlaced value ♥valueToBePlaced numeric false errorcall testFailed
-googlesheet.getvalue range ♥rangeToBePlaced result ♥result2 errorcall testFailed
+googlesheet.open ♥FileID
+googlesheet.getvalue range ♥rangeToBePlaced
+googlesheet.setvalue range ♥rangeToBePlaced value ♥valueToBePlaced numeric false
+googlesheet.getvalue range ♥rangeToBePlaced result ♥result
 googlesheet.close
-♥result3 = ♥result2[0]
-test condition ⊂♥valueToBePlaced == ♥result3⊃
+♥firstResult = ♥result[0]
+test condition ⊂♥valueToBePlaced == ♥firstResult⊃

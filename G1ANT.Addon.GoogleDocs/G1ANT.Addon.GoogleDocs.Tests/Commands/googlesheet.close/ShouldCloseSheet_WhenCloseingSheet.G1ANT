@@ -3,16 +3,6 @@ addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
 ♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
-♥testValue = ‴G1ANT‴
-
-procedure testFailed
-    test condition no
-end procedure
-
-procedure testSucceeded
-    test condition yes
-end procedure
-
-googlesheet.open ♥FileID
-googlesheet.close errorcall testFailed
-call testSucceeded
+googlesheet.open ♥FileID result ♥sheetHandle
+googlesheet.close 
+test ⊂-1 < ♥sheetHandle⊃

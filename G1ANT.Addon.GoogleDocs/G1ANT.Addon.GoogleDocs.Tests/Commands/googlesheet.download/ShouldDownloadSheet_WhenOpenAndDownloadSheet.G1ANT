@@ -7,15 +7,7 @@ addon language version 4.99.18340.1354
 ♥folderPath =♥environment⟦TEMP⟧\
 ♥filePath = ♥folderPath + "SheetsTest.xlsx"
 
-procedure testFailed
-    test condition no
-end procedure
-
-procedure testSucceeded
-    test condition yes
-end procedure
-
-googlesheet.open ♥FileID isshared false errorcall testFailed
-googlesheet.download ♥filePath type ‴xls‴ errorcall testFailed
-googlesheet.close errorcall testFailed
-call testSucceeded
+googlesheet.open ♥FileID isshared false
+googlesheet.download ♥filePath type ‴xls‴ result ♥resoult
+googlesheet.close
+test ⊂"Download complete." == ♥resoult⊃

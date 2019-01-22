@@ -5,11 +5,7 @@ addon language version 4.99.18340.1354
 ♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥testValue = ‴G1ANT‴
 
-procedure testFailed
-    test condition no
-end procedure
-
-googlesheet.open ♥FileID errorcall testFailed
-googlesheet.gettitle
+googlesheet.open ♥FileID
+googlesheet.gettitle ♥result
 googlesheet.close
 test condition ⊂♥testValue == ♥result⊃

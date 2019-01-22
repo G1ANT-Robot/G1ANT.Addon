@@ -5,13 +5,9 @@ addon language version 4.99.18340.1354
 ♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥valueToBePlaced = ‴G1ANT‴
 
-procedure testFailed
-    test condition no
-end procedure
-
-googlesheet.open ♥FileID errorcall testFailed
-googlesheet.gettitle result ♥before errorcall testFailed
-googlesheet.settitle ♥valueToBePlaced errorcall testFailed
-googlesheet.gettitle ♥res errorcall testFailed
+googlesheet.open ♥FileID
+googlesheet.gettitle result ♥before
+googlesheet.settitle ♥valueToBePlaced
+googlesheet.gettitle ♥res
 googlesheet.close
 test condition ⊂♥before == ♥res⊃

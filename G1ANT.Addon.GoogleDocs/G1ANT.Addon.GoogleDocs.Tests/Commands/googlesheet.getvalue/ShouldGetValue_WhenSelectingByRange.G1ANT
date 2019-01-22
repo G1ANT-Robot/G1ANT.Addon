@@ -6,12 +6,8 @@ addon language version 4.99.18340.1354
 ♥expectedValue = ‴Andrew‴
 ♥rangeToBeChecked = ‴A3‴
 
-procedure testFailed
-    test condition no
-end procedure
-
-googlesheet.open ♥FileID errorcall testFailed
-googlesheet.getvalue range ♥rangeToBeChecked errorcall testFailed
+googlesheet.open ♥FileID
+googlesheet.getvalue range ♥rangeToBeChecked
 ♥FirstValue = ♥result[0]
 googlesheet.close
 test condition ⊂♥expectedValue == ♥FirstValue⊃
