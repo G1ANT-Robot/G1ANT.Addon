@@ -7,17 +7,11 @@ addon language version 4.99.18340.1354
 ♥testvalue1 = ‴G1ANT‴
 ♥testvalue2 = ‴Example Spreadsheet Edited‴
 
-procedure testFailed
-    test condition no
-    googlesheet.close ♥excelID1
-    googlesheet.close ♥excelID2
-end procedure
-
 googlesheet.open ♥fileid1 result ♥excelID1
 googlesheet.open ♥fileid2 result ♥excelID2
-googlesheet.switch ♥excelID1 errorcall testFailed
+googlesheet.switch ♥excelID1
 googlesheet.gettitle result ♥excelTitle1
-googlesheet.switch ♥excelID2 errorcall testFailed
+googlesheet.switch ♥excelID2
 googlesheet.gettitle result ♥excelTitle2
 googlesheet.close ♥excelID1
 googlesheet.close ♥excelID2
