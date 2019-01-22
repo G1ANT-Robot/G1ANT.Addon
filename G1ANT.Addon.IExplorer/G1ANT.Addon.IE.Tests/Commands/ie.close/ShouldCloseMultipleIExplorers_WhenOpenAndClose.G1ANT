@@ -2,24 +2,16 @@
 addon core version 4.99.18340.1354
 addon language version 4.99.18340.1354
 
-procedure testFailed
-    test condition no
-end procedure
-
-procedure OpenIE
-    try errorcall testFailed    
-		ie.open result  ♥IE_Handle1
-		ie.open result  ♥IE_Handle2
-    end try      
+procedure OpenIE  
+    ie.open result  ♥IE_Handle1
+    ie.open result  ♥IE_Handle2
 end procedure
 
 procedure SwitchAndCloseIE
-    try errorcall testFailed
-		ie.switch ♥IE_Handle1
-		ie.close
-		ie.switch ♥IE_Handle2
-		ie.close
-    end try      
+    ie.switch ♥IE_Handle1
+    ie.close
+    ie.switch ♥IE_Handle2
+    ie.close
 end procedure
 
 call OpenIE

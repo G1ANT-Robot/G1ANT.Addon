@@ -5,7 +5,7 @@ addon language version 4.99.18340.1354
 ie.open
 ie.seturl google.com nowait true
 ie.waitforcomplete timeout 20000
-ie.gettitle result ♥title
-♥testValue1 = ‴Google‴
+ie.gettitle result ♥pageTitle
+♥testValue = ‴Google‴
 ie.close                 
-test condition ⊂♥testValue1 == ♥title⊃
+test condition ⊂♥pageTitle.Contains(♥testValue)⊃
