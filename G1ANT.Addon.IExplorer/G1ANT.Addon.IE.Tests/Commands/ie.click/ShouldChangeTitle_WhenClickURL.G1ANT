@@ -1,6 +1,4 @@
 ﻿addon iexplorer version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
 ie.open ‴www.google.com‴
 ie.click a[href*='//mail.google'] by query

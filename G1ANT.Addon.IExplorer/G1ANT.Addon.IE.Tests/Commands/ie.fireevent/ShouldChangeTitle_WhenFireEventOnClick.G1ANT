@@ -1,9 +1,7 @@
 ﻿addon iexplorer version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
 ie.open ‴google.com‴
-ie.fireevent eventname ‴onclick‴ search ‴a.gb_P[href='https://mail.google.com/mail/?tab=wm']‴ by query
+ie.fireevent eventname ‴onclick‴ search ‴a[href*='mail.google']‴ by query
 ie.gettitle result ♥returnValue
 ie.close
 ♥testTitle = ‴Gmail‴

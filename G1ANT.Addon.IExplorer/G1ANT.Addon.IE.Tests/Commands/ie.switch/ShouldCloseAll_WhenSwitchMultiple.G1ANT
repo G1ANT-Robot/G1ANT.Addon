@@ -1,15 +1,8 @@
 ﻿addon iexplorer version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
 procedure OpenIE 
     ie.open result  ♥IE_Handle1
     ie.open result  ♥IE_Handle2
-end procedure
-
-procedure SwitchIE
-    ie.switch ♥IE_Handle1
-    ie.switch ♥IE_Handle2
 end procedure
 
 procedure SwitchAndCloseIE
@@ -20,5 +13,5 @@ procedure SwitchAndCloseIE
 end procedure
 
 call OpenIE
-call SwitchIE
 call SwitchAndCloseIE
+test condition ⊂0 == System.Diagnostics.Process.GetProcessesByName("iexplore").Length⊃
