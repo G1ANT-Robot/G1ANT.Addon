@@ -1,6 +1,6 @@
 ﻿addon iexplorer version 2.205.17304.1000
 
 ie.open ‴www.google.com‴
-ie.getattribute name ‴title‴ search ‴gLFyf gsfi‴ by class result ♥title
+ie.getattribute name ‴title‴ search ‴q‴ by name result ♥title
 ie.close
 test condition ⊂♥title == "Search" || ♥title == "Szukaj"⊃
