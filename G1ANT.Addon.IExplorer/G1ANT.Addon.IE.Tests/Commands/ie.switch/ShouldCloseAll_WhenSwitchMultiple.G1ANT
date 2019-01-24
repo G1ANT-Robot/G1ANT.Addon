@@ -1,0 +1,17 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+procedure OpenIE 
+    ie.open result  ♥IE_Handle1
+    ie.open result  ♥IE_Handle2
+end procedure
+
+procedure SwitchAndCloseIE
+    ie.switch ♥IE_Handle1
+    ie.close
+    ie.switch ♥IE_Handle2
+    ie.close
+end procedure
+
+call OpenIE
+call SwitchAndCloseIE
+test condition ⊂0 == System.Diagnostics.Process.GetProcessesByName("iexplore").Length⊃

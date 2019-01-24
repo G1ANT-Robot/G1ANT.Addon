@@ -1,0 +1,9 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open
+ie.seturl google.com nowait true
+ie.waitforcomplete timeout 20000
+ie.gettitle result ♥pageTitle
+♥testValue = ‴Google‴
+ie.close                 
+test condition ⊂♥pageTitle.Contains(♥testValue)⊃
