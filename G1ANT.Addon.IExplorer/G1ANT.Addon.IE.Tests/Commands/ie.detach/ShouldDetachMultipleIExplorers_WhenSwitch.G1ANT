@@ -1,0 +1,24 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+procedure OpenIE
+    ie.open url ‴google.com‴ result ♥IE_Handle1
+    ie.open url ‴google.com‴ result ♥IE_Handle2
+end procedure
+
+procedure SwitchAndDetachIE
+    ie.switch ♥IE_Handle1
+    ie.detach
+    ie.switch ♥IE_Handle2
+    ie.detach
+    call CloseIE
+end procedure
+
+procedure CloseIE
+    ie.attach by url phrase google
+    ie.close
+    ie.attach by url phrase google
+    ie.close
+end procedure
+
+call OpenIE
+call SwitchAndDetachIE

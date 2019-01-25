@@ -1,0 +1,8 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴www.google.com‴
+ie.setattribute name ‴value‴ value ‴test‴ search ‴q‴ by name
+ie.getattribute name ‴value‴ search ‴q‴ by name result ♥attributeValue
+♥testValue = ‴test‴
+ie.close
+test condition ⊂♥testValue== ♥attributeValue⊃
