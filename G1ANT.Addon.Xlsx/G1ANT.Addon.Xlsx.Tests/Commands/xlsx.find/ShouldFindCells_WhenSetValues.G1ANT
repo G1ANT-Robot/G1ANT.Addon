@@ -1,6 +1,4 @@
 ﻿addon xlsx version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
 ♥folderPath = ♥environment⟦TEMP⟧\
 ♥filePath = ♥folderPath + "TempTestDebug.xlsx"
@@ -30,7 +28,7 @@ procedure SetValuesInTestFile
     xlsx.setvalue value ♥testValue3 row 3 colindex 2 result ♥res3
     xlsx.setvalue value ♥testValue4 row 4 colindex 1 result ♥res4
     xlsx.close
-    test condition ⊂♥res1 != false && ♥res2 != false && ♥res3 != false && ♥res4 != false⊃
+    test ⊂♥res1 != false && ♥res2 != false && ♥res3 != false && ♥res4 != false⊃
 end procedure
 
 procedure FindValuesinTestFile

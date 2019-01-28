@@ -34,7 +34,7 @@ procedure CountRowsFromTestFile
     xlsx.open path ♥filePath accessmode readwrite   
     xlsx.countrows result ♥rowCount
     xlsx.close
-    test condition ⊂♥rowCount == 4⊃
+    test ⊂♥rowCount == 4⊃
 end procedure
 
 call DeleteTestFileIfExists

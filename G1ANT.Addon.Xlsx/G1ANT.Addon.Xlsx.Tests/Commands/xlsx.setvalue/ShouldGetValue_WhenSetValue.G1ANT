@@ -1,6 +1,4 @@
 ﻿addon xlsx version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
 ♥folderPath = ♥environment⟦TEMP⟧\
 ♥filePath = ♥folderPath + "TempTestDebug.xlsx"
@@ -24,14 +22,14 @@ procedure SetValueInTestFile
     xlsx.open path ♥filePath accessmode readwrite   
     xlsx.setvalue value ♥testValue row 2 colindex 2 result ♥res1
     xlsx.close
-    test condition ⊂♥res1 != false⊃
+    test ⊂♥res1 != false⊃
 end procedure
 
 procedure GetValueFromTestFile
     xlsx.open path ♥filePath accessmode readwrite   
     xlsx.getvalue row 2 colindex 2 result ♥res2
     xlsx.close
-    test condition ⊂♥testValue == ♥res2⊃
+    test ⊂♥testValue == ♥res2⊃
 end procedure
 
 call DeleteTestFileIfExists
