@@ -153,7 +153,7 @@ namespace G1ANT.Addon.UI
             automationElement.SetFocus();
         }
 
-        public void SetText(string text)
+        public void SetText(string text, int timeout)
         {
             object valuePattern = null;
             if (automationElement.TryGetCurrentPattern(ValuePattern.Pattern, out valuePattern))
@@ -165,9 +165,9 @@ namespace G1ANT.Addon.UI
             {
                 automationElement.SetFocus();
                 IntPtr wndHandle = new IntPtr(automationElement.Current.NativeWindowHandle);
-                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+home{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Move to start of control
-                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+shift+end{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, 0, false, 0); // Select everything
-                KeyboardTyper.TypeWithSendInput(text, null, wndHandle, IntPtr.Zero, 0, false, 0);
+                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+home{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, timeout, false, 0); // Move to start of control
+                KeyboardTyper.TypeWithSendInput($"{SpecialChars.KeyBegin}ctrl+shift+end{SpecialChars.KeyEnd}", null, wndHandle, IntPtr.Zero, timeout, false, 0); // Select everything
+                KeyboardTyper.TypeWithSendInput(text, null, wndHandle, IntPtr.Zero, timeout, false, 0);
             }
             else
                 throw new NotSupportedException("SetText is not supported");

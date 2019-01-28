@@ -25,7 +25,7 @@ namespace G1ANT.Addon.UI
             var element = UIElement.FromWPath(arguments.WPath);
             if (element != null)
             {
-                element.SetText(arguments.Text.Value);
+                element.SetText(arguments.Text.Value, (int)arguments.Timeout.Value.TotalMilliseconds);
             }
         }
     }
