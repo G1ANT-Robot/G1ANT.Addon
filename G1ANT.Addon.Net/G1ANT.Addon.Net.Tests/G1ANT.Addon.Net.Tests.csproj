@@ -90,7 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Commands\is.accessible\ShouldGetGoogleAccessibility_WhenCheckingForAccessiblity.G1ANT" />
+    <None Include="Commands\ping\ShouldGetPingResponseTime_WhenPingGoogle.G1ANT" />
+    <None Include="Commands\rest\ShouldFindmetodNameInResponse_WhenSendRestCommands.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
