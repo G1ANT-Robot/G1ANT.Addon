@@ -1,14 +1,12 @@
 ﻿addon googledocs version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
-♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥valueToBePlaced = ‴G1ANT‴
 ♥rangeToBePlaced = ‴A2‴
-googlesheet.open ♥FileID
+googlesheet.open ♥fileID
 googlesheet.getvalue range ♥rangeToBePlaced
 googlesheet.setvalue range ♥rangeToBePlaced value ♥valueToBePlaced numeric false
 googlesheet.getvalue range ♥rangeToBePlaced result ♥result
 googlesheet.close
 ♥firstResult = ♥result[0]
-test condition ⊂♥valueToBePlaced == ♥firstResult⊃
+test ⊂♥valueToBePlaced == ♥firstResult⊃

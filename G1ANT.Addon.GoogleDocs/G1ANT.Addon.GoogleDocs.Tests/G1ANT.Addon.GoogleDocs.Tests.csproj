@@ -81,14 +81,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Commands\googlesheet.close\ShouldCloseSheet_WhenCloseingSheet.G1ANT" />
+    <None Include="Commands\googlesheet.close\ShouldCloseSheet_WhenClosingSheet.G1ANT" />
     <None Include="Commands\googlesheet.download\ShouldDownloadSheet_WhenOpenAndDownloadSheet.G1ANT" />
     <None Include="Commands\googlesheet.findall\ShouldFindAllCells_WhenSearchByValue.G1ANT" />
     <None Include="Commands\googlesheet.find\ShouldFindCell_WhenSearchByValue.G1ANT" />
     <None Include="Commands\googlesheet.gettitle\ShouldGetTitle_WhenGetTitleFromSheet.G1ANT" />
     <None Include="Commands\googlesheet.getvalue\ShouldGetValue_WhenSelectingByRange.G1ANT" />
     <None Include="Commands\googlesheet.open\ShouldGetTitle_WhenOpenSheet.G1ANT" />
-    <None Include="Commands\googlesheet.settitle\ShouldGetTitle_WhenSetTitle.G1ANT" />
+    <None Include="Commands\googlesheet.settitle\ShouldGetNewTitle_WhenTheTitleWasUpdated.G1ANT" />
     <None Include="Commands\googlesheet.setvalue\ShouldGetValue_WhenSetValue.G1ANT" />
     <None Include="Commands\googlesheet.switch\ShouldGetTitles_WhenSwitchSheet.G1ANT" />
     <None Include="packages.config" />

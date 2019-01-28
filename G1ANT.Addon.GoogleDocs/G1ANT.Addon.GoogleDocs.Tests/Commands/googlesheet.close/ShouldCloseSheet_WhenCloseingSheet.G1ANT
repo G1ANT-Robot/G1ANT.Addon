@@ -1,8 +1,0 @@
-﻿addon googledocs version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
-
-♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
-googlesheet.open ♥FileID result ♥sheetHandle
-googlesheet.close 
-test ⊂-1 < ♥sheetHandle⊃

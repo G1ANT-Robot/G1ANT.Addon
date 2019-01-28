@@ -1,0 +1,11 @@
+﻿addon googledocs version 2.205.17304.1000
+
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥valueToBePlaced = ⊂Guid.NewGuid().ToString()⊃
+
+googlesheet.open ♥fileID
+googlesheet.gettitle result ♥before
+googlesheet.settitle ♥valueToBePlaced
+googlesheet.gettitle ♥after
+googlesheet.close
+test ⊂♥before != ♥after⊃

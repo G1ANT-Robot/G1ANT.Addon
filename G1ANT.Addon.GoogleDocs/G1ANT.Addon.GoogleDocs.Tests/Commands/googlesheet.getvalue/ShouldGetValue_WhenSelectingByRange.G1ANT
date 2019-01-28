@@ -1,13 +1,11 @@
 ﻿addon googledocs version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
-♥FileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥expectedValue = ‴Andrew‴
 ♥rangeToBeChecked = ‴A3‴
 
-googlesheet.open ♥FileID
+googlesheet.open ♥fileID
 googlesheet.getvalue range ♥rangeToBeChecked
-♥FirstValue = ♥result[0]
+♥firstValue = ♥result[0]
 googlesheet.close
-test condition ⊂♥expectedValue == ♥FirstValue⊃
+test ⊂♥expectedValue == ♥firstValue⊃

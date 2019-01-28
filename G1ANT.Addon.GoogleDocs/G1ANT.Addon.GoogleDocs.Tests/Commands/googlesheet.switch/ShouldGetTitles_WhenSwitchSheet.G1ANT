@@ -1,14 +1,12 @@
 ﻿addon googledocs version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
-♥fileid1 = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
-♥fileid2 = ‴1d4InQksHBQyAqmogBc2xsP2eU7uBGD3iBtcmng3--Hk‴
-♥testvalue1 = ‴G1ANT‴
-♥testvalue2 = ‴Example Spreadsheet Edited‴
+♥fileId1 = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥fileId2 = ‴1d4InQksHBQyAqmogBc2xsP2eU7uBGD3iBtcmng3--Hk‴
+♥testValue1 = ‴G1ANT‴
+♥testValue2 = ‴Example Spreadsheet Edited‴
 
-googlesheet.open ♥fileid1 result ♥excelID1
-googlesheet.open ♥fileid2 result ♥excelID2
+googlesheet.open ♥fileId1 result ♥excelID1
+googlesheet.open ♥fileId2 result ♥excelID2
 googlesheet.switch ♥excelID1
 googlesheet.gettitle result ♥excelTitle1
 googlesheet.switch ♥excelID2
@@ -16,4 +14,4 @@ googlesheet.gettitle result ♥excelTitle2
 googlesheet.close ♥excelID1
 googlesheet.close ♥excelID2
 
-test condition ⊂♥testvalue1 == ♥excelTitle1 && ♥testvalue2 == ♥excelTitle2⊃
+test ⊂♥testValue1 == ♥excelTitle1 && ♥testValue2 == ♥excelTitle2⊃
