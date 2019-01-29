@@ -80,6 +80,7 @@
     <Compile Include="Commands\OcrFromScreenCommand.cs" />
     <Compile Include="Commands\OcrFindCommand.cs" />
     <Compile Include="Commands\OcrFindPointCommand.cs" />
+    <None Include="G1ANT.Addon.Ocr.Tests\Commands\OcrGoogle.FindPoint\ShouldReturnPointPosition_WhenTextIsFound.G1ANT" />
     <Compile Include="Variables\TimeoutOcrVariable.cs" />
     <Compile Include="OcrAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +94,8 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="G1ANT.Addon.Ocr.Tests\Commands\OcrGoogle.Find\ShouldReturnRectanglePosition_WhenTextIsFound.G1ANT" />
+    <None Include="G1ANT.Addon.Ocr.Tests\Commands\OcrGoogle.FromScreen\ShouldReturnText_WhenIsTextFound.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -147,5 +150,6 @@
   <ItemGroup>
     <EmbeddedResource Include="License.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
