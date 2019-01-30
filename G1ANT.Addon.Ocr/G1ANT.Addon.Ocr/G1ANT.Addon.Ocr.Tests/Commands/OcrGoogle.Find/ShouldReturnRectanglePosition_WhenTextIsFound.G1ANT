@@ -3,7 +3,7 @@ addon ocrgoogle version 2.205.17304.1000
 
 ie.open http://digitalnativestudios.com/textmeshpro/docs/rich-text/lowercase-uppercase-smallcaps.png
 window ‴✱Internet Explorer✱‴ style maximize
-ocrgoogle.login 0b7239b2d48b60d4b5bc45c5297e57002f611e6c
+ocrgoogle.login ♥credential⟦ocrgoogle:jsoncredential⟧
 ocrgoogle.find ‴alice‴ area ♥screen result ♥rectangleResult
 ie.close
 

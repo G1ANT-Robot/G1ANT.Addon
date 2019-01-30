@@ -1,4 +1,7 @@
-﻿/**
+﻿
+
+using System;
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr
 *    www.g1ant.com
@@ -7,10 +10,6 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Language;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace G1ANT.Language.Ocr
 {
     [Command(Name = "ocrgoogle.login",
@@ -20,7 +19,7 @@ namespace G1ANT.Language.Ocr
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Json credential obtained from Google text recognition service.")]
+            [Argument(Required = true, Tooltip = "Json credential obtained from Google Text Recognition Service.")]
             public TextStructure JsonCredential { get; set; }
         }
 
@@ -28,7 +27,19 @@ namespace G1ANT.Language.Ocr
         
         public void Execute(Arguments arguments)
         {
-            GoogleCloudApi.JsonCredential = arguments.JsonCredential.Value;
+            try
+            {
+                new GoogleCloudApi(arguments.JsonCredential.Value);
+            }
+            catch
+            {
+                throw new Exception("Invalid json credential. Cannot connect to the Google Text Recognition Service");
+            }
+
+            OnScriptEnd = () => 
+            {
+                GoogleCloudApi.Instance.CleanUp();
+            };
         }
     }
 }

@@ -28,8 +28,7 @@ namespace G1ANT.Language.Ocr
         public static string GetTextFromImage(string path)
         {
             Bitmap bitmap = new Bitmap(path);
-            GoogleCloudApi googleApi = new GoogleCloudApi();
-            string output = googleApi.RecognizeText(bitmap, new List<string>() { "pl", "en" }, 10000);
+            string output = GoogleCloudApi.Instance.RecognizeText(bitmap, new List<string>() { "pl", "en" }, 10000);
 
             return output;
         }

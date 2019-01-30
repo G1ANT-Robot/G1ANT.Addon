@@ -50,8 +50,7 @@ namespace G1ANT.Language.Ocr
             int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             string search = arguments.Search.Value;
-            GoogleCloudApi googleApi = new GoogleCloudApi();
-            System.Drawing.Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
+            System.Drawing.Rectangle output = GoogleCloudApi.Instance.RecognizeText(partOfScreen, search, languages, timeout);
             if (Equals(output, new Rectangle(-1, -1, -1, -1)))
                 throw new NullReferenceException("Ocr was unable to find text");
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.RectangleStructure(output));
