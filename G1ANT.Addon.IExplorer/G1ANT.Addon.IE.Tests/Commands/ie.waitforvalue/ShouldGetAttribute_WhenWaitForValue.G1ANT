@@ -1,0 +1,8 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open url ‴www.google.com‴
+ie.waitforvalue script ‴document.getElementsByClassName("content").length‴ expectedvalue ‴1‴
+ie.getattribute name ‴id‴ search ‴content‴ by class result ♥content
+♥testValue = ‴main‴
+ie.close                 
+test condition ⊂♥testValue == ♥content⊃

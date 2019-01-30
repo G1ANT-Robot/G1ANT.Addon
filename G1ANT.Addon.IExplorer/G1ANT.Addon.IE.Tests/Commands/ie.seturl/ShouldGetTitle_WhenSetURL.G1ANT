@@ -1,0 +1,8 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open
+ie.seturl google.com
+ie.gettitle result ♥title                            
+♥testValue1 = ‴Google‴
+ie.close
+test condition ⊂♥testValue1== ♥title⊃

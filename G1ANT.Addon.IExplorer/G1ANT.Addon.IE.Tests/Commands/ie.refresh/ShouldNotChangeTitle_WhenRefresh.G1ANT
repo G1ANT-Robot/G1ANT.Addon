@@ -1,0 +1,8 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴www.google.com‴
+ie.refresh
+ie.gettitle result ♥pageTitle
+ie.close
+♥testValue = ‴Google‴
+test condition ⊂♥pageTitle.Contains(♥testValue)⊃

@@ -1,0 +1,17 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴www.google.com‴ result ♥IE_google_Handle
+ie.open url ‴https://g1ant.com‴ result ♥IE_G1ANT_Handle
+ie.open result ♥IE_empty_Handle
+ie.switch ♥IE_google_Handle
+ie.gettitle result ♥googlePageTitle
+ie.close
+ie.switch ♥IE_G1ANT_Handle
+ie.gettitle result ♥G1ANT_PageTitle
+ie.close
+ie.switch ♥IE_empty_Handle
+ie.close
+♥googleTestValue = ‴Google‴
+♥G1ANT_TestValue = ‴G1ANT‴
+
+test condition ⊂♥googlePageTitle.Contains(♥googleTestValue) && ♥G1ANT_PageTitle.Contains(♥G1ANT_TestValue)⊃

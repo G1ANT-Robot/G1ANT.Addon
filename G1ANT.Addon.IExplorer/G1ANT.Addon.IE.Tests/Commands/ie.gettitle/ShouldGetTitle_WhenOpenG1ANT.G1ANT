@@ -1,0 +1,7 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴https://g1ant.com/‴
+ie.gettitle result ♥title
+♥testValue = ‴G1ANT‴
+ie.close
+test condition ⊂♥title.Contains(♥testValue)⊃

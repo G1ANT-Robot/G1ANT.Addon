@@ -1,0 +1,11 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open url ‴google.com‴
+ie.gettitle result ♥FirstTitle
+ie.detach
+♥TestValue = ‴DuckDuckGo‴
+ie.attach phrase ♥FirstTitle by ‴title‴
+ie.seturl url ‴duckduckgo.com‴
+ie.gettitle result ♥TestTitle
+ie.close
+test condition ⊂♥TestTitle.Contains(♥TestValue)⊃

@@ -1,0 +1,8 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴google.com‴
+ie.fireevent eventname ‴onclick‴ search ‴a[href*='mail.google']‴ by query
+ie.gettitle result ♥returnValue
+ie.close
+♥testTitle = ‴Gmail‴
+test condition ⊂♥returnValue.Contains(♥testTitle)⊃
