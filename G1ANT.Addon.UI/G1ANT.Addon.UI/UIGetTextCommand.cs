@@ -13,7 +13,7 @@ namespace G1ANT.Addon.UI
             public WPathStructure WPath { get; set; }
 
             [Argument(Required = true, Tooltip = "Variable where the text of the cotrol will be returned")]
-            public VariableStructure Result { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
         public UIGetTextCommand(AbstractScripter scripter) : base(scripter)

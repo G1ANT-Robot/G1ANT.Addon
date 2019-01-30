@@ -1,0 +1,7 @@
+addon net version 2.205.17304.1000
+addon ui version 1.0.0.0
+
+program notepad
+ui.click ‴/ui[@name='Untitled - Notepad']/descendant::ui[@name='Close']‴
+
+test ⊂System.Diagnostics.Process.GetProcessesByName("notepad").Length ==0⊃

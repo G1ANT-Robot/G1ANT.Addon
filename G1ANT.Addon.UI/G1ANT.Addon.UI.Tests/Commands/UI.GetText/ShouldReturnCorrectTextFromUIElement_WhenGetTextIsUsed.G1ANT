@@ -1,0 +1,7 @@
+addon ui version 1.0.0.0
+
+program notepad
+ui.gettext wpath ‴/ui[@name='Untitled - Notepad']‴
+process.kill notepad
+
+test ⊂♥result == "Untitled - Notepad"⊃
