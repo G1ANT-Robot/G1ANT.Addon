@@ -1,0 +1,7 @@
+﻿word.open
+
+word.close errorcall CouldNotCloseWord
+
+procedure CouldNotCloseWord
+    test ⊂false⊃
+end

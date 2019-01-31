@@ -1,0 +1,9 @@
+﻿♥filepath = ‴♥environment⟦TEMP⟧\tempexcelfile.xlsx‴
+
+excel.open
+excel.setvalue value ‴Test text.‴ row 1 colname ‴A‴
+excel.setvalue value ‴54642 5854 22‴ row 1 colname ‴B‴
+excel.save path ♥filepath
+excel.close
+file.exists filename ♥filepath
+file.delete filename ♥filepath

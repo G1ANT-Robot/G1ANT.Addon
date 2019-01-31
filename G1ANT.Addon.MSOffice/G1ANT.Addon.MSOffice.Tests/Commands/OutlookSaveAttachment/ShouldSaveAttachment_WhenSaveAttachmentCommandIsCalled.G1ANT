@@ -1,0 +1,27 @@
+﻿♥outlookInboxFolder = ‴t.g1ant.test@gmail.com\Skrzynka odbiorcza‴
+♥toBeSentAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentsent.txt‴
+♥toBeDownloadedAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentdownloaded.txt‴
+
+outlook.open display false
+text.write text ‴Test text.‴ filename ♥toBeSentAttachmentPath
+
+♥attachmentsToBeSent = ⟦list⟧♥toBeSentAttachmentPath❚ 
+
+outlook.newmessage to ‴t.g1ant.test@gmail.com‴ subject ‴Test mail‴ body ‴Test content.‴ attachments ♥attachmentsToBeSent
+outlook.send 
+delay 5
+
+outlook.open display false
+delay 5
+outlook.getfolder path ♥outlookInboxFolder result ♥InboxFolder
+♥emails = ♥InboxFolder⟦mails⟧
+♥mail = ♥emails⟦♥emails.Count⟧
+♥attachments = ♥mail⟦attachments⟧
+♥attachment = ♥attachments⟦1⟧
+outlook.saveattachment ♥attachment path ♥toBeDownloadedAttachmentPath
+text.read filename ♥toBeDownloadedAttachmentPath result ♥textFromDownloadedAttachemnt
+test ⊂♥textFromDownloadedAttachemnt.Equals("Test text.")⊃
+outlook.close
+
+file.delete ♥toBeSentAttachmentPath
+file.delete ♥toBeDownloadedAttachmentPath

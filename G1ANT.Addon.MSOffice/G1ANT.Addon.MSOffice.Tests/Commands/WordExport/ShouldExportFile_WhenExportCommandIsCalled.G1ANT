@@ -1,0 +1,8 @@
+﻿♥filepath = ‴♥environment⟦TEMP⟧\testworddocument.pdf‴
+word.open
+
+word.inserttext text ‴Test text.‴
+word.export path ♥filepath
+word.close
+file.exists filename ♥filepath
+file.delete filename ♥filepath

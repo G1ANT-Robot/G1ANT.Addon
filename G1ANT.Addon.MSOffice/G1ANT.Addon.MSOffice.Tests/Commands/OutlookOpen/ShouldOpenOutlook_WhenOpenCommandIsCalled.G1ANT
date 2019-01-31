@@ -1,0 +1,7 @@
+﻿outlook.open display false errorcall CouldNotOpenOutlook
+
+outlook.close
+
+procedure CouldNotOpenOutlook
+    test ⊂false⊃
+end

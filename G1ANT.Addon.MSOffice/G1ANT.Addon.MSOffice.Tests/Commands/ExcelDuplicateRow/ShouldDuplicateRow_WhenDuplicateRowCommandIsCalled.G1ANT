@@ -1,0 +1,14 @@
+﻿excel.open
+
+excel.setvalue value 1 row 1 colindex 1
+excel.setvalue value 2 row 1 colindex 2
+excel.setvalue value 3 row 1 colindex 3
+
+excel.duplicaterow source 1 destination 2
+
+for counter ♥counter from 1 to 3 step 1
+    excel.getvalue row 2 colindex ♥counter result ♥cellValue
+    test ⊂♥cellValue == ♥counter.ToString()⊃
+end
+
+excel.close

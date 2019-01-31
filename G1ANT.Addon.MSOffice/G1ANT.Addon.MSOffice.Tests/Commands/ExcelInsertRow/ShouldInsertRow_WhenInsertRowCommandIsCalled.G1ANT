@@ -1,0 +1,16 @@
+﻿excel.open
+
+excel.setvalue value ‴1‴ row ‴1‴ colindex ‴1‴
+excel.setvalue value ‴3‴ row ‴2‴ colindex ‴1‴
+excel.setvalue value ‴5‴ row ‴3‴ colindex ‴1‴
+
+excel.insertrow row 1
+excel.insertrow row 3
+
+for counter ♥a from 1 to 3 step 2
+    excel.getvalue row ♥a colindex 1 result ♥cellValue
+    ♥cellValue = ⟦integer⟧♥cellValue
+    test ⊂♥cellValue == ♥a⊃
+end
+
+excel.close
