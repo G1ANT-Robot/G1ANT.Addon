@@ -1,5 +1,6 @@
 addon ui version 1.0.0.0
 
+process.kill notepad
 ♥inputText = robot
 
 program notepad 

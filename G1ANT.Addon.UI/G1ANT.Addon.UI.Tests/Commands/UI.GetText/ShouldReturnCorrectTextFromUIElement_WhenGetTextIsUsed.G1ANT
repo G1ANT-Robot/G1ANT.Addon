@@ -1,5 +1,7 @@
 addon ui version 1.0.0.0
 
+process.kill notepad
+
 program notepad
 ui.gettext wpath ‴/ui[@name='Untitled - Notepad']‴
 process.kill notepad

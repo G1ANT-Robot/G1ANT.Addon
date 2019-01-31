@@ -1,5 +1,7 @@
 addon ui version 1.0.0.0
 
+process.kill notepad
+
 program notepad
 ui.setroot wpath ‴/ui[@name='Untitled - Notepad']‴
 ui.click wpath ‴/descendant::ui[@name='Close']‴
