@@ -2,10 +2,12 @@
 
 ♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥valueToBePlaced = ⊂Guid.NewGuid().ToString()⊃
+♥valueDefault = ‴G1ANT‴
 
 googlesheet.open ♥fileID
 googlesheet.gettitle result ♥before
 googlesheet.settitle ♥valueToBePlaced
 googlesheet.gettitle ♥after
+googlesheet.settitle ♥valueDefault
 googlesheet.close
 test ⊂♥before != ♥after⊃
