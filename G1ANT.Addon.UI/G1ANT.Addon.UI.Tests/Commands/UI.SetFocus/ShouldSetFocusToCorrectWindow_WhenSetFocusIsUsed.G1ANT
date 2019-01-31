@@ -1,0 +1,16 @@
+addon iexplorer version 2.205.17304.1000
+addon ui version 1.0.0.0
+
+process.kill notepad
+♥inputText = robot
+
+program notepad
+keyboard ♥inputText
+ie.open
+ui.setfocus ‴/ui[@name='Untitled - Notepad']‴
+keyboard ⋘CTRL+A⋙⋘CTRL+C⋙
+ie.close
+process.kill notepad
+
+
+test ⊂♥inputText == ♥clipboard⊃

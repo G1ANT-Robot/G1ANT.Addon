@@ -14,7 +14,7 @@ namespace G1ANT.Addon.UI
             public WPathStructure WPath { get; set; }
 
             [Argument(Required = true)]
-            public VariableStructure Result { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
         public UIGetRectangleCommand(AbstractScripter scripter) : base(scripter)
@@ -27,7 +27,7 @@ namespace G1ANT.Addon.UI
             if (element != null)
             {
                 var rect = element.GetRectangle();
-                Scripter.Variables.SetVariableValue(arguments.Result.Value, 
+                Scripter.Variables.SetVariableValue(arguments.Result.Value,
                     new RectangleStructure(Rectangle.FromLTRB((int)rect.Left, (int)rect.Top, (int)rect.Right, (int)rect.Bottom), null, Scripter));
             }
         }

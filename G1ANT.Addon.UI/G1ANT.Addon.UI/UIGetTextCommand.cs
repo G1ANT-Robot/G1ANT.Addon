@@ -3,9 +3,9 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.UI
 {
-    [Command(Name = "ui.settext",
-        Tooltip = "Set text of the control of desktop application described by WPathStructure")]
-    public class UISetTextCommand : Command
+    [Command(Name = "ui.gettext",
+        Tooltip = "Get text of the control of desktop application described by WPathStructure")]
+    public class UIGetTextCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -13,10 +13,10 @@ namespace G1ANT.Addon.UI
             public WPathStructure WPath { get; set; }
 
             [Argument(Required = true, Tooltip = "Variable where the text of the cotrol will be returned")]
-            public TextStructure Text { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
-        public UISetTextCommand(AbstractScripter scripter) : base(scripter)
+        public UIGetTextCommand(AbstractScripter scripter) : base(scripter)
         {
         }
 
@@ -25,7 +25,9 @@ namespace G1ANT.Addon.UI
             var element = UIElement.FromWPath(arguments.WPath);
             if (element != null)
             {
-                element.SetText(arguments.Text.Value);
+                var text = element.GetText();
+                Scripter.Variables.SetVariableValue(arguments.Result.Value,
+                    new TextStructure(text, null, Scripter));
             }
         }
     }
