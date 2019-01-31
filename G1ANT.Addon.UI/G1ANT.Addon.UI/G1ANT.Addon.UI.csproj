@@ -98,7 +98,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIAComWrapper.dll" />
+  <EmbeddedResource Include="UIAComWrapper.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\insert into.png" />
