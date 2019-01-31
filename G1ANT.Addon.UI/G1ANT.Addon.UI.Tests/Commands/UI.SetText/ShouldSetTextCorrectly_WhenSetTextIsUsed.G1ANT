@@ -1,6 +1,6 @@
 addon ui version 1.0.0.0
 
-♥inputText = ‴robot‴
+♥inputText = robot
 
 program notepad 
 ui.settext wpath ‴/ui[@name='Untitled - Notepad']‴ text ♥inputText 

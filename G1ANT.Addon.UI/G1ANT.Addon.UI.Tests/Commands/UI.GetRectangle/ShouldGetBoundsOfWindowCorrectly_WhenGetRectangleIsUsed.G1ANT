@@ -1,7 +1,7 @@
 addon ui version 1.0.0.0
 
 program notepad
-ui.getrectangle ‴/ui[@name='Untitled - Notepad']‴ result ♥result
+ui.getrectangle ‴/ui[@name='Untitled - Notepad']‴
 process.kill notepad
 
 test ⊂♥result⟦left⟧<♥result⟦right⟧⊃
