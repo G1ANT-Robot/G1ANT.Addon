@@ -8,7 +8,7 @@
 *
 */
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     public static class InvoiceManger
     {

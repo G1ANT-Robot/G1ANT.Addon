@@ -21,11 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Net", "G1ANT.Ad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Net.Tests", "G1ANT.Addon.Net\G1ANT.Addon.Net.Tests\G1ANT.Addon.Net.Tests.csproj", "{0C40C844-5B27-4C04-917D-E6999C6D756B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.csproj", "{3B1DC446-00EF-4DC1-AD42-41D76C3DE2A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Google", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.Google.csproj", "{3B1DC446-00EF-4DC1-AD42-41D76C3DE2A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.OCR.Tesseract", "G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.OCR.Tesseract.csproj", "{700E09BD-F443-4181-A42A-E9D098F652AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tests", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.Tests\G1ANT.Addon.Ocr.Tests.csproj", "{DC8C80D5-3786-46C0-8D10-7E4997182C12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Google.Tests", "G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.Tests\G1ANT.Addon.Ocr.Google.Tests.csproj", "{DC8C80D5-3786-46C0-8D10-7E4997182C12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G1ANT.Addon.Ocr.Tesseract.Tests", "G1ANT.Addon.OCR.Tesseract\G1ANT.Addon.Ocr.Tesseract.Tests\G1ANT.Addon.Ocr.Tesseract.Tests.csproj", "{3318187F-3198-4D74-B39E-7D86FAF06D97}"
 EndProject

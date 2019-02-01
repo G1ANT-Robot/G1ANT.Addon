@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.fromscreen", Tooltip = "This command allows to capture part of the screen and recognize text from it. \nIt uses internet connection and external data processing.")]
     public class OcrFromScreenCommand : Command

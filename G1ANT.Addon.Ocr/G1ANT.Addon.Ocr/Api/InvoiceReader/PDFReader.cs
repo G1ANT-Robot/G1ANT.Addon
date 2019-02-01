@@ -12,7 +12,7 @@ using System.Text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     public class PDFReader
     {

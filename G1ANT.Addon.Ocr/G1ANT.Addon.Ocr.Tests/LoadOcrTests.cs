@@ -7,9 +7,10 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using NUnit.Framework;
 
-namespace G1ANT.Addon.Ocr.Tests
+namespace G1ANT.Addon.Ocr.Google.Tests
 {
     [TestFixture]
     public class LoadOcrTests
@@ -17,7 +18,7 @@ namespace G1ANT.Addon.Ocr.Tests
         [Test]
         public void LoadAddon()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.Google.dll");
             Assert.IsNotNull(addon);
             Assert.IsTrue(addon.Commands.Count > 0);
         }

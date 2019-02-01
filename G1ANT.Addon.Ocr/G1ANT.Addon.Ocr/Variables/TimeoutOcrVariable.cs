@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace G1ANT.Addon.Ocr.Commands
+namespace G1ANT.Addon.Ocr.Google.Commands
 {
     [Variable(
         Name = "timeoutocr",

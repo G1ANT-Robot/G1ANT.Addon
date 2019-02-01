@@ -12,10 +12,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.findpoint", Tooltip = "This command allows to find the text on the active screen and return it's position in a 'point' format. ", IsUnderConstruction = true)]
-    public class OcrFindPointCommand : Command
+    public class OcrGoogleFindPointCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -38,7 +38,7 @@ namespace G1ANT.Language.Ocr
             public TextStructure Languages { get; set; } = new TextStructure("en");
         }
 
-        public OcrFindPointCommand(AbstractScripter scripter) : base(scripter)
+        public OcrGoogleFindPointCommand(AbstractScripter scripter) : base(scripter)
         {
         }
 

@@ -7,17 +7,19 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.find",
         Tooltip = "This command allows to find the text on the current screen and return it's position as a 'rectangle'.", 
         IsUnderConstruction = true)]
-    public class OcrFindCommand : Command
+
+    public class OcrGoogleFindCommand : Command
     {
         public class Arguments : CommandArguments
         { 
@@ -39,9 +41,11 @@ namespace G1ANT.Language.Ocr
             [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]
             public TextStructure Languages { get; set; } = new TextStructure("en");
         }
-        public OcrFindCommand(AbstractScripter scripter) : base(scripter)
+
+        public OcrGoogleFindCommand(AbstractScripter scripter) : base(scripter)
         {
         }
+
         public void Execute(Arguments arguments)
         {
             Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates(); 

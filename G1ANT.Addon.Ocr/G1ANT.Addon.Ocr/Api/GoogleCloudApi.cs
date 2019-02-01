@@ -7,15 +7,17 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Vision.v1;
 using Google.Apis.Vision.v1.Data;
+using GoogleOCR = Google.Apis.Vision.v1.Data;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     public class GoogleCloudApi
     {
@@ -75,11 +77,15 @@ namespace G1ANT.Language.Ocr
         {
             BatchAnnotateImagesRequest batchRequest = new BatchAnnotateImagesRequest();
             batchRequest.Requests = new List<AnnotateImageRequest>();
+
             batchRequest.Requests.Add(new AnnotateImageRequest()
             {
+
                 Features = new List<Feature>() { new Feature() { Type = "TEXT_DETECTION", MaxResults = 1 }, },
                 ImageContext = new ImageContext() { LanguageHints = languages },
-                Image = new Google.Apis.Vision.v1.Data.Image() { Content = Convert.ToBase64String(image.ImageToBytes()) },
+
+                Image = new GoogleOCR.Image()
+                { Content = Convert.ToBase64String(image.ImageToBytes()) },
             });
 
             string output = string.Empty;
@@ -109,7 +115,7 @@ namespace G1ANT.Language.Ocr
             {
                 Features = new List<Feature>() { new Feature() { Type = "TEXT_DETECTION", MaxResults = 1 }, },
                 ImageContext = new ImageContext() { LanguageHints = languages },
-                Image = new Google.Apis.Vision.v1.Data.Image() { Content = Convert.ToBase64String(image.ImageToBytes()) },
+                Image = new GoogleOCR.Image() { Content = Convert.ToBase64String(image.ImageToBytes()) },
             });
 
             string output = string.Empty;

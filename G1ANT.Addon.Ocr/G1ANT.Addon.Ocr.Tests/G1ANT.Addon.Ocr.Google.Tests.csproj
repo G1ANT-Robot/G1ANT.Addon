@@ -58,10 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\OcrFindPointTests.cs" />
-    <Compile Include="Commands\OcrFindTests.cs" />
-    <Compile Include="Commands\OcrFromScreenTests.cs" />
-    <Compile Include="GoogleOcrTests.cs" />
+    <Compile Include="Commands\OcrGoogleFindPointTests.cs" />
+    <Compile Include="Commands\OcrGoogleFindTests.cs" />
+    <Compile Include="Commands\OcrGoogleFromScreenTests.cs" />
+    <Compile Include="OcrGoogleTests.cs" />
     <Compile Include="LoadOcrTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -71,15 +71,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.csproj">
+    <ProjectReference Include="..\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.Google.csproj">
       <Project>{3b1dc446-00ef-4dc1-ad42-41d76c3de2a8}</Project>
-      <Name>G1ANT.Addon.Ocr</Name>
+      <Name>G1ANT.Addon.Ocr.Google</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Commands\OcrGoogle.FindPoint\ShouldReturnPointPosition_WhenTextIsFound.G1ANT" />
+    <None Include="Commands\OcrGoogle.Find\ShouldReturnRectanglePosition_WhenTextIsFound.G1ANT" />
+    <None Include="Commands\OcrGoogle.FromScreen\ShouldReturnText_WhenIsTextFound.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

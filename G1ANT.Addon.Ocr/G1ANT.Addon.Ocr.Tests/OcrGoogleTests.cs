@@ -7,17 +7,13 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace G1ANT.Addon.Ocr.Tests
+using System.Diagnostics;
+using System.Threading;
+
+namespace G1ANT.Addon.Ocr.Google.Tests
 {
-    public class GoogleOcrTests
+    public class OcrGoogleTests
     {
         public const int TestTimeout = 120000;
 

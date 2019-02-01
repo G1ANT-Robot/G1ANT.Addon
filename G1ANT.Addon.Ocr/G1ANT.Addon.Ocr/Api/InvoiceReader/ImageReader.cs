@@ -10,7 +10,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     public class ImageReader
     {

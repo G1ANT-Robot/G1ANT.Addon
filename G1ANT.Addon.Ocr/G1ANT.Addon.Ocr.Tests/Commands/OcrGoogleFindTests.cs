@@ -7,20 +7,19 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using G1ANT.Engine;
-using G1ANT.Language.Ocr;
 using G1ANT.Language;
-using System.Diagnostics;
 using System.Drawing;
 using NUnit.Framework;
 using System.Reflection;
 using System;
 using G1ANT.Addon.Ocr.Tests.Properties;
 
-namespace G1ANT.Addon.Ocr.Tests
+namespace G1ANT.Addon.Ocr.Google.Tests
 {
     [TestFixture]
-    public class OcrFindTests
+    public class OcrGoogleFindTests
     {
         private Scripter scripter;
         private string path;
@@ -28,27 +27,27 @@ namespace G1ANT.Addon.Ocr.Tests
         [OneTimeSetUp]
         public void Initialize()
         {
-            System.Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
 
         [SetUp]
         public void TestInit()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.Google.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.testimage), "png");
             scripter = new Scripter();
 scripter.InitVariables.Clear();
-            GoogleOcrTests.StartPaint(path);
+            OcrGoogleTests.StartPaint(path);
         }
 
-        [Test, Timeout(GoogleOcrTests.TestTimeout)]
+        [Test, Timeout(OcrGoogleTests.TestTimeout)]
         public void OcrFindCommandTest()
         {
-            System.Drawing.Rectangle expectedRectangle = new Rectangle(64, 102, 191, 51);
+            Rectangle expectedRectangle = new Rectangle(64, 102, 191, 51);
             string script = $@"
             window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
-            ocr.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
-            ocr.find search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)110{SpecialChars.Point}184{SpecialChars.Point}564{SpecialChars.Point}488
+            ocrgoogle.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
+            ocrgoogle.find search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)110{SpecialChars.Point}184{SpecialChars.Point}564{SpecialChars.Point}488
             ";
             scripter.Text = script;
             scripter.Run();
@@ -59,7 +58,7 @@ scripter.InitVariables.Clear();
         [TearDown]
         public void TestCleanup()
         {
-            GoogleOcrTests.KillAllPaints();
+            OcrGoogleTests.KillAllPaints();
         }
 
         private bool AreRectanglesSimilar(Rectangle r1, Rectangle r2, int tolerance)
