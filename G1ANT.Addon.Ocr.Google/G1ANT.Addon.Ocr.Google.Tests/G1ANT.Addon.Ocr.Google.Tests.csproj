@@ -71,7 +71,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Addon.Ocr\G1ANT.Addon.Ocr.Google.csproj">
+    <ProjectReference Include="..\G1ANT.Addon.Ocr.Google\G1ANT.Addon.Ocr.Google.csproj">
       <Project>{3b1dc446-00ef-4dc1-ad42-41d76c3de2a8}</Project>
       <Name>G1ANT.Addon.Ocr.Google</Name>
     </ProjectReference>
