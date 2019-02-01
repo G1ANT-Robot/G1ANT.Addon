@@ -19,46 +19,44 @@ namespace G1ANT.Language.Ocr
 {
     public class GoogleCloudApi
     {
-        public GoogleCredential JsonCredential { get; private set; }
-        private static GoogleCloudApi instance;
-        public static GoogleCloudApi Instance
+        private static string _jsonCredential;
+        public static string JsonCredential
         {
             get
             {
-                if (instance == null)
-                    throw new InvalidOperationException($"Before using this command, you need to login to Google text recognition service. Please, use ocr.login command first.");
-                return instance;
+                return _jsonCredential;
             }
-            private set
+            set
             {
-                instance = value;
+                try
+                {
+                    googleCredential = CreateCredential(JsonCredential);
+                    _jsonCredential = value;
+                }
+                catch
+                {
+                    googleCredential = null;
+                    _jsonCredential = null;
+                    throw new Exception("Invalid json credential. Cannot connect to the Google Cloud Service");
+                }
             }
         }
+        private static GoogleCredential googleCredential;
 
-        public GoogleCloudApi(string jsonCredential)
+
+        public GoogleCloudApi()
         {
-            if (instance == null)
-            {
-                CreateCredential(jsonCredential);
-                instance = this;
-            }
-            else
-                throw new Exception("An instance of this class already exists.");
+            if (googleCredential == null)
+                throw new Exception("trzeba sie zaogowac.");
         }
 
-        public void CleanUp()
-        {
-            instance = null;
-            JsonCredential = null;
-        }
-
-        public void CreateCredential(string jsonCredential)
+        private static GoogleCredential CreateCredential(string jsonCredential)
         {
             using (var stream = jsonCredential.ConvertStringToStream())
             {
                 string[] scopes = { VisionService.Scope.CloudPlatform };
-                this.JsonCredential = GoogleCredential.FromStream(stream);
-                this.JsonCredential = this.JsonCredential.CreateScoped(scopes);
+                var credential = GoogleCredential.FromStream(stream);
+                return credential.CreateScoped(scopes);
             }
         }
 

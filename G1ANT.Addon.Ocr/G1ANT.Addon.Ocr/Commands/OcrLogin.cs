@@ -27,25 +27,18 @@ namespace G1ANT.Language.Ocr
         
         public void Execute(Arguments arguments)
         {
-            try
-            {
-                new GoogleCloudApi(arguments.JsonCredential.Value);   
-            }
-            catch
+            GoogleCloudApi.JsonCredential = arguments.JsonCredential.Value;
+
+            OnScriptEnd = () =>
             {
                 try
                 {
-                    GoogleCloudApi.Instance.CreateCredential(arguments.JsonCredential.Value);
+                    GoogleCloudApi.JsonCredential = null;
                 }
                 catch
                 {
-                    throw new Exception("Invalid json credential. Cannot connect to the Google Text Recognition Service");
-                }
-            }
 
-            OnScriptEnd = () => 
-            {
-                GoogleCloudApi.Instance.CleanUp();
+                }
             };
         }
     }
