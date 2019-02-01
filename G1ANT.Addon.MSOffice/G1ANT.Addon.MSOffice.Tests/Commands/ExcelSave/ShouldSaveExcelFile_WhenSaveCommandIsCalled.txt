@@ -1,9 +1,16 @@
 ﻿♥filepath = ‴♥environment⟦TEMP⟧\tempexcelfile.xlsx‴
+file.exists filename ♥filepath errorjump SkipDelete timeout 2
+file.delete filename ♥filepath
+label name SkipDelete
 
 excel.open
 excel.setvalue value ‴Test text.‴ row 1 colname ‴A‴
 excel.setvalue value ‴54642 5854 22‴ row 1 colname ‴B‴
-excel.save path ♥filepath
+excel.save path ♥filepath errorcall CouldNotSaveFile
 excel.close
 file.exists filename ♥filepath
 file.delete filename ♥filepath
+
+procedure CouldNotSaveFile
+    test ⊂false⊃
+end

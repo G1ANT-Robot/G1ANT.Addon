@@ -105,7 +105,7 @@
   <ItemGroup>
     <None Include="Commands\ExcelDuplicateRow\ShouldDuplicateRow_WhenDuplicateRowCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelActivateSheet\ShouldActivateSheet_WhenExcekActivateSheetCommandIsCalled.G1ANT" />
-    <None Include="Commands\ExcelAddSheet\ShouldAddSheet_WhenExcekAddSheerCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelAddSheet\ShouldAddSheet_WhenExcelAddSheetCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelExport\ShouldExportFile_WhenExcelExportCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelGetRow\ShouldReturnAllUsedElementsFromRow_WhenGetRowCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelGetValue\ShouldReturnCellValue_WhenGetValueCommandIsCalled.G1ANT" />
@@ -117,7 +117,7 @@
     <None Include="Commands\OutlookClose\ShouldCloseOutlook_WhenCloseCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookGetFolder\ShouldReturnFolder_WhenGetFolderCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookGetRootFolders\ShouldReturnListOfRootFolders_WhenGetRootFoldersCommandIsCalled.G1ANT" />
-    <None Include="Commands\OutlookMoveTo\ShouldMoveToAnotherFolder_WhenMoveToCommandIsCallse.G1ANT" />
+    <None Include="Commands\OutlookMoveTo\ShouldMoveToAnotherFolder_WhenMoveToCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookNewMessage\ShouldCreateNewMessage_WhenNewMessageCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookOpen\ShouldOpenOutlook_WhenOpenCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookSaveAttachment\ShouldSaveAttachment_WhenSaveAttachmentCommandIsCalled.G1ANT" />

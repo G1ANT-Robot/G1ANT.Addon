@@ -1,9 +1,19 @@
 ﻿♥outlookInboxFolder = ‴t.g1ant.test@gmail.com\Skrzynka odbiorcza‴
 ♥toBeSentAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentsent.txt‴
 ♥toBeDownloadedAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentdownloaded.txt‴
+♥testAttachmentText = ‴Test text.‴
 
 outlook.open display false
-text.write text ‴Test text.‴ filename ♥toBeSentAttachmentPath
+
+file.exists ♥toBeSentAttachmentPath errorjump ToBeSentAttachmentDoesNotExist timeout 2
+    file.delete ♥toBeSentAttachmentPath
+label name ToBeSentAttachmentDoesNotExist
+
+file.exists ♥toBeDownloadedAttachmentPath errorjump ToBeDownloadedAttachmentDoesNotExist timeout 2
+    file.delete ♥toBeDownloadedAttachmentPath
+label name ToBeDownloadedAttachmentDoesNotExist
+
+text.write text ♥testAttachmentText filename ♥toBeSentAttachmentPath
 
 ♥attachmentsToBeSent = ⟦list⟧♥toBeSentAttachmentPath❚ 
 
@@ -20,7 +30,7 @@ outlook.getfolder path ♥outlookInboxFolder result ♥InboxFolder
 ♥attachment = ♥attachments⟦1⟧
 outlook.saveattachment ♥attachment path ♥toBeDownloadedAttachmentPath
 text.read filename ♥toBeDownloadedAttachmentPath result ♥textFromDownloadedAttachemnt
-test ⊂♥textFromDownloadedAttachemnt.Equals("Test text.")⊃
+test ⊂♥textFromDownloadedAttachemnt.Equals(♥testAttachmentText)⊃
 outlook.close
 
 file.delete ♥toBeSentAttachmentPath
