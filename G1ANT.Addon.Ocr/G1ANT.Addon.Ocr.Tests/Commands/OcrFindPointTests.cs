@@ -12,7 +12,6 @@ using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 
@@ -22,13 +21,12 @@ namespace G1ANT.Addon.Ocr.Tests
     public class OcrFindPointTests
     {
         private Scripter scripter;
-        private Process proces;
         private string path;
 
         [OneTimeSetUp]
         public void Initialize()
         {
-            System.Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
 
         [SetUp]

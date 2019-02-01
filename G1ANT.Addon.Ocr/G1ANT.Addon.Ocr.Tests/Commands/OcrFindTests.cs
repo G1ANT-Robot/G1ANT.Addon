@@ -24,7 +24,6 @@ namespace G1ANT.Addon.Ocr.Tests
     {
         private Scripter scripter;
         private string path;
-        private Process proces;
 
         [OneTimeSetUp]
         public void Initialize()

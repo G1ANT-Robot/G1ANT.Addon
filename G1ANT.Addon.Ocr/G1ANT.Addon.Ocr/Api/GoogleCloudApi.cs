@@ -64,7 +64,7 @@ namespace G1ANT.Language.Ocr
         {
             var service = new VisionService(new BaseClientService.Initializer()
             {
-                HttpClientInitializer = this.JsonCredential,
+                HttpClientInitializer = googleCredential,
                 ApplicationName = "G1ANT-Robot",
                 GZipEnabled = true,
             });

@@ -23,7 +23,6 @@ namespace G1ANT.Addon.Ocr.Tests
     public class OcrFromScreenTests
     {
         private Scripter scripter;
-        private Process proces;
         private string path;
 
         [OneTimeSetUp]
@@ -59,12 +58,13 @@ namespace G1ANT.Addon.Ocr.Tests
         [Test, Timeout(GoogleOcrTests.TestTimeout)]
         public void OcrTestGoogleApiTest()
         {
-            new GoogleCloudApi((string)scripter.Variables.GetVariable("credential").GetValue("Ocr:google").Object);
+            GoogleCloudApi.JsonCredential = (string)scripter.Variables.GetVariable("credential").GetValue("Ocr:google").Object;
             var bitmapWithTestText = Addon.Ocr.Tests.Properties.Resources.testimage;
             var expectedRectangle = new Rectangle(167, 142, 192, 51);
             var languages = new List<string>() { "en" };
             var timeout = 10000;
-            Rectangle foundRectangle = GoogleCloudApi.Instance.RecognizeText(bitmapWithTestText, "animal", languages, timeout);
+            GoogleCloudApi googleApi = new GoogleCloudApi();
+            Rectangle foundRectangle = googleApi.RecognizeText(bitmapWithTestText, "animal", languages, timeout);
             Assert.AreEqual(expectedRectangle, foundRectangle);
         }
 

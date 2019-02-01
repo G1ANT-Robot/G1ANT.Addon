@@ -7,7 +7,6 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -45,15 +44,16 @@ namespace G1ANT.Language.Ocr
         }
         public void Execute(Arguments arguments)
         {
-            System.Drawing.Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates(); 
-            System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
+            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates(); 
+            Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             string search = arguments.Search.Value;
-            System.Drawing.Rectangle output = GoogleCloudApi.Instance.RecognizeText(partOfScreen, search, languages, timeout);
+            GoogleCloudApi googleApi = new GoogleCloudApi();
+            Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
             if (Equals(output, new Rectangle(-1, -1, -1, -1)))
                 throw new NullReferenceException("Ocr was unable to find text");
-            Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.RectangleStructure(output));
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(output));
         }
     }
 }

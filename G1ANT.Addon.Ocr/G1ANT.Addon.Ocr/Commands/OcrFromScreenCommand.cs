@@ -36,21 +36,24 @@ namespace G1ANT.Language.Ocr
             public TextStructure Languages { get; set; } = new TextStructure("en");
 
         }
+
         public OcrFromScreenCommand(AbstractScripter scripter) : base(scripter)
         {
         }
+
         public void Execute(Arguments arguments)
         {
-            System.Drawing.Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
+            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
 
-            System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
+            Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
 
-            string output = GoogleCloudApi.Instance.RecognizeText(partOfScreen, languages, timeout);
+            GoogleCloudApi googleApi = new GoogleCloudApi();
+            string output = googleApi.RecognizeText(partOfScreen, languages, timeout);
             if (Equals(output, new Rectangle(-1, -1, -1, -1)))
                 throw new NullReferenceException("Ocr was unable to find text");
-            Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(output));
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(output));
         }
     }
 }
