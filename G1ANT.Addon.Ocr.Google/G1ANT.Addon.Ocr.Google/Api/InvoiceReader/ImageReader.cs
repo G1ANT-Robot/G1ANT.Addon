@@ -7,39 +7,38 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
-    public static class InvoiceManger
+    public class ImageReader
     {
-        //public InvoiceManger(string path, string type)
-        //{
-        //    ReadInvoice(path, type);
-        //}
-        public static string ReadText { get; private set; }
-        public static PDFReader pdf;
-        public static  ImageReader image;      
-		
-        public static void ReadInvoice (string path, string type)
+        public ImageReader()
+        { }
+
+        public ImageReader (string path)
         {
-            if (type.Equals("Ocr"))
-            {
-                image = new ImageReader(path);
-                ReadText = image.ReadText;
-            } else
-            {
-				pdf = new PDFReader(path);
-				ReadText = pdf.ReadText;
-			}
+            ReadText = GetTextFromImage(path);
+
+        }
+
+        public string ReadText { get;}
+
+        public static string GetTextFromImage(string path)
+        {
+            Bitmap bitmap = new Bitmap(path);
+            GoogleCloudApi googleApi = new GoogleCloudApi();
+            string output = googleApi.RecognizeText(bitmap, new List<string>() { "pl", "en" }, 10000);
+
+            return output;
         }
 
         public static string getBetween(string strSource, string strStart, string strEnd)
         {
+            
+            
+
             int Start, End;
             if (strSource.Contains(strStart) && strSource.Contains(strEnd))
             {
@@ -52,5 +51,6 @@ namespace G1ANT.Language.Ocr
                 return "";
             }
         }
+        
     }
 }

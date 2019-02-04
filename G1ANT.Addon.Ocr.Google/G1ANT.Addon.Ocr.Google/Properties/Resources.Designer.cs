@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace G1ANT.Addon.Ocr.Properties {
+namespace G1ANT.Addon.Ocr.Google.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace G1ANT.Addon.Ocr.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("G1ANT.Addon.Ocr.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("G1ANT.Addon.Ocr.Google.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -7,48 +7,47 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+using G1ANT.Addon.Ocr.Google.Tests;
 using G1ANT.Addon.Ocr.Tests.Properties;
 using G1ANT.Engine;
 using G1ANT.Language;
 using NUnit.Framework;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 
 namespace G1ANT.Addon.Ocr.Tests
 {
     [TestFixture]
-    public class OcrFindPointTests
+    public class OcrGoogleFindPointTests
     {
         private Scripter scripter;
-        private Process proces;
         private string path;
 
         [OneTimeSetUp]
         public void Initialize()
         {
-            System.Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
+            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
         }
 
         [SetUp]
-        public void OcrFromScreenInitialize()
+        public void OcrGoogleFromScreenInitialize()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.Google.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.testimage), "png");
             scripter = new Scripter();
-scripter.InitVariables.Clear();
-            GoogleOcrTests.StartPaint(path);
+            scripter.InitVariables.Clear();
+            OcrGoogleTests.StartPaint(path);
         }
 
-        [Test, Timeout(GoogleOcrTests.TestTimeout)]
-        public void OcrFromScreenTest()
+        [Test, Timeout(OcrGoogleTests.TestTimeout)]
+        public void OcrGoogleFromScreenTest()
         {
             Point expectedPoint = new Point(181, 294);
             string script = $@"
             window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
-            ocr.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
-            ocr.findpoint search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528
+            ocrgoogle.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
+            ocrgoogle.findpoint search {SpecialChars.Text}animal{SpecialChars.Text} area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528
             ";
             scripter.Text = script;
             scripter.Run();
@@ -57,9 +56,9 @@ scripter.InitVariables.Clear();
         }
 
         [TearDown]
-        public void OcrFromScreenCleanup()
+        public void OcrGoogleFromScreenCleanup()
         {
-            GoogleOcrTests.KillAllPaints();
+            OcrGoogleTests.KillAllPaints();
         }
 
         private bool ArePointsSimilar(Point p1, Point p2, int tolerance)

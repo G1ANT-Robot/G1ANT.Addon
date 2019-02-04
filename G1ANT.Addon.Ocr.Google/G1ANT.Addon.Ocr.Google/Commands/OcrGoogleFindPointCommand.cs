@@ -7,16 +7,15 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.findpoint", Tooltip = "This command allows to find the text on the active screen and return it's position in a 'point' format. ", IsUnderConstruction = true)]
-    public class OcrFindPointCommand : Command
+    public class OcrGoogleFindPointCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -38,20 +37,22 @@ namespace G1ANT.Language.Ocr
             [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]
             public TextStructure Languages { get; set; } = new TextStructure("en");
         }
-        public OcrFindPointCommand(AbstractScripter scripter) : base(scripter)
+
+        public OcrGoogleFindPointCommand(AbstractScripter scripter) : base(scripter)
         {
         }
+
         public void Execute(Arguments arguments)
         {
-            System.Drawing.Rectangle rectangle = arguments.Relative.Value ? arguments.Area.Value.ToAbsoluteCoordinates() : arguments.Area.Value;
-            System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
+            Rectangle rectangle = arguments.Relative.Value ? arguments.Area.Value.ToAbsoluteCoordinates() : arguments.Area.Value;
+            Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             string search = arguments.Search.Value;
-            GoogleCloudApi googleApi = new GoogleCloudApi();
 
-            System.Drawing.Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
-            System.Drawing.Point pointOutput = new System.Drawing.Point(output.X + arguments.Area.Value.X, output.Y + arguments.Area.Value.Y);
+            GoogleCloudApi googleApi = new GoogleCloudApi();
+            Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
+            Point pointOutput = new Point(output.X + arguments.Area.Value.X, output.Y + arguments.Area.Value.Y);
             if (Equals(output, new Rectangle(-1, -1, -1, -1)))
                 throw new NullReferenceException("Ocr was unable to find text");
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new PointStructure(pointOutput));

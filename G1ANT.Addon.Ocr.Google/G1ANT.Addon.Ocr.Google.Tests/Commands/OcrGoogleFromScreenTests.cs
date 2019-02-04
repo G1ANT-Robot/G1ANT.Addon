@@ -7,23 +7,22 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using G1ANT.Addon.Ocr.Tests.Properties;
 using G1ANT.Engine;
 using G1ANT.Language;
-using G1ANT.Language.Ocr;
+using G1ANT.Language.Ocr.Google;
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 
-namespace G1ANT.Addon.Ocr.Tests
+namespace G1ANT.Addon.Ocr.Google.Tests
 {
     [TestFixture]
-    public class OcrFromScreenTests
+    public class OcrGoogleFromScreenTests
     {
         private Scripter scripter;
-        private Process proces;
         private string path;
 
         [OneTimeSetUp]
@@ -36,31 +35,31 @@ namespace G1ANT.Addon.Ocr.Tests
         [SetUp]
         public void OcrFromScreenInitialize()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.dll");
+            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Ocr.Google.dll");
             path = Assembly.GetExecutingAssembly().UnpackResourceToFile("Resources." + nameof(Resources.testimage), "png");
             scripter = new Scripter();
             scripter.InitVariables.Clear();
-            GoogleOcrTests.StartPaint(path);
+            OcrGoogleTests.StartPaint(path);
         }
 
-        [Test, Timeout(GoogleOcrTests.TestTimeout)]
+        [Test, Timeout(OcrGoogleTests.TestTimeout)]
         public void GoogleOcrTest()
         {
             string expectedString = "animal";
             string script = $@"window {SpecialChars.Text + SpecialChars.Search}Paint{SpecialChars.Text + SpecialChars.Search} style maximize
-                            ocr.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
-                            ocr.fromscreen area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528";
+                            ocrgoogle.login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Ocr:google{SpecialChars.IndexEnd}
+                            ocrgoogle.fromscreen area (rectangle)68{SpecialChars.Point}162{SpecialChars.Point}767{SpecialChars.Point}528";
             scripter.Text = script;
             scripter.Run();
             var resultOutput = scripter.Variables.GetVariableValue<string>("result");
             Assert.AreEqual(expectedString, resultOutput);
         }
 
-        [Test, Timeout(GoogleOcrTests.TestTimeout)]
+        [Test, Timeout(OcrGoogleTests.TestTimeout)]
         public void OcrTestGoogleApiTest()
         {
             GoogleCloudApi.JsonCredential = (string)scripter.Variables.GetVariable("credential").GetValue("Ocr:google").Object;
-            var bitmapWithTestText = Addon.Ocr.Tests.Properties.Resources.testimage;
+            var bitmapWithTestText = Resources.testimage;
             var expectedRectangle = new Rectangle(167, 142, 192, 51);
             var languages = new List<string>() { "en" };
             var timeout = 10000;
@@ -70,9 +69,9 @@ namespace G1ANT.Addon.Ocr.Tests
         }
 
         [TearDown]
-        public void OcrFromScreenCleanup()
+        public void OcrGoogleFromScreenCleanup()
         {
-            GoogleOcrTests.KillAllPaints();
+            OcrGoogleTests.KillAllPaints();
         }
     }
 }

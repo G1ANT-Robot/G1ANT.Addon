@@ -7,18 +7,19 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Language;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace G1ANT.Language.Ocr
+namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.find",
         Tooltip = "This command allows to find the text on the current screen and return it's position as a 'rectangle'.", 
         IsUnderConstruction = true)]
-    public class OcrFindCommand : Command
+
+    public class OcrGoogleFindCommand : Command
     {
         public class Arguments : CommandArguments
         { 
@@ -40,21 +41,23 @@ namespace G1ANT.Language.Ocr
             [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]
             public TextStructure Languages { get; set; } = new TextStructure("en");
         }
-        public OcrFindCommand(AbstractScripter scripter) : base(scripter)
+
+        public OcrGoogleFindCommand(AbstractScripter scripter) : base(scripter)
         {
         }
+
         public void Execute(Arguments arguments)
         {
-            System.Drawing.Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates(); 
-            System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
+            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates(); 
+            Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             List<string> languages = arguments.Languages.Value.Split(',').ToList();
             string search = arguments.Search.Value;
             GoogleCloudApi googleApi = new GoogleCloudApi();
-            System.Drawing.Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
+            Rectangle output = googleApi.RecognizeText(partOfScreen, search, languages, timeout);
             if (Equals(output, new Rectangle(-1, -1, -1, -1)))
                 throw new NullReferenceException("Ocr was unable to find text");
-            Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.RectangleStructure(output));
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(output));
         }
     }
 }

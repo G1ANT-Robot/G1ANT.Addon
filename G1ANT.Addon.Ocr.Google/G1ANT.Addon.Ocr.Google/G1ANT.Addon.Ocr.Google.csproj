@@ -7,8 +7,8 @@
     <ProjectGuid>{3B1DC446-00EF-4DC1-AD42-41D76C3DE2A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>G1ANT.Addon.Ocr</RootNamespace>
-    <AssemblyName>G1ANT.Addon.Ocr</AssemblyName>
+    <RootNamespace>G1ANT.Addon.Ocr.Google</RootNamespace>
+    <AssemblyName>G1ANT.Addon.Ocr.Google</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>
@@ -76,10 +76,10 @@
     <Compile Include="Api\InvoiceReader\ImageReader.cs" />
     <Compile Include="Api\InvoiceReader\InvoiceManger.cs" />
     <Compile Include="Api\InvoiceReader\PDFReader.cs" />
-    <Compile Include="Commands\OcrLogin.cs" />
+    <Compile Include="Commands\OcrGoogleLoginCommand.cs" />
     <Compile Include="Commands\OcrFromScreenCommand.cs" />
-    <Compile Include="Commands\OcrFindCommand.cs" />
-    <Compile Include="Commands\OcrFindPointCommand.cs" />
+    <Compile Include="Commands\OcrGoogleFindCommand.cs" />
+    <Compile Include="Commands\OcrGoogleFindPointCommand.cs" />
     <Compile Include="Variables\TimeoutOcrVariable.cs" />
     <Compile Include="OcrAddon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,5 +147,6 @@
   <ItemGroup>
     <EmbeddedResource Include="License.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
