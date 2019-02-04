@@ -19,7 +19,7 @@ This command is used to move an individual email message or a whole folder to an
 | `errorcall`    | [procedure](../../../g1ant.language/structures/procedurestructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
 | `errorjump`    | [label](../../../g1ant.language/structures/labelstructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
 | `errormessage` | [text](../../../g1ant.language/structures/textstructure.md)  | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
-| `errorresult`  | [variable:error](../../../g1ant.language/structures/errorstructure.md) | no       |                                                             | Name of a variable that will store the returned exception    |
+| `errorresult`  | [variable](../../../G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](../../../G1ANT.Language/Structures/ErrorStructure.md) structure   |
 
 For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](../../../appendices/common-arguments.md) page.
 
