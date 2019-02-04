@@ -32,8 +32,8 @@ namespace G1ANT.Language.Ocr.Google
             {
                 try
                 {
-                    googleCredential = CreateCredential(JsonCredential);
                     _jsonCredential = value;
+                    googleCredential = CreateCredential(_jsonCredential);
                 }
                 catch
                 {
