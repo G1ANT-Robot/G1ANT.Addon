@@ -25,7 +25,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In the example below, Outlook opens silently in the background, its source and destination folders are retrieved to variables with the `outlook.getfolder` commands, then the first email message from the Inbox folder is moved to the destination folder:
+In the example below, Outlook opens silently in the background, its source and destination folders are retrieved to variables with the `outlook.getfolder` commands, then the first email message from the Inbox folder is moved to the destination folder (be sure to provide the correct Outlook folder information in the `♥outlookInboxFolder` and `♥outlookMoveToFolder` variables):
 
 ```G1ANT
 ♥outlookInboxFolder = john.doe@g1ant.com\Inbox
