@@ -34,7 +34,7 @@ In the example below, Outlook opens silently in the background, its source and d
 outlook.open display false
 
 outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
-outlook.getfolder ♥outlookMoveToFolder result ♥MoveToFolder errormessage ‴Cannot find folder "♥outlookMoveToFolder"‴
+outlook.getfolder ♥outlookMoveToFolder result ♥moveToFolder errormessage ‴Cannot find folder "♥outlookMoveToFolder"‴
 ♥emails = ♥inboxFolder⟦mails⟧
 outlook.moveto item ♥emails⟦1⟧ destinationfolder ♥MoveToFolder
 ```
