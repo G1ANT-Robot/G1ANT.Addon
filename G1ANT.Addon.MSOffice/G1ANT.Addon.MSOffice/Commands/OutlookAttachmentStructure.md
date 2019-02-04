@@ -4,8 +4,8 @@ This structure stores information about the attachment to a mail message, which 
 
 | Field      | Type                                                         | Description                         |
 | ---------- | ------------------------------------------------------------ | ----------------------------------- |
-| `filename` | [text](../../../g1ant.language/structures/textstructure.md)  | The filename of the attachment      |
-| `size`     | [integer](../../../g1ant.language/structures/integerstructure.md) | The size of the attachment in bytes |
+| `filename` | [text](../../../G1ANT.Language/Structures/TextStructure.md)  | The filename of the attachment      |
+| `size`     | [integer](../../../G1ANT.Language/Structures/IntegerStructure.md) | The size of the attachment in bytes |
 
 ## Example
 
@@ -15,8 +15,8 @@ The following script reads emails from the Outlook Inbox folder, then processes 
 ♥outlookInboxFolder = john.doe@g1ant.com\Inbox
 
 outlook.open display false
-outlook.getfolder ♥outlookInboxFolder result ♥InboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
-♥emails = ♥InboxFolder⟦mails⟧
+outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
+♥emails = ♥inboxFolder⟦mails⟧
 foreach ♥email in ♥emails
   ♥attachments = ♥email⟦attachments⟧
   foreach ♥attachment in ♥attachments
