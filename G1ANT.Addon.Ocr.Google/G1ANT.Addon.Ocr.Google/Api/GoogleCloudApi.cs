@@ -49,7 +49,7 @@ namespace G1ANT.Language.Ocr.Google
         public GoogleCloudApi()
         {
             if (googleCredential == null)
-                throw new Exception("trzeba sie zaogowac.");
+                throw new Exception("Before using this command, you need to login to Google Cloud Service. Please, use ocr.login command first");
         }
 
         private static GoogleCredential CreateCredential(string jsonCredential)
