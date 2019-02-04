@@ -35,6 +35,6 @@ outlook.open display false
 
 outlook.getfolder ♥outlookInboxFolder result ♥InboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
 outlook.getfolder ♥outlookMoveToFolder result ♥MoveToFolder errormessage ‴Cannot find folder "♥outlookMoveToFolder"‴
-♥emails = ♥InboxFolder⟦mails⟧
+♥emails = ♥inboxFolder⟦mails⟧
 outlook.moveto item ♥emails⟦1⟧ destinationfolder ♥MoveToFolder
 ```
