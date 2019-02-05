@@ -17,13 +17,13 @@ namespace G1ANT.Addon.MSOffice
     [Structure(Name = "OutlookMail", AutoCreate = false)]
     public class OutlookMailStructure : StructureTyped<MailItem>
     {
-        const string IdIndex = "id";
-        const string FromIndex = "from";
-        const string AccountIndex = "account";
-        const string SubjectIndex = "subject";
-        const string BodyIndex = "body";
-        const string HtmlBodyIndex = "htmlbody";
-        const string AttachmentsIndex = "attachments";
+        private const string IdIndex = "id";
+        private const string FromIndex = "from";
+        private const string AccountIndex = "account";
+        private const string SubjectIndex = "subject";
+        private const string BodyIndex = "body";
+        private const string HtmlBodyIndex = "htmlbody";
+        private const string AttachmentsIndex = "attachments";
 
         public OutlookMailStructure(string value, string format = "", AbstractScripter scripter = null) :
             base(value, format, scripter)

@@ -1,0 +1,8 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴www.google.com‴
+ie.click a[href*='//mail.google'] by query
+ie.gettitle result ♥returnValue
+♥testTitle = ‴Gmail‴
+ie.close
+test condition ⊂♥returnValue.Contains(♥testTitle)⊃
