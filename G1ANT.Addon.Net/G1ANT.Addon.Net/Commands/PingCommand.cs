@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Net
             public IntegerStructure Repeats { get; set; } = new IntegerStructure(1);
 
             [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Defines timeout for connecting")]
-            public override TimeSpanStructure Timeout { get; set; }
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(1000);
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
