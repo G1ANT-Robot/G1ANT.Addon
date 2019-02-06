@@ -94,7 +94,7 @@
     <None Include="Commands\mail.imap\ShouldGetTwoEmails_WhenSendEmails.G1ANT" />
     <None Include="Commands\mail.smtp\ShouldGetEmailTitle_WhenSendEmail.G1ANT" />
     <None Include="Commands\ping\ShouldGetPingResponseTime_WhenPingGoogle.G1ANT" />
-    <None Include="Commands\rest\ShouldFindmetodNameInResponse_WhenSendRestCommands.G1ANT" />
+    <None Include="Commands\rest\ShouldFindMethodNameInResponse_WhenSendRestCommands.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
