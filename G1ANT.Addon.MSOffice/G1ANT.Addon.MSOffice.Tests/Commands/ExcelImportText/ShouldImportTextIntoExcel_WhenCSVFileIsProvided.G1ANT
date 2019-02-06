@@ -8,9 +8,9 @@ excel.importtext path ♥filePath destination ‴A1‴ delimiter ‴,‴
 
 excel.getrow row 1 result ♥usedCells
 
-for counter ♥a from 1 to 3 step 1
-    test ⊂♥usedCells⟦System.Convert.ToChar(96+♥a).ToString()⟧ == ♥a⊃
-end
-
 file.delete ♥filePath
 excel.close
+
+for ♥a from 1 to 3
+    test ⊂♥usedCells⟦System.Convert.ToChar(96+♥a).ToString()⟧ == ♥a⊃
+end

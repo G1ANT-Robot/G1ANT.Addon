@@ -11,5 +11,6 @@ outlook.reply mail ♥mail result ♥replyMessage errorcall CouldNotReplyMessage
 outlook.close
 
 procedure CouldNotReplyMessage
-    test ⊂false⊃
+	outlook.close
+    test false
 end

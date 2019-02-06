@@ -1,16 +1,20 @@
 ﻿♥filepath = ‴♥environment⟦TEMP⟧\tempexcelfile.xlsx‴
-file.exists filename ♥filepath errorjump SkipDelete timeout 2
-file.delete filename ♥filepath
-label name SkipDelete
+file.delete filename ♥filepath timeout 2
+
+♥colindex1TestValue = ‴Test text.‴
+♥colindex2TestValue = ‴54642 5854 22‴
 
 excel.open
-excel.setvalue value ‴Test text.‴ row 1 colname ‴A‴
-excel.setvalue value ‴54642 5854 22‴ row 1 colname ‴B‴
-excel.save path ♥filepath errorcall CouldNotSaveFile
+excel.setvalue value ♥colindex1TestValue row 1 colindex 1
+excel.setvalue value ♥colindex2TestValue row 1 colindex 2
+excel.save path ♥filepath
 excel.close
-file.exists filename ♥filepath
-file.delete filename ♥filepath
 
-procedure CouldNotSaveFile
-    test ⊂false⊃
-end
+excel.open path ♥filepath 
+    excel.getvalue row 1 colindex 1 result ♥valueColindex1
+    excel.getvalue row 1 colindex 2 result ♥valueColindex2
+excel.close
+file.delete filename ♥filepath timeout 2
+
+test ⊂♥valueColindex1 == ♥colindex1TestValue⊃
+test ⊂♥valueColindex2 == ♥colindex2TestValue⊃

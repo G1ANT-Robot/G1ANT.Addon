@@ -104,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Commands\ExcelDuplicateRow\ShouldDuplicateRow_WhenDuplicateRowCommandIsCalled.G1ANT" />
-    <None Include="Commands\ExcelActivateSheet\ShouldActivateSheet_WhenExcekActivateSheetCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelActivateSheet\ShouldSetValueOnProperSheet_WhenExcelActivateSheetCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelAddSheet\ShouldAddSheet_WhenExcelAddSheetCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelExport\ShouldExportFile_WhenExcelExportCommandIsCalled.G1ANT" />
     <None Include="Commands\ExcelGetRow\ShouldReturnAllUsedElementsFromRow_WhenGetRowCommandIsCalled.G1ANT" />

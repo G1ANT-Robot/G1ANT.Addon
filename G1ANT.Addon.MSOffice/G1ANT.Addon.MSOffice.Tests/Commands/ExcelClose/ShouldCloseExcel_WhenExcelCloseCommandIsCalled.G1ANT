@@ -1,7 +1,3 @@
 ﻿excel.open
 
-excel.close errorcall FailedToCloseExcel
-
-procedure FailedToOpenClose
-    test ⊂0⊃
-end
+excel.close

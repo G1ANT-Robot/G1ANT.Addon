@@ -4,5 +4,5 @@ outlook.newmessage to ‴t.g1ant.test@gmail.com‴ subject ‴Test mail‴ body 
 outlook.send
 
 procedure CouldNotSendMessage
-    test ⊂false⊃
+    test false
 end

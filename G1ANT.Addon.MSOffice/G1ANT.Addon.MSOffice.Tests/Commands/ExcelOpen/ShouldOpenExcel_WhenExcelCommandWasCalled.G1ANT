@@ -1,7 +1,3 @@
-﻿excel.open errorcall ExcelDidNotOpen
+﻿excel.open
 
 excel.close
-
-procedure ExcelDidNotOpen
-    test ⊂false⊃
-end

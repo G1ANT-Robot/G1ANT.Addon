@@ -1,7 +1,2 @@
 ﻿outlook.open display false
-
-outlook.close errorcall OutlookDidNotClose
-
-procedure OutlookDidNotClose
-    test ⊂false⊃
-end
+outlook.close

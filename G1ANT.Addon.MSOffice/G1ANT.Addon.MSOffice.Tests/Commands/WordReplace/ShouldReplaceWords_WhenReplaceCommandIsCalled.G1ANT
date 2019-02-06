@@ -2,5 +2,5 @@
 word.inserttext text ‴start‴
 word.replace from "start" to ‴stop‴ 
 word.gettext result ♥text
-test ⊂♥text.ToString().Trim().Equals("stop")⊃
 word.close
+test ⊂♥text.ToString().Trim().Equals("stop")⊃

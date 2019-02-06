@@ -1,5 +1,4 @@
 ﻿outlook.open display false
 outlook.findmails search ‴title‴ result ♥foundMails
-test ⊂♥foundMails⊃
-
 outlook.close
+test ⊂♥foundMails⊃

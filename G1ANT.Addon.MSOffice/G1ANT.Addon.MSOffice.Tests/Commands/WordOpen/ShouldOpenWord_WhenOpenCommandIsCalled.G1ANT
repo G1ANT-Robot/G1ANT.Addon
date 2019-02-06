@@ -1,7 +1,2 @@
-﻿word.open errorcall CouldNotOpenWord
-
+﻿word.open
 word.close
-
-procedure CouldNotOpenWord
-    test ⊂false⊃
-end

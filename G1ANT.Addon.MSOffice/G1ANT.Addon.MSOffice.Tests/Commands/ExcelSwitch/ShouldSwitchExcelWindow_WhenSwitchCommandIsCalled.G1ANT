@@ -4,7 +4,7 @@ excel.open result ♥excel2
 excel.switch id ♥excel1
 excel.getvalue row 1 colindex 1 result ♥cellContent
 ♥cellContent = ⟦integer⟧♥cellContent
-test ⊂♥cellContent == 1⊃
 excel.close
 excel.switch id ♥excel2
 excel.close
+test ⊂♥cellContent == 1⊃

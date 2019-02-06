@@ -1,9 +1,6 @@
 ﻿♥filepath = ‴♥environment⟦TEMP⟧\testworddocument.pdf‴
 
-file.exists ♥filepath errorjump FileDoesNotExist timeout 2
-    file.delete filename ♥filepath
-label name FileDoesNotExist
-
+file.delete filename ♥filepath timeout 2
 
 word.open
 word.inserttext text ‴Test text.‴
@@ -12,5 +9,7 @@ word.close
 file.delete filename ♥filepath
 
 procedure CouldNotExportWord
-    test ⊂false⊃
+	word.close
+	file.delete filename ♥filepath
+    test false
 end
