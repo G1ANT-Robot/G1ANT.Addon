@@ -4,11 +4,11 @@ This structure stores information about the Outlook folder, which was retrieved 
 
 | Field        | Type                                                        | Description                                     |
 | ------------ | ----------------------------------------------------------- | ----------------------------------------------- |
-| `name`       | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The name of the folder                          |
-| `folderpath` | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The path to the folder                          |
-| `folders`    | [list](../../../G1ANT.Language/Structures/ListStructure.md) | The list of subfolders                          |
-| `mails`      | [list](../../../G1ANT.Language/Structures/ListStructure.md) | The list of email messages stored in the folder |
-| `unreaded`   | [list](../../../G1ANT.Language/Structures/ListStructure.md) | The list of unread messages                     |
+| `name`       | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The name of the folder                          |
+| `folderpath` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The path to the folder                          |
+| `folders`    | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of subfolders                          |
+| `mails`      | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of email messages stored in the folder |
+| `unreaded`   | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of unread messages                     |
 
 ## Example
 
