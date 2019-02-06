@@ -1,5 +1,5 @@
 
-# List of All Commands
+# All Commands
 
 | Name | Description |
 | ---- | ----------- |
@@ -18,6 +18,7 @@
 | [excel.removecolumn](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelRemoveColumnCommand.md) | Removes column. |
 | [excel.removerow](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelRemoveRowCommand.md) | Removes row. |
 | [excel.runmacro](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelRunMacroCommand.md) | Run macro in currently active excel instance. |
+| [excel.runvbcode](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelRunVBCodeCommand.md) | Run macro code in currently active excel instance. |
 | [excel.save](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelSaveCommand.md) | Saves currently active excel workbook. |
 | [excel.setvalue](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelSetValueCommand.md) | Sets value in specified cell. |
 | [excel.switch](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/ExcelSwitchCommand.md) | This command allows to switch from one excel instance to another |
@@ -29,10 +30,11 @@
 | [outlook.newmessage](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookNewMessageCommand.md) | This command allows to open a new message window and fills it up with provided arguments. |
 | [outlook.open](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookOpenCommand.md) | This command allows to open the outlook program. It must be always executed before other outlook command will be used. |
 | [outlook.reply](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookReplyCommand.md) | This command create new mail structure which is reply to specified mail. |
+| [outlook.saveattachment](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSaveAttachmentCommand.md) | This command saves attachment as a local file. |
 | [outlook.selectitem](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSelectItemCommand.md) | This command selects mail or folder element in Outlook UI. |
-| [outlook.send](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSendCommand.md) | This command to send a prepared earlier message by 'outlook.newmessage'. |
+| [outlook.send](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSendCommand.md) | This command to send a prepared earlier message by &apos;outlook.newmessage&apos;. |
 | [word.close](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordCloseCommand.md) | This command closes word pogram that is currently active. |
-| [word.export](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordExportCommand.md) | This command exports document from currently active word instance to specified file (in either pdf or xps format |
+| [word.export](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordExportCommand.md) | This command exports document from currently active word instance to specified file (in either pdf or xps format).  |
 | [word.gettext](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordGetTextCommand.md) | This command gets all text from current document. |
 | [word.inserttext](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordInsertTextCommand.md) | This command inserts text into current document. |
 | [word.open](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordOpenCommand.md) | This command opens word program. |
@@ -41,7 +43,7 @@
 | [word.save](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordSaveCommand.md) | This command saves currently active word document. |
 | [word.switch](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice/blob/master/G1ANT.Addon.MSOffice/Commands/WordSwitchCommand.md) | This command allows to switch between word windows. |
 
-# List of All Structures
+# All Structures
 
 | Name | Description |
 | ---- | ----------- |
