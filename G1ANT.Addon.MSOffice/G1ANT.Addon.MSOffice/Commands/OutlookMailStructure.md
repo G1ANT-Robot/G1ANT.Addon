@@ -4,13 +4,13 @@ This structure stores information about a mail message, which was retrieved from
 
 | Field         | Type                                                        | Description                              |
 | ------------- | ----------------------------------------------------------- | ---------------------------------------- |
-| `id`          | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The identification number of the message |
-| `from`        | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The sender of the message                |
-| `to`          | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The recipient of the message             |
-| `subject`     | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The subject of the message               |
-| `body`        | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The contents of the message              |
-| `htmlbody`    | [text](../../../G1ANT.Language/Structures/TextStructure.md) | The HTML contents of the message         |
-| `attachments` | [list](../../../G1ANT.Language/Structures/ListStructure.md) | The list of attachments in the message   |
+| `id`          | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The identification number of the message |
+| `from`        | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The sender of the message                |
+| `to`          | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The recipient of the message             |
+| `subject`     | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The subject of the message               |
+| `body`        | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The contents of the message              |
+| `htmlbody`    | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The HTML contents of the message         |
+| `attachments` | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of attachments in the message   |
 
 ## Example
 
@@ -21,12 +21,12 @@ The script below retrieves unread emails from the Outlook Inbox folder, checks t
 
 outlook.open display false
 outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
-♥unreademails = ♥inboxFolder⟦unreaded⟧
-foreach ♥email in ♥unreademails
+♥unreadEmails = ♥inboxFolder⟦unreaded⟧
+foreach ♥email in ♥unreadEmails
   if ⊂♥email⟦subject⟧.Contains("invoice")⊃
     text.write ♥email⟦body⟧ filename ‴♥environment⟦USERPROFILE⟧\Desktop\♥email⟦from⟧ - ♥email⟦subject⟧.txt‴
   end
 end
 ```
 
-Note that another Outlook structure is used here as well: [outlookfolder](outlookfolderstructure.md) (for the `♥InboxFolder` variable).
+Note that another Outlook structure is used here as well: [outlookfolder](outlookfolderstructure.md) (for the `♥inboxFolder` variable).
