@@ -1,0 +1,11 @@
+addon ui version 1.0.0.0
+
+process.kill notepad
+♥inputText = robot
+
+program notepad 
+ui.settext wpath ‴/ui[@name='Untitled - Notepad']‴ text ♥inputText 
+keyboard ⋘CTRL+A⋙⋘CTRL+C⋙
+process.kill notepad
+
+test ⊂♥inputText == ♥clipboard⊃

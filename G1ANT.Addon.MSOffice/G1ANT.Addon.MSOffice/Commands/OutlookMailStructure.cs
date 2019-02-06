@@ -19,7 +19,7 @@ namespace G1ANT.Addon.MSOffice
     {
         private const string IdIndex = "id";
         private const string FromIndex = "from";
-        private const string ToIndex = "to";
+        private const string AccountIndex = "account";
         private const string SubjectIndex = "subject";
         private const string BodyIndex = "body";
         private const string HtmlBodyIndex = "htmlbody";
@@ -45,7 +45,7 @@ namespace G1ANT.Addon.MSOffice
             Indexes.Add(BodyIndex);
             Indexes.Add(HtmlBodyIndex);
             Indexes.Add(FromIndex);
-            Indexes.Add(ToIndex);
+            Indexes.Add(AccountIndex);
         }
 
         public override Structure Get(string index = "")
@@ -64,7 +64,7 @@ namespace G1ANT.Addon.MSOffice
                     return new TextStructure(Value.HTMLBody, null, Scripter);
                 case FromIndex:
                     return new TextStructure(Value.SenderEmailAddress, null, Scripter);
-                case ToIndex:
+                case AccountIndex:
                     return new TextStructure(Value.SendUsingAccount.SmtpAddress, null, Scripter);
                 case AttachmentsIndex:
                     {
@@ -101,7 +101,7 @@ namespace G1ANT.Addon.MSOffice
                     case HtmlBodyIndex:
                         Value.HTMLBody = structure.ToString();
                         break;
-                    case ToIndex:
+                    case AccountIndex:
                         {
                             Accounts accounts = Value.Session.Accounts;
                             foreach (Account account in accounts)

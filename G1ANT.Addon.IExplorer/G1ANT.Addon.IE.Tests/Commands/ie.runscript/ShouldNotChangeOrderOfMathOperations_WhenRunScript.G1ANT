@@ -1,0 +1,7 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+ie.open ‴www.google.com‴
+ie.runscript script ‴4 / 2 + 2 * 3 - 3 + 4‴ result ♥returnValue1
+ie.close
+♥testValue1 = ‴9‴
+test condition ⊂♥testValue1 == ♥returnValue1⊃

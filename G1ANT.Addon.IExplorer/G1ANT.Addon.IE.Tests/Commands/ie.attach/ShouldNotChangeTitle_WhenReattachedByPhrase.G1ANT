@@ -1,0 +1,9 @@
+﻿addon iexplorer version 2.205.17304.1000
+
+♥testTitle = ‴Google‴
+ie.open url ‴google.com‴
+ie.detach
+ie.attach by url phrase google
+ie.gettitle result ♥pageTitle
+ie.close
+test condition ⊂♥pageTitle==♥testTitle⊃
