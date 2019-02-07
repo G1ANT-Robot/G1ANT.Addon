@@ -2,16 +2,12 @@
 
 ♥fileId1 = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
 ♥fileId2 = ‴1d4InQksHBQyAqmogBc2xsP2eU7uBGD3iBtcmng3--Hk‴
-♥testValue1 = ‴G1ANT‴
-♥testValue2 = ‴Example Spreadsheet Edited‴
 
 googlesheet.open ♥fileId1 result ♥excelId1
 googlesheet.open ♥fileId2 result ♥excelId2
-googlesheet.switch ♥excelId1
-googlesheet.gettitle result ♥excelTitle1
-googlesheet.switch ♥excelId2
-googlesheet.gettitle result ♥excelTitle2
+googlesheet.switch ♥excelId1 result ♥sheethandle1
+googlesheet.switch ♥excelId2 result ♥sheethandle2
 googlesheet.close ♥excelId1
 googlesheet.close ♥excelId2
 
-test ⊂♥testValue1 == ♥excelTitle1 && ♥testValue2 == ♥excelTitle2⊃
+test ⊂♥excelId1 != ♥excelId2 && ♥sheethandle1 && ♥sheethandle2⊃

@@ -5,6 +5,7 @@
 ♥rangeToBeChecked = ‴A3‴
 
 googlesheet.open ♥fileID
+googlesheet.setvalue range ♥rangeToBeChecked value ♥expectedValue numeric false
 googlesheet.getvalue range ♥rangeToBeChecked
 ♥firstValue = ♥result[0]
 googlesheet.close

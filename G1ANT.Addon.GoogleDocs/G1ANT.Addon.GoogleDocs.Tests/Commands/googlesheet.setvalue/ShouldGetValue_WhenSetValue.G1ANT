@@ -4,7 +4,7 @@
 ♥valueToBePlaced = ‴G1ANT‴
 ♥rangeToBePlaced = ‴A2‴
 googlesheet.open ♥fileID
-googlesheet.getvalue range ♥rangeToBePlaced
+googlesheet.setvalue range ♥rangeToBePlaced value ‴test‴ numeric false
 googlesheet.setvalue range ♥rangeToBePlaced value ♥valueToBePlaced numeric false
 googlesheet.getvalue range ♥rangeToBePlaced result ♥result
 googlesheet.close
