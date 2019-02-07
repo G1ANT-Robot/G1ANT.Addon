@@ -3,15 +3,10 @@
 ♥toBeDownloadedAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentdownloaded.txt‴
 ♥testAttachmentText = ‴Test text.‴
 
+file.delete ♥toBeSentAttachmentPath timeout 2
+file.delete ♥toBeDownloadedAttachmentPath timeout 2
+
 outlook.open display false
-
-file.exists ♥toBeSentAttachmentPath errorjump ToBeSentAttachmentDoesNotExist timeout 2
-    file.delete ♥toBeSentAttachmentPath
-label name ToBeSentAttachmentDoesNotExist
-
-file.exists ♥toBeDownloadedAttachmentPath errorjump ToBeDownloadedAttachmentDoesNotExist timeout 2
-    file.delete ♥toBeDownloadedAttachmentPath
-label name ToBeDownloadedAttachmentDoesNotExist
 
 text.write text ♥testAttachmentText filename ♥toBeSentAttachmentPath
 
