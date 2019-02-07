@@ -5,6 +5,12 @@
 ♥testCells = ‴C7&C8&C11&C14&C20&C25‴
 
 googlesheet.open ♥fileID
+googlesheet.setvalue ‴C7‴ value ♥testValue numeric false
+googlesheet.setvalue ‴C8‴ value ♥testValue numeric false
+googlesheet.setvalue ‴C11‴ value ♥testValue numeric false
+googlesheet.setvalue ‴C14‴ value ♥testValue numeric false
+googlesheet.setvalue ‴C20‴ value ♥testValue numeric false
+googlesheet.setvalue ‴C25‴ value ♥testValue numeric false
 googlesheet.findall value ♥testValue result ♥cells
 googlesheet.close
 test ⊂♥cells == ♥testCells⊃

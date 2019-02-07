@@ -5,6 +5,7 @@
 ♥testCellValue = ‴C7‴
 
 googlesheet.open ♥fileID
+googlesheet.setvalue ♥testCellValue value ♥testValue numeric false
 googlesheet.find value ♥testValue result ♥cell
 googlesheet.close
 test ⊂♥cell == ♥testCellValue⊃

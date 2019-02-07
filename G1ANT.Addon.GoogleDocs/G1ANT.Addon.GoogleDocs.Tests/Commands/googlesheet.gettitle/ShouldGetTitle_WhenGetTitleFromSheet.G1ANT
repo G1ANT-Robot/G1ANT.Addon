@@ -4,6 +4,7 @@
 ♥testValue = ‴G1ANT‴
 
 googlesheet.open ♥fileId
+googlesheet.settitle ♥testValue
 googlesheet.gettitle ♥result
 googlesheet.close
 test ⊂♥testValue == ♥result⊃
