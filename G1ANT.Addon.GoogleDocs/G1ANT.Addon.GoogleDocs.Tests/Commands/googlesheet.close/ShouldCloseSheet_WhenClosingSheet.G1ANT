@@ -1,0 +1,6 @@
+﻿addon googledocs version 2.205.17304.1000
+
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+googlesheet.open ♥fileID result ♥sheetHandle
+googlesheet.close 
+test ⊂♥sheetHandle >= 0⊃
