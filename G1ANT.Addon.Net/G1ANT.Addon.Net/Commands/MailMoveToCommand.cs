@@ -38,10 +38,10 @@ namespace G1ANT.Addon.Net
             public MailStructure MailToMove { get; set; }
 
             [Argument(Required = false, Tooltip = "Name of the origin folder")]
-            public TextStructure Origin { get; set; } = new TextStructure("");
+            public TextStructure Origin { get; set; } = new TextStructure(String.Empty);
 
             [Argument(Required = false, Tooltip = "Name of the destination folder")]
-            public TextStructure Destination { get; set; } = new TextStructure("");
+            public TextStructure Destination { get; set; } = new TextStructure(String.Empty);
 
             [Argument(Required = false, Tooltip = "Ignore certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
