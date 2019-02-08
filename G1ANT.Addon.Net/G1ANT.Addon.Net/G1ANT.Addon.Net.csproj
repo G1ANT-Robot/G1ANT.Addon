@@ -72,6 +72,7 @@
     <Compile Include="Commands\MailSmtpCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />
     <Compile Include="Commands\RestCommand.cs" />
+    <Compile Include="ImapHelper.cs" />
     <Compile Include="Variables\TimeoutMailSmtpVariable.cs" />
     <Compile Include="Variables\TimeoutRemoteDesktopVariable.cs" />
     <Compile Include="Variables\TimeoutRestVariable.cs" />

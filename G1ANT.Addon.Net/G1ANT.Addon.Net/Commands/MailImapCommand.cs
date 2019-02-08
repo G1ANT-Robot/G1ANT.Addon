@@ -72,8 +72,7 @@ namespace G1ANT.Addon.Net
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             var markAllMessagesAsRead = arguments.MarkAsRead.Value;
 
-            var client = CreateImapClient(timeout);
-            ConnectClient(client, credentials, uri, !markAllMessagesAsRead);
+            var client = ImapHelper.CreateImapClient(credentials, uri, !markAllMessagesAsRead, timeout);
 
             if (client.IsConnected && client.IsAuthenticated)
             {
@@ -85,23 +84,6 @@ namespace G1ANT.Addon.Net
                     MarkMessagesAsRead(client, messages);
                 }
             }
-        }
-
-        private static void ConnectClient(ImapClient client, NetworkCredential credentials, Uri uri, bool readOnly)
-        {
-            client.Connect(uri);
-            client.Authenticate(credentials);
-            client.Inbox.Open(readOnly ? FolderAccess.ReadOnly : FolderAccess.ReadWrite);
-            client.Inbox.Subscribe();
-        }
-
-        private ImapClient CreateImapClient(int timeout)
-        {
-            var client = new ImapClient
-            {
-                Timeout = timeout,
-            };
-            return client;
         }
 
         private void SendMessageListToScripter(ImapClient client, IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)

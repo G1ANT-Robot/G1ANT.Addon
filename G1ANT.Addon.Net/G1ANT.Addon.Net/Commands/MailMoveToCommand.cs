@@ -61,8 +61,7 @@ namespace G1ANT.Addon.Net
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
 
-            var client = CreateImapClient(timeout);
-            ConnectClient(client, credentials, uri);
+            var client = ImapHelper.CreateImapClient(credentials, uri, false, timeout);
 
             if (client.IsConnected && client.IsAuthenticated)
             {
@@ -83,23 +82,6 @@ namespace G1ANT.Addon.Net
             {
                 throw new NullReferenceException("Could not connect to imap server.");
             }
-        }
-
-        private static void ConnectClient(ImapClient client, NetworkCredential credentials, Uri uri)
-        {
-            client.Connect(uri);
-            client.Authenticate(credentials);
-            client.Inbox.Open(FolderAccess.ReadWrite);
-            client.Inbox.Subscribe();
-        }
-
-        private ImapClient CreateImapClient(int timeout)
-        {
-            var client = new ImapClient
-            {
-                Timeout = timeout,
-            };
-            return client;
         }
     }
 }
