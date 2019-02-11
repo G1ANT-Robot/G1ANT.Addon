@@ -1,50 +1,18 @@
 ﻿addon xlsx version 2.205.17304.1000
 
-♥folderPath = ♥environment⟦TEMP⟧\
-♥filePath = ♥folderPath + "TempTestDebug.xlsx"
+♥filePath = ♥environment⟦TEMP⟧\TempTestDebug.xlsx
 
-procedure DeleteTestFileIfExists
-    ⊂
-        if(System.IO.File.Exists(♥filePath))
-        {
-            System.IO.File.Delete(♥filePath);
-        }
-    ⊃
-end procedure
-
-procedure CreationWhenOpening 
-    call DeleteTestFileIfExists
-
-    xlsx.open path ♥filePath createifnotexist true
+file.delete ♥filePath
+xlsx.open path ♥filePath createifnotexist true
+xlsx.close
+file.exists ♥filePath timeout 100    
+file.delete ♥filePath 
+try errorcall testSucceeded    
+    xlsx.open path ♥filePath
     xlsx.close
-
-    try errorcall testFailed
-        file.exists ♥filePath timeout 1000
-        call DeleteTestFileIfExists        
-    end try
-    
-end procedure
-
-procedure testFailed
-    test condition no
-end procedure
+    call testFailed
+end try
 
 procedure testSucceeded
     test condition yes
 end procedure
-
-procedure TryToOpenIfFileDoesNotExists
-    call DeleteTestFileIfExists
-
-    try errorcall testSucceeded    
-        xlsx.open path ♥filePath
-        xlsx.close
-        call testFailed
-    end try
-  
-end procedure
-
-call CreationWhenOpening
-call TryToOpenIfFileDoesNotExists
-
-

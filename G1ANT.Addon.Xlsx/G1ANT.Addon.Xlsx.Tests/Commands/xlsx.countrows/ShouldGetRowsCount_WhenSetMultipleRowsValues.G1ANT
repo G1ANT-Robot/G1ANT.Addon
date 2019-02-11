@@ -1,45 +1,23 @@
 ﻿addon xlsx version 2.205.17304.1000
-addon core version 4.99.18340.1354
-addon language version 4.99.18340.1354
 
-♥folderPath = ♥environment⟦TEMP⟧\
-♥filePath = ♥folderPath + "TempTestDebug.xlsx"
+♥filePath = ♥environment⟦TEMP⟧\TempTestDebug.xlsx
 ♥testValue = ‴ABC‴
 
-procedure DeleteTestFileIfExists
-    ⊂
-        if(System.IO.File.Exists(♥filePath))
-        {
-            System.IO.File.Delete(♥filePath);
-        }
-    ⊃
-end procedure
+file.delete ♥filePath
 
-procedure CreationWhenOpening
-    xlsx.open path ♥filePath createifnotexist true
-    xlsx.close
-end procedure
+xlsx.open path ♥filePath createifnotexist true
+xlsx.close
 
-procedure SetValuesInTestFile
-    xlsx.open path ♥filePath accessmode readwrite 
-    ♥Iteration = 4
-    while condition ⊂♥Iteration > 0⊃
-        xlsx.setvalue value ♥testValue row ♥Iteration colindex 1
-        ♥Iteration = ♥Iteration - 1
-    end while
-    xlsx.close
-end procedure
+xlsx.open path ♥filePath accessmode readwrite 
+♥i = 4
+while condition ⊂♥i > 0⊃
+    xlsx.setvalue value ♥testValue row ♥i colindex 1
+    ♥i = ♥i - 1
+end while
+xlsx.close
 
-procedure CountRowsFromTestFile
-    xlsx.open path ♥filePath accessmode readwrite   
-    xlsx.countrows result ♥rowCount
-    xlsx.close
-    test ⊂♥rowCount == 4⊃
-end procedure
-
-call DeleteTestFileIfExists
-call CreationWhenOpening
-call SetValuesInTestFile
-call CountRowsFromTestFile
-call DeleteTestFileIfExists
-
+xlsx.open path ♥filePath accessmode readwrite   
+xlsx.countrows result ♥rowCount
+xlsx.close
+file.delete ♥filePath
+test ⊂♥rowCount == 4⊃

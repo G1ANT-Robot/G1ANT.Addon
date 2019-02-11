@@ -6,47 +6,25 @@
 ♥filePath3 = ♥folderPath + "TempTestDebug3.xlsx"
 ♥filePath4 = ♥folderPath + "TempTestDebug4.xlsx"
 
-procedure DeleteTestFileIfExists
-    ⊂
-        if(System.IO.File.Exists(♥filePath))
-        {
-            System.IO.File.Delete(♥filePath);
-        }
-    ⊃
-end procedure
+file.delete ♥filePath1
+file.delete ♥filePath2
+file.delete ♥filePath3
+file.delete ♥filePath4
+xlsx.open path ♥filePath1 createifnotexist true result ♥fileHandle1
+xlsx.open path ♥filePath2 createifnotexist true result ♥fileHandle2
+xlsx.open path ♥filePath3 createifnotexist true result ♥fileHandle3
+xlsx.open path ♥filePath4 createifnotexist true result ♥fileHandle4
 
-procedure DeleteTestFiles
-    ♥filePath = ♥filePath1
-    call DeleteTestFileIfExists
-    ♥filePath = ♥filePath2
-    call DeleteTestFileIfExists
-    ♥filePath = ♥filePath3
-    call DeleteTestFileIfExists
-    ♥filePath = ♥filePath4
-    call DeleteTestFileIfExists
-end procedure
-
-procedure CreationWhenOpening
-    xlsx.open path ♥filePath1 createifnotexist true result ♥fileHandle1
-    xlsx.open path ♥filePath2 createifnotexist true result ♥fileHandle2
-    xlsx.open path ♥filePath3 createifnotexist true result ♥fileHandle3
-    xlsx.open path ♥filePath4 createifnotexist true result ♥fileHandle4
-end procedure
-
-procedure SwitchTestFiles 
-    call CreationWhenOpening
-    xlsx.switch ♥fileHandle1 result ♥res1 
-    xlsx.close
-    xlsx.switch ♥fileHandle2 result ♥res2
-    xlsx.close
-    xlsx.switch ♥fileHandle3 result ♥res3
-    xlsx.close
-    xlsx.switch ♥fileHandle4 result ♥res4
-    xlsx.close
-    test ⊂♥res1 != false && ♥res2 != false && ♥res3 != false && ♥res4 != false⊃
-end procedure
-
-call DeleteTestFiles
-call SwitchTestFiles
-call DeleteTestFiles
-
+xlsx.switch ♥fileHandle1 result ♥res1 
+xlsx.close
+xlsx.switch ♥fileHandle2 result ♥res2
+xlsx.close
+xlsx.switch ♥fileHandle3 result ♥res3
+xlsx.close
+xlsx.switch ♥fileHandle4 result ♥res4
+xlsx.close
+file.delete ♥filePath1
+file.delete ♥filePath2
+file.delete ♥filePath3
+file.delete ♥filePath4
+test ⊂♥res1 != false && ♥res2 != false && ♥res3 != false && ♥res4 != false⊃
