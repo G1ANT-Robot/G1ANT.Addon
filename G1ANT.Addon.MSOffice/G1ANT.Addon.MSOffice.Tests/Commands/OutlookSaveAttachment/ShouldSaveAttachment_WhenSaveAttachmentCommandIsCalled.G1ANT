@@ -1,4 +1,8 @@
-﻿♥outlookInboxFolder = ‴t.g1ant.test@gmail.com\Skrzynka odbiorcza‴
+﻿addon language version 4.98.18332.1321
+addon msoffice version 2.205.17304.1000
+addon core version 4.98.18332.1321
+
+♥outlookInboxFolder = ‴t.g1ant.test@gmail.com\Skrzynka odbiorcza‴
 ♥toBeSentAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentsent.txt‴
 ♥toBeDownloadedAttachmentPath = ‴♥environment⟦TEMP⟧\testattachmentdownloaded.txt‴
 ♥testAttachmentText = ‴Test text.‴
@@ -12,12 +16,21 @@ text.write text ♥testAttachmentText filename ♥toBeSentAttachmentPath
 
 ♥attachmentsToBeSent = ⟦list⟧♥toBeSentAttachmentPath❚ 
 
-outlook.newmessage to ‴t.g1ant.test@gmail.com‴ subject ‴Test mail‴ body ‴Test content.‴ attachments ♥attachmentsToBeSent
+outlook.newmessage to ‴t.g1ant.test@gmail.com‴ subject ‴Test_mail_♥date‴ body ‴Test content.‴ attachments ♥attachmentsToBeSent
 outlook.send 
-delay 5
+delay 3
 
 outlook.open display false
-delay 5
+
+for ♥a from 0 to 10
+    delay 1
+    call CheckIfTestMessageHasCome  
+    break if ♥testMailCome
+    if ♥a>9
+        call TestFailed
+    end
+end
+
 outlook.getfolder path ♥outlookInboxFolder result ♥InboxFolder
 ♥emails = ♥InboxFolder⟦mails⟧
 ♥mail = ♥emails⟦♥emails.Count⟧
@@ -29,4 +42,16 @@ outlook.close
 
 file.delete ♥toBeSentAttachmentPath
 file.delete ♥toBeDownloadedAttachmentPath
-test ⊂♥textFromDownloadedAttachemnt.Equals(♥testAttachmentText)⊃
+test ♥textFromDownloadedAttachemnt==♥testAttachmentText
+
+procedure CheckIfTestMessageHasCome
+    outlook.findmails search ‴Test_mail_♥date‴ result ♥testMailCome
+    ♥testMailCome = ⟦bool⟧♥testMailCome 
+end
+
+procedure TestFailed
+    outlook.close
+    file.delete ♥toBeSentAttachmentPath
+    file.delete ♥toBeDownloadedAttachmentPath
+    test false
+end

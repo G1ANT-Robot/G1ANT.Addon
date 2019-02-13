@@ -4,6 +4,6 @@ outlook.getfolder path ♥outlookInboxFolder result ♥InboxFolder errorcall Can
 outlook.close
 
 procedure CanNotGetFolder
-	outlook.close
+    outlook.close
     test false
 end

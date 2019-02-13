@@ -12,6 +12,6 @@ outlook.moveto item ♥mail destinationfolder ♥destinationFolder errorcall Cou
 outlook.close
 
 procedure CouldNotMoveToAnotherFolder
-	outlook.close
+    outlook.close
     test false
 end

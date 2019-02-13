@@ -13,4 +13,4 @@ word.close
 
 file.delete filename ♥filepath
 
-test ⊂♥text.ToString().Trim() == ♥testText⊃
+test ♥text.ToString().Trim()==♥testText

@@ -7,4 +7,4 @@ excel.getvalue row 1 colindex 1 result ♥cellContent
 excel.close
 excel.switch id ♥excel2
 excel.close
-test ⊂♥cellContent == 1⊃
+test ♥cellContent==1

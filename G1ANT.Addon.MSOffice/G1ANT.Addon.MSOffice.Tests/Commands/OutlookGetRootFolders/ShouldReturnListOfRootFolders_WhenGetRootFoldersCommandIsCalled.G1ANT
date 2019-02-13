@@ -2,4 +2,4 @@
 outlook.open display false
 outlook.getrootfolders result ♥rootFolders
 outlook.close
-test ⊂♥rootFolders.Count>0⊃
+test ♥rootFolders.Count>0

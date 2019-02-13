@@ -3,4 +3,4 @@ word.inserttext text ‴start‴
 word.replace from "start" to ‴stop‴ 
 word.gettext result ♥text
 word.close
-test ⊂♥text.ToString().Trim().Equals("stop")⊃
+test ♥text.ToString().Trim()=="stop"

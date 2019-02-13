@@ -9,11 +9,11 @@ excel.removecolumn colindex ‴1‴
 for ♥a from 1 to 2
     excel.getvalue row 1 colindex ♥a result ♥cellValue
     ♥cellValue = ⟦integer⟧♥cellValue
-    test ⊂♥cellValue == ♥a+1⊃ errorcall TestFailed
+    test ♥cellValue==♥a+1 errorcall TestFailed
 end
 excel.close
 
 procedure TestFailed
-	excel.close
-	test false
+    excel.close
+    test false
 end

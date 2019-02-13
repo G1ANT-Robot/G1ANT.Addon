@@ -2,4 +2,4 @@
 word.inserttext text ‴Test text.‴
 word.gettext result ♥text
 word.close
-test ⊂♥text.ToString().Trim().Equals("Test text.")⊃
+test ⊂♥text.ToString().Trim()=="Test text."⊃

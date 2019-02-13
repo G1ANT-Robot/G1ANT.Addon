@@ -4,12 +4,7 @@ file.delete filename ♥filepath timeout 2
 
 word.open
 word.inserttext text ‴Test text.‴
-word.export path ♥filepath errorcall CouldNotExportWord
+word.export path ♥filepath 
 word.close
+file.exists ♥filepath
 file.delete filename ♥filepath
-
-procedure CouldNotExportWord
-	word.close
-	file.delete filename ♥filepath
-    test false
-end

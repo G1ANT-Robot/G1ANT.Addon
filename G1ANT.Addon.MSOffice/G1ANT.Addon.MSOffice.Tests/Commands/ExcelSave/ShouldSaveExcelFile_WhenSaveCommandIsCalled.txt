@@ -16,5 +16,5 @@ excel.open path ♥filepath
 excel.close
 file.delete filename ♥filepath timeout 2
 
-test ⊂♥valueColindex1 == ♥colindex1TestValue⊃
-test ⊂♥valueColindex2 == ♥colindex2TestValue⊃
+test ♥valueColindex1==♥colindex1TestValue
+test ♥valueColindex2==♥colindex2TestValue

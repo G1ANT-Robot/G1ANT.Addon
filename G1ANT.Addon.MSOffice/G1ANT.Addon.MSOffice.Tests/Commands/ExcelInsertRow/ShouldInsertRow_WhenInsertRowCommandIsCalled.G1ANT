@@ -1,10 +1,7 @@
-﻿addon language version 4.98.18332.1321
-addon core version 4.98.18332.1321
-addon msoffice version 2.205.17304.1000
-excel.open
+﻿excel.open
 
 for ♥a from 1 to 3 step 1
-	excel.setvalue value ♥a row ♥a colindex 1
+    excel.setvalue value ♥a row ♥a colindex 1
 end
 
 excel.insertrow row 1
@@ -13,12 +10,12 @@ excel.insertrow row 3
 for ♥counter from 1 to 5 step 2
     excel.getvalue row ♥counter colindex 1 result ♥cellValue
     ♥cellValue = ⟦integer⟧♥cellValue
-    test ⊂♥cellValue == 1+(♥counter/2)⊃ errorcall TestFailed
+    test ♥cellValue==1+(♥counter/2) errorcall TestFailed
 end
 
 excel.close
 
 procedure TestFailed
-	excel.close
-	test false
+    excel.close
+    test false
 end
