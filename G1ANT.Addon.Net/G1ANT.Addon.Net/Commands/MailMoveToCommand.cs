@@ -37,9 +37,6 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Mail to move")]
             public MailStructure MailToMove { get; set; }
 
-            [Argument(Required = false, Tooltip = "Name of the origin folder")]
-            public TextStructure Origin { get; set; } = new TextStructure(String.Empty);
-
             [Argument(Required = false, Tooltip = "Name of the destination folder")]
             public TextStructure Destination { get; set; } = new TextStructure(String.Empty);
 
@@ -66,7 +63,7 @@ namespace G1ANT.Addon.Net
             if (client.IsConnected && client.IsAuthenticated)
             {
                 var destinationFolder = client.GetFolder(arguments.Destination.Value);
-                var originFolder = client.GetFolder(arguments.Origin.Value);
+                var originFolder = client.GetFolder(arguments.MailToMove.Value.Folder.FullName);
                 if (destinationFolder != null && originFolder != null)
                 {
                     destinationFolder.Open(FolderAccess.ReadWrite);
