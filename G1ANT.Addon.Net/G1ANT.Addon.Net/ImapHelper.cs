@@ -15,7 +15,7 @@ namespace G1ANT.Addon.Net
             client.Inbox.Subscribe();
         }
 
-        public static ImapClient CreateImapClient(NetworkCredential credentials, Uri uri, bool readOnly,int timeout)
+        public static ImapClient CreateImapClient(NetworkCredential credentials, Uri uri, bool readOnly, int timeout)
         {
             var client = new ImapClient {Timeout = timeout};
             ConnectClient(client, credentials, uri, readOnly);

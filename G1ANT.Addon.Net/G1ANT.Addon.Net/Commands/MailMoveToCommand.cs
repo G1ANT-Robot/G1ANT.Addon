@@ -10,7 +10,6 @@
 
 using System;
 using MailKit;
-using MailKit.Net.Imap;
 using G1ANT.Language;
 using System.Net;
 
@@ -25,9 +24,6 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Host name")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port")]
-            public IntegerStructure Port { get; set; } = new IntegerStructure(993);
-
             [Argument(Required = true, Tooltip = "Login of the inbox user")]
             public TextStructure Login { get; set; }
 
@@ -40,13 +36,15 @@ namespace G1ANT.Addon.Net
             [Argument(Required = false, Tooltip = "Name of the destination folder")]
             public TextStructure Folder { get; set; } = new TextStructure(String.Empty);
 
+            [Argument(Required = false, Tooltip = "Port")]
+            public IntegerStructure Port { get; set; } = new IntegerStructure(993);
+
             [Argument(Required = false, Tooltip = "Ignore certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
         }
 
         public MailMoveToCommand(AbstractScripter scripter) : base(scripter)
         { }
-
 
         public void Execute(Arguments arguments)
         {
@@ -68,16 +66,16 @@ namespace G1ANT.Addon.Net
                 {
                     destinationFolder.Open(FolderAccess.ReadWrite);
                     originFolder.Open(FolderAccess.ReadWrite);
-                    originFolder.MoveTo(arguments.Mail.Value.UniqueId,destinationFolder);
+                    originFolder.MoveTo(arguments.Mail.Value.UniqueId, destinationFolder);
                 }
                 else
                 {
-                    throw new NullReferenceException("Folder with specified name does not exist.");
+                    throw new NullReferenceException("Folder with the specified name does not exist.");
                 }
             }
             else
             {
-                throw new NullReferenceException("Could not connect to imap server.");
+                throw new NullReferenceException("Cannot connect to the imap server.");
             }
         }
     }
