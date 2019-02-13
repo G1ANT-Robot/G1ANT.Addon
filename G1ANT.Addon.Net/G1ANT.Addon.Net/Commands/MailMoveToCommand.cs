@@ -35,10 +35,10 @@ namespace G1ANT.Addon.Net
             public TextStructure Password { get; set; }
 
             [Argument(Required = true, Tooltip = "Mail to move")]
-            public MailStructure MailToMove { get; set; }
+            public MailStructure Mail { get; set; }
 
             [Argument(Required = false, Tooltip = "Name of the destination folder")]
-            public TextStructure Destination { get; set; } = new TextStructure(String.Empty);
+            public TextStructure Folder { get; set; } = new TextStructure(String.Empty);
 
             [Argument(Required = false, Tooltip = "Ignore certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
@@ -62,13 +62,13 @@ namespace G1ANT.Addon.Net
 
             if (client.IsConnected && client.IsAuthenticated)
             {
-                var destinationFolder = client.GetFolder(arguments.Destination.Value);
-                var originFolder = client.GetFolder(arguments.MailToMove.Value.Folder.FullName);
+                var destinationFolder = client.GetFolder(arguments.Folder.Value);
+                var originFolder = client.GetFolder(arguments.Mail.Value.Folder.FullName);
                 if (destinationFolder != null && originFolder != null)
                 {
                     destinationFolder.Open(FolderAccess.ReadWrite);
                     originFolder.Open(FolderAccess.ReadWrite);
-                    originFolder.MoveTo(arguments.MailToMove.Value.UniqueId,destinationFolder);
+                    originFolder.MoveTo(arguments.Mail.Value.UniqueId,destinationFolder);
                 }
                 else
                 {
