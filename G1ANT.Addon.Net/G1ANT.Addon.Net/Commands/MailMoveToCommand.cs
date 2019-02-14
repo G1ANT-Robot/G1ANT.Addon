@@ -12,7 +12,7 @@ using System;
 using MailKit;
 using G1ANT.Language;
 using System.Net;
-
+using MailKit.Net.Imap;
 
 namespace G1ANT.Addon.Net
 {
@@ -48,34 +48,63 @@ namespace G1ANT.Addon.Net
 
         public void Execute(Arguments arguments)
         {
-            if (arguments.IgnoreCertificateErrors.Value)
+            SetCertificateValidationCallback(arguments.IgnoreCertificateErrors.Value);
+
+            var client = CreateClient(arguments);
+
+            ValidateArgumentsAndConnection(client, arguments);
+
+            var originFolder = client.GetFolder(arguments.Mail.Value.Folder.FullName);
+            var destinationFolder = client.GetFolder(arguments.Folder.Value);
+
+            ValidateFolders(originFolder, destinationFolder);
+
+            destinationFolder.Open(FolderAccess.ReadWrite);
+            originFolder.Open(FolderAccess.ReadWrite);
+            originFolder.MoveTo(arguments.Mail.Value.UniqueId, destinationFolder);
+        }
+
+        private void ValidateArgumentsAndConnection(ImapClient client, Arguments arguments)
+        {
+            if (!client.IsConnected)
             {
-                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+                throw new Exception("Cannot connect to the server. Please check your internet connection.");
             }
+            if (!client.IsAuthenticated)
+            {
+                throw new Exception("Cannot authenticate on the server. Please check credentials.");
+            }
+            if (arguments.Mail.Value == null)
+            {
+                throw new NullReferenceException("Provided mail message does not exist. Please check if it has been removed.");
+            }
+        }
+
+        private void ValidateFolders(IMailFolder origin, IMailFolder destination)
+        {
+            if (origin == null)
+            {
+                throw new NullReferenceException($"Origin folder {origin.Name} does not exist.");
+            }
+            if (destination == null)
+            {
+                throw new NullReferenceException($"Destination folder {destination.Name} does not exist.");
+            }
+        }
+
+        private ImapClient CreateClient(Arguments arguments)
+        {
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
+            return ImapHelper.CreateImapClient(credentials, uri, false, timeout);
+        }
 
-            var client = ImapHelper.CreateImapClient(credentials, uri, false, timeout);
-
-            if (client.IsConnected && client.IsAuthenticated)
+        private void SetCertificateValidationCallback(bool ignoreCertificateErrors)
+        {
+            if (ignoreCertificateErrors)
             {
-                var destinationFolder = client.GetFolder(arguments.Folder.Value);
-                var originFolder = client.GetFolder(arguments.Mail.Value.Folder.FullName);
-                if (destinationFolder != null && originFolder != null)
-                {
-                    destinationFolder.Open(FolderAccess.ReadWrite);
-                    originFolder.Open(FolderAccess.ReadWrite);
-                    originFolder.MoveTo(arguments.Mail.Value.UniqueId, destinationFolder);
-                }
-                else
-                {
-                    throw new NullReferenceException("Folder with the specified name does not exist.");
-                }
-            }
-            else
-            {
-                throw new NullReferenceException("Cannot connect to the imap server.");
+                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             }
         }
     }
