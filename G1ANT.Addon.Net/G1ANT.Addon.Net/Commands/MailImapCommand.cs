@@ -37,6 +37,9 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Password of the inbox user")]
             public TextStructure Password { get; set; }
 
+            [Argument(Required = true, Tooltip = "Folder to fetch emails from")]
+            public TextStructure Folder { get; set; } = new TextStructure("INBOX");
+
             [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
             public DateStructure SinceDate { get; set; }
 
@@ -76,29 +79,31 @@ namespace G1ANT.Addon.Net
 
             if (client.IsConnected && client.IsAuthenticated)
             {
-                var messages = ReceiveMesssages(client, arguments);
-                SendMessageListToScripter(client, client.Inbox, arguments, messages);
+                var folder = client.GetFolder(arguments.Folder.Value);
+                folder.Open(FolderAccess.ReadOnly);
+                var messages = ReceiveMesssages(folder, arguments);
+                SendMessageListToScripter(folder, arguments, messages);
 
                 if (markAllMessagesAsRead)
                 {
-                    MarkMessagesAsRead(client, messages);
+                    MarkMessagesAsRead(folder, messages);
                 }
             }
         }
 
-        private void SendMessageListToScripter(ImapClient client, IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)
+        private void SendMessageListToScripter(IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)
         {
-            var messageList = CreateMessageStructuresFromMessages(client,folder,messages);
+            var messageList = CreateMessageStructuresFromMessages(folder,messages);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
         }
 
-        private ListStructure CreateMessageStructuresFromMessages(ImapClient client, IMailFolder folder, List<IMessageSummary> messages)
+        private ListStructure CreateMessageStructuresFromMessages(IMailFolder folder, List<IMessageSummary> messages)
         {
             var messageList = new ListStructure();
             foreach (var message in messages)
             {
                 var attachments = CreateAttachmentStructuresFromAttachments(message,folder,message.Attachments);
-                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, client.Inbox, attachments);
+                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, folder, attachments);
                 var structure = new MailStructure(messageWithFolder, null, null);
                 messageList.AddItem(structure);
             }
@@ -118,13 +123,13 @@ namespace G1ANT.Addon.Net
             return attachmentsList;
         }
 
-        private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
+        private List<IMessageSummary> ReceiveMesssages(IMailFolder folder, Arguments arguments)
         {
             var options = MessageSummaryItems.All |
                           MessageSummaryItems.Body |
                           MessageSummaryItems.BodyStructure |
                           MessageSummaryItems.UniqueId;
-            var allMessages = client.Inbox.Fetch(0, -1, options).ToList();
+            var allMessages = folder.Fetch(0, -1, options).ToList();
             var onlyUnread = arguments.OnlyUnreadMessages.Value;
             var since = arguments.SinceDate.Value;
             var to = arguments.ToDate.Value;
@@ -132,11 +137,11 @@ namespace G1ANT.Addon.Net
             return SelectMessages(allMessages, onlyUnread, since, to);
         }
 
-        private static void MarkMessagesAsRead(ImapClient client, List<IMessageSummary> messages)
+        private static void MarkMessagesAsRead(IMailFolder folder, List<IMessageSummary> messages)
         {
             foreach (var message in messages)
             {
-                client.Inbox.SetFlags(message.UniqueId, MessageFlags.Seen, true);
+                folder.SetFlags(message.UniqueId, MessageFlags.Seen, true);
             }
         }
 
