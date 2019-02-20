@@ -11,6 +11,7 @@ using System.Text;
 using System.Net.Mail;
 
 using G1ANT.Language;
+using System.Linq;
 
 namespace G1ANT.Addon.Net
 {
@@ -36,6 +37,12 @@ namespace G1ANT.Addon.Net
 
             [Argument(Required = true, Tooltip = "Receiver's email address")]
             public TextStructure To { get; set; }
+
+            [Argument(Required = true, Tooltip = "Carbon copy")]
+            public TextStructure Cc { get; set; } = new TextStructure(string.Empty);
+
+            [Argument(Required = true, Tooltip = "Blind carbon copy")]
+            public TextStructure Bcc { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "Mail subject")]
             public TextStructure Subject { get; set; } = new TextStructure(string.Empty);
@@ -68,12 +75,20 @@ namespace G1ANT.Addon.Net
             client.Credentials = new System.Net.NetworkCredential(arguments.Login.Value, arguments.Password.Value);
             client.Timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
 
-            string from = arguments.From.Value;
-            string to = arguments.To.Value;
-            string subject = arguments.Subject.Value;
-            string body = arguments.Body.Value;
+            var from = arguments.From.Value;
+            var to = arguments.To.Value;
+            var cc = arguments.Cc.Value.Split(',').ToList(); 
+            var bcc = arguments.Bcc.Value.Split(',').ToList();
+            var subject = arguments.Subject.Value;
+            var body = arguments.Body.Value;
 
             MailMessage mm = new MailMessage(from, to, subject, body);
+            cc.Where(a => !string.IsNullOrEmpty(a))
+                .ToList()
+                .ForEach(a =>mm.CC.Add(a));
+            bcc.Where(a => !string.IsNullOrEmpty(a))
+                .ToList()
+                .ForEach(a => mm.Bcc.Add(a));
             mm.BodyEncoding = UTF8Encoding.UTF8;
             mm.IsBodyHtml = arguments.IsHtmlBody.Value;
             mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
