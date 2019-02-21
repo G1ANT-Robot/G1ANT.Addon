@@ -77,16 +77,16 @@ namespace G1ANT.Addon.Net
 
             var from = arguments.From.Value;
             var to = arguments.To.Value;
-            var cc = arguments.Cc.Value.Split(',').ToList(); 
-            var bcc = arguments.Bcc.Value.Split(',').ToList();
+            var cc = arguments.Cc.Value.Split(';').ToList(); 
+            var bcc = arguments.Bcc.Value.Split(';').ToList();
             var subject = arguments.Subject.Value;
             var body = arguments.Body.Value;
 
             MailMessage mm = new MailMessage(from, to, subject, body);
-            cc.Where(a => !string.IsNullOrEmpty(a))
+            cc.Where(a => !string.IsNullOrEmpty(a.Trim()))
                 .ToList()
                 .ForEach(a =>mm.CC.Add(a));
-            bcc.Where(a => !string.IsNullOrEmpty(a))
+            bcc.Where(a => !string.IsNullOrEmpty(a.Trim()))
                 .ToList()
                 .ForEach(a => mm.Bcc.Add(a));
             mm.BodyEncoding = UTF8Encoding.UTF8;
