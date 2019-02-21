@@ -93,7 +93,7 @@ namespace G1ANT.Addon.Net
 
         private void SendMessageListToScripter(IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)
         {
-            var messageList = CreateMessageStructuresFromMessages(folder,messages);
+            var messageList = CreateMessageStructuresFromMessages(folder, messages);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
         }
 
