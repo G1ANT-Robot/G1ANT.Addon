@@ -39,5 +39,6 @@ In the following script the `mail.smtp` command will send a message via GMail SM
 > **Note:** Host, login and password values are of course just examples. You have to provide your real mail server credentials for the command to work.
 
 ```G1ANT
-mail.smtp imap.gmail.com login mail@gmail.com password p@$$w0rD from Robot to hi@g1ant.com subject Test body ‴Hi, G1ANT!‴ attachments C:\photos\hello.jpg
+list.create C:\photos\hello.jpg result ♥attachment
+mail.smtp imap.gmail.com login mail@gmail.com password p@$$w0rD from robot@gmail.com to hi@g1ant.com subject Test body ‴Hi, G1ANT!‴ attachments ♥attachment
 ```
