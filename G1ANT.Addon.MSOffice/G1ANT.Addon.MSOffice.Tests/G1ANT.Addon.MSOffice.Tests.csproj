@@ -118,6 +118,7 @@
     <None Include="Commands\OutlookGetFolder\ShouldReturnFolder_WhenGetFolderCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookGetRootFolders\ShouldReturnListOfRootFolders_WhenGetRootFoldersCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookMoveTo\ShouldMoveToAnotherFolder_WhenMoveToCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookNewMessage\ShouldCreateNewMessageHtmlBody_WhenNewMessageCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookNewMessage\ShouldCreateNewMessage_WhenNewMessageCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookOpen\ShouldOpenOutlook_WhenOpenCommandIsCalled.G1ANT" />
     <None Include="Commands\OutlookSaveAttachment\ShouldSaveAttachment_WhenSaveAttachmentCommandIsCalled.G1ANT" />

@@ -34,6 +34,9 @@ namespace G1ANT.Addon.MSOffice
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
+
+            [Argument(Required = false, Tooltip = "Value indicating whether the mail message body is in HTML")]
+            public BooleanStructure IsBodyHtml { get; set; } = new BooleanStructure(false);
         }
 
         public OutlookNewMessageCommand(AbstractScripter scripter) : base(scripter)
@@ -46,6 +49,7 @@ namespace G1ANT.Addon.MSOffice
             var to = arguments.To.Value;
             var subject = arguments.Subject.Value;
             var body = arguments.Body.Value;
+            var isHtmlBody = arguments.IsBodyHtml.Value;
             bool nullAttachement = false;
 
             foreach (var arg in arguments.Attachments.Value)
@@ -58,7 +62,7 @@ namespace G1ANT.Addon.MSOffice
 
             if (nullAttachement)
             {
-                outlookManager.NewMessage(to, subject, body);
+                outlookManager.NewMessage(to, subject, body, isHtmlBody);
             }
             else
             {
@@ -69,7 +73,7 @@ namespace G1ANT.Addon.MSOffice
                     string p = pathsObject[i].ToString().ToUpper();
                     paths.Add(p);
                 }
-                outlookManager.NewMessageWithAttachements(to, subject, body, paths);
+                outlookManager.NewMessageWithAttachements(to, subject, body, paths, isHtmlBody);
 
             }
             //SetVariableValue(arguments.Result.Value, new Language.BooleanStructure(true));

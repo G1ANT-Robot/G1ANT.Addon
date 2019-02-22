@@ -64,12 +64,22 @@ namespace G1ANT.Addon.MSOffice
             }
         }
 
-        public void NewMessage(string to, string subject, string body)
+        public void NewMessage(string to, string subject, string body, bool isHtmlBody)
         {
             mailItem = Application.CreateItem(OlItemType.olMailItem);
             mailItem.To = to;
             mailItem.Subject = subject;
-            mailItem.Body = body;
+
+            if (isHtmlBody)
+            {
+                mailItem.BodyFormat = OlBodyFormat.olFormatHTML;
+                mailItem.HTMLBody = body;
+            }
+            else
+            {
+                mailItem.Body = body;
+            }
+            
             mailItem.Display();
             mailItem.Save();
         }
@@ -78,12 +88,22 @@ namespace G1ANT.Addon.MSOffice
         {
             mailItem.Close(OlInspectorClose.olDiscard);
         }
-        public void NewMessageWithAttachements(string to, string subject, string body, List<string> paths)
+        public void NewMessageWithAttachements(string to, string subject, string body, List<string> paths, bool isHtmlBody)
         {
             mailItem = Application.CreateItem(OlItemType.olMailItem);
             mailItem.To = to;
             mailItem.Subject = subject;
-            mailItem.Body = body;
+
+            if (isHtmlBody)
+            {
+                mailItem.BodyFormat = OlBodyFormat.olFormatHTML;
+                mailItem.HTMLBody = body;
+            }
+            else
+            {
+                mailItem.Body = body;
+            }
+
             List<FileInfo> files = new List<FileInfo>();
             foreach (var filePath in paths)
             {
