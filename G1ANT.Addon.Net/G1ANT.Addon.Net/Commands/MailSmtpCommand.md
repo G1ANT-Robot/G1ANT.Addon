@@ -34,7 +34,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In the following script the `mail.smtp` command will send a message via GMail SMTP server from a sender named Robot to a recipient whose email address is `hi@g1ant.com`.  The message subject is “*Test*”, the content is just “*Hi, G1ANT!*” and one file, *hello.jpg*, is attached.
+In the following script the `mail.smtp` command will send a message via Gmail SMTP server from a sender named Robot to a recipient whose email address is `hi@g1ant.com`.  The message subject is “*Test*”, the content is just “*Hi, G1ANT!*” and one file, *hello.jpg*, is attached.
 
 > **Note:** Host, login and password values are of course just examples. You have to provide your real mail server credentials for the command to work.
 
