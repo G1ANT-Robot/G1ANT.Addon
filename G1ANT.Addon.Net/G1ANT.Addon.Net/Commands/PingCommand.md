@@ -9,6 +9,7 @@ ping ip ⟦text⟧ repeats ⟦integer⟧
 ## Description
 
 This command pings a specified IP address and returns an approximate round-trip time in milliseconds.
+
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
 |`ip`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no  | 8.8.8.8 | IP address or a host name of a pinged server |
