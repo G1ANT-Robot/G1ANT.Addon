@@ -1,35 +1,33 @@
 # vnc.connect
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-vnc.connect  host ‴‴  port ‴‴  password ‴‴
+vnc.connect host ⟦text⟧ port ⟦text⟧ password ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `vnc.connect` allows to connect to machine with running VNC server using a remote desktop.
+This command connects to a remote machine with a running VNC server, using a remote desktop connection.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`host`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |   | IP or URL of the machine |
-|`port`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes|  | port used to connect and allowed on the server side |
-|`password`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes|  | password used to connect to the server side |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md)  | no |  [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  |returns either true or false, depending on CapsLock key's current state|
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutremotedesktop](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`host`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |   | IP or URL address of the remote machine |
+|`port`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Port used to connect to the remote machine |
+|`password`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Password used to connect to the remote machine               |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+|`timeout`| [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no | [♥timeoutremotedesktop](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Variables/TimeoutRemoteDesktopVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Net.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Net](https://github.com/G1ANT-Robot/G1ANT.Addon.Net)
+## Example
 
-**Example 1:**
-
-This example connects to remote desktop using `vnc.connect` command.
+This script connects to a remote desktop using sample server data:
 
 ```G1ANT
-vnc.connect host ‴10.0.0.1‴ port ‴5901‴ password ‴vncpassword‴
+vnc.connect host 10.0.0.1 port 5901 password vncpassword
 ```
