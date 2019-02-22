@@ -18,7 +18,7 @@ namespace G1ANT.Addon.Net
         public class Arguments : CommandArguments
         {
             [Argument(Tooltip = "IP address or hostname of pinging server")]
-            public TextStructure Ip { get; set; } = new TextStructure("8.8.8.8");
+            public TextStructure Ip { get; set; }
 
             [Argument(Tooltip = "Allows to ping multiple times. Command returns rounded value of all pings. Default = 1")]
             public IntegerStructure Repeats { get; set; } = new IntegerStructure(1);
@@ -43,6 +43,14 @@ namespace G1ANT.Addon.Net
                 if (reply.Status == IPStatus.Success)
                 {
                     sum += reply.RoundtripTime;
+                }
+                else if (reply.Status == IPStatus.TimedOut)
+                {
+                    throw new PingException("Destination host do not respond to ping");
+                }
+                else if (reply.Status == IPStatus.TimeExceeded)
+                {
+                    throw new PingException("Destination host connection has timed out");
                 }
                 else
                 {
