@@ -9,6 +9,7 @@ is.accessible hostname ⟦text⟧
 ## Description
 
 This command checks if a host is accessible.
+
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
 |`hostname`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes  | | Name of a host to be accessed |
