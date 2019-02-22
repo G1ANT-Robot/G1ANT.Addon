@@ -30,7 +30,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In the example below the `mail.imap` command will check GMail IMAP server for unread messages in the default INBOX folder, received between January 13, 2019 and the present moment. The matching emails will be moved to Spam folder in the same mail account.
+In the example below the `mail.imap` command will check Gmail IMAP server for unread messages in the default INBOX folder, received between January 13, 2019 and the present moment. The matching emails will be moved to Spam folder in the same mail account.
 
 > **Note:** Host, login and password values are of course just examples. You have to provide your real mail server credentials for the command to work.
 
