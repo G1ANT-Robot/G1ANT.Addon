@@ -2,3 +2,6 @@
 
 ping ip google.com timeout 1000
 test ⊂♥result >= 0⊃
+
+ping ip google.com
+test ⊂♥result >= 0⊃

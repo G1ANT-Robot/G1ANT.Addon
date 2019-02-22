@@ -2,3 +2,6 @@
 
 is.accessible hostname ‴google.com‴ timeout 1000
 test ⊂♥result == true⊃
+
+is.accessible hostname ‴google.com‴
+test ⊂♥result == true⊃
