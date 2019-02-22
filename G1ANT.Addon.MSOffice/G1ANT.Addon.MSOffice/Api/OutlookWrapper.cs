@@ -70,6 +70,14 @@ namespace G1ANT.Addon.MSOffice
             mailItem.To = to;
             mailItem.Subject = subject;
 
+            SetBody(body, isHtmlBody);
+
+            mailItem.Display();
+            mailItem.Save();
+        }
+
+        private void SetBody(string body, bool isHtmlBody)
+        {
             if (isHtmlBody)
             {
                 mailItem.BodyFormat = OlBodyFormat.olFormatHTML;
@@ -79,9 +87,6 @@ namespace G1ANT.Addon.MSOffice
             {
                 mailItem.Body = body;
             }
-            
-            mailItem.Display();
-            mailItem.Save();
         }
 
         public void DiscardMail()
@@ -94,15 +99,7 @@ namespace G1ANT.Addon.MSOffice
             mailItem.To = to;
             mailItem.Subject = subject;
 
-            if (isHtmlBody)
-            {
-                mailItem.BodyFormat = OlBodyFormat.olFormatHTML;
-                mailItem.HTMLBody = body;
-            }
-            else
-            {
-                mailItem.Body = body;
-            }
+            SetBody(body, isHtmlBody);
 
             List<FileInfo> files = new List<FileInfo>();
             foreach (var filePath in paths)
