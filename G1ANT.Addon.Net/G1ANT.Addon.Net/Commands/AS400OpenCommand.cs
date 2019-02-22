@@ -24,9 +24,9 @@ namespace G1ANT.Addon.Net
 
         }
         public string pathToTelnet = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"..\..\..\G1ANT.Robot\Resources\telnet.exe");
+             @"Resources\telnet.exe");
         public string pathToPutty = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"..\..\..\G1ANT.Robot\Resources\putty.exe");
+             @"Resources\putty.exe");
         Process putty;
         public AS400openCommand(AbstractScripter scripter) : base(scripter)
         {

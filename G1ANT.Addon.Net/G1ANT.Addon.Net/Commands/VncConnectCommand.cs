@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Net
         {
         }
         public string pathToVNC = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"..\..\..\G1ANT.Robot.Api\Resources\VNC.exe");
+             @"Resources\VNC.exe");
         Process testerApp;
 
         public void Execute(Arguments arguments)
