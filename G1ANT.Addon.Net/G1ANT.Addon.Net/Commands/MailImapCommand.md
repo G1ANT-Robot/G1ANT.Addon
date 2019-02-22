@@ -43,6 +43,6 @@ foreach ♥element in ♥list
 end
 ```
 
-In the example above the `mail.imap` command will check GMail IMAP server for unread messages in the default INBOX folder, received between January 13, 2019 and the present moment. The matching emails will be displayed in the subsequent dialog boxes (only message subjects are shown, because it’s a default behavior of the mail structure).
+In the example above the `mail.imap` command will check Gmail IMAP server for unread messages in the default INBOX folder, received between January 13, 2019 and the present moment. The matching emails will be displayed in the subsequent dialog boxes (only message subjects are shown, because it’s a default behavior of the mail structure).
 
 > **Note:** Host, login and password values are of course just examples. You have to provide your real mail server credentials for the command to work.
