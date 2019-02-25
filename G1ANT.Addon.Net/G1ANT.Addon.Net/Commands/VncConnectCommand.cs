@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "vnc.connect",Tooltip = "This command allows to connect to machine with running VNC server using a remote desktop.", NeedsDelay = true, IsUnderConstruction = true)]
+    [Command(Name = "vnc.connect",Tooltip = "This command allows to connect to machine with running VNC server using a remote desktop.", NeedsDelay = true)]
     public class VncConnectCommand : Command
     {
         public class Arguments : CommandArguments

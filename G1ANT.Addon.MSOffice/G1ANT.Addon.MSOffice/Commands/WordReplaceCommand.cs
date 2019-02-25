@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.replace",Tooltip = "This command allows to replace any word in document.", NeedsDelay = true, IsUnderConstruction = true)]
+    [Command(Name = "word.replace",Tooltip = "This command allows to replace any word in document.", NeedsDelay = true)]
     public class WordReplaceCommand : Command
 	{
         public class Arguments : CommandArguments
