@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.close", Tooltip = "This command allows to close active outlook pogram. It must be initiated at the end of a process.", NeedsDelay = true, IsUnderConstruction = false)]
+    [Command(Name = "outlook.close", Tooltip = "This command allows to close active outlook pogram. It must be initiated at the end of a process.", NeedsDelay = true)]
     public class OutlookCloseCommand : Command
     {
         public class Arguments : CommandArguments

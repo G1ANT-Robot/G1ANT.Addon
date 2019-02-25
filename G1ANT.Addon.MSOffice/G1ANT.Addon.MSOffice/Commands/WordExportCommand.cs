@@ -11,7 +11,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.export", Tooltip = "This command exports document from currently active word instance to specified file (in either pdf or xps format). ", NeedsDelay = true, IsUnderConstruction = false)]
+    [Command(Name = "word.export", Tooltip = "This command exports document from currently active word instance to specified file (in either pdf or xps format). ", NeedsDelay = true)]
 
     public class WordExportCommand : Command
     {

@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "as400.open", Tooltip= "This command allows to open terminal to work with IBM AS/400 platform.", NeedsDelay = true, IsUnderConstruction = true)]
+    [Command(Name = "as400.open", Tooltip= "This command allows to open terminal to work with IBM AS/400 platform.", NeedsDelay = true)]
     public class AS400openCommand : Command
     {
         public class Arguments : CommandArguments
