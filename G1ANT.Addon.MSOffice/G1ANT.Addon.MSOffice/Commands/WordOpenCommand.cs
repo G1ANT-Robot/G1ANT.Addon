@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.open",Tooltip = "This command opens word program.", NeedsDelay = true, IsUnderConstruction = false)]
+    [Command(Name = "word.open",Tooltip = "This command opens word program.", NeedsDelay = true)]
     public class WordOpenCommand : Command
     {
         public class Arguments : CommandArguments

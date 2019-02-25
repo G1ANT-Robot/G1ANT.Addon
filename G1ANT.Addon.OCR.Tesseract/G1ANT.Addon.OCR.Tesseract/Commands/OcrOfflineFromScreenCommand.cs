@@ -15,7 +15,7 @@ using Tesseract;
 
 namespace G1ANT.Addon.Ocr.Tesseract
 {
-    [Command(Name = "ocrtesseract.fromscreen", Tooltip = "This command allows to capture part of the screen and recognize text from it. \nThis command may often be less accurate than 'ocr' command. \nPlease be aware that command will unpack some necessary data to folder My Documents/G1ANT.Robot.", IsUnderConstruction = true)]
+    [Command(Name = "ocrtesseract.fromscreen", Tooltip = "This command allows to capture part of the screen and recognize text from it. \nThis command may often be less accurate than 'ocr' command. \nPlease be aware that command will unpack some necessary data to folder My Documents/G1ANT.Robot.")]
     public class OcrOfflineFromScreenCommand : Command
     {
         public class Arguments : CommandArguments

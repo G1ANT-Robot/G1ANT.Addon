@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.importtext", Tooltip = "Sets data connection between text file and the specified destination in an active sheet and imports data into it.", IsUnderConstruction = false)]
+    [Command(Name = "excel.importtext", Tooltip = "Sets data connection between text file and the specified destination in an active sheet and imports data into it.")]
     public class ExcelImportTextCommand : Command
 	{
         public class Arguments : CommandArguments
