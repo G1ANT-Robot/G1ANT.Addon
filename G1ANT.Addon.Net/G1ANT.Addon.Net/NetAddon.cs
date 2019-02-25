@@ -9,10 +9,9 @@
 */
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using G1ANT.Language;
+using G1ANT.Addon.Net.Properties;
+using System.IO;
 
 namespace G1ANT.Addon.Net
 {
@@ -27,5 +26,37 @@ namespace G1ANT.Addon.Net
     [CommandGroup(Name = "vnc",  Tooltip = "A command connected with a VNC server.")]
     public class NetAddon : Language.Addon
     {
+        public override void Initialize()
+        {
+            base.Initialize();
+        }
+
+        public override void LoadDlls()
+        {
+            UnpackDrivers();
+            base.LoadDlls();
+        }
+
+        private void UnpackDrivers()
+        {
+            var unpackfolder = AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName;
+            Dictionary<string, byte[]> exeList = new Dictionary<string, byte[]>()
+            {
+                { "putty.exe", Resources.putty },
+                { "VNC.exe", Resources.VNC },
+                { "telnet.exe", Resources.telnet },
+            };
+            foreach (var exe in exeList)
+            {
+                try
+                {
+                    using (FileStream stream = File.Create(Path.Combine(unpackfolder, exe.Key)))
+                    {
+                        stream.Write(exe.Value, 0, exe.Value.Length);
+                    }
+                }
+                catch { }
+            }
+        }
     }
 }

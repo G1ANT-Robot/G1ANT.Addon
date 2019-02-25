@@ -37,8 +37,8 @@ namespace G1ANT.Addon.Net
         public VncConnectCommand(AbstractScripter scripter) : base(scripter)
         {
         }
-        public string pathToVNC = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"Resources\VNC.exe");
+        public string pathToVNC = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+             @"\VNC.exe");
         Process testerApp;
 
         public void Execute(Arguments arguments)

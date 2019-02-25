@@ -23,10 +23,10 @@ namespace G1ANT.Addon.Net
             public TextStructure Host { get; set; }
 
         }
-        public string pathToTelnet = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"Resources\telnet.exe");
-        public string pathToPutty = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"Resources\putty.exe");
+        public string pathToTelnet = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+             @"\telnet.exe");
+        public string pathToPutty = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+             @"\putty.exe");
         Process putty;
         public AS400openCommand(AbstractScripter scripter) : base(scripter)
         {

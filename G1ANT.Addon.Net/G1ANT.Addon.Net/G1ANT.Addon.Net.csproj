@@ -128,5 +128,14 @@
       <Link>BouncyCastle.Crypto.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\putty.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telnet.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VNC.exe" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
