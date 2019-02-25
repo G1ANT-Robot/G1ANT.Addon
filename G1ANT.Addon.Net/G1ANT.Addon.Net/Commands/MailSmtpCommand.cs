@@ -38,10 +38,10 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Receiver's email address")]
             public TextStructure To { get; set; }
 
-            [Argument(Required = true, Tooltip = "Carbon copy. You can add multiple addresses separated with ';'")]
+            [Argument(Tooltip = "Carbon copy. You can add multiple addresses separated with ';'")]
             public TextStructure Cc { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Required = true, Tooltip = "Blind carbon copy. You can add multiple addresses separated with ';'"")]
+            [Argument(Tooltip = "Blind carbon copy. You can add multiple addresses separated with ';'")]
             public TextStructure Bcc { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "Mail subject")]
