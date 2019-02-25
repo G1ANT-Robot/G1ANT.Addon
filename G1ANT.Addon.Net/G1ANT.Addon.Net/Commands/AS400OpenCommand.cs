@@ -24,9 +24,9 @@ namespace G1ANT.Addon.Net
 
         }
         public string pathToTelnet = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
-             @"\telnet.exe");
+             @"telnet.exe");
         public string pathToPutty = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
-             @"\putty.exe");
+             @"putty.exe");
         Process putty;
         public AS400openCommand(AbstractScripter scripter) : base(scripter)
         {

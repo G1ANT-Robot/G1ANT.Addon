@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Net
         {
         }
         public string pathToVNC = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
-             @"\VNC.exe");
+             @"VNC.exe");
         Process testerApp;
 
         public void Execute(Arguments arguments)
