@@ -75,6 +75,7 @@
     <Compile Include="ImapHelper.cs" />
     <Compile Include="Variables\TimeoutMailSmtpVariable.cs" />
     <Compile Include="Variables\TimeoutRemoteDesktopVariable.cs" />
+    <Compile Include="Variables\TimeoutConnectVariable.cs" />
     <Compile Include="Variables\TimeoutRestVariable.cs" />
     <Compile Include="Commands\VncConnectCommand.cs" />
     <Compile Include="NetAddon.cs" />
