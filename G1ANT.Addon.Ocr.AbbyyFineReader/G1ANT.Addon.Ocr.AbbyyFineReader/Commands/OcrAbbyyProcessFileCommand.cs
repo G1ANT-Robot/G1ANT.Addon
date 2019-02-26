@@ -19,7 +19,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.processfile", Tooltip = "This command reads file and process it by Abbyy fine reader engine", IsUnderConstruction = true)]
+    [Command(Name = "ocrabbyy.processfile", Tooltip = "This command reads file and process it by Abbyy fine reader engine")]
     public class OcrAbbyyProcessFileCommand : Command
     {
         public class Arguments : CommandArguments

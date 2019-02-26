@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.inserttext", Tooltip = "This command inserts text into current document.", NeedsDelay = true, IsUnderConstruction = false)]
+    [Command(Name = "word.inserttext", Tooltip = "This command inserts text into current document.", NeedsDelay = true)]
 
     public class WordInsertTextCommand : Command
     {

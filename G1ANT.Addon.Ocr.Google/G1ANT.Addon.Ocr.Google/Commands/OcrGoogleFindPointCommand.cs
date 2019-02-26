@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace G1ANT.Language.Ocr.Google
 {
-    [Command(Name = "ocrgoogle.findpoint", Tooltip = "This command allows to find the text on the active screen and return it's position in a 'point' format. ", IsUnderConstruction = true)]
+    [Command(Name = "ocrgoogle.findpoint", Tooltip = "This command allows to find the text on the active screen and return it's position in a 'point' format. ")]
     public class OcrGoogleFindPointCommand : Command
     {
         public class Arguments : CommandArguments
