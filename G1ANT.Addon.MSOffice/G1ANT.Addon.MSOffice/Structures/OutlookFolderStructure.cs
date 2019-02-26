@@ -21,6 +21,11 @@ namespace G1ANT.Addon.MSOffice
         const string FolderPathIndex = "folderpath";
         const string FoldersIndex = "folders";
         const string MailsIndex = "mails";
+        const string UnreadIndex = "unread";
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
         const string UnreadedIndex = "unreaded";
 
         public OutlookFolderStructure(string value, string format = "", AbstractScripter scripter = null) :
@@ -40,14 +45,17 @@ namespace G1ANT.Addon.MSOffice
             Indexes.Add(NameIndex);
             Indexes.Add(FoldersIndex);
             Indexes.Add(MailsIndex);
-            Indexes.Add(UnreadedIndex);
+            Indexes.Add(UnreadIndex);
         }
 
         public override Structure Get(string index = "")
         {
             if (string.IsNullOrWhiteSpace(index))
                 return new OutlookFolderStructure(Value, Format);
-            switch (index.ToLower())
+
+            index = index.ToLower();
+
+            switch (index)
             {
                 case NameIndex:
                     return new TextStructure(Value.Name, null, Scripter);
@@ -69,11 +77,12 @@ namespace G1ANT.Addon.MSOffice
                     }
                 case MailsIndex:
                 case UnreadedIndex:
+                case UnreadIndex:
                     {
                         var outlookManager = OutlookManager.CurrentOutlook;
                         if (outlookManager != null)
-                        {
-                            bool unreaded = index.ToLower() == UnreadedIndex;
+                        {                            
+                            bool unreaded = index == UnreadedIndex || index == UnreadIndex;
                             var mails = outlookManager.GetMails(Value, unreaded);
                             var list = new List<object>();
                             foreach (var m in mails)
