@@ -8,7 +8,7 @@ This structure stores information about the Outlook folder, which was retrieved 
 | `folderpath` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The path to the folder                          |
 | `folders`    | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of subfolders                          |
 | `mails`      | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of email messages stored in the folder |
-| `unreaded`   | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of unread messages                     |
+| `unread`   | [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | The list of unread messages                     |
 
 ## Example
 
@@ -19,7 +19,7 @@ The script below retrieves unread emails from the Outlook Inbox folder, using th
 
 outlook.open display false
 outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
-♥unreademails = ♥inboxFolder⟦unreaded⟧
+♥unreademails = ♥inboxFolder⟦unread⟧
 foreach ♥email in ♥unreademails
   dialog ‴New message from ♥email⟦from⟧ with subject: "♥email⟦subject⟧"‴
 end
