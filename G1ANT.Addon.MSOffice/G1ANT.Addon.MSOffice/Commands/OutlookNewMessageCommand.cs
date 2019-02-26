@@ -9,8 +9,7 @@
 */
 
 using G1ANT.Language;
-
-
+using System.Linq;
 using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
@@ -45,39 +44,14 @@ namespace G1ANT.Addon.MSOffice
 
         public void Execute(Arguments arguments)
         {
-            var outlookManager = OutlookManager.CurrentOutlook;
-            var to = arguments.To.Value;
-            var subject = arguments.Subject.Value;
-            var body = arguments.Body.Value;
-            var isHtmlBody = arguments.IsBodyHtml.Value;
-            bool nullAttachement = false;
+            OutlookManager.CurrentOutlook.NewMessage(
+                to: arguments.To.Value,
+                subject: arguments.Subject.Value,
+                body: arguments.Body.Value,
+                isHtmlBody: arguments.IsBodyHtml.Value,
+                attachmentPath: arguments.Attachments.Value.Where(a => a != null && !string.IsNullOrWhiteSpace(a.ToString())).Select(a => a.ToString()).ToList());
 
-            foreach (var arg in arguments.Attachments.Value)
-            {
-                if (arg == null)
-                {
-                    nullAttachement = true;
-                }
-            }
-
-            if (nullAttachement)
-            {
-                outlookManager.NewMessage(to, subject, body, isHtmlBody);
-            }
-            else
-            {
-                List<object> pathsObject = arguments.Attachments.Value;
-                List<string> paths = new List<string>();
-                for (int i = 0; i < pathsObject.Count; i++)
-                {
-                    string p = pathsObject[i].ToString().ToUpper();
-                    paths.Add(p);
-                }
-                outlookManager.NewMessageWithAttachements(to, subject, body, paths, isHtmlBody);
-
-            }
-            //SetVariableValue(arguments.Result.Value, new Language.BooleanStructure(true));
-            Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure("true"));
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure("true"));
         }
     }
 }

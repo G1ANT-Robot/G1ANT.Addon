@@ -64,20 +64,12 @@ namespace G1ANT.Addon.MSOffice
             }
         }
 
-        public void NewMessage(string to, string subject, string body, bool isHtmlBody)
+        public void NewMessage(string to, string subject, string body, bool isHtmlBody, List<string> attachmentPath)
         {
             mailItem = Application.CreateItem(OlItemType.olMailItem);
             mailItem.To = to;
             mailItem.Subject = subject;
 
-            SetBody(body, isHtmlBody);
-
-            mailItem.Display();
-            mailItem.Save();
-        }
-
-        private void SetBody(string body, bool isHtmlBody)
-        {
             if (isHtmlBody)
             {
                 mailItem.BodyFormat = OlBodyFormat.olFormatHTML;
@@ -87,40 +79,30 @@ namespace G1ANT.Addon.MSOffice
             {
                 mailItem.Body = body;
             }
+
+            var attachmentIndex = 1;
+
+            foreach (var path in attachmentPath)
+            {
+                if (File.Exists(path))
+                {
+                    FileInfo file = new FileInfo(path);
+                    mailItem.Attachments.Add(file.FullName, OlAttachmentType.olByValue, attachmentIndex++, file.Name);
+                }
+                else
+                {
+                    throw new FileNotFoundException("Attachement not found: " + path);
+                }
+            }
+
+            mailItem.Display();
         }
 
         public void DiscardMail()
         {
             mailItem.Close(OlInspectorClose.olDiscard);
-        }
-        public void NewMessageWithAttachements(string to, string subject, string body, List<string> paths, bool isHtmlBody)
-        {
-            mailItem = Application.CreateItem(OlItemType.olMailItem);
-            mailItem.To = to;
-            mailItem.Subject = subject;
+        }        
 
-            SetBody(body, isHtmlBody);
-
-            List<FileInfo> files = new List<FileInfo>();
-            foreach (var filePath in paths)
-            {
-                if (File.Exists(filePath))
-                {
-                    FileInfo file = new FileInfo(filePath);
-                    files.Add(file);
-                }
-                else if (string.IsNullOrWhiteSpace(filePath) == false)
-                {
-                    throw new FileNotFoundException("Attachement not found: " + filePath);
-                }
-            }
-            for (int i = 0; i < files.Count; i++)
-            {
-                mailItem.Attachments.Add(files[i].FullName, OlAttachmentType.olByValue, i + 1, files[i].Name);
-            }
-            mailItem.Display();
-
-        }
         private class MailDetails
         {
             public string EntryID { get; set; } = string.Empty;
