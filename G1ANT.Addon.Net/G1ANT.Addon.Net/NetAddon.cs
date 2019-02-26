@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using G1ANT.Language;
 using G1ANT.Addon.Net.Properties;
 using System.IO;
+using System.Linq;
 
 namespace G1ANT.Addon.Net
 {
@@ -40,13 +41,14 @@ namespace G1ANT.Addon.Net
         private void UnpackDrivers()
         {
             var unpackfolder = AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName;
-            Dictionary<string, byte[]> exeList = new Dictionary<string, byte[]>()
+            var driversDictionary = new Dictionary<string, byte[]>()
             {
                 { "putty.exe", Resources.putty },
                 { "VNC.exe", Resources.VNC },
                 { "telnet.exe", Resources.telnet },
             };
-            foreach (var exe in exeList)
+            foreach (var exe in driversDictionary.Where(e => !File.Exists(Path.Combine(unpackfolder, e.Key))
+            || e.Value.Length !=new FileInfo(Path.Combine(unpackfolder, e.Key)).OpenRead().Length))
             {
                 try
                 {
@@ -55,7 +57,7 @@ namespace G1ANT.Addon.Net
                         stream.Write(exe.Value, 0, exe.Value.Length);
                     }
                 }
-                catch { }
+                catch (Exception ex) { RobotMessageBox.Show(ex.Message); }
             }
         }
     }

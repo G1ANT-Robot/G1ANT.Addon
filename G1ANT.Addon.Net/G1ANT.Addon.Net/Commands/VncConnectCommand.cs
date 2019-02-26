@@ -10,6 +10,7 @@
 using G1ANT.Language;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace G1ANT.Addon.Net
 {
@@ -37,7 +38,7 @@ namespace G1ANT.Addon.Net
         public VncConnectCommand(AbstractScripter scripter) : base(scripter)
         {
         }
-        public string pathToVNC = System.IO.Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+        public string pathToVNC = Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
              @"VNC.exe");
         Process testerApp;
 
