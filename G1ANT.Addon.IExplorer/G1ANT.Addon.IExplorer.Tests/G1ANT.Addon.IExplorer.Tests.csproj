@@ -80,7 +80,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\G1ANT.Addon.IExplorer\G1ANT.Addon.IExplorer.csproj">
+    <ProjectReference Include="..\G1ANT.Addon.IE\G1ANT.Addon.IExplorer.csproj">
       <Project>{cea69d5a-91c9-43d9-8928-f41d69e85baf}</Project>
       <Name>G1ANT.Addon.IExplorer</Name>
     </ProjectReference>
