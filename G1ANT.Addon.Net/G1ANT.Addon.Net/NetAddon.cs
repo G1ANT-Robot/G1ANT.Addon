@@ -27,11 +27,6 @@ namespace G1ANT.Addon.Net
     [CommandGroup(Name = "vnc",  Tooltip = "A command connected with a VNC server.")]
     public class NetAddon : Language.Addon
     {
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
-
         public override void LoadDlls()
         {
             UnpackDrivers();
