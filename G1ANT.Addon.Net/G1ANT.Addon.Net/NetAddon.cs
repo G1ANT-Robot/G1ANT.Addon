@@ -48,7 +48,7 @@ namespace G1ANT.Addon.Net
                 { "telnet.exe", Resources.telnet },
             };
             foreach (var exe in driversDictionary.Where(e => !File.Exists(Path.Combine(unpackfolder, e.Key))
-            || e.Value.Length !=new FileInfo(Path.Combine(unpackfolder, e.Key)).OpenRead().Length))
+            || e.Value.Length != new FileInfo(Path.Combine(unpackfolder, e.Key)).OpenRead().Length))
             {
                 try
                 {
