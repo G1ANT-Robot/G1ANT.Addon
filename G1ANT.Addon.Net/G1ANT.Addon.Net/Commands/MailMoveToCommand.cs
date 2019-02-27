@@ -84,7 +84,7 @@ namespace G1ANT.Addon.Net
         {
             if (origin == null)
             {
-                throw new NullReferenceException($"Origin folder {origin.Name} does not exist.");
+                throw new NullReferenceException($"Source folder {origin.Name} does not exist.");
             }
             if (destination == null)
             {
