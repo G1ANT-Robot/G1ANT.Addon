@@ -19,6 +19,8 @@ namespace G1ANT.Addon.MSOffice
     {
         private const string IdIndex = "id";
         private const string FromIndex = "from";
+        private const string CcIndex = "cc";
+        private const string BccIndex = "bcc";
         private const string AccountIndex = "account";
         private const string SubjectIndex = "subject";
         private const string BodyIndex = "body";
@@ -45,6 +47,8 @@ namespace G1ANT.Addon.MSOffice
             Indexes.Add(BodyIndex);
             Indexes.Add(HtmlBodyIndex);
             Indexes.Add(FromIndex);
+            Indexes.Add(CcIndex);
+            Indexes.Add(BccIndex);
             Indexes.Add(AccountIndex);
         }
 
@@ -64,6 +68,10 @@ namespace G1ANT.Addon.MSOffice
                     return new TextStructure(Value.HTMLBody, null, Scripter);
                 case FromIndex:
                     return new TextStructure(Value.SenderEmailAddress, null, Scripter);
+                case CcIndex:
+                    return new TextStructure(Value.CC, null, Scripter);
+                case BccIndex:
+                    return new TextStructure(Value.BCC, null, Scripter);
                 case AccountIndex:
                     return new TextStructure(Value.SendUsingAccount.SmtpAddress, null, Scripter);
                 case AttachmentsIndex:
