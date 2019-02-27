@@ -50,9 +50,9 @@ namespace G1ANT.Addon.Net
             if (host == string.Empty || port == string.Empty || pass == string.Empty)
                 throw new ApplicationException("Host or port or pass is empty");
 
-
             testerApp = System.Diagnostics.Process.Start(pathToVNC, "-Scaling Fit -Encryption Server " + host + " " + port + " " + pass);
-            RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
+            bool result = RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(result));
         }
     }
 }
