@@ -83,6 +83,7 @@
     <None Include="Commands\OcrGoogle.FindPoint\ShouldReturnPointPosition_WhenTextIsFound.G1ANT" />
     <None Include="Commands\OcrGoogle.Find\ShouldReturnRectanglePosition_WhenTextIsFound.G1ANT" />
     <None Include="Commands\OcrGoogle.FromScreen\ShouldReturnText_WhenIsTextFound.G1ANT" />
+    <None Include="Commands\OcrGoogle.Login\ShouldLoginToGoogleCloud_WhenJSONCredentialIsCorrect.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,5 +95,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\testimage.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
