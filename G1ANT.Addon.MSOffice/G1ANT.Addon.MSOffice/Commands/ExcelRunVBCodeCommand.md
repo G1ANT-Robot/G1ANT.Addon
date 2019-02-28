@@ -1,18 +1,18 @@
-# excel.removerow
+# excel.runvbcode
 
 ## Syntax
 
 ```G1ANT
-excel.removerow row ⟦integer⟧
+excel.runvbcode code ⟦text⟧
 ```
 
 ## Description
 
-This command deletes the specified row.
+This command runs a Visual Basic macro code in the currently active Excel instance. The code can be only for Sub procedures, not functions.
 
 | Argument       | Type                                                         | Required | Default Value                                                | Description                                                  |
 | -------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `row`          | [integer](G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | yes      |                                                              | Number of a row to be deleted                                |
+| `code`         | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | Visual Basic code of a macro that will be run                |
 | `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                         | Executes the command only if a specified condition is true   |
 | `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
 | `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                              | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
@@ -24,12 +24,22 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In the following script the robot opens Excel, insert text in the first row, then removes this row altogether:
+Suppose you want to run this Visual Basic macro code in Excel:
+
+```visual basic
+Sub Multiplication()
+    Range("B2").Select
+    ActiveCell.FormulaR1C1 = "=RC[-1]*2"
+    Range("B2").Select
+    Selection.AutoFill Destination:=Range("B2:B6"), Type:=xlFillDefault
+    Range("B2:B6").Select
+End Sub 
+```
+
+To use it with the `excel.runvbcode` command, you just skip the first and the last lines of the code (`Sub…` and `End Sub`) and separate remaining lines with this C# snippet that recreates the new line character: `⊂"\r\n"⊃`. The resulting script should look like this:
 
 ```G1ANT
-excel.open
-window ✱Excel
-keyboard one⋘RIGHT⋙two⋘RIGHT⋙three⋘RIGHT⋙
-delay 2
-excel.removerow row 1
+excel.runvbcode ‴Range("B2").Select⊂"\r\n"⊃ActiveCell.FormulaR1C1 = "=RC[-1]*2"⊂"\r\n"⊃Range("B2").Select⊂"\r\n"⊃Selection.AutoFill Destination:=Range("B2:B6"), Type:=xlFillDefault⊂"\r\n"⊃Range("B2:B6").Select‴
 ```
+
+> **Note:** In order to use this command, an access to VBA project object model must be granted in Excel. For more details, click [here](https://www.spreadsheet1.com/trust-access-to-the-vba-project-object-model.html).
