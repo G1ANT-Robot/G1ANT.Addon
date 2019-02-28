@@ -9,5 +9,5 @@ ocrgoogle.login ♥credential⟦ocrgoogle:jsoncredential⟧
 ocrgoogle.findpoint ‴alice‴ area ♥screen result ♥pointResult
 ie.close
 
-test ⊂♥pointResult⟦x⟧.GetType() == typeof(Int32)⊃
-test ⊂♥pointResult⟦y⟧.GetType() == typeof(Int32)⊃
+test ⊂♥pointResult⟦x⟧.GetType() == typeof(Int32) && ♥pointResult⟦x⟧ > 0⊃
+test ⊂♥pointResult⟦y⟧.GetType() == typeof(Int32) && ♥pointResult⟦y⟧ > 0⊃

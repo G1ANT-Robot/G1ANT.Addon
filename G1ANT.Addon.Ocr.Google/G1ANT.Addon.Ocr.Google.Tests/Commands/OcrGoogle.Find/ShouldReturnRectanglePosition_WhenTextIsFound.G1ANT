@@ -9,7 +9,7 @@ ocrgoogle.login ♥credential⟦ocrgoogle:jsoncredential⟧
 ocrgoogle.find ‴alice‴ area ♥screen result ♥rectangleResult
 ie.close
 
-test ⊂♥rectangleResult⟦left⟧.GetType() == typeof(Int32)⊃
-test ⊂♥rectangleResult⟦top⟧.GetType() == typeof(Int32)⊃
-test ⊂♥rectangleResult⟦right⟧.GetType() == typeof(Int32)⊃
-test ⊂♥rectangleResult⟦left⟧.GetType() == typeof(Int32)⊃
+test ⊂♥rectangleResult⟦left⟧.GetType() == typeof(Int32) && ♥rectangleResult⟦left⟧ > 0⊃
+test ⊂♥rectangleResult⟦top⟧.GetType() == typeof(Int32) && ♥rectangleResult⟦top⟧ > 0⊃
+test ⊂♥rectangleResult⟦right⟧.GetType() == typeof(Int32) && ♥rectangleResult⟦right⟧ > 0⊃
+test ⊂♥rectangleResult⟦left⟧.GetType() == typeof(Int32) && ♥rectangleResult⟦left⟧ > 0⊃
