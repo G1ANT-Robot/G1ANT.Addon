@@ -8,7 +8,7 @@ excel.runvbcode code ⟦text⟧
 
 ## Description
 
-This command runs a Visual Basic macro code in the currently active Excel instance. The code can be only for Sub procedures, not functions.
+This command runs a Visual Basic macro code in the currently active Excel instance. The code can contain only procedures (Sub blocks), not functions.
 
 | Argument       | Type                                                         | Required | Default Value                                                | Description                                                  |
 | -------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
