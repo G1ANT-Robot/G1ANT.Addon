@@ -10,6 +10,7 @@
 using G1ANT.Language;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace G1ANT.Addon.Net
 {
@@ -23,10 +24,10 @@ namespace G1ANT.Addon.Net
             public TextStructure Host { get; set; }
 
         }
-        public string pathToTelnet = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"..\..\..\G1ANT.Robot\Resources\telnet.exe");
-        public string pathToPutty = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"..\..\..\G1ANT.Robot\Resources\putty.exe");
+        public string pathToTelnet = Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+             @"telnet.exe");
+        public string pathToPutty = Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+             @"putty.exe");
         Process putty;
         public AS400openCommand(AbstractScripter scripter) : base(scripter)
         {

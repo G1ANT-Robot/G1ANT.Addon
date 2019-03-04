@@ -9,10 +9,10 @@
 */
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using G1ANT.Language;
+using G1ANT.Addon.Net.Properties;
+using System.IO;
+using System.Linq;
 
 namespace G1ANT.Addon.Net
 {
@@ -27,5 +27,42 @@ namespace G1ANT.Addon.Net
     [CommandGroup(Name = "vnc",  Tooltip = "A command connected with a VNC server.")]
     public class NetAddon : Language.Addon
     {
+        public override void LoadDlls()
+        {
+            UnpackDrivers();
+            base.LoadDlls();
+        }
+
+        private void UnpackDrivers()
+        {
+            var unpackFolder = AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName;
+            var embeddedResourceDictionary = new Dictionary<string, byte[]>()
+            {
+                { "putty.exe", Resources.putty },
+                { "VNC.exe", Resources.VNC },
+                { "telnet.exe", Resources.telnet },
+            };
+            foreach (var embededResource in embeddedResourceDictionary.Where(e => !DoesFileExist(unpackFolder, e.Key) || !AreFilesOfTheSameLength(e.Value.Length, unpackFolder, e.Key)))
+            {
+                try
+                {
+                    using (FileStream stream = File.Create(Path.Combine(unpackFolder, embededResource.Key)))
+                    {
+                        stream.Write(embededResource.Value, 0, embededResource.Value.Length);
+                    }
+                }
+                catch (Exception ex) { RobotMessageBox.Show(ex.Message); }
+            }
+        }
+
+        private bool DoesFileExist(string folder, string fileName)
+        {
+            return File.Exists(Path.Combine(folder, fileName));
+        }
+
+        private bool AreFilesOfTheSameLength(int length, string folder, string fileName)
+        {
+            return length == new FileInfo(Path.Combine(folder, fileName)).Length;
+        }
     }
 }

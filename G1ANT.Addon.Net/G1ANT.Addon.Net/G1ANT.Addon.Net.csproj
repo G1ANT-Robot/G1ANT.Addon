@@ -57,6 +57,7 @@
       <HintPath>..\..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -128,6 +129,15 @@
     <EmbeddedResource Include="..\..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll">
       <Link>BouncyCastle.Crypto.dll</Link>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\putty.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telnet.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VNC.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
