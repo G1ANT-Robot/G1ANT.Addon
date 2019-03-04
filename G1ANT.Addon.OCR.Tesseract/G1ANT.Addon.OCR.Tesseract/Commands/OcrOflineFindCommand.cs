@@ -35,9 +35,6 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr")]
-            public  override TimeSpanStructure Timeout { get; set; }
-
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
         }
@@ -70,7 +67,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                             var wordsWithRectPositions = GetWords(page.GetHOCRText(0));
                             if (wordsWithRectPositions.ContainsValue(search))
                             {
-                                rectResult = wordsWithRectPositions.Where(x => x.Value == search).SingleOrDefault().Key;
+                                rectResult = wordsWithRectPositions.Where(x => x.Value == search).First().Key;
                             }
                             if (Equals(rectResult,new Rectangle(-1,-1,-1,-1)))
                                 throw new NullReferenceException("Ocr was unable to find text");
@@ -106,7 +103,9 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 int top = (int)(double.Parse(strs[2]) / imgRescaleRatio);
                 int width = (int)((double.Parse(strs[3]) - double.Parse(strs[1]) + 1) / imgRescaleRatio);
                 int height = (int)((double.Parse(strs[4]) - double.Parse(strs[2]) + 1) / imgRescaleRatio);
-                rectsWords.Add(new Rectangle(left, top, width, height), Ocr_word.Value.ToLower());
+                var rectange = new Rectangle(left, top, width, height);
+                if (!rectsWords.ContainsKey(rectange))
+                    rectsWords.Add(new Rectangle(left, top, width, height), Ocr_word.Value.ToLower());
             }
 
             return rectsWords;
