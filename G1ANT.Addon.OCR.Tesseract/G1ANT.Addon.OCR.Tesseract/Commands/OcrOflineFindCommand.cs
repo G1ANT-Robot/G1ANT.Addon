@@ -46,7 +46,6 @@ namespace G1ANT.Addon.Ocr.Tesseract
         {
             Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
             Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            int timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             string language = arguments.Language.Value;
 
             string search = arguments.Search.Value.ToLower();
