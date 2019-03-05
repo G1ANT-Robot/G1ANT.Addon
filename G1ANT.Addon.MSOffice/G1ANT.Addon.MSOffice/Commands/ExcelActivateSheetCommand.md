@@ -24,7 +24,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-This example shows how the Excel commands work together: the `excel.open` command opens new instance of Excel, then the `excel.addsheet` command adds a sheet named *New Sheet*, and the `excel.setvalue` command inserts *some entry* text into the cell at row 1, column 1. Then, similar actions are performed with a new sheet named *Another Sheet*. Finally, the `excel.activatesheet` command allows returning to the first sheet:
+This example shows how the Excel commands work together: the `excel.open` command opens a new instance of Excel, then the `excel.addsheet` command adds a sheet named *New Sheet*, and the `excel.setvalue` command inserts *some entry* text into the cell at row 1, column 1. Then, similar actions are performed with a new sheet named *Another Sheet*. Finally, the `excel.activatesheet` command allows returning to the first sheet:
 
 ```G1ANT
 excel.open
