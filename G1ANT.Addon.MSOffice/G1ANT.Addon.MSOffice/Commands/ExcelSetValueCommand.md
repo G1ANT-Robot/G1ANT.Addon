@@ -14,7 +14,7 @@ or
 
 ## Description
 
-This command enters value into a specified cell.
+This command enters a value into a specified cell.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
