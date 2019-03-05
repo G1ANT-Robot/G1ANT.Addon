@@ -24,7 +24,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In order to use the `id` argument for the `excel.switch` command, you need to set an ID while using the `excel.open` command. The following example opens an empty Excel sheet, then an Excel file located on your Desktop. Both instances have their IDs stored in their respective `♥excel1` and `♥excel2` variables. Finally, the first ID is used to switch to the first Excel instance:
+In order to use the `id` argument for the `excel.switch` command, you need to store an Excel instance ID in a variable while using the `excel.open` command. The following example opens an empty Excel sheet, then an Excel file located on your Desktop. Both instances have their IDs stored in their respective `♥excel1` and `♥excel2` variables. Finally, the first ID is used to switch to the first Excel instance:
 
 ```G1ANT
 excel.open result ♥excel1
