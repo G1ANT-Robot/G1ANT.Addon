@@ -14,7 +14,7 @@ excel.getvalue row ⟦integer⟧ colname ⟦text⟧
 
 ## Description
 
-This command gets value from a specified cell.
+This command gets a value from a specified cell.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
