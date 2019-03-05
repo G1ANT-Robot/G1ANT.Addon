@@ -32,7 +32,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-If you run this simple script with some Excel sheet open and filled with data, you will notice that the resulting formulas displayed in both dialog boxes are the same, since a cell specified by the `row 2 colindex 3` and `row 2 colname C` arguments is one and the same (second row, third column):
+If you run this simple script with some Excel sheet opened and filled with data, you will notice that the resulting formulas displayed in both dialog boxes are the same, since a cell specified by the `row 2 colindex 3` and `row 2 colname C` arguments is one and the same (second row, third column):
 
 ```G1ANT
 excel.getformula row 2 colindex 3
