@@ -34,7 +34,7 @@ outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder
 ♥mails = ♥inboxFolder⟦unread⟧
 outlook.reply ♥mails⟦1⟧ result ♥originalMail
 ♥originalMailBody = ♥originalMail⟦body⟧
-♥replyBody = Hi,⊂"\r\n"⊃Thanks for your email. We will contact you shortly.⊂"\r\n"⊃Regards,⊂"\r\n"⊃G1ANT⊂"\r\n"⊃⊂"\r\n"⊃
+♥replyBody = ⊂"Hi,\r\nThanks for your email. We will contact you shortly.\r\nRegards,\r\nG1ANT\r\n\r\n"⊃
 ♥replyMail = ♥replyBody + ♥originalMailBody
 outlook.newmessage to ♥originalMail⟦account⟧ subject ♥originalMail⟦subject⟧ body ♥replyMail
 outlook.send
