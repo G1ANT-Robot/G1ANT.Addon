@@ -25,12 +25,13 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In this example the robot opens a Word instance with a sample file declared in the `♥sourceFile` variable (be sure to provide a real filepath there). Then, the document is exported to a pdf file on a desktop.
+In this example the robot opens a Word instance with a sample file declared in the `♥sourceFile` variable (be sure to provide a real filepath there). Then, the document is exported to a pdf file on a desktop (the filepath is declared in the `♥destinationFile` variable).
 
 ```G1ANT
 ♥sourceFile = ♥environment⟦USERPROFILE⟧\Documents\test.docx
+♥destinationFile = ♥environment⟦USERPROFILE⟧\Documents\test.pdf
 word.open ♥sourceFile
-word.export ♥environment⟦USERPROFILE⟧\Desktop\test.pdf
+word.export ♥destinationFile
 ```
 
 
