@@ -69,11 +69,12 @@ namespace G1ANT.Addon.Ocr.Tesseract
         {
             UnpackNeededAssemblies("x86");
             UnpackNeededAssemblies("x64");
+            UnpackTesseract();
         }
 
         private static void UnpackNeededAssemblies(string version)
         {
-            var executingPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var executingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             var dirPath = executingPath + $@"\{version}\";
             Directory.CreateDirectory(dirPath);
             var l = Directory.EnumerateFiles(dirPath);
@@ -95,6 +96,22 @@ namespace G1ANT.Addon.Ocr.Tesseract
                             resource.CopyTo(file);
                         }
                     }
+                }
+            }
+        }
+
+        private static void UnpackTesseract()
+        {
+            var executingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var fileName = "Tesseract.dll";
+            var fullPath = Path.Combine(executingPath, fileName);
+            var resourceName = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames().Where(r => r.Contains(fileName)).FirstOrDefault();
+            if (!File.Exists(fullPath))
+            {
+                using (var resource = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                using (var file = new FileStream(fullPath, FileMode.Create, FileAccess.Write))
+                {
+                    resource.CopyTo(file);
                 }
             }
         }

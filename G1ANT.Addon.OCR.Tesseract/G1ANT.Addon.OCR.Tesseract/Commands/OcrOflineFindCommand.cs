@@ -39,43 +39,39 @@ namespace G1ANT.Addon.Ocr.Tesseract
             public TextStructure Language { get; set; } = new TextStructure("eng");
         }
         public OcrOfflineFindCommand(AbstractScripter scripter) : base(scripter)
-        {
+        {            
         }
+
         double imgRescaleRatio = 4.0;
         public void Execute(Arguments arguments)
         {
-            Rectangle rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
-            Bitmap partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            string language = arguments.Language.Value;
-
-            string search = arguments.Search.Value.ToLower();
+            var rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
+            var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
+            var language = arguments.Language.Value;
+            var search = arguments.Search.Value.ToLower();
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, imgRescaleRatio);
-
             var imagePath = OcrOfflineHelper.SaveImageToTemporaryFolder(imgToParse);
-            OcrOfflineHelper.UnpackNeededAssemblies();
             var dataPath = OcrOfflineHelper.GetResourcesFolder(language);
+
             try
             {
                 using (var tEngine = new TesseractEngine(dataPath, language, EngineMode.TesseractAndCube))
+                using (var img = Pix.LoadFromFile(imagePath))
+                using (var page = tEngine.Process(img))
                 {
-                    using (var img = Pix.LoadFromFile(imagePath))
+                    var rectResult = new Rectangle(-1, -1, -1, -1);
+                    var wordsWithRectPositions = GetWords(page.GetHOCRText(0));
+                    if (wordsWithRectPositions.ContainsValue(search))
                     {
-                        using (var page = tEngine.Process(img))
-                        {
-                            var rectResult = new Rectangle(-1, -1, -1, -1);
-                            var wordsWithRectPositions = GetWords(page.GetHOCRText(0));
-                            if (wordsWithRectPositions.ContainsValue(search))
-                            {
-                                rectResult = wordsWithRectPositions.Where(x => x.Value == search).First().Key;
-                            }
-                            if (Equals(rectResult,new Rectangle(-1,-1,-1,-1)))
-                                throw new NullReferenceException("Ocr was unable to find text");
-                            Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(rectResult));
-                        }
+                        rectResult = wordsWithRectPositions.Where(x => x.Value == search).First().Key;
                     }
+                    if (Equals(rectResult, new Rectangle(-1, -1, -1, -1)))
+                        throw new NullReferenceException("Ocr was unable to find text");
+                    Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(rectResult));
+
                 }
             }
-            catch (TesseractException e)
+            catch (TesseractException)
             {
                 throw new ApplicationException("Ocr engine exception, possibly missing language data in folder : " + dataPath);
             }
@@ -88,6 +84,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 File.Delete(imagePath);
             }
         }
+
         public Dictionary<Rectangle, string> GetWords(string tesseractHtml)
         {
             var xml = XDocument.Parse(tesseractHtml);
