@@ -58,12 +58,11 @@ namespace G1ANT.Addon.Ocr.Tesseract
                     if (string.IsNullOrEmpty(text))
                         throw new NullReferenceException("Ocr was unable to find any text");
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.TextStructure(text));
-
                 }
             }
             catch (TesseractException)
             {
-                throw new ApplicationException("Ocr engine exception, possibly missing language data in folder : " + dataPath);
+                throw new ApplicationException("Ocr engine exception, possibly missing language data in folder: " + dataPath);
             }
             catch (Exception e)
             {

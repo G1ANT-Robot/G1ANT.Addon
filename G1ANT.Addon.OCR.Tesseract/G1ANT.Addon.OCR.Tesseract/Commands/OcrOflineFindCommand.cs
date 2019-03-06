@@ -39,7 +39,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             public TextStructure Language { get; set; } = new TextStructure("eng");
         }
         public OcrOfflineFindCommand(AbstractScripter scripter) : base(scripter)
-        {            
+        {
         }
 
         double imgRescaleRatio = 4.0;
@@ -68,12 +68,11 @@ namespace G1ANT.Addon.Ocr.Tesseract
                     if (Equals(rectResult, new Rectangle(-1, -1, -1, -1)))
                         throw new NullReferenceException("Ocr was unable to find text");
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(rectResult));
-
                 }
             }
             catch (TesseractException)
             {
-                throw new ApplicationException("Ocr engine exception, possibly missing language data in folder : " + dataPath);
+                throw new ApplicationException("Ocr engine exception, possibly missing language data in folder: " + dataPath);
             }
             catch (Exception e)
             {
