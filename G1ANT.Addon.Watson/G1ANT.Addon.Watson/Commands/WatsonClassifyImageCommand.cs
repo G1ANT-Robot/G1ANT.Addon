@@ -20,10 +20,13 @@ namespace G1ANT.Addon.Watson.Commands
         public class Arguments : CommandArguments
         {
             [Argument(Required = true, Tooltip = "Specifies capture screen area.")]
-            public RectangleStructure Rectangle { get; set; }
+            public TextStructure ImagePath { get; set; } = new TextStructure();
 
             [Argument(Required = true, Tooltip = "Specifies api key needed to login to the service.")]
             public TextStructure ApiKey { get; set; }
+
+            [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
+            public TextStructure ServerUri { get; set; }
 
             [Argument(Tooltip = "Floating point value that specifies the minimum score a class must have to be displayed in the results.")]
             public FloatStructure Threshold { get; set; } = new FloatStructure(0.5f);
@@ -37,9 +40,8 @@ namespace G1ANT.Addon.Watson.Commands
         {
             try
             {
-                var partOfScreen = RobotWin32.GetPartOfScreen(arguments.Rectangle.Value);
-                var watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value);
-                var output = watsonApi.ClassifyImage(partOfScreen, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
+                var watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value, arguments.ServerUri.Value);
+                var output = watsonApi.ClassifyImage(arguments.ImagePath.Value, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(output));
             }
             catch (Exception ex)

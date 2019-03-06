@@ -7,16 +7,16 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Engine;
-using G1ANT.Language;
-using NUnit.Framework;
+
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
-using G1ANT.Addon.Watson.Api;
 using G1ANT.Addon.Watson.Tests.Properties;
+using G1ANT.Engine;
+using G1ANT.Language;
+using NUnit.Framework;
 
-namespace G1ANT.Addon.Watson.Tests
+namespace G1ANT.Addon.Watson.Tests.Commands
 {
     [TestFixture]
     public class WatsonClassifyImageTests
@@ -48,17 +48,6 @@ scripter.InitVariables.Clear();
                 scripter.Run();
             });
             Assert.IsInstanceOf<TaskCanceledException>(exception.GetBaseException());
-        }
-
-        [Test]
-        public void WatsonClassifyImageTest()
-        {
-            Scripter scripter = new Scripter();
-            WatsonClassifyImageApi api = new WatsonClassifyImageApi((string)scripter.Variables.GetVariable("credential").GetValue("Watson:apikey").Object);
-            string output = api.ClassifyImage(oranges, 60000, 0.5f);
-
-            StringAssert.Contains("orange", output);
-            StringAssert.Contains("citrus",output);
         }
 
         [Test]

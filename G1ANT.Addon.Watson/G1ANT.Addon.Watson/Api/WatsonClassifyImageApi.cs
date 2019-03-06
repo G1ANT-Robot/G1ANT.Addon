@@ -21,17 +21,20 @@ namespace G1ANT.Addon.Watson.Api
 {
     public class WatsonClassifyImageApi
     {
-        private string apiKey;
-        private string url;
+        private readonly string apiKey;
+        private readonly string url;
 
-        public WatsonClassifyImageApi(string apiKey)
+        public WatsonClassifyImageApi(string apiKey, string url)
         {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             this.apiKey = apiKey;
-            url = $"https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key={apiKey}&version=2017-10-13";
+            this.url = url;
         }
 
-        public string ClassifyImage(Bitmap image, int timeout, double threshold)
-        {            
+        public string ClassifyImage(string imagePath, int timeout, double threshold)
+        {
+            var image = Image.FromFile(imagePath);
             var jsonResult = SendRequest(image, timeout, threshold);
             return ConvertResponseToOutput(jsonResult);            
         }
@@ -47,7 +50,7 @@ namespace G1ANT.Addon.Watson.Api
                     var imageData = image.ImageToBytes();
                     var imageContent = new ByteArrayContent(imageData, 0, imageData.Length);
                     var thresholdParam = new StringContent("{\"threshold\":" + threshold.ToString().Replace(',', '.') + "}");
-
+                    AddProperHeaders(httpClient);
                     imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
                     form.Add(imageContent, "images_file", "file.jpeg");
                     thresholdParam.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
@@ -62,6 +65,15 @@ namespace G1ANT.Addon.Watson.Api
             {
                 throw new WebException($"Problem occured while sending request. {ex.Message}", ex);
             }            
+        }
+
+
+        private void AddProperHeaders(HttpClient client)
+        {
+            var authorizationValue = Convert.ToBase64String(Encoding.ASCII.GetBytes($"apikey:{apiKey}"));
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authorizationValue);
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "image/jpeg");
         }
 
         private static string ConvertResponseToOutput(string responseContent)
