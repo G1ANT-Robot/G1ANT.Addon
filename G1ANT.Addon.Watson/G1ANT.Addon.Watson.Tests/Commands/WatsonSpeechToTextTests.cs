@@ -7,6 +7,7 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using G1ANT.Addon.Watson.Tests.Properties;
 using G1ANT.Engine;
 using G1ANT.Language;
@@ -24,6 +25,7 @@ namespace G1ANT.Addon.Watson.Tests
     {
         private static string audioPath;
         private Scripter scripter;
+        private const string apikey = "https://gateway-lon.watsonplatform.net/speech-to-text/api";
 
         [OneTimeSetUp]
         [Timeout(20000)]
@@ -39,23 +41,14 @@ namespace G1ANT.Addon.Watson.Tests
         [SetUp]
         public void Init()
         {
-            Language.Addon addon = Language.Addon.Load(@"G1ANT.Addon.Watson.dll");
-        }
-
-        [Test]
-        [Timeout(20000)]
-        public void WatsonApiSpeechToTextTest()
-        {
-            //WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi((string)scripter.Variables.GetVariable("credential").GetValue("Watson:login").Object, (string)scripter.Variables.GetVariable("credential").GetValue("Watson:password").Object);
-            //string res = watson.SpeechToText(audioPath, "en-US", 60000, 3, 0.2f);
-            //Assert.IsTrue(res.ToLower().Contains("hi"));
+            Language.Addon.Load(@"G1ANT.Addon.Watson.dll");
         }
 
         [Test]
         [Timeout(20000)]
         public void WatsonApiSpeachToTextTest2()
         {
-            scripter.Text = ($"watson.speechtotext {SpecialChars.Variable}audioPath login {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Watson:login{SpecialChars.IndexEnd} password {SpecialChars.Variable}credential{SpecialChars.IndexBegin}Watson:password{SpecialChars.IndexEnd}");
+            scripter.Text = $"watson.speechtotext path {SpecialChars.Variable}audioPath apikey {apikey}";
             scripter.Run();
             var res = scripter.Variables.GetVariableValue<string>("result").ToLower().Trim();
             Assert.IsTrue(res.ToLower().Contains("hi"));

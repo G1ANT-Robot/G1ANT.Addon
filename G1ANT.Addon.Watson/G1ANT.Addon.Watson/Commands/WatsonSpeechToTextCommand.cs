@@ -30,14 +30,8 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Floating point value that specifies the minimum score a class must have to be displayed in the results")]
-            public FloatStructure Threshold { get; set; } = new FloatStructure(0.5f);
-
             [Argument(Tooltip = "Specifies language of speech.")]
             public TextStructure Language { get; set; } = new TextStructure("en-US");
-
-            [Argument(DefaultVariable = "timeoutwatson")]
-            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(30000);
         }
 
 
@@ -47,7 +41,7 @@ namespace G1ANT.Addon.Watson.Commands
         public void Execute(Arguments arguments)
         {
             var watson = new WatsonSpeechToTextApi(arguments.ApiKey.Value, arguments.ServerUri.Value);
-            var result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, (int)arguments.Timeout.Value.TotalMilliseconds, 1, arguments.Threshold.Value);
+            var result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, (int)arguments.Timeout.Value.TotalMilliseconds);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(result));
         }
     }

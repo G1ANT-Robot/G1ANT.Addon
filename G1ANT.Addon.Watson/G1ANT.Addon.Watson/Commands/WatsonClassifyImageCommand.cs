@@ -25,14 +25,8 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument(Required = true, Tooltip = "Specifies api key needed to login to the service.")]
             public TextStructure ApiKey { get; set; }
 
-            [Argument(Tooltip = "If set to true, rectangle’s position relates to currently focused window")]
-            public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
-
             [Argument(Tooltip = "Floating point value that specifies the minimum score a class must have to be displayed in the results.")]
             public FloatStructure Threshold { get; set; } = new FloatStructure(0.5f);
-
-            [Argument(DefaultVariable = "timeoutwatson")]
-            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
