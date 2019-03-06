@@ -7,43 +7,82 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Watson
 {
     public class WatsonSpeechToTextApi
-	{
-        private string baseUrl = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize";
-        private string login;
-        private string password;
-        
-        public WatsonSpeechToTextApi(string login, string password)
+    {
+        private string baseUrl = "https://gateway-lon.watsonplatform.net/speech-to-text/api";
+        private readonly string apiKey;
+        private const string apikeyName = "apikey";
+        private readonly string serverUri;
+        public WatsonSpeechToTextApi(string apiKey, string serverUri)
         {
-            this.login = login;
-            this.password = password;
+            this.apiKey = apiKey;
+            this.serverUri = serverUri;
         }
 
         public string SpeechToText(string filePath, string language = "en-US", int timeout = 30000, int maxAlternatives = 1, double alternativeThreshold = 0.5f)
-		{
-			string includeConfidence = maxAlternatives > 1 ? "true" : "false";
-            string url = $"{baseUrl}?model={language}_BroadbandModel&max_alternatives={maxAlternatives.ToString()}&word_alternatives_threshold={ alternativeThreshold.ToString()}&word_confidence={includeConfidence}";
-            string formatType = GetFormatType(filePath);
-            byte[] fileBytes = ConvertFileToBytes(filePath);
-            HttpWebRequest request = CreateRequest(url, timeout, formatType, fileBytes);  
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            var result = Upload(filePath);
+            return result;
+            var includeConfidence = maxAlternatives > 1 ? "true" : "false";
+            var url = $"{baseUrl}/v1/recognize";
+            var formatType = GetFormatType(filePath);
+            var fileBytes = ConvertFileToBytes(filePath);
+            var request = CreateRequest(url, timeout, formatType, fileBytes);
             return GetResponse(request, fileBytes);
-		}
+        }
+
+        private string Upload(string filePath)
+        {
+            var url = $"{serverUri}/v1/recognize";
+            var credentials = new NetworkCredential(apikeyName, apiKey);
+            var handler = new HttpClientHandler { Credentials = credentials };
+            var fileBytes = ConvertFileToBytes(filePath);
+
+            var request = new HttpRequestMessage(HttpMethod.Post, new Uri(url))
+            {
+                Content = new ByteArrayContent(fileBytes),
+            };
+
+            using (var client = new HttpClient(handler))
+            {
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{apikeyName}:{apiKey}")));
+
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", GetFormatType(filePath));
+
+                var response = client.SendAsync(request).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    var responseString = responseContent.ReadAsStringAsync().Result;
+                    return responseString;
+                }
+            }
+
+            return string.Empty;
+        }
 
         private CredentialCache CreateCredentials(string url)
         {
             try
             {
-                NetworkCredential credential = new NetworkCredential(login, password);
-                CredentialCache credentials = new CredentialCache();
-                credentials.Add(new Uri(url), "Basic", credential);
+                var credential = new NetworkCredential("apikey", apiKey);
+                var credentials = new CredentialCache { { new Uri(url), "Basic", credential } };
                 return credentials;
             }
             catch (Exception ex)
@@ -56,13 +95,11 @@ namespace G1ANT.Addon.Watson
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+                var request = (HttpWebRequest)WebRequest.Create(url);
                 request.Timeout = timeout;
                 request.Credentials = CreateCredentials(url);
                 request.PreAuthenticate = true;
                 request.Method = "POST";
-                request.SendChunked = true;
-                request.AllowWriteStreamBuffering = true;
                 request.ContentType = formatType;
                 request.ContentLength = fileBytes.Length;
                 return request;
@@ -70,7 +107,7 @@ namespace G1ANT.Addon.Watson
             catch (Exception ex)
             {
                 throw new ApplicationException($"Error occured while creating http request. {ex.Message}", ex);
-            }            
+            }
         }
 
         private string GetResponse(HttpWebRequest request, byte[] fileBytes)
@@ -81,18 +118,20 @@ namespace G1ANT.Addon.Watson
                 using (var stream = request.GetRequestStream())
                 {
                     stream.Write(fileBytes, 0, fileBytes.Length);
-                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    var response = (HttpWebResponse)request.GetResponse();
                     var jSerializer = new JsonSerializer();
                     var jTextReader = new JsonTextReader(new StreamReader(response.GetResponseStream()));
                     jResponse = (JObject)jSerializer.Deserialize(jTextReader);
                 }
-                JToken transcripts = jResponse.SelectToken("['results'][0]['alternatives']");
 
-                string result = string.Empty;
+                var transcripts = jResponse.SelectToken("['results'][0]['alternatives']");
+
+                var result = string.Empty;
                 foreach (var item in transcripts.AsJEnumerable())
                 {
                     result += $"{item["confidence"]}:{item["transcript"]};";
                 }
+
                 return result.Split(';')[0].Split(':')[1];
             }
             catch (Exception ex)
@@ -109,17 +148,19 @@ namespace G1ANT.Addon.Watson
             }
             catch (Exception ex)
             {
-                throw new ArgumentException($"Unable to process file. Please verify, whether specified path is correct. Message: {ex.Message}");
+                throw new ArgumentException(
+                    $"Unable to process file. Please verify, whether specified path is correct. Message: {ex.Message}");
             }
         }
 
         private string GetFormatType(string filePath)
         {
-            string format = Path.GetExtension(filePath)?.Replace(".", "")?.ToLower();
-            if (format == null || format != "wav")
+            var format = Path.GetExtension(filePath)?.Replace(".", "")?.ToLower();
+            if (format == null || (format != "wav" && format != "flac"))
             {
                 throw new ArgumentException("Invalid file path. Only 'wav' files are supported.");
             }
+
             return $"audio/{format}";
         }
     }

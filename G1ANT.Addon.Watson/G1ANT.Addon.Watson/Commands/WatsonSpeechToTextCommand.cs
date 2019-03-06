@@ -7,9 +7,11 @@
 *    See License.txt file in the project root for full license information.
 *
 */
+
+using G1ANT.Addon.Watson.Api;
 using G1ANT.Language;
 
-namespace G1ANT.Addon.Watson
+namespace G1ANT.Addon.Watson.Commands
 {
     [Command(Name = "watson.speechtotext", Tooltip = "This command allows to transcript speech from audio file.", NeedsDelay = true)]
     public class WatsonSpeechToTextCommand : Command
@@ -20,10 +22,10 @@ namespace G1ANT.Addon.Watson
             public TextStructure Path { get; set; }
 
             [Argument(Required = true, Tooltip = "Specifies service's login.")]
-            public TextStructure Login { get; set; }
+            public TextStructure ApiKey { get; set; }
 
-            [Argument(Required = true, Tooltip = "Specifies service's password.")]
-            public TextStructure Password { get; set; }
+            [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
+            public TextStructure ServerUri { get; set; }
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
@@ -37,12 +39,15 @@ namespace G1ANT.Addon.Watson
             [Argument(DefaultVariable = "timeoutwatson")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(30000);
         }
+
+
         public WatsonSpeechToTextCommand(AbstractScripter scripter) : base(scripter)
         { }
+
         public void Execute(Arguments arguments)
         {
-            WatsonSpeechToTextApi watson = new WatsonSpeechToTextApi(arguments.Login.Value, arguments.Password.Value);
-            string result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, (int)arguments.Timeout.Value.TotalMilliseconds, 1, arguments.Threshold.Value);
+            var watson = new WatsonSpeechToTextApi(arguments.ApiKey.Value, arguments.ServerUri.Value);
+            var result = watson.SpeechToText(arguments.Path.Value, arguments.Language.Value, (int)arguments.Timeout.Value.TotalMilliseconds, 1, arguments.Threshold.Value);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(result));
         }
     }

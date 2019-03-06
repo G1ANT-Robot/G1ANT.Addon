@@ -7,10 +7,12 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Language;
-using System;
 
-namespace G1ANT.Addon.Watson
+using System;
+using G1ANT.Addon.Watson.Api;
+using G1ANT.Language;
+
+namespace G1ANT.Addon.Watson.Commands
 {
     [Command(Name = "watson.classifyimage", Tooltip = "This command allows to capture part of the screen and classify the image that was captured. ")]
     public class WatsonClassifyImageCommand : Command
@@ -41,9 +43,9 @@ namespace G1ANT.Addon.Watson
         {
             try
             {
-                System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(arguments.Rectangle.Value);
-                WatsonClassifyImageApi watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value);
-                string output = watsonApi.ClassifyImage(partOfScreen, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
+                var partOfScreen = RobotWin32.GetPartOfScreen(arguments.Rectangle.Value);
+                var watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value);
+                var output = watsonApi.ClassifyImage(partOfScreen, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(output));
             }
             catch (Exception ex)
