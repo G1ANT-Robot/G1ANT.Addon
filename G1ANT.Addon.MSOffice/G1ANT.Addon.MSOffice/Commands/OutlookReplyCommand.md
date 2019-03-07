@@ -25,18 +25,17 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In this example, the robot gets the content of the Outlook Inbox folder, assigns mails to the `♥mails` variable, then prepares a reply to the first unread email message (starting from the oldest unread element in the Inbox). The resulting draft reply is assigned to the `♥originalMail` variable. Since it is of `outlookmail` structure, you can retrieve the message body (the conversation history, because it’s a reply) and add a reply content to it: here, it’s done by adding the `♥replyBody` to the `♥originalMailBody` variables. Then, a new message is created with the `outlook.newmessage` command, using the already existing sender and recipient addresses prepared by the `outlook.reply` command:
+In this example, the robot gets the content of the Outlook Inbox folder, assigns mails to the `♥mails` variable, then prepares a reply to the first unread email message (starting from the oldest unread element in the Inbox). The resulting draft reply is assigned to the `♥replyMail` variable. Since it is of `outlookmail` structure, you can retrieve the message body (the conversation history, because it’s a reply) and add a reply text to it: here, it’s done by adding the `♥replyText` to the `♥replyMailBody` variables. Then, the reply message stored in the `♥replyMail` variable is sent with the `outlook.send` command, using the `mail` argument:
 
 ```G1ANT
 ♥outlookInboxFolder = john.doe@g1ant.com\Inbox
 outlook.open
 outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder
 ♥mails = ♥inboxFolder⟦unread⟧
-outlook.reply ♥mails⟦1⟧ result ♥originalMail
-♥originalMailBody = ♥originalMail⟦body⟧
-♥replyBody = ⊂"Hi,\r\nThanks for your email. We will contact you shortly.\r\nRegards,\r\nG1ANT\r\n\r\n"⊃
-♥replyMail = ♥replyBody + ♥originalMailBody
-outlook.newmessage to ♥originalMail⟦account⟧ subject ♥originalMail⟦subject⟧ body ♥replyMail
-outlook.send
+outlook.reply ♥mails⟦1⟧ result ♥replyMail
+♥replyMailBody = ♥replyMail⟦body⟧
+♥replyText = ⊂"Hi,\r\nThanks for your email. We will contact you shortly.\r\nRegards,\r\nG1ANT\r\n\r\n"⊃
+♥replyMail⟦body⟧ = ♥replyText + ♥replyMailBody
+outlook.send mail ♥replyMail
 outlook.close
 ```
