@@ -21,7 +21,7 @@ namespace G1ANT.Addon.Watson.Api
     public class WatsonSpeechToTextApi
     {
         private readonly string apiKey;
-        private const string apikeyName = "apikey";
+        private const string ApiKeyName = "apikey";
         private readonly string serverUri;
 
         public WatsonSpeechToTextApi(string apiKey, string serverUri)
@@ -54,7 +54,7 @@ namespace G1ANT.Addon.Watson.Api
 
         private string SendAudioFileToWatson(string filePath, string url, int timeout)
         {
-            var credentials = new NetworkCredential(apikeyName, apiKey);
+            var credentials = new NetworkCredential(ApiKeyName, apiKey);
             var handler = new HttpClientHandler { Credentials = credentials };
             var fileBytes = ConvertFileToBytes(filePath);
 
@@ -79,7 +79,7 @@ namespace G1ANT.Addon.Watson.Api
 
         private void AddProperHeaders(HttpClient client, string filePath)
         {
-            var authorizationValue = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{apikeyName}:{apiKey}"));
+            var authorizationValue = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{ApiKeyName}:{apiKey}"));
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authorizationValue);
             client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", GetFormatType(filePath));
