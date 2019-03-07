@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Watson.Tests.Commands
     {
         private static string audioPath;
         private Scripter scripter;
-        private const string apikey = "https://gateway-lon.watsonplatform.net/speech-to-text/api";
+        private const string ApiKey = "https://gateway-lon.watsonplatform.net/speech-to-text/api";
 
         [OneTimeSetUp]
         [Timeout(20000)]
@@ -45,7 +45,7 @@ namespace G1ANT.Addon.Watson.Tests.Commands
         [Timeout(20000)]
         public void WatsonApiSpeachToTextTest2()
         {
-            scripter.Text = $"watson.speechtotext path {SpecialChars.Variable}audioPath apikey {apikey}";
+            scripter.Text = $"watson.speechtotext path {SpecialChars.Variable}audioPath apikey {ApiKey}";
             scripter.Run();
             var res = scripter.Variables.GetVariableValue<string>("result").ToLower().Trim();
             Assert.IsTrue(res.ToLower().Contains("hi"));
