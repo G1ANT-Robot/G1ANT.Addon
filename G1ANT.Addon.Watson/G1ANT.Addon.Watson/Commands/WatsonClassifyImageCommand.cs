@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.classifyimage", Tooltip = "This command allows to capture part of the screen and classify the image that was captured. ")]
+    [Command(Name = "watson.classifyimage", Tooltip = "This command allows classify the image.")]
     public class WatsonClassifyImageCommand : Command
     {
         public class Arguments : CommandArguments
@@ -33,6 +33,9 @@ namespace G1ANT.Addon.Watson.Commands
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
+
+            [Argument(DefaultVariable = "timeoutwatson")]
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
         }
         public WatsonClassifyImageCommand(AbstractScripter scripter) : base(scripter)
         { }

@@ -32,6 +32,9 @@ namespace G1ANT.Addon.Watson.Commands
 
             [Argument(Tooltip = "Specifies language of speech.")]
             public TextStructure Language { get; set; } = new TextStructure("en-US");
+
+            [Argument(DefaultVariable = "timeoutwatson")]
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
         }
 
 
