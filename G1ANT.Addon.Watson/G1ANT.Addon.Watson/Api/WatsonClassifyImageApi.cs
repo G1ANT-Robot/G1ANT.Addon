@@ -87,11 +87,11 @@ namespace G1ANT.Addon.Watson.Api
                 throw new WebException($"Wrong data received. Status: '{status}' Info: '{statusInfo}'");
             }
             var output = new StringBuilder();
-            var items = desiredValue.AsJEnumerable();
-            foreach (var item in items)
+            var tokens = desiredValue.AsJEnumerable();
+            foreach (var token in tokens)
             {
-                var category = item["class"].ToString();
-                var score = item["score"].ToString();
+                var category = token["class"].ToString();
+                var score = token["score"].ToString();
                 output.Append($"{category}:{score};");
             }
             return output.ToString();

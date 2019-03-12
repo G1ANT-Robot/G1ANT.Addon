@@ -58,11 +58,7 @@ namespace G1ANT.Addon.Watson.Api
             var handler = new HttpClientHandler { Credentials = credentials };
             var fileBytes = ConvertFileToBytes(filePath);
 
-            var request = new HttpRequestMessage(HttpMethod.Post, new Uri(url))
-            {
-                Content = new ByteArrayContent(fileBytes),
-            };
-
+            using (var request = new HttpRequestMessage(HttpMethod.Post, new Uri(url)) { Content = new ByteArrayContent(fileBytes) })
             using (var client = new HttpClient(handler))
             {
                 AddProperHeaders(client, filePath);
