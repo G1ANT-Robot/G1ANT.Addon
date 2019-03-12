@@ -1,49 +1,37 @@
 # googlesheet.download
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-googlesheet.download  path ‴‴
+googlesheet.download path ⟦text⟧ type ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `googlesheet.download` allows to download the whole spreadsheet.
+This command downloads the whole spreadsheet.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |  | destination on your computer where the file will be saved |
-|`type`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | xlsx | type of file extension, could be '.pdf' or '.xlsx' |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of variable where command's result will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | Destination on your computer where the file will be saved |
+|`type`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | xlsx | Type of the downloaded file (extension): `pdf` or `xlsx` |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the command's result will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.GoogleDocs.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.GoogleDocs](https://github.com/G1ANT-Robot/G1ANT.Addon.GoogleDocs)
+## Example
 
-**Example 1:**
-
-```G1ANT
-googlesheet.open id ‴1w5iopoKzgALxC1Qumtzvmc4VkXPq6kgkxieISibBpTs‴ result ♥sheetHandle
-googlesheet.download path ‴C:\tests\file.xlsx‴ type ‴xlsx‴
-googlesheet.close id ♥sheetHandle
-```
-
-To use `googlesheet.download` command, you first need to open the file that you want to download the path from. While opening, you need to give the id of the file. You can find the id here:
-
-`googlesheet.download` will save this file to a chosen path on your computer. `path` argument expects a place where the file should be downloaded, `type` argument expects either 'xlsx' or 'pdf' value for file extension.
-Remember that while choosing a path, you need to create the name of the file with certain extension- ‴C:\tests\file.xlsx‴ - in this case 'file.xlsx'. G1ANT.Robot will create an Excel file.
-
-**Example 2:**
-
-G1ANT.Robot will create a pdf file.
+This simple script opens a Google Sheet document, then downloads it to an Excel file on the user’s Desktop and closes the sheet:
 
 ```G1ANT
-googlesheet.open id ‴1w5iopoKzgALxC1Qumtzvmc4VkXPq6kgkxieISibBpTs‴ result ♥sheetHandle
-googlesheet.download path ‴C:\tests\file.pdf‴ type ‴pdf‴
-googlesheet.close id ♥sheetHandle
+googlesheet.open 1w5iopoKzgALxC1Qumtzvmc4VkXPq6kgkxieISibBpTs
+googlesheet.download ♥environment⟦USERPROFILE⟧\Desktop\file.xlsx type xlsx
+googlesheet.close
 ```
+
+
