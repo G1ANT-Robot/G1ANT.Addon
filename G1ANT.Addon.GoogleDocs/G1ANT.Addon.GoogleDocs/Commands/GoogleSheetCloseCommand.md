@@ -24,7 +24,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In this example two Google Sheets instances are opened (be sure to provide their real document IDs) and then the first one is closed. If no ID would be specified in the `googlesheet.close` command, the second instance would be closed since it was the last used.
+In this example two Google Sheets instances are opened (be sure to provide their real document IDs) and then the first one is closed. If no ID was specified in the `googlesheet.close` command, the second instance would be closed since it was the last used.
 
 ```G1ANT
 googlesheet.open 1w5iopoKzgALxC1Qumtzvmc4VkXPq6kgkxieISibBpTs result ♥sheetId1
