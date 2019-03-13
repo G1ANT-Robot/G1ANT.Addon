@@ -30,9 +30,7 @@ This simple script opens an Excel workbook (be sure to provide a real filepath) 
 
 ```G1ANT
 xlsx.open C:\Tests\Book1.xlsx
-xlsx.find aaa errorjump notFound
+xlsx.find aaa errormessage ‴Value not found‴
 dialog ‴Value found in the cell: column ♥resultcolumn, row ♥resultrow‴
-label notFound
-dialog ‴Value not found‴
 ```
 
