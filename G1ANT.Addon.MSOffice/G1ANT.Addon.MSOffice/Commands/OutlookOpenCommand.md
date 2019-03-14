@@ -25,7 +25,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-This simple script just opens Outlook and then brings its window to the foreground (if it’s not already):
+This simple script just opens Outlook and then brings its window to the foreground (if it’s not there already):
 
 ```G1ANT
 outlook.open
