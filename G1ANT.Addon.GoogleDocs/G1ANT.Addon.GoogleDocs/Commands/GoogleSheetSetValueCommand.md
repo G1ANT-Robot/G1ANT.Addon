@@ -31,7 +31,7 @@ In the following script a Google Sheet document is opened and a value of *525* i
 
 ```G1ANT
 googlesheet.open 1gKFnrtZ-kzijNeIpYxln6PZS0z5btyHjoW1vZhCZ58c
-googlesheet.setvalue I2 value 525 numeric true
+googlesheet.setvalue range I2 value 525 numeric true
 googlesheet.close
 ```
 
