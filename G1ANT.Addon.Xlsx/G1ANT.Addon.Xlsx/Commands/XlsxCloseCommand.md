@@ -1,50 +1,35 @@
 # xlsx.close
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
 xlsx.close
 ```
 
-**Description:**
+## Description
 
-Command `xlsx.close` allows to save changes and close .xlsx and .xls file extensions.
+This command saves changes to an .xls(x) file and closes it.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`id`| [integer](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/integer.md)  | no |  | id of file to close, if not set, will close file opened as first|
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`id`| [integer](G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | no |  | ID of a file to close. If not set, the first opened file will be closed |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Xlsx.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx](https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx)
+## Example
 
-**Example 1:**
-
-Document with .xlsx file extension, which was opened as first one, is now being closed.
-
-```G1ANT
-xlsx.close
-```
-
-**Example 2:**
-
-Here document with .xlsx file extension with ID '444' is being closed.
+In the script below, two Excel files are opened (be sure to provide real filepaths) and their IDs are stored in variables specified by the `result` argument. Then the second file is closed — if its ID wasn’t specified, the `xlsx.close` command would close the first file:
 
 ```G1ANT
-xlsx.close id ♥444
+xlsx.open path C:\Tests\Book1.xlsx result ♥xlsId1
+xlsx.open path C:\Tests\Book2.xls result ♥xlsId2
+xlsx.close id ♥xlsId2
 ```
 
-**Example 3:**
 
-```G1ANT
-xlsx.open path ‴C:\Tests\Book1.xlsx‴ result ♥xlsHandle
-xlsx.open path ‴C:\Tests\Book2.xlsx‴ result ♥xlsHandle2
-xlsx.close id ♥xlsHandle
-```
-
-The command is called `xlsx.close` but can work both on .xls and .xlsx file extensions.
