@@ -1,53 +1,37 @@
 # word.export
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-word.export  path ‴‴
+word.export path ⟦text⟧ type ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `word.export` exports document from currently active Word instance to specified file (in either .pdf or .xps format).
+This command exports a document from the currently active Word instance to a specified file in either .pdf or .xps format.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |  | new path where your file will be saved |
-|`type`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | | type to export to (it can be either **pdf** or **xps**), if not specified type is inferred from file path extension|
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no |  | Path to the exported file; if not specified, the file will be saved in the location of the source file |
+|`type`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | | Type of the exported file: `pdf` or `xps`); if not specified, the type will be defined by the extension of the exported filename |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.MSOffice.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice)
+## Example
 
-**Example 1:**
-
-This example exports currently active Word instance to specified path using `word.export` command.
-First, open the word file using `word.open` command, then use `word.export` and in **path** argument, specify where on your computer you would like to have a new file saved. Add file extension '.pdf' or '.xps'.
+In this example the robot opens a Word instance with a sample file declared in the `♥sourceFile` variable (be sure to provide a real filepath there). Then, the document is exported to a pdf file on a desktop (the filepath is declared in the `♥destinationFile` variable).
 
 ```G1ANT
-word.open path ‴C:\Public\doc1.docx‴
-word.export path ‴C:\Public\doc2.pdf‴
+♥sourceFile = ♥environment⟦USERPROFILE⟧\Documents\test.docx
+♥destinationFile = ♥environment⟦USERPROFILE⟧\Documents\test.pdf
+word.open ♥sourceFile
+word.export ♥destinationFile
 ```
 
-You can see an opened Word file above.
 
-Here we can see a newly created .pdf file after `word.export` command was executed.
-
-**Example 2:**
-
-In this example we are assigning some text to a variable ♥toInsert. Then using `word.open` command we are opening an instance of Word document and inserting text from the variable. In another step, thanks to using `word.save` command we are saving our Word document under 'test.docx' name in specified location. After that, `word.export` command lets us create a .pdf file from .docx file.
-
-```G1ANT
-♥toInsert = ‴Animi, id est laborum et dolorum fuga. Fugiat quo voluptas nulla pariatur? Architecto beatae vitae dicta sunt explicabo. Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Do eiusmod tempor incididunt ut labore et dolore magna aliqua.‴
-word.open
-word.inserttext text ♥toInsert replacealltext true
-word.save path ‴C:\Tests\test.docx‴
-word.export path ‴C:\Tests\test.pdf‴ type ‴pdf‴
-```
-
-Please, be aware that in order to export and save files in specified locations on your computer, you need to have file and folder permissions.

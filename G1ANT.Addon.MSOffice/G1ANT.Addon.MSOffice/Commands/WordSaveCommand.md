@@ -1,51 +1,35 @@
 # word.save
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-word.save  path ‴‴
+word.save path ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `word.save` saves currently active Word document.
+This command saves the currently active Word document to a specified file.
+
+> **Note:** If a document with the specified filename already exists, the document is overwritten without the user being prompted first.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | ‴C:\%username%\Documents‴ |specifies Word document save path|
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | current folder and filename                                  |Specifies path, where the current Word document will be saved. If a filename is not specified and the document has never been saved, the default name is used (for example, `Doc1.docx`)|
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.MSOffice.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice)
+## Example
 
-**Example 1:**
-
-This example saves currently active Word document to ‴C:\Documents\myfile\doc1.docx‴ using `word.save` command.
-
-```G1ANT
-word.save path ‴C:\Documents\myfile\doc1.docx‴
-```
-
-**Example 2:**
-
-This example saves currently active Word document to ‴C:\Documents\doc1.docx‴ (directory is not specified, therefore a default one is chosen)
+This example saves the currently active Word document to the `doc3.docx` file (the full path is not specified, therefore the current folder will be used):
 
 ```G1ANT
-word.save path ‴doc3.docx‴
+word.save doc3.docx
 ```
 
-**Example 3:**
 
-This example shows how to insert text into a blank word document and save it choosing a path (the user has to have access to the catalogue of the chosen path).
-
-```G1ANT
-♥toInsert = ‴Animi, id est laborum et dolorum fuga. Fugiat quo voluptas nulla pariatur? Architecto beatae vitae dicta sunt explicabo. Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Do eiusmod tempor incididunt ut labore et dolore magna aliqua.‴
-word.open
-word.inserttext text ♥toInsert replacealltext true
-word.save path ‴C:\Tests\test.docx‴
-```
