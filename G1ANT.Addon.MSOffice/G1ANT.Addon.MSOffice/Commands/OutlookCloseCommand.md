@@ -24,7 +24,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In this simple example Outlook is closed and the result — *true* or *false* — is displayed in a dialog box:
+In this simple example Outlook is closed and the result — *true* or *false* as to whether the command succeeded — is displayed in a dialog box:
 
 ```G1ANT
 outlook.close
