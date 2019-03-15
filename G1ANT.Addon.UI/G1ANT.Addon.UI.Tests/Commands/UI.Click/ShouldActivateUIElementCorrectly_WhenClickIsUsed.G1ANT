@@ -9,4 +9,4 @@ if ♥locale=="pl-PL"
     ui.click ‴/ui[@name='Untitled - Notepad']/descendant::ui[@name='Close']‴    
 end
 
-test ⊂System.Diagnostics.Process.GetProcessesByName("notepad").Length == 0⊃
+test ⊂System.Diagnostics.Process.GetProcessesByName("notepad").Length == 0⊃ errormessage ‴false‴
