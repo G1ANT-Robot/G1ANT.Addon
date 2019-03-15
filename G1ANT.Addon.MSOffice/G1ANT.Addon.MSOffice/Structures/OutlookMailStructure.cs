@@ -69,9 +69,9 @@ namespace G1ANT.Addon.MSOffice
                 case FromIndex:
                     return new TextStructure(Value.SenderEmailAddress, null, Scripter);
                 case CcIndex:
-                    return new TextStructure(Value.CC, null, Scripter);
+                return new TextStructure(GetRecipientListOfType(OlMailRecipientType.olCC), null, Scripter);
                 case BccIndex:
-                    return new TextStructure(Value.BCC, null, Scripter);
+                    return new TextStructure(GetRecipientListOfType(OlMailRecipientType.olBCC), null, Scripter);
                 case AccountIndex:
                     return new TextStructure(Value.SendUsingAccount.SmtpAddress, null, Scripter);
                 case AttachmentsIndex:
@@ -139,6 +139,21 @@ namespace G1ANT.Addon.MSOffice
         protected override MailItem Parse(string value, string format = null)
         {
             return null;
+        }
+
+        private string GetRecipientListOfType(OlMailRecipientType recipientType)
+        {
+            var recipients = string.Empty;
+
+            foreach (Recipient recipient in Value.Recipients)
+            {
+                if (recipient.Type == (int)recipientType)
+                {
+                    recipients += recipient.Address + ";";
+                }
+            }
+
+            return recipients;
         }
     }
 }
