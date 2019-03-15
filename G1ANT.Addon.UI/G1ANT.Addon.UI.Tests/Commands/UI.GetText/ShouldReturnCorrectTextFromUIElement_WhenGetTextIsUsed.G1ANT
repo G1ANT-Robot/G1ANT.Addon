@@ -1,9 +1,18 @@
 addon ui version 1.0.0.0
 
 process.kill notepad
-
 program notepad
-ui.gettext wpath ‴/ui[@name='Untitled - Notepad']‴
+
+if ♥locale=="pl-PL"
+    ui.gettext wpath ‴/ui[@name='Bez tytułu — Notatnik']‴
+  else
+    ui.gettext wpath ‴/ui[@name='Untitled - Notepad']‴
+end
+
 process.kill notepad
 
-test ⊂♥result == "Untitled - Notepad"⊃
+if ♥locale=="pl-PL"
+    test ⊂♥result == "Bez tytułu — Notatnik"⊃ errormessage ‴false‴ 
+  else
+    test ⊂♥result == "Untitled - Notepad"⊃ errormessage ‴false‴ 
+end
