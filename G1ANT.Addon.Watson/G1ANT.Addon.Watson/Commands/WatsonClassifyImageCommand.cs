@@ -7,33 +7,35 @@
 *    See License.txt file in the project root for full license information.
 *
 */
-using G1ANT.Language;
-using System;
 
-namespace G1ANT.Addon.Watson
+using System;
+using G1ANT.Addon.Watson.Api;
+using G1ANT.Language;
+
+namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.classifyimage", Tooltip = "This command allows to capture part of the screen and classify the image that was captured. ")]
+    [Command(Name = "watson.classifyimage", Tooltip = "This command allows classify the image.")]
     public class WatsonClassifyImageCommand : Command
     {
         public class Arguments : CommandArguments
         {
             [Argument(Required = true, Tooltip = "Specifies capture screen area.")]
-            public RectangleStructure Rectangle { get; set; }
+            public TextStructure ImagePath { get; set; } = new TextStructure();
 
             [Argument(Required = true, Tooltip = "Specifies api key needed to login to the service.")]
             public TextStructure ApiKey { get; set; }
 
-            [Argument(Tooltip = "If set to true, rectangle’s position relates to currently focused window")]
-            public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
+            [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
+            public TextStructure ServerUri { get; set; }
 
             [Argument(Tooltip = "Floating point value that specifies the minimum score a class must have to be displayed in the results.")]
             public FloatStructure Threshold { get; set; } = new FloatStructure(0.5f);
 
-            [Argument(DefaultVariable = "timeoutwatson")]
-            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
-
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
+
+            [Argument(DefaultVariable = "timeoutwatson")]
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
         }
         public WatsonClassifyImageCommand(AbstractScripter scripter) : base(scripter)
         { }
@@ -41,9 +43,8 @@ namespace G1ANT.Addon.Watson
         {
             try
             {
-                System.Drawing.Bitmap partOfScreen = RobotWin32.GetPartOfScreen(arguments.Rectangle.Value);
-                WatsonClassifyImageApi watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value);
-                string output = watsonApi.ClassifyImage(partOfScreen, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
+                var watsonApi = new WatsonClassifyImageApi(arguments.ApiKey.Value, arguments.ServerUri.Value);
+                var output = watsonApi.ClassifyImage(arguments.ImagePath.Value, (int)arguments.Timeout.Value.TotalMilliseconds, arguments.Threshold.Value);
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new TextStructure(output));
             }
             catch (Exception ex)
