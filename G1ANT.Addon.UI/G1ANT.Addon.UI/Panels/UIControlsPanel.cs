@@ -18,6 +18,7 @@ namespace G1ANT.Addon.UI.Panels
         {
             base.Initialize(mainForm);
             InitRootElement();
+            ControlType.Button.GetType();
         }
 
         public override void RefreshContent()
@@ -39,6 +40,11 @@ namespace G1ANT.Addon.UI.Panels
 
         }
 
+        private string CutControlType(string name)
+        {
+            return string.IsNullOrEmpty(name) ? "" : name.Replace("ControlType.", "");
+        }
+
         private string GetTreeNodeName(AutomationElement element)
         {
             if (element == null)
@@ -46,7 +52,7 @@ namespace G1ANT.Addon.UI.Panels
             string id = "";
             if (string.IsNullOrWhiteSpace(element.Current.AutomationId) == false)
                 id = $" #{element.Current.AutomationId}";
-            return $"{element.Current.LocalizedControlType}{id} \"{element.Current.Name}\"";
+            return $"{CutControlType(element.Current.ControlType.ProgrammaticName)}{id} \"{element.Current.Name}\"";
         }
 
         private string GetTreeNodeTooltip(AutomationElement element)
@@ -55,14 +61,16 @@ namespace G1ANT.Addon.UI.Panels
                 return null;
             StringBuilder result = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(element.Current.AutomationId) == false)
-                result.AppendLine($"Id: {element.Current.AutomationId}");
-            if (string.IsNullOrWhiteSpace(element.Current.LocalizedControlType) == false)
-                result.AppendLine($"ControlType: {element.Current.LocalizedControlType}");
-            if (string.IsNullOrWhiteSpace(element.Current.ClassName) == false)
-                result.AppendLine($"ClassName: {element.Current.ClassName}");
-            if (string.IsNullOrWhiteSpace(element.Current.Name) == false)
-                result.AppendLine($"Name: {element.Current.Name}");
+            if (!string.IsNullOrWhiteSpace(element.Current.AutomationId))
+                result.AppendLine($"id: {element.Current.AutomationId}");
+            if (element.Current.ControlType != null)
+                result.AppendLine($"type: {CutControlType(element.Current.ControlType.ProgrammaticName)}");
+            if (element.Current.ControlType != null)
+                result.AppendLine($"typeid: {element.Current.ControlType.Id}");
+            if (!string.IsNullOrWhiteSpace(element.Current.ClassName))
+                result.AppendLine($"class: {element.Current.ClassName}");
+            if (!string.IsNullOrWhiteSpace(element.Current.Name))
+                result.AppendLine($"name: {element.Current.Name}");
 
             return result.ToString();
         }

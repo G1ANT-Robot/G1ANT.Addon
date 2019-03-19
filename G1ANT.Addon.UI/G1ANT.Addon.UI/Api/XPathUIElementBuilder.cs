@@ -20,6 +20,12 @@ namespace G1ANT.Addon.UI
 {
     public class XPathUIElementBuilder : IXPathBuilder<object>
     {
+        public enum UiAutomationElement
+        {
+            Id = 0,
+            ProgrammaticName = 1,
+        }
+
         protected AutomationElement FindDescendant(AutomationElement elem, CompareFunc compare)
         {
             AutomationElement elementNode = TreeWalker.ControlViewWalker.GetFirstChild(elem);
@@ -112,17 +118,32 @@ namespace G1ANT.Addon.UI
         {
             if (op == XPathOperator.Eq)
             {
-                if (left is AutomationProperty property)
+                CompareFunc func = (elem, index) =>
                 {
-                    CompareFunc func = (elem, index) =>
+                    if (left is AutomationProperty property)
                     {
                         var propValue = elem.GetCurrentPropertyValue(property, true);
                         if (propValue != null)
                             return propValue.Equals(right);
-                        return false;
-                    };
-                    return func;
-                }
+                    }
+                    if (left is UiAutomationElement en)
+                    {
+                        if (UiAutomationElement.ProgrammaticName == en)
+                        {
+                            string propValue = elem.Current.ControlType?.ProgrammaticName.Replace("ControlType.", "");
+                            if (propValue != null)
+                                return propValue.Equals(right);
+                        }
+                        if (UiAutomationElement.Id == en)
+                        {
+                            int? propValue = elem.Current.ControlType?.Id;
+                            if (propValue.HasValue)
+                                return propValue.ToString().Equals(right);
+                        }
+                    }
+                    return false;
+                };
+                return func;
             }
             throw new NotSupportedException($"Operator {op.ToString()} is not supported.");
         }
@@ -160,18 +181,23 @@ namespace G1ANT.Addon.UI
             }
             if (xpathAxis == XPathAxis.Attribute)
             {
-                if (name == "id")
+                ControlType.Button.GetType();
+
+                if (name.ToLower() == "id")
                     return AutomationElement.AutomationIdProperty;
-                if (name == "name")
+                if (name.ToLower() == "name")
                     return AutomationElement.NameProperty;
-                if (name == "class")
+                if (name.ToLower() == "class")
                     return AutomationElement.ClassNameProperty;
-                if (name == "type")
-                    return AutomationElement.ControlTypeProperty;
+                if (name.ToLower() == "type")
+                    return UiAutomationElement.ProgrammaticName;
+                if (name.ToLower() == "typeid")
+                    return UiAutomationElement.Id;
                 throw new NotSupportedException($"Attribute {name} is not supportet.");
             }
             return null;
         }
+
 
         public object JoinStep(object left, object right)
         {
