@@ -2,7 +2,6 @@
 using CodePlex.XPathParser;
 using System.Windows.Automation;
 using System.Collections.Generic;
-using System.Linq;
 
 using CompareFunc = System.Func<
     System.Windows.Automation.AutomationElement,
@@ -148,7 +147,6 @@ namespace G1ANT.Addon.UI
             throw new NotSupportedException($"Operator {op.ToString()} is not supported.");
         }
 
-
         public object Axis(XPathAxis xpathAxis, System.Xml.XPath.XPathNodeType nodeType, string prefix, string name)
         {
             if (xpathAxis == XPathAxis.Root)
@@ -167,7 +165,6 @@ namespace G1ANT.Addon.UI
             {
                 FindElementFunc func = FindDescendantOrSelf;
                 return func;
-
             }
             if (xpathAxis == XPathAxis.FollowingSibling)
             {
@@ -197,7 +194,6 @@ namespace G1ANT.Addon.UI
             }
             return null;
         }
-
 
         public object JoinStep(object left, object right)
         {
