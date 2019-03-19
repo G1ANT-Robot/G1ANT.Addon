@@ -45,17 +45,17 @@ namespace G1ANT.Addon.UI.Panels
             return string.IsNullOrEmpty(name) ? "" : name.Replace("ControlType.", "");
         }
 
-        private string GetTreeNodeName(AutomationElement element)
+        private string GetTreeNodeName(AutomationElement element, int index)
         {
             if (element == null)
                 return "";
             string id = "";
             if (string.IsNullOrWhiteSpace(element.Current.AutomationId) == false)
                 id = $" #{element.Current.AutomationId}";
-            return $"{CutControlType(element.Current.ControlType.ProgrammaticName)}{id} \"{element.Current.Name}\"";
+            return $"{CutControlType(element.Current.ControlType.ProgrammaticName)}[{index}]{id} \"{element.Current.Name}\"";
         }
 
-        private string GetTreeNodeTooltip(AutomationElement element)
+        private string GetTreeNodeTooltip(AutomationElement element, int index)
         {
             if (element == null)
                 return null;
@@ -71,7 +71,7 @@ namespace G1ANT.Addon.UI.Panels
                 result.AppendLine($"class: {element.Current.ClassName}");
             if (!string.IsNullOrWhiteSpace(element.Current.Name))
                 result.AppendLine($"name: {element.Current.Name}");
-
+            result.AppendLine($"control index: {index}");
             return result.ToString();
         }
 
@@ -83,10 +83,11 @@ namespace G1ANT.Addon.UI.Panels
                 if (e.Node.Tag is AutomationElement element)
                 {
                     AutomationElement elem = TreeWalker.ControlViewWalker.GetFirstChild(element);
+                    int i = 0;
                     while (elem != null)
                     {
-                        var node = e.Node.Nodes.Add(GetTreeNodeName(elem));
-                        node.ToolTipText = GetTreeNodeTooltip(elem);
+                        var node = e.Node.Nodes.Add(GetTreeNodeName(elem, i));
+                        node.ToolTipText = GetTreeNodeTooltip(elem, i++);
                         node.Tag = elem;
                         node.Nodes.Add("");
 
