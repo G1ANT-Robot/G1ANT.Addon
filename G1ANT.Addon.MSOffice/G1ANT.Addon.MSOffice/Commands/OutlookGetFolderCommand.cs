@@ -22,7 +22,7 @@ namespace G1ANT.Addon.MSOffice
             public TextStructure Path { get; set; }
 
             [Argument(Required = true)]
-            public VariableStructure Result { get; set; }
+            public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OutlookGetFolderCommand(AbstractScripter scripter) : base(scripter)
         {

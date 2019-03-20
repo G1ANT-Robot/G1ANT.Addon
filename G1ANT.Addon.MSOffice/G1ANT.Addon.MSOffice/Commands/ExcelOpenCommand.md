@@ -1,62 +1,38 @@
 # excel.open
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-excel.open
+excel.open path ⟦text⟧ inbackground ⟦bool⟧ sheet ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `excel.open` allows to open a new Excel instance.
+This command opens a new Excel instance.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | path of a file that has to be opened, if not specified, excel will be opened anyway |
-|`inbackground`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | false | defines whether Excel opens in the background  |
-|`sheet`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | sheet name to be activated |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of variable where number of currently opened Excel processes is stored, it can be used later on with command `excel.switch` |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [integer](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/integer.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump`| [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no |  | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no |  | Path of a file that has to be opened in Excel; if not specified, Excel will be opened with an empty sheet |
+|`inbackground`| [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no | false | Specifies whether Excel should be opened in the background |
+|`sheet`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no |  | Name of a sheet to be activated |
+|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | ♥result  | Name of a variable where a currently opened Excel process number is stored. It can be used in the `excel.switch` command |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.MSOffice.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice)
+## Example
 
-**Example 1:**
-
-Here document.xlsx is being open with activated sheet_number_223 and the result is assigned to ♥excelId1 variable.
-
-```G1ANT
-excel.open path ‴C:\programs\document.xlsx‴ sheet ‴sheet_number_223‴ result ♥excelId1
-```
-
-**Example 2:**
-
-Below you can see how easy it is to open a new Excel file:
-
-```G1ANT
-excel.open
-```
-
-**Example 3:**
-
-If you choose that `excel.open` command works in background, you will not notice any action, but G1ANT.Robot will perform according to the script.
+This example shows how Excel can be opened in the background, so that you will not notice any action, but G1ANT.Robot will execute the script anyway. You can see the results in the `test.xlsx` file on your Desktop:
 
 ```G1ANT
 excel.open inbackground true
-excel.setvalue value ‴Random Text‴ row 1 colname A
-excel.save path ‴C:\Tests\test.xlsx‴
+excel.setvalue ‴Random Text‴ row 1 colname A
+excel.save ♥environment⟦USERPROFILE⟧\Desktop\test.xlsx
 excel.close
 ```
 
-**Example 4:**
-
-In this example you can create Sheet2 while opening Excel.
-
-```G1ANT
-excel.open path ‴C:\Tests\test.xlsx‴ sheet Sheet2
-```

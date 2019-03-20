@@ -69,5 +69,35 @@ namespace G1ANT.Addon.Net.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] putty {
+            get {
+                object obj = ResourceManager.GetObject("putty", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] telnet {
+            get {
+                object obj = ResourceManager.GetObject("telnet", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VNC {
+            get {
+                object obj = ResourceManager.GetObject("VNC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

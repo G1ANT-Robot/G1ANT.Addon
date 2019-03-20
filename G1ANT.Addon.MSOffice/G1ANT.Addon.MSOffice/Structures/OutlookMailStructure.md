@@ -6,7 +6,9 @@ This structure stores information about a mail message, which was retrieved from
 | ------------- | ----------------------------------------------------------- | ---------------------------------------- |
 | `id`          | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The identification number of the message |
 | `from`        | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The sender of the message                |
-| `to`          | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The recipient of the message             |
+| `cc`        | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The CC recipient(s) of the message                |
+| `bcc`        | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The BCC recipient(s) of the message                |
+| `account`          | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The recipient of the message             |
 | `subject`     | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The subject of the message               |
 | `body`        | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The contents of the message              |
 | `htmlbody`    | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | The HTML contents of the message         |
@@ -21,7 +23,7 @@ The script below retrieves unread emails from the Outlook Inbox folder, checks t
 
 outlook.open display false
 outlook.getfolder ♥outlookInboxFolder result ♥inboxFolder errormessage ‴Cannot find folder "♥outlookInboxFolder"‴
-♥unreadEmails = ♥inboxFolder⟦unreaded⟧
+♥unreadEmails = ♥inboxFolder⟦unread⟧
 foreach ♥email in ♥unreadEmails
   if ⊂♥email⟦subject⟧.Contains("invoice")⊃
     text.write ♥email⟦body⟧ filename ‴♥environment⟦USERPROFILE⟧\Desktop\♥email⟦from⟧ - ♥email⟦subject⟧.txt‴

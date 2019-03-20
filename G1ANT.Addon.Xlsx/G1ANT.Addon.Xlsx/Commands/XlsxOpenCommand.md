@@ -1,53 +1,35 @@
 # xlsx.open
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-xlsx.open  path ‴‴  accessmode ‴‴
+xlsx.open path ⟦text⟧ accessmode ⟦text⟧ createifnotexist ⟦bool⟧
 ```
 
-**Description:**
+## Description
 
-Command `xlsx.open` allows to open .xlsx files, and set the first sheet in the document as active.
+This command opens an .xls(x) file and activates the first sheet in the document.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes|  | path of file that has to be opened|
-|`accessmode`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes|  | ‴read‴ or ‴readwrite‴ |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no |  [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of variable where command's result will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Path of a file to be opened |
+|`accessmode`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Can be `read` or `readwrite` |
+|`createifnotexist`| [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no | false | If a file doesn’t exist, the command will create it |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the ID number of this Excel instance will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Xlsx.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx](https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx)
+## Example
 
-This command is contained in **G1ANT.Addon.Xlsx.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx](https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx)
-
-**Example 1:**
-
-Here document.xlsx is being opened and result is assigned to the variable called ♥excelId1.
+In the following script the document.xlsx is opened without the possibility to modify it (read-only mode). If the specified file doesn’t exist, it will be created by the command. The ID of this Excel instance is assigned to the `♥excelId1` variable. This ID can then be used with the [`xlsx.switch`](XlsxSwitchCommand.md) command.
 
 ```G1ANT
-xlsx.open path ‴C:\programs\document.xlsx‴ result ♥excelId1
+xlsx.open C:\Documents\document.xlsx accessmode read createifnotexist true result ♥excelId1
 ```
 
-**Example 2:**
-
-In this example while the `accessmode` argument is set to 'read' G1ANT.Robot will only open the file without posibility to modify it.
-
-```G1ANT
-xlsx.open path ‴C:\Tests\test.xlsx‴ accessmode ‴read‴
-```
-
-**Example 3:**
-
-G1ANT.Robot will open the file and can modify it.
-
-```G1ANT
- xlsx.open path ‴C:\Tests\test.xlsx‴ accessmode ‴readwrite‴
-```
