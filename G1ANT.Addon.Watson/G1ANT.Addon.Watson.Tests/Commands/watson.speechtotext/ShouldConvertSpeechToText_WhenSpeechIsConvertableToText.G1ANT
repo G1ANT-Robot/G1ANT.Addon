@@ -1,0 +1,25 @@
+addon watson version 2.205.17304.1000
+
+try errorcall DeleteVoiceFileAndFailTest
+    call DownloadVoiceFile
+    call ConvertSpeechToText
+    call DeleteVoiceFile
+    test ⊂♥result == "0,91 : this is a voice recognition test ;"⊃
+end try
+
+procedure DeleteVoiceFileAndFailTest
+    call DeleteVoiceFile
+    test false
+end procedure
+
+procedure DownloadVoiceFile
+    file.download filename ♥environment⟦TEMP⟧\voice.wav url https://drive.google.com/uc?id=1uYzXT-D6k9At9zlLHRhA319QXDQXO_x4&export=download
+end procedure
+
+procedure ConvertSpeechToText
+    watson.speechtotext ♥environment⟦TEMP⟧\voice.wav apikey tLomu9hE05G7nj83nbCZnODv_FcJDX58mcepzSmmaVme serveruri https://gateway-lon.watsonplatform.net/speech-to-text/api
+end procedure
+
+procedure DeleteVoiceFile
+    file.delete ♥environment⟦TEMP⟧\voice.wav
+end procedure

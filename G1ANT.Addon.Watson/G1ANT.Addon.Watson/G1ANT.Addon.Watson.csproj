@@ -69,5 +69,9 @@
   <ItemGroup>
     <EmbeddedResource Include="License.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\watson.classifyimage\" />
+    <Folder Include="Commands\watson.speechtotext\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

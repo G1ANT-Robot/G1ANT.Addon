@@ -1,0 +1,25 @@
+addon watson version 2.205.17304.1000
+
+try errorcall DeleteImageAndFailTest
+    call DownloadImage
+    call ClassifyImage
+    call DeleteImage
+    test ⊂♥result == "Valencia orange:0,685;orange:0,821;citrus:0,934;fruit:0,935;navel orange:0,613;mandarin:0,611;clementine:0,541;tangerine:0,5;food:0,798;beverage:0,783;tree:0,798;orange color:1;"⊃
+end try
+
+procedure DeleteImageAndFailTest
+    call DeleteImage
+    test false
+end procedure
+
+procedure DownloadImage
+    file.download filename ♥environment⟦TEMP⟧\orange.jpg url https://drive.google.com/uc?id=1Y6yNFONjE4ASwncLLtLlV2xQsQmG9VDD&export=download
+end procedure
+
+procedure ClassifyImage
+    watson.classifyimage apikey gKU8eUsEYH7Cpm23LUiW1df3L9zPeGNEKCmDxiBpearz serveruri https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19 imagepath ♥environment⟦TEMP⟧\orange.jpg
+end procedure
+
+procedure DeleteImage
+    file.delete ♥environment⟦TEMP⟧\orange.jpg
+end procedure
