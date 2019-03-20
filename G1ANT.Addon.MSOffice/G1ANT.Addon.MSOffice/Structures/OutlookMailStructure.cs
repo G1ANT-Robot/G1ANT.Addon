@@ -11,6 +11,7 @@ using G1ANT.Language;
 using Microsoft.Office.Interop.Outlook;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace G1ANT.Addon.MSOffice
 {
@@ -69,7 +70,7 @@ namespace G1ANT.Addon.MSOffice
                 case FromIndex:
                     return new TextStructure(Value.SenderEmailAddress, null, Scripter);
                 case CcIndex:
-                return new TextStructure(GetRecipientListOfType(OlMailRecipientType.olCC), null, Scripter);
+                    return new TextStructure(GetRecipientListOfType(OlMailRecipientType.olCC), null, Scripter);
                 case BccIndex:
                     return new TextStructure(GetRecipientListOfType(OlMailRecipientType.olBCC), null, Scripter);
                 case AccountIndex:
@@ -95,7 +96,9 @@ namespace G1ANT.Addon.MSOffice
         public override void Set(Structure structure, string index = null)
         {
             if (structure == null || structure.Object == null)
+            {
                 throw new ArgumentNullException(nameof(structure));
+            }
             else
             {
                 switch (index.ToLower())
@@ -124,7 +127,6 @@ namespace G1ANT.Addon.MSOffice
                             }
                             throw new ArgumentException($"Cannot find outlook account '{structure.ToString()}'");
                         }
-                        break;
                     default:
                         throw new ArgumentException($"Unknown index '{index}'");
                 }
@@ -143,17 +145,8 @@ namespace G1ANT.Addon.MSOffice
 
         private string GetRecipientListOfType(OlMailRecipientType recipientType)
         {
-            var recipients = string.Empty;
-
-            foreach (Recipient recipient in Value.Recipients)
-            {
-                if (recipient.Type == (int)recipientType)
-                {
-                    recipients += recipient.Address + ";";
-                }
-            }
-
-            return recipients;
+            return Value.Recipients.Cast<Recipient>().Where(recipient => recipient.Type == (int)recipientType)
+                        .Aggregate(string.Empty, (current, recipient) => current + (recipient.Address + ";"));
         }
     }
 }
