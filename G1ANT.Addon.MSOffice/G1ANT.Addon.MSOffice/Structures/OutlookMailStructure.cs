@@ -145,8 +145,10 @@ namespace G1ANT.Addon.MSOffice
 
         private string GetRecipientListOfType(OlMailRecipientType recipientType)
         {
-            return Value.Recipients.Cast<Recipient>().Where(recipient => recipient.Type == (int)recipientType)
-                        .Aggregate(string.Empty, (current, recipient) => current + (recipient.Address + ";"));
+            return Value
+                   .Recipients.Cast<Recipient>()
+                   .Where(recipient => recipient.Type == (int)recipientType)
+                   .Aggregate(string.Empty, (current, recipient) => current + (recipient.Address + ";"));
         }
     }
 }
