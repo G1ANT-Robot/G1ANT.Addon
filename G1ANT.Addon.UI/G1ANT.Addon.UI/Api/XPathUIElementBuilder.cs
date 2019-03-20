@@ -21,8 +21,8 @@ namespace G1ANT.Addon.UI
     {
         public enum UiAutomationElement
         {
-            Id = 0,
-            ProgrammaticName = 1,
+            Id,
+            ProgrammaticName,
         }
 
         protected AutomationElement FindDescendant(AutomationElement elem, CompareFunc compare)
@@ -87,6 +87,7 @@ namespace G1ANT.Addon.UI
         public AutomationElement Root { get; } = AutomationElement.RootElement;
         public XPathUIElementBuilder(AutomationElement root = null)
         {
+            ControlType.Button.GetType();
             if (root != null)
                 Root = root;
         }
@@ -117,32 +118,40 @@ namespace G1ANT.Addon.UI
         {
             if (op == XPathOperator.Eq)
             {
-                CompareFunc func = (elem, index) =>
+                CompareFunc func;
+                if (left is AutomationProperty property)
                 {
-                    if (left is AutomationProperty property)
+                    return func = (elem, index) =>
+                     {
+                         var propValue = elem.GetCurrentPropertyValue(property, true);
+                         if (propValue != null)
+                             return propValue.Equals(right);
+                         return false;
+                     };
+                }
+                else if (left is UiAutomationElement en)
+                {
+                    if (UiAutomationElement.ProgrammaticName == en)
                     {
-                        var propValue = elem.GetCurrentPropertyValue(property, true);
-                        if (propValue != null)
-                            return propValue.Equals(right);
-                    }
-                    if (left is UiAutomationElement en)
-                    {
-                        if (UiAutomationElement.ProgrammaticName == en)
+                        return func = (elem, index) =>
                         {
                             string propValue = elem.Current.ControlType?.ProgrammaticName.Replace("ControlType.", "");
                             if (propValue != null)
                                 return propValue.Equals(right);
-                        }
-                        if (UiAutomationElement.Id == en)
+                            return false;
+                        };
+                    }
+                    if (UiAutomationElement.Id == en)
+                    {
+                        return func = (elem, index) =>
                         {
                             int? propValue = elem.Current.ControlType?.Id;
                             if (propValue.HasValue)
                                 return propValue.ToString().Equals(right);
-                        }
+                            return false;
+                        };
                     }
-                    return false;
-                };
-                return func;
+                }
             }
             throw new NotSupportedException($"Operator {op.ToString()} is not supported.");
         }
@@ -178,17 +187,16 @@ namespace G1ANT.Addon.UI
             }
             if (xpathAxis == XPathAxis.Attribute)
             {
-                ControlType.Button.GetType();
-
-                if (name.ToLower() == "id")
+                string lowerCaseName = name.ToLower();
+                if (lowerCaseName == "id")
                     return AutomationElement.AutomationIdProperty;
-                if (name.ToLower() == "name")
+                if (lowerCaseName == "name")
                     return AutomationElement.NameProperty;
-                if (name.ToLower() == "class")
+                if (lowerCaseName == "class")
                     return AutomationElement.ClassNameProperty;
-                if (name.ToLower() == "type")
+                if (lowerCaseName == "type")
                     return UiAutomationElement.ProgrammaticName;
-                if (name.ToLower() == "typeid")
+                if (lowerCaseName == "typeid")
                     return UiAutomationElement.Id;
                 throw new NotSupportedException($"Attribute {name} is not supportet.");
             }

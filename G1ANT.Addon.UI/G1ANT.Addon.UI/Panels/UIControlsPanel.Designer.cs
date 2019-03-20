@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.insertWPathButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.controlsTree = new System.Windows.Forms.TreeView();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.highlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -86,7 +90,23 @@
             this.controlsTree.TabIndex = 1;
             this.controlsTree.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.controlsTree_AfterCollapse);
             this.controlsTree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.controlsTree_BeforeExpand);
+            this.controlsTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.controlsTree_NodeMouseClick);
             this.controlsTree.DoubleClick += new System.EventHandler(this.controlsTree_DoubleClick);
+            this.controlsTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.controlsTree_MouseDown);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.highlightToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(125, 26);
+            // 
+            // highlightToolStripMenuItem
+            // 
+            this.highlightToolStripMenuItem.Name = "highlightToolStripMenuItem";
+            this.highlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.highlightToolStripMenuItem.Text = "Highlight";
+            this.highlightToolStripMenuItem.Click += new System.EventHandler(this.highlightToolStripMenuItem_Click);
             // 
             // UIControlsPanel
             // 
@@ -98,6 +118,7 @@
             this.Size = new System.Drawing.Size(222, 420);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +131,7 @@
         private System.Windows.Forms.ToolStripButton insertWPathButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton refreshButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem highlightToolStripMenuItem;
     }
 }
