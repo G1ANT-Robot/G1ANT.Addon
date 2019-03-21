@@ -64,14 +64,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Commands\watson.classifyimage\ShouldClassifyImage_WhenImageIsClassifiable.G1ANT" />
+    <None Include="Commands\watson.speechtotext\ShouldConvertSpeechToText_WhenSpeechIsConvertableToText.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="License.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\watson.classifyimage\" />
-    <Folder Include="Commands\watson.speechtotext\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
