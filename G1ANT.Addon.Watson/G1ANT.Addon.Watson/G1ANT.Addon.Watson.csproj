@@ -64,8 +64,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Commands\watson.classifyimage\ShouldClassifyImage_WhenImageIsClassifiable.G1ANT" />
-    <None Include="Commands\watson.speechtotext\ShouldConvertSpeechToText_WhenSpeechIsConvertableToText.G1ANT" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
