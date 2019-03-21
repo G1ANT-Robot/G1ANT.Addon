@@ -118,38 +118,37 @@ namespace G1ANT.Addon.UI
         {
             if (op == XPathOperator.Eq)
             {
-                CompareFunc func;
                 if (left is AutomationProperty property)
                 {
-                    return func = (elem, index) =>
+                    return new CompareFunc((elem, index) =>
                      {
                          var propValue = elem.GetCurrentPropertyValue(property, true);
                          if (propValue != null)
                              return propValue.Equals(right);
                          return false;
-                     };
+                     });
                 }
                 else if (left is UiAutomationElement en)
                 {
                     if (UiAutomationElement.ProgrammaticName == en)
                     {
-                        return func = (elem, index) =>
+                        return new CompareFunc((elem, index) =>
                         {
                             string propValue = elem.Current.ControlType?.ProgrammaticName.Replace("ControlType.", "");
                             if (propValue != null)
                                 return propValue.Equals(right);
                             return false;
-                        };
+                        });
                     }
                     if (UiAutomationElement.Id == en)
                     {
-                        return func = (elem, index) =>
+                        return new CompareFunc((elem, index) =>
                         {
                             int? propValue = elem.Current.ControlType?.Id;
                             if (propValue.HasValue)
                                 return propValue.ToString().Equals(right);
                             return false;
-                        };
+                        });
                     }
                 }
             }

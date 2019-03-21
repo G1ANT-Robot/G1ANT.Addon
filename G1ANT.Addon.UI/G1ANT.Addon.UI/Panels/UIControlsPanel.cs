@@ -10,7 +10,7 @@ namespace G1ANT.Addon.UI.Panels
     [PanelAttribute(Name = "Windows Tree", DockingSide = DockingSide.Right, InitialAppear = false, Width = 400)]
     public partial class UIControlsPanel : RobotPanel
     {
-        private Form rectangleForm; 
+        private Form blinkingRectForm; 
 
         public UIControlsPanel()
         {
@@ -136,7 +136,6 @@ namespace G1ANT.Addon.UI.Panels
         }
 
         #region RectangleForm
-
         /// <summary>
         /// Retrieves the top-level window that contains the specified UI Automation element.
         /// </summary>
@@ -150,7 +149,8 @@ namespace G1ANT.Addon.UI.Panels
             do
             {
                 elementParent = walker.GetParent(node);
-                if (elementParent == AutomationElement.RootElement) break;
+                if (elementParent == AutomationElement.RootElement)
+                { break; }
                 node = elementParent;
             }
             while (true);
@@ -176,10 +176,13 @@ namespace G1ANT.Addon.UI.Panels
                                 if (iHandle != IntPtr.Zero)
                                 {
                                     RobotWin32.BringWindowToFront(iHandle);
+                                    var rect = element.GetRectangle();
+                                    if (rect != null)
+                                    {
+                                        InitializeRectangleForm(rect);
+                                    }
                                 }
                             }
-                            var rect = element.GetRectangle();
-                            if (rect != null) { initializeRectangleForm(rect); }
                         }
                     }
                 }
@@ -189,66 +192,55 @@ namespace G1ANT.Addon.UI.Panels
                 RobotMessageBox.Show(ex.Message,"Error");
             }
         }
-        
-        private Timer blinkTimer;
-        private void ClosingTimer_Tick(object sender, EventArgs e)
-        {
-            closingTimer.Enabled = false;
-            blinkTimer.Enabled = false;
-            rectangleForm.Close();
-        }
 
-        private void initializeRectangleForm(System.Windows.Rect rect)
+        private Timer blinkTimer;
+        private int blinkTimes;
+        private void InitializeRectangleForm(System.Windows.Rect rect)
         {
-            rectangleForm = new Form();
+            blinkingRectForm = new Form();
             Panel transparentPanel = new Panel();
             transparentPanel.BackColor = Color.Pink;
             transparentPanel.Location = new Point(3, 3);
             transparentPanel.Padding = new System.Windows.Forms.Padding(30);
-            transparentPanel.Parent = rectangleForm;
-            rectangleForm.Controls.Add(transparentPanel);
-            rectangleForm.TransparencyKey = Color.Pink;
-            rectangleForm.BackColor = Color.Red;
-            rectangleForm.ForeColor = Color.Red;
-            rectangleForm.TopMost = true;
-            rectangleForm.FormBorderStyle = FormBorderStyle.None;
-            rectangleForm.ControlBox = false;
-            rectangleForm.Text = string.Empty;
-            rectangleForm.StartPosition = FormStartPosition.Manual;
-            rectangleForm.MinimumSize = new Size(10, 10);
-            rectangleForm.Location = new Point((int)rect.Left, (int)rect.Top);
-            rectangleForm.Size = new Size((int)(rect.Right - rect.Left), (int)(rect.Bottom - rect.Top));
-
-            transparentPanel.Size = new Size(rectangleForm.Size.Width - 6, rectangleForm.Size.Height - 6);
-            rectangleForm.Shown += RectangleForm_Shown;
-            rectangleForm.Show();
+            transparentPanel.Parent = blinkingRectForm;
+            blinkingRectForm.Controls.Add(transparentPanel);
+            blinkingRectForm.ShowInTaskbar = false;
+            blinkingRectForm.TransparencyKey = Color.Pink;
+            blinkingRectForm.BackColor = Color.Red;
+            blinkingRectForm.ForeColor = Color.Red;
+            blinkingRectForm.TopMost = true;
+            blinkingRectForm.FormBorderStyle = FormBorderStyle.None;
+            blinkingRectForm.ControlBox = false;
+            blinkingRectForm.Text = string.Empty;
+            blinkingRectForm.StartPosition = FormStartPosition.Manual;
+            blinkingRectForm.MinimumSize = new Size(10, 10);
+            blinkingRectForm.Location = new Point((int)rect.Left, (int)rect.Top);
+            blinkingRectForm.Size = new Size((int)(rect.Right - rect.Left), (int)(rect.Bottom - rect.Top));
+            transparentPanel.Size = new Size(blinkingRectForm.Size.Width - 6, blinkingRectForm.Size.Height - 6);
+            blinkingRectForm.Shown += RectangleForm_Shown;
+            blinkingRectForm.Show();
         }
 
-        private Timer closingTimer;
         private void RectangleForm_Shown(object sender, EventArgs e)
         {
             blinkTimer = new Timer();
             blinkTimer.Interval = 300;
+            blinkTimes = 10;
             blinkTimer.Tick -= BlinkTimer_Tick;
             blinkTimer.Tick += BlinkTimer_Tick;
             blinkTimer.Enabled = true;
-
-            closingTimer = new Timer();
-            closingTimer.Interval = 3000;
-            closingTimer.Tick -= ClosingTimer_Tick;
-            closingTimer.Tick += ClosingTimer_Tick;
-            closingTimer.Enabled = true;
         }
 
         private void BlinkTimer_Tick(object sender, EventArgs e)
         {
-            rectangleForm.Visible = !rectangleForm.Visible;
+            blinkingRectForm.Visible = !blinkingRectForm.Visible;
+            if(blinkTimes-- == 0)
+            {
+                blinkTimer.Enabled = false;
+                blinkingRectForm.Close();
+            }
         }
 
-        private void controlsTree_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-        }
         #endregion
 
         private void controlsTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -256,7 +248,7 @@ namespace G1ANT.Addon.UI.Panels
             controlsTree.SelectedNode = e.Node;
             if (e.Button == MouseButtons.Right)
             {
-                contextMenuStrip.Show(this, new Point(e.X, e.Y));
+                contextMenuStrip.Show(Control.MousePosition);
             }
         }
     }

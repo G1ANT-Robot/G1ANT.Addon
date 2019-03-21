@@ -92,7 +92,6 @@
             this.controlsTree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.controlsTree_BeforeExpand);
             this.controlsTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.controlsTree_NodeMouseClick);
             this.controlsTree.DoubleClick += new System.EventHandler(this.controlsTree_DoubleClick);
-            this.controlsTree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.controlsTree_MouseDown);
             // 
             // contextMenuStrip
             // 
