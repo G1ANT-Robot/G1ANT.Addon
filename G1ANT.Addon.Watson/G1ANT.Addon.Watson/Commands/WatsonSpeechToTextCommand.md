@@ -1,59 +1,42 @@
 # watson.speechtotext
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-watson.speechtotext  path ‴‴  login ‴‴  password ‴‴
+watson.speechtotext path ⟦text⟧ apikey ⟦text⟧ serveruri ⟦text⟧ language ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `watson.speechtotext` allows to transcript speech from audio file.
+This command transcripts speech from an audio file.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes |  | specifies path to file with speech recorded |
-|`login`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes |  | specifies service's login | 
-|`password`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes |  | specifies service's password | 
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md)  | no |  [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | returns most likely text transcription of the speech, recognised by Artificial Intelligence | 
-|`threshold`| [float](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/float.md)  | no | | floating point value that specifies the minimum score a class must have to be displayed in the results, between 0 and 1 | 
-|`language`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | no | | specifies language of speech |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutwatson](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | Path to a file with recorded speech |
+|`apikey`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | API key needed to log in to the service |
+|`serveruri`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |                                            | IBM server URI |
+|`language`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | en-US | Language of speech |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the command's result will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutwatson](TimeoutWatsonVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Watson.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Watson](https://github.com/G1ANT-Robot/G1ANT.Addon.Watson)
+### Generating apikey
 
-**Generating login and password:**
+In order to generate the required `apikey` argument, log in to your [IBM Cloud account](https://cloud.ibm.com/login) (if you don’t have an account yet, [create a free account](https://cloud.ibm.com/registration)) and follow [these instructions](https://cloud.ibm.com/docs/resources?topic=resources-externalapp#externalapp).
 
-In order to generate the required arguments- **login** and **password** for `watson.speechtotext` command, we need to follow the instructions below:
+## Example
 
-1. Log in to IBM Watson account using previously created account. In order to see how to create an account, please go to "watson commands":{TOPIC-LINK+watson-commands}
-
-2. Press **Create resource** button
-
-3. Press **Speech to Text** option
-
-4. Choose the plan and press **Create** button
-
-5. Go to dashboard using link 'https://console.bluemix.net/dashboard/apps'
-6.  Hover over **Speech to Text** and press it
-
-7. Go to **Service credentials** on the left side menu tab
-8. Press **New credential** button
-
-9. Press **Add** button
-
-10. Roll out the **View credentials** menu in the bottom
-
-11. You can now see the **username** and **password** that can be used as login and password in `watson.speechtotext` command
-
-**Example 1:**
+This script will show a Watson’s transcription of a specified audio file (be sure to provide a real API key and an audio filepath):
 
 ```G1ANT
-watson.speechtotext path ‴C:\SomeFolder\speechFile.wav‴ language ‴en-US‴ threshold 0.6
+♥apiKey = Enter your apikey here
+♥serverUri = https://gateway-lon.watsonplatform.net/speech-to-text/api
+watson.speechtotext C:\Test\speech.mp3 apikey ♥apiKey serveruri ♥serverUri
+dialog ♥result
 ```
