@@ -1,5 +1,7 @@
 addon watson version 2.205.17304.1000
 
+♥guid = ⊂Guid.NewGuid().ToString()⊃
+
 try errorcall DeleteImageAndFailTest
     call DownloadImage
     call ClassifyImage
@@ -13,13 +15,13 @@ procedure DeleteImageAndFailTest
 end procedure
 
 procedure DownloadImage
-    file.download filename ♥environment⟦TEMP⟧\orange.jpg url https://drive.google.com/uc?id=1Y6yNFONjE4ASwncLLtLlV2xQsQmG9VDD&export=download
+    file.download filename ♥environment⟦TEMP⟧\♥guid.jpg url https://drive.google.com/uc?id=1Y6yNFONjE4ASwncLLtLlV2xQsQmG9VDD&export=download
 end procedure
 
 procedure ClassifyImage
-    watson.classifyimage apikey gKU8eUsEYH7Cpm23LUiW1df3L9zPeGNEKCmDxiBpearz serveruri https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19 imagepath ♥environment⟦TEMP⟧\orange.jpg
+    watson.classifyimage apikey gKU8eUsEYH7Cpm23LUiW1df3L9zPeGNEKCmDxiBpearz serveruri https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19 imagepath ♥environment⟦TEMP⟧\♥guid.jpg
 end procedure
 
 procedure DeleteImage
-    file.delete ♥environment⟦TEMP⟧\orange.jpg
+    file.delete ♥environment⟦TEMP⟧\♥guid.jpg timeout 15000
 end procedure

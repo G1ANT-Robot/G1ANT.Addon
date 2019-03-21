@@ -1,5 +1,7 @@
 addon watson version 2.205.17304.1000
 
+♥guid = ⊂Guid.NewGuid().ToString()⊃
+
 try errorcall DeleteVoiceFileAndFailTest
     call DownloadVoiceFile
     call ConvertSpeechToText
@@ -13,13 +15,13 @@ procedure DeleteVoiceFileAndFailTest
 end procedure
 
 procedure DownloadVoiceFile
-    file.download filename ♥environment⟦TEMP⟧\voice.wav url https://drive.google.com/uc?id=1uYzXT-D6k9At9zlLHRhA319QXDQXO_x4&export=download
+    file.download filename ♥environment⟦TEMP⟧\♥guid.wav url https://drive.google.com/uc?id=1uYzXT-D6k9At9zlLHRhA319QXDQXO_x4&export=download
 end procedure
 
 procedure ConvertSpeechToText
-    watson.speechtotext ♥environment⟦TEMP⟧\voice.wav apikey tLomu9hE05G7nj83nbCZnODv_FcJDX58mcepzSmmaVme serveruri https://gateway-lon.watsonplatform.net/speech-to-text/api
+    watson.speechtotext ♥environment⟦TEMP⟧\♥guid.wav apikey tLomu9hE05G7nj83nbCZnODv_FcJDX58mcepzSmmaVme serveruri https://gateway-lon.watsonplatform.net/speech-to-text/api
 end procedure
 
 procedure DeleteVoiceFile
-    file.delete ♥environment⟦TEMP⟧\voice.wav
+    file.delete ♥environment⟦TEMP⟧\♥guid.wav timeout 15000
 end procedure
