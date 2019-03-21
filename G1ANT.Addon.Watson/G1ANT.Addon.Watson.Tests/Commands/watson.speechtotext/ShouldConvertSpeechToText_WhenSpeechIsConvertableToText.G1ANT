@@ -4,7 +4,7 @@ try errorcall DeleteVoiceFileAndFailTest
     call DownloadVoiceFile
     call ConvertSpeechToText
     call DeleteVoiceFile
-    test ⊂♥result == "0,91 : this is a voice recognition test ;"⊃
+    test ⊂♥result.Contains("this is a voice recognition test")⊃
 end try
 
 procedure DeleteVoiceFileAndFailTest

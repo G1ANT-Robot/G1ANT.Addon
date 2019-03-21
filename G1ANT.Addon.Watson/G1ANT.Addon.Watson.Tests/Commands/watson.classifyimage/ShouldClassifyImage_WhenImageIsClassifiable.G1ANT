@@ -4,7 +4,7 @@ try errorcall DeleteImageAndFailTest
     call DownloadImage
     call ClassifyImage
     call DeleteImage
-    test ⊂♥result == "Valencia orange:0,685;orange:0,821;citrus:0,934;fruit:0,935;navel orange:0,613;mandarin:0,611;clementine:0,541;tangerine:0,5;food:0,798;beverage:0,783;tree:0,798;orange color:1;"⊃
+    test ⊂♥result.Contains("orange") && ♥result.Contains("citrus") && ♥result.Contains("fruit") && ♥result.Contains("mandarin") && ♥result.Contains("clementine") && ♥result.Contains("tangerine")⊃
 end try
 
 procedure DeleteImageAndFailTest
