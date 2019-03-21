@@ -136,25 +136,11 @@ namespace G1ANT.Addon.UI.Panels
         }
 
         #region RectangleForm
-        /// <summary>
-        /// Retrieves the top-level window that contains the specified UI Automation element.
-        /// </summary>
-        /// <param name="element">The contained element.</param>
-        /// <returns>The containing top-level window element.</returns>
+
         private AutomationElement GetTopLevelWindow(AutomationElement element)
         {
-            TreeWalker walker = TreeWalker.ControlViewWalker;
-            AutomationElement elementParent;
-            AutomationElement node = element;
-            do
-            {
-                elementParent = walker.GetParent(node);
-                if (elementParent == AutomationElement.RootElement)
-                { break; }
-                node = elementParent;
-            }
-            while (true);
-            return node;
+            AutomationElement elementParent = TreeWalker.ControlViewWalker.GetParent(element);
+            return elementParent == AutomationElement.RootElement ? element : GetTopLevelWindow(elementParent);
         }
 
         private void highlightToolStripMenuItem_Click(object sender, EventArgs e)
