@@ -15,13 +15,13 @@ namespace G1ANT.Addon.UI.Panels
         public UIControlsPanel()
         {
             InitializeComponent();
+            ControlType.Button.GetType();
         }
 
         public override void Initialize(IMainForm mainForm)
         {
             base.Initialize(mainForm);
             InitRootElement();
-            ControlType.Button.GetType();
         }
 
         public override void RefreshContent()
