@@ -135,7 +135,7 @@ namespace G1ANT.Addon.MSOffice
 
         public override string ToString(string format)
         {
-            return Value?.ToString();
+            return Get(FromIndex)?.ToString();
         }
 
         protected override MailItem Parse(string value, string format = null)
