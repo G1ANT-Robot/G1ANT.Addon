@@ -1,0 +1,27 @@
+addon watson version 2.205.17304.1000
+
+♥guid = ⊂Guid.NewGuid().ToString()⊃
+
+try errorcall DeleteVoiceFileAndFailTest
+    call DownloadVoiceFile
+    call ConvertSpeechToText
+    call DeleteVoiceFile
+    test ⊂♥result.Contains("this is a voice recognition test")⊃
+end try
+
+procedure DeleteVoiceFileAndFailTest
+    call DeleteVoiceFile
+    test false
+end procedure
+
+procedure DownloadVoiceFile
+    file.download filename ♥environment⟦TEMP⟧\♥guid.wav url https://drive.google.com/uc?id=1uYzXT-D6k9At9zlLHRhA319QXDQXO_x4&export=download
+end procedure
+
+procedure ConvertSpeechToText
+    watson.speechtotext ♥environment⟦TEMP⟧\♥guid.wav apikey ♥credential⟦speechtotext:apikey⟧ serveruri https://gateway-lon.watsonplatform.net/speech-to-text/api
+end procedure
+
+procedure DeleteVoiceFile
+    file.delete ♥environment⟦TEMP⟧\♥guid.wav timeout 15000
+end procedure
