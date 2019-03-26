@@ -19,7 +19,7 @@ procedure DownloadImage
 end procedure
 
 procedure ClassifyImage
-    watson.classifyimage apikey gKU8eUsEYH7Cpm23LUiW1df3L9zPeGNEKCmDxiBpearz serveruri https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19 imagepath ♥environment⟦TEMP⟧\♥guid.jpg
+    watson.classifyimage apikey ♥credential⟦classifyimage:apikey⟧ serveruri https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19 imagepath ♥environment⟦TEMP⟧\♥guid.jpg
 end procedure
 
 procedure DeleteImage

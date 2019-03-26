@@ -19,7 +19,7 @@ procedure DownloadVoiceFile
 end procedure
 
 procedure ConvertSpeechToText
-    watson.speechtotext ♥environment⟦TEMP⟧\♥guid.wav apikey tLomu9hE05G7nj83nbCZnODv_FcJDX58mcepzSmmaVme serveruri https://gateway-lon.watsonplatform.net/speech-to-text/api
+    watson.speechtotext ♥environment⟦TEMP⟧\♥guid.wav apikey ♥credential⟦speechtotext:apikey⟧ serveruri https://gateway-lon.watsonplatform.net/speech-to-text/api
 end procedure
 
 procedure DeleteVoiceFile
