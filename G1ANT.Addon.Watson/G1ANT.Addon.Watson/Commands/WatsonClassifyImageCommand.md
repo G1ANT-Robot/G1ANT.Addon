@@ -1,68 +1,44 @@
 # watson.classifyimage
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-watson.classifyimage  rectangle ‴‴  apikey ‴‴
+watson.classifyimage imagepath ⟦text⟧ apikey ⟦text⟧ serveruri ⟦text⟧ threshold ⟦float⟧
 ```
 
-**Description:**
+## Description
 
-Command `watson.classifyimage` allows to capture part of the screen and classify the image that was captured. Class scores range from 0 - 1, where a higher score indicates greater likelihood of the class being depicted in the image.
+This command classifies a specified image. Class scores range from 0 - 1, where a higher score indicates greater likelihood of the class being depicted in the image.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`rectangle`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes |  | specifies capture screen area in format ‴x0//y0//x1//y1‴ |
-|`apikey`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md)  | yes |  | specifies api key needed to login to the service |
-|`relative`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true  | if set to true, rectangle's position relates to currently focused window|
-|`threshold`| [float](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/float.md) | no | 0 | floating point value that specifies the minimum score a class must have to be displayed in the results, between 0 and 1 |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | returns semicolon separated pairs of classes and score values, recognised by Artificial Intelligence|
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutwatson](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`imagepath`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | Path to an image file to be classified |
+|`apikey`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | API key needed to log in to the service |
+|`serveruri`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |                                            | IBM server URI |
+|`threshold`| [float](G1ANT.Language/G1ANT.Language/Structures/FloatStructure.md) | no | 0.5 | Floating point value (0-1 range) that specifies a minimum score a class must have to be displayed in the results |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the command's result will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutwatson](TimeoutWatsonVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Watson.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Watson](https://github.com/G1ANT-Robot/G1ANT.Addon.Watson)
+### Generating apikey
 
-**Generating apikey**
+In order to generate the required `apikey` argument, log in to your [IBM Cloud account](https://cloud.ibm.com/login) (if you don’t have an account yet, [create a free account](https://cloud.ibm.com/registration)) and follow [these instructions](https://cloud.ibm.com/docs/resources?topic=resources-externalapp#externalapp).
 
-In order to generate the required argument- apikey for `watson.classifyimage` command, we need to follow the instructions below:
+## Example
 
-1. Log in to IBM Watson account under this link: 'https://console.bluemix.net/login' using previously created account. In order to see how to create an account, please go to "watson commands":{TOPIC-LINK+watson-commands}.
-2. Press **create resource** button
-
-3. Hover over and press **Visual Recognition** option
-
-4. Choose **PLAN**
-
-5. Press **Create** button
-
-6.Go to **Service credentials** on the left side menu tab
-
-7. Press **New credential** button
-
-8.Press **Add** button
-
-9. Press **view credential**
-10. Now you can see an **apikey** that can be used in `watson.classifyimage` command
-
-**Example 1:**
+This script will show Watson’s classification of a specified image (be sure to provide a real API key and an image filepath):
 
 ```G1ANT
-watson.classifyimage rectangle ‴480⫽244⫽1439⫽848‴ relative false
+♥apiKey = Enter your apikey here
+♥serverUri = https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19
+watson.classifyimage C:\Test\image.jpg apikey ♥apiKey serveruri ♥serverUri
+dialog ♥result
 ```
 
-results in below classification:
-orange:0,911;citrus:0,927;fruit:0,927;navel orange:0,748;vitamin:0,554;orange color:1;
 
-**Example 2:**
-
-```G1ANT
-watson.classifyimage rectangle ‴480⫽244⫽1439⫽848‴ relative false threshold 0.9
-```
-
-results in below classification:
-owl:0,961;bird of prey:0,962;bird:0,962;animal:0,962;
