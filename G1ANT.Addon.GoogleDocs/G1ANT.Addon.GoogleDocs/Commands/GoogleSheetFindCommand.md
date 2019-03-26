@@ -30,8 +30,11 @@ This script searches Google Sheets document for a certain value, stores the cell
 
 ```G1ANT
 googlesheet.open 1gKFnrtZ-kzijNeIpYxln6PZS0z5btyHjoW1vZhCZ58c
-googlesheet.find value 8.00 sheetname ‴Time sheet‴ result ♥timePlace
+googlesheet.find value ‴8.00‴ sheetname ‴Time sheet‴ result ♥timePlace
 dialog ♥timePlace
 googlesheet.close
 ```
 
+> **Note:** When you want to find numeric values in a Googlesheet document, you need to know how they are displayed in a particular document and enter the number for the `value` argument exactly as it’s presented in the spreadsheet. In the example above searching for “8” will not return any matches, since all numbers are formatted to show two decimal digits, even for integers. This is why the searched value is “8.00”. Likewise, floating point numbers such as 1.23456 have to be entered in a way they appear in a document: **1.235**, when they are displayed up to three decimal digits (with rounding); **1.23**, when two decimal digits are displayed, or **1**, when no decimal digits are displayed.
+>
+> Be also sure to embrace the searched number with ` ‴` character.
