@@ -39,8 +39,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
-            [Argument(Tooltip = "The ratio used used for rescaling image before OCR. Values above 1.0")]
-            public FloatStructure RescaleRatio { get; set; } = new FloatStructure(2.0);
+            [Argument(Tooltip = "The ratio used for rescaling image before OCR. Values above 1.0")]
+            public FloatStructure Sensitivity { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFindCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -60,7 +60,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var language = arguments.Language.Value;
-            var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, arguments.RescaleRatio.Value);
+            var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, arguments.Sensitivity.Value);
             var search = arguments.Search.Value.ToLower().Trim();
             var dataPath = OcrOfflineHelper.GetResourcesFolder(language);
 
@@ -71,7 +71,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 using (var page = tEngine.Process(img))
                 {
                     var rectResult = new Rectangle(-1, -1, -1, -1);
-                    var wordsWithRectPositions = GetWords(page.GetHOCRText(0), arguments.RescaleRatio.Value);
+                    var wordsWithRectPositions = GetWords(page.GetHOCRText(0), arguments.Sensitivity.Value);
                     var searchWords = search.Split(' ');
                     if (searchWords.Length > 1)
                     {
