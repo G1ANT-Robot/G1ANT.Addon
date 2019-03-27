@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using Tesseract;
 
@@ -27,7 +28,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             public TextStructure Search { get; set; }
 
             [Argument]
-            public RectangleStructure Area { get; set; } = new RectangleStructure(System.Windows.Forms.Screen.PrimaryScreen.Bounds);
+            public RectangleStructure Area { get; set; } = new RectangleStructure(SystemInformation.VirtualScreen);
 
             [Argument]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
@@ -42,26 +43,39 @@ namespace G1ANT.Addon.Ocr.Tesseract
         {
         }
 
-        double imgRescaleRatio = 4.0;
+        double imgRescaleRatio = 2.0;
         public void Execute(Arguments arguments)
         {
-            var rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
+            var rectangle = arguments.Area.Value;
+            if (arguments.Relative.Value)
+            {
+                RobotWin32.Rect foregroundWindowRect = new RobotWin32.Rect();
+                RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
+                rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
+                    rectangle.Y + foregroundWindowRect.Top,
+                    foregroundWindowRect.Right - foregroundWindowRect.Left,
+                    foregroundWindowRect.Bottom - foregroundWindowRect.Top);
+            }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var language = arguments.Language.Value;
-            var search = arguments.Search.Value.ToLower();
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, imgRescaleRatio);
-            var imagePath = OcrOfflineHelper.SaveImageToTemporaryFolder(imgToParse);
+            var search = arguments.Search.Value.ToLower().Trim();
             var dataPath = OcrOfflineHelper.GetResourcesFolder(language);
 
             try
             {
                 using (var tEngine = new TesseractEngine(dataPath, language, EngineMode.TesseractAndCube))
-                using (var img = Pix.LoadFromFile(imagePath))
+                using (var img = PixConverter.ToPix(imgToParse))
                 using (var page = tEngine.Process(img))
                 {
                     var rectResult = new Rectangle(-1, -1, -1, -1);
                     var wordsWithRectPositions = GetWords(page.GetHOCRText(0));
-                    if (wordsWithRectPositions.ContainsValue(search))
+                    var searchWords = search.Split(' ');
+                    if (searchWords.Length > 1)
+                    {
+                        rectResult = UnionRectangles(wordsWithRectPositions.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList());
+                    }
+                    else
                     {
                         rectResult = wordsWithRectPositions.Where(x => x.Value == search).First().Key;
                     }
@@ -78,10 +92,15 @@ namespace G1ANT.Addon.Ocr.Tesseract
             {
                 throw e;
             }
-            finally
-            {
-                File.Delete(imagePath);
-            }
+        }
+
+        private Rectangle UnionRectangles(List<Rectangle> rectangleList)
+        {
+            int xMin = rectangleList.Min(s => s.X);
+            int yMin = rectangleList.Min(s => s.Y);
+            int xMax = rectangleList.Max(s => s.X + s.Width);
+            int yMax = rectangleList.Max(s => s.Y + s.Height);
+            return new Rectangle(xMin, yMin, xMax - xMin, yMax - yMin);
         }
 
         public Dictionary<Rectangle, string> GetWords(string tesseractHtml)
@@ -100,7 +119,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 int height = (int)((double.Parse(strs[4]) - double.Parse(strs[2]) + 1) / imgRescaleRatio);
                 var rectange = new Rectangle(left, top, width, height);
                 if (!rectsWords.ContainsKey(rectange))
-                    rectsWords.Add(new Rectangle(left, top, width, height), Ocr_word.Value.ToLower());
+                    rectsWords.Add(new Rectangle(left, top, width, height), Ocr_word.Value.ToLower().Trim());
             }
 
             return rectsWords;
