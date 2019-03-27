@@ -30,12 +30,11 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutocr")]
-            public override TimeSpanStructure Timeout { get; set; }
-
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
+            [Argument(Tooltip = "The ratio used used for rescaling image before OCR. Values above 1.0")]
+            public FloatStructure RescaleRatio { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFromScreenCommand(AbstractScripter scripter) : base(scripter)
         {
@@ -53,7 +52,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                     foregroundWindowRect.Bottom - foregroundWindowRect.Top);
             }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, 2.0);
+            var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, arguments.RescaleRatio.Value);
             var language = arguments.Language.Value;
             var dataPath = OcrOfflineHelper.GetResourcesFolder(language);
 
