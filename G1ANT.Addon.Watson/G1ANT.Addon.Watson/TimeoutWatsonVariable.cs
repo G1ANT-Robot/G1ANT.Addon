@@ -1,9 +1,5 @@
 ﻿using G1ANT.Language;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Watson
 {
@@ -12,7 +8,7 @@ namespace G1ANT.Addon.Watson
         Tooltip = "Determines the timeout value for the watson. commands; the default value is 60000 ms.")]
     public class TimeoutWatsonVariable : Variable
     {
-        private TimeSpanStructure value;
+        private readonly TimeSpanStructure value;
         public TimeoutWatsonVariable(AbstractScripter scripter = null) : base(scripter)
         {
             value = new TimeSpanStructure(new TimeSpan(0, 0, 60), "", scripter);
