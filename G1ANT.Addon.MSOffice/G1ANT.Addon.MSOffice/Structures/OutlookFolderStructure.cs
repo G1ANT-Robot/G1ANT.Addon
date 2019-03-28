@@ -107,7 +107,7 @@ namespace G1ANT.Addon.MSOffice
 
         public override string ToString(string format)
         {
-            return Value?.ToString();
+            return Get(NameIndex)?.ToString();
         }
 
         protected override MAPIFolder Parse(string value, string format = null)
