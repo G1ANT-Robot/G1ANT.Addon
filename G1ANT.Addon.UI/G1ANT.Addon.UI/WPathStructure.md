@@ -2,7 +2,7 @@
 
 This structure stores WPath information of UI elements and is used by the `ui.` family of commands, `waitfor.ui` included.
 
-The WPath information can be obtained from G1ANT.Robot’s Window Tree panel (select `Window Tree` from `View` menu): expand the tree of a given application window, navigate to a desired element and double-click it. Its WPath will be automatically inserted into the command.
+The WPath information can be obtained from G1ANT.Robot’s Windows Tree panel (select `Windows Tree` from `View` menu): expand the tree of a given application window, navigate to a desired element and double-click it. Its WPath will be automatically inserted into the command.
 
 Note that the names of window elements are system language dependent, so scripts with WPaths to these elements can be used only in the same language versions of Windows.
 
