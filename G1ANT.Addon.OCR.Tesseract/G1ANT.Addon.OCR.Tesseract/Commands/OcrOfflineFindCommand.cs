@@ -39,7 +39,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
-            [Argument(Tooltip = "The ratio used for rescaling image before OCR. Values above 1.0")]
+            [Argument(Tooltip = "The ratio used for rescaling of the image before doing actual OCR. Default is 2.0. Higher values are better for recognizing details like small fonts.")]
             public FloatStructure Sensitivity { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFindCommand(AbstractScripter scripter) : base(scripter)
@@ -51,7 +51,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             var rectangle = arguments.Area.Value;
             if (arguments.Relative.Value)
             {
-                RobotWin32.Rect foregroundWindowRect = new RobotWin32.Rect();
+                var foregroundWindowRect = new RobotWin32.Rect();
                 RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
                 rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
                     rectangle.Y + foregroundWindowRect.Top,
