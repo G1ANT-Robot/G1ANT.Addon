@@ -1,40 +1,45 @@
 # ocrgoogle.find
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-ocrgoogle.find  search ‴‴
+ocrgoogle.find search ⟦text⟧ area ⟦rectangle⟧ relative ⟦bool⟧ language ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `ocrgoogle.find` allows to find the text on the current screen and return its position in [rectangle](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/rectangle.md)  format.
+This command finds a specified text on the active screen and returns its position in a [rectangle](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/RectangleStructure.md) format.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`search`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |  | required text to be found on the screen; only single words should be provided |
-|`area`| [rectangle](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/rectangle.md) | no|  | additional parameter narrowing the search area to only certain part of the screen-example: ‴0//0//1920//1080‴ |
-|`relative`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no| true | if false rectangle coordinates will be transformed to absolute, if true, a rectangle passed will crop from current active window |
-|`result`| [rectangle](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/rectangle.md) | no | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of a variable where the result rectangle will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutocr](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`search`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | Text to be found on the screen (the fewer words, the better results) |
+| `area`         | [rectangle](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/RectangleStructure.md) | no | (equal to the current screen area) | Area on the screen to find text in, specified in `x0⫽y0⫽x1⫽y1` format, where `x0⫽y0` are the coordinates of the top left and `x1⫽y1` are the coordinates of the right bottom corner of the area |
+|`relative`| [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no | true | Determines whether the `area` argument is specified with absolute coordinates (top left corner of the screen) or refers to the currently opened window (its top left corner) |
+|`lang`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | en | List of languages (comma separated) to be used for text recognition |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the command's result will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutocr](G1ANT.Addon/G1ANT.Addon.Ocr.Google/G1ANT.Addon.Ocr.Google/Variables/TimeoutOcrVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Ocr.Google.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Ocr.Google](https://github.com/G1ANT-Robot/G1ANT.Addon.Ocr.Google)
+## Example
 
-**Example 1:**
-
-In order to use any ocrgoogle. command, it is necessary to be logged in to Google Cloud Platform. Please see "ocrgoogle.login":{TOPIC-LINK+ocrgoogle-login} command to see how to create an account and log in.
-In this example we are opening G1ANT website, then logging in to Google Cloud Platform to be able to use `ocrgoogle.find` command. It searches for chosen word, in our case- 'Robotise' and saves it inside of a variable thanks to the **result** argument.
+In this example the robot opens Notepad, types “*TEST*” and after a 1-second delay searches for a word “test” on the screen using OCR, then displays its coordinates in a dialog box:
 
 ```G1ANT
-chrome http://g1ant.com/
-ocrgoogle.login jsoncredential ‴0b7239b2d48b60d4b5bc45c5297e57002f611e6x‴
-ocrgoogle.find search ‴Robotise‴ result ♥foundtext
-dialog ♥foundtext
+♥googleLogin = Provide your Google Cloud credential here
+ocrgoogle.login ♥googleLogin
+program notepad
+keyboard ⋘ENTER⋙‴   TEST    ‴
+delay 1
+ocrgoogle.find search test
+dialog ♥result
 ```
+
+> **Note:** In order to use any `ocrgoogle.` command, you have to be logged in to the Google Cloud Services with the [`ocrgoogle.login`](OcrGoogleLoginCommand.md) command.
+
 
