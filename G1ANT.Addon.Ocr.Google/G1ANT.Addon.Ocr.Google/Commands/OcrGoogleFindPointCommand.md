@@ -28,7 +28,7 @@ For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormess
 
 ## Example
 
-In this example the robot opens an image in Chrome, searches for word “alice” in this image and displays its coordinates in a dialog box:
+In this example the robot opens an image in Chrome, searches for a word “alice” in this image and displays its coordinates in a dialog box:
 
 ```G1ANT
 ♥googleLogin = Provide your Google Cloud credential here
