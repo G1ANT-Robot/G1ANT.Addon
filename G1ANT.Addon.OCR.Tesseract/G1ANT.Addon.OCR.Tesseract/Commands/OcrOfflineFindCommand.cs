@@ -48,6 +48,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
 
         public void Execute(Arguments arguments)
         {
+            if (!arguments.Area.Value.IsValidRectangle())
+                throw new ArgumentException("Argument Area is not a valid rectangle");
             var rectangle = arguments.Area.Value;
             if (arguments.Relative.Value)
             {
