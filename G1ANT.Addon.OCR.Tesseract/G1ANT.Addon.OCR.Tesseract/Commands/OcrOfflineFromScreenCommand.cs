@@ -11,6 +11,7 @@ using G1ANT.Language;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 using Tesseract;
 
 namespace G1ANT.Addon.Ocr.Tesseract
@@ -21,7 +22,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
         public class Arguments : CommandArguments
         {
             [Argument(Required = true)]
-            public RectangleStructure Area { get; set; }
+            public RectangleStructure Area { get; set; } = new RectangleStructure(SystemInformation.VirtualScreen);
 
             [Argument]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
@@ -29,29 +30,38 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutocr")]
-            public override TimeSpanStructure Timeout { get; set; }
-
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
+            [Argument(Tooltip = "The ratio used for rescaling of the image before doing actual OCR. Default is 2.0. Higher values are better for recognizing details like small fonts.")]
+            public FloatStructure Sensitivity { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFromScreenCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
         {
-            var rectangle = !arguments.Relative.Value ? arguments.Area.Value : arguments.Area.Value.ToAbsoluteCoordinates();
+            if (!arguments.Area.Value.IsValidRectangle())
+                throw new ArgumentException("Argument Area is not a valid rectangle");
+            var rectangle = arguments.Area.Value;
+            if (arguments.Relative.Value)
+            {
+                var foregroundWindowRect = new RobotWin32.Rect();
+                RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
+                rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
+                    rectangle.Y + foregroundWindowRect.Top,
+                    foregroundWindowRect.Right - foregroundWindowRect.Left,
+                    foregroundWindowRect.Bottom - foregroundWindowRect.Top);
+            }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
-            var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, 4.0);
+            var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, arguments.Sensitivity.Value);
             var language = arguments.Language.Value;
-            var imagePath = OcrOfflineHelper.SaveImageToTemporaryFolder(imgToParse);
             var dataPath = OcrOfflineHelper.GetResourcesFolder(language);
 
             try
             {
                 using (var tEngine = new TesseractEngine(dataPath, language, EngineMode.TesseractAndCube))
-                using (var img = Pix.LoadFromFile(imagePath))
+                using (var img = PixConverter.ToPix(imgToParse))
                 using (var page = tEngine.Process(img))
                 {
                     var text = page.GetText();
@@ -67,10 +77,6 @@ namespace G1ANT.Addon.Ocr.Tesseract
             catch (Exception e)
             {
                 throw e;
-            }
-            finally
-            {
-                File.Delete(imagePath);
             }
         }
     }
