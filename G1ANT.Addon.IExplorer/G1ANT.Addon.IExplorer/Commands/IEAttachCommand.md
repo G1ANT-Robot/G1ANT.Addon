@@ -1,51 +1,35 @@
 # ie.attach
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-ie.attach  phrase ‴‴
+ie.attach phrase ⟦text⟧ by ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `ie.attach` allows to attach G1ANT.Robot to running Internet Explorer instance. This command invocation is required for other ie commands to work properly if you haven't used ie.open command before (which opens IE and attaches to it). This command also activates tab with a specified phrase.
+This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](IEOpenCommand.md) command was not used to open IE and attach the robot to the browser. This command also activates a tab found by a specified phrase.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`phrase`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |  | browser tab title or URL |
-|`by`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | title | title 'OR' url, determines what to look for in Internet Explorer to activate. |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of variable where [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md)  indicating success of attaching operation will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutie](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`phrase`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | Browser tab title or URL address |
+|`by`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | title | Determines where to search for a  phrase in a tab to activate it: `title` or `url` |
+|`result`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no | `♥result` | Name of a variable where the command's result (an attached Internet Explorer instance ID) will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.IExplorer.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer](https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer)
+## Example
 
-**Example 1:**
-
-This example attaches G1ANT.Robot to Internet Explorer.
-
-```G1ANT
-ie.attach phrase ‴Google‴
-ie.detach
-```
-
-**Example 2:**
-
-In this example G1ANT.Robot will stop running the script at line 4, bacause an error will occur. It cannot run `ie.gettitle` command as `ie.detach` command detached the instance before.
+This example attaches G1ANT.Robot to a previously opened Internet Explorer instance, picking it by the website name (Google) in its title:
 
 ```G1ANT
-ie.open url ‴google.com‴ result ♥IeHandle
-ie.gettitle result ♥title1
-ie.detach
-ie.gettitle result ♥title2 errormessage ‴No internet explorer instance attached‴
-ie.attach phrase ‴google‴ by ‴title‴
-ie.seturl url ‴duckduckgo.com‴
-ie.gettitle result ♥title2
-dialog ♥title2
+program iexplore arguments google.com
+ie.attach google by title
 ```
 
