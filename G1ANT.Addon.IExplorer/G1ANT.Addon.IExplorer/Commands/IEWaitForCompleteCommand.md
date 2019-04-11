@@ -33,3 +33,4 @@ ie.waitforcomplete 10000
 ie.seturl duckduckgo.com
 ```
 
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
