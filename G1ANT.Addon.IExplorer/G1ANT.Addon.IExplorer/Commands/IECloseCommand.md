@@ -32,3 +32,6 @@ ie.switch ♥id1
 ie.close
 ie.switch ♥id2
 ie.close
+```
+
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
