@@ -35,4 +35,5 @@ window ‴✱internet explorer✱‴
 ie.runscript ‴alert("Hello world!");‴
 ```
 
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
 
