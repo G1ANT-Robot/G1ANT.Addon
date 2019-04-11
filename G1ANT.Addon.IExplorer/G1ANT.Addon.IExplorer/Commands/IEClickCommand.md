@@ -36,3 +36,5 @@ ie.click gb_70 by id
 ```
 
 > **Note:** The element could also be searched by other selectors: `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`. In order to search any element on a website using the `ie.click` command, you need to use web browser developer tools (right-click an element and select `Inspect element` or `Inspect` from the resulting context menu).
+>
+> Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
