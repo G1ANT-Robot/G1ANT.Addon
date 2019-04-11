@@ -35,4 +35,5 @@ dialog ‴Page loaded!‴
 ie.close
 ```
 
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
 
