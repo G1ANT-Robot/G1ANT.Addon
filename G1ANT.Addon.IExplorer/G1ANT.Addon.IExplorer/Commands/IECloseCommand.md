@@ -32,4 +32,3 @@ ie.switch ♥id1
 ie.close
 ie.switch ♥id2
 ie.close
-```
