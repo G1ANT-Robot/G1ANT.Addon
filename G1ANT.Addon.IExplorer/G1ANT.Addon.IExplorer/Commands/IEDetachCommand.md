@@ -33,4 +33,3 @@ ie.gettitle
 dialog ♥result
 ie.detach
 ie.switch ♥id1
-```
