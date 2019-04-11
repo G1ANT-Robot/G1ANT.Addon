@@ -88,6 +88,11 @@ namespace G1ANT.Addon.IExplorer
             }
             return false;
         }
+        
+        public static void Detach(int wrapper)
+        {
+            Detach(launchedIE.Where(x => x.Id == wrapper).FirstOrDefault());
+        }
 
         public static void Detach(IEWrapper wrapper)
         {

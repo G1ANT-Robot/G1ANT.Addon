@@ -35,9 +35,10 @@ namespace G1ANT.Addon.IExplorer
             try
             {
                 var wrapper = IEManager.AttachToExistingIE(arguments.Phrase.Value, arguments.By.Value);
+                int actionID = wrapper.Id;
                 OnScriptEnd = () =>
                 {
-                    IEManager.Detach(wrapper);
+                    IEManager.Detach(actionID);
                 };
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new IntegerStructure(wrapper.Id));
                 wrapper.ActivateTab(arguments.By.Value, arguments.Phrase.Value);
