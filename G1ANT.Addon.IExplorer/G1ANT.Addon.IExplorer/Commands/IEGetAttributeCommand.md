@@ -40,4 +40,4 @@ dialog ♥result
 
 > **Note:** The element could also be searched by other selectors: `id`, `text`, `title`, `class`, `selector`, `query`, `jquery`. In order to search any element on a website using the `ie.getattribute` command, you need to use web browser developer tools (right-click an element and select `Inspect element` or `Inspect` from the resulting context menu).
 >
-> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
+> Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
