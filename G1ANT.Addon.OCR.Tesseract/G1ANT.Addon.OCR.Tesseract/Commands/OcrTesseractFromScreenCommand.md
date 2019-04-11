@@ -1,39 +1,39 @@
 # ocrtesseract.fromscreen
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-ocrtesseract.fromscreen  area ‴‴
+ocrtesseract.fromscreen search ⟦text⟧ area ⟦rectangle⟧ relative ⟦bool⟧ language ⟦text⟧ 
 ```
 
-**Description:**
+## Description
 
-Command `ocrtesseract.fromscreen` allows to capture part of the screen and recognize text from it. This command may often be less accurate than `ocr` command. Please be aware that command will unpack some necessary data to folder My Documents/G1ANT.Robot.
-Required argument: area.
+This command captures part of the screen and recognizes text from it.
 
-| Argument | Type | Required | Default Value | Description |
-| -------- | ---- | -------- | ------------- | ----------- |
-|`area`| [rectangle](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/rectangle.md) | yes|  | specifies screen area to be captured in format ‴x0⫽y0⫽x1⫽y1‴ (x0,y0 – coordinates of a top left corner; x1,y1 – coordinates of a right bottom corner of the area) |
-|`relative`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | determines whether the area to be analysed (defined with "area" argument) is referred to absolute coordinates (top left corner of the screen) or related to the currently opened window (or rather its top left corner). Ensure that a proper window is opened before calling this argument "true" |
-|`result`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | the variable where the recognised text will be kept |
-|`language`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | eng | possible language of text recognition |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutocr](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+| Argument       | Type                                                         | Required | Default Value                                                | Description                                                  |
+| -------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `area`         | [rectangle](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/RectangleStructure.md) | yes      |                                                              | Area on the screen to be captured specified in `x0⫽y0⫽x1⫽y1` format, where `x0⫽y0` are the coordinates of the top left and `x1⫽y1` are the coordinates of the right bottom corner of the area |
+| `relative`     | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                         | Determines whether the `area` argument is specified with absolute coordinates (top left corner of the screen) or refers to the currently opened window (its top left corner) |
+| `lang`         | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       | eng                                                          | Language to be used for text recognition                     |
+| `sensitivity`  | [float](G1ANT.Language/G1ANT.Language/Structures/FloatStructure.md) | no       | 2.0                                                          | Factor of image zoom that allows better recognition of smaller text |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                    | Name of a variable where the command's result will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                         | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                              | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                              | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                              | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                              | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Ocr.Tesseract.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Ocr.Tesseract](https://github.com/G1ANT-Robot/G1ANT.Addon.Ocr.Tesseract)
+## Example
 
-**Example 1:**
-
-In our example, we are firstly opening G1ANT website using `ie.open` command. Our goal is to save some text from a website in a variable. `ocrtesseract.fromscreen` command becomes handy. **area** argument takes the coordinates of the screen where the text is. We are only using `dialog` command to see whether we managed to catch the proper text, but once anything is assigned to a variable, you can process it further.
+In this example the robot opens G1ANT website and after a 4-second delay necessary to load the page it captures the specified area. The recognized text is then displayed in a dialog box:
 
 ```G1ANT
-ie.open url ‴g1ant.com‴
-ocrtesseract.fromscreen area ‴507⫽392⫽1628⫽888‴ relative false result ♥area timeout 5000
-dialog ♥area
+program iexplore arguments ‴g1ant.com/#the-facts‴
+delay 4
+ocrtesseract.fromscreen 10⫽57⫽1160⫽950 result ♥ocr
+dialog ♥ocr
 ```
 
