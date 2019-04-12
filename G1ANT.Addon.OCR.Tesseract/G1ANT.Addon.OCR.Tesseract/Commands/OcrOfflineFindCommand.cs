@@ -48,9 +48,9 @@ namespace G1ANT.Addon.Ocr.Tesseract
 
         public void Execute(Arguments arguments)
         {
-            if (!arguments.Area.Value.IsValidRectangle())
-                throw new ArgumentException("Argument Area is not a valid rectangle");
             var rectangle = arguments.Area.Value;
+            if (!rectangle.IsValidRectangle())
+                throw new ArgumentException("Argument Area is not a valid rectangle");
             if (arguments.Relative.Value)
             {
                 var foregroundWindowRect = new RobotWin32.Rect();
@@ -79,7 +79,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                     {
                         rectResult = UnionRectangles(wordsWithRectPositions.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList());
                     }
-                    else
+                    else if (wordsWithRectPositions.ContainsValue(search))
                     {
                         rectResult = wordsWithRectPositions.Where(x => x.Value == search).First().Key;
                     }
@@ -98,7 +98,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             }
         }
 
-        private Rectangle UnionRectangles(List<Rectangle> rectangleList)
+        private Rectangle UnionRectangles(IEnumerable<Rectangle> rectangleList)
         {
             int xMin = rectangleList.Min(s => s.X);
             int yMin = rectangleList.Min(s => s.Y);
