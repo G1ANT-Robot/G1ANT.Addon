@@ -10,7 +10,6 @@
 using G1ANT.Language;
 using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using Tesseract;
 
@@ -21,7 +20,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true)]
+            [Argument]
             public RectangleStructure Area { get; set; } = new RectangleStructure(SystemInformation.VirtualScreen);
 
             [Argument]
@@ -33,7 +32,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
-            [Argument(Tooltip = "The ratio used for rescaling of the image before doing actual OCR. Default is 2.0. Higher values are better for recognizing details like small fonts.")]
+            [Argument(Tooltip = "Factor of image zoom that allows better recognition of smaller text")]
             public FloatStructure Sensitivity { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFromScreenCommand(AbstractScripter scripter) : base(scripter)
@@ -41,17 +40,17 @@ namespace G1ANT.Addon.Ocr.Tesseract
         }
         public void Execute(Arguments arguments)
         {
-            if (!arguments.Area.Value.IsValidRectangle())
-                throw new ArgumentException("Argument Area is not a valid rectangle");
             var rectangle = arguments.Area.Value;
+            if (!rectangle.IsValidRectangle())
+                throw new ArgumentException("Argument Area is not a valid rectangle");
             if (arguments.Relative.Value)
             {
                 var foregroundWindowRect = new RobotWin32.Rect();
                 RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
                 rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
                     rectangle.Y + foregroundWindowRect.Top,
-                    foregroundWindowRect.Right - foregroundWindowRect.Left,
-                    foregroundWindowRect.Bottom - foregroundWindowRect.Top);
+                    Math.Min(rectangle.Width, foregroundWindowRect.Right - foregroundWindowRect.Left - rectangle.X),
+                    Math.Min(rectangle.Height, foregroundWindowRect.Bottom - foregroundWindowRect.Top - rectangle.Y));
             }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, arguments.Sensitivity.Value);
