@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.open",Tooltip = "This command allows to open new instance of Internet Explorer and optionally set webpage address")]
+    [Command(Name = "ie.open", Tooltip = "This command allows to open new instance of Internet Explorer and optionally set webpage address")]
     public class IEOpenCommand : Command
     {
         public class Arguments : CommandArguments
@@ -21,7 +21,7 @@ namespace G1ANT.Addon.IExplorer
             public TextStructure Url { get; set; } = new TextStructure(string.Empty);
 
             [Argument(DefaultVariable = "timeoutie")]
-            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument(Tooltip = "If set to 'true', command will not wait until document reaches completed state")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
@@ -51,9 +51,10 @@ namespace G1ANT.Addon.IExplorer
                 wrapper.Ie = new WatiN.Core.IE();
                 if (closeError)
                 {
+                    int wrapperId = wrapper.Id;
                     OnScriptEnd = () =>
                     {
-                        IEManager.Detach(wrapper);
+                        IEManager.Detach(wrapperId);
                     };
                 }
                 return wrapper;
