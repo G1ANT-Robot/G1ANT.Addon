@@ -51,10 +51,10 @@ namespace G1ANT.Addon.IExplorer
                 wrapper.Ie = new WatiN.Core.IE();
                 if (closeError)
                 {
-                    int actionID = wrapper.Id;
+                    int wrapperId = wrapper.Id;
                     OnScriptEnd = () =>
                     {
-                        IEManager.Detach(actionID);
+                        IEManager.Detach(wrapperId);
                     };
                 }
                 return wrapper;
