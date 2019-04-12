@@ -49,8 +49,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
                 rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
                     rectangle.Y + foregroundWindowRect.Top,
-                    Math.Min(rectangle.Width, foregroundWindowRect.Right - foregroundWindowRect.Left - rectangle.X),
-                    Math.Min(rectangle.Height, foregroundWindowRect.Bottom - foregroundWindowRect.Top - rectangle.Y));
+                    Math.Min(rectangle.Width, foregroundWindowRect.Right - foregroundWindowRect.Left) - rectangle.X,
+                    Math.Min(rectangle.Height, foregroundWindowRect.Bottom - foregroundWindowRect.Top) - rectangle.Y);
             }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var imgToParse = OcrOfflineHelper.RescaleImage(partOfScreen, arguments.Sensitivity.Value);

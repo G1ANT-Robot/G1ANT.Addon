@@ -57,8 +57,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
                 rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
                     rectangle.Y + foregroundWindowRect.Top,
-                    foregroundWindowRect.Right - foregroundWindowRect.Left,
-                    foregroundWindowRect.Bottom - foregroundWindowRect.Top);
+                    Math.Min(rectangle.Width, foregroundWindowRect.Right - foregroundWindowRect.Left) - rectangle.X,
+                    Math.Min(rectangle.Height, foregroundWindowRect.Bottom - foregroundWindowRect.Top) - rectangle.Y);
             }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var language = arguments.Language.Value;
@@ -78,7 +78,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
                     if (searchWords.Length > 1)
                     {
                         var rectangleList = rectanglesWithWords.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList();
-                        if(rectangleList.Count() == 0)
+                        if (rectangleList.Count() == 0)
                         {
                             throw new NullReferenceException("Ocr was unable to find text");
                         }
