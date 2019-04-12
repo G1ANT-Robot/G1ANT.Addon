@@ -32,7 +32,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
-            [Argument(Tooltip = "The ratio used for rescaling of the image before doing actual OCR. Default is 2.0. Higher values are better for recognizing details like small fonts.")]
+            [Argument(Tooltip = "Factor of image zoom that allows better recognition of smaller text")]
             public FloatStructure Sensitivity { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFromScreenCommand(AbstractScripter scripter) : base(scripter)

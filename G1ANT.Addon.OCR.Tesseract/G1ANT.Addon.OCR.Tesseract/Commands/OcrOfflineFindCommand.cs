@@ -39,7 +39,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
-            [Argument(Tooltip = "The ratio used for rescaling of the image before doing actual OCR. Default is 2.0. Higher values are better for recognizing details like small fonts.")]
+            [Argument(Tooltip = "Factor of image zoom that allows better recognition of smaller text")]
             public FloatStructure Sensitivity { get; set; } = new FloatStructure(2.0);
         }
         public OcrOfflineFindCommand(AbstractScripter scripter) : base(scripter)
@@ -73,15 +73,20 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 using (var page = tEngine.Process(img))
                 {
                     var rectResult = new Rectangle(-1, -1, -1, -1);
-                    var wordsWithRectPositions = GetWords(page.GetHOCRText(0), arguments.Sensitivity.Value);
+                    var rectanglesWithWords = GetWords(page.GetHOCRText(0), arguments.Sensitivity.Value);
                     var searchWords = search.Split(' ');
                     if (searchWords.Length > 1)
                     {
-                        rectResult = UnionRectangles(wordsWithRectPositions.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList());
+                        var rectangleList = rectanglesWithWords.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList();
+                        if(rectangleList.Count() == 0)
+                        {
+                            throw new NullReferenceException("Ocr was unable to find text");
+                        }
+                        rectResult = UnionRectangles(rectangleList);
                     }
-                    else if (wordsWithRectPositions.ContainsValue(search))
+                    else if (rectanglesWithWords.ContainsValue(search))
                     {
-                        rectResult = wordsWithRectPositions.Where(x => x.Value == search).First().Key;
+                        rectResult = rectanglesWithWords.Where(x => x.Value == search).First().Key;
                     }
                     if (Equals(rectResult, new Rectangle(-1, -1, -1, -1)))
                         throw new NullReferenceException("Ocr was unable to find text");
