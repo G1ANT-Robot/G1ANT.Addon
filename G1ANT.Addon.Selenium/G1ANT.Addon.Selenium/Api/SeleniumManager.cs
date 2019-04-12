@@ -88,8 +88,8 @@ namespace G1ANT.Addon.Selenium
             {
                 throw new ApplicationException("Using multiple Edge instances at once is not supported.");
             }
-            IWebDriver driver = CreateNewWebDriver(webBrowserName, type,  out mainWindowHandle, driversDirectory);
-            SeleniumWrapper wrapper = new SeleniumWrapper(driver, mainWindowHandle, type,scr)
+            IWebDriver driver = CreateNewWebDriver(webBrowserName, type, out mainWindowHandle, driversDirectory);
+            SeleniumWrapper wrapper = new SeleniumWrapper(driver, mainWindowHandle, type, scr)
             {
                 Id = wrappers.Count > 0 ? wrappers.Max(x => x.Id) + 1 : 0
             };
@@ -129,7 +129,7 @@ namespace G1ANT.Addon.Selenium
                 }
 
             }
-            
+
         }
         public static void Quit(SeleniumWrapper wrapper)
         {
@@ -137,9 +137,16 @@ namespace G1ANT.Addon.Selenium
             RemoveWrapper(wrapper);
         }
 
+        public static void RemoveWrapper(int id)
+        {
+            var toRemove = wrappers.Where(x => x.Id == id).FirstOrDefault();
+            RemoveWrapper(toRemove);
+        }
+
         public static void RemoveWrapper(SeleniumWrapper wrapper)
         {
             wrappers.Remove(wrapper);
+            wrapper = null;
         }
 
         public static void DisposeAllOpenedDrivers()
