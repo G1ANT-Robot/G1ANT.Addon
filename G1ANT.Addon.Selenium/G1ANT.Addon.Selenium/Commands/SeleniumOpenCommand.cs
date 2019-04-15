@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Selenium
             public TextStructure Url { get; set; } = new TextStructure(string.Empty);
 
             [Argument(DefaultVariable = "timeoutselenium")]
-            public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(SeleniumSettings.SeleniumTimeout);
+            public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(SeleniumSettings.SeleniumTimeout);
 
             [Argument(Tooltip = "Does not wait for a webpage to fully load")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
@@ -50,10 +50,12 @@ namespace G1ANT.Addon.Selenium
                         arguments.NoWait.Value,
                         Scripter.Log,
                         Scripter.Settings.UserDocsAddonFolder.FullName);
+                int wrapperId = wrapper.Id;
                 OnScriptEnd = () =>
                 {
                     SeleniumManager.DisposeAllOpenedDrivers();
-                    SeleniumManager.RemoveWrapper(wrapper);
+                    SeleniumManager.RemoveWrapper(wrapperId);
+                    SeleniumManager.CleanUp();
                 };
                 Scripter.Variables.SetVariableValue(arguments.Result.Value, new IntegerStructure(wrapper.Id));
             }
@@ -61,7 +63,6 @@ namespace G1ANT.Addon.Selenium
             {
                 throw new ApplicationException($"Error occured while opening new selenium instance. Url '{arguments.Url.Value}'. Message: {ex.Message}", ex);
             }
-            OnScriptEnd = SeleniumManager.CleanUp;
         }
     }
 }
