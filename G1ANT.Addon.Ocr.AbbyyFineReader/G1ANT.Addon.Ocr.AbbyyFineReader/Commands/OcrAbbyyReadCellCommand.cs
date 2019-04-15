@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -26,7 +26,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.readcell", Tooltip = "This command allows to read row column indexed cell from specific table in the document")]
+    [Command(Name = "ocrabbyy.readcell", Tooltip = "Command `ocrabbyy.readcell` allows to read row column indexed cell from specific table in the document.")]
     public class OcrAbbyyReadCellCommand : Command
     {
         public class Arguments : CommandArguments
@@ -43,10 +43,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             //[Argument(Required = true, Tooltip = "Index of a column in the table")]
             //public IntegerStructure Column { get; set; } = null;
 
-            [Argument(Required = true, Tooltip = "offset to be added to get proper value in format row,column")]
+            [Argument(Required = true, Tooltip = "position of the cell in the table in format row, column")]
             public TextStructure Position { get; set; } = null;
 
-            [Argument(Tooltip = "offset to be added to get proper value in format row,column")]
+            [Argument(Tooltip = "position of the cell in the table in format row, column")]
             public TextStructure Offset { get; set; } = null;
 
             [Argument]

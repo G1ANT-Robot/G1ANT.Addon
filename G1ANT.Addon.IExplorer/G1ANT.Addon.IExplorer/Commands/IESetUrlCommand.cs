@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.seturl", Tooltip = "Navigates Internet Explorer to specified address")]
+    [Command(Name = "ie.seturl", Tooltip = "This command navigates Internet Explorer to a specified URL address.")]
     public class IESetUrlCommand : Command
     {
         public class Arguments : CommandArguments
@@ -20,10 +20,10 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Required = true,Tooltip = "Address to navigate to")]
             public TextStructure Url { get; set; }
 
-            [Argument(Tooltip = "If set to 'true', command will not wait until document reach completed state")]
+            [Argument(Tooltip = "If set to `true`, the command will not wait until the page is loaded")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
-            [Argument(DefaultVariable = "timeoutie")]
+            [Argument(DefaultVariable = "timeoutie", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
         }
         public IESetUrlCommand(AbstractScripter scripter) : base(scripter)

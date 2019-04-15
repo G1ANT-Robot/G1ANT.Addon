@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -19,7 +19,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.gettableposition", Tooltip = "This command allows to find indexes.")]
+    [Command(Name = "ocrabbyy.gettableposition", Tooltip = "Command `ocrabbyy.gettableposition ` allows to find indexes.")]
     public class OcrAbbyyGetTablePositionCommand : Command
     {
         public class Arguments : CommandArguments
@@ -30,13 +30,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument(Required = true, Tooltip = "Index of a table in document")]
+            [Argument(Required = true, Tooltip = "index of a table in document")]
             public IntegerStructure TableIndex { get; set; } = null;
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr")]
+            [Argument(DefaultVariable = "timeoutOcr", Tooltip = "specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
         }
         public OcrAbbyyGetTablePositionCommand(AbstractScripter scripter) : base(scripter)

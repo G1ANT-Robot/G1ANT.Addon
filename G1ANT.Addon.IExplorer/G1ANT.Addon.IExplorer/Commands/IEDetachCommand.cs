@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.detach", Tooltip = "This command allows to detach currently attached Internet Explorer")]
+    [Command(Name = "ie.detach", Tooltip = "This command detaches the currently running Internet Explorer instance — attached or opened in G1ANT.Robot.")]
     public class IEDetachCommand : Command
     {
         public class Arguments : CommandArguments

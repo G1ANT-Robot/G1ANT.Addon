@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -18,10 +18,10 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Browser tab title or url")]
+            [Argument(Required = true, Tooltip = "Browser tab title or URL address")]
             public TextStructure Phrase { get; set; }
 
-            [Argument(Tooltip = "'title' or 'url', determines what to look for in a tab to activate")]
+            [Argument(Tooltip = "Determines where to search for a  phrase in a tab to activate it: `title` or `url`")]
             public TextStructure By { get; set; } = new TextStructure("title");
         }
         public IEActivateTabCommand(AbstractScripter scripter) : base(scripter)

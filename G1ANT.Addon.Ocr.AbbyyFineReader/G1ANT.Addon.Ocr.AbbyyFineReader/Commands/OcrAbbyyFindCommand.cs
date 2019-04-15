@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -30,10 +30,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Text that you want to find in the screen. ")]
+            [Argument(Required = true, Tooltip = "text that you want to find on the screen")]
             public TextStructure Search { get; set; }
 
-            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument]

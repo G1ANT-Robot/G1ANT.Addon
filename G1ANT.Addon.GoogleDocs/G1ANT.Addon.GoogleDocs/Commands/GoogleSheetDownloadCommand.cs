@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace G1ANT.Addon.GoogleDocs
 {
 
-    [Command(Name = "googlesheet.download", Tooltip = "This command allows to download whole spreadsheet.")]
+    [Command(Name = "googlesheet.download", Tooltip = "This command downloads the whole spreadsheet.")]
     public class GoogleSheetDownloadCommand : Command
     {
         public class Arguments : CommandArguments

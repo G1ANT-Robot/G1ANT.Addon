@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Xlsx
 *    www.g1ant.com
@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.setsheet", Tooltip = "This command allows to set active sheet to work with.")]
+    [Command(Name = "xlsx.setsheet", Tooltip = "This command sets a specified sheet as active.")]
     public class XlsxSetSheetCommand : Command
     {
         public  class Arguments : CommandArguments

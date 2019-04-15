@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr
 *    www.g1ant.com
@@ -20,7 +20,7 @@ namespace G1ANT.Language.Ocr.Google
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true)]
+            [Argument(Required = true, Tooltip = "Area on the screen to find text in, specified in `x0⫽y0⫽x1⫽y1` format, where `x0⫽y0` are the coordinates of the top left and `x1⫽y1` are the coordinates of the right bottom corner of the area")]
             public RectangleStructure Area { get; set; }
 
             [Argument]
@@ -29,7 +29,7 @@ namespace G1ANT.Language.Ocr.Google
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutocr")]
+            [Argument(DefaultVariable = "timeoutocr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "Comma separated language hints for better text recognition")]

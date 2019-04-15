@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.replace",Tooltip = "This command allows to replace any word in document.", NeedsDelay = true)]
+    [Command(Name = "word.replace",Tooltip = "This command replaces specified text in a document.", NeedsDelay = true)]
     public class WordReplaceCommand : Command
 	{
         public class Arguments : CommandArguments
@@ -25,10 +25,10 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Word to be replaced in document")]
             public TextStructure To { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "If true then case sensitive")]
+            [Argument(Tooltip = "If set to `true`, then the search is case sensitive")]
             public BooleanStructure MatchCase { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "If set to false, replaces given search even in substrings")]
+            [Argument(Tooltip = "If set to `true`, only whole words are replaced")]
             public BooleanStructure WholeWords { get; set; } = new BooleanStructure(false);
 
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.open", Tooltip= "This command allows to open a new Google Sheets instance.")]
+    [Command(Name = "googlesheet.open", Tooltip= "This command opens a new Google Sheets instance.")]
     public class GoogleSheetOpenCommand : Command
     {
         public class Arguments : CommandArguments

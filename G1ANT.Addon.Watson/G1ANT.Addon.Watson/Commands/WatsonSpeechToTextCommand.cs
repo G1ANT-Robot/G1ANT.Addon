@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Watson
 *    www.g1ant.com
@@ -13,7 +13,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.speechtotext", Tooltip = "This command allows to transcript speech from audio file.", NeedsDelay = true)]
+    [Command(Name = "watson.speechtotext", Tooltip = "This command transcripts speech from an audio file.", NeedsDelay = true)]
     public class WatsonSpeechToTextCommand : Command
     {
         public class Arguments : CommandArguments
@@ -30,10 +30,10 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Specifies language of speech.")]
+            [Argument(Tooltip = "Language of speech")]
             public TextStructure Language { get; set; } = new TextStructure("en-US");
 
-            [Argument(DefaultVariable = "timeoutwatson")]
+            [Argument(DefaultVariable = "timeoutwatson", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
         }
 

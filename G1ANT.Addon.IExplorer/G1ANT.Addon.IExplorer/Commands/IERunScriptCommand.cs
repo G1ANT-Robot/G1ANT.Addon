@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,15 +12,15 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.runscript", Tooltip = "This command executes javascript on currently attached Internet Explorer instance")]
+    [Command(Name = "ie.runscript", Tooltip = "This command executes script on the currently attached Internet Explorer instance. ")]
     public class IERunScriptCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Script to be executed")]
+            [Argument(Required = true, Tooltip = "Full script as text to be evaluated in a browser")]
             public TextStructure Script { get; set; }
 
-            [Argument(Tooltip = "Name of variable where result of javascript execution will be stored")]
+            [Argument(Tooltip = "Name of a variable where the script result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
         }

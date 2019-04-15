@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -31,13 +31,13 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Headers attached to rest request")]
             public ListStructure Headers { get; set; }
 
-            [Argument(Tooltip = "Parameters attached to rest request")]
+            [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (**Ctrl+\\**); their keys and values should be separated with colon (:)")]
             public ListStructure Parameters { get; set; }
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Variable which will return http status responsed by the API")]
+            [Argument(Tooltip = "Name of a variable which will store the request delivery status")]
             public VariableStructure Status { get; set; } = new VariableStructure("status");
         }
         public RestCommand(AbstractScripter scripter) : base(scripter)

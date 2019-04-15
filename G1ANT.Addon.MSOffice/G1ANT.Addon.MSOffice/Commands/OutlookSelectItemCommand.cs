@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -13,12 +13,12 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice.Commands
 {
-    [Command(Name = "outlook.selectitem", Tooltip = "This command selects mail or folder element in Outlook UI.")]
+    [Command(Name = "outlook.selectitem", Tooltip = "This command selects a mail or a folder element in Outlook’s user interface.")]
     public class OutlookSelectItemCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "mail or folder structure.")]
+            [Argument(Required = true, Tooltip = "Item — a mail message or a folder — to be selected")]
             public Structure Item { get; set; }
         }
         public OutlookSelectItemCommand(AbstractScripter scripter) : base(scripter)

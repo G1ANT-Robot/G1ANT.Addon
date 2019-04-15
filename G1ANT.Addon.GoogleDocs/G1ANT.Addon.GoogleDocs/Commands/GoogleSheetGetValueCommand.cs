@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -12,15 +12,15 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.getvalue", Tooltip= "This command allows to get value from opened Google Sheets instance.")]
+    [Command(Name = "googlesheet.getvalue", Tooltip= "This command gets a value from a specified cell or range in an opened Google Sheets instance.")]
     public class GoogleSheetGetValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Range like A6 or A3&B7 or A3:A6&B7")]
+            [Argument(Required = true, Tooltip = "Cell or range to get a value from, for example `A6`, `A3&B7` or `A3:A6&B7`")]
             public TextStructure Range { get; set; }
 
-            [Argument(Tooltip = "SheetName where range exists, can be empty or omitted")]
+            [Argument(Tooltip = "Sheet name containing the specified range; can be empty or omitted")]
             public TextStructure SheetName { get; set; } = new TextStructure(string.Empty);
 
             [Argument]

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -16,12 +16,12 @@ using System.Linq;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.getrow", Tooltip = "Gets all used cells of the specified row.")]
+    [Command(Name = "excel.getrow", Tooltip = "This command gets all used cells of the specified row.")]
     public class ExcelGetRowCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Cell's row number or row's name")]
+            [Argument(Required = true, Tooltip = "Row number")]
             public IntegerStructure Row { get; set; }
 
             [Argument]

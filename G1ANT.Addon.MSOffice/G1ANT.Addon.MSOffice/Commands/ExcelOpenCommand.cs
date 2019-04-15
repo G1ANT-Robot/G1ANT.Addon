@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -16,7 +16,7 @@ using System.IO;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.open", Tooltip= "Opens new excel instance.")]
+    [Command(Name = "excel.open", Tooltip= "This command opens a new Excel instance.")]
     public class ExcelOpenCommand : Command
     {
         public class Arguments : CommandArguments

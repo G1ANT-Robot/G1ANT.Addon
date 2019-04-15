@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -15,15 +15,15 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "is.accessible", Tooltip = "This command allows to check if host is accessible.")]
+    [Command(Name = "is.accessible", Tooltip = "This command checks if a host is accessible.")]
     public class IsAccessibleCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of host that we are trying to access")]
+            [Argument(Required = true, Tooltip = "Name of a host to be accessed")]
             public TextStructure Hostname { get; set; }
 
-            [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Defines timeout for connecting")]
+            [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(1000);
 
             [Argument]

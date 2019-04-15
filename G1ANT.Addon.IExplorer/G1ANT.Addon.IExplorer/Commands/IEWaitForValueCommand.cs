@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.waitforvalue", Tooltip = "This command keeps on executing specified javascript until specified value is returned")]
+    [Command(Name = "ie.waitforvalue", Tooltip = "This command keeps on executing a specified javascript until an expected value is returned.")]
     public class IEWaitForValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true,Tooltip = "Pass the full script as string to get it evaluated in browser")]
+            [Argument(Required = true,Tooltip = "Script to be evaluated in a browser")]
             public TextStructure Script { get; set; }
 
-            [Argument(Required = true, Tooltip = "Value what we expect that script will return")]
+            [Argument(Required = true, Tooltip = "Value that the script should return")]
             public TextStructure ExpectedValue { get; set; }
         }
         public IEWaitForValueCommand(AbstractScripter scripter) : base(scripter)

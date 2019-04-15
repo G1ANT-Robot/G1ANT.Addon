@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr
 *    www.g1ant.com
@@ -11,13 +11,13 @@
 namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.login",
-        Tooltip = "This command allows to login to the Google Cloud Service.")]
+        Tooltip = "This command logs in to the Google Cloud text recognition service.")]
 
     public class OcrGoogleLoginCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Json credential obtained from Google Cloud Service.")]
+            [Argument(Required = true, Tooltip = "JSON credential obtained from Google Cloud text recognition service")]
             public TextStructure JsonCredential { get; set; }
         }
 

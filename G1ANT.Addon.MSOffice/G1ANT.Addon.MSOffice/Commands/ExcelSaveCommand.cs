@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,12 +15,12 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.save", Tooltip = "Saves currently active excel workbook.")]
+    [Command(Name = "excel.save", Tooltip = "This command saves the currently active Excel workbook.")]
     public class ExcelSaveCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Saving file path. If not specified, G1ANT robot will try to save the file under the path it was loaded from. \nIf current excel application was not opened with specified path, exception will be thrown.")]
+            [Argument(Tooltip = "Full path to a file to be saved. If not specified, G1ANT.Robot will try to save the file using the path it was loaded from. If the current Excel instance was opened with no path specified, error handling will be applied")]
             public TextStructure Path { get; set; }
 
 

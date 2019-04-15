@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Watson
 *    www.g1ant.com
@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.classifyimage", Tooltip = "This command allows classify the image.")]
+    [Command(Name = "watson.classifyimage", Tooltip = "This command classifies a specified image. ")]
     public class WatsonClassifyImageCommand : Command
     {
         public class Arguments : CommandArguments
@@ -28,13 +28,13 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
             public TextStructure ServerUri { get; set; }
 
-            [Argument(Tooltip = "Floating point value that specifies the minimum score a class must have to be displayed in the results.")]
+            [Argument(Tooltip = "Floating point value (0-1 range) that specifies a minimum score a class must have to be displayed in the results")]
             public FloatStructure Threshold { get; set; } = new FloatStructure(0.5f);
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutwatson")]
+            [Argument(DefaultVariable = "timeoutwatson", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
         }
         public WatsonClassifyImageCommand(AbstractScripter scripter) : base(scripter)

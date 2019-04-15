@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -11,12 +11,12 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.close", Tooltip = "This command closes Google Sheets instance.")]
+    [Command(Name = "googlesheet.close", Tooltip = "This command closes a Google Sheets instance.")]
     public class GoogleSheetCloseCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Id of spreadsheet that we are closing")]
+            [Argument(Tooltip = "ID of a spreadsheet to be closed. The ID can be stored in a variable when the [`googlesheet.open`](GoogleSheetOpenCommand.md) command is used. If no ID is specified, a recently used Google Sheets instance is closed")]
             public IntegerStructure Id { get; set; }
         }
         public GoogleSheetCloseCommand(AbstractScripter scripter) : base(scripter)

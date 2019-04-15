@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -14,15 +14,15 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.runmacro",Tooltip = "This command allows to run macro in currently active word instance.", NeedsDelay = true)]
+    [Command(Name = "word.runmacro",Tooltip = "This command runs a macro in the currently active Word instance.", NeedsDelay = true)]
     public class WordRunMacroCommand : Command
 	{
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of the macro")]
+            [Argument(Required = true, Tooltip = "Name of a macro")]
             public TextStructure Name { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Arguments for specified macro")]
+            [Argument(Tooltip = "Arguments for the specified macro")]
             public TextStructure Args { get; set; } 
 
 

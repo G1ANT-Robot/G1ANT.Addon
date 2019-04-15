@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -16,12 +16,12 @@ namespace G1ANT.Addon.MSOffice
 {
 
 
-    [Command(Name = "excel.setvalue", Tooltip = "Sets value in specified cell.")]
+    [Command(Name = "excel.setvalue", Tooltip = "This command enters a value into a specified cell.")]
     public class ExcelSetValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true)]
+            [Argument(Required = true, Tooltip = "Any value to be set in a specified cell")]
             public TextStructure Value { get; set; }
 
             [Argument(Required = true, Tooltip = "Cell's row number")]

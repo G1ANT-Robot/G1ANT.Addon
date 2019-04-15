@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr
 *    www.g1ant.com
@@ -22,7 +22,7 @@ namespace G1ANT.Language.Ocr.Google
     {
         public class Arguments : CommandArguments
         { 
-            [Argument(Required = true,Tooltip = "Text that you want to find in the screen. Provide only single words")]
+            [Argument(Required = true,Tooltip = "Text to be found on the screen (the fewer words, the better results)")]
             public TextStructure Search { get; set; }
 
             [Argument]
@@ -34,7 +34,7 @@ namespace G1ANT.Language.Ocr.Google
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr")]
+            [Argument(DefaultVariable = "timeoutOcr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]

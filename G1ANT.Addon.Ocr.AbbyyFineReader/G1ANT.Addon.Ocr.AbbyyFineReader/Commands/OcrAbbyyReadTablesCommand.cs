@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -19,12 +19,12 @@ using System.Text.RegularExpressions;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.readtables", Tooltip = "This command allows to read all tables entries and process it as a list")]
+    [Command(Name = "ocrabbyy.readtables", Tooltip = "Command `ocrabbyy.readtables` allows to read the content of all tables existing in a document and process it as a list.")]
     public class OcrAbbyyReadTablesCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Required = false, Tooltip = "id of a processed document returned by a call to "ocrabbyy.processfile":{TOPIC-LINK+ocrabby-processfile} command, if not specified, the last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument]

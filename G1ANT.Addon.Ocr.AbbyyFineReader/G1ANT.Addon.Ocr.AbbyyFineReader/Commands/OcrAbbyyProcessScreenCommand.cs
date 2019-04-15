@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -25,7 +25,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.processscreen", Tooltip = "This command allows to process part of a screen for further data extraction")]
+    [Command(Name = "ocrabbyy.processscreen", Tooltip = "Command `ocrabbyy.processscreen` allows to process part of a screen for further data extraction.")]
     public class OcrAbbyyProcessScreenCommand : Command
     {
         public class Arguments : CommandArguments
@@ -39,13 +39,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "The language which should be considered trying to recognize text.")]
+            [Argument(Tooltip = "the language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = null;
 
             [Argument(Tooltip = "Importance of the chosen language")]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
-            [Argument(Tooltip = "List of suggested words that will have higher priority than random strings.")]
+            [Argument(Tooltip = "list of possible key words, that exist in processed document, that will have higher priority than random character strings while OCR processing")]
             public ListStructure Dictionary { get; set; } = null;
 
             [Argument(Tooltip = "Importance of words in chosen dictionary")]

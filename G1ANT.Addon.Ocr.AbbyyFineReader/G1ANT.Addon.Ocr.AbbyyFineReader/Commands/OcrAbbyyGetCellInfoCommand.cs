@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -16,18 +16,18 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.getcellinfo", Tooltip = "This command allows to retrive information about table cell.")]
+    [Command(Name = "ocrabbyy.getcellinfo", Tooltip = "Command `ocrabbyy.fromscreen` allows to retrive information about table cell.")]
     public class OcrAbbyyGetCellInfoCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Required = false, Tooltip = "id of a processed document returned by a call to processfile command. If not specified last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument(Required = false, Tooltip = "Index of a table in document")]
             public IntegerStructure TableIndex { get; set; } = new IntegerStructure(1);
 
-            [Argument(Required = true, Tooltip = "Position of the cell in the table in format row,column")]
+            [Argument(Required = true, Tooltip = "Position of the cell in the table in format row, column")]
             public TextStructure Position { get; set; } = null;
 
             [Argument]

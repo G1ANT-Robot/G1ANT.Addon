@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -17,7 +17,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.fromscreen", Tooltip = "Captures part of the screen and recognize text from it")]
+    [Command(Name = "ocrabbyy.fromscreen", Tooltip = "Command `ocrabbyy.fromscreen` captures part of the screen and recognises text from it.")]
     public class OcrAbbyyFromScreenCommand : Command
     {
         public class Arguments : CommandArguments
@@ -28,10 +28,10 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "If true area coordinates are relative to active window")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
+            [Argument(Tooltip = "the language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("English");
 
-            [Argument(DefaultVariable = "result", Tooltip = "Name of variable where recognized text will be stored")]
+            [Argument(DefaultVariable = "result", Tooltip = "name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

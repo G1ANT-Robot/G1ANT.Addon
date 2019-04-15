@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -17,15 +17,15 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.filter", Tooltip = "This command allows to filter text from a document by font style")]
+    [Command(Name = "ocrabbyy.filter", Tooltip = "Command `ocrabbyy.filter` allows to filter text from a document by font style. ")]
     public class OcrAbbyyFilterCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Required = false, Tooltip = "id of a processed document returned by a call to `processfile` command. If not specified, last processed document is used.")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument(Required = false, Tooltip = "Flags of filter to applay, separated by '|'")]
+            [Argument(Required = false, Tooltip = "flags of filter to apply, separated by ❚, could be: italic, bold")]
             public TextStructure Filter { get; set; } = null;
 
             [Argument]

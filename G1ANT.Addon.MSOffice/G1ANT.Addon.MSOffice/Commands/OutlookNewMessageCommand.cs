@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.newmessage",Tooltip="This command allows to open a new message window and fills it up with provided arguments.", NeedsDelay = true)]
+    [Command(Name = "outlook.newmessage",Tooltip="This command opens a new message window and fills it up with provided information.", NeedsDelay = true)]
     public class OutlookNewMessageCommand : Command
     {
         public class Arguments : CommandArguments
@@ -34,7 +34,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Required = false, Tooltip = "Value indicating whether the mail message body is in HTML")]
+            [Argument(Required = false, Tooltip = "If set to `true`, indicates that the mail message body is in HTML")]
             public BooleanStructure IsBodyHtml { get; set; } = new BooleanStructure(false);
         }
 

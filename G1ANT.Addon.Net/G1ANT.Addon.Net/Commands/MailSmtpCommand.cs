@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.smtp", Tooltip = "This command tries to send the file specified by filename.")]
+    [Command(Name = "mail.smtp", Tooltip = "This command sends a mail message from a provided email address to a specified recipient.")]
     public class MailSmtpCommand : Command
     {
         public class Arguments : CommandArguments
@@ -53,10 +53,10 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "If true body is expexted in HTML format")]
             public BooleanStructure IsHtmlBody { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "Array of full paths to all attached files")]
+            [Argument(Tooltip = "List of full paths to all files to be attached")]
             public ListStructure Attachments { get; set; }
 
-            [Argument(DefaultVariable = "timeoutmailsmtp")]
+            [Argument(DefaultVariable = "timeoutmailsmtp", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; }
         }
         public MailSmtpCommand(AbstractScripter scripter) : base(scripter)
