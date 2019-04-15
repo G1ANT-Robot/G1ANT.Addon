@@ -1,40 +1,37 @@
 # ie.seturl
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-ie.seturl  url ‴‴
+ie.seturl url ⟦text⟧ nowait ⟦bool⟧
 ```
 
-**Description:**
+## Description
 
-Command `ie.seturl` navigates Internet Explorer to specified address.
+This command navigates Internet Explorer to a specified URL address.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`url`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes|  | URL address to navigate to |
-|`nowait` | "nowait":{TOPIC-LINK+boolean}| no | false | If set to 'true', command will not wait until document reaches completed state |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutie](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`url`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no |  | URL address to navigate to |
+|`nowait`| [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no | false | If set to `true`, the command will not wait until the page is loaded |
+|`result`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no | `♥result` | Name of a variable where the command's result (an attached Internet Explorer instance ID) will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutie](G1ANT.Addon.IExplorer/G1ANT.Addon.IExplorer/Variables/TimeoutIEVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.IExplorer.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer](https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer)
+## Example
 
-**Example 1:**
-
-```G1ANT
-ie.open url ‴www.google.com‴
-ie.seturl url ‴www.g1ant.com‴
-```
-
-**Example 2:**
+In this simple script the robot opens Google in Internet Explorer, focuses on the browser window, then navigates to G1ANT website:
 
 ```G1ANT
-♥variableF = true
-ie.open url ‴g1ant.com‴ nowait false autodetachonclose false result ♥IeG1ant
-ie.seturl url ‴duckduckgo.com‴ nowait false if ♥variableF
+ie.open google.com
+window ‴✱internet explorer✱‴
+ie.seturl g1ant.com
 ```
+
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.

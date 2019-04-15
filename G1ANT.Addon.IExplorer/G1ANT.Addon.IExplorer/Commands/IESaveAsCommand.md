@@ -1,41 +1,38 @@
 # ie.saveas
 
-**Syntax:**
+### Syntax
 
 ```G1ANT
-ie.saveas  path ‴‴
+ie.saveas path 
 ```
 
-**Description:**
+## Description
 
-Command `ie.saveas` allows to automatically save file to specified directory once the pop-up box has appeared.
+This command automatically saves file to a specified directory once the pop-up box has appeared.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes | | specifies file's save path and save name |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutie](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Specifies the full file path |
+|`result`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no | `♥result` | Name of a variable where the script result will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.IExplorer.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer](https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer)
+## Example
 
-**Example 1:**
-
-```G1ANT
-ie.saveas path ‴C:\Download\file1‴
-```
-
-**Example 2:**
-
-In this example G1ANT.Robot will open the specified IE instance. `delay` command is crutial while using `ie.saveas` command, because sometimes the browser does not load quickly enough before G1ANT.Robot executes the  `ie.saveas` command, which may cause an error occur.
+This script opens a foobar2000 music player download page in Internet Explorer, focuses on the browser window, waits two seconds and then fills up the file details in *Save As* dialog box, saving the file under *foo.exe* name on the user’s Desktop:
 
 ```G1ANT
-ie.open url ‴http://www.opera.com/pl/computer/thanks?ni=stable&amp;os=windows‴ nowait false
-autodetachonclose false result ♥IeG1ant
+ie.open https://www.foobar2000.org/getfile/a1f3bb263a5bdba336264bbe58755a4b/foobar2000_v1.4.3.exe
+window ‴✱internet explorer✱‴
 delay 2
-ie.saveas path ‴C:\Users\diana\Desktop\opera.exe‴
+ie.saveas ♥environment⟦USERPROFILE⟧\Desktop\foo.exe
 ```
+
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
+

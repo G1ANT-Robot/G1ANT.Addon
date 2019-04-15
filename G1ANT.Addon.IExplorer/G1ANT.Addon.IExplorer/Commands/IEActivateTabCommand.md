@@ -1,45 +1,39 @@
 # ie.activatetab
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-ie.activatetab  phrase ‴‴
+ie.activatetab phrase ⟦text⟧ by ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `ie.activatetab` allows to activate Internet Explorer tab for further use by ie commands. Before using this command, "ie.attach":{TOPIC-LINK+command-ie-attach} command has to be invoked.
+This command activates Internet Explorer tab for further use by other `ie.` commands.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`phrase`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |  | browser tab title or url |
-|`by`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | title | 'title' or 'url', determines what to look for in a tab to activate |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutie](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`phrase`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | Browser tab title or URL address |
+|`by`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | title | Determines where to search for a  phrase in a tab to activate it: `title` or `url` |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.IExplorer.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer](https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer)
+## Example
 
-**Example 1:**
-
-This example attaches Internet Explorer and activates tab with G1ANT webpage.
-
-```G1ANT
-ie.attach ‴Google‴
-ie.activatetab ‴g1ant‴ by ‴url‴
-ie.detach
-```
-
-**Example 2:**
+This example attaches Internet Explorer and activates a tab with G1ANT webpage.
 
 ```G1ANT
-ie.attach phrase ‴amazon‴ by ‴title‴
-ie.gettitle result ♥title
-dialog ♥title
-ie.activatetab phrase ‴bing‴ by ‴title‴
+program iexplore arguments google.com
+keyboard ⋘CTRL+T⋙
+keyboard g1ant.com⋘ENTER⋙
+ie.attach google by title
+delay 6
+ie.activatetab g1ant by title
 ```
 
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.

@@ -1,37 +1,38 @@
 # ie.detach
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
 ie.detach
 ```
 
-**Description:**
+## Description
 
-Command ie.detach allows to detach currently running Internet Explorer attached or opened in G1ANT.Robot.
+This command detaches the currently running Internet Explorer instance — attached or opened in G1ANT.Robot.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`timeout`| [integer](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/integer.md) | no | [♥timeoutie](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies amount of time (in miliseconds) for G1ANT.Robot to wait for the command to be executed |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.IExplorer.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer](https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer)
+## Example
 
-**Example 1:**
-
-In this example two IE windows are opened with a result assigned to each of them in order to use it in `ie.switch` command. `ie.gettitle` gets the title of currently active window (‴google.com‴) as we switched to it before. `ie.detach` detaches ‴google.com‴. When we try to switch back to ‴google.com‴, an error will occur as we detached it before.
+In the example below two IE instances are opened and an ID of each one is assigned to a respective variable. The robot switches to the first instance, gets its title and displays it in a dialog box (“*Google*”). Then, this instance is detached from the robot, so when the script tries to switch to the Google window again, an error occurs:
 
 ```G1ANT
-ie.open url ‴google.com‴ result result1
-ie.open url ‴www.bing.com‴ result result2
-ie.switch ♥result1
-ie.gettitle result title1
-dialog ♥title1
+ie.open google.com result ♥id1
+ie.open bing.com result ♥id2
+ie.switch ♥id1
+ie.gettitle
+dialog ♥result
 ie.detach
-ie.switch ♥result1
+ie.switch ♥id1
 ```
+
+> **Note:** Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.

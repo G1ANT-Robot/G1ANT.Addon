@@ -1,50 +1,40 @@
 # ie.click
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-ie.click  search ‴‴
+ie.click search ⟦text⟧ by ⟦text⟧ nowait ⟦bool⟧
 ```
 
-**Description:**
+## Description
 
-Command `ie.click` clicks an element on an active webpage.
+This command clicks an element on an active webpage.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`search`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes | | phrase to find element by |
-|`by`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | id | specifies an element selector, possible values are:  'id', 'name', 'text', 'title', 'class', 'selector', 'query', 'jquery' |
-|`nowait`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | false | if true, the script will continue without waiting for webpage to respond to click event |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutie](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md) | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`search`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes | | Phrase to find an element by |
+|`by`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | id | Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery` |
+|`nowait`| [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no | false | If set to `true`, the script will continue without waiting for a webpage to respond to a click event |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.IExplorer.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer](https://github.com/G1ANT-Robot/G1ANT.Addon.IExplorer)
+## Example
 
-**Example 1:**
-
-This example attaches to Internet Explorer and clicks button with text "How".
-
-```G1ANT
-ie.open url ‴g1ant.com‴
-ie.attach ‴G1ANT‴
-ie.click ‴How‴ by ‴text‴
-ie.detach
-```
-
-**Example 2:**
-
-In this example, `ie.click` command will find the search button by its id. In order to check what the name of id is, you need to use IE Developer Tools.
+This example opens Google in Internet Explorer and clicks Google account login button using its ID:
 
 ```G1ANT
-ie.open url ‴duckduckgo.com‴
-window ‴✱internet explo✱‴
-ie.click search ‴search_button_homepage‴ by ‴id‴
-keyboard text ‴anglerfish‴
-ie.click search ‴search_button_homepage‴ by ‴id‴
+ie.open google.com
+window ‴✱internet explorer✱‴
+delay 2
+ie.click gb_70 by id
 ```
 
+> **Note:** The element could also be searched by other selectors: `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`. In order to search any element on a website using the `ie.click` command, you need to use web browser developer tools (right-click an element and select `Inspect element` or `Inspect` from the resulting context menu).
+>
+> Before using this command, the [`ie.attach`](IEAttachCommand.md) or the [`ie.open`](IEOpenCommand.md) command has to be executed.
