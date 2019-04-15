@@ -46,9 +46,10 @@ namespace G1ANT.Addon.Xlsx
                 if (xlsWraper.Open(arguments.Path.Value, arguments.AccessMode.Value))
                 {
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new Language.IntegerStructure(xlsWraper.Id));
+                    int wrapperId = xlsWraper.Id;
                     OnScriptEnd = () =>
                     {
-                        XlsxManager.Remove(xlsWraper);
+                        XlsxManager.Remove(wrapperId);
                     };
                 }
                 else
