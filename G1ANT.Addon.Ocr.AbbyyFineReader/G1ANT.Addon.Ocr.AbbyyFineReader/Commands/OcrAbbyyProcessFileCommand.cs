@@ -27,13 +27,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "path to a file to be processed")]
             public TextStructure Path { get; set; }
 
-            [Argument(Required = false, Tooltip = "list of numbers of pages to be processed")]
+            [Argument(Required = false, Tooltip = "List of numbers of pages to be processed")]
             public ListStructure Pages { get; set; } = null;
 
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "info about the number of tables found in the processed file")]
+            [Argument(Tooltip = "Info about the number of tables found in the processed file")]
             public TextStructure TablesCountResult { get; set; } = new TextStructure("tablescountresult");
 
             [Argument(Tooltip = "The language which should be considered  trying to recognise text")]

@@ -14,4 +14,4 @@
 
 | Name | Description |
 | ---- | ----------- |
-| [timeoutocr](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Variables/TimeoutOcrVariable.md) | Determines the timeout value (in ms) for the `ocrgoogle.` and `ocrtesseract.` commands; the default value is 60000 (60 seconds) |
+| [timeoutocr](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Variables/TimeoutOcrVariable.md) | Determines the timeout value (in ms) for the `ocrgoogle.` and the `ocrtesseract.` commands; the default value is 60000 (60 seconds) |

@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "area from which Abbyy will try to read, has to be a rectangle, eg. 2⫽4⫽12⫽40, best if assigned to a variable ♥rect")]
+            [Argument(Tooltip = "Area from which Abbyy will try to read, has to be a rectangle, eg. 2⫽4⫽12⫽40, best if assigned to a variable ♥rect")]
             public RectangleStructure Area { get; set; } = new RectangleStructure(System.Windows.Forms.Screen.PrimaryScreen.Bounds);
 
             [Argument(Tooltip = "If true, position is relative to the active window")]
