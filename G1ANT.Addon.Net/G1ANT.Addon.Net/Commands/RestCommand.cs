@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Net
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "http method of rest request ( post / get / put / delete / patch …)")]
+            [Argument(Required = true, Tooltip = "HTTP method of the `rest` request: `post` or `get`")]
             public TextStructure Method { get; set; }
 
             [Argument(Required = true, Tooltip = "URL of API method")]

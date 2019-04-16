@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice
 	{
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Path of file that has to be imported (csv data format is supported)")]
+            [Argument(Required = true, Tooltip = "Path to a text file to be imported (csv data format is supported)")]
             public TextStructure Path { get; set; }
 
             [Argument(Tooltip = "Starting cell (top left) for the imported data, specified either as text or a point")]

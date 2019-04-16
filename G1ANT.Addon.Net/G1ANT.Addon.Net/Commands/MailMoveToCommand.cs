@@ -21,7 +21,7 @@ namespace G1ANT.Addon.Net
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Host name")]
+            [Argument(Required = true, Tooltip = "IMAP server address")]
             public TextStructure Host { get; set; }
 
             [Argument(Required = true, Tooltip = "User email login")]

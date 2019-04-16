@@ -34,7 +34,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Login of the inbox user")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email password")]
             public TextStructure Password { get; set; }
 
             [Argument(Required = true, Tooltip = "Folder to fetch emails from")]
