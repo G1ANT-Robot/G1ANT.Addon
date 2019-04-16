@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr", Tooltip = "specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
+            [Argument(DefaultVariable = "timeoutOcr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
         }
         public OcrAbbyyGetTablePositionCommand(AbstractScripter scripter) : base(scripter)

@@ -25,7 +25,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = false, Tooltip = "id of a processed document returned by a call to `processfile` command. If not specified, last processed document is used.")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument(Required = false, Tooltip = "flags of filter to apply, separated by ❚, could be: italic, bold")]
+            [Argument(Required = false, Tooltip = "Flags of filter to apply, separated by ❚, could be: italic, bold")]
             public TextStructure Filter { get; set; } = null;
 
             [Argument]

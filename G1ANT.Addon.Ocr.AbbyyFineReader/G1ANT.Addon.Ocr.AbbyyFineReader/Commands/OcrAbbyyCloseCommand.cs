@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Id of a document to be closed, if not specified, G1ANT.Robot closes all documents and unloads abbyy engine.")]
+            [Argument(Tooltip = "Id of a document to be closed, if not specified, G1ANT.Robot closes all documents and unloads abbyy engine")]
             public IntegerStructure Document { get; set; }
         }
         public OcrAbbyyCloseCommand(AbstractScripter scripter) : base(scripter)

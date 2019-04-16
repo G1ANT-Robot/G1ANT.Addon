@@ -25,7 +25,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "id of a processed document, if not specified last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument(Tooltip = "method of text recognition to use, either 'linebyline' or 'structured'. By default, 'structured'")]
+            [Argument(Tooltip = "Method of text recognition to use, either 'linebyline' or 'structured'. By default, 'structured'")]
             public TextStructure Method { get; set; } = new TextStructure("structured");
 
             [Argument]

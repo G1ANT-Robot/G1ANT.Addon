@@ -17,7 +17,7 @@ namespace G1ANT.Addon.GoogleDocs
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "title of Google Sheets instance that will be activated")]
+            [Argument(Required = true, Tooltip = "Title of Google Sheets instance that will be activated")]
             public IntegerStructure Id { get; set; }
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");

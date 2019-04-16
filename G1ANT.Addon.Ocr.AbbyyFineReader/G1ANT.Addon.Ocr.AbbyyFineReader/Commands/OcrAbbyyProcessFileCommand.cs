@@ -42,7 +42,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "Importance of the chosen language")]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
-            [Argument(Tooltip = "list of possible key words that exist in processed document that will have higher priority than random character strings while OCR processing")]
+            [Argument(Tooltip = "List of possible key words that exist in processed document that will have higher priority than random character strings while OCR processing")]
             public ListStructure Dictionary { get; set; } = null;
 
             [Argument(Tooltip = "Importance of words in chosen dictionary")]
