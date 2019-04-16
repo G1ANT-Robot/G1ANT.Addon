@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.removecolumn", Tooltip = "This command removes the specified column.")]
+    [Command(Name = "excel.removecolumn", Tooltip = "This command removes the specified column")]
     public class ExcelRemoveColumnCommand : Command
     {
         public class Arguments : CommandArguments

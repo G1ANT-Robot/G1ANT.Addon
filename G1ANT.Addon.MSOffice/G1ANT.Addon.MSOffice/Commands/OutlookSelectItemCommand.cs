@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice.Commands
 {
-    [Command(Name = "outlook.selectitem", Tooltip = "This command selects a mail or a folder element in Outlook’s user interface.")]
+    [Command(Name = "outlook.selectitem", Tooltip = "This command selects a mail or a folder element in Outlook’s user interface")]
     public class OutlookSelectItemCommand : Command
     {
         public class Arguments : CommandArguments

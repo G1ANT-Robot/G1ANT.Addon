@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.insertrow", Tooltip = "This command inserts an empty row into a specified place.")]
+    [Command(Name = "excel.insertrow", Tooltip = "This command inserts an empty row into a specified place")]
     public class ExcelInsertRowCommand : Command
     {
         public class Arguments : CommandArguments

@@ -11,7 +11,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.close", Tooltip = "This command closes a Google Sheets instance.")]
+    [Command(Name = "googlesheet.close", Tooltip = "This command closes a Google Sheets instance")]
     public class GoogleSheetCloseCommand : Command
     {
         public class Arguments : CommandArguments

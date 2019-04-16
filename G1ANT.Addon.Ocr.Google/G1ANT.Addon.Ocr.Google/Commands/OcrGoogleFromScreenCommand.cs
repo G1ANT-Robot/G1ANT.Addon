@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace G1ANT.Language.Ocr.Google
 {
-    [Command(Name = "ocrgoogle.fromscreen", Tooltip = "This command captures part of the screen and recognizes text from it.")]
+    [Command(Name = "ocrgoogle.fromscreen", Tooltip = "This command captures part of the screen and recognizes text from it")]
     public class OcrFromScreenCommand : Command
     {
         public class Arguments : CommandArguments

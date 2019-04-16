@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.setvalue",Tooltip = "This command sets a value of a specified cell in an .xls(x) file.")]
+    [Command(Name = "xlsx.setvalue",Tooltip = "This command sets a value of a specified cell in an .xls(x) file")]
     public class XlsxSetValueCommand : Command
     {
         public  class Arguments : CommandArguments

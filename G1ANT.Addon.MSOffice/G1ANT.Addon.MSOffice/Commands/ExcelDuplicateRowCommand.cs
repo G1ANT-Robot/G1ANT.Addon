@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.duplicaterow", Tooltip = "This command copies a specified row to a specified place.")]
+    [Command(Name = "excel.duplicaterow", Tooltip = "This command copies a specified row to a specified place")]
     public class ExcelDuplicateRowCommand : Command
     {
         public class Arguments : CommandArguments

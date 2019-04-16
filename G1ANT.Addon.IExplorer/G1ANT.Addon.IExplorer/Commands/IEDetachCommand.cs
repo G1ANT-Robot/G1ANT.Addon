@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.detach", Tooltip = "This command detaches the currently running Internet Explorer instance — attached or opened in G1ANT.Robot.")]
+    [Command(Name = "ie.detach", Tooltip = "This command detaches the currently running Internet Explorer instance — attached or opened in G1ANT.Robot")]
     public class IEDetachCommand : Command
     {
         public class Arguments : CommandArguments

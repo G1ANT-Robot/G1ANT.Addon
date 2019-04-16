@@ -11,7 +11,7 @@
 namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.login",
-        Tooltip = "This command logs in to the Google Cloud text recognition service.")]
+        Tooltip = "This command logs in to the Google Cloud text recognition service")]
 
     public class OcrGoogleLoginCommand : Command
     {

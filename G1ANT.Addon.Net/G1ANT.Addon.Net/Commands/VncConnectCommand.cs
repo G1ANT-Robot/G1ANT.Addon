@@ -14,7 +14,7 @@ using System.IO;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "vnc.connect",Tooltip = "This command connects to a remote machine with a running VNC server, using a remote desktop connection.", NeedsDelay = true)]
+    [Command(Name = "vnc.connect",Tooltip = "This command connects to a remote machine with a running VNC server, using a remote desktop connection", NeedsDelay = true)]
     public class VncConnectCommand : Command
     {
         public class Arguments : CommandArguments

@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.gettext", Tooltip = "This command copies text from a Word document.", NeedsDelay = true)]
+    [Command(Name = "word.gettext", Tooltip = "This command copies text from a Word document", NeedsDelay = true)]
 
     public class WordGetTextCommand : Command
     {

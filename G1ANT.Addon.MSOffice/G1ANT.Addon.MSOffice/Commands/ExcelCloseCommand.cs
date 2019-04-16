@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.close", Tooltip = "This command closes the currently active Excel instance.")]
+    [Command(Name = "excel.close", Tooltip = "This command closes the currently active Excel instance")]
     public class ExcelCloseCommand : Command
     {
         public class Arguments : CommandArguments

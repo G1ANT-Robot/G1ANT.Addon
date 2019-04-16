@@ -11,7 +11,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.switch",Tooltip = "This command switches between open Word instances.", NeedsDelay = true)]
+    [Command(Name = "word.switch",Tooltip = "This command switches between open Word instances", NeedsDelay = true)]
 
     public class WordSwitchCommand : Command
 	{

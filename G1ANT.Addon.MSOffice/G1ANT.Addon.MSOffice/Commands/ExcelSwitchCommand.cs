@@ -16,7 +16,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.switch", Tooltip = "This command switches to another Excel instance opened by G1ANT.Robot.")]
+    [Command(Name = "excel.switch", Tooltip = "This command switches to another Excel instance opened by G1ANT.Robot")]
     public class ExcelSwitchCommand : Command
     {
         public class Arguments : CommandArguments

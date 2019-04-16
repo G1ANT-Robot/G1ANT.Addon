@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.setvalue", Tooltip = "This command sets a value in an opened Google Sheets instance.")]
+    [Command(Name = "googlesheet.setvalue", Tooltip = "This command sets a value in an opened Google Sheets instance")]
     public class GoogleSheetSetValueCommand : Command
     {
         public class Arguments : CommandArguments

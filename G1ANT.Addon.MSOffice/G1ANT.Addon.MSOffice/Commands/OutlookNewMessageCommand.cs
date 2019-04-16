@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.newmessage",Tooltip="This command opens a new message window and fills it up with provided information.", NeedsDelay = true)]
+    [Command(Name = "outlook.newmessage",Tooltip = "This command opens a new message window and fills it up with provided information", NeedsDelay = true)]
     public class OutlookNewMessageCommand : Command
     {
         public class Arguments : CommandArguments

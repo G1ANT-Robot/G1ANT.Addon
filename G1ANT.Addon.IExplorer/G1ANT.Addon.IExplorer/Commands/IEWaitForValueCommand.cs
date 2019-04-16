@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.waitforvalue", Tooltip = "This command keeps on executing a specified javascript until an expected value is returned.")]
+    [Command(Name = "ie.waitforvalue", Tooltip = "This command keeps on executing a specified javascript until an expected value is returned")]
     public class IEWaitForValueCommand : Command
     {
         public class Arguments : CommandArguments

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.plaintext", Tooltip = "Command `ocrabbyyplaintext` allows to extract text from processed document.")]
+    [Command(Name = "ocrabbyy.plaintext", Tooltip = "Command `ocrabbyyplaintext` allows to extract text from processed document")]
     public class OcrAbbyyPlainTextCommand : Command
     {
         public class Arguments : CommandArguments

@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.export", Tooltip = "This command exports the currently active excel workbook to either a .pdf or an .xps file.")]
+    [Command(Name = "excel.export", Tooltip = "This command exports the currently active excel workbook to either a .pdf or an .xps file")]
     public class ExcelExportCommand : Command
     {
         public class Arguments : CommandArguments

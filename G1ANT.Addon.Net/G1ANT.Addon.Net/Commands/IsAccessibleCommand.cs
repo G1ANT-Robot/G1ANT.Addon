@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "is.accessible", Tooltip = "This command checks if a host is accessible.")]
+    [Command(Name = "is.accessible", Tooltip = "This command checks if a host is accessible")]
     public class IsAccessibleCommand : Command
     {
         public class Arguments : CommandArguments

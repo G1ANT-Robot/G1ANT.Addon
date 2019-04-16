@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.seturl", Tooltip = "This command navigates Internet Explorer to a specified URL address.")]
+    [Command(Name = "ie.seturl", Tooltip = "This command navigates Internet Explorer to a specified URL address")]
     public class IESetUrlCommand : Command
     {
         public class Arguments : CommandArguments

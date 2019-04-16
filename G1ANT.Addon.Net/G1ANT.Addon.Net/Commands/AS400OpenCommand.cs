@@ -14,7 +14,7 @@ using System.IO;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "as400.open", Tooltip= "This command opens a terminal connection to work with IBM AS/400 server.", NeedsDelay = true)]
+    [Command(Name = "as400.open", Tooltip = "This command opens a terminal connection to work with IBM AS/400 server", NeedsDelay = true)]
     public class AS400openCommand : Command
     {
         public class Arguments : CommandArguments

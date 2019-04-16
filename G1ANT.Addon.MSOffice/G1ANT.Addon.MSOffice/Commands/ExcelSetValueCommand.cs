@@ -16,7 +16,7 @@ namespace G1ANT.Addon.MSOffice
 {
 
 
-    [Command(Name = "excel.setvalue", Tooltip = "This command enters a value into a specified cell.")]
+    [Command(Name = "excel.setvalue", Tooltip = "This command enters a value into a specified cell")]
     public class ExcelSetValueCommand : Command
     {
         public class Arguments : CommandArguments

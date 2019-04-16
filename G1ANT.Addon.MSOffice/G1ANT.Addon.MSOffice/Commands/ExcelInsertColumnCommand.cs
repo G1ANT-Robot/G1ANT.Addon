@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.insertcolumn", Tooltip = "This command inserts an empty column in a specified place.")]
+    [Command(Name = "excel.insertcolumn", Tooltip = "This command inserts an empty column in a specified place")]
     public class ExcelInsertColumnCommand : Command
     {
         public class Arguments : CommandArguments

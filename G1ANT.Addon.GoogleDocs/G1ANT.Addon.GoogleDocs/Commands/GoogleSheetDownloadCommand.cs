@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace G1ANT.Addon.GoogleDocs
 {
 
-    [Command(Name = "googlesheet.download", Tooltip = "This command downloads the whole spreadsheet.")]
+    [Command(Name = "googlesheet.download", Tooltip = "This command downloads the whole spreadsheet")]
     public class GoogleSheetDownloadCommand : Command
     {
         public class Arguments : CommandArguments

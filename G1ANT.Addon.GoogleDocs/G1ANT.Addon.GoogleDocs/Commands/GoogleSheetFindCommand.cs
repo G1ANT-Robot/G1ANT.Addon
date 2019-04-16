@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace G1ANT.Addon.GoogleDocs
 {
 
-    [Command(Name = "googlesheet.find", Tooltip = "This command finds a cell with a specified value.")]
+    [Command(Name = "googlesheet.find", Tooltip = "This command finds a cell with a specified value")]
     public class GoogleSheetFindCommand : Command
     {
 

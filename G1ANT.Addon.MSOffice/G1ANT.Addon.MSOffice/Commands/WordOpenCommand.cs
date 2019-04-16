@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.open",Tooltip = "This command opens a Word instance with an blank document or a specified file.", NeedsDelay = true)]
+    [Command(Name = "word.open",Tooltip = "This command opens a Word instance with an blank document or a specified file", NeedsDelay = true)]
     public class WordOpenCommand : Command
     {
         public class Arguments : CommandArguments

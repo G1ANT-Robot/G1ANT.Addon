@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.open",Tooltip = "This command opens a new instance of Internet Explorer and navigates to a specified URL, if provided.")]
+    [Command(Name = "ie.open",Tooltip = "This command opens a new instance of Internet Explorer and navigates to a specified URL, if provided")]
     public class IEOpenCommand : Command
     {
         public class Arguments : CommandArguments

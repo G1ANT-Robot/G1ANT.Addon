@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.removerow", Tooltip = "This command deletes the specified row.")]
+    [Command(Name = "excel.removerow", Tooltip = "This command deletes the specified row")]
     public class ExcelRemoveRowCommand : Command
     {
         public class Arguments : CommandArguments

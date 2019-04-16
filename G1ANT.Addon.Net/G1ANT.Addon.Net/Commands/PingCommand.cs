@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "ping", Tooltip = "This command pings a specified IP address and returns an approximate round-trip time in milliseconds.")]
+    [Command(Name = "ping", Tooltip = "This command pings a specified IP address and returns an approximate round-trip time in milliseconds")]
     public class PingCommand : Command
     {
         public class Arguments : CommandArguments

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.fireevent", Tooltip = "This command fires a specified event on a specified element.")]
+    [Command(Name = "ie.fireevent", Tooltip = "This command fires a specified event on a specified element")]
 
     public class IEFireEventCommand : Command
     {

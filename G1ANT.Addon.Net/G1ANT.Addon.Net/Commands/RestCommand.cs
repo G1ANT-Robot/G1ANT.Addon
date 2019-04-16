@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "rest", Tooltip = "This command prepares a request to a desired URL with a selected method. ")]
+    [Command(Name = "rest", Tooltip = "This command prepares a request to a desired URL with a selected method")]
     public class RestCommand : Command
     {
         public class Arguments : CommandArguments

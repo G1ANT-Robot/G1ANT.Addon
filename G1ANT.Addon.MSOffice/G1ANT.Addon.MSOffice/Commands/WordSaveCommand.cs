@@ -11,7 +11,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.save",Tooltip = "This command saves the currently active Word document to a specified file.", NeedsDelay = true)]
+    [Command(Name = "word.save",Tooltip = "This command saves the currently active Word document to a specified file", NeedsDelay = true)]
 
     public class WordSaveCommand : Command
 	{

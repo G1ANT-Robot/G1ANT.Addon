@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.switch", Tooltip= "This command switches between opened Google Sheets instances.")]
+    [Command(Name = "googlesheet.switch", Tooltip = "This command switches between opened Google Sheets instances")]
     public class GoogleSheetSwitchCommand : Command
     {
         public class Arguments : CommandArguments

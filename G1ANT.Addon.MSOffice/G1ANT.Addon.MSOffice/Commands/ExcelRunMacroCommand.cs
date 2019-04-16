@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.runmacro", Tooltip = "This command runs a macro in the currently active Excel instance.")]
+    [Command(Name = "excel.runmacro", Tooltip = "This command runs a macro in the currently active Excel instance")]
     public class ExcelRunMacroCommand : Command
     {
         public class Arguments : CommandArguments

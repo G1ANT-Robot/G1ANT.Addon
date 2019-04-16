@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.waitforcomplete", Tooltip = "This command suspends script execution until a webpage is loaded.")]
+    [Command(Name = "ie.waitforcomplete", Tooltip = "This command suspends script execution until a webpage is loaded")]
     public class IEWaitForCompleteCommand : Command
     {
         public class Arguments : CommandArguments

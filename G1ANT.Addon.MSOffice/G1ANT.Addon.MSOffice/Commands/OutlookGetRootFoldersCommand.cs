@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.getrootfolders", Tooltip = "This command is used to return a list of all Outlook root folders.")]
+    [Command(Name = "outlook.getrootfolders", Tooltip = "This command is used to return a list of all Outlook root folders")]
     public class OutlookGetRootFoldersCommand : Command
     {
         public class Arguments : CommandArguments

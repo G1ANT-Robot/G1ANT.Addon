@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.gettitle", Tooltip = "This command gets the title of the currently attached Internet Explorer instance.")]
+    [Command(Name = "ie.gettitle", Tooltip = "This command gets the title of the currently attached Internet Explorer instance")]
     public class IEGetTitleCommand : Command
     {
         public class Arguments : CommandArguments

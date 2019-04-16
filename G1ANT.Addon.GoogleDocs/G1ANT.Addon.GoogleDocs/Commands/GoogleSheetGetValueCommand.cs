@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.getvalue", Tooltip= "This command gets a value from a specified cell or range in an opened Google Sheets instance.")]
+    [Command(Name = "googlesheet.getvalue", Tooltip = "This command gets a value from a specified cell or range in an opened Google Sheets instance")]
     public class GoogleSheetGetValueCommand : Command
     {
         public class Arguments : CommandArguments

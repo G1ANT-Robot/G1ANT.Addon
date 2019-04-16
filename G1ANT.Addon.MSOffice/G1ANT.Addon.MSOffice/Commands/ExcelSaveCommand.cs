@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.save", Tooltip = "This command saves the currently active Excel workbook.")]
+    [Command(Name = "excel.save", Tooltip = "This command saves the currently active Excel workbook")]
     public class ExcelSaveCommand : Command
     {
         public class Arguments : CommandArguments

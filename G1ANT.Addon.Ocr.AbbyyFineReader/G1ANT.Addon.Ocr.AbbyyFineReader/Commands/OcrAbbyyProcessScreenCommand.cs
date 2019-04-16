@@ -25,7 +25,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.processscreen", Tooltip = "Command `ocrabbyy.processscreen` allows to process part of a screen for further data extraction.")]
+    [Command(Name = "ocrabbyy.processscreen", Tooltip = "Command `ocrabbyy.processscreen` allows to process part of a screen for further data extraction")]
     public class OcrAbbyyProcessScreenCommand : Command
     {
         public class Arguments : CommandArguments

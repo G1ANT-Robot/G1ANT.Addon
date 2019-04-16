@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.smtp", Tooltip = "This command sends a mail message from a provided email address to a specified recipient.")]
+    [Command(Name = "mail.smtp", Tooltip = "This command sends a mail message from a provided email address to a specified recipient")]
     public class MailSmtpCommand : Command
     {
         public class Arguments : CommandArguments

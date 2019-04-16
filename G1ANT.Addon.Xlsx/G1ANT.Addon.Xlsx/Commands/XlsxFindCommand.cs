@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.find", Tooltip = "This command finds an address of a cell where a specified value is stored.")]
+    [Command(Name = "xlsx.find", Tooltip = "This command finds an address of a cell where a specified value is stored")]
     public class XlsxFindCommand : Command
     {
         public class Arguments : CommandArguments

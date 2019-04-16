@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.open", Tooltip = "This command opens Outlook. ", NeedsDelay = true)]
+    [Command(Name = "outlook.open", Tooltip = "This command opens Outlook", NeedsDelay = true)]
     public class OutlookOpenCommand : Command
     {
         public class Arguments : CommandArguments

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.moveto", Tooltip = "This command is used to move an individual email message or a whole folder to another location (Outlook folder).")]
+    [Command(Name = "outlook.moveto", Tooltip = "This command is used to move an individual email message or a whole folder to another location (Outlook folder)")]
     public class OutlookMoveToCommand : Command
     {
         public class Arguments : CommandArguments

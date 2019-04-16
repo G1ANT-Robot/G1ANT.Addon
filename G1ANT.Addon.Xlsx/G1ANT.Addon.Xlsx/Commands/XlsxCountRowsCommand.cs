@@ -11,7 +11,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.countrows",Tooltip = "This command counts rows in an open .xls(x) file.")]
+    [Command(Name = "xlsx.countrows",Tooltip = "This command counts rows in an open .xls(x) file")]
     public class XlsxCountRowsCommand : Command
     {
         public class Arguments : CommandArguments

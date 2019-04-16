@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.runvbcode", Tooltip = "This command runs a Visual Basic macro code in the currently active Excel instance. ")]
+    [Command(Name = "excel.runvbcode", Tooltip = "This command runs a Visual Basic macro code in the currently active Excel instance")]
     public class ExcelRunVBCodeCommand : Command
     {
         public class Arguments : CommandArguments

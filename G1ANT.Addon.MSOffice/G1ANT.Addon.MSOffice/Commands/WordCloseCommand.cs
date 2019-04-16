@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.close",Tooltip = "This command closes the currently active Word instance.", NeedsDelay = true)]
+    [Command(Name = "word.close",Tooltip = "This command closes the currently active Word instance", NeedsDelay = true)]
     public class WordCloseCommand : Command
 	{
         public class Arguments : CommandArguments

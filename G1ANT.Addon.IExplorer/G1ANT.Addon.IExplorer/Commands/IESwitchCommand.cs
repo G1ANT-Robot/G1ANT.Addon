@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.switch",Tooltip = "This command switches context to the already opened/attached Internet Explorer instance.")]
+    [Command(Name = "ie.switch",Tooltip = "This command switches context to the already opened/attached Internet Explorer instance")]
     public class IESwitchCommand : Command
     {
         public class Arguments : CommandArguments

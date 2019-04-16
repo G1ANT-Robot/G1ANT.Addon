@@ -11,7 +11,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.settitle", Tooltip = "This command sets the title of a Google Sheets document.")]
+    [Command(Name = "googlesheet.settitle", Tooltip = "This command sets the title of a Google Sheets document")]
     public class GoogleSheetSetTitleCommand : Command
     {
         public class Arguments : CommandArguments

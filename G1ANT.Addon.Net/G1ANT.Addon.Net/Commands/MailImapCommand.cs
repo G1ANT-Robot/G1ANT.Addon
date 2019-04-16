@@ -20,7 +20,7 @@ using System.Net;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.imap", Tooltip = "This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time range, with the option to consider only unread messages and/or mark all of the checked ones as read. ")]
+    [Command(Name = "mail.imap", Tooltip = "This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time range, with the option to consider only unread messages and/or mark all of the checked ones as read")]
     public class MailImapCommand : Command
     {
         public class Arguments : CommandArguments

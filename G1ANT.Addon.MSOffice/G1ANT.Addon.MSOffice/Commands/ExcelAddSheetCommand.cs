@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.addsheet", Tooltip = "This command adds a new sheet to the currently active Excel instance.")]
+    [Command(Name = "excel.addsheet", Tooltip = "This command adds a new sheet to the currently active Excel instance")]
     public class ExcelAddSheetCommand : Command
     {
         public class Arguments : CommandArguments

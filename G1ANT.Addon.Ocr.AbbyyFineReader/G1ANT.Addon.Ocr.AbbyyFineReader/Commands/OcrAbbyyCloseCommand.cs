@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.close", Tooltip = "Command `ocrabbyy.close` allows to close all documents processed by abbyy engine.")]
+    [Command(Name = "ocrabbyy.close", Tooltip = "Command `ocrabbyy.close` allows to close all documents processed by abbyy engine")]
     public class OcrAbbyyCloseCommand : Command
     {
         public class Arguments : CommandArguments

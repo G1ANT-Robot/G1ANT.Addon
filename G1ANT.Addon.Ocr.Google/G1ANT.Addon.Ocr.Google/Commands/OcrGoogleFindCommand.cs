@@ -16,7 +16,7 @@ using System.Linq;
 namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.find",
-        Tooltip = "This command finds a specified text on the active screen and returns its position in a [rectangle](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/RectangleStructure.md) format.")]
+        Tooltip = "This command finds a specified text on the active screen and returns its position in a [rectangle](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/RectangleStructure.md) format")]
 
     public class OcrGoogleFindCommand : Command
     {

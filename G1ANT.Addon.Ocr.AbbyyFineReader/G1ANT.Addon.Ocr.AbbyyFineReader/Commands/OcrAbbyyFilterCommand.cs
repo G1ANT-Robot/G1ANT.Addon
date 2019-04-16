@@ -17,7 +17,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.filter", Tooltip = "Command `ocrabbyy.filter` allows to filter text from a document by font style. ")]
+    [Command(Name = "ocrabbyy.filter", Tooltip = "Command `ocrabbyy.filter` allows to filter text from a document by font style")]
     public class OcrAbbyyFilterCommand : Command
     {
         public class Arguments : CommandArguments

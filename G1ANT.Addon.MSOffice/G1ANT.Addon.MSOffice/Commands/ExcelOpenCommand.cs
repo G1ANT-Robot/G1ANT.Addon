@@ -16,7 +16,7 @@ using System.IO;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.open", Tooltip= "This command opens a new Excel instance.")]
+    [Command(Name = "excel.open", Tooltip = "This command opens a new Excel instance")]
     public class ExcelOpenCommand : Command
     {
         public class Arguments : CommandArguments

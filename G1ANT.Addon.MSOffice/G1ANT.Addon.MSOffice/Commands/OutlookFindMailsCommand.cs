@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.findmails", Tooltip = "This command searches subjects of Inbox messages and returns all emails that contain a required keyword.", NeedsDelay = true)]
+    [Command(Name = "outlook.findmails", Tooltip = "This command searches subjects of Inbox messages and returns all emails that contain a required keyword", NeedsDelay = true)]
     public class OutlookFindMailsCommand : Command
     {
         public class Arguments : CommandArguments

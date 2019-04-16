@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.setsheet", Tooltip = "This command sets a specified sheet as active.")]
+    [Command(Name = "xlsx.setsheet", Tooltip = "This command sets a specified sheet as active")]
     public class XlsxSetSheetCommand : Command
     {
         public  class Arguments : CommandArguments

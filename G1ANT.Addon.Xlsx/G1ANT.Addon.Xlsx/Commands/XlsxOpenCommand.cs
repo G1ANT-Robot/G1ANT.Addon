@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.open", Tooltip = "This command opens an .xls(x) file and activates the first sheet in the document.")]
+    [Command(Name = "xlsx.open", Tooltip = "This command opens an .xls(x) file and activates the first sheet in the document")]
     public class XlsxOpenCommand : Command
     {
         public class Arguments : CommandArguments

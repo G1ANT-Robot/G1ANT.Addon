@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.switch", Tooltip = "This command switches between opened .xls(x) files.")]
+    [Command(Name = "xlsx.switch", Tooltip = "This command switches between opened .xls(x) files")]
     public class XlsxSwitchCommand : Command
     {
         public class Arguments : CommandArguments

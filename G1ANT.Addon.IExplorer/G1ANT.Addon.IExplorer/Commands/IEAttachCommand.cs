@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.attach", Tooltip = "This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](IEOpenCommand.md) command was not used to open IE and attach the robot to the browser. ")]
+    [Command(Name = "ie.attach", Tooltip = "This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](IEOpenCommand.md) command was not used to open IE and attach the robot to the browser")]
     public class IEAttachCommand : Command
     {
         public class Arguments : CommandArguments

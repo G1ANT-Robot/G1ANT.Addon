@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.runmacro",Tooltip = "This command runs a macro in the currently active Word instance.", NeedsDelay = true)]
+    [Command(Name = "word.runmacro",Tooltip = "This command runs a macro in the currently active Word instance", NeedsDelay = true)]
     public class WordRunMacroCommand : Command
 	{
         public class Arguments : CommandArguments

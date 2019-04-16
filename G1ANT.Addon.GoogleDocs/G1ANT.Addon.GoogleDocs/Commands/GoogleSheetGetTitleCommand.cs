@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.gettitle", Tooltip= "This command gets the title of an opened Google Sheets instance.")]
+    [Command(Name = "googlesheet.gettitle", Tooltip = "This command gets the title of an opened Google Sheets instance")]
     public class GoogleSheetGetTitleCommand : Command
     {
         public class Arguments : CommandArguments

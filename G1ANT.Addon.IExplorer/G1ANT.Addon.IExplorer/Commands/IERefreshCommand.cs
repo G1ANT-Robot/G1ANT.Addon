@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.refresh", Tooltip = "This command refreshes the current Internet Explorer instance.")]
+    [Command(Name = "ie.refresh", Tooltip = "This command refreshes the current Internet Explorer instance")]
     public class IERefreshCommand : Command
     {
         public class Arguments : CommandArguments

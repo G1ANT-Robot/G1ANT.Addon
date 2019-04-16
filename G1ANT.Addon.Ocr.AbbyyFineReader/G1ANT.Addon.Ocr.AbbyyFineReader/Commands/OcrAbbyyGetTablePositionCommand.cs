@@ -19,7 +19,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.gettableposition", Tooltip = "Command `ocrabbyy.gettableposition ` allows to find indexes.")]
+    [Command(Name = "ocrabbyy.gettableposition", Tooltip = "Command `ocrabbyy.gettableposition ` allows to find indexes")]
     public class OcrAbbyyGetTablePositionCommand : Command
     {
         public class Arguments : CommandArguments

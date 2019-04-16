@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.getvalue", Tooltip = "This command gets a value of a specified cell in an .xls(x) file.")]
+    [Command(Name = "xlsx.getvalue", Tooltip = "This command gets a value of a specified cell in an .xls(x) file")]
     public class XlsxGetValueCommand : Command
     {
         public class Arguments : CommandArguments

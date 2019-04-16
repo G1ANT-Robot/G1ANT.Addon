@@ -17,7 +17,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.fromscreen", Tooltip = "Command `ocrabbyy.fromscreen` captures part of the screen and recognises text from it.")]
+    [Command(Name = "ocrabbyy.fromscreen", Tooltip = "Command `ocrabbyy.fromscreen` captures part of the screen and recognises text from it")]
     public class OcrAbbyyFromScreenCommand : Command
     {
         public class Arguments : CommandArguments

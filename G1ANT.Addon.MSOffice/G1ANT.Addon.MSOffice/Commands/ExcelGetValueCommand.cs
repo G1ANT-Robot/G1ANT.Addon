@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.getvalue", Tooltip = "This command gets a value from a specified cell.")]
+    [Command(Name = "excel.getvalue", Tooltip = "This command gets a value from a specified cell")]
     public class ExcelGetValueCommand : Command
     {
         public class Arguments : CommandArguments

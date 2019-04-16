@@ -19,7 +19,7 @@ using System.Text.RegularExpressions;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.readtables", Tooltip = "Command `ocrabbyy.readtables` allows to read the content of all tables existing in a document and process it as a list.")]
+    [Command(Name = "ocrabbyy.readtables", Tooltip = "Command `ocrabbyy.readtables` allows to read the content of all tables existing in a document and process it as a list")]
     public class OcrAbbyyReadTablesCommand : Command
     {
         public class Arguments : CommandArguments

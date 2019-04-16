@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.getrow", Tooltip = "This command gets all used cells of the specified row.")]
+    [Command(Name = "excel.getrow", Tooltip = "This command gets all used cells of the specified row")]
     public class ExcelGetRowCommand : Command
     {
         public class Arguments : CommandArguments

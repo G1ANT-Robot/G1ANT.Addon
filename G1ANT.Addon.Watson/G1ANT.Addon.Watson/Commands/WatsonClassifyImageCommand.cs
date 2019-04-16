@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.classifyimage", Tooltip = "This command classifies a specified image. ")]
+    [Command(Name = "watson.classifyimage", Tooltip = "This command classifies a specified image")]
     public class WatsonClassifyImageCommand : Command
     {
         public class Arguments : CommandArguments

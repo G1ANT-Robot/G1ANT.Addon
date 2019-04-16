@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.Xlsx
 {
-    [Command(Name = "xlsx.close",Tooltip = "This command saves changes to an .xls(x) file and closes it.")]
+    [Command(Name = "xlsx.close",Tooltip = "This command saves changes to an .xls(x) file and closes it")]
     public class XlsxCloseCommand :Command
     {
         public class Arguments : CommandArguments

@@ -19,7 +19,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.processfile", Tooltip = "Command `ocrabbyy.processfile` allows to assign project information to a variable in order to extract different types of data from it.")]
+    [Command(Name = "ocrabbyy.processfile", Tooltip = "Command `ocrabbyy.processfile` allows to assign project information to a variable in order to extract different types of data from it")]
     public class OcrAbbyyProcessFileCommand : Command
     {
         public class Arguments : CommandArguments

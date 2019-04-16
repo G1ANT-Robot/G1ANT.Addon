@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.saveas", Tooltip = "This command automatically saves file to a specified directory once the pop-up box has appeared.")]
+    [Command(Name = "ie.saveas", Tooltip = "This command automatically saves file to a specified directory once the pop-up box has appeared")]
 
     public class IESaveasCommand : Command
 	{

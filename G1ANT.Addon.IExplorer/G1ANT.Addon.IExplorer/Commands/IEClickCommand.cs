@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.click", Tooltip = "This command clicks an element on an active webpage.")]
+    [Command(Name = "ie.click", Tooltip = "This command clicks an element on an active webpage")]
 
     public class IEClickCommand : Command
     {

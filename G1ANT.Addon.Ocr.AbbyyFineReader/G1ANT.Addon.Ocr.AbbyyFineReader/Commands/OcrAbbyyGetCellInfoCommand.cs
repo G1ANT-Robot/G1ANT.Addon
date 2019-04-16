@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.getcellinfo", Tooltip = "Command `ocrabbyy.fromscreen` allows to retrive information about table cell.")]
+    [Command(Name = "ocrabbyy.getcellinfo", Tooltip = "Command `ocrabbyy.fromscreen` allows to retrive information about table cell")]
     public class OcrAbbyyGetCellInfoCommand : Command
     {
         public class Arguments : CommandArguments

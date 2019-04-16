@@ -13,7 +13,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.speechtotext", Tooltip = "This command transcripts speech from an audio file.", NeedsDelay = true)]
+    [Command(Name = "watson.speechtotext", Tooltip = "This command transcripts speech from an audio file", NeedsDelay = true)]
     public class WatsonSpeechToTextCommand : Command
     {
         public class Arguments : CommandArguments

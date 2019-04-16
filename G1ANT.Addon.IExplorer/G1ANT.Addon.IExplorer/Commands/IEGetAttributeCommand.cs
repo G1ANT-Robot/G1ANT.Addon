@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.getattribute", Tooltip = "This command gets the attribute value of a specified element.")]
+    [Command(Name = "ie.getattribute", Tooltip = "This command gets the attribute value of a specified element")]
 
     public class IEGetAttributeCommand : Command
     {

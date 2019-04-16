@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.activatetab", Tooltip = "This command activates Internet Explorer tab for further use by other `ie.` commands.")]
+    [Command(Name = "ie.activatetab", Tooltip = "This command activates Internet Explorer tab for further use by other `ie.` commands")]
     public class IEActivateTabCommand : Command
     {
         public class Arguments : CommandArguments

@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.runscript", Tooltip = "This command executes script on the currently attached Internet Explorer instance. ")]
+    [Command(Name = "ie.runscript", Tooltip = "This command executes script on the currently attached Internet Explorer instance")]
     public class IERunScriptCommand : Command
     {
         public class Arguments : CommandArguments

@@ -5,7 +5,7 @@ namespace G1ANT.Addon.Watson
 {
     [Variable(
         Name = "timeoutwatson",
-        Tooltip = "Determines the timeout value (in ms) for the `watson.` commands; the default value is 60000 (60 seconds).")]
+        Tooltip = "Determines the timeout value (in ms) for the `watson.` commands; the default value is 60000 (60 seconds)")]
     public class TimeoutWatsonVariable : Variable
     {
         private readonly TimeSpanStructure value;

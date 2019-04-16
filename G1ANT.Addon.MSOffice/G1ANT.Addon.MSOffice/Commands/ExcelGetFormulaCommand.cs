@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.getformula", Tooltip = "This command gets formula from a specified cell.")]
+    [Command(Name = "excel.getformula", Tooltip = "This command gets formula from a specified cell")]
     public class ExcelGetFormulaCommand : Command
     {
         public class Arguments : CommandArguments

@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.getdocument", Tooltip = "Command `ocrabbyy.getdocument` allows to assign project information to a variable in order to extract different types of data from it.")]
+    [Command(Name = "ocrabbyy.getdocument", Tooltip = "Command `ocrabbyy.getdocument` allows to assign project information to a variable in order to extract different types of data from it")]
     public class OcrAbbyyGetDocumentCommand : Command
     {
         public class Arguments : CommandArguments

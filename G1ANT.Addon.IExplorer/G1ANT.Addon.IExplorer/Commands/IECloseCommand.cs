@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.close", Tooltip = "This command closes an attached Internet Explorer instance.")]
+    [Command(Name = "ie.close", Tooltip = "This command closes an attached Internet Explorer instance")]
     public class IECloseCommand : Command
     {
         public class Arguments : CommandArguments

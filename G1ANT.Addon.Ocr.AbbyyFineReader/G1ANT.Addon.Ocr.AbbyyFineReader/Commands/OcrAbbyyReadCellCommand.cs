@@ -26,7 +26,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.readcell", Tooltip = "Command `ocrabbyy.readcell` allows to read row column indexed cell from specific table in the document.")]
+    [Command(Name = "ocrabbyy.readcell", Tooltip = "Command `ocrabbyy.readcell` allows to read row column indexed cell from specific table in the document")]
     public class OcrAbbyyReadCellCommand : Command
     {
         public class Arguments : CommandArguments

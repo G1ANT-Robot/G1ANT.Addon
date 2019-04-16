@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.close", Tooltip = "This command closes Outlook.", NeedsDelay = true)]
+    [Command(Name = "outlook.close", Tooltip = "This command closes Outlook", NeedsDelay = true)]
     public class OutlookCloseCommand : Command
     {
         public class Arguments : CommandArguments
