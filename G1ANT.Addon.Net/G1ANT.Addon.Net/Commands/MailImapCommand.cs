@@ -31,7 +31,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Port")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
-            [Argument(Required = true, Tooltip = "Login of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
             [Argument(Required = true, Tooltip = "User email password")]

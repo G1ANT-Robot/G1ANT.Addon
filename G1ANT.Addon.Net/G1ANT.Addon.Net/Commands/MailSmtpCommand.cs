@@ -35,7 +35,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Sender's email address")]
             public TextStructure From { get; set; }
 
-            [Argument(Required = true, Tooltip = "Receiver's email address")]
+            [Argument(Required = true, Tooltip = "Recipient's email address")]
             public TextStructure To { get; set; }
 
             [Argument(Tooltip = "Carbon copy address(es); use semicolon (;) to separate multiple addresses")]
