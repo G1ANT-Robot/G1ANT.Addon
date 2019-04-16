@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.setattribute", Tooltip = "This command allows to set element's attribute")]
+    [Command(Name = "ie.setattribute", Tooltip = "Command `ie.setattribute` allows to set attribute's value of the specified element.")]
 
     public class IESetAttributeCommand : Command
     {
@@ -26,7 +26,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Tooltip = "Value to set")]
             public TextStructure Value { get; set; }
 
-            [Argument(Required = true, Tooltip = "Phrase to find element by")]
+            [Argument(Required = true, Tooltip = "Phrase to find an element by")]
             public TextStructure Search { get; set; }
 
             [Argument(Tooltip = "Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`")]

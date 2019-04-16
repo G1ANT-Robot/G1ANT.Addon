@@ -29,7 +29,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Delimiter to be used while importing data. Accepts 'tab', 'semicolon', 'comma', 'space' or any other character. By default, 'semicolon'.")]
             public TextStructure Delimiter { get; set; } = new TextStructure("semicolon");
 
-            [Argument(Tooltip = "Range name where data will be placed")]
+            [Argument(Tooltip = "Name of a range where data will be placed")]
             public TextStructure Name { get; set; }
 
             [Argument(Tooltip = "Name of a variable that will store the total number of rows of the imported data")]

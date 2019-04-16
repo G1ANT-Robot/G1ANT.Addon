@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "Area from which Abbyy will try to read, has to be rectangle.")]
             public RectangleStructure Area { get; set; } = new RectangleStructure(System.Windows.Forms.Screen.PrimaryScreen.Bounds);
 
-            [Argument(Tooltip = "If true position is relative to active window.")]
+            [Argument(Tooltip = "If true, position is relative to the active window")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
             [Argument]

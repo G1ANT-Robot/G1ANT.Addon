@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.getattribute", Tooltip = "This command allows to get element's attribute.")]
+    [Command(Name = "ie.getattribute", Tooltip = "This command gets the attribute value of a specified element.")]
 
     public class IEGetAttributeCommand : Command
     {
@@ -29,7 +29,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Tooltip = "Specifies an element selector, possible values are: 'name', 'text', 'title', 'class', 'id', 'selector', 'query', 'jquery'")]
             public TextStructure By { get; set; } = new TextStructure(ElementSearchBy.Id.ToString().ToLower());
 
-            [Argument(DefaultVariable = "timeoutie")]
+            [Argument(DefaultVariable = "timeoutie", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument(Tooltip = "Name of a variable where the command's result will be stored")]

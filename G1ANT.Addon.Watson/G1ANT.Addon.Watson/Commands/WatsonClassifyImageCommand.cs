@@ -25,7 +25,7 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument(Required = true, Tooltip = "Specifies api key needed to login to the service.")]
             public TextStructure ApiKey { get; set; }
 
-            [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
+            [Argument(Required = true, Tooltip = "IBM server URI")]
             public TextStructure ServerUri { get; set; }
 
             [Argument(Tooltip = "Floating point value (0-1 range) that specifies a minimum score a class must have to be displayed in the results")]

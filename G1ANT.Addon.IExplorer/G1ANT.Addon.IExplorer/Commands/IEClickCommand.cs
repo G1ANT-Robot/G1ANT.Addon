@@ -18,7 +18,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Phrase to find element by")]
+            [Argument(Required = true, Tooltip = "Phrase to find an element by")]
             public TextStructure Search { get; set; }
 
             [Argument(Tooltip = "Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`")]

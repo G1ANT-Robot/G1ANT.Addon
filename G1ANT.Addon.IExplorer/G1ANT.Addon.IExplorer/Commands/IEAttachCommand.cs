@@ -17,7 +17,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Browser tab title or url")]
+            [Argument(Required = true, Tooltip = "Browser tab title or URL address")]
             public TextStructure Phrase { get; set; }
 
             [Argument(Tooltip = "Determines where to search for a  phrase in a tab to activate it: `title` or `url`")]

@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Number of tables found in processed file")]
+            [Argument(Tooltip = "info about the number of tables found in the processed file")]
             public TextStructure TablesCountResult { get; set; } = new TextStructure("tablescountresult");
 
             [Argument(Tooltip = "the language which should be considered  trying to recognise text")]

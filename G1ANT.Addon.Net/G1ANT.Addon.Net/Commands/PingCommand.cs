@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Net
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "IP address or hostname of pinging server")]
+            [Argument(Tooltip = "IP address or a host name of a pinged server")]
             public TextStructure Ip { get; set; }
 
             [Argument(Tooltip = "Allows to ping multiple times; the command returns a rounded average of all pings")]

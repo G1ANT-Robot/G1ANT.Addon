@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Password of the inbox user")]
             public TextStructure Password { get; set; }
 
-            [Argument(Required = true, Tooltip = "Mail to move")]
+            [Argument(Required = true, Tooltip = "Mail message to be moved")]
             public MailStructure Mail { get; set; }
 
             [Argument(Required = false, Tooltip = "Name of the destination folder")]

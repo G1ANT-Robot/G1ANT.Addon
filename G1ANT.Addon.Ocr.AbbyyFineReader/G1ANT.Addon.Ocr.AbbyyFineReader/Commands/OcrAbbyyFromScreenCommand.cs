@@ -25,7 +25,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Specifies screen area to be captured in format x0⫽y0⫽x1⫽y1 (x0,y0 – coordinates of a top left corner; x1,y1 – coordinates of a right bottom corner of the area)")]
             public RectangleStructure Area { get; set; }
 
-            [Argument(Tooltip = "If true area coordinates are relative to active window")]
+            [Argument(Tooltip = "runs the command only if condition is true")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
             [Argument(Tooltip = "the language which should be considered trying to recognize text")]

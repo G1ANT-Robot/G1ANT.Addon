@@ -17,7 +17,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true,Tooltip = "Address to navigate to")]
+            [Argument(Required = true,Tooltip = "URL address to navigate to")]
             public TextStructure Url { get; set; }
 
             [Argument(Tooltip = "If set to `true`, the command will not wait until the page is loaded")]

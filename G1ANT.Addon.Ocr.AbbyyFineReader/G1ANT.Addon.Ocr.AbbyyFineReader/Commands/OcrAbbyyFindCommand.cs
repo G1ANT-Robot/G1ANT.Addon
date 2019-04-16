@@ -25,7 +25,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.find", Tooltip = "This command allows to find the text on the active screen and return it's position as a 'rectangle' format. If the text will not be found, the result will be Rectangle(-1,-1,-2,-2).")]
+    [Command(Name = "ocrabbyy.find", Tooltip = "Command `ocrabbyy.find` allows to find the text on the active screen and return its position as a 'rectangle' format. ")]
     public class OcrAbbyyFindCommand : Command
     {
         public class Arguments : CommandArguments

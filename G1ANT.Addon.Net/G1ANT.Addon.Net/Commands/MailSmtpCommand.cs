@@ -47,7 +47,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Mail subject")]
             public TextStructure Subject { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Mail body, main content of the email ")]
+            [Argument(Tooltip = "Message body, i.e. the main content of an email")]
             public TextStructure Body { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "If true body is expexted in HTML format")]

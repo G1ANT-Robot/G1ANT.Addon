@@ -46,7 +46,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = false, Tooltip = "To what date should emails be retrieved")]
             public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
-            [Argument(Required = false, Tooltip = "Look only for already unread messages")]
+            [Argument(Required = false, Tooltip = "If set to `true`, only unread messages will be checked")]
             public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]

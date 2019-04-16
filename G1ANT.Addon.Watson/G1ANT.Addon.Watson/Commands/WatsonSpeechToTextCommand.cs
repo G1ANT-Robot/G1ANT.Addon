@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument(Required = true, Tooltip = "Specifies service's login.")]
             public TextStructure ApiKey { get; set; }
 
-            [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
+            [Argument(Required = true, Tooltip = "IBM server URI")]
             public TextStructure ServerUri { get; set; }
 
             [Argument]

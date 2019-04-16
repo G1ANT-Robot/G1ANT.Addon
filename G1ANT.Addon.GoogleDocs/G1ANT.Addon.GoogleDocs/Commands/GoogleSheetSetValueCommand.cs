@@ -24,7 +24,7 @@ namespace G1ANT.Addon.GoogleDocs
             [Argument(Required = true, Tooltip = "Cell name (like A6) where you want to inject data")]
             public TextStructure Range { get; set; }
 
-            [Argument(Required = true, Tooltip = "New value to be inserted inside of a chosen cell")]
+            [Argument(Required = true, Tooltip = "New value to be entered into a specified cell or range")]
             public TextStructure Value { get; set; }
 
             [Argument(Tooltip = "Name of the sheet which contains the specified cell or range; can be empty or omitted")]

@@ -22,7 +22,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Word to be found in document")]
             public TextStructure From { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Required = true, Tooltip = "Word to be replaced in document")]
+            [Argument(Required = true, Tooltip = "Text to be replaced in a document")]
             public TextStructure To { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "If set to `true`, then the search is case sensitive")]

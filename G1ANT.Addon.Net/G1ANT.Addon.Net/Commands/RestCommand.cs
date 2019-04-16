@@ -14,7 +14,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "rest", Tooltip = "This command prepares a request to the desired url with selected method. \nYou can pass multiple parameters and all of them will be attached as a request body.")]
+    [Command(Name = "rest", Tooltip = "This command prepares a request to a desired URL with a selected method. ")]
     public class RestCommand : Command
     {
         public class Arguments : CommandArguments
@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Net
             [Argument(DefaultVariable = "timeoutrest", Tooltip = "Defines time duration for command to wait, default for rest is 5000ms")]
             public  override TimeSpanStructure Timeout { get; set; }
 
-            [Argument(Tooltip = "Headers attached to rest request")]
+            [Argument(Tooltip = "Headers attached to the request. Separate headers using ❚ character (**Ctrl+\\**); their keys and values should be separated with colon (:)")]
             public ListStructure Headers { get; set; }
 
             [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (**Ctrl+\\**); their keys and values should be separated with colon (:)")]

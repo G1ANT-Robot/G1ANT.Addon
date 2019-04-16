@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Ip or url of the machine")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port used to connect and allowed on the server side")]
+            [Argument(Required = true, Tooltip = "Port used to connect to the remote machine")]
             public TextStructure Port { get; set; }
 
             [Argument(Required = true, Tooltip = "Password used to connect to the remote machine")]
