@@ -8,7 +8,7 @@ mail.imap host ⟦text⟧ port ⟦integer⟧ login ⟦text⟧ password ⟦text�
 
 ## Description
 
-This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time range, with the option to consider only unread messages and/or mark all of the checked ones as read. The result of the command is a list of mail variables — please refer to [mail structure](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) to see what elements are stored in. it.
+This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time span, with the option to consider only unread messages and/or mark all of the checked ones as read. The result of the command is a list of mail variables — please refer to [mail structure](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) to see what elements are stored in. it.
 
 | Argument               | Type                                                         | Required | Default Value                                                | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -22,7 +22,7 @@ This command uses the IMAP protocol to check an email inbox and allows the user 
 | `onlyunreadmessages`   | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | false | If set to `true`, only unread messages will be checked       |
 | `markallmessagesasread`| [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true | If set to `true`, all checked messages will be marked as read |
 | `ignorecertificateerrors` | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | false | If set to `true`, the command will ignore any security certificate errors |
-| `result`               | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | ♥result | The name of a list variable where the returned [mail](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) variables will be stored |
+| `result`               | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | ♥result | Name of a list variable where the returned [mail](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) variables will be stored |
 | `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
 | `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
 | `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |

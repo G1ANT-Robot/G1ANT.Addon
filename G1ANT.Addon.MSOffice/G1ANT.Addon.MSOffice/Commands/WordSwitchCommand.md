@@ -12,7 +12,7 @@ This command switches between open Word instances.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`id`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | yes | | ID of Word window that was specified while using `word.open` command |
+|`id`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | yes | | ID of a Word window that was specified while using the `word.open` command |
 | `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the command's result will be stored (true or false) |
 | `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
 | `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
