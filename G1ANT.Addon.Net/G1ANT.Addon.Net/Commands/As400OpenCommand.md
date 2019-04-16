@@ -8,7 +8,7 @@ as400.open host ⟦text⟧
 
 ## Description
 
-This command opens a terminal connection to work with IBM AS/400 server.
+This command opens a terminal connection to work with the IBM AS/400 server.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
