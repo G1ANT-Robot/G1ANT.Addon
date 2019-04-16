@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of attribute")]
+            [Argument(Required = true, Tooltip = "Name of an attribute")]
             public TextStructure Name { get; set; }
 
             [Argument(Tooltip = "Value to be set")]

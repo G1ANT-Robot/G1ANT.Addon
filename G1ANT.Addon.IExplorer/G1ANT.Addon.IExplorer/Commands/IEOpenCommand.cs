@@ -17,7 +17,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Webpage address to load")]
+            [Argument(Tooltip = "URL address to navigate to")]
             public TextStructure Url { get; set; } = new TextStructure(string.Empty);
 
             [Argument(DefaultVariable = "timeoutie", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]

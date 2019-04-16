@@ -40,7 +40,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Folder to fetch emails from")]
             public TextStructure Folder { get; set; } = new TextStructure("INBOX");
 
-            [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
+            [Argument(Required = true, Tooltip = "Starting date for messages to be checked")]
             public DateStructure SinceDate { get; set; }
 
             [Argument(Required = false, Tooltip = "Ending date for messages to be checked")]

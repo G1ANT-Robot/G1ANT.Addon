@@ -41,7 +41,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Carbon copy. You can add multiple addresses separated with ';'")]
             public TextStructure Cc { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Blind carbon copy. You can add multiple addresses separated with ';'")]
+            [Argument(Tooltip = "Blind carbon copy address(es); use semicolon (;) to separate multiple addresses")]
             public TextStructure Bcc { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "Message subject")]

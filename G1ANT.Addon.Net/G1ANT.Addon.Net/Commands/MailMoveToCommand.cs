@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Host name")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Login of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
             [Argument(Required = true, Tooltip = "User email password")]

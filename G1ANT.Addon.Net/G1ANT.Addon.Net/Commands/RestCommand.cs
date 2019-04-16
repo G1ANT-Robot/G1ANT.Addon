@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "http method of rest request ( post / get / put / delete / patch …)")]
             public TextStructure Method { get; set; }
 
-            [Argument(Required = true, Tooltip = "url of api method")]
+            [Argument(Required = true, Tooltip = "URL of API method")]
             public TextStructure Url { get; set; }
 
             [Argument(DefaultVariable = "timeoutrest", Tooltip = "specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]

@@ -23,7 +23,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Path of file that has to be imported (csv data format is supported)")]
             public TextStructure Path { get; set; }
 
-            [Argument(Tooltip = "Top left cell area of imported data, specified as either string or point")]
+            [Argument(Tooltip = "Starting cell (top left) for the imported data, specified either as text or a point")]
             public Structure Destination { get; set; } = new TextStructure("A1");
 
             [Argument(Tooltip = "Delimiter (data separator) to be used while importing data: `tab`, `semicolon`, `comma`, `space` or any other character")]

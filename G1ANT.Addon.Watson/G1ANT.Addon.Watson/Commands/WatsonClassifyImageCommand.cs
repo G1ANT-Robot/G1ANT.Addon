@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Watson.Commands
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Specifies capture screen area.")]
+            [Argument(Required = true, Tooltip = "Path to an image file to be classified")]
             public TextStructure ImagePath { get; set; } = new TextStructure();
 
             [Argument(Required = true, Tooltip = "API key needed to log in to the service")]

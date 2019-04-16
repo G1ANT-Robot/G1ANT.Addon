@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of event to fire")]
+            [Argument(Required = true, Tooltip = "Name of an event to fire (can be any HTML DOM event)")]
             public TextStructure EventName { get; set; }
 
             [Argument(Tooltip = "Parameters to be passed to the event handler")]

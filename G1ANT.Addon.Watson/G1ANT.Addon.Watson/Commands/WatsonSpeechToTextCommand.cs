@@ -18,7 +18,7 @@ namespace G1ANT.Addon.Watson.Commands
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Specifies path to file with speech recorded.")]
+            [Argument(Required = true, Tooltip = "Path to a file with recorded speech")]
             public TextStructure Path { get; set; }
 
             [Argument(Required = true, Tooltip = "API key needed to log in to the service")]
