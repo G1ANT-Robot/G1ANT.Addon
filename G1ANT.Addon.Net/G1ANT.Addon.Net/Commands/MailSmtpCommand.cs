@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Login of user who is sending the email")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "User email password")]
             public TextStructure Password { get; set; }
 
             [Argument(Tooltip = "SMTP server port number")]
