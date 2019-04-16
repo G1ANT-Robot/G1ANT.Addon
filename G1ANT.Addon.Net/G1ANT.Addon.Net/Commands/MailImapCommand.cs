@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Host name")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port")]
+            [Argument(Required = true, Tooltip = "IMAP server port number")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
             [Argument(Required = true, Tooltip = "User email login")]

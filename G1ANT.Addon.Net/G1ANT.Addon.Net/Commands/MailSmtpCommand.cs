@@ -29,7 +29,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Smpt client port")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(587);
 
-            [Argument(Tooltip = "Smpt client host name")]
+            [Argument(Tooltip = "SMTP server address")]
             public TextStructure Host { get; set; } = new TextStructure("smtp.gmail.com");
 
             [Argument(Required = true, Tooltip = "Sender's email address")]
