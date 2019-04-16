@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "path to a file to be processed")]
+            [Argument(Required = true, Tooltip = "Path to a file to be processed")]
             public TextStructure Path { get; set; }
 
             [Argument(Required = false, Tooltip = "List of numbers of pages to be processed")]
