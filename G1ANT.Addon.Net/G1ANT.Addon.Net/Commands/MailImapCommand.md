@@ -8,7 +8,7 @@ mail.imap host ⟦text⟧ port ⟦integer⟧ login ⟦text⟧ password ⟦text�
 
 ## Description
 
-This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time range, with the option to consider only unread messages and/or mark all of the checked ones as read. The result of the command is a list of mail variables — please refer to [mail structure](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) to see what elements are stored in. it.
+This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time span, with the option to consider only unread messages and/or mark all of the checked ones as read. The result of the command is a list of mail variables — please refer to [mail structure](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) to see what elements are stored in. it.
 
 | Argument               | Type                                                         | Required | Default Value                                                | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
