@@ -12,7 +12,7 @@ This command inserts an empty row into a specified place.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-| `row`          | [integer](G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | yes |  | Row’s number |
+| `row`          | [integer](G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | yes |  | Row number |
 | `where`                 | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       | below                                                    | Specifies where to insert a row: `above` or `below` a specified row |
 | `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
 | `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |

@@ -8,7 +8,7 @@
 
 ## Description
 
-Determines the timeout value (in ms) for the `ocrgoogle.` and `ocrtesseract.` commands; the default value is 60000 (60 seconds).
+Determines the timeout value (in ms) for the `ocrgoogle.` and the `ocrtesseract.` commands; the default value is 60000 (60 seconds).
 
 ## Example
 
