@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Net
             public TextStructure Folder { get; set; } = new TextStructure(String.Empty);
 
             [Argument(Required = false, Tooltip = "IMAP server port number")]
-            public IntegerStructure IMAP server port number { get; set; } = new IntegerStructure(993);
+            public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
             [Argument(Required = false, Tooltip = "If set to `true`, the command will ignore any security certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
@@ -95,7 +95,7 @@ namespace G1ANT.Addon.Net
         private ImapClient CreateClient(Arguments arguments)
         {
             var credentials = new NetworkCredential(arguments.Login.Value, arguments.Password.Value);
-            var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.IMAP server port number.Value).Uri;
+            var uri = new UriBuilder("imaps", arguments.Host.Value, arguments.Port.Value).Uri;
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             return ImapHelper.CreateImapClient(credentials, uri, false, timeout);
         }
