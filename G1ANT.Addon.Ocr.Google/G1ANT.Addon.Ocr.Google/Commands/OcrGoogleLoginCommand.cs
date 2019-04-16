@@ -17,7 +17,7 @@ namespace G1ANT.Language.Ocr.Google
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "JSON credential obtained from Google Cloud text recognition service")]
+            [Argument(Required = true, Tooltip = "JSON credential obtained from the Google Cloud text recognition service")]
             public TextStructure JsonCredential { get; set; }
         }
 

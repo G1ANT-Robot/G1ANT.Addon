@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = false, Tooltip = "Id of a processed document, if not specified last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument(Required = true, Tooltip = "index of a table in document")]
+            [Argument(Required = true, Tooltip = "Index of a table in document")]
             public IntegerStructure TableIndex { get; set; } = null;
 
             [Argument]

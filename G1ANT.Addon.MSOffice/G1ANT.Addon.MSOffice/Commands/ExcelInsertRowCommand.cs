@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Row’s number")]
+            [Argument(Required = true, Tooltip = "Row number")]
             public IntegerStructure Row { get; set; }
 
             [Argument(Tooltip = "Specifies where to insert a row: `above` or `below` a specified row")]

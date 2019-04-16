@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "runs the command only if condition is true")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "the language which should be considered trying to recognize text")]
+            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("English");
 
             [Argument(DefaultVariable = "result", Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]

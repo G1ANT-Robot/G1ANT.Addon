@@ -39,7 +39,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "the language which should be considered trying to recognize text")]
+            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = null;
 
             [Argument(Tooltip = "Importance of the chosen language")]

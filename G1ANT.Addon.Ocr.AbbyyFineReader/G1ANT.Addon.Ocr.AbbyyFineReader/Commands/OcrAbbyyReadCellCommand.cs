@@ -43,7 +43,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             //[Argument(Required = true, Tooltip = "Index of a column in the table")]
             //public IntegerStructure Column { get; set; } = null;
 
-            [Argument(Required = true, Tooltip = "position of the cell in the table in format row, column")]
+            [Argument(Required = true, Tooltip = "Position of the cell in the table in format row, column")]
             public TextStructure Position { get; set; } = null;
 
             [Argument(Tooltip = "Offset to be added to get proper value in format row, column")]

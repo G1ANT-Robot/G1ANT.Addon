@@ -17,7 +17,7 @@ namespace G1ANT.Addon.MSOffice
 	{
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "ID of Word window that was specified while using `word.open` command")]
+            [Argument(Required = true, Tooltip = "ID of a Word window that was specified while using the `word.open` command")]
             public IntegerStructure Id { get; set; }
 
             [Argument]

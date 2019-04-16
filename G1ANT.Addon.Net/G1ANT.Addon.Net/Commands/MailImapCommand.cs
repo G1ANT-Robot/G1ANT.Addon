@@ -20,7 +20,7 @@ using System.Net;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.imap", Tooltip = "This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time range, with the option to consider only unread messages and/or mark all of the checked ones as read")]
+    [Command(Name = "mail.imap", Tooltip = "This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time span, with the option to consider only unread messages and/or mark all of the checked ones as read")]
     public class MailImapCommand : Command
     {
         public class Arguments : CommandArguments
@@ -52,7 +52,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
             public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
-            [Argument(Required = false, Tooltip = "The name of a list variable where the returned [mail](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) variables will be stored")]
+            [Argument(Required = false, Tooltip = "Name of a list variable where the returned [mail](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) variables will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Required = false, Tooltip = "If set to `true`, the command will ignore any security certificate errors")]
