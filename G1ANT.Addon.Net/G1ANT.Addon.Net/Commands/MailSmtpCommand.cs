@@ -26,7 +26,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Password of user who is sending the email")]
             public TextStructure Password { get; set; }
 
-            [Argument(Tooltip = "Smpt client port")]
+            [Argument(Tooltip = "SMTP server port number")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(587);
 
             [Argument(Tooltip = "SMTP server address")]
