@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Net
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Login of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
             [Argument(Required = true, Tooltip = "User email password")]
