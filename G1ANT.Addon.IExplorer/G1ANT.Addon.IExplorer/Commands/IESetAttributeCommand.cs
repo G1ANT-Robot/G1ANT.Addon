@@ -23,7 +23,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Required = true, Tooltip = "Name of attribute")]
             public TextStructure Name { get; set; }
 
-            [Argument(Tooltip = "Value to set")]
+            [Argument(Tooltip = "Value to be set")]
             public TextStructure Value { get; set; }
 
             [Argument(Required = true, Tooltip = "Phrase to find an element by")]

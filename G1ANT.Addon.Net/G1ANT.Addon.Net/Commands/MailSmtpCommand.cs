@@ -44,7 +44,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Blind carbon copy. You can add multiple addresses separated with ';'")]
             public TextStructure Bcc { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Mail subject")]
+            [Argument(Tooltip = "Message subject")]
             public TextStructure Subject { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "Message body, i.e. the main content of an email")]

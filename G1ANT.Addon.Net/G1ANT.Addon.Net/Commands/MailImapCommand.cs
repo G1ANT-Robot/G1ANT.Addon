@@ -43,7 +43,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
             public DateStructure SinceDate { get; set; }
 
-            [Argument(Required = false, Tooltip = "To what date should emails be retrieved")]
+            [Argument(Required = false, Tooltip = "Ending date for messages to be checked")]
             public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
             [Argument(Required = false, Tooltip = "If set to `true`, only unread messages will be checked")]

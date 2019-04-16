@@ -27,7 +27,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Path to a file to be processed")]
             public TextStructure Path { get; set; }
 
-            [Argument(Required = false, Tooltip = "Indecies of pages to be processed")]
+            [Argument(Required = false, Tooltip = "list of numbers of pages to be processed")]
             public ListStructure Pages { get; set; } = null;
 
             [Argument]

@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Text that you want to find in the screen. ")]
+            [Argument(Required = true, Tooltip = "text that you want to find in the screen")]
             public TextStructure Search { get; set; }
 
             [Argument(Required = false, Tooltip = "Id of a processed document, if not specified last processed document is used")]

@@ -11,7 +11,7 @@
 | [mail.moveto](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Commands/MailMoveToCommand.md) | This command moves selected message to another folder. |
 | [mail.smtp](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Commands/MailSmtpCommand.md) | This command sends a mail message from a provided email address to a specified recipient. |
 | [ping](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Commands/PingCommand.md) | This command pings a specified IP address and returns an approximate round-trip time in milliseconds. |
-| [rest](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Commands/RestCommand.md) | This command prepares a request to the desired url with selected method.  You can pass multiple parameters and all of them will be attached as a request body. |
+| [rest](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Commands/RestCommand.md) | This command prepares a request to a desired URL with a selected method.  |
 | [vnc.connect](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Commands/VncConnectCommand.md) | This command connects to a remote machine with a running VNC server, using a remote desktop connection. |
 
  All Variables

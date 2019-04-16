@@ -26,7 +26,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Top left cell area of imported data, specified as either string or point")]
             public Structure Destination { get; set; } = new TextStructure("A1");
 
-            [Argument(Tooltip = "Delimiter to be used while importing data. Accepts 'tab', 'semicolon', 'comma', 'space' or any other character. By default, 'semicolon'.")]
+            [Argument(Tooltip = "Delimiter (data separator) to be used while importing data: `tab`, `semicolon`, `comma`, `space` or any other character")]
             public TextStructure Delimiter { get; set; } = new TextStructure("semicolon");
 
             [Argument(Tooltip = "Name of a range where data will be placed")]

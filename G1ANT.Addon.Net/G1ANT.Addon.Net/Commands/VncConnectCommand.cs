@@ -19,7 +19,7 @@ namespace G1ANT.Addon.Net
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Ip or url of the machine")]
+            [Argument(Required = true, Tooltip = "IP or URL address of the remote machine")]
             public TextStructure Host { get; set; }
 
             [Argument(Required = true, Tooltip = "Port used to connect to the remote machine")]

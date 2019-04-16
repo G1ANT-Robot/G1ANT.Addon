@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Specifies screen area to be captured in format x0⫽y0⫽x1⫽y1 (x0,y0 – coordinates of a top left corner; x1,y1 – coordinates of a right bottom corner of the area)")]
+            [Argument(Required = true, Tooltip = "specifies screen area to be captured in format x0⫽y0⫽x1⫽y1 (x0,y0 – coordinates of a top left corner; x1,y1 – coordinates of a right bottom corner of the area)")]
             public RectangleStructure Area { get; set; }
 
             [Argument(Tooltip = "runs the command only if condition is true")]

@@ -26,7 +26,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Tooltip = "Parameters to be passed to the event handler")]
             public ListStructure Parameters { get; set; }
 
-            [Argument(Required = true, Tooltip = "Phrase to find element by")]
+            [Argument(Required = true, Tooltip = "Phrase to find an element by")]
             public TextStructure Search { get; set; }
 
             [Argument(Tooltip = "Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`")]

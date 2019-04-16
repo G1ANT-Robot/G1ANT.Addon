@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Tooltip = "Webpage address to load")]
             public TextStructure Url { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(DefaultVariable = "timeoutie")]
+            [Argument(DefaultVariable = "timeoutie", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
             [Argument(Tooltip = "If set to `true`, the command will not wait until the page is loaded")]

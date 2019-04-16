@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument(Required = true, Tooltip = "Specifies capture screen area.")]
             public TextStructure ImagePath { get; set; } = new TextStructure();
 
-            [Argument(Required = true, Tooltip = "Specifies api key needed to login to the service.")]
+            [Argument(Required = true, Tooltip = "API key needed to log in to the service")]
             public TextStructure ApiKey { get; set; }
 
             [Argument(Required = true, Tooltip = "IBM server URI")]

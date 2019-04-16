@@ -19,7 +19,7 @@ namespace G1ANT.Addon.MSOffice
 	{
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Word to be found in document")]
+            [Argument(Required = true, Tooltip = "Text to be found in a document")]
             public TextStructure From { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Required = true, Tooltip = "Text to be replaced in a document")]

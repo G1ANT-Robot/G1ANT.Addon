@@ -21,7 +21,7 @@ namespace G1ANT.Addon.GoogleDocs
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Cell name (like A6) where you want to inject data")]
+            [Argument(Required = true, Tooltip = "Cell or range address (e.g. `A6`) where new data will be entered")]
             public TextStructure Range { get; set; }
 
             [Argument(Required = true, Tooltip = "New value to be entered into a specified cell or range")]
