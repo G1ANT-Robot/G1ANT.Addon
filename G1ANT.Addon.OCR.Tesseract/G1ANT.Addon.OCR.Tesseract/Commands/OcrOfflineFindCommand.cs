@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Text that you want to find in the screen. Provide only single words")]
+            [Argument(Required = true, Tooltip = "Text to be found on the screen (the fewer words, the better results)")]
             public TextStructure Search { get; set; }
 
             [Argument]
