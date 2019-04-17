@@ -17,7 +17,7 @@
 | [ie.refresh](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IERefreshCommand.md) | This command refreshes the current Internet Explorer instance |
 | [ie.runscript](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IERunScriptCommand.md) | This command executes script on the currently attached Internet Explorer instance |
 | [ie.saveas](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IESaveAsCommand.md) | This command automatically saves file to a specified directory once the pop-up box has appeared |
-| [ie.setattribute](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IESetAttributeCommand.md) | Command `ie.setattribute` allows to set attribute&apos;s value of the specified element |
+| [ie.setattribute](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IESetAttributeCommand.md) | This command sets an attribute&apos;s value of a specified element |
 | [ie.seturl](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IESetUrlCommand.md) | This command navigates Internet Explorer to a specified URL address |
 | [ie.switch](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IESwitchCommand.md) | This command switches context to the already opened/attached Internet Explorer instance |
 | [ie.waitforcomplete](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IEWaitForCompleteCommand.md) | This command suspends script execution until a webpage is loaded |
