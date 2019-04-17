@@ -8,7 +8,7 @@ mail.moveto host ⟦text⟧ port ⟦integer⟧ login ⟦text⟧ password ⟦text
 
 ## Description
 
-This command moves selected message to another folder.
+This command moves a selected message to another folder.
 
 | Argument            | Type                                                         | Required | Default Value                                               | Description                                                  |
 | ------------------- | ------------------------------------------------------------ | -------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
