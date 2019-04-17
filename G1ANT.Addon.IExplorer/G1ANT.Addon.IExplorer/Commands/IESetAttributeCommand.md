@@ -8,7 +8,7 @@ ie.setattribute name ⟦text⟧ search ⟦text⟧ by ⟦text⟧ value ⟦text⟧
 
 ## Description
 
-Command `ie.setattribute` allows to set attribute's value of the specified element.
+This command sets an attribute's value of a specified element.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
