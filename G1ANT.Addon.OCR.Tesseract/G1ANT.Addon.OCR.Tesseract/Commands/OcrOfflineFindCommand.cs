@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
+            [Argument(Tooltip = "Language to be used for text recognition")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
             [Argument(Tooltip = "Factor of image zoom that allows better recognition of smaller text")]
@@ -57,8 +57,8 @@ namespace G1ANT.Addon.Ocr.Tesseract
                 RobotWin32.GetWindowRectangle(RobotWin32.GetForegroundWindow(), ref foregroundWindowRect);
                 rectangle = new Rectangle(rectangle.X + foregroundWindowRect.Left,
                     rectangle.Y + foregroundWindowRect.Top,
-                    Math.Min(rectangle.Width, foregroundWindowRect.Right - foregroundWindowRect.Left) - rectangle.X,
-                    Math.Min(rectangle.Height, foregroundWindowRect.Bottom - foregroundWindowRect.Top) - rectangle.Y);
+                    Math.Min(rectangle.Width, foregroundWindowRect.Right - foregroundWindowRect.Left - rectangle.X),
+                    Math.Min(rectangle.Height, foregroundWindowRect.Bottom - foregroundWindowRect.Top - rectangle.Y));
             }
             var partOfScreen = RobotWin32.GetPartOfScreen(rectangle);
             var language = arguments.Language.Value;
@@ -75,20 +75,20 @@ namespace G1ANT.Addon.Ocr.Tesseract
                     var rectResult = new Rectangle(-1, -1, -1, -1);
                     var rectanglesWithWords = GetWords(page.GetHOCRText(0), arguments.Sensitivity.Value);
                     var searchWords = search.Split(' ');
+                    List<Rectangle> rectangleList = new List<Rectangle>();
                     if (searchWords.Length > 1)
                     {
-                        var rectangleList = rectanglesWithWords.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList();
-                        if (rectangleList.Count() == 0)
+                        rectangleList = rectanglesWithWords.Where(x => searchWords.Contains(x.Value)).Select(a => a.Key).ToList();
+                        if (rectangleList.Count() == searchWords.Length)
                         {
-                            throw new NullReferenceException("Ocr was unable to find text");
+                            rectResult = UniteRectangles(rectangleList);
                         }
-                        rectResult = UnionRectangles(rectangleList);
                     }
                     else if (rectanglesWithWords.ContainsValue(search))
                     {
                         rectResult = rectanglesWithWords.Where(x => x.Value == search).First().Key;
                     }
-                    if (Equals(rectResult, new Rectangle(-1, -1, -1, -1)))
+                    if (Equals(rectResult, new Rectangle(-1, -1, -1, -1)) || (searchWords.Length > 1 && rectangleList.Count() != searchWords.Length))
                         throw new NullReferenceException("Ocr was unable to find text");
                     Scripter.Variables.SetVariableValue(arguments.Result.Value, new RectangleStructure(rectResult));
                 }
@@ -103,7 +103,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             }
         }
 
-        private Rectangle UnionRectangles(IEnumerable<Rectangle> rectangleList)
+        private Rectangle UniteRectangles(IEnumerable<Rectangle> rectangleList)
         {
             int xMin = rectangleList.Min(s => s.X);
             int yMin = rectangleList.Min(s => s.Y);

@@ -29,7 +29,7 @@ namespace G1ANT.Addon.Ocr.Tesseract
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
+            [Argument(Tooltip = "Language to be used for text recognition")]
             public TextStructure Language { get; set; } = new TextStructure("eng");
 
             [Argument(Tooltip = "Factor of image zoom that allows better recognition of smaller text")]
