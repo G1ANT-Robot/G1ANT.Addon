@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.setattribute", Tooltip = "Command `ie.setattribute` allows to set attribute's value of the specified element")]
+    [Command(Name = "ie.setattribute", Tooltip = "This command sets an attribute's value of a specified element")]
 
     public class IESetAttributeCommand : Command
     {

@@ -18,7 +18,7 @@
 
 | Name | Description |
 | ---- | ----------- |
-| [timeoutconnect](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutConnectVariable.md) | Determines the timeout value (in ms) for the [is.accessible](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/IsAccessibleCommand.md) and [ping](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/PingCommand.md) commands; the default value is 1000 (1 second) |
-| [timeoutmailsmtp](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutMailSmtpVariable.md) | Determines the timeout value (in ms) for the [mail.smtp](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/MailSmtpCommand.md) command; the default value is 10000 (10 seconds) |
-| [timeoutremotedesktop](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutRemoteDesktopVariable.md) | Determines the timeout value (in ms) for the [vnc.connect](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/VncConnectCommand.md) command; the default value is 10000 (10 seconds) |
-| [timeoutrest](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutRestVariable.md) | Determines the timeout value (in ms) for the [rest](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/RestCommand.md) command; the default value is 5000 (5 seconds) |
+| [timeoutconnect](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutConnectVariable.md) | Determines the timeout value (in ms) for the is.accessible and ping commands; the default value is 1000 (1 second) |
+| [timeoutmailsmtp](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutMailSmtpVariable.md) | Determines the timeout value (in ms) for the mail.smtp command; the default value is 10000 (10 seconds) |
+| [timeoutremotedesktop](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutRemoteDesktopVariable.md) | Determines the timeout value (in ms) for the vnc.connect command; the default value is 10000 (10 seconds) |
+| [timeoutrest](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Net/Variables/TimeoutRestVariable.md) | Determines the timeout value (in ms) for the rest command; the default value is 5000 (5 seconds) |

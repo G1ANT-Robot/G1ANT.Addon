@@ -16,7 +16,7 @@ using MailKit.Net.Imap;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.moveto", Tooltip = "This command moves selected message to another folder")]
+    [Command(Name = "mail.moveto", Tooltip = "This command moves a selected message to another folder")]
     public class MailMoveToCommand : Command
     {
         public class Arguments : CommandArguments

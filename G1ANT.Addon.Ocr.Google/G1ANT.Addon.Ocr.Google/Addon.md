@@ -5,8 +5,8 @@
 
 | Name | Description |
 | ---- | ----------- |
-| [ocrgoogle.find](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleFindCommand.md) | This command finds a specified text on the active screen and returns its position in a [rectangle](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/RectangleStructure.md) format |
-| [ocrgoogle.findpoint](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleFindPointCommand.md) | This command finds a specified text on the active screen and returns its position in a [point](G1ANT.Robot/G1ANT.Language/G1ANT.Language/Structures/PointStructure.md) format |
+| [ocrgoogle.find](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleFindCommand.md) | This command finds a specified text on the active screen and returns its position in a rectangle format |
+| [ocrgoogle.findpoint](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleFindPointCommand.md) | This command finds a specified text on the active screen and returns its position in a point format |
 | [ocrgoogle.fromscreen](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleFromScreenCommand.md) | This command captures part of the screen and recognizes text from it |
 | [ocrgoogle.login](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleLoginCommand.md) | This command logs in to the Google Cloud text recognition service |
 

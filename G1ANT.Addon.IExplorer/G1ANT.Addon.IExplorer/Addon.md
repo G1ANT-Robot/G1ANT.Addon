@@ -6,7 +6,7 @@
 | Name | Description |
 | ---- | ----------- |
 | [ie.activatetab](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IEActivateTabCommand.md) | This command activates Internet Explorer tab for further use by other `ie.` commands |
-| [ie.attach](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IEAttachCommand.md) | This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](IEOpenCommand.md) command was not used to open IE and attach the robot to the browser |
+| [ie.attach](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IEAttachCommand.md) | This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the `ie.open` command was not used to open IE and attach the robot to the browser |
 | [ie.click](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IEClickCommand.md) | This command clicks an element on an active webpage |
 | [ie.close](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IECloseCommand.md) | This command closes an attached Internet Explorer instance |
 | [ie.detach](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.IExplorer/Commands/IEDetachCommand.md) | This command detaches the currently running Internet Explorer instance — attached or opened in G1ANT.Robot |
