@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "Info about the number of tables found in the processed file")]
             public TextStructure TablesCountResult { get; set; } = new TextStructure("tablescountresult");
 
-            [Argument(Tooltip = "The language which should be considered  trying to recognise text")]
+            [Argument(Tooltip = "The language which should be considered trying to recognise text")]
             public TextStructure Language { get; set; } = null;
 
             [Argument(Tooltip = "Importance of the chosen language")]

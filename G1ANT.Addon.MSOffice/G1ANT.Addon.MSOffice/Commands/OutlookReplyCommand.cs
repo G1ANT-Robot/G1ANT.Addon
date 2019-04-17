@@ -13,7 +13,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.reply", Tooltip = "This command creates a new variable of [outlookmail](G1ANT.Addon/G1ANT.Addon.MSOffice/G1ANT.Addon.MSOffice/Structures/OutlookMailStructure.md) structure which is a reply to a specified mail")]
+    [Command(Name = "outlook.reply", Tooltip = "This command creates a new variable of outlookmail structure which is a reply to a specified mail")]
     public class OutlookReplyCommand : Command
     {
         public class Arguments : CommandArguments
@@ -21,7 +21,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Mail message to be replied to")]
             public OutlookMailStructure Mail { get; set; }
 
-            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored. The variable will be of [outlookmail](G1ANT.Addon/G1ANT.Addon.MSOffice/G1ANT.Addon.MSOffice/Structures/OutlookMailStructure.md) structure")]
+            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored. The variable will be of outlookmail structure")]
             public VariableStructure Result { get; set; }
         }
         public OutlookReplyCommand(AbstractScripter scripter) : base(scripter)

@@ -21,7 +21,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Required = true, Tooltip = "Browser tab title or URL address")]
             public TextStructure Phrase { get; set; }
 
-            [Argument(Tooltip = "Determines where to search for a  phrase in a tab to activate it: `title` or `url`")]
+            [Argument(Tooltip = "Determines where to search for a phrase in a tab to activate it: `title` or `url`")]
             public TextStructure By { get; set; } = new TextStructure("title");
         }
         public IEActivateTabCommand(AbstractScripter scripter) : base(scripter)

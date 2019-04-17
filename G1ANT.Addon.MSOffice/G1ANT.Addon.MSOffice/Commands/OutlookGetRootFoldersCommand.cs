@@ -18,7 +18,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored. The variable will be of [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) structure containing elements of [outlookfolder](G1ANT.Addon/G1ANT.Addon.MSOffice/G1ANT.Addon.MSOffice/Structures/OutlookFolderStructure.md) structure")]
+            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored. The variable will be of list structure containing elements of outlookfolder structure")]
             public VariableStructure Result { get; set; }
 
         }

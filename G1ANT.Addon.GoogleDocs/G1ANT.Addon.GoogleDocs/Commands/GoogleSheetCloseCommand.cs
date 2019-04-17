@@ -16,7 +16,7 @@ namespace G1ANT.Addon.GoogleDocs
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "ID of a spreadsheet to be closed. The ID can be stored in a variable when the [`googlesheet.open`](GoogleSheetOpenCommand.md) command is used. If no ID is specified, a recently used Google Sheets instance is closed")]
+            [Argument(Tooltip = "ID of a spreadsheet to be closed. The ID can be stored in a variable when the `googlesheet.open` command is used. If no ID is specified, a recently used Google Sheets instance is closed")]
             public IntegerStructure Id { get; set; }
         }
         public GoogleSheetCloseCommand(AbstractScripter scripter) : base(scripter)

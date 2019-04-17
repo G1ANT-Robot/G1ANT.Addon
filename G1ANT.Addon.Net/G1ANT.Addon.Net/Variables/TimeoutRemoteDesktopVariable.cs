@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Net.Commands
 {
     [Variable(
         Name = "timeoutremotedesktop", 
-        Tooltip = "Determines the timeout value (in ms) for the [vnc.connect](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/VncConnectCommand.md) command; the default value is 10000 (10 seconds)")]
+        Tooltip = "Determines the timeout value (in ms) for the vnc.connect command; the default value is 10000 (10 seconds)")]
     public class TimeoutRemoteDesktopVariable : Variable
     {
         private TimeSpanStructure value;

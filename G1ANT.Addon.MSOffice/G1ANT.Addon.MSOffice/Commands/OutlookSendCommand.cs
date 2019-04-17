@@ -13,7 +13,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.send",Tooltip = "This command sends an email drafted with the `outlook.newmessage` command or other mail (such as a reply drafted with the `outlook.reply` command) stored in a variable of [outlookmail](G1ANT.Addon/G1ANT.Addon.MSOffice/G1ANT.Addon.MSOffice/Structures/OutlookMailStructure.md) structure")]
+    [Command(Name = "outlook.send",Tooltip = "This command sends an email drafted with the `outlook.newmessage` command or other mail (such as a reply drafted with the `outlook.reply` command) stored in a variable of outlookmail structure")]
     public class OutlookSendCommand : Command
     {
         public class Arguments : CommandArguments

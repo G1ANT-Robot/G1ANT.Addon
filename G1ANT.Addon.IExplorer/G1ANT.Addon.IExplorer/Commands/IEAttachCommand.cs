@@ -12,7 +12,7 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.attach", Tooltip = "This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](IEOpenCommand.md) command was not used to open IE and attach the robot to the browser")]
+    [Command(Name = "ie.attach", Tooltip = "This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the `ie.open` command was not used to open IE and attach the robot to the browser")]
     public class IEAttachCommand : Command
     {
         public class Arguments : CommandArguments
@@ -20,7 +20,7 @@ namespace G1ANT.Addon.IExplorer
             [Argument(Required = true, Tooltip = "Browser tab title or URL address")]
             public TextStructure Phrase { get; set; }
 
-            [Argument(Tooltip = "Determines where to search for a  phrase in a tab to activate it: `title` or `url`")]
+            [Argument(Tooltip = "Determines where to search for a phrase in a tab to activate it: `title` or `url`")]
             public TextStructure By { get; set; } = new TextStructure("title");
 
             [Argument(Tooltip = "Name of a variable where the command's result (an attached Internet Explorer instance ID) will be stored")]

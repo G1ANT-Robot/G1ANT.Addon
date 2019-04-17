@@ -21,7 +21,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Path to an Outlook folder")]
             public TextStructure Path { get; set; }
 
-            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored. The variable will be of [outlookfolder](G1ANT.Addon/G1ANT.Addon.MSOffice/G1ANT.Addon.MSOffice/Structures/OutlookFolderStructure.md) structure")]
+            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored. The variable will be of outlookfolder structure")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OutlookGetFolderCommand(AbstractScripter scripter) : base(scripter)

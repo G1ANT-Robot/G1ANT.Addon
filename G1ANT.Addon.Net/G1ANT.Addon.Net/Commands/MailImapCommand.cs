@@ -52,7 +52,7 @@ namespace G1ANT.Addon.Net
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
             public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
-            [Argument(Required = false, Tooltip = "Name of a list variable where the returned [mail](G1ANT.Language/G1ANT.Language/Structures/MailStructure.md) variables will be stored")]
+            [Argument(Required = false, Tooltip = "Name of a list variable where the returned mail variables will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Required = false, Tooltip = "If set to `true`, the command will ignore any security certificate errors")]
