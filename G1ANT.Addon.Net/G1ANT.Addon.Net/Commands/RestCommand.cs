@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Net
             [Argument(DefaultVariable = "timeoutrest", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
 
-            [Argument(Tooltip = "Headers attached to the request. Separate headers using ❚ character (**Ctrl+\\**); their keys and values should be separated with colon (:)")]
+            [Argument(Tooltip = "Headers attached to the request. Separate headers using ❚ character (Ctrl+\\); their keys and values should be separated with colon (:)")]
             public ListStructure Headers { get; set; }
 
             [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (Ctrl+\\); their keys and values should be separated with colon (:)")]
