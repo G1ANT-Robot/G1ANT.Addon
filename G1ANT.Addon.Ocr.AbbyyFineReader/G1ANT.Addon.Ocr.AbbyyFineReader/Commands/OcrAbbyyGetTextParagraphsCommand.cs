@@ -26,7 +26,7 @@ using G1ANT.Language;
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     [Command(Name = "ocrabbyy.gettextparagraphs", Tooltip = "This command extract paragraphs containing text from specified file")]
-    public class OcrAbbyyGetTextInParagraphsCommand : Command
+    public class OcrAbbyyGetTextParagraphsCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -38,7 +38,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
 
  
         }
-        public OcrAbbyyGetTextInParagraphsCommand(AbstractScripter scripter) : base(scripter)
+        public OcrAbbyyGetTextParagraphsCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)
