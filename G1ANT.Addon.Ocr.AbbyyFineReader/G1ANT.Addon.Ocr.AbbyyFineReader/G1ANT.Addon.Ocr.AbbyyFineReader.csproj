@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbbyFineReaderAddon.cs" />
-    <Compile Include="Commands\OcrAbbyyExportToXmlCommand.cs" />
+    <Compile Include="Commands\OcrAbbyyExportXmlCommand.cs" />
     <Compile Include="Commands\OcrAbbyyCloseCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetCellInfoCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetTablePositionCommand.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="AbbyyManager.cs" />
     <Compile Include="Commands\OcrAbbyyFilterCommand.cs" />
     <Compile Include="Commands\OcrAbbyyFindCommand.cs" />
-    <Compile Include="Commands\OcrAbbyyGetTextInParagraphsCommand.cs" />
+    <Compile Include="Commands\OcrAbbyyGetTextParagraphsCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetDocumentCommand.cs" />
     <Compile Include="Commands\OcrAbbyyPlainTextCommand.cs" />
     <Compile Include="Commands\OcrAbbyyProcessFileCommand.cs" />
