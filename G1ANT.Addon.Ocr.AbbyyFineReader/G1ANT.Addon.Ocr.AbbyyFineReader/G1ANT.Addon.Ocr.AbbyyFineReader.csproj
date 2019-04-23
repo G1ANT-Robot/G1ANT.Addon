@@ -83,10 +83,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Structures\AbbyCellStructure.cs" />
-    <Compile Include="Structures\AbbyDocumentStructure.cs" />
-    <Compile Include="Structures\AbbyPageStructure.cs" />
-    <Compile Include="Structures\AbbyRowStructure.cs" />
+    <Compile Include="Structures\AbbyyCellStructure.cs" />
+    <Compile Include="Structures\AbbyyDocumentStructure.cs" />
+    <Compile Include="Structures\AbbyyPageStructure.cs" />
+    <Compile Include="Structures\AbbyyRowStructure.cs" />
     <Compile Include="Structures\CustomDocumentStructure.cs" />
     <Compile Include="Structures\CustomPageStructure.cs" />
     <Compile Include="Structures\FineReaderPageStructure.cs" />
