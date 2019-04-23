@@ -17,9 +17,9 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Structure(Name = "abbyrow")]
+    [Structure(Name = "abbyyrow")]
 
-    public class AbbyRowStructure : StructureTyped<CustomRow>
+    public class AbbyyRowStructure : StructureTyped<CustomRow>
     {
         private const string FirstIndex = "cells";
         private const string LastIndex = "count";
@@ -27,11 +27,11 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
         private const string NewIndex = "bottom";
         private const string EmptyIndex = "istablerow";
 
-        public AbbyRowStructure(CustomRow row) : this(row, null, null)
+        public AbbyyRowStructure(CustomRow row) : this(row, null, null)
         {
             Value = row;
         }
-        public AbbyRowStructure(object value, string format = null, AbstractScripter scripter = null)
+        public AbbyyRowStructure(object value, string format = null, AbstractScripter scripter = null)
             : base(value, format, scripter)
         {
             Indexes.Add(FirstIndex);
@@ -66,7 +66,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             int intIndex = 0;
             if (int.TryParse(index, out intIndex) && intIndex < Value.Cells.Count && intIndex >= 0)
             {
-                return new AbbyCellStructure(Value.Cells[intIndex]);
+                return new AbbyyCellStructure(Value.Cells[intIndex]);
             }
             throw new ArgumentOutOfRangeException($"There is no value under index = {index}");
         }

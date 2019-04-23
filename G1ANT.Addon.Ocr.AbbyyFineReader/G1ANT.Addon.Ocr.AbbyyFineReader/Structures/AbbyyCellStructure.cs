@@ -14,9 +14,9 @@ using System.Text;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Structure(Name = "abbycell")]
+    [Structure(Name = "abbyycell")]
 
-    public class AbbyCellStructure : StructureTyped<CustomCell>
+    public class AbbyyCellStructure : StructureTyped<CustomCell>
     {
         private const string TopIndex = "top";
         private const string BottomIndex = "bottom";
@@ -25,11 +25,11 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
         private const string TextIndex = "text";
         
 
-        public AbbyCellStructure(CustomCell cell) : this(cell, null, null)
+        public AbbyyCellStructure(CustomCell cell) : this(cell, null, null)
         {
             Value = cell;
         }
-        public AbbyCellStructure(object value, string format = null, AbstractScripter scripter = null)
+        public AbbyyCellStructure(object value, string format = null, AbstractScripter scripter = null)
             : base(value, format, scripter)
         {
             Indexes.Add(TopIndex);
