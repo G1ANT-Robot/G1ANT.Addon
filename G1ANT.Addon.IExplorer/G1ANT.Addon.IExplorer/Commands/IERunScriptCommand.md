@@ -14,7 +14,7 @@ Please be aware that only the first called function of the script might be evalu
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`script`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Full script as text to be evaluated in a browser |
+|`script`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes|  | Script to be evaluated in a browser |
 |`result`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no | `♥result` | Name of a variable where the script result will be stored |
 | `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
 | `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
