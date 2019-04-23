@@ -31,7 +31,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Headers attached to the request. Separate headers using ❚ character (Ctrl+\); their keys and values should be separated with colon (:)")]
             public ListStructure Headers { get; set; }
 
-            [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (**Ctrl+\\**); their keys and values should be separated with colon (:)")]
+            [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (Ctrl+\); their keys and values should be separated with colon (:)")]
             public ListStructure Parameters { get; set; }
 
             [Argument]
