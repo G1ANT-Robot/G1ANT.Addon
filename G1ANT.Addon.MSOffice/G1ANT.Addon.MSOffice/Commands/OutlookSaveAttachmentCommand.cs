@@ -13,15 +13,15 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.saveattachment", Tooltip = "This command saves attachment as a local file.")]
+    [Command(Name = "outlook.saveattachment", Tooltip = "This command saves an attachment to a file")]
     public class OutlookSaveAttachmentCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true)]
+            [Argument(Name = "Attachment", Tooltip = "Email attachment to be saved", Required = true)]
             public OutlookAttachmentStructure Attachment { get; set; }
 
-            [Argument(Required = true)]
+            [Argument(Name = "Path", Tooltip = "Path to the saved file", Required = true)]
             public PathStructure Path { get; set; }
         }
         public OutlookSaveAttachmentCommand(AbstractScripter scripter) : base(scripter)
