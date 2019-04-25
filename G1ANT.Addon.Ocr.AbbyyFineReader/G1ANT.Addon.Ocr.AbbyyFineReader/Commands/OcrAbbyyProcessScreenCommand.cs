@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -25,27 +25,27 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.processscreen", Tooltip = "This command allows to process part of a screen for further data extraction")]
+    [Command(Name = "ocrabbyy.processscreen", Tooltip = "Command `ocrabbyy.processscreen` allows to process part of a screen for further data extraction")]
     public class OcrAbbyyProcessScreenCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Area from which Abbyy will try to read, has to be rectangle.")]
+            [Argument(Tooltip = "Area from which Abbyy will try to read, has to be a rectangle, eg. 2⫽4⫽12⫽40, best if assigned to a variable ♥rect")]
             public RectangleStructure Area { get; set; } = new RectangleStructure(System.Windows.Forms.Screen.PrimaryScreen.Bounds);
 
-            [Argument(Tooltip = "If true position is relative to active window.")]
+            [Argument(Tooltip = "If true, position is relative to the active window")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "The language which should be considered trying to recognize text.")]
+            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = null;
 
             [Argument(Tooltip = "Importance of the chosen language")]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
-            [Argument(Tooltip = "List of suggested words that will have higher priority than random strings.")]
+            [Argument(Tooltip = "List of possible key words, that exist in processed document, that will have higher priority than random character strings while OCR processing")]
             public ListStructure Dictionary { get; set; } = null;
 
             [Argument(Tooltip = "Importance of words in chosen dictionary")]

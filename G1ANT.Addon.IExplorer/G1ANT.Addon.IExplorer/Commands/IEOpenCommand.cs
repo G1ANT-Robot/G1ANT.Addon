@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,24 +12,24 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.open",Tooltip = "This command allows to open new instance of Internet Explorer and optionally set webpage address")]
+    [Command(Name = "ie.open",Tooltip = "This command opens a new instance of Internet Explorer and navigates to a specified URL, if provided")]
     public class IEOpenCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Webpage address to load")]
+            [Argument(Tooltip = "URL address to navigate to")]
             public TextStructure Url { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(DefaultVariable = "timeoutie")]
+            [Argument(DefaultVariable = "timeoutie", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
-            [Argument(Tooltip = "If set to 'true', command will not wait until document reaches completed state")]
+            [Argument(Tooltip = "If set to `true`, the command will not wait until the page is loaded")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "Name of variable where opened Internet Explorer instance's id is going to be placed")]
+            [Argument(Tooltip = "Name of a variable where the command's result (an attached Internet Explorer instance ID) will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "If 'true', opened Internet Explorer instance will detach automatically after script ends")]
+            [Argument(Tooltip = "If set to `false`, the opened Internet Explorer instance will not be detached automatically when the script ends")]
             public BooleanStructure AutoDetachOnClose { get; set; } = new BooleanStructure(true);
 
         }

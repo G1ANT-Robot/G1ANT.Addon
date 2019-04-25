@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.activatetab", Tooltip = "This command allows to activate Internet Explorer tab for further use by ie commands. Before using this command, 'ie.attach' or 'ie.open' command has to be invoked.")]
+    [Command(Name = "ie.activatetab", Tooltip = "This command activates Internet Explorer tab for further use by other `ie.` commands")]
     public class IEActivateTabCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Browser tab title or url")]
+            [Argument(Required = true, Tooltip = "Browser tab title or URL address")]
             public TextStructure Phrase { get; set; }
 
-            [Argument(Tooltip = "'title' or 'url', determines what to look for in a tab to activate")]
+            [Argument(Tooltip = "Determines where to search for a phrase in a tab to activate it: `title` or `url`")]
             public TextStructure By { get; set; } = new TextStructure("title");
         }
         public IEActivateTabCommand(AbstractScripter scripter) : base(scripter)

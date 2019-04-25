@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -16,30 +16,30 @@ using MailKit.Net.Imap;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.moveto", Tooltip = "This command moves selected message to another folder.")]
+    [Command(Name = "mail.moveto", Tooltip = "This command moves a selected message to another folder")]
     public class MailMoveToCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Host name")]
+            [Argument(Required = true, Tooltip = "IMAP server address")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Login of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email password")]
             public TextStructure Password { get; set; }
 
-            [Argument(Required = true, Tooltip = "Mail to move")]
+            [Argument(Required = true, Tooltip = "Mail message to be moved")]
             public MailStructure Mail { get; set; }
 
             [Argument(Required = false, Tooltip = "Name of the destination folder")]
             public TextStructure Folder { get; set; } = new TextStructure(String.Empty);
 
-            [Argument(Required = false, Tooltip = "Port")]
+            [Argument(Required = false, Tooltip = "IMAP server port number")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
-            [Argument(Required = false, Tooltip = "Ignore certificate errors")]
+            [Argument(Required = false, Tooltip = "If set to `true`, the command will ignore any security certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
         }
 

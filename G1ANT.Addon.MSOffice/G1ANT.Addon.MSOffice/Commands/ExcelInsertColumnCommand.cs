@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.insertcolumn", Tooltip = "Inserts empty column.")]
+    [Command(Name = "excel.insertcolumn", Tooltip = "This command inserts an empty column in a specified place")]
     public class ExcelInsertColumnCommand : Command
     {
         public class Arguments : CommandArguments
@@ -26,7 +26,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Cell's column name")]
             public TextStructure ColName { get; set; }
 
-            [Argument(Tooltip = "Determines, whether to insert column 'before' or 'after' specified column. By default: 'after'")]
+            [Argument(Tooltip = "Specifies where to insert a column: `before` or `after` a specified column")]
             public TextStructure Where { get; set; } = new TextStructure("after");
         }
         public ExcelInsertColumnCommand(AbstractScripter scripter) : base(scripter)

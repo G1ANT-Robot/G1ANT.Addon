@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -13,12 +13,12 @@ using System.Threading;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.waitforcomplete", Tooltip = "This command waits until page reaches completed state")]
+    [Command(Name = "ie.waitforcomplete", Tooltip = "This command suspends script execution until a webpage is loaded")]
     public class IEWaitForCompleteCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Specifies maximum number of milliseconds to wait for window to get loaded", DefaultVariable = "timeoutie")]
+            [Argument(Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed", DefaultVariable = "timeoutie")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
         }
         public IEWaitForCompleteCommand(AbstractScripter scripter) : base(scripter)

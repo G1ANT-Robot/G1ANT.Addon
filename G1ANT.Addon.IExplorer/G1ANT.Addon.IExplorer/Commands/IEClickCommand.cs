@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,19 +12,19 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.click", Tooltip = "This command allows to send click event to element of an active webpage.")]
+    [Command(Name = "ie.click", Tooltip = "This command clicks an element on an active webpage")]
 
     public class IEClickCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Phrase to find element by")]
+            [Argument(Required = true, Tooltip = "Phrase to find an element by")]
             public TextStructure Search { get; set; }
 
-            [Argument(Tooltip = "Specifies an element selector, possible values are: 'id', 'name', 'text', 'title', 'class', 'selector', 'query', 'jquery'")]
+            [Argument(Tooltip = "Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`")]
             public TextStructure By { get; set; } = new TextStructure(ElementSearchBy.Id.ToString().ToLower());
 
-            [Argument(Tooltip = "If 'true', script will continue without waiting for webpage to respond to click event")]
+            [Argument(Tooltip = "If set to `true`, the script will continue without waiting for a webpage to respond to a click event")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure (false);
         }
         public IEClickCommand(AbstractScripter scripter) : base(scripter)

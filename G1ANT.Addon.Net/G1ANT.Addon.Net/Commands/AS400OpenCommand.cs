@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -14,13 +14,13 @@ using System.IO;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "as400.open", Tooltip= "This command allows to open terminal to work with IBM AS/400 platform.", NeedsDelay = true)]
+    [Command(Name = "as400.open", Tooltip = "This command opens a terminal connection to work with the IBM AS/400 server", NeedsDelay = true)]
     public class AS400openCommand : Command
     {
         public class Arguments : CommandArguments
         {
 
-            [Argument(Required = true, Tooltip = "IP or Hostname required to connection")]
+            [Argument(Required = true, Tooltip = "IP or Hostname required to establish a connection")]
             public TextStructure Host { get; set; }
 
         }

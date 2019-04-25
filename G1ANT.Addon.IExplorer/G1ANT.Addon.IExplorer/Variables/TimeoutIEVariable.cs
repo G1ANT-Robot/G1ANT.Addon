@@ -1,4 +1,4 @@
-﻿using G1ANT.Language;
+using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace G1ANT.Addon.IExplorer
 {
     [Variable(
         Name = "timeoutie",
-        Tooltip = "Determines the timeout value for the ie. commands; the default value is 20000 ms.")]
+        Tooltip = "Determines the timeout value (in ms) for several `ie.` commands; the default value is 20000 (20 seconds)")]
     public class TimeoutIEVariable : Variable
     {
         private TimeSpanStructure value;

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -15,48 +15,48 @@ using System.Linq;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.smtp", Tooltip = "This command tries to send the file specified by filename.")]
+    [Command(Name = "mail.smtp", Tooltip = "This command sends a mail message from a provided email address to a specified recipient")]
     public class MailSmtpCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Login of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of user who is sending the email")]
+            [Argument(Required = true, Tooltip = "User email password")]
             public TextStructure Password { get; set; }
 
-            [Argument(Tooltip = "Smpt client port")]
+            [Argument(Tooltip = "SMTP server port number")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(587);
 
-            [Argument(Tooltip = "Smpt client host name")]
+            [Argument(Tooltip = "SMTP server address")]
             public TextStructure Host { get; set; } = new TextStructure("smtp.gmail.com");
 
             [Argument(Required = true, Tooltip = "Sender's email address")]
             public TextStructure From { get; set; }
 
-            [Argument(Required = true, Tooltip = "Receiver's email address")]
+            [Argument(Required = true, Tooltip = "Recipient's email address")]
             public TextStructure To { get; set; }
 
-            [Argument(Tooltip = "Carbon copy. You can add multiple addresses separated with ';'")]
+            [Argument(Tooltip = "Carbon copy address(es); use semicolon (;) to separate multiple addresses")]
             public TextStructure Cc { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Blind carbon copy. You can add multiple addresses separated with ';'")]
+            [Argument(Tooltip = "Blind carbon copy address(es); use semicolon (;) to separate multiple addresses")]
             public TextStructure Bcc { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Mail subject")]
+            [Argument(Tooltip = "Message subject")]
             public TextStructure Subject { get; set; } = new TextStructure(string.Empty);
 
-            [Argument(Tooltip = "Mail body, main content of the email ")]
+            [Argument(Tooltip = "Message body, i.e. the main content of an email")]
             public TextStructure Body { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "If true body is expexted in HTML format")]
             public BooleanStructure IsHtmlBody { get; set; } = new BooleanStructure(false);
 
-            [Argument(Tooltip = "Array of full paths to all attached files")]
+            [Argument(Tooltip = "List of full paths to all files to be attached")]
             public ListStructure Attachments { get; set; }
 
-            [Argument(DefaultVariable = "timeoutmailsmtp")]
+            [Argument(DefaultVariable = "timeoutmailsmtp", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; }
         }
         public MailSmtpCommand(AbstractScripter scripter) : base(scripter)

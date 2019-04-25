@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -16,15 +16,15 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.getdocument", Tooltip = "This command gets structured document")]
+    [Command(Name = "ocrabbyy.getdocument", Tooltip = "Command `ocrabbyy.getdocument` allows to assign project information to a variable in order to extract different types of data from it")]
     public class OcrAbbyyGetDocumentCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Tooltip = "Id of a processed document returned by a call to `processfile` command. If not specified, last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

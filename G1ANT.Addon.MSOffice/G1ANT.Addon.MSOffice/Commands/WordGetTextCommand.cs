@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -12,13 +12,13 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.gettext", Tooltip = "This command gets all text from current document.", NeedsDelay = true)]
+    [Command(Name = "word.gettext", Tooltip = "This command copies text from a Word document", NeedsDelay = true)]
 
     public class WordGetTextCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
         }

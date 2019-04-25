@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.activatesheet", Tooltip = "Activates the specified sheet in currently active excel instance.")]
+    [Command(Name = "excel.activatesheet", Tooltip = "This command activates a specified sheet in the currently active Excel instance")]
     public class ExcelActivateSheetCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of sheet to be activated")]
+            [Argument(Required = true, Tooltip = "Name of a sheet to be activated")]
             public TextStructure Name { get; set; }
         }
         public ExcelActivateSheetCommand(AbstractScripter scripter) : base(scripter)

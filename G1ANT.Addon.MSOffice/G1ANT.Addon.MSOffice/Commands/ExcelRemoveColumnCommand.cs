@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,7 +15,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.removecolumn", Tooltip = "Removes column.")]
+    [Command(Name = "excel.removecolumn", Tooltip = "This command removes the specified column")]
     public class ExcelRemoveColumnCommand : Command
     {
         public class Arguments : CommandArguments

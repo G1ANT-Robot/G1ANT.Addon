@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -14,28 +14,28 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.getattribute", Tooltip = "This command allows to get element's attribute.")]
+    [Command(Name = "ie.getattribute", Tooltip = "This command gets the attribute value of a specified element")]
 
     public class IEGetAttributeCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of attribute")]
+            [Argument(Required = true, Tooltip = "Name of an attribute")]
             public TextStructure Name { get; set; }
 
-            [Argument(Required = true, Tooltip = "Phrase to find element by")]
+            [Argument(Required = true, Tooltip = "Phrase to find an element by")]
             public TextStructure Search { get; set; }
 
-            [Argument(Tooltip = "Specifies an element selector, possible values are: 'name', 'text', 'title', 'class', 'id', 'selector', 'query', 'jquery'")]
+            [Argument(Tooltip = "Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`")]
             public TextStructure By { get; set; } = new TextStructure(ElementSearchBy.Id.ToString().ToLower());
 
-            [Argument(DefaultVariable = "timeoutie")]
+            [Argument(DefaultVariable = "timeoutie", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(IeSettings.IeTimeout);
 
-            [Argument(Tooltip = "Name of variable where title of Internet Explorer tab will be stored")]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "If true, robot will not wait until set attribute action is complete")]
+            [Argument(Tooltip = "If set to `true`, the robot will not wait until the action is completed")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
         }
         public IEGetAttributeCommand(AbstractScripter scripter) : base(scripter)

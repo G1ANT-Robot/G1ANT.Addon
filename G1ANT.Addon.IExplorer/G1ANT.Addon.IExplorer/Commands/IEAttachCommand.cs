@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,18 +12,18 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.attach", Tooltip = "This command allows to attach G1ANT.Robot to running Internet Explorer instance. It activates tab with specified phrase.")]
+    [Command(Name = "ie.attach", Tooltip = "This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the `ie.open` command was not used to open IE and attach the robot to the browser")]
     public class IEAttachCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Browser tab title or url")]
+            [Argument(Required = true, Tooltip = "Browser tab title or URL address")]
             public TextStructure Phrase { get; set; }
 
-            [Argument(Tooltip = "'title' or 'url', determines what to look for in a tab to activate")]
+            [Argument(Tooltip = "Determines where to search for a phrase in a tab to activate it: `title` or `url`")]
             public TextStructure By { get; set; } = new TextStructure("title");
 
-            [Argument(Tooltip = "Name of variable where attached Internet Explorer instance's id is going to be placed")]
+            [Argument(Tooltip = "Name of a variable where the command's result (an attached Internet Explorer instance ID) will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 

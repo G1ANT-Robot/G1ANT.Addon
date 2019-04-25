@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -17,7 +17,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.fromscreen", Tooltip = "Captures part of the screen and recognize text from it")]
+    [Command(Name = "ocrabbyy.fromscreen", Tooltip = "Command `ocrabbyy.fromscreen` captures part of the screen and recognises text from it")]
     public class OcrAbbyyFromScreenCommand : Command
     {
         public class Arguments : CommandArguments
@@ -25,13 +25,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Specifies screen area to be captured in format x0⫽y0⫽x1⫽y1 (x0,y0 – coordinates of a top left corner; x1,y1 – coordinates of a right bottom corner of the area)")]
             public RectangleStructure Area { get; set; }
 
-            [Argument(Tooltip = "If true area coordinates are relative to active window")]
+            [Argument(Tooltip = "Runs the command only if condition is true")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]
             public TextStructure Language { get; set; } = new TextStructure("English");
 
-            [Argument(DefaultVariable = "result", Tooltip = "Name of variable where recognized text will be stored")]
+            [Argument(DefaultVariable = "result", Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

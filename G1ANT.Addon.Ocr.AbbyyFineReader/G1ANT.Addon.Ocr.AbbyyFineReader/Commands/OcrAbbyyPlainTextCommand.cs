@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -17,18 +17,18 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.plaintext", Tooltip = "This command extract text from processed document")]
+    [Command(Name = "ocrabbyy.plaintext", Tooltip = "Command `ocrabbyyplaintext` allows to extract text from processed document")]
     public class OcrAbbyyPlainTextCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Tooltip = "Id of a processed document, if not specified last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument(Tooltip = "Method of text recognition to use. Either 'linebyline' or 'structured'. By default, 'structured'.")]
+            [Argument(Tooltip = "Method of text recognition to use, either 'linebyline' or 'structured'. By default, 'structured'")]
             public TextStructure Method { get; set; } = new TextStructure("structured");
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

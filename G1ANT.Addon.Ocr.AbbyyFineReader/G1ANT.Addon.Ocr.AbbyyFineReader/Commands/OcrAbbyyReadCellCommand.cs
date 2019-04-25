@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -26,12 +26,12 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.readcell", Tooltip = "This command allows to read row column indexed cell from specific table in the document")]
+    [Command(Name = "ocrabbyy.readcell", Tooltip = "Command `ocrabbyy.readcell` allows to read row column indexed cell from specific table in the document")]
     public class OcrAbbyyReadCellCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to processfile command. If not specified last processed document is used.")]
+            [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to "ocrabbyy.processfile":{TOPIC-LINK+ocrabby-processfile} command; if not specified, last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument(Required = true, Tooltip = "Index of a table in document")]
@@ -43,13 +43,13 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             //[Argument(Required = true, Tooltip = "Index of a column in the table")]
             //public IntegerStructure Column { get; set; } = null;
 
-            [Argument(Required = true, Tooltip = "offset to be added to get proper value in format row,column")]
+            [Argument(Required = true, Tooltip = "Position of the cell in the table in format row, column")]
             public TextStructure Position { get; set; } = null;
 
-            [Argument(Tooltip = "offset to be added to get proper value in format row,column")]
+            [Argument(Tooltip = "Offset to be added to get proper value in format row, column")]
             public TextStructure Offset { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OcrAbbyyReadCellCommand(AbstractScripter scripter) : base(scripter)

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -14,21 +14,21 @@ using System.IO;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "vnc.connect",Tooltip = "This command allows to connect to machine with running VNC server using a remote desktop.", NeedsDelay = true)]
+    [Command(Name = "vnc.connect",Tooltip = "This command connects to a remote machine with a running VNC server, using a remote desktop connection", NeedsDelay = true)]
     public class VncConnectCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Ip or url of the machine")]
+            [Argument(Required = true, Tooltip = "IP or URL address of the remote machine")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port used to connect and allowed on the server side")]
+            [Argument(Required = true, Tooltip = "Port used to connect to the remote machine")]
             public TextStructure Port { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password used to connect to the server side")]
+            [Argument(Required = true, Tooltip = "Password used to connect to the remote machine")]
             public TextStructure Password { get; set; }
 
-            [Argument(DefaultVariable = "timeoutremotedesktop")]
+            [Argument(DefaultVariable = "timeoutremotedesktop", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10);
 
             [Argument]

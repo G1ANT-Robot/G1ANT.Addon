@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -16,12 +16,12 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.switch", Tooltip = "This command allows to switch from one excel instance to another")]
+    [Command(Name = "excel.switch", Tooltip = "This command switches to another Excel instance opened by G1ANT.Robot")]
     public class ExcelSwitchCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Id number or variable name of excel instance that will be activated")]
+            [Argument(Required = true, Tooltip = "ID number of an Excel instance that will be activated")]
             public IntegerStructure Id { get; set; }
 
         }

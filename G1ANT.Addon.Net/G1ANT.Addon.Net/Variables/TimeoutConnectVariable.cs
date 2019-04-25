@@ -1,11 +1,11 @@
-﻿using G1ANT.Language;
+using G1ANT.Language;
 using System;
 
 namespace G1ANT.Addon.Net.Commands
 {
     [Variable(
         Name = "timeoutconnect",
-        Tooltip = "Defines timeout for connecting; the default value is 1000 ms.")]
+        Tooltip = "Determines the timeout value (in ms) for the is.accessible and ping commands; the default value is 1000 (1 second)")]
     public class TimeoutConnectVariable : Variable
     {
         private TimeSpanStructure value;

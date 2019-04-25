@@ -1,4 +1,4 @@
-﻿using G1ANT.Language;
+using G1ANT.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace G1ANT.Addon.Ocr.Google.Commands
 {
     [Variable(
         Name = "timeoutocr",
-        Tooltip = "Determines the timeout value for the ocrtesseract. and ocrgoogle. commands; the default value is 60000 ms.")]
+        Tooltip = "Determines the timeout value (in ms) for the `ocrgoogle.` and the `ocrtesseract.` commands; the default value is 60000 (60 seconds)")]
     public class TimeoutOcrVariable : Variable
     {
         private TimeSpanStructure value;

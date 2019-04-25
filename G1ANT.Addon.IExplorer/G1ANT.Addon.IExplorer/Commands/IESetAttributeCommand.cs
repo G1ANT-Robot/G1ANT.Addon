@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -14,25 +14,25 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.setattribute", Tooltip = "This command allows to set element's attribute")]
+    [Command(Name = "ie.setattribute", Tooltip = "This command sets an attribute's value of a specified element")]
 
     public class IESetAttributeCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of attribute")]
+            [Argument(Required = true, Tooltip = "Name of an attribute")]
             public TextStructure Name { get; set; }
 
-            [Argument(Tooltip = "Value to set")]
+            [Argument(Tooltip = "Value to be set")]
             public TextStructure Value { get; set; }
 
-            [Argument(Required = true, Tooltip = "Phrase to find element by")]
+            [Argument(Required = true, Tooltip = "Phrase to find an element by")]
             public TextStructure Search { get; set; }
 
-            [Argument(Tooltip = "Specifies an element selector, possible values are: 'name', 'text', 'title', 'class', 'id', 'selector', 'query', 'jquery'")]
+            [Argument(Tooltip = "Specifies an element selector: `id`, `name`, `text`, `title`, `class`, `selector`, `query`, `jquery`")]
             public TextStructure By { get; set; } = new TextStructure(ElementSearchBy.Id.ToString().ToLower());
 
-            [Argument(Tooltip = "If true, robot will not wait until set attribute action is complete")]
+            [Argument(Tooltip = "If set to `true`, the robot will not wait until the action is completed")]
             public BooleanStructure NoWait { get; set; } = new BooleanStructure(false);
             
         }

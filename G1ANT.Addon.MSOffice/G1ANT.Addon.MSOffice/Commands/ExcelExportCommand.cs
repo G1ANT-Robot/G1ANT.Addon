@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,12 +15,12 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.export", Tooltip = "Exports currently active excel workbook to either *.pdf or *.xps file.")]
+    [Command(Name = "excel.export", Tooltip = "This command exports the currently active excel workbook to either a .pdf or an .xps file")]
     public class ExcelExportCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Path where new file will be stored.")]
+            [Argument(Required = true, Tooltip = "Path where the new file will be saved")]
             public TextStructure Path { get; set; } = new TextStructure(string.Empty);
 
         }

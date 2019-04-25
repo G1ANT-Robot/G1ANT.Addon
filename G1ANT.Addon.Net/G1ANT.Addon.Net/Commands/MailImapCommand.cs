@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -20,42 +20,42 @@ using System.Net;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mails from inbox.")]
+    [Command(Name = "mail.imap", Tooltip = "This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time span, with the option to consider only unread messages and/or mark all of the checked ones as read")]
     public class MailImapCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Host name")]
+            [Argument(Required = true, Tooltip = "IMAP server address")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port")]
+            [Argument(Required = true, Tooltip = "IMAP server port number")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
-            [Argument(Required = true, Tooltip = "Login of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email password")]
             public TextStructure Password { get; set; }
 
             [Argument(Required = true, Tooltip = "Folder to fetch emails from")]
             public TextStructure Folder { get; set; } = new TextStructure("INBOX");
 
-            [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
+            [Argument(Required = true, Tooltip = "Starting date for messages to be checked")]
             public DateStructure SinceDate { get; set; }
 
-            [Argument(Required = false, Tooltip = "To what date should emails be retrieved")]
+            [Argument(Required = false, Tooltip = "Ending date for messages to be checked")]
             public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
-            [Argument(Required = false, Tooltip = "Look only for already unread messages")]
+            [Argument(Required = false, Tooltip = "If set to `true`, only unread messages will be checked")]
             public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
             public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
-            [Argument(Required = false, Tooltip = "Received emails as list of mail structures")]
+            [Argument(Required = false, Tooltip = "Name of a list variable where the returned mail variables will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Required = false, Tooltip = "Ignore certificate errors")]
+            [Argument(Required = false, Tooltip = "If set to `true`, the command will ignore any security certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
         }
 

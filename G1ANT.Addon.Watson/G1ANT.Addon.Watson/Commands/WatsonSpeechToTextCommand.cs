@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Watson
 *    www.g1ant.com
@@ -13,27 +13,27 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Watson.Commands
 {
-    [Command(Name = "watson.speechtotext", Tooltip = "This command allows to transcript speech from audio file.", NeedsDelay = true)]
+    [Command(Name = "watson.speechtotext", Tooltip = "This command transcripts speech from an audio file", NeedsDelay = true)]
     public class WatsonSpeechToTextCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Specifies path to file with speech recorded.")]
+            [Argument(Required = true, Tooltip = "Path to a file with recorded speech")]
             public TextStructure Path { get; set; }
 
-            [Argument(Required = true, Tooltip = "Specifies service's login.")]
+            [Argument(Required = true, Tooltip = "API key needed to log in to the service")]
             public TextStructure ApiKey { get; set; }
 
-            [Argument(Required = true, Tooltip = "Specifies IBM server URI.")]
+            [Argument(Required = true, Tooltip = "IBM server URI")]
             public TextStructure ServerUri { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Specifies language of speech.")]
+            [Argument(Tooltip = "Language of speech")]
             public TextStructure Language { get; set; } = new TextStructure("en-US");
 
-            [Argument(DefaultVariable = "timeoutwatson")]
+            [Argument(DefaultVariable = "timeoutwatson", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(5000);
         }
 

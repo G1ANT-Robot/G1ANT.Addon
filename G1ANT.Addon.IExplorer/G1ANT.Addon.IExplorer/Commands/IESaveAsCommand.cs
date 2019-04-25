@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.IExplorer
 *    www.g1ant.com
@@ -12,13 +12,13 @@ using System;
 
 namespace G1ANT.Addon.IExplorer
 {
-    [Command(Name = "ie.saveas", Tooltip = "This command allows to automatically save file to specified directory once the pop-up box appears")]
+    [Command(Name = "ie.saveas", Tooltip = "This command automatically saves file to a specified directory once the pop-up box has appeared")]
 
     public class IESaveasCommand : Command
 	{
 		public class Arguments : CommandArguments
 		{
-            [Argument(Required = true, Tooltip = "Specifies file's full save path")]
+            [Argument(Required = true, Tooltip = "Specifies the full file path")]
             public TextStructure Path { get; set; }
 		}
         public IESaveasCommand(AbstractScripter scripter) : base(scripter)

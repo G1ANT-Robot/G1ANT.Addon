@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -12,14 +12,14 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.switch", Tooltip= "This command allows to get value from opened Google Sheets instance.")]
+    [Command(Name = "googlesheet.switch", Tooltip = "This command switches between opened Google Sheets instances")]
     public class GoogleSheetSwitchCommand : Command
     {
         public class Arguments : CommandArguments
         {
             [Argument(Required = true, Tooltip = "Title of Google Sheets instance that will be activated")]
             public IntegerStructure Id { get; set; }
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored (`true` if it succeeded, `false` if it did not)")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             

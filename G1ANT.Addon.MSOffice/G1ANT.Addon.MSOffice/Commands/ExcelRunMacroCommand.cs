@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -17,18 +17,18 @@ using System.Collections.Generic;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.runmacro", Tooltip = "Run macro in currently active excel instance.")]
+    [Command(Name = "excel.runmacro", Tooltip = "This command runs a macro in the currently active Excel instance")]
     public class ExcelRunMacroCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Name of macro that is defined in a workbook")]
+            [Argument(Required = true, Tooltip = "Name of a macro that is defined in a workbook")]
             public TextStructure Name { get; set; }
 
-            [Argument(Tooltip = "Comma separated arguments that will be passed to macro")]
+            [Argument(Tooltip = "Comma-separated arguments that will be passed to a macro")]
             public ListStructure Args { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the macro's return value will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -12,21 +12,21 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "ping", Tooltip = "This command allows to ping specified IP and receives approximate round-trip time in milli-seconds.")]
+    [Command(Name = "ping", Tooltip = "This command pings a specified IP address and returns an approximate round-trip time in milliseconds")]
     public class PingCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "IP address or hostname of pinging server")]
+            [Argument(Tooltip = "IP address or a host name of a pinged server")]
             public TextStructure Ip { get; set; }
 
-            [Argument(Tooltip = "Allows to ping multiple times. Command returns rounded value of all pings. Default = 1")]
+            [Argument(Tooltip = "Allows to ping multiple times; the command returns a rounded average of all pings")]
             public IntegerStructure Repeats { get; set; } = new IntegerStructure(1);
 
-            [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Defines timeout for connecting")]
+            [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(1000);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where approximate round trip time in milliseconds will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public PingCommand(AbstractScripter scripter) : base(scripter)

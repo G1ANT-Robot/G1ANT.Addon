@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,12 +15,12 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.getvalue", Tooltip = "Gets value from specified cell.")]
+    [Command(Name = "excel.getvalue", Tooltip = "This command gets a value from a specified cell")]
     public class ExcelGetValueCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Cell’s row number or row’s name")]
+            [Argument(Required = true, Tooltip = "Cell's row number")]
             public IntegerStructure Row { get; set; }
 
             [Argument(Tooltip = "Cell's column index")]
@@ -29,7 +29,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Cell's column name")]
             public TextStructure ColName { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
         }

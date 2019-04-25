@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -14,30 +14,30 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "rest", Tooltip = "This command prepares a request to the desired url with selected method. \nYou can pass multiple parameters and all of them will be attached as a request body.")]
+    [Command(Name = "rest", Tooltip = "This command prepares a request to a desired URL with a selected method")]
     public class RestCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "http method of rest request ( post / get / put / delete / patch …)")]
+            [Argument(Required = true, Tooltip = "HTTP method of the `rest` request: `post` or `get`")]
             public TextStructure Method { get; set; }
 
-            [Argument(Required = true, Tooltip = "url of api method")]
+            [Argument(Required = true, Tooltip = "URL of API method")]
             public TextStructure Url { get; set; }
 
-            [Argument(DefaultVariable = "timeoutrest", Tooltip = "Defines time duration for command to wait, default for rest is 5000ms")]
+            [Argument(DefaultVariable = "timeoutrest", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
 
-            [Argument(Tooltip = "Headers attached to rest request")]
+            [Argument(Tooltip = "Headers attached to the request. Separate headers using ❚ character (Ctrl+\\); their keys and values should be separated with colon (:)")]
             public ListStructure Headers { get; set; }
 
-            [Argument(Tooltip = "Parameters attached to rest request")]
+            [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (Ctrl+\\); their keys and values should be separated with colon (:)")]
             public ListStructure Parameters { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable which will store the data returned by the API (usually json or xml)")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Variable which will return http status responsed by the API")]
+            [Argument(Tooltip = "Name of a variable which will store the request delivery status")]
             public VariableStructure Status { get; set; } = new VariableStructure("status");
         }
         public RestCommand(AbstractScripter scripter) : base(scripter)
