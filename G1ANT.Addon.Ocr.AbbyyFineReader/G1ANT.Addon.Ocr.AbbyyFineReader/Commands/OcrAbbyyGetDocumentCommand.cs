@@ -24,7 +24,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "Id of a processed document returned by a call to `processfile` command. If not specified, last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

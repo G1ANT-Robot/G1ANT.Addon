@@ -36,7 +36,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "If true, position is relative to the active window")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(false);
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "The language which should be considered trying to recognize text")]

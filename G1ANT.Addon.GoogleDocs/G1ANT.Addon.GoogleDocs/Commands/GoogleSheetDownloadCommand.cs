@@ -27,7 +27,7 @@ namespace G1ANT.Addon.GoogleDocs
             public TextStructure Path { get; set; }
             [Argument (Tooltip = "Type of file extension, could be ‘pdf’ or ‘xlsx’")]
             public TextStructure Type { get; set; }
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public GoogleSheetDownloadCommand(AbstractScripter scripter) : base(scripter)

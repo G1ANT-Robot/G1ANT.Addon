@@ -23,7 +23,7 @@ namespace G1ANT.Addon.GoogleDocs
             [Argument(Tooltip = "Sheet name containing the specified range; can be empty or omitted")]
             public TextStructure SheetName { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             

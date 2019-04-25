@@ -22,7 +22,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "Path to a file that has to be opened; if not specified, Word will be opened with a blank document")]
             public TextStructure Path { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the instance's ID will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
 

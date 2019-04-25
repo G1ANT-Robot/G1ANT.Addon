@@ -31,7 +31,7 @@ namespace G1ANT.Addon.Watson.Commands
             [Argument(Tooltip = "Floating point value (0-1 range) that specifies a minimum score a class must have to be displayed in the results")]
             public FloatStructure Threshold { get; set; } = new FloatStructure(0.5f);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(DefaultVariable = "timeoutwatson", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]

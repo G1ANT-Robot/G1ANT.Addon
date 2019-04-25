@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = false, Tooltip = "List of numbers of pages to be processed")]
             public ListStructure Pages { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "Info about the number of tables found in the processed file")]

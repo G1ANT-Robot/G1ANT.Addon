@@ -20,7 +20,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true, Tooltip = "ID of a Word window that was specified while using the `word.open` command")]
             public IntegerStructure Id { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored (true or false)")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");          
 
 

@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Xlsx
             [Argument]
             public TextStructure Name { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored: `true` if it succeeded, `false` if it did not")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public XlsxSetSheetCommand(AbstractScripter scripter) : base(scripter)

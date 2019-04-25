@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Index of a table in document")]
             public IntegerStructure TableIndex { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]

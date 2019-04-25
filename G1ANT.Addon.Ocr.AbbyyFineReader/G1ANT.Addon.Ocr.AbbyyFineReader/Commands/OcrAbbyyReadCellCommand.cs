@@ -49,7 +49,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "Offset to be added to get proper value in format row, column")]
             public TextStructure Offset { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OcrAbbyyReadCellCommand(AbstractScripter scripter) : base(scripter)

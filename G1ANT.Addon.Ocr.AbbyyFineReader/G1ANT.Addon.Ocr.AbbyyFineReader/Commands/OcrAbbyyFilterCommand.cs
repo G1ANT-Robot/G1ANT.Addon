@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = false, Tooltip = "Flags of filter to apply, separated by ❚, could be: italic, bold")]
             public TextStructure Filter { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

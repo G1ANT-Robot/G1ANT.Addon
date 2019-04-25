@@ -25,7 +25,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument]
             public BooleanStructure ShowMail { get; set; } = new BooleanStructure(false);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
         }

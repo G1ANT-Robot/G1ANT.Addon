@@ -27,7 +27,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = false, Tooltip = "Id of a processed document returned by a call to "ocrabbyy.processfile":{TOPIC-LINK+ocrabby-processfile} command, if not specified, the last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OcrAbbyyReadTablesCommand(AbstractScripter scripter) : base(scripter)

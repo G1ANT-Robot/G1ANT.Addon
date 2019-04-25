@@ -26,7 +26,7 @@ namespace G1ANT.Addon.Net
             [Argument(DefaultVariable = "timeoutconnect", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(1000);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where approximate round trip time in milliseconds will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public PingCommand(AbstractScripter scripter) : base(scripter)

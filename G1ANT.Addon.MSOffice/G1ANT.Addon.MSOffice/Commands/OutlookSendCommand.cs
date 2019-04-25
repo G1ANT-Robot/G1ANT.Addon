@@ -21,7 +21,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument]
+            [Argument(Tooltip = "Name of an `outlookmail` variable where a mail to be sent is stored")]
             public OutlookMailStructure Mail { get; set; }
         }
         public OutlookSendCommand(AbstractScripter scripter) : base(scripter)

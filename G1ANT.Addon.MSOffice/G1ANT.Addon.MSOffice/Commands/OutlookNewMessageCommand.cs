@@ -31,7 +31,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument]
             public ListStructure Attachments { get; set; } = new ListStructure(new List<Structure>() { null });
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Required = false, Tooltip = "If set to `true`, indicates that the mail message body is in HTML")]

@@ -28,7 +28,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Tooltip = "Method of text recognition to use, either 'linebyline' or 'structured'. By default, 'structured'")]
             public TextStructure Method { get; set; } = new TextStructure("structured");
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

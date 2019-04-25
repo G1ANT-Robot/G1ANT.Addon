@@ -23,7 +23,7 @@ namespace G1ANT.Addon.MSOffice
         {
             [Argument(Required = true, Tooltip = "Text to be inserted")]
             public TextStructure Text { get; set; } = new TextStructure(string.Empty);
-            [Argument]
+            [Argument(Tooltip = "Defines whether all text should be replaced")]
             public BooleanStructure ReplaceAllText { get; set; } = new BooleanStructure(false);
 
         }

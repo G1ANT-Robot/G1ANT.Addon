@@ -31,7 +31,7 @@ namespace G1ANT.Language.Ocr.Google
             [Argument]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(DefaultVariable = "timeoutOcr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]

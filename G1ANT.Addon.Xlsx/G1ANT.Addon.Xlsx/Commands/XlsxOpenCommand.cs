@@ -26,7 +26,7 @@ namespace G1ANT.Addon.Xlsx
             [Argument]
             public BooleanStructure CreateIfNotExist { get; set; } = new BooleanStructure(false);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the ID number of this Excel instance will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public XlsxOpenCommand(AbstractScripter scripter) : base(scripter)

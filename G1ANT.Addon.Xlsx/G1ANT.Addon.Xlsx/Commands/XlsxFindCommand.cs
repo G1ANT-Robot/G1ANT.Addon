@@ -22,7 +22,7 @@ namespace G1ANT.Addon.Xlsx
 
             [Argument]
             public VariableStructure ResultColumn { get; set; } = new VariableStructure("resultcolumn");
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result (row number) will be stored")]
             public VariableStructure ResultRow { get; set; } = new VariableStructure("resultrow");
         }
         public XlsxFindCommand(AbstractScripter scripter) : base(scripter)

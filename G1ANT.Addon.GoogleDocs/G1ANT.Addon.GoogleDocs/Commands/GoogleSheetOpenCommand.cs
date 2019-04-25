@@ -23,7 +23,7 @@ namespace G1ANT.Addon.GoogleDocs
             [Argument]
             public BooleanStructure IsShared { get; set; } = new BooleanStructure(true);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the instance ID will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             

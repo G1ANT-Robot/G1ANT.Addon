@@ -34,7 +34,7 @@ namespace G1ANT.Addon.Net
             [Argument(Tooltip = "Parameters attached to the request. Separate headers using ❚ character (Ctrl+\\); their keys and values should be separated with colon (:)")]
             public ListStructure Parameters { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable which will store the data returned by the API (usually json or xml)")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "Name of a variable which will store the request delivery status")]

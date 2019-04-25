@@ -30,7 +30,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument]
             public TextStructure Sheet { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where a currently opened Excel process number is stored. It can be used in the `excel.switch` command")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public ExcelOpenCommand(AbstractScripter scripter) : base(scripter)

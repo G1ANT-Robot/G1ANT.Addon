@@ -30,7 +30,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Position of the cell in the table in format row, column")]
             public TextStructure Position { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
  

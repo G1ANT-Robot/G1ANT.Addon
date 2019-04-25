@@ -28,7 +28,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Comma-separated arguments that will be passed to a macro")]
             public ListStructure Args { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the macro's return value will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
