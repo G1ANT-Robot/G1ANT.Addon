@@ -22,7 +22,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Required = true,Tooltip = "Word to be searched for in a message subject")]
             public TextStructure Search { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "If set to `true`, G1ANT.Robot will show all emails meeting the criteria")]
             public BooleanStructure ShowMail { get; set; } = new BooleanStructure(false);
 
             [Argument(Tooltip = "Name of a variable where the command's result will be stored")]

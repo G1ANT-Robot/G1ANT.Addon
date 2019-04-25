@@ -17,7 +17,7 @@ namespace G1ANT.Addon.Xlsx
     {
         public  class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Name of a sheet to be set as active. If it’s not specified, the robot will activate the first sheet in the file")]
             public TextStructure Name { get; set; } = new TextStructure(string.Empty);
 
             [Argument(Tooltip = "Name of a variable where the command's result will be stored: `true` if it succeeded, `false` if it did not")]

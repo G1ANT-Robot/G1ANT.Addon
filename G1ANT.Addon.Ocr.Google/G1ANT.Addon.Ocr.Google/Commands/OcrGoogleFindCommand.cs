@@ -25,10 +25,10 @@ namespace G1ANT.Language.Ocr.Google
             [Argument(Required = true,Tooltip = "Text to be found on the screen (the fewer words, the better results)")]
             public TextStructure Search { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Area on the screen to find text in, specified in `x0⫽y0⫽x1⫽y1` format, where `x0⫽y0` are the coordinates of the top left and `x1⫽y1` are the coordinates of the right bottom corner of the area")]
             public RectangleStructure Area { get; set; } = new RectangleStructure(System.Windows.Forms.Screen.PrimaryScreen.Bounds);
 
-            [Argument]
+            [Argument(Tooltip = "Determines whether the `area` argument is specified with absolute coordinates (top left corner of the screen) or refers to the currently opened window (its top left corner)")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
             [Argument(Tooltip = "Name of a variable where the command's result will be stored")]

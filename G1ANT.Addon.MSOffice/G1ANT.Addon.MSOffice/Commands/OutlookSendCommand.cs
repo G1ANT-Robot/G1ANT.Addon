@@ -18,7 +18,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             [Argument(Tooltip = "Name of an `outlookmail` variable where a mail to be sent is stored")]

@@ -23,7 +23,7 @@ namespace G1ANT.Addon.Xlsx
             [Argument(Required = false, Tooltip = "Can be `read` or `readwrite`")]
             public TextStructure AccessMode { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "If a file doesn’t exist, the command will create it")]
             public BooleanStructure CreateIfNotExist { get; set; } = new BooleanStructure(false);
 
             [Argument(Tooltip = "Name of a variable where the ID number of this Excel instance will be stored")]

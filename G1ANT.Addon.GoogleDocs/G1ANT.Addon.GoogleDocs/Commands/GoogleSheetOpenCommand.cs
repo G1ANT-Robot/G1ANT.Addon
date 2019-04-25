@@ -20,7 +20,7 @@ namespace G1ANT.Addon.GoogleDocs
             [Argument (Required = true, Tooltip = "Google Sheets File Id")]
             public TextStructure Id { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Specifies whether a document")]
             public BooleanStructure IsShared { get; set; } = new BooleanStructure(true);
 
             [Argument(Tooltip = "Name of a variable where the instance ID will be stored")]

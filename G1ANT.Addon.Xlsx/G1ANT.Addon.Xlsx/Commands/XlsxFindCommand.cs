@@ -20,7 +20,7 @@ namespace G1ANT.Addon.Xlsx
             [Argument(Required = true, Tooltip = "Value to be searched for")]
             public TextStructure Value { get; set; } = new TextStructure("value");
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result (column index) will be stored")]
             public VariableStructure ResultColumn { get; set; } = new VariableStructure("resultcolumn");
             [Argument(Tooltip = "Name of a variable where the command's result (row number) will be stored")]
             public VariableStructure ResultRow { get; set; } = new VariableStructure("resultrow");

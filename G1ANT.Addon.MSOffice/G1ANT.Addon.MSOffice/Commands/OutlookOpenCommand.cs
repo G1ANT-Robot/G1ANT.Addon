@@ -19,7 +19,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "If set to `false`, Outlook will be opened silently, with no window at all")]
             public BooleanStructure Display { get; set; } = new BooleanStructure(true);
 
             [Argument(Tooltip = "Name of a variable where the command's result will be stored")]

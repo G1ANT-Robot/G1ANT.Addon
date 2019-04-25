@@ -21,13 +21,13 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Path of a file that has to be opened in Excel; if not specified, Excel will be opened with an empty sheet")]
             public TextStructure Path { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Specifies whether Excel should be opened in the background")]
             public BooleanStructure InBackground { get; set; } = new BooleanStructure(false);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a sheet to be activated")]
             public TextStructure Sheet { get; set; }
 
             [Argument(Tooltip = "Name of a variable where a currently opened Excel process number is stored. It can be used in the `excel.switch` command")]

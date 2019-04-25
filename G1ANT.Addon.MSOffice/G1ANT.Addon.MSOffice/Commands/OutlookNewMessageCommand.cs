@@ -19,16 +19,16 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Mail recipients")]
             public TextStructure To { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Mail subject")]
             public TextStructure Subject { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Mail body")]
             public TextStructure Body { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "List of attachments (as their filepaths) to be included in a mail message. Elements should be separated with ❚ character (Ctrl+\\)")]
             public ListStructure Attachments { get; set; } = new ListStructure(new List<Structure>() { null });
 
             [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
