@@ -18,7 +18,7 @@ namespace G1ANT.Addon.MSOffice
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Name = "Attachment", Tooltip = "Email attachment to be saved", Required = true)]
+            [Argument(Tooltip = "Email attachment to be saved", Required = true)]
             public OutlookAttachmentStructure Attachment { get; set; }
 
             [Argument(Name = "Path", Tooltip = "Path to the saved file", Required = true)]
