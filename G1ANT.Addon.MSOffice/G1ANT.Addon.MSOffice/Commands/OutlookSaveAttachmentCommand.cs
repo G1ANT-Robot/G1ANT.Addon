@@ -21,7 +21,7 @@ namespace G1ANT.Addon.MSOffice
             [Argument(Tooltip = "Email attachment to be saved", Required = true)]
             public OutlookAttachmentStructure Attachment { get; set; }
 
-            [Argument(Name = "Path", Tooltip = "Path to the saved file", Required = true)]
+            [Argument(Tooltip = "Path to the saved file", Required = true)]
             public PathStructure Path { get; set; }
         }
         public OutlookSaveAttachmentCommand(AbstractScripter scripter) : base(scripter)
