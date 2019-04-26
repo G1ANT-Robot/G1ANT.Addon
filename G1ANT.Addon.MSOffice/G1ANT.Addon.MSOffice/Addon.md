@@ -32,7 +32,7 @@
 | [outlook.newmessage](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookNewMessageCommand.md) | This command opens a new message window and fills it up with provided information |
 | [outlook.open](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookOpenCommand.md) | This command opens Outlook |
 | [outlook.reply](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookReplyCommand.md) | This command creates a new variable of outlookmail structure which is a reply to a specified mail |
-| [outlook.saveattachment](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSaveAttachmentCommand.md) | This command saves attachment as a local file. |
+| [outlook.saveattachment](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSaveAttachmentCommand.md) | This command saves an attachment to a file |
 | [outlook.selectitem](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSelectItemCommand.md) | This command selects a mail or a folder element in Outlook’s user interface |
 | [outlook.send](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/OutlookSendCommand.md) | This command sends an email drafted with the `outlook.newmessage` command or other mail (such as a reply drafted with the `outlook.reply` command) stored in a variable of outlookmail structure |
 | [word.close](https://github.com/G1ANT-Robot/G1ANT.Addon/blob/master/G1ANT.Addon.MSOffice/Commands/WordCloseCommand.md) | This command closes the currently active Word instance |
