@@ -17,7 +17,7 @@ namespace G1ANT.Addon.IExplorer
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Full script as text to be evaluated in a browser")]
+            [Argument(Required = true, Tooltip = "Script to be evaluated in a browser")]
             public TextStructure Script { get; set; }
 
             [Argument(Tooltip = "Name of a variable where the script result will be stored")]
