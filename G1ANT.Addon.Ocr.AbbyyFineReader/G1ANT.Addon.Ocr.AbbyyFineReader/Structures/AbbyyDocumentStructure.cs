@@ -17,14 +17,14 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Structure(Name = "abbydocument")]
-    public class AbbyDocumentStructure : StructureTyped<CustomDocument>
+    [Structure(Name = "abbyydocument")]
+    public class AbbyyDocumentStructure : StructureTyped<CustomDocument>
     {
         private const string FirstIndex = "pages";
         private const string LastIndex = "count";
         
 
-        public AbbyDocumentStructure(CustomDocument document) : this(document, null, null)
+        public AbbyyDocumentStructure(CustomDocument document) : this(document, null, null)
         {
             Value = document;
         }
@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
         {
             return  Value.ToString();
         }
-        public AbbyDocumentStructure(object value, string format = null, AbstractScripter scripter = null)
+        public AbbyyDocumentStructure(object value, string format = null, AbstractScripter scripter = null)
             : base(value, format, scripter)
         {
             Indexes.Add(FirstIndex);
@@ -50,7 +50,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
                     List<Structure> pages = new List<Structure>();
                     foreach (CustomPage page in Value.Pages)
                     {
-                        pages.Add(new AbbyPageStructure(page));
+                        pages.Add(new AbbyyPageStructure(page));
                     }
                     return new ListStructure(pages);
                 case "count":
@@ -59,7 +59,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             int intIndex = 0;
             if (int.TryParse(index, out intIndex) && intIndex < Value.Pages.Count && intIndex >= 0)
             {
-                return new AbbyPageStructure(Value.Pages[intIndex]);
+                return new AbbyyPageStructure(Value.Pages[intIndex]);
             }
             throw new ArgumentOutOfRangeException($"There is no value under index = {index}");
         }

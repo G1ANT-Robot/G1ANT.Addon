@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbbyFineReaderAddon.cs" />
-    <Compile Include="Commands\OcrAbbyyExportToXmlCommand.cs" />
+    <Compile Include="Commands\OcrAbbyyExportXmlCommand.cs" />
     <Compile Include="Commands\OcrAbbyyCloseCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetCellInfoCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetTablePositionCommand.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="AbbyyManager.cs" />
     <Compile Include="Commands\OcrAbbyyFilterCommand.cs" />
     <Compile Include="Commands\OcrAbbyyFindCommand.cs" />
-    <Compile Include="Commands\OcrAbbyyGetTextInParagraphsCommand.cs" />
+    <Compile Include="Commands\OcrAbbyyGetTextParagraphsCommand.cs" />
     <Compile Include="Commands\OcrAbbyyGetDocumentCommand.cs" />
     <Compile Include="Commands\OcrAbbyyPlainTextCommand.cs" />
     <Compile Include="Commands\OcrAbbyyProcessFileCommand.cs" />
@@ -83,10 +83,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Structures\AbbyCellStructure.cs" />
-    <Compile Include="Structures\AbbyDocumentStructure.cs" />
-    <Compile Include="Structures\AbbyPageStructure.cs" />
-    <Compile Include="Structures\AbbyRowStructure.cs" />
+    <Compile Include="Structures\AbbyyCellStructure.cs" />
+    <Compile Include="Structures\AbbyyDocumentStructure.cs" />
+    <Compile Include="Structures\AbbyyPageStructure.cs" />
+    <Compile Include="Structures\AbbyyRowStructure.cs" />
     <Compile Include="Structures\CustomDocumentStructure.cs" />
     <Compile Include="Structures\CustomPageStructure.cs" />
     <Compile Include="Structures\FineReaderPageStructure.cs" />

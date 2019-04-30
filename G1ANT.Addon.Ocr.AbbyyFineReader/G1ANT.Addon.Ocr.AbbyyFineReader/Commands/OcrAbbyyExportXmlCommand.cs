@@ -26,7 +26,7 @@ using G1ANT.Language;
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
     [Command(Name = "ocrabbyy.exportxml", Tooltip = "Exports currently active document to .xml file.")]
-    public class OcrAbbyyExportToXmlCommand : Command
+    public class OcrAbbyyExportXmlCommand : Command
     {
         public class Arguments : CommandArguments
         {
@@ -34,7 +34,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             public TextStructure Path { get; set; }
             
         }
-        public OcrAbbyyExportToXmlCommand(AbstractScripter scripter) : base(scripter)
+        public OcrAbbyyExportXmlCommand(AbstractScripter scripter) : base(scripter)
         {
         }
         public void Execute(Arguments arguments)

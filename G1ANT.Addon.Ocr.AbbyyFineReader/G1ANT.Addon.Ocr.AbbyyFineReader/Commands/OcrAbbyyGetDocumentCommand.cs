@@ -37,7 +37,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             AbbyyManager manager = AbbyyManager.Instance;
             int docID = arguments.DocumentID == null ? manager.CurentDocumentCount : arguments.DocumentID.Value;
             var doc = manager.GetDocument(docID); 
-            Scripter.Variables.SetVariableValue(arguments.Result.Value, new AbbyDocumentStructure(doc.CustomDocument));
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new AbbyyDocumentStructure(doc.CustomDocument));
         }
     }
 }

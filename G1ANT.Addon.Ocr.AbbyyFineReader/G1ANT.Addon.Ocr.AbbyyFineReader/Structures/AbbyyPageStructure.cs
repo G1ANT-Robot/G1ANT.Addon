@@ -17,18 +17,18 @@ using System.Threading.Tasks;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Structure(Name = "abbypage" )]
+    [Structure(Name = "abbyypage" )]
 
-    public class AbbyPageStructure : StructureTyped<CustomPage>
+    public class AbbyyPageStructure : StructureTyped<CustomPage>
     {
         private const string FirstIndex = "rows";
         private const string LastIndex = "count";
 
-        public AbbyPageStructure(CustomPage page) : this(page, null, null)
+        public AbbyyPageStructure(CustomPage page) : this(page, null, null)
         {
             Value = page;
         }
-        public AbbyPageStructure(object value, string format = null, AbstractScripter scripter = null)
+        public AbbyyPageStructure(object value, string format = null, AbstractScripter scripter = null)
             : base(value, format, scripter)
         {
             Indexes.Add(FirstIndex);
@@ -50,7 +50,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
                     List<Structure> rows = new List<Structure>();
                     foreach (CustomRow row in Value.Rows)
                     {
-                        rows.Add(new AbbyRowStructure(row));
+                        rows.Add(new AbbyyRowStructure(row));
                     }
                     return new ListStructure(rows);
                 case "count":
@@ -59,7 +59,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             int intIndex = 0;
             if (int.TryParse(index, out intIndex) && intIndex < Value.Rows.Count && intIndex >= 0)
             {
-                return new AbbyRowStructure(Value.Rows[intIndex]);
+                return new AbbyyRowStructure(Value.Rows[intIndex]);
             }
             throw new ArgumentOutOfRangeException($"There is no value under index = {index}");
         }
