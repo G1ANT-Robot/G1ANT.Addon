@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AssemblyVersion>2.138.17235.1350</AssemblyVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,24 +36,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\G1ANT.Bin\debug\G1ANT.Language.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Apis.1.30.0\lib\net45\Google.Apis.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Auth, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Apis.Auth.1.30.0\lib\net45\Google.Apis.Auth.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Apis.Auth.1.30.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Core, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Apis.Core.1.30.0\lib\net45\Google.Apis.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.PlatformServices, Version=1.30.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Apis.1.30.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Vision.v1, Version=1.30.0.1041, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Google.Apis.Vision.v1.1.30.0.1041\lib\net45\Google.Apis.Vision.v1.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -70,41 +53,11 @@
   <ItemGroup>
     <Compile Include="Api\WatsonClassifyImageApi.cs" />
     <Compile Include="Api\WatsonSpeechToTextApi.cs" />
-    <Compile Include="Variables\TimeoutWatsonVariable.cs" />
     <Compile Include="Commands\WatsonClassifyImageCommand.cs" />
     <Compile Include="Commands\WatsonSpeechToTextCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Variables\TimeoutWatsonVariable.cs" />
     <Compile Include="WatsonAddon.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.dll">
-      <Link>Google.Apis.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Auth.dll">
-      <Link>Google.Apis.Auth.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Auth.PlatformServices.dll">
-      <Link>Google.Apis.Auth.PlatformServices.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Core.dll">
-      <Link>Google.Apis.Core.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.PlatformServices.dll">
-      <Link>Google.Apis.PlatformServices.dll</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\packages\*\lib\net45\Google.Apis.Vision.v1.dll">
-      <Link>Google.Apis.Vision.v1.dll</Link>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\packages\*\lib\net45\Newtonsoft.Json.dll">
@@ -117,5 +70,6 @@
   <ItemGroup>
     <EmbeddedResource Include="License.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -10,24 +10,25 @@
 using G1ANT.Language;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "vnc.connect",Tooltip = "This command allows to connect to machine with running VNC server using a remote desktop.", NeedsDelay = true, IsUnderConstruction = true)]
+    [Command(Name = "vnc.connect",Tooltip = "This command connects to a remote machine with a running VNC server, using a remote desktop connection", NeedsDelay = true)]
     public class VncConnectCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Ip or url of the machine")]
+            [Argument(Required = true, Tooltip = "IP or URL address of the remote machine")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port used to connect and allowed on the server side")]
+            [Argument(Required = true, Tooltip = "Port used to connect to the remote machine")]
             public TextStructure Port { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password used to connect to the server side")]
+            [Argument(Required = true, Tooltip = "Password used to connect to the remote machine")]
             public TextStructure Password { get; set; }
 
-            [Argument(DefaultVariable = "timeoutremotedesktop")]
+            [Argument(DefaultVariable = "timeoutremotedesktop", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10);
 
             [Argument]
@@ -37,8 +38,8 @@ namespace G1ANT.Addon.Net
         public VncConnectCommand(AbstractScripter scripter) : base(scripter)
         {
         }
-        public string pathToVNC = System.IO.Path.Combine(Environment.CurrentDirectory,
-             @"..\..\..\G1ANT.Robot.Api\Resources\VNC.exe");
+        public string pathToVNC = Path.Combine(AbstractSettingsContainer.Instance.UserDocsAddonFolder.FullName,
+             @"VNC.exe");
         Process testerApp;
 
         public void Execute(Arguments arguments)
@@ -50,9 +51,9 @@ namespace G1ANT.Addon.Net
             if (host == string.Empty || port == string.Empty || pass == string.Empty)
                 throw new ApplicationException("Host or port or pass is empty");
 
-
             testerApp = System.Diagnostics.Process.Start(pathToVNC, "-Scaling Fit -Encryption Server " + host + " " + port + " " + pass);
-            RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
+            bool result = RobotWin32.ShowWindow(testerApp.MainWindowHandle, RobotWin32.ShowWindowEnum.ShowNormal);
+            Scripter.Variables.SetVariableValue(arguments.Result.Value, new BooleanStructure(result));
         }
     }
 }

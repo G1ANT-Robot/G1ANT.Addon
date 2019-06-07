@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -12,7 +12,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.GoogleDocs
 {
-    [Command(Name = "googlesheet.open", Tooltip= "This command allows to open a new Google Sheets instance.")]
+    [Command(Name = "googlesheet.open", Tooltip = "This command opens a new Google Sheets instance")]
     public class GoogleSheetOpenCommand : Command
     {
         public class Arguments : CommandArguments
@@ -20,10 +20,10 @@ namespace G1ANT.Addon.GoogleDocs
             [Argument (Required = true, Tooltip = "Google Sheets File Id")]
             public TextStructure Id { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Specifies whether a document")]
             public BooleanStructure IsShared { get; set; } = new BooleanStructure(true);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the instance ID will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             

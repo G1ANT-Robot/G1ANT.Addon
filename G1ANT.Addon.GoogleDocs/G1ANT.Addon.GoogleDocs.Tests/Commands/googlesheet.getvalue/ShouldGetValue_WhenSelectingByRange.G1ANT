@@ -1,0 +1,12 @@
+﻿addon googledocs version 2.205.17304.1000
+
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥expectedValue = ‴Andrew‴
+♥rangeToBeChecked = ‴A3‴
+
+googlesheet.open ♥fileID
+googlesheet.setvalue range ♥rangeToBeChecked value ♥expectedValue numeric false
+googlesheet.getvalue range ♥rangeToBeChecked
+♥firstValue = ♥result[0]
+googlesheet.close
+test ⊂♥expectedValue == ♥firstValue⊃

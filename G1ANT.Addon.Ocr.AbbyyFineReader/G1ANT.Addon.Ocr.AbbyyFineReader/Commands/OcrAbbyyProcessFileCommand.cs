@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr.AbbyyFineReader
 *    www.g1ant.com
@@ -19,7 +19,7 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.Ocr.AbbyyFineReader
 {
-    [Command(Name = "ocrabbyy.processfile", Tooltip = "This command reads file and process it by Abbyy fine reader engine", IsUnderConstruction = true)]
+    [Command(Name = "ocrabbyy.processfile", Tooltip = "Command `ocrabbyy.processfile` allows to assign project information to a variable in order to extract different types of data from it")]
     public class OcrAbbyyProcessFileCommand : Command
     {
         public class Arguments : CommandArguments
@@ -27,22 +27,22 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Path to a file to be processed")]
             public TextStructure Path { get; set; }
 
-            [Argument(Required = false, Tooltip = "Indecies of pages to be processed")]
+            [Argument(Required = false, Tooltip = "List of numbers of pages to be processed")]
             public ListStructure Pages { get; set; } = null;
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable (of type AbbyyDocument) where command’s result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Tooltip = "Number of tables found in processed file")]
+            [Argument(Tooltip = "Info about the number of tables found in the processed file")]
             public TextStructure TablesCountResult { get; set; } = new TextStructure("tablescountresult");
 
-            [Argument(Tooltip = "The language which should be considered trying to recognize text")]
+            [Argument(Tooltip = "The language which should be considered trying to recognise text")]
             public TextStructure Language { get; set; } = null;
 
             [Argument(Tooltip = "Importance of the chosen language")]
             public IntegerStructure LanguageWeight { get; private set; } = new IntegerStructure(100);
 
-            [Argument(Tooltip = "List of suggested words that will have higher priority than random strings.")]
+            [Argument(Tooltip = "List of possible key words that exist in processed document that will have higher priority than random character strings while OCR processing")]
             public ListStructure Dictionary { get; set; } = null;
 
             [Argument(Tooltip = "Importance of words in chosen dictionary")]

@@ -1,44 +1,41 @@
 # googlesheet.settitle
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-googlesheet.settitle  title ‴‴ 
+googlesheet.settitle title ⟦text⟧
 ```
 
-**Description:**
+## Description
 
-Command `googlesheet.settitle` allows to set a title of a Google Sheet file.
+This command sets the title of a Google Sheets document.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`title`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes |  | new spreadsheet title |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`title`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  | New spreadsheet title |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.GoogleDocs.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.GoogleDocs](https://github.com/G1ANT-Robot/G1ANT.Addon.GoogleDocs)
+## Example
 
-**Example 1:**
-
-`googlesheet.settitle` changes the title of Google Sheet document. Following the script below you can see than in order to change the title, you first need to open a file. `googlesheet.gettitle` is an additional command that we choose to see the current title.
-`googlesheet.settitle` demands `title` argument, which is a string- new value of the title that G1ANT.Robot will type in the title field.
+In this example a Google Sheets document is opened, its title is retrieved and displayed in a dialog box. The title is then changed and retrieved and displayed again to confirm the change succeeded. Finally, the original title is restored and the document is closed:
 
 ```G1ANT
-googlesheet.open id ‴1gKFnrtZ-kzijNeIpYxln6PZS0z5btyHjoW1vZhCZ58c‴ result ♥sheetHandle
-googlesheet.gettitle result ♥title
-dialog ♥title
-googlesheet.settitle title ‴Test2017‴
-googlesheet.gettitle result ♥title
-dialog ♥title
-googlesheet.close id ♥sheetHandle timeout 10000
+googlesheet.open 1gKFnrtZ-kzijNeIpYxln6PZS0z5btyHjoW1vZhCZ58c
+googlesheet.gettitle ♥originalTitle
+dialog ♥originalTitle
+googlesheet.settitle ‴Test title‴
+googlesheet.gettitle ♥newTitle
+dialog ♥NewTitle
+googlesheet.settitle ♥originalTitle
+googlesheet.close
 ```
 
-The title of our Google Sheet was 'KingOfTheTests'
 
-Changing the title of a Google Sheet document to 'Test2017' using `googlesheet.settitle` command
 

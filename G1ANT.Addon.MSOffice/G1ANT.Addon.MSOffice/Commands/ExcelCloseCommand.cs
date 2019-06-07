@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,7 +15,7 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.close", Tooltip = "Closes currently active Excel instance.")]
+    [Command(Name = "excel.close", Tooltip = "This command closes the currently active Excel instance")]
     public class ExcelCloseCommand : Command
     {
         public class Arguments : CommandArguments

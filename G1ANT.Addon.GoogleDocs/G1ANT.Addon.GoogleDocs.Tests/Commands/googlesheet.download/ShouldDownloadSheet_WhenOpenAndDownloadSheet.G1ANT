@@ -1,0 +1,11 @@
+﻿addon googledocs version 2.205.17304.1000
+
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥testValue = ‴G1ANT‴
+♥folderPath =♥environment⟦TEMP⟧\
+♥filePath = ♥folderPath + "SheetsTest.xlsx"
+
+googlesheet.open ♥fileID isshared false
+googlesheet.download ♥filePath type ‴xls‴ result ♥result
+googlesheet.close
+test ⊂"Download complete." == ♥result && System.IO.File.Exists(♥filePath)⊃

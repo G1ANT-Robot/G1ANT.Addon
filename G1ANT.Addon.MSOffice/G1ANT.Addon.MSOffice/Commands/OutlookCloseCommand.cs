@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -14,12 +14,12 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.close", Tooltip = "This command allows to close active outlook pogram. It must be initiated at the end of a process.", NeedsDelay = true, IsUnderConstruction = false)]
+    [Command(Name = "outlook.close", Tooltip = "This command closes Outlook", NeedsDelay = true)]
     public class OutlookCloseCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
         }

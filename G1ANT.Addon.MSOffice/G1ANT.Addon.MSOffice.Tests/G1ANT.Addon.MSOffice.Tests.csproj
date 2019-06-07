@@ -103,6 +103,34 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Commands\ExcelDuplicateRow\ShouldDuplicateRow_WhenDuplicateRowCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelActivateSheet\ShouldSetValueOnProperSheet_WhenExcelActivateSheetCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelAddSheet\ShouldAddSheet_WhenExcelAddSheetCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelExport\ShouldExportFile_WhenExcelExportCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelGetRow\ShouldReturnAllUsedElementsFromRow_WhenGetRowCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelGetValue\ShouldReturnCellValue_WhenGetValueCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelImportText\ShouldImportTextIntoExcel_WhenCSVFileIsProvided.G1ANT" />
+    <None Include="Commands\ExcelRemoveColumn\ShouldRemoveColumn_WhenRemoveColumnCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelRemoveRow\ShouldRemoveRow_WhenRemoveRowCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelReply\ShouldReplyToGivenMessage_WhenReplyCommandIsCalled.G1ANT" />
+    <None Include="Commands\ExcelSwitch\ShouldSwitchExcelWindow_WhenSwitchCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookClose\ShouldCloseOutlook_WhenCloseCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookGetFolder\ShouldReturnFolder_WhenGetFolderCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookGetRootFolders\ShouldReturnListOfRootFolders_WhenGetRootFoldersCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookMoveTo\ShouldMoveToAnotherFolder_WhenMoveToCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookNewMessage\ShouldCreateNewMessageHtmlBody_WhenNewMessageCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookNewMessage\ShouldCreateNewMessage_WhenNewMessageCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookOpen\ShouldOpenOutlook_WhenOpenCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookSaveAttachment\ShouldSaveAttachment_WhenSaveAttachmentCommandIsCalled.G1ANT" />
+    <None Include="Commands\OutlookSend\ShouldSendMessage_WhenSendCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordClose\ShouldCloseWord_WhenCloseCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordExport\ShouldExportFile_WhenExportCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordGetText\ShoudReturnText_WhenGetTextCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordInsertText\ShouldInsertText_WhenInsertTextCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordOpen\ShouldOpenWord_WhenOpenCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordReplace\ShouldReplaceWords_WhenReplaceCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordSave\ShouldSaveFile_WhenSaveCommandIsCalled.G1ANT" />
+    <None Include="Commands\WordSwitchCommand\ShouldSwitchActiveWordWindow_WhenSwitchCommandIsCalled.G1ANT" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\getRowTest.xlsx" />
     <EmbeddedResource Include="Resources\TestData.csv" />
@@ -118,5 +146,19 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Commands\ExcelClose\ShouldCloseExcel_WhenExcelCloseCommandIsCalled.G1ANT" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Commands\ExcelGetFormula\ShouldReturnFormulaAsText_WhenGetTextFormulaCommandIsCalled.G1ANT" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Commands\ExcelInsertColumn\ShouldInsertColumn_WhenInsertColumnCommandIsCalled.txt" />
+    <Content Include="Commands\ExcelSave\ShouldSaveExcelFile_WhenSaveCommandIsCalled.txt" />
+    <None Include="Commands\OutlookFindMail\ShouldReturnTrue_WhenMailIsPresentInInbox.G1ANT" />
+    <None Include="Commands\ExcelOpen\ShouldOpenExcel_WhenExcelCommandWasCalled.G1ANT" />
+    <None Include="Commands\ExcelInsertRow\ShouldInsertRow_WhenInsertRowCommandIsCalled.G1ANT" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

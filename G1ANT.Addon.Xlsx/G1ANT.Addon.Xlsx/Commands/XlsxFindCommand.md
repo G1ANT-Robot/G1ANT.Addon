@@ -1,46 +1,36 @@
 # xlsx.find
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-xlsx.find  value ‴‴
+xlsx.find value ⟦text⟧ resultcolumn ⟦variable⟧ resultrow ⟦variable⟧
 ```
 
-**Description:**
+## Description
 
-Command `xlsx.find` allows to find address of a cell where specified value is stored.
+This command finds an address of a cell where a specified value is stored.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`value`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes  | | value to be searched |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no |  [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of variable where command's result will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`value`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes  | | Value to be searched for |
+| `resultcolumn` | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥resultcolumn`                                           | Name of a variable where the command's result (column index) will be stored |
+| `resultrow` | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥resultrow`                                         | Name of a variable where the command's result (row number) will be stored |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Xlsx.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx](https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx)
+## Example
 
-**Example 1:**
-
-This function will find the value "123" in .xlsx document and save the cell's address in variable 'cell'.
-
-```G1ANT
-xlsx.find value ‴123‴ result ♥cell
-```
-
-**Example 2:**
-
-In this example G1ANT.Robot will search the document to find 'aaa' value. The result in the dialog box will be: 'C1'.
+This simple script opens an Excel workbook (be sure to provide a real filepath) and searches for “*aaa*” value. If it doesn’t find any match, an error message appears. If there’s a cell containing the searched value, its coordinates are displayed in a dialog box:
 
 ```G1ANT
-xlsx.open path ‴C:\Tests\Book1.xlsx‴ result ♥xlsHandle
-xlsx.setsheet name ‴Sheet1‴
-xlsx.find value ‴aaa‴ result ♥number errormessage ‴Value not found‴
-dialog ♥number
-xlsx.close id ♥xlsHandle
+xlsx.open C:\Tests\Book1.xlsx
+xlsx.find aaa errormessage ‴Value not found‴
+dialog ‴Value found in the cell: column ♥resultcolumn, row ♥resultrow‴
 ```
 

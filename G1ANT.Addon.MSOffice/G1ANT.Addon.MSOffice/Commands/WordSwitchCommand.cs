@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -11,16 +11,16 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "word.switch",Tooltip = "This command allows to switch between word windows.", NeedsDelay = true, IsUnderConstruction = true)]
+    [Command(Name = "word.switch",Tooltip = "This command switches between open Word instances", NeedsDelay = true)]
 
     public class WordSwitchCommand : Command
 	{
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Specifies id of word window")]
+            [Argument(Required = true, Tooltip = "ID of a Word window that was specified while using the `word.open` command")]
             public IntegerStructure Id { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored (true or false)")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");          
 
 

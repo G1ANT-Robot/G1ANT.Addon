@@ -2,7 +2,6 @@
 using CodePlex.XPathParser;
 using System.Windows.Automation;
 using System.Collections.Generic;
-using System.Linq;
 
 using CompareFunc = System.Func<
     System.Windows.Automation.AutomationElement,
@@ -20,6 +19,12 @@ namespace G1ANT.Addon.UI
 {
     public class XPathUIElementBuilder : IXPathBuilder<object>
     {
+        public enum UiAutomationElement
+        {
+            Id,
+            ProgrammaticName,
+        }
+
         protected AutomationElement FindDescendant(AutomationElement elem, CompareFunc compare)
         {
             AutomationElement elementNode = TreeWalker.ControlViewWalker.GetFirstChild(elem);
@@ -82,6 +87,7 @@ namespace G1ANT.Addon.UI
         public AutomationElement Root { get; } = AutomationElement.RootElement;
         public XPathUIElementBuilder(AutomationElement root = null)
         {
+            ControlType.Button.GetType();
             if (root != null)
                 Root = root;
         }
@@ -114,19 +120,40 @@ namespace G1ANT.Addon.UI
             {
                 if (left is AutomationProperty property)
                 {
-                    CompareFunc func = (elem, index) =>
+                    return new CompareFunc((elem, index) =>
+                     {
+                         var propValue = elem.GetCurrentPropertyValue(property, true);
+                         if (propValue != null)
+                             return propValue.Equals(right);
+                         return false;
+                     });
+                }
+                else if (left is UiAutomationElement en)
+                {
+                    if (UiAutomationElement.ProgrammaticName == en)
                     {
-                        var propValue = elem.GetCurrentPropertyValue(property, true);
-                        if (propValue != null)
-                            return propValue.Equals(right);
-                        return false;
-                    };
-                    return func;
+                        return new CompareFunc((elem, index) =>
+                        {
+                            string propValue = elem.Current.ControlType?.ProgrammaticName.Replace("ControlType.", "");
+                            if (propValue != null)
+                                return propValue.Equals(right);
+                            return false;
+                        });
+                    }
+                    if (UiAutomationElement.Id == en)
+                    {
+                        return new CompareFunc((elem, index) =>
+                        {
+                            int? propValue = elem.Current.ControlType?.Id;
+                            if (propValue.HasValue)
+                                return propValue.ToString().Equals(right);
+                            return false;
+                        });
+                    }
                 }
             }
             throw new NotSupportedException($"Operator {op.ToString()} is not supported.");
         }
-
 
         public object Axis(XPathAxis xpathAxis, System.Xml.XPath.XPathNodeType nodeType, string prefix, string name)
         {
@@ -146,7 +173,6 @@ namespace G1ANT.Addon.UI
             {
                 FindElementFunc func = FindDescendantOrSelf;
                 return func;
-
             }
             if (xpathAxis == XPathAxis.FollowingSibling)
             {
@@ -160,14 +186,17 @@ namespace G1ANT.Addon.UI
             }
             if (xpathAxis == XPathAxis.Attribute)
             {
-                if (name == "id")
+                string lowerCaseName = name.ToLower();
+                if (lowerCaseName == "id")
                     return AutomationElement.AutomationIdProperty;
-                if (name == "name")
+                if (lowerCaseName == "name")
                     return AutomationElement.NameProperty;
-                if (name == "class")
+                if (lowerCaseName == "class")
                     return AutomationElement.ClassNameProperty;
-                if (name == "type")
-                    return AutomationElement.ControlTypeProperty;
+                if (lowerCaseName == "type")
+                    return UiAutomationElement.ProgrammaticName;
+                if (lowerCaseName == "typeid")
+                    return UiAutomationElement.Id;
                 throw new NotSupportedException($"Attribute {name} is not supportet.");
             }
             return null;

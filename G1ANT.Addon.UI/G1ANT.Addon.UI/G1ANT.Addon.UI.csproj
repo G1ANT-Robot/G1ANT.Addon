@@ -66,14 +66,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UIGetRectangleCommand.cs" />
-    <Compile Include="UISetFocusCommand.cs" />
-    <Compile Include="UISetRootCommand.cs" />
-    <Compile Include="UIClickCommand.cs" />
-    <Compile Include="UIGetTextCommand.cs" />
-    <Compile Include="UISetTextCommand.cs" />
-    <Compile Include="WaitForUICommand.cs" />
-    <Compile Include="WPathStructure.cs" />
+    <Compile Include="Commands\UIGetRectangleCommand.cs" />
+    <Compile Include="Commands\UISetFocusCommand.cs" />
+    <Compile Include="Commands\UISetRootCommand.cs" />
+    <Compile Include="Commands\UIClickCommand.cs" />
+    <Compile Include="Commands\UIGetTextCommand.cs" />
+    <Compile Include="Commands\UISetTextCommand.cs" />
+    <Compile Include="Commands\WaitForUICommand.cs" />
+    <Compile Include="Structures\WPathStructure.cs" />
     <Compile Include="XPathParser\IXpathBuilder.cs" />
     <Compile Include="XPathParser\XPathAxis.cs" />
     <Compile Include="XPathParser\XPathOperator.cs" />
@@ -98,7 +98,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  <EmbeddedResource Include="UIAComWrapper.dll" />
+    <EmbeddedResource Include="UIAComWrapper.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\insert into.png" />

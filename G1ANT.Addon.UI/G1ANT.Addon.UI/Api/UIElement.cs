@@ -4,6 +4,7 @@ using System.Windows.Automation;
 using System.Collections.Generic;
 using G1ANT.Language;
 using System.Drawing;
+using System.Threading;
 
 namespace G1ANT.Addon.UI
 {
@@ -92,53 +93,35 @@ namespace G1ANT.Addon.UI
 
         public void Click()
         {
-            object pattern;
-            if (automationElement.TryGetCurrentPattern(InvokePattern.Pattern, out pattern))
+            if (automationElement.TryGetClickablePoint(out var pt))
             {
-                InvokePattern invokePattern = pattern as InvokePattern;
-                if (invokePattern != null)
-                    invokePattern.Invoke();
-            }
-            else if (automationElement.TryGetCurrentPattern(SelectionItemPattern.Pattern, out pattern))
-            {
-                SelectionItemPattern selectionPattern = pattern as SelectionItemPattern;
-                if (selectionPattern != null)
-                    selectionPattern.Select();
-            }
-            //else if ((bool)automationElement.GetCurrentPropertyValue(AutomationElementIdentifiers.IsLegacyIAccessiblePatternAvailableProperty))
-            //{
-            //    var legacyPattern = ((LegacyIAccessiblePattern)automationElement.GetCurrentPattern(LegacyIAccessiblePattern.Pattern));
-            //    legacyPattern.DoDefaultAction();
-            //}
-            else
-            {
-                //var rect = GetRectangle();
-                //System.Windows.Point pt = new System.Windows.Point(rect.X + rect.Size.Width/2, rect.Y + rect.Size.Height / 2);
-                System.Windows.Point pt = new System.Windows.Point();
-                if (automationElement.TryGetClickablePoint(out pt))
+                var tempPos = MouseWin32.GetPhysicalCursorPosition();
+                var currentPos = new Point(tempPos.X, tempPos.Y);
+                var targetPos = new Point((int)pt.X, (int)pt.Y);
+
+                List<MouseStr.MouseEventArgs> mouseArgs =
+                    MouseStr.ToMouseEventsArgs(
+                        targetPos.X,
+                        targetPos.Y,
+                        currentPos.X,
+                        currentPos.Y,
+                        "left",
+                        "press",
+                        1);
+
+                foreach (var arg in mouseArgs)
                 {
-                    //MouseWin32.MousePoint tempPos = MouseWin32.GetCursorPosition();
-                    MouseWin32.MousePoint tempPos = MouseWin32.GetPhysicalCursorPosition();
-                    Point currentPos = new Point(tempPos.X, tempPos.Y);
-
-                    Point targetPos = new Point((int)pt.X, (int)pt.Y);
-
-                    List<MouseStr.MouseEventArgs> mouseArgs =
-                        MouseStr.ToMouseEventsArgs(
-                            targetPos.X,
-                            targetPos.Y,
-                            currentPos.X,
-                            currentPos.Y,
-                            "left",
-                            "press",
-                            1);
-
-                    foreach (MouseStr.MouseEventArgs arg in mouseArgs)
-                    {
-                        MouseWin32.MouseEvent(arg.dwFlags, arg.dx, arg.dy, arg.dwData);
-                        System.Threading.Thread.Sleep(10);
-                    }
+                    MouseWin32.MouseEvent(arg.dwFlags, arg.dx, arg.dy, arg.dwData);
+                    Thread.Sleep(10);
                 }
+            }
+            else if (automationElement.TryGetCurrentPattern(InvokePattern.Pattern, out var invokePattern))
+            {
+                (invokePattern as InvokePattern)?.Invoke();
+            }
+            else if (automationElement.TryGetCurrentPattern(SelectionItemPattern.Pattern, out var selectionPattern))
+            {
+                (selectionPattern as SelectionItemPattern)?.Select();
             }
         }
 

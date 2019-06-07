@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -14,15 +14,15 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.open", Tooltip = "This command allows to open the outlook program. It must be always executed before other outlook command will be used.", NeedsDelay = true, IsUnderConstruction = false)]
+    [Command(Name = "outlook.open", Tooltip = "This command opens Outlook", NeedsDelay = true)]
     public class OutlookOpenCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "If set to `false`, Outlook will be opened silently, with no window at all")]
             public BooleanStructure Display { get; set; } = new BooleanStructure(true);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
         public OutlookOpenCommand(AbstractScripter scripter) : base(scripter)

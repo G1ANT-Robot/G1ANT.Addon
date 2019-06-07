@@ -1,0 +1,27 @@
+addon watson version 2.205.17304.1000
+
+♥guid = ⊂Guid.NewGuid().ToString()⊃
+
+try errorcall DeleteImageAndFailTest
+    call DownloadImage
+    call ClassifyImage
+    call DeleteImage
+    test ⊂♥result.Contains("orange") && ♥result.Contains("citrus") && ♥result.Contains("fruit") && ♥result.Contains("mandarin") && ♥result.Contains("clementine") && ♥result.Contains("tangerine")⊃
+end try
+
+procedure DeleteImageAndFailTest
+    call DeleteImage
+    test false
+end procedure
+
+procedure DownloadImage
+    file.download filename ♥environment⟦TEMP⟧\♥guid.jpg url https://drive.google.com/uc?id=1Y6yNFONjE4ASwncLLtLlV2xQsQmG9VDD&export=download
+end procedure
+
+procedure ClassifyImage
+    watson.classifyimage apikey ♥credential⟦classifyimage:apikey⟧ serveruri https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19 imagepath ♥environment⟦TEMP⟧\♥guid.jpg
+end procedure
+
+procedure DeleteImage
+    file.delete ♥environment⟦TEMP⟧\♥guid.jpg timeout 15000
+end procedure

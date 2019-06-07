@@ -23,5 +23,9 @@ namespace G1ANT.Addon.Ocr.Tesseract
     [CommandGroup(Name = "ocrtesseract",  Tooltip = "Tesseract based optical character recognition, does not need internet connection.")]
     public class TesseractAddon : Language.Addon
     {
+        public TesseractAddon() : base()
+        {
+            OcrOfflineHelper.UnpackNeededAssemblies();
+        }        
     }
 }

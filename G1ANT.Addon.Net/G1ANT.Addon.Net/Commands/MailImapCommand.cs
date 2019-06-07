@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Net
 *    www.g1ant.com
@@ -20,39 +20,42 @@ using System.Net;
 
 namespace G1ANT.Addon.Net
 {
-    [Command(Name = "mail.imap", Tooltip = "This command tries to retrieve the mails from inbox.")]
+    [Command(Name = "mail.imap", Tooltip = "This command uses the IMAP protocol to check an email inbox and allows the user to analyze their messages received within a specified time span, with the option to consider only unread messages and/or mark all of the checked ones as read")]
     public class MailImapCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Host name")]
+            [Argument(Required = true, Tooltip = "IMAP server address")]
             public TextStructure Host { get; set; }
 
-            [Argument(Required = true, Tooltip = "Port")]
+            [Argument(Required = true, Tooltip = "IMAP server port number")]
             public IntegerStructure Port { get; set; } = new IntegerStructure(993);
 
-            [Argument(Required = true, Tooltip = "Login of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email login")]
             public TextStructure Login { get; set; }
 
-            [Argument(Required = true, Tooltip = "Password of the inbox user")]
+            [Argument(Required = true, Tooltip = "User email password")]
             public TextStructure Password { get; set; }
 
-            [Argument(Required = true, Tooltip = "Since what date should emails be retrieved")]
+            [Argument(Required = true, Tooltip = "Folder to fetch emails from")]
+            public TextStructure Folder { get; set; } = new TextStructure("INBOX");
+
+            [Argument(Required = true, Tooltip = "Starting date for messages to be checked")]
             public DateStructure SinceDate { get; set; }
 
-            [Argument(Required = false, Tooltip = "To what date should emails be retrieved")]
+            [Argument(Required = false, Tooltip = "Ending date for messages to be checked")]
             public DateStructure ToDate { get; set; } = new DateStructure(DateTime.Now);
 
-            [Argument(Required = false, Tooltip = "Look only for already unread messages")]
+            [Argument(Required = false, Tooltip = "If set to `true`, only unread messages will be checked")]
             public BooleanStructure OnlyUnreadMessages { get; set; } = new BooleanStructure(false);
 
             [Argument(Required = false, Tooltip = "Mark analyzed messages as read")]
             public BooleanStructure MarkAsRead { get; set; } = new BooleanStructure(true);
 
-            [Argument(Required = false, Tooltip = "Received emails as list of mail structures")]
+            [Argument(Required = false, Tooltip = "Name of a list variable where the returned mail variables will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(Required = false, Tooltip = "Ignore certificate errors")]
+            [Argument(Required = false, Tooltip = "If set to `true`, the command will ignore any security certificate errors")]
             public BooleanStructure IgnoreCertificateErrors { get; set; } = new BooleanStructure(false);
         }
 
@@ -72,51 +75,35 @@ namespace G1ANT.Addon.Net
             var timeout = (int)arguments.Timeout.Value.TotalMilliseconds;
             var markAllMessagesAsRead = arguments.MarkAsRead.Value;
 
-            var client = CreateImapClient(timeout);
-            ConnectClient(client, credentials, uri, !markAllMessagesAsRead);
+            var client = ImapHelper.CreateImapClient(credentials, uri, !markAllMessagesAsRead, timeout);
 
             if (client.IsConnected && client.IsAuthenticated)
             {
-                var messages = ReceiveMesssages(client, arguments);
-                SendMessageListToScripter(client, client.Inbox, arguments, messages);
+                var folder = client.GetFolder(arguments.Folder.Value);
+                folder.Open(FolderAccess.ReadOnly);
+                var messages = ReceiveMesssages(folder, arguments);
+                SendMessageListToScripter(folder, arguments, messages);
 
                 if (markAllMessagesAsRead)
                 {
-                    MarkMessagesAsRead(client, messages);
+                    MarkMessagesAsRead(folder, messages);
                 }
             }
         }
 
-        private static void ConnectClient(ImapClient client, NetworkCredential credentials, Uri uri, bool readOnly)
+        private void SendMessageListToScripter(IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)
         {
-            client.Connect(uri);
-            client.Authenticate(credentials);
-            client.Inbox.Open(readOnly ? FolderAccess.ReadOnly : FolderAccess.ReadWrite);
-            client.Inbox.Subscribe();
-        }
-
-        private ImapClient CreateImapClient(int timeout)
-        {
-            var client = new ImapClient
-            {
-                Timeout = timeout,
-            };
-            return client;
-        }
-
-        private void SendMessageListToScripter(ImapClient client, IMailFolder folder, Arguments arguments, List<IMessageSummary> messages)
-        {
-            var messageList = CreateMessageStructuresFromMessages(client,folder,messages);
+            var messageList = CreateMessageStructuresFromMessages(folder, messages);
             Scripter.Variables.SetVariableValue(arguments.Result.Value, messageList);
         }
 
-        private ListStructure CreateMessageStructuresFromMessages(ImapClient client, IMailFolder folder, List<IMessageSummary> messages)
+        private ListStructure CreateMessageStructuresFromMessages(IMailFolder folder, List<IMessageSummary> messages)
         {
             var messageList = new ListStructure();
             foreach (var message in messages)
             {
                 var attachments = CreateAttachmentStructuresFromAttachments(message,folder,message.Attachments);
-                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, client.Inbox, attachments);
+                var messageWithFolder = new SimplifiedMessageSummary(message as MessageSummary, folder, attachments);
                 var structure = new MailStructure(messageWithFolder, null, null);
                 messageList.AddItem(structure);
             }
@@ -136,13 +123,13 @@ namespace G1ANT.Addon.Net
             return attachmentsList;
         }
 
-        private List<IMessageSummary> ReceiveMesssages(ImapClient client, Arguments arguments)
+        private List<IMessageSummary> ReceiveMesssages(IMailFolder folder, Arguments arguments)
         {
             var options = MessageSummaryItems.All |
                           MessageSummaryItems.Body |
                           MessageSummaryItems.BodyStructure |
                           MessageSummaryItems.UniqueId;
-            var allMessages = client.Inbox.Fetch(0, -1, options).ToList();
+            var allMessages = folder.Fetch(0, -1, options).ToList();
             var onlyUnread = arguments.OnlyUnreadMessages.Value;
             var since = arguments.SinceDate.Value;
             var to = arguments.ToDate.Value;
@@ -150,11 +137,11 @@ namespace G1ANT.Addon.Net
             return SelectMessages(allMessages, onlyUnread, since, to);
         }
 
-        private static void MarkMessagesAsRead(ImapClient client, List<IMessageSummary> messages)
+        private static void MarkMessagesAsRead(IMailFolder folder, List<IMessageSummary> messages)
         {
             foreach (var message in messages)
             {
-                client.Inbox.SetFlags(message.UniqueId, MessageFlags.Seen, true);
+                folder.SetFlags(message.UniqueId, MessageFlags.Seen, true);
             }
         }
 

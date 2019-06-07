@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr
 *    www.g1ant.com
@@ -15,21 +15,21 @@ using System.Linq;
 
 namespace G1ANT.Language.Ocr.Google
 {
-    [Command(Name = "ocrgoogle.fromscreen", Tooltip = "This command allows to capture part of the screen and recognize text from it. \nIt uses internet connection and external data processing.")]
+    [Command(Name = "ocrgoogle.fromscreen", Tooltip = "This command captures part of the screen and recognizes text from it")]
     public class OcrFromScreenCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true)]
+            [Argument(Required = true, Tooltip = "Area on the screen to find text in, specified in `x0⫽y0⫽x1⫽y1` format, where `x0⫽y0` are the coordinates of the top left and `x1⫽y1` are the coordinates of the right bottom corner of the area")]
             public RectangleStructure Area { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Determines whether the `area` argument is specified with absolute coordinates (top left corner of the screen) or refers to the currently opened window (its top left corner)")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutocr")]
+            [Argument(DefaultVariable = "timeoutocr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "Comma separated language hints for better text recognition")]

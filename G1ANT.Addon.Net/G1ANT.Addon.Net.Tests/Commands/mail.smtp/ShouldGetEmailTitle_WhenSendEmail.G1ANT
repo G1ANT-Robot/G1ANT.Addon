@@ -1,0 +1,9 @@
+﻿addon net version 2.205.17304.1000
+
+♥yesterday = ⟦date⟧⊂DateTime.Today⊃
+mail.smtp login ‴♥credential⟦Net:email⟧‴ password ‴♥credential⟦Net:pass⟧‴ host ‴smtp.gmail.com‴ port 587 from ‴♥credential⟦Net:email⟧‴ to ‴♥credential⟦Net:email⟧‴ subject ‴test title‴ body ‴testtest‴ 
+delay seconds 1
+mail.imap host ‴imap.gmail.com‴ port 993 login ‴♥credential⟦Net:email⟧‴ password ‴♥credential⟦Net:pass⟧‴ sincedate ♥yesterday onlyunreadmessages true ignorecertificateerrors true result ♥list
+
+♥testValue = ‴♥list⟦1⟧‴
+test ⊂♥testValue == "test title"⊃

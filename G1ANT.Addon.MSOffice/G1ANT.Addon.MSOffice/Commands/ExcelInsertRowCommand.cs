@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -15,15 +15,15 @@ using G1ANT.Language;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "excel.insertrow", Tooltip = "Inserts empty row.")]
+    [Command(Name = "excel.insertrow", Tooltip = "This command inserts an empty row into a specified place")]
     public class ExcelInsertRowCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Row's number")]
+            [Argument(Required = true, Tooltip = "Row number")]
             public IntegerStructure Row { get; set; }
 
-            [Argument(Tooltip = "Determines, whether to insert row 'below' or 'above' specified row. By default: 'below'")]
+            [Argument(Tooltip = "Specifies where to insert a row: `above` or `below` a specified row")]
             public TextStructure Where { get; set; } = new TextStructure("below");
         }
         public ExcelInsertRowCommand(AbstractScripter scripter) : base(scripter)

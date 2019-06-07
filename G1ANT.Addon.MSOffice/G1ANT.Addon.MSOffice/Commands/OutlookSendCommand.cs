@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.MSOffice
 *    www.g1ant.com
@@ -13,15 +13,15 @@ using System;
 
 namespace G1ANT.Addon.MSOffice
 {
-    [Command(Name = "outlook.send",Tooltip = "This command to send a prepared earlier message by 'outlook.newmessage'.")]
+    [Command(Name = "outlook.send",Tooltip = "This command sends an email drafted with the `outlook.newmessage` command or other mail (such as a reply drafted with the `outlook.reply` command) stored in a variable of outlookmail structure")]
     public class OutlookSendCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument]
+            [Argument(Tooltip = "Name of an `outlookmail` variable where a mail to be sent is stored")]
             public OutlookMailStructure Mail { get; set; }
         }
         public OutlookSendCommand(AbstractScripter scripter) : base(scripter)

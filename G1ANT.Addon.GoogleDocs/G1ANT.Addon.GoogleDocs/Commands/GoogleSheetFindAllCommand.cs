@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.GoogleDocs
 *    www.g1ant.com
@@ -17,19 +17,19 @@ using System.Threading.Tasks;
 namespace G1ANT.Addon.GoogleDocs
 {
 
-    [Command(Name = "googlesheet.findall", Tooltip = "This command allows to find all cells in which specified value is.")]
+    [Command(Name = "googlesheet.findall", Tooltip = "This command finds all cells with a specified value")]
     public class GoogleSheetFindAllCommand : Command
     {
 
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "Value that we are looking for")]
+            [Argument(Required = true, Tooltip = "Value to be searched for")]
             public TextStructure Value { get; set; }
 
-            [Argument(Tooltip = "SheetName where range exists, can be empty or omitted")]
+            [Argument(Tooltip = "Sheet name where the search is to be performed; can be empty or omitted")]
             public TextStructure SheetName { get; set; } = new TextStructure(string.Empty);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
             

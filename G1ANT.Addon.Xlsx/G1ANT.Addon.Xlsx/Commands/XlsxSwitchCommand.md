@@ -1,40 +1,39 @@
 # xlsx.switch
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-xlsx.switch  id ‴‴
+xlsx.switch id ⟦integer⟧
 ```
 
-**Description:**
+## Description
 
-Command `xlsx.switch` allows to switch between opened .xlsx files.
+This command switches between opened .xls(x) files.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`id`| [integer](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/integer.md)  | yes |  | ID of opened file we want to work with |
-|`result`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no |  [♥result](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  | name of variable where command's result will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no | | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`id`| [integer](G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | yes |  | ID of an opened file to switch to |
+| `result`       | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       | `♥result`                                                   | Name of a variable where the command's result will be stored: : `true` if it succeeded, `false` if it did not |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.Xlsx.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx](https://github.com/G1ANT-Robot/G1ANT.Addon.Xlsx)
+## Example
 
-**Example 1:**
-
-In order to use `xlsx.switch` command, first open two .xls files  with `xlsx.open` and assign different values for `result` argument in order to use them as `id` later. It is essential that while using `xlsx.switch` you give `id` argument as it is required for this command.
+In the following script the robot opens two .xlsx files (be sure to provide a real filepath there) and assigns their IDs to the `♥id1` and `♥id2` variables. Then it switches to the first file, reads the value of the cell A1, displays it in a dialog box and repeats the same actions on the second file:
 
 ```G1ANT
-xlsx.open path ‴C:\Tests\tests.xlsx‴ accessmode ‴read‴ result ♥xls1
-xlsx.open path ‴C:\Tests\Book1.xlsx‴ accessmode ‴readwrite‴ result ♥xls2
-xlsx.switch id ♥xls1
-xlsx.getvalue position ‴A1‴ result ♥A1
-dialog ♥A1
-xlsx.switch id ♥xls2
-xlsx.getvalue position ‴A1‴ result ♥A2
-dialog ♥A2
+xlsx.open C:\Documents\Book1.xlsx accessmode read result ♥id1
+xlsx.open C:\Documents\Book2.xlsx accessmode readwrite result ♥id2
+xlsx.switch ♥id1
+xlsx.getvalue row 1 colname A result ♥value1
+dialog ♥value1
+xlsx.switch id ♥id2
+xlsx.getvalue row 1 colname A result ♥value2
+dialog ♥value2
 ```

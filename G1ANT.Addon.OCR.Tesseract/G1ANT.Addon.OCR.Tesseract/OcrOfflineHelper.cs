@@ -67,28 +67,51 @@ namespace G1ANT.Addon.Ocr.Tesseract
         }
         public static void UnpackNeededAssemblies()
         {
-            var executingPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            var dirPath = executingPath + @"\x86\";
+            UnpackNeededAssemblies("x86");
+            UnpackNeededAssemblies("x64");
+            UnpackTesseract();
+        }
+
+        private static void UnpackNeededAssemblies(string version)
+        {
+            var executingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var dirPath = executingPath + $@"\{version}\";
             Directory.CreateDirectory(dirPath);
             var l = Directory.EnumerateFiles(dirPath);
-            var needCopy = (l.Where(x => x.Contains("libtesseract304.dll")).SingleOrDefault() == null) || l.Where(x => x.Contains("liblept172.dll")).SingleOrDefault() == null;
+            var needCopy = (l.Where(x => x.Contains("libtesseract")).SingleOrDefault() == null) || l.Where(x => x.Contains("liblept")).SingleOrDefault() == null;
 
             if (needCopy)
             {
                 var Str = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
-                var filesToCopy = Str.Where(x => x.Contains("x86dlls")).ToList();
+                var filesToCopy = Str.Where(x => x.Contains($"{version}dlls")).ToList();
                 string defaultNamespace = System.Reflection.Assembly.GetExecutingAssembly().FullName.Split(',')[0];
                 foreach (var langFile in filesToCopy)
                 {
 
                     using (var resource = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(langFile))
                     {
-                        var fileName = langFile.Replace(defaultNamespace + ".Resources.x86dlls.", "");
+                        var fileName = langFile.Replace(defaultNamespace + $".Resources.{version}dlls.", "");
                         using (var file = new FileStream(dirPath + fileName, FileMode.Create, FileAccess.Write))
                         {
                             resource.CopyTo(file);
                         }
                     }
+                }
+            }
+        }
+
+        private static void UnpackTesseract()
+        {
+            var executingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var fileName = "Tesseract.dll";
+            var fullPath = Path.Combine(executingPath, fileName);
+            var resourceName = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames().Where(r => r.Contains(fileName)).FirstOrDefault();
+            if (!File.Exists(fullPath))
+            {
+                using (var resource = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                using (var file = new FileStream(fullPath, FileMode.Create, FileAccess.Write))
+                {
+                    resource.CopyTo(file);
                 }
             }
         }

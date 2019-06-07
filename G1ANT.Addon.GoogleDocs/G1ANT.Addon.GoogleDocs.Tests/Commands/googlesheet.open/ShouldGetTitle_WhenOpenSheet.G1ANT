@@ -1,0 +1,9 @@
+﻿addon googledocs version 2.205.17304.1000
+
+♥fileID = ‴147EH2vEjGVtbzzkT6XaI0eNZlY5Ec91wlvxN3HC4GMc‴
+♥testValue = ‴G1ANT‴
+
+googlesheet.open ♥fileID
+googlesheet.gettitle result ♥title
+googlesheet.close
+test ⊂♥title == ♥testValue⊃

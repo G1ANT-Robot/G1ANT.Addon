@@ -1,0 +1,13 @@
+﻿addon net version 2.205.17304.1000
+
+♥url_put = ‴https://httpbin.org/put‴
+♥url_get = ‴https://httpbin.org/get‴
+
+list.create type text text ‴something:val‴ separator ; result ♥params
+list.create type text text ‴encoding-language:foo;version:3.0‴ separator ; result ♥first_header
+list.create type text text ‴type1:xml‴ separator ; result ♥second_header
+
+rest method ‴put‴ url ♥url_put headers ♥first_header parameters ♥params timeout 1000 result ♥result_put 
+rest method ‴get‴ url ♥url_get headers ♥second_header parameters ♥params result ♥result_get 
+test ⊂♥result_put.Contains("https://httpbin.org/put")⊃
+test ⊂♥result_get.Contains("https://httpbin.org/get")⊃

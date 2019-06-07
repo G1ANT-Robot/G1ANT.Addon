@@ -1,0 +1,4 @@
+﻿addon net version 2.205.17304.1000
+
+ping ip google.com timeout 500
+test ⊂♥result >= 0⊃

@@ -1,49 +1,41 @@
 # excel.importtext
 
-**Syntax:**
+## Syntax
 
 ```G1ANT
-excel.importtext path ‴‴
+excel.importtext path ⟦text⟧ destination ⟦text⟧ delimiter ⟦text⟧ name ⟦text⟧ resultrows ⟦variable⟧ resultcolumns ⟦variable⟧
 ```
 
-**Description:**
+## Description
 
-Command `excel.importtext` allows to set a data connection between text file and the specified destination in an active sheet and import data into it.
+This command establishes a data connection between a text file and the specified destination in an active sheet and imports data into it.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-|`path`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | yes | | path of a file that has to be imported (csv data format is supported) |
-|`destination`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | A1 | top left cell area of imported data, specified as either string or point |
-|`delimiter`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no | semicolon | delimiter to be used while importing data, accepts 'tab', 'semicolon', 'comma', 'space' or any other character |
-|`name`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no|  | range name where data will be placed|
-|`resultrows`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | ♥resultrows | name of variable where size of imported data, string formated as ‴#rows,#columns‴ will be stored |
-|`resultcolumns`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | ♥resultcolumns | name of variable where size of imported data, string formated as ‴#rows,#columns‴ will be stored |
-|`if`| [bool](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/bool.md) | no | true | runs the command only if condition is true |
-|`timeout`| [variable](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Special-Characters/variable.md) | no | [♥timeoutcommand](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Variables/Special-Variables.md)  | specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-|`errorjump` | [label](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/label.md) | no |  | name of the label to jump to if given `timeout` expires |
-|`errormessage`| [string](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Structures/string.md) | no |  | message that will be shown in case error occurs and no `errorjump` argument is specified |
+|`path`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes | | Path to a text file to be imported (csv data format is supported) |
+|`destination`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | A1 | Starting cell (top left) for the imported data, specified either as text or a point |
+|`delimiter`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | semicolon | Delimiter (data separator) to be used while importing data: `tab`, `semicolon`, `comma`, `space` or any other character |
+|`name`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no|  | Name of a range where data will be placed |
+|`resultrows`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no | ♥resultrows | Name of a variable that will store the total number of rows of the imported data |
+|`resultcolumns`| [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no | ♥resultcolumns | Name of a variable that will store the total number of columns of the imported data |
+| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutcommand](G1ANT.Language/G1ANT.Addon.Core/Variables/TimeoutCommandVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorjump` and `errormessage` arguments, please visit [Common Arguments](https://github.com/G1ANT-Robot/G1ANT.Manual/blob/master/G1ANT-Language/Common-Arguments.md)  manual page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
-This command is contained in **G1ANT.Addon.MSOffice.dll**.
-See: [https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice](https://github.com/G1ANT-Robot/G1ANT.Addon.MSOffice)
+## Example
 
-**Example 1:**
-
-In these examples data from the data.csv file is imported, copying takes place in cell D5 (or, in the other notation, cell 4//5).
-
-```G1ANT
-excel.importtext path ‴C:\programs\data.csv‴ destination ‴D5‴ result ♥size
-excel.importtext path ‴C:\programs\data.csv‴ destination ‴4//5‴ result ♥size
-```
-
-**Example 2:**
+In the following example you have to prepare a sample, comma-delimited `data.csv` file located on your Desktop. The data will be imported and inserted in the area starting with the B1 cell. The total number of imported rows and columns is then displayed in a dialog box, and the resulting Excel sheet is saved to a file on your Desktop:
 
 ```G1ANT
-excel.open result ♥excelHandle
-excel.importtext path ‴C:\Tests\import_random.csv‴ delimiter comma resultrows ♥importerRows destination ‴B1‴ resultcolumns ♥importedColumns
-dialog ‴Rows imported: ♥importerRows; Columns imported: ♥importedColumns‴
-excel.save path ‴C:\Tests\import_test.xlsx‴
+excel.open
+excel.importtext path ♥environment⟦USERPROFILE⟧\Desktop\data.csv destination B1 delimiter comma resultrows ♥importedRows resultcolumns ♥importedColumns
+dialog ‴Rows imported: ♥importedRows; Columns imported: ♥importedColumns‴
+excel.save ♥environment⟦USERPROFILE⟧\Desktop\imported_data.xlsx
 excel.close
 ```
 

@@ -56,7 +56,7 @@
     <Compile Include="Api\UriFixer.cs" />
     <Compile Include="Api\XlsxManager.cs" />
     <Compile Include="Api\XlsxWrapper.cs" />
-    <Compile Include="Commands\XlsxCountRowCommand.cs" />
+    <Compile Include="Commands\XlsxCountRowsCommand.cs" />
     <Compile Include="Commands\XlsxFindCommand.cs" />
     <Compile Include="Commands\XlsxSetValueCommand.cs" />
     <Compile Include="Commands\XlsxGetValueCommand.cs" />

@@ -1,4 +1,4 @@
-﻿/**
+/**
 *    Copyright(C) G1ANT Ltd, All rights reserved
 *    Solution G1ANT.Addon, Project G1ANT.Addon.Ocr
 *    www.g1ant.com
@@ -16,26 +16,25 @@ using System.Linq;
 namespace G1ANT.Language.Ocr.Google
 {
     [Command(Name = "ocrgoogle.find",
-        Tooltip = "This command allows to find the text on the current screen and return it's position as a 'rectangle'.", 
-        IsUnderConstruction = true)]
+        Tooltip = "This command finds a specified text on the active screen and returns its position in a rectangle format")]
 
     public class OcrGoogleFindCommand : Command
     {
         public class Arguments : CommandArguments
         { 
-            [Argument(Required = true,Tooltip = "Text that you want to find in the screen. Provide only single words")]
+            [Argument(Required = true,Tooltip = "Text to be found on the screen (the fewer words, the better results)")]
             public TextStructure Search { get; set; }
 
-            [Argument]
+            [Argument(Tooltip = "Area on the screen to find text in, specified in `x0⫽y0⫽x1⫽y1` format, where `x0⫽y0` are the coordinates of the top left and `x1⫽y1` are the coordinates of the right bottom corner of the area")]
             public RectangleStructure Area { get; set; } = new RectangleStructure(System.Windows.Forms.Screen.PrimaryScreen.Bounds);
 
-            [Argument]
+            [Argument(Tooltip = "Determines whether the `area` argument is specified with absolute coordinates (top left corner of the screen) or refers to the currently opened window (its top left corner)")]
             public BooleanStructure Relative { get; set; } = new BooleanStructure(true);
 
-            [Argument]
+            [Argument(Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
 
-            [Argument(DefaultVariable = "timeoutOcr")]
+            [Argument(DefaultVariable = "timeoutOcr", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public  override TimeSpanStructure Timeout { get; set; }
 
             [Argument(Tooltip = "List of languages you want to use to recognize text on the screen")]
