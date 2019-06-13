@@ -27,6 +27,8 @@ This command finds a specified text on the active screen and returns its positio
 
 For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
+> **Note:** In order to use the OCR Tesseract Addon, please follow [these steps](G1ANT.Manual/appendices/rdp-controller.md) to install the addon.
+
 ## Example
 
 In this example the robot opens Notepad, types “*TEST*” and after a 1-second delay searches for a word “test” on the screen using OCR, then displays its coordinates in a dialog box:
