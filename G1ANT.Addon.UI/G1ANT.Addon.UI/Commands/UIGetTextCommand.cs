@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using G1ANT.Language;
 
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "ui.gettext",
-        Tooltip = "Get text of the control of desktop application described by WPathStructure")]
+        Tooltip = "This command gets text (name, title, label etc.) of a desktop application UI element specified by WPath structure")]
     public class UIGetTextCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
+            [Argument(Required = true, Tooltip = "Desktop application UI element to get text from")]
             public WPathStructure WPath { get; set; }
 
-            [Argument(Required = true, Tooltip = "Variable where the text of the cotrol will be returned")]
+            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 

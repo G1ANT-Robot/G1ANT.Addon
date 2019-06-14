@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using G1ANT.Language;
 
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "ui.setroot",
-        Tooltip = "This command allows to attach and activate UI commands to desktop application")]
+        Tooltip = "This command sets a root window, to which other UI elements will refer to by WPath")]
     public class UISetRootCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Tooltip = "WPath Structure describes window to attach to (one of the WPath or ProcessName is required)")]
+            [Argument(Tooltip = "Desktop application window to be referred to")]
             public WPathStructure WPath { get; set; }
 
             //[Argument(Tooltip = "Name of the process to attach to (one of the WPath or ProcessName is required)")]

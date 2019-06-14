@@ -1,19 +1,19 @@
-﻿using System;
+using System;
 using G1ANT.Language;
 using System.Drawing;
 
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "ui.getrectangle",
-        Tooltip = "Get bounding box of the UI control described by WPathStructure")]
+        Tooltip = "This command gets a bounding box of a desktop application UI element specified by WPath structure")]
     public class UIGetRectangleCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
+            [Argument(Required = true, Tooltip = "Desktop application UI element to be located as a bounding box")]
             public WPathStructure WPath { get; set; }
 
-            [Argument(Required = true)]
+            [Argument(Required = true, Tooltip = "Name of a variable where the command's result will be stored in rectangle structure")]
             public VariableStructure Result { get; set; } = new VariableStructure("result");
         }
 
