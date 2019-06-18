@@ -26,6 +26,8 @@ This command captures part of the screen and recognizes text from it.
 
 For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
 
+> **Note:** In order to use the OCR Tesseract Addon, please follow [these steps](G1ANT.Manual/appendices/rdp-controller.md) to install the addon.
+
 ## Example
 
 In this example the robot opens G1ANT website and after a 4-second delay necessary to load the page it captures the specified area. The recognized text is then displayed in a dialog box:
