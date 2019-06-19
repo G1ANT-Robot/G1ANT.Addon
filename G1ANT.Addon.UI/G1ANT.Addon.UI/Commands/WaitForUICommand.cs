@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using G1ANT.Language;
 using System.Windows.Forms;
 using System.Threading;
@@ -6,15 +6,15 @@ using System.Threading;
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "waitfor.ui",
-        Tooltip = "Wait for the control of desktop application described by WPathStructure")]
+        Tooltip = "This command waits for a UI element of a desktop application specified by WPath structure")]
     public class WaitForUICommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
+            [Argument(Required = true, Tooltip = "Desktop application UI element to be awaited")]
             public WPathStructure WPath { get; set; }
 
-            [Argument(DefaultVariable = "timeoutui")]
+            [Argument(DefaultVariable = "timeoutui", Tooltip = "Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed")]
             public override TimeSpanStructure Timeout { get; set; } = new TimeSpanStructure(10000);
 
         }

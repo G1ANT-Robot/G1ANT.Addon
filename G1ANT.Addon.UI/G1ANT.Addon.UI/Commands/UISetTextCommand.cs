@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using G1ANT.Language;
 
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "ui.settext",
-        Tooltip = "Set text of the control of desktop application described by WPathStructure")]
+        Tooltip = "This command inserts text into a specified UI element of a desktop application window")]
     public class UISetTextCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
+            [Argument(Required = true, Tooltip = "Desktop application window to be referred to")]
             public WPathStructure WPath { get; set; }
 
-            [Argument(Required = true, Tooltip = "Variable where the text of the cotrol will be returned")]
+            [Argument(Required = true, Tooltip = "Text to be inserted into a specified UI element")]
             public TextStructure Text { get; set; }
         }
 

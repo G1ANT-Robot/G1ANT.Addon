@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using G1ANT.Language;
 
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "ui.click",
-        Tooltip = "Click control of the desktop application described by WPathStructure")]
+        Tooltip = "This command clicks a desktop application UI element specified by WPath structure")]
     public class UIClickCommand : Command
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = true, Tooltip = "WPath structure defining control of the desktop application")]
+            [Argument(Required = true, Tooltip = "Desktop application UI element to be clicked")]
             public WPathStructure WPath { get; set; }
         }
 
