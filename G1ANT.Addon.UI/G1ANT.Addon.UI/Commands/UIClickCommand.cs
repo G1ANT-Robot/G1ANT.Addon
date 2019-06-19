@@ -4,7 +4,7 @@ using G1ANT.Language;
 namespace G1ANT.Addon.UI
 {
     [Command(Name = "ui.click",
-        Tooltip = "This command clicks a UI element of a desktop application specified by WPath structure")]
+        Tooltip = "This command clicks a desktop application UI element specified by WPath structure")]
     public class UIClickCommand : Command
     {
         public class Arguments : CommandArguments
