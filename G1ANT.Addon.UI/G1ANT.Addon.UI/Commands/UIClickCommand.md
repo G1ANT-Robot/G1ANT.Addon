@@ -8,7 +8,7 @@ ui.click wpath ⟦wpath⟧
 
 ## Description
 
-This command clicks a UI element of a desktop application specified by WPath structure.
+This command clicks a desktop application UI element specified by WPath structure.
 
 | Argument       | Type                                                         | Required | Default Value                                                | Description                                                  |
 | -------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
