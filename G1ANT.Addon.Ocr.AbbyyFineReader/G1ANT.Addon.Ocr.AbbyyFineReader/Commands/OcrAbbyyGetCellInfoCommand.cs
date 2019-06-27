@@ -21,7 +21,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
     {
         public class Arguments : CommandArguments
         {
-            [Argument(Required = false, Tooltip = "ID of a processed document. If not specified, last processed document is used")]
+            [Argument(Required = false, Tooltip = "ID of a processed document. If not specified, the last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument(Required = false, Tooltip = "Index of a table in a document")]
