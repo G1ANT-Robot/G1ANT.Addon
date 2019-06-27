@@ -27,7 +27,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Text to be found in a table")]
             public TextStructure Search { get; set; }
 
-            [Argument(Required = false, Tooltip = "ID of a processed document. If not specified, last processed document is used")]
+            [Argument(Required = false, Tooltip = "ID of a processed document. If not specified, the last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument(Required = true, Tooltip = "Index of a table in a document")]
