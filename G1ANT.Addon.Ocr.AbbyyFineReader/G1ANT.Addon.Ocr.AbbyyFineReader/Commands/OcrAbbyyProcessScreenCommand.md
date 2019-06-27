@@ -8,7 +8,7 @@ ocrabbyy.processscreen area ⟦rectangle⟧ pages ⟦list⟧ tablescountresult �
 
 ## Description
 
-This command processes part of the screen for further data extraction.
+This command processes a part of the screen for further data extraction.
 
 > **Note:** The OCR ABBYY addon is in the beta phase and was not tested with ABBYY FineReader Engine 12.
 
