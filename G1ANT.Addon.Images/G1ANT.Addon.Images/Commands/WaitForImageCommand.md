@@ -41,5 +41,5 @@ waitfor.image ♥image result ♥point relative false
 dialog ♥point
 ```
 
-This example works exactly the same as for the [`image.find`](ImageFindCommand.md) command. To see the real difference between the two commands, you would have to start a slideshow in your preferred image viewer in the line 3, for example. The `image.find` command in the line 4 would display an error message if there was no matching image in the slideshow at the moment of the command execution, whereas the `waitfor.image` command would do what its name implies: wait for the particular image to appear in the slideshow before the timeout expires.
+This example works exactly the same as for the [`image.find`](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.Images/G1ANT.Addon.Images/Commands/ImageFindCommand.md) command. To see the real difference between the two commands, you would have to start a slideshow in your preferred image viewer in the line 3, for example. The `image.find` command in the line 4 would display an error message if there was no matching image in the slideshow at the moment of the command execution, whereas the `waitfor.image` command would do what its name implies: wait for the particular image to appear in the slideshow before the timeout expires.
 

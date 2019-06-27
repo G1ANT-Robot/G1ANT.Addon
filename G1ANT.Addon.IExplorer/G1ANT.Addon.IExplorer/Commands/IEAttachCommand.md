@@ -8,7 +8,7 @@ ie.attach phrase ⟦text⟧ by ⟦text⟧
 
 ## Description
 
-This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](IEOpenCommand.md) command was not used to open IE and attach the robot to the browser. This command also activates a tab found by a specified phrase.
+This command attaches G1ANT.Robot to an already running Internet Explorer instance and is required for other `ie.` commands to work properly if the [`ie.open`](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.IExplorer/G1ANT.Addon.IExplorer/Commands/IEOpenCommand.md) command was not used to open IE and attach the robot to the browser. This command also activates a tab found by a specified phrase.
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |

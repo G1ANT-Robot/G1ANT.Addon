@@ -30,7 +30,7 @@ To open a Google Sheets document, you need its ID. You can find it in the docume
 
 https://docs.google.com/spreadsheets/d/**Document_ID**/edit#gid=0
 
-When the document is opened, the robot assigns its own ID to this Google Sheets instance and you can use it later to close this particular instance with the [`googlesheet.close`](GoogleSheetCloseCommand.md) command or switch to it with the [`googlesheet.switch`](GoogleSheetSwitchCommand.md) command.
+When the document is opened, the robot assigns its own ID to this Google Sheets instance and you can use it later to close this particular instance with the [`googlesheet.close`](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.GoogleDocs/G1ANT.Addon.GoogleDocs/Commands/GoogleSheetCloseCommand.md) command or switch to it with the [`googlesheet.switch`](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.GoogleDocs/G1ANT.Addon.GoogleDocs/Commands/GoogleSheetSwitchCommand.md) command.
 
 ```G1ANT
 googlesheet.open 1gKFnrtZ-kzijNeIpYxln6PZS0z5btyHjoW1vZhCZ58c result ♥sheetId

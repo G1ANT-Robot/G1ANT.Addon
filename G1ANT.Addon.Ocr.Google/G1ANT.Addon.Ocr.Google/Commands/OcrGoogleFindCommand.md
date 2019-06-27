@@ -40,6 +40,6 @@ ocrgoogle.find search test
 dialog ♥result
 ```
 
-> **Note:** In order to use any `ocrgoogle.` command, you have to be logged in to the Google Cloud Services with the [`ocrgoogle.login`](OcrGoogleLoginCommand.md) command.
+> **Note:** In order to use any `ocrgoogle.` command, you have to be logged in to the Google Cloud Services with the [`ocrgoogle.login`](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.Ocr.Google/G1ANT.Addon.Ocr.Google/Commands/OcrGoogleLoginCommand.md) command.
 
 
