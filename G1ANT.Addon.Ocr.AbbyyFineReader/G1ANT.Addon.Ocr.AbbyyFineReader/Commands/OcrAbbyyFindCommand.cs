@@ -33,7 +33,7 @@ namespace G1ANT.Addon.Ocr.AbbyyFineReader
             [Argument(Required = true, Tooltip = "Text to be found in a document")]
             public TextStructure Search { get; set; }
 
-            [Argument(Required = false, Tooltip = "ID of a processed document. If not specified, last processed document is used")]
+            [Argument(Required = false, Tooltip = "ID of a processed document. If not specified, the last processed document is used")]
             public IntegerStructure DocumentID { get; set; } = null;
 
             [Argument(Tooltip = "Name of a variable where the command's result (a list of rectangle elements) will be stored")]
