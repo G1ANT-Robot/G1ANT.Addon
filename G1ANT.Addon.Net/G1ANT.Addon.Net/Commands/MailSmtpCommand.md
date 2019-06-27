@@ -12,25 +12,25 @@ This command sends a mail message from a provided email address to a specified r
 
 | Argument | Type | Required | Default Value | Description |
 | -------- | ---- | -------- | ------------- | ----------- |
-| `host`                 | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | SMTP server address                                          |
-| `port`                 | [integer](G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | yes      | 587 | SMTP server port number                                   |
-| `login`                | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | User email login                                             |
-| `password`             | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | User email password                                          |
-|`from`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  |Sender's email address|
-|`to`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  |Recipient's email address|
-| `cc`           | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | Carbon copy address(es); use semicolon (;) to separate multiple addresses |
-|`bcc`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes | |Blind carbon copy address(es); use semicolon (;) to separate multiple addresses|
-|`subject`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | |Message subject|
-|`body`| [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no|  |Message body, i.e. the main content of an email |
-|`attachments`| [list](G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | no |  | List of full paths to all files to be attached |
-| `if`           | [bool](G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
-| `timeout`      | [timespan](G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutmailsmtp](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Variables/TimeoutMailSmtpVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
-| `errorcall`    | [procedure](G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
-| `errorjump`    | [label](G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
-| `errormessage` | [text](G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
-| `errorresult`  | [variable](G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
+| `host`                 | [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | SMTP server address                                          |
+| `port`                 | [integer](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/IntegerStructure.md) | yes      | 587 | SMTP server port number                                   |
+| `login`                | [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | User email login                                             |
+| `password`             | [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | User email password                                          |
+|`from`| [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  |Sender's email address|
+|`to`| [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes |  |Recipient's email address|
+| `cc`           | [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes      |                                                              | Carbon copy address(es); use semicolon (;) to separate multiple addresses |
+|`bcc`| [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | yes | |Blind carbon copy address(es); use semicolon (;) to separate multiple addresses|
+|`subject`| [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no | |Message subject|
+|`body`| [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no|  |Message body, i.e. the main content of an email |
+|`attachments`| [list](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/ListStructure.md) | no |  | List of full paths to all files to be attached |
+| `if`           | [bool](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/BooleanStructure.md) | no       | true                                                        | Executes the command only if a specified condition is true   |
+| `timeout`      | [timespan](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TimeSpanStructure.md) | no       | [♥timeoutmailsmtp](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Variables/TimeoutMailSmtpVariable.md) | Specifies time in milliseconds for G1ANT.Robot to wait for the command to be executed |
+| `errorcall`    | [procedure](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/ProcedureStructure.md) | no       |                                                             | Name of a procedure to call when the command throws an exception or when a given `timeout` expires |
+| `errorjump`    | [label](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/LabelStructure.md) | no       |                                                             | Name of the label to jump to when the command throws an exception or when a given `timeout` expires |
+| `errormessage` | [text](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/TextStructure.md) | no       |                                                             | A message that will be shown in case the command throws an exception or when a given `timeout` expires, and no `errorjump` argument is specified |
+| `errorresult`  | [variable](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/VariableStructure.md) | no       |                                                             | Name of a variable that will store the returned exception. The variable will be of [error](https://manual.g1ant.com/link/G1ANT.Language/G1ANT.Language/Structures/ErrorStructure.md) structure  |
 
-For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](G1ANT.Manual/appendices/common-arguments.md) page.
+For more information about `if`, `timeout`, `errorcall`, `errorjump`, `errormessage` and `errorresult` arguments, see [Common Arguments](https://manual.g1ant.com/link/G1ANT.Manual/appendices/common-arguments.md) page.
 
 ## Example
 

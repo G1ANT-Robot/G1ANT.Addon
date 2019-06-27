@@ -8,7 +8,7 @@
 
 ## Description
 
-Determines the timeout value (in ms) for the [mail.smtp](G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/MailSmtpCommand.md) command; the default value is 10000 (10 seconds).
+Determines the timeout value (in ms) for the [mail.smtp](https://manual.g1ant.com/link/G1ANT.Addon/G1ANT.Addon.Net/G1ANT.Addon.Net/Commands/MailSmtpCommand.md) command; the default value is 10000 (10 seconds).
 
 ## Example
 
